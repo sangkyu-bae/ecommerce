@@ -1,6 +1,6 @@
 package com.example.demo.infra.security;
 
-import com.example.demo.module.user.Member;
+import com.example.demo.module.domain.member.entity.Member;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

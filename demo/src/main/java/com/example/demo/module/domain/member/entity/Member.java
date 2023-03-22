@@ -1,4 +1,4 @@
-package com.example.demo.module.user;
+package com.example.demo.module.domain.member.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
