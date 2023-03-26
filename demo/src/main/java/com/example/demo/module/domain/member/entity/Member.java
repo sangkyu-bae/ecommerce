@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import static java.util.stream.Collectors.toList;
 import static javax.persistence.CascadeType.ALL;
@@ -49,5 +50,8 @@ public class Member {
         return this.authorities.stream()
                 .map(Authority::getRole)
                 .collect(toList());
+    }
+    public void createEmailCheckToken() {
+        this.emailCheckToken= UUID.randomUUID().toString();
     }
 }

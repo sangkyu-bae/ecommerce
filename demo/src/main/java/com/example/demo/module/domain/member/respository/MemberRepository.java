@@ -9,4 +9,6 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Object> findByEmailWithAuthority(String email);
+
+    boolean existsByEmail(String email);
 }

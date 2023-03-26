@@ -1,5 +1,6 @@
 package com.example.demo.module.aplication.usecase;
 
+import com.example.demo.module.domain.member.dto.JoinMemberDto;
 import com.example.demo.module.domain.member.dto.MemberDto;
 import com.example.demo.module.domain.member.entity.Member;
 import com.example.demo.module.domain.member.service.MemberReadService;
@@ -13,7 +14,7 @@ public class MemberUseCase {
 
     private final MemberWriteService memberWriteService;
     private final MemberReadService memberReadService;
-    public MemberDto joinMemberExecute(Member joinMember){
+    public MemberDto joinMemberExecute(JoinMemberDto joinMember){
         Member saveMember=memberWriteService.createMember(joinMember);
         MemberDto memberDto=memberReadService.toMemberDto(saveMember);
 
