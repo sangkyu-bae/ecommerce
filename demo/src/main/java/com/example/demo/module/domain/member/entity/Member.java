@@ -14,8 +14,9 @@ import static java.util.stream.Collectors.toList;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-@Getter @Setter @EqualsAndHashCode(of="id")
+@Getter @Setter @EqualsAndHashCode(of="userId")
 @AllArgsConstructor @NoArgsConstructor
+@Builder
 public class Member {
 
     @Id @GeneratedValue

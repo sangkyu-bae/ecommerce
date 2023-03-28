@@ -4,7 +4,7 @@ redis:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/
+    url: jdbc:mysql://localhost:3306/e-commerce
     username: root
     password: wnsvaf309
   jpa:

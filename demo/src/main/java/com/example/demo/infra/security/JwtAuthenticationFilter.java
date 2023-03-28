@@ -1,5 +1,6 @@
 package com.example.demo.infra.security;
 
+import com.example.demo.module.domain.redis.repository.LogoutAccessTokenRedisRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
