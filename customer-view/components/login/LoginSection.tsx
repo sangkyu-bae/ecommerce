@@ -5,12 +5,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import {useForm} from "react-hook-form";
-type SignupFormData = {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-};
 
 function LoginSection(props) {
 
@@ -32,7 +26,17 @@ function LoginSection(props) {
                         autoFocus
                     />
                 </Grid>
+
                 <Grid item xs={12}>
+                    <TextField
+                        required
+                        fullWidth
+                        id="email"
+                        label="이메일 주소"
+                        name="email"
+                        autoComplete="email"
+
+                    />
                     <TextField
                         required
                         fullWidth
@@ -51,7 +55,6 @@ function LoginSection(props) {
                         type="password"
                         id="password"
                         autoComplete="new-password"
-
                     />
                 </Grid>
                 <Grid item xs={12}>
