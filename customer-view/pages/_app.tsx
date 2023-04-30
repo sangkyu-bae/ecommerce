@@ -5,6 +5,7 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {AppBar, Toolbar, Typography} from "@mui/material";
 import Header from "@/components/common/Header";
 import CssBaseline from "@mui/material/CssBaseline";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 const theme = createTheme({
     palette: {
         primary: {
@@ -12,12 +13,15 @@ const theme = createTheme({
         },
     },
 });
+const queryClient = new QueryClient();
 export default function App({Component, pageProps}: AppProps) {
-    return(
-        <div>
-            <CssBaseline/>
-            <Header></Header>
-            <Component {...pageProps} />
-        </div>
-        )
+    return (
+        <QueryClientProvider client={queryClient}>
+            <div>
+                <CssBaseline/>
+                <Header></Header>
+                <Component {...pageProps} />
+            </div>
+        </QueryClientProvider>
+    )
 }
