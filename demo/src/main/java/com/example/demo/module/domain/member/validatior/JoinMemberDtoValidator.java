@@ -20,6 +20,9 @@ public class JoinMemberDtoValidator implements Validator {
     public void validate(Object target, Errors errors) {
         JoinMemberDto joinMemberDto=(JoinMemberDto) target;
 
+        if(!joinMemberDto.getPassword().equals(joinMemberDto.getConfirmPassword())){
+             errors.rejectValue("confirmPassword","invalid.confirmPassword",new Object[]{joinMemberDto.getConfirmPassword()},"패스워드가 일치 하지 않습니다.");
+        }
         if(memberRepository.existsByEmail(joinMemberDto.getEmail())){
             errors.rejectValue("email","invalid.email",new Object[]{joinMemberDto.getEmail()},"이미 존재하는 이메일 입니다.");
         }

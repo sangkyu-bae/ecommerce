@@ -5,23 +5,29 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import {FieldValues, SubmitHandler, useForm, Controller} from "react-hook-form";
-import {useController} from "react-hook-form";
-import {FormControlLabelProps, Input, RadioGroupProps} from "@mui/material";
-
-type SignupFormData = {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-};
-
+import {useMutation} from "react-query";
+import MemberApi from "@/api/MemberApi";
 function LoginSection(props) {
-    const {register, handleSubmit, formState: {errors}, control,watch} = useForm<SignupFormData>();
-    const onSubmit = (data: SignupFormData) => {
-        console.log(data);
-        console.log(errors)
-        alert(JSON.stringify(data));
+    const {register, handleSubmit, formState: {errors},watch} = useForm<SignUpFormData>();
+    const onSubmit = (memberData: SignUpFormData) => {
+        signUpMutation.mutate(memberData);
     }
+    const signUpMutation = useMutation(MemberApi.signUp, {
+        onMutate: variable => {
+            console.log("onMutate", variable);
+            // variable : {loginId: 'xxx', password; 'xxx'}
+        },
+        onError: (error, variable, context) => {
+            // error
+        },
+        onSuccess: (data, variables, context) => {
+            console.log("success", data, variables, context);
+        },
+        onSettled: () => {
+            console.log("end");
+        }
+    });
+
     const rules = {
         required: "이름을 입력해주세요.",
         maxLength: {

@@ -20,8 +20,9 @@ public class JoinMemberDto {
     private String name;
 
     @NotBlank
-    @Length(min = 7,max=30)
+    @Length(min = 8,max=20)
     private String password;
 
-
+    @NotBlank
+    private String confirmPassword;
 }
