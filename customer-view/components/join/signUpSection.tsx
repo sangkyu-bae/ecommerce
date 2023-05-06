@@ -7,7 +7,8 @@ import Link from "@mui/material/Link";
 import {FieldValues, SubmitHandler, useForm, Controller} from "react-hook-form";
 import {useMutation} from "react-query";
 import MemberApi from "@/api/MemberApi";
-function LoginSection(props) {
+import Validation from "@/components/common/Validation";
+function SignUpSection(props) {
     const {register, handleSubmit, formState: {errors},watch} = useForm<SignUpFormData>();
     const onSubmit = (memberData: SignUpFormData) => {
         signUpMutation.mutate(memberData);
@@ -28,17 +29,7 @@ function LoginSection(props) {
         }
     });
 
-    const rules = {
-        required: "이름을 입력해주세요.",
-        maxLength: {
-            value: 10,
-            message: "이름은 최대 10자까지 입력 가능합니다.",
-        },
-        minLength: {
-            value: 2,
-            message: "이름은 최소 2자 이상 입력해야 합니다.",
-        },
-    };
+    const validation= Validation;
     return (
         <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{mt: 3}}>
             <Grid container spacing={2}>
@@ -52,7 +43,7 @@ function LoginSection(props) {
                     label="이름"
                     autoFocus
                     {...register("name", {
-                    ...rules
+                    ...validation.rules
                     })}
                     error={Boolean(errors.name)}
                     helperText={errors.name?.message}
@@ -68,12 +59,7 @@ function LoginSection(props) {
                         name="email"
                         autoComplete="email"
                         {...register("email", {
-                            required:true,
-                            pattern: {
-                                value:
-                                    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-                                message: "이메일 형식에 맞지 않습니다.",
-                            },
+                            ...validation.email
                         })}
                         error={Boolean(errors.email)}
                         helperText={errors.email?.message}
@@ -89,13 +75,7 @@ function LoginSection(props) {
                         id="password"
                         autoComplete="new-password"
                         {...register("password", {
-                            required: true,
-                            minLength: 8,
-                            maxLength: 20,
-                            pattern: {
-                                value: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/,
-                                message: '비밀번호는 영문자, 특수문자, 숫자를 모두 포함하여 8자 이상 입력하세요.',
-                            },
+                            ...validation.password
                         })}
                         error={Boolean(errors.password)}
                         helperText={errors.password?.message}
@@ -130,7 +110,7 @@ function LoginSection(props) {
             </Button>
             <Grid container justifyContent="flex-end">
                 <Grid item>
-                    <Link href="#" variant="body2">
+                    <Link href="@/components/join/SignUpSection#" variant="body2">
                         Already have an account? Sign in
                     </Link>
                 </Grid>
@@ -139,4 +119,4 @@ function LoginSection(props) {
     );
 }
 
-export default LoginSection;
+export default SignUpSection;

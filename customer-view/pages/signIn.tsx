@@ -12,11 +12,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SignUpSection from "@/components/join/signUpSection";
+import Copyright from "@/components/common/Copyright";
+import SignInSection from "@/components/login/signInSection";
+
 
 const theme = createTheme();
+function SignIn(props) {
 
-export default function Signup() {
+
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -33,12 +36,14 @@ export default function Signup() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                       회원가입
+                        로그인
                     </Typography>
-                    <SignUpSection></SignUpSection>
+                    <SignInSection></SignInSection>
                 </Box>
-                {/*<Copyright sx={{ mt: 5 }} />*/}
+                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
     );
 }
+
+export default SignIn;

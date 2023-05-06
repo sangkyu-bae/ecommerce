@@ -6,6 +6,7 @@ import {AppBar, Toolbar, Typography} from "@mui/material";
 import Header from "@/components/common/Header";
 import CssBaseline from "@mui/material/CssBaseline";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import Copyright from "@/components/common/Copyright";
 const theme = createTheme({
     palette: {
         primary: {
@@ -21,6 +22,7 @@ export default function App({Component, pageProps}: AppProps) {
                 <CssBaseline/>
                 <Header></Header>
                 <Component {...pageProps} />
+                <Copyright sx={{ mt: 5 }}/>
             </div>
         </QueryClientProvider>
     )
