@@ -44,6 +44,12 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         Authentication authentication;
         try{
+//           LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
+            System.out.println(request);
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            System.out.println(username);
+            System.out.println(password);
            LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
 
            authentication=authenticationManager.authenticate(

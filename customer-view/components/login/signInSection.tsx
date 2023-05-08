@@ -8,12 +8,29 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import {useForm} from "react-hook-form";
 import Validation from "@/components/common/Validation";
+import {useMutation} from "react-query";
+import MemberApi from "@/api/MemberApi";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
     const onSubmit = (loginData : SignInFormData) => {
-        
+        signInMutation.mutate(loginData)
     };
+    const signInMutation = useMutation(MemberApi.signIn, {
+        onMutate: variable => {
+            console.log("onMutate", variable);
+        },
+        onError: (error, variable, context) => {
+            // error
+            console.log(error)
+        },
+        onSuccess: (data, variables, context) => {
+            console.log("success", data, variables, context);
+        },
+        onSettled: () => {
+            console.log("end");
+        }
+    });
     const validation= Validation;
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
