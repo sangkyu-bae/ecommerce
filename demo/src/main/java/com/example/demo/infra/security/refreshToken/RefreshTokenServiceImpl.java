@@ -20,9 +20,9 @@ public class RefreshTokenServiceImpl implements RefreshTokenService{
     private final RefreshTokenRedisRepository refreshTokenRedisRepository;
     @Override
     @Transactional
-    public void updateRefreshToken(Long id, String uuid) {
-        Member member=memberRepository.findById(id)
-                .orElseThrow(()->new NotFoundException("id :" + id + "는 없는 사용자 입니다."));
+    public void updateRefreshToken(String email, String uuid) {
+        Member member=memberRepository.findByEmail(email)
+                .orElseThrow(()->new NotFoundException("id :" + email + "는 없는 사용자 입니다."));
 
         refreshTokenRedisRepository.save(RefreshToken.of(member.getEmail(), uuid));
     }

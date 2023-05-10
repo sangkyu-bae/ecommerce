@@ -1,5 +1,6 @@
 package com.example.demo.infra.security;
 
+import com.example.demo.infra.redis.RedisService;
 import com.example.demo.infra.security.provider.CookieProvider;
 import com.example.demo.infra.security.provider.JwtTokenProvider;
 import com.example.demo.infra.security.refreshToken.RefreshTokenServiceImpl;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,6 +19,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -27,10 +31,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenProvider jwtTokenProvider;
     private final RefreshTokenServiceImpl refreshTokenServiceImpl;
     private final CookieProvider cookieProvider;
-    @Bean
-    public AuthenticationManager authenticationManager() throws Exception{
+    private final RedisService redisService;
+    private PasswordEncoder passwordEncoder;
+//    @Bean
+//    public AuthenticationManager authenticationManager() throws Exception{
+//        return super.authenticationManagerBean();
+//    }
+
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -41,22 +64,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
-    @Override
     public void configure(HttpSecurity http) throws Exception {
         // Custom Login Authentication 필터를 사용함
         LoginAuthenticationFilter loginAuthenticationFilter =
-                new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider);
+                new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider, redisService);
         loginAuthenticationFilter.setFilterProcessesUrl("/login");
-
+//        UsernamePasswordAuthenticationFilter loginAuthenticationFilter=new UsernamePasswordAuthenticationFilter(authenticationManagerBean());
         http.csrf().disable();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests().anyRequest().permitAll();
 
+//        http.addFilter(loginAuthenticationFilter);
         http.addFilter(loginAuthenticationFilter);
     }
 

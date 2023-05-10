@@ -1,5 +1,6 @@
 package com.example.demo.infra.security;
 
+import com.example.demo.infra.redis.RedisService;
 import com.example.demo.infra.security.dto.LoginRequest;
 import com.example.demo.infra.security.dto.Result;
 import com.example.demo.infra.security.provider.CookieProvider;
@@ -8,6 +9,7 @@ import com.example.demo.infra.security.refreshToken.RefreshTokenServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -39,22 +42,19 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
     private final RefreshTokenServiceImpl refreshTokenServiceImpl;
     private final CookieProvider cookieProvider;
 
+    private final RedisService redisService;
+
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        Authentication authentication;
+        Authentication authentication=null;
         try{
-//           LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
-            System.out.println(request);
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            System.out.println(username);
-            System.out.println(password);
            LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
-
            authentication=authenticationManager.authenticate(
                    new UsernamePasswordAuthenticationToken(credential.getEmail(), credential.getPassword())
            );
+            System.out.println(authentication);
+
        }catch (IOException e){
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -80,7 +80,7 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
         String refreshToken = jwtTokenProvider.createJwtRefreshToken();
 
         // redis에 새로 발행된 refresh token 값 갱신
-        refreshTokenServiceImpl.updateRefreshToken(Long.valueOf(userId), jwtTokenProvider.getRefreshTokenId(refreshToken));
+        refreshTokenServiceImpl.updateRefreshToken(userId, jwtTokenProvider.getRefreshTokenId(refreshToken));
 
         // 쿠키 설정
         ResponseCookie refreshTokenCookie = cookieProvider.createRefreshTokenCookie(refreshToken);
@@ -96,6 +96,9 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
                 "expiredTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(expiredTime)
         );
 
-        new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));
+        Long time = expiredTime.toInstant().getEpochSecond();
+        redisService.saveTokenToRedis(userId,accessToken,time);
+
+       new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));
     }
 }

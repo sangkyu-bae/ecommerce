@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +22,11 @@ public class JwtTokenProvider {
 
     @Value("${token.secret}")
     private String SECRET;
+
+    @PostConstruct
+    protected void init() {
+        SECRET = Base64.getEncoder().encodeToString(SECRET.getBytes());
+    }
 
     public String createJwtAccessToken(String userId, String uri, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(userId);
