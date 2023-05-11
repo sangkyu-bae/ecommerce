@@ -1,7 +1,7 @@
 server:
   port: 8080
 redis:
-  port: 6379
+  port: 5000
   host: localhost
 
 #spring:
@@ -41,7 +41,7 @@ logging:
 token:
   access-expired-time: 3600000
   refresh-expired-time: 604800000
-  secret: $2a$10$q42lY7Y18xqrFt1qbODZIO4OMTeOxnrCe7tF3n9bazJinVE7VH5Pi
+  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
   refresh-token-name: refresh-token
   access-token-name: access-token
 

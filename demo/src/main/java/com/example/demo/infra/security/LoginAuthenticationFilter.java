@@ -96,9 +96,6 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
                 "expiredTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(expiredTime)
         );
 
-        Long time = expiredTime.toInstant().getEpochSecond();
-        redisService.saveTokenToRedis(userId,accessToken,time);
-
        new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));
     }
 }
