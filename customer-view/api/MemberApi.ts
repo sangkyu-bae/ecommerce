@@ -6,8 +6,11 @@ const MemberApi={
         return data;
     },
     signIn : async (loginRequest:SignInFormData)=>{
-        console.log(loginRequest)
-        const {data}=await ApiCommon.testAPI.post(memberRequest.signIn,loginRequest);
+               const {data}=await ApiCommon.loginAPI.post(memberRequest.signIn,{
+            "email":loginRequest.email,
+            "password":loginRequest.password
+
+        });
         return data;
     }
 

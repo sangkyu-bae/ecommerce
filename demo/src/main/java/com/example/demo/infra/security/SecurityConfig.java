@@ -69,14 +69,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         LoginAuthenticationFilter loginAuthenticationFilter =
                 new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider, redisService);
         loginAuthenticationFilter.setFilterProcessesUrl("/login");
-//        UsernamePasswordAuthenticationFilter loginAuthenticationFilter=new UsernamePasswordAuthenticationFilter(authenticationManagerBean());
+
         http.csrf().disable();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests().anyRequest().permitAll();
 
-//        http.addFilter(loginAuthenticationFilter);
         http.addFilter(loginAuthenticationFilter);
     }
 

@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserDetailsService {
         Member member=memberRepository.findByEmail(username)
                 .orElseThrow(()->new UsernameNotFoundException("존재하지 않은 사용자 입니다."));
 
+        System.out.println("?");
         Collection<SimpleGrantedAuthority> authorities=new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("role"));
 

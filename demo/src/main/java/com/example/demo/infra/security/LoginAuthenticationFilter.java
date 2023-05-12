@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,31 +48,29 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        Authentication authentication=null;
-        try{
-           LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
-           authentication=authenticationManager.authenticate(
-                   new UsernamePasswordAuthenticationToken(credential.getEmail(), credential.getPassword())
-           );
-            System.out.println(authentication);
+        Authentication authentication = null;;
+        //           LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
+        String email = request.getParameter("email");
+        String password = request.getParameter("email");
+        LoginRequest credential = new LoginRequest(email,password);
 
-       }catch (IOException e){
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
+        authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(credential.getEmail(), credential.getPassword())
+        );
+
         return authentication;
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        User user=(User) authResult.getPrincipal();
+        User user = (User) authResult.getPrincipal();
 
-        List<String> roles=user.getAuthorities()
+        List<String> roles = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        String userId=user.getUsername();
+        String userId = user.getUsername();
 
         // response body에 넣어줄 access token 및 expired time 생성
         String accessToken = jwtTokenProvider.createJwtAccessToken(userId, request.getRequestURI(), roles);
@@ -96,6 +95,6 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
                 "expiredTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(expiredTime)
         );
 
-       new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));
+        new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));
     }
 }

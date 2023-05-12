@@ -21,6 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("Authorization", "Cache-Control", "Content-Type")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE");
     }
+    
 //    @Bean
 //    CorsConfigurationSource corsConfigurationSource() {
 //        CorsConfiguration configuration = new CorsConfiguration();
