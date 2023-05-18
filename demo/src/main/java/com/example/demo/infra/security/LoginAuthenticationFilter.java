@@ -8,10 +8,12 @@ import com.example.demo.infra.security.provider.JwtTokenProvider;
 import com.example.demo.infra.security.refreshToken.RefreshTokenServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -46,17 +48,23 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
     private final RedisService redisService;
 
 
+    @SneakyThrows
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         Authentication authentication = null;;
-        //           LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
+//        LoginRequest credential=new ObjectMapper().readValue(request.getInputStream(),LoginRequest.class);
         String email = request.getParameter("email");
-        String password = request.getParameter("email");
+        String password = request.getParameter("password");
         LoginRequest credential = new LoginRequest(email,password);
 
-        authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(credential.getEmail(), credential.getPassword())
-        );
+        try{
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(credential.getEmail(), credential.getPassword())
+            );
+        }catch (BadCredentialsException e){
+            System.out.println("잘못된 비밀번호 및 접근");
+        }
+
 
         return authentication;
     }
@@ -65,6 +73,8 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal();
 
+        System.out.println(user);
+        System.out.println("인증완료");
         List<String> roles = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
@@ -86,6 +96,7 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
 
         Cookie cookie = cookieProvider.of(refreshTokenCookie);
 
+        response.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
         response.setContentType(APPLICATION_JSON_VALUE);
         response.addCookie(cookie);
 
