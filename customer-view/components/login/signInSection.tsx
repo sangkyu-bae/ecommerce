@@ -11,7 +11,7 @@ import Validation from "@/components/common/Validation";
 import {useMutation} from "react-query";
 import MemberApi from "@/api/MemberApi";
 import {parse} from "postcss";
-
+import {setToken} from "@/api/cookie/Cookie";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
@@ -21,13 +21,15 @@ function SignInSection(props) {
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("onMutate", variable);
+
         },
         onError: (error, variable, context) => {
             // error
             console.log(error)
         },
         onSuccess: (data, variables, context) => {
-            console.log("success", data, variables, context);
+            const loginData=data.data;
+            setToken('REFRESH_TOKEN',loginData.accessToken,loginData.expiredTime);
         },
         onSettled: () => {
             console.log("end");
