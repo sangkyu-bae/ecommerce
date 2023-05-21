@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -12,12 +12,16 @@ import {useMutation} from "react-query";
 import MemberApi from "@/api/MemberApi";
 import {parse} from "postcss";
 import {setToken} from "@/api/cookie/Cookie";
+import {useRecoilState} from "recoil";
+import {loginState} from "@/recoil/Recoil";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
     const onSubmit = (loginData : SignInFormData) => {
         signInMutation.mutate(loginData)
     };
+
+    const [login,setLogin]=useRecoilState<LoginState>(loginState);
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("onMutate", variable);
@@ -28,14 +32,24 @@ function SignInSection(props) {
             console.log(error)
         },
         onSuccess: (data, variables, context) => {
-            const loginData=data.data;
-            setToken('REFRESH_TOKEN',loginData.accessToken,loginData.expiredTime);
+            // const loginData=data.data;
+            const {accessToken,expiredTime}=data.data;
+            setToken('REFRESH_TOKEN',accessToken,expiredTime);
+            setLogin({
+                token:accessToken,
+                expiredTime:expiredTime,
+                isLogin:true
+            })
         },
         onSettled: () => {
             console.log("end");
         }
     });
     const validation= Validation;
+
+    useEffect(()=>{
+        console.log(login)
+    },[login])
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
             <TextField
