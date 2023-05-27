@@ -1,0 +1,39 @@
+2023-05-27 18:45:37.067 ERROR ---- [tartedMain] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 22:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:46:10.162 INFO  ---- [tartedMain] [AuthApplication:55] logStarting   Starting AuthApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 9784 (C:\Users\tkdrb\IdeaProjects\ecommerce\auth\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\auth)
+2023-05-27 18:46:10.164 INFO  ---- [tartedMain] [AuthApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 18:46:10.206 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-27 18:46:10.206 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-27 18:46:11.446 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8081 (http)
+2023-05-27 18:46:11.456 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-05-27 18:46:11.456 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-05-27 18:46:11.524 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-05-27 18:46:11.525 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 1319 ms
+2023-05-27 18:46:11.837 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-05-27 18:46:11.879 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8081 (http) with context path ''
+2023-05-27 18:46:11.888 INFO  ---- [tartedMain] [AuthApplication:61] logStarted   Started AuthApplication in 2.093 seconds (JVM running for 2.444)

@@ -1,0 +1,20 @@
+
+server:
+  port: 8081
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+
+  file:
+    name: userLog # ?? ??? ??? ?????.
+    path: C:/logs/gateway # ?? ??? ??? ?????.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+  level:
+    root: INFO
+

@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Custom Login Authentication 필터를 사용함
         LoginAuthenticationFilter loginAuthenticationFilter =
                 new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider, redisService);
-        loginAuthenticationFilter.setFilterProcessesUrl("/login");
+        loginAuthenticationFilter.setFilterProcessesUrl("/user/login");
 
         http.csrf().disable();
 

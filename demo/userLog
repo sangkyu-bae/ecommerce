@@ -1,0 +1,131 @@
+2023-05-27 16:37:50.444 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 11240 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
+2023-05-27 16:37:50.445 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 16:37:50.943 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:37:50.943 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:37:50.956 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2023-05-27 16:37:51.086 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:37:51.087 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-27 16:37:51.123 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2023-05-27 16:37:51.140 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interfaces.
+2023-05-27 16:37:51.146 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:37:51.147 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:37:51.163 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2023-05-27 16:37:51.184 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 37 ms. Found 1 Redis repository interfaces.
+2023-05-27 16:37:51.399 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
+2023-05-27 16:37:51.400 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-05-27 16:37:51.400 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-27 16:37:51.438 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-05-27 16:37:51.438 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 988 ms
+2023-05-27 16:37:51.488 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-27 16:37:51.497 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-2 - Starting...
+2023-05-27 16:37:51.538 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-2 - Start completed.
+2023-05-27 16:37:51.539 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-27 16:37:51.631 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1685173071631 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/e-commerce
+select * from `e-commerce`.`member` where 1=0
+select * from `e-commerce`.`member` where 1=0;
+2023-05-27 16:37:51.632 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-27 16:37:51.633 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-27 16:37:51.798 INFO  ---- [tartedMain] [OptionalLiveReloadServer:59] startServer   LiveReload server is running on port 35729
+2023-05-27 16:37:51.868 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-27 16:37:51.902 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-05-27 16:37:51.903 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
+2023-05-27 16:37:51.909 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ec6ee3e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ce3d687, org.springframework.security.web.context.SecurityContextPersistenceFilter@39b657c3, org.springframework.security.web.header.HeaderWriterFilter@398281c4, org.springframework.security.web.authentication.logout.LogoutFilter@4a4652f9, com.example.demo.infra.security.LoginAuthenticationFilter@41e4faeb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bd2d6a6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@76f3f0b9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ea455d1, org.springframework.security.web.session.SessionManagementFilter@2a93a258, org.springframework.security.web.access.ExceptionTranslationFilter@42c40843, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f1c186e]
+2023-05-27 16:37:51.931 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
+2023-05-27 16:37:52.307 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-27 16:37:52.314 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 1.976 seconds (JVM running for 929.944)
+2023-05-27 16:37:52.333 INFO  ---- [tartedMain] [ConditionEvaluationDeltaLoggingListener:63] onApplicationEvent   Condition evaluation unchanged
+2023-05-27 16:38:17.714 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-27 16:38:17.716 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-05-27 16:38:17.721 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 4 ms
+2023-05-27 16:38:17.738 INFO  ---- [080-exec-1] [Test:16] tt   test 1
+2023-05-27 16:41:18.808 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 8592 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
+2023-05-27 16:41:18.811 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 16:41:18.869 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-27 16:41:18.870 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-27 16:41:19.961 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:41:19.962 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:41:20.002 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2023-05-27 16:41:20.433 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:41:20.433 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-27 16:41:20.597 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2023-05-27 16:41:20.657 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 215 ms. Found 1 JPA repository interfaces.
+2023-05-27 16:41:20.674 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:41:20.676 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:41:20.708 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2023-05-27 16:41:20.738 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 61 ms. Found 1 Redis repository interfaces.
+2023-05-27 16:41:23.232 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
+2023-05-27 16:41:23.251 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-05-27 16:41:23.252 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-27 16:41:23.501 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-05-27 16:41:23.502 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 4631 ms
+2023-05-27 16:41:23.864 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-27 16:41:23.971 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-27 16:41:24.238 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-27 16:41:24.366 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-05-27 16:41:24.818 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-05-27 16:41:24.846 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-27 16:41:26.312 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1685173286312 | took 3ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
+select * from `e-commerce`.`member` where 1=0
+select * from `e-commerce`.`member` where 1=0;
+2023-05-27 16:41:26.315 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-27 16:41:26.328 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-27 16:41:27.452 INFO  ---- [tartedMain] [OptionalLiveReloadServer:59] startServer   LiveReload server is running on port 35729
+2023-05-27 16:41:27.704 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-27 16:41:27.921 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-05-27 16:41:27.922 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
+2023-05-27 16:41:27.954 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79ffaf8d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d37d600, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f3c86bb, org.springframework.security.web.header.HeaderWriterFilter@6ed6d060, org.springframework.security.web.authentication.logout.LogoutFilter@8015ff, com.example.demo.infra.security.LoginAuthenticationFilter@17179a98, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d500b65, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@530eb4c7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e099210, org.springframework.security.web.session.SessionManagementFilter@70fb71a4, org.springframework.security.web.access.ExceptionTranslationFilter@7e676ddb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48b470dd]
+2023-05-27 16:41:28.534 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
+2023-05-27 16:41:29.202 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-27 16:41:29.218 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 11.145 seconds (JVM running for 12.288)
+2023-05-27 16:43:12.847 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-27 16:43:12.849 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-05-27 16:43:12.854 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 4 ms
+2023-05-27 16:43:13.016 INFO  ---- [080-exec-1] [Test:16] tt   test 1
+2023-05-27 16:43:51.950 INFO  ---- [080-exec-2] [Test:16] tt   test 1
+2023-05-27 16:45:48.132 INFO  ---- [080-exec-6] [Test:16] tt   test 1
+2023-05-27 16:50:04.681 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 23072 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
+2023-05-27 16:50:04.685 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 16:50:04.749 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-27 16:50:04.750 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-27 16:50:05.958 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:50:05.961 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:50:06.011 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2023-05-27 16:50:06.454 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:50:06.456 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-27 16:50:06.561 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2023-05-27 16:50:06.607 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 141 ms. Found 1 JPA repository interfaces.
+2023-05-27 16:50:06.617 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-27 16:50:06.619 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-27 16:50:06.632 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2023-05-27 16:50:06.648 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 28 ms. Found 1 Redis repository interfaces.
+2023-05-27 16:50:08.724 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
+2023-05-27 16:50:08.738 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-05-27 16:50:08.738 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-27 16:50:08.947 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-05-27 16:50:08.948 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 4197 ms
+2023-05-27 16:50:09.414 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-27 16:50:09.468 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-27 16:50:09.720 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-27 16:50:09.893 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-05-27 16:50:10.433 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-05-27 16:50:10.493 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-27 16:50:11.660 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1685173811659 | took 4ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
+select * from `e-commerce`.`member` where 1=0
+select * from `e-commerce`.`member` where 1=0;
+2023-05-27 16:50:11.668 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-27 16:50:11.692 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-27 16:50:12.762 INFO  ---- [tartedMain] [OptionalLiveReloadServer:59] startServer   LiveReload server is running on port 35729
+2023-05-27 16:50:12.996 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-27 16:50:13.266 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-05-27 16:50:13.268 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
+2023-05-27 16:50:13.315 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@272a76e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65c3dc2, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d57d59, org.springframework.security.web.header.HeaderWriterFilter@122a8dd7, org.springframework.security.web.authentication.logout.LogoutFilter@6c394658, com.example.demo.infra.security.LoginAuthenticationFilter@545ce05a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c8e575c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@317af58, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9ef25ba, org.springframework.security.web.session.SessionManagementFilter@775e4f0e, org.springframework.security.web.access.ExceptionTranslationFilter@751725f1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@367e3ee6]
+2023-05-27 16:50:13.879 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
+2023-05-27 16:50:14.493 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-27 16:50:14.510 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 10.668 seconds (JVM running for 11.778)
+2023-05-27 16:50:29.831 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-27 16:50:29.831 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-05-27 16:50:29.834 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 2 ms
+2023-05-27 16:50:29.886 INFO  ---- [080-exec-1] [Test:16] tt   test 1
+2023-05-27 16:51:06.019 INFO  ---- [080-exec-2] [Test:16] tt   test 1
+2023-05-27 17:13:22.442 WARN  ---- [ousekeeper] [HikariPool:788] run   HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m41s629ms374µs701ns).
+2023-05-27 17:23:58.198 INFO  ---- [080-exec-6] [Test:16] tt   test 1

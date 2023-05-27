@@ -1,0 +1,437 @@
+2023-05-27 16:42:54.157 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 7864 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-27 16:42:54.161 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 16:42:55.127 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=97d0ee46-69d2-3462-bcd7-e52da1f6b2c4
+2023-05-27 16:42:57.205 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-27 16:42:57.219 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-27 16:42:59.567 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-27 16:43:01.736 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 9.338 seconds (JVM running for 11.334)
+2023-05-27 16:50:18.679 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 16208 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-27 16:50:18.692 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 16:50:21.198 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=de6a5c35-aef3-3511-95b6-132123dd03b6
+2023-05-27 16:50:27.572 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-27 16:50:27.572 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-27 16:50:27.573 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-27 16:50:27.573 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-27 16:50:27.574 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-27 16:50:27.575 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-27 16:50:27.576 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-27 16:50:27.576 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-27 16:50:27.578 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-27 16:50:27.579 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-27 16:50:27.579 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-27 16:50:30.440 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-27 16:50:33.007 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 17.462 seconds (JVM running for 18.378)
+2023-05-27 17:23:43.993 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 24996 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-27 17:23:44.008 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-27 17:23:46.742 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=bf1d9bf1-65b0-3033-ad78-30d8697ce06a
+2023-05-27 17:23:51.435 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-27 17:23:51.437 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-27 17:23:51.440 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-27 17:23:51.442 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-27 17:23:51.443 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-27 17:23:51.444 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-27 17:23:51.446 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-27 17:23:55.026 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-27 17:23:57.997 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-05-27 17:23:58.111 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 17.483 seconds (JVM running for 18.388)
+2023-05-27 17:23:58.207 INFO  ---- [http-nio-2] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 200 OK ---> 처리 시간 209
+2023-05-27 18:45:13.349 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 38:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:46:28.956 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 38:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:46:56.477 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 38:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:47:05.295 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 38:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:47:30.246 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.access-expired-time
+    Value: "3600000"
+    Origin: class path resource [application.yml] - 38:28
+    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:50:10.752 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:50:35.553 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:52:06.384 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:52:57.731 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:53:26.701 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:54:27.413 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:54:59.827 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:55:21.498 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2023-05-27 18:56:32.050 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.token.secret
+    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
+    Origin: class path resource [application.yml] - 38:15
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+

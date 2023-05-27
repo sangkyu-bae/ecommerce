@@ -28,6 +28,20 @@ spring:
       show-sql: true
       format_sql: true
 logging:
+
+  charset:
+    console: UTF-8
+    file: UTF-8
+
+  file:
+    name: userLog # 로그 파일의 이름을 지정합니다.
+    path: C:/logs/user # 로그 파일의 경로를 지정합니다.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
   level:
     org:
       hibernate:
@@ -35,6 +49,7 @@ logging:
         type:
           descriptor:
             sql: trace
+    root: INFO
   #jwt:
   #  secret: securtytest
 
@@ -44,5 +59,7 @@ token:
   secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
   refresh-token-name: refresh-token
   access-token-name: access-token
+
+
 
 
