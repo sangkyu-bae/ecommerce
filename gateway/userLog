@@ -1,198 +1,4 @@
-2023-05-27 16:42:54.157 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 7864 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
-2023-05-27 16:42:54.161 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-05-27 16:42:55.127 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=97d0ee46-69d2-3462-bcd7-e52da1f6b2c4
-2023-05-27 16:42:57.205 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
-2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
-2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
-2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
-2023-05-27 16:42:57.216 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
-2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
-2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
-2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
-2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
-2023-05-27 16:42:57.217 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
-2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
-2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
-2023-05-27 16:42:57.218 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
-2023-05-27 16:42:57.219 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
-2023-05-27 16:42:59.567 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
-2023-05-27 16:43:01.736 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 9.338 seconds (JVM running for 11.334)
-2023-05-27 16:50:18.679 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 16208 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
-2023-05-27 16:50:18.692 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-05-27 16:50:21.198 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=de6a5c35-aef3-3511-95b6-132123dd03b6
-2023-05-27 16:50:27.572 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
-2023-05-27 16:50:27.572 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
-2023-05-27 16:50:27.573 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
-2023-05-27 16:50:27.573 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
-2023-05-27 16:50:27.574 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
-2023-05-27 16:50:27.575 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
-2023-05-27 16:50:27.576 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
-2023-05-27 16:50:27.576 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
-2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
-2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
-2023-05-27 16:50:27.577 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
-2023-05-27 16:50:27.578 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
-2023-05-27 16:50:27.579 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
-2023-05-27 16:50:27.579 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
-2023-05-27 16:50:30.440 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
-2023-05-27 16:50:33.007 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 17.462 seconds (JVM running for 18.378)
-2023-05-27 17:23:43.993 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 24996 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
-2023-05-27 17:23:44.008 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-05-27 17:23:46.742 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=bf1d9bf1-65b0-3033-ad78-30d8697ce06a
-2023-05-27 17:23:51.435 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
-2023-05-27 17:23:51.437 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
-2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
-2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
-2023-05-27 17:23:51.438 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
-2023-05-27 17:23:51.440 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
-2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
-2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
-2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
-2023-05-27 17:23:51.441 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
-2023-05-27 17:23:51.442 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
-2023-05-27 17:23:51.443 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
-2023-05-27 17:23:51.444 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
-2023-05-27 17:23:51.446 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
-2023-05-27 17:23:55.026 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
-2023-05-27 17:23:57.997 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
-2023-05-27 17:23:58.111 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 17.483 seconds (JVM running for 18.388)
-2023-05-27 17:23:58.207 INFO  ---- [http-nio-2] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 200 OK ---> 처리 시간 209
-2023-05-27 18:45:13.349 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.access-expired-time
-    Value: "3600000"
-    Origin: class path resource [application.yml] - 38:28
-    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:46:28.956 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.access-expired-time
-    Value: "3600000"
-    Origin: class path resource [application.yml] - 38:28
-    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:46:56.477 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.access-expired-time
-    Value: "3600000"
-    Origin: class path resource [application.yml] - 38:28
-    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:47:05.295 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.access-expired-time
-    Value: "3600000"
-    Origin: class path resource [application.yml] - 38:28
-    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:47:30.246 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.access-expired-time' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.access-expired-time
-    Value: "3600000"
-    Origin: class path resource [application.yml] - 38:28
-    Reason: failed to convert java.lang.Integer to org.springframework.boot.logging.LogLevel (caused by java.lang.ArrayIndexOutOfBoundsException: Index 3600000 out of bounds for length 7)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:50:10.752 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+2023-05-28 20:13:06.808 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
 
 ***************************
 APPLICATION FAILED TO START
@@ -219,7 +25,7 @@ Update your application's configuration. The following values are valid:
     TRACE
     WARN
 
-2023-05-27 18:50:35.553 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+2023-05-28 20:13:51.982 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
 
 ***************************
 APPLICATION FAILED TO START
@@ -246,7 +52,7 @@ Update your application's configuration. The following values are valid:
     TRACE
     WARN
 
-2023-05-27 18:52:06.384 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
+2023-05-28 20:15:08.821 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
 
 ***************************
 APPLICATION FAILED TO START
@@ -273,165 +79,214 @@ Update your application's configuration. The following values are valid:
     TRACE
     WARN
 
-2023-05-27 18:52:57.731 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:53:26.701 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:54:27.413 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:54:59.827 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:55:21.498 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
-2023-05-27 18:56:32.050 ERROR ---- [main      ] [LoggingFailureAnalysisReporter:40] report   
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to bind properties under 'logging.level.token.secret' to org.springframework.boot.logging.LogLevel:
-
-    Property: logging.level.token.secret
-    Value: "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o"
-    Origin: class path resource [application.yml] - 38:15
-    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o)
-
-Action:
-
-Update your application's configuration. The following values are valid:
-
-    DEBUG
-    ERROR
-    FATAL
-    INFO
-    OFF
-    TRACE
-    WARN
-
+2023-05-28 20:16:09.667 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 2988 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-28 20:16:09.671 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-28 20:16:10.321 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=6ccce90e-8ac0-33ae-b1b6-8f7c57678f3b
+2023-05-28 20:16:11.967 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-28 20:16:11.968 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-28 20:16:11.969 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-28 20:16:13.252 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-28 20:16:14.529 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 6.212 seconds (JVM running for 6.605)
+2023-05-28 20:23:47.067 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 21216 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-28 20:23:47.070 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-28 20:23:47.668 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=6d852324-3f9a-36c9-897b-0b1461001f54
+2023-05-28 20:23:49.321 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-28 20:23:49.322 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-28 20:23:49.322 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-28 20:23:49.322 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-28 20:23:49.323 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-28 20:23:49.323 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-28 20:23:49.323 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-28 20:23:49.323 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-28 20:23:49.323 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-28 20:23:49.324 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-28 20:23:49.324 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-28 20:23:49.324 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-28 20:23:49.324 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-28 20:23:49.324 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-28 20:23:50.677 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-28 20:23:51.960 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 5.944 seconds (JVM running for 6.333)
+2023-05-28 20:23:58.964 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-05-28 20:24:01.258 ERROR ---- [http-nio-2] [AbstractErrorWebExceptionHandler:102] error   [e9eea22b-1]  500 Server Error for HTTP GET "/user"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:8080
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-05-28 20:25:31.353 ERROR ---- [http-nio-2] [AbstractErrorWebExceptionHandler:102] error   [e9eea22b-3]  500 Server Error for HTTP GET "/user"
+java.lang.IllegalStateException: Can't start StopWatch: it's already running
+	at org.springframework.util.StopWatch.start(StopWatch.java:139)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at org.springframework.util.StopWatch.start(StopWatch.java:139)
+		at org.springframework.util.StopWatch.start(StopWatch.java:126)
+		at com.example.gateway.filter.GlobalFilter.lambda$apply$1(GlobalFilter.java:35)
+		at org.springframework.cloud.gateway.filter.OrderedGatewayFilter.filter(OrderedGatewayFilter.java:44)
+		at org.springframework.cloud.gateway.handler.FilteringWebHandler$DefaultGatewayFilterChain.lambda$filter$0(FilteringWebHandler.java:117)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:44)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4490)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263)
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4490)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263)
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:157)
+		at reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber.onNext(FluxSwitchIfEmpty.java:74)
+		at reactor.core.publisher.MonoNext$NextSubscriber.onNext(MonoNext.java:82)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.innerNext(FluxConcatMap.java:282)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapInner.onNext(FluxConcatMap.java:863)
+		at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:122)
+		at reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber.onNext(FluxSwitchIfEmpty.java:74)
+		at reactor.core.publisher.Operators$MonoSubscriber.complete(Operators.java:1839)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:151)
+		at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:122)
+		at reactor.core.publisher.MonoNext$NextSubscriber.onNext(MonoNext.java:82)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.innerNext(FluxConcatMap.java:282)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapInner.onNext(FluxConcatMap.java:863)
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onNext(FluxOnErrorResume.java:79)
+		at reactor.core.publisher.MonoPeekTerminal$MonoTerminalPeekSubscriber.onNext(MonoPeekTerminal.java:180)
+		at reactor.core.publisher.Operators$MonoSubscriber.complete(Operators.java:1839)
+		at reactor.core.publisher.MonoFilterWhen$MonoFilterWhenMain.onNext(MonoFilterWhen.java:149)
+		at reactor.core.publisher.Operators$ScalarSubscription.request(Operators.java:2400)
+		at reactor.core.publisher.MonoFilterWhen$MonoFilterWhenMain.onSubscribe(MonoFilterWhen.java:112)
+		at reactor.core.publisher.MonoJust.subscribe(MonoJust.java:55)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4490)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:451)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onNext(FluxConcatMap.java:251)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:98)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:44)
+		at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335)
+		at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.request(FluxDematerialize.java:127)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onSubscribe(FluxConcatMap.java:236)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onSubscribe(FluxDematerialize.java:77)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83)
+		at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62)
+		at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4490)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:451)
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onSubscribe(FluxConcatMap.java:219)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64)
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4490)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263)
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64)
+		at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:55)
+		at reactor.netty.http.server.HttpServer$HttpServerHandle.onStateChange(HttpServer.java:1002)
+		at reactor.netty.ReactorNetty$CompositeConnectionObserver.onStateChange(ReactorNetty.java:707)
+		at reactor.netty.transport.ServerTransport$ChildObserver.onStateChange(ServerTransport.java:481)
+		at reactor.netty.http.server.HttpServerOperations.onInboundNext(HttpServerOperations.java:621)
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:113)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at reactor.netty.http.server.HttpTrafficHandler.channelRead(HttpTrafficHandler.java:230)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:436)
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:346)
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:318)
+		at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:251)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+		at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:834)
+2023-05-28 20:25:46.003 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 2156 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-05-28 20:25:46.005 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-05-28 20:25:46.575 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=6d852324-3f9a-36c9-897b-0b1461001f54
+2023-05-28 20:25:48.398 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-05-28 20:25:48.399 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-05-28 20:25:48.400 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-05-28 20:25:48.400 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-05-28 20:25:48.400 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-05-28 20:25:48.401 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-05-28 20:25:48.402 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-05-28 20:25:50.113 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-05-28 20:25:51.881 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 7.11 seconds (JVM running for 7.617)
+2023-05-28 20:25:53.297 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-05-28 20:25:53.440 INFO  ---- [http-nio-2] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 200 OK ---> 처리 시간 143
+2023-05-28 20:26:09.899 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:26:09.901 ERROR ---- [http-nio-2] [AuthorizationHeaderFilter:58] onError   No authorization header
+2023-05-28 20:26:09.902 INFO  ---- [http-nio-2] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 401 UNAUTHORIZED ---> 처리 시간 2
+2023-05-28 20:28:48.390 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:28:48.629 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 200 OK ---> 처리 시간 238
+2023-05-28 20:28:54.062 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:28:54.066 ERROR ---- [http-nio-5] [JwtTokenProvider:28] validateJwtToken   Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
+2023-05-28 20:28:54.067 ERROR ---- [http-nio-5] [AuthorizationHeaderFilter:58] onError   JWT token is not valid
+2023-05-28 20:28:54.067 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 401 UNAUTHORIZED ---> 처리 시간 5
+2023-05-28 20:29:13.612 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:29:13.621 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 200 OK ---> 처리 시간 8
+2023-05-28 20:29:20.127 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:29:20.131 ERROR ---- [http-nio-5] [JwtTokenProvider:25] validateJwtToken   Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2023-05-28 20:29:20.132 ERROR ---- [http-nio-5] [AuthorizationHeaderFilter:58] onError   JWT token is not valid
+2023-05-28 20:29:20.132 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 401 UNAUTHORIZED ---> 처리 시간 4
+2023-05-28 20:29:27.961 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:29:27.963 ERROR ---- [http-nio-5] [JwtTokenProvider:25] validateJwtToken   Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2023-05-28 20:29:27.964 ERROR ---- [http-nio-5] [AuthorizationHeaderFilter:58] onError   JWT token is not valid
+2023-05-28 20:29:27.964 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 401 UNAUTHORIZED ---> 처리 시간 3
+2023-05-28 20:29:36.657 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:29:36.662 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 200 OK ---> 처리 시간 5
+2023-05-28 20:29:43.431 INFO  ---- [http-nio-5] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/auth
+2023-05-28 20:29:43.438 ERROR ---- [http-nio-5] [JwtTokenProvider:28] validateJwtToken   Invalid JWT token: Unable to read JSON value: �"alg":"HS512"}
+2023-05-28 20:29:43.438 ERROR ---- [http-nio-5] [AuthorizationHeaderFilter:58] onError   JWT token is not valid
+2023-05-28 20:29:43.439 INFO  ---- [http-nio-5] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/auth, 응답코드 : 401 UNAUTHORIZED ---> 처리 시간 7

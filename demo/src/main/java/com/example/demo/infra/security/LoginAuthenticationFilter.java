@@ -65,7 +65,6 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
             System.out.println("잘못된 비밀번호 및 접근");
         }
 
-
         return authentication;
     }
 
@@ -73,8 +72,6 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal();
 
-        System.out.println(user);
-        System.out.println("인증완료");
         List<String> roles = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)

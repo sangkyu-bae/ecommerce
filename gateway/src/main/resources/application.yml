@@ -5,16 +5,16 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: first-service
+        - id: user-service
           uri: http://localhost:8080/
           predicates:
             - Path=/user/**
-#        - id: second-service
-#          uri: http://localhost:8081/
-#          predicates:
-#              - Path=/auth/**
-#          filters:
-#            - AuthorizationHeaderFilter
+        - id: admin-service
+          uri: http://localhost:8081/
+          predicates:
+              - Path=/admin/**
+          filters:
+            - AuthorizationHeaderFilter
       default-filters:
         - GlobalFilter
 
@@ -24,8 +24,8 @@ logging:
     file: UTF-8
 
   file:
-    name: userLog # ?? ??? ??? ?????.
-    path: C:/logs/gateway # ?? ??? ??? ?????.
+    name: userLog
+    path: C:/logs/gateway
     max-history: 30
 
   pattern:
@@ -34,7 +34,15 @@ logging:
   level:
     root: INFO
 
-    token:
-      secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
-      refresh-token-name: refresh-token
-      access-token-name: access-token
+
+
+  #jwt:
+  #  secret: securtytest
+
+token:
+  access-expired-time: 3600000
+  refresh-expired-time: 604800000
+  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+  refresh-token-name: refresh-token
+  access-token-name: access-token
+

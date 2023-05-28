@@ -27,7 +27,8 @@ import java.util.Map;
 @Slf4j
 
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config>{
-    public String SECRET = "eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o";
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
     public AuthorizationHeaderFilter() {
         super(Config.class);
     }
@@ -43,11 +44,11 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                 return onError(exchange, "No authorization header", HttpStatus.UNAUTHORIZED);
             }
-//            String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-//            String jwt = authorizationHeader.replace("Bearer", "");
-//            if (!isJwtValid(jwt)) {
-//                return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
-//            }
+            String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+            String jwt = authorizationHeader.replace("Bearer", "");
+            if (!jwtTokenProvider.validateJwtToken(jwt)) {
+                return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
+            }
             return chain.filter(exchange);
         };
     }
@@ -56,16 +57,5 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         response.setStatusCode(httpStatus);
         log.error(err);
         return response.setComplete();
-    }
-    private boolean isJwtValid(String jwt) {
-        String subject = null;
-        try {
-            subject = Jwts.parser().setSigningKey(SECRET)
-                    .parseClaimsJws(jwt).getBody()
-                    .getSubject();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return !Strings.isBlank(subject);
     }
 }
