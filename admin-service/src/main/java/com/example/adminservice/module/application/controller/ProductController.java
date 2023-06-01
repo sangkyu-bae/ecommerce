@@ -2,13 +2,12 @@ package com.example.adminservice.module.application.controller;
 
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
+import com.example.adminservice.module.domain.product.service.ProductWriteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.zip.DataFormatException;
@@ -20,11 +19,13 @@ public class ProductController {
 
     private final ProductUseCase productUseCase;
 
+    private final ProductWriteService productWriteService;
+
     @PostMapping("/admin/product")
     public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto createProductDto, Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
             log.error("product 입력이 잘못되었습니다.");
-            ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().build();
         }
 
         ProductDto productDto = null;
@@ -37,5 +38,16 @@ public class ProductController {
         }
 
         return ResponseEntity.ok().body(productDto);
+    }
+
+    @DeleteMapping("/admin/{productId}")
+    public ResponseEntity<String> removeProduct(@PathVariable("productId") long productId){
+        try{
+            productWriteService.removeProduct(productId);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("상품이 삭제되지 않았습니다.");
+        }
+
+        return ResponseEntity.ok().body("상품이 삭제 되었습니다.");
     }
 }

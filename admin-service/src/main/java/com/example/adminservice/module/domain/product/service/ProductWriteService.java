@@ -5,6 +5,7 @@ import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-@Log4j
+@Slf4j
 @Transactional
 public class ProductWriteService {
     private final ProductRepository productRepository;
@@ -30,6 +31,14 @@ public class ProductWriteService {
         product.setUpdateAt(LocalDate.now());
 
         return  productRepository.save(product);
+    }
+
+    public void removeProduct(long productId){
+        try{
+           productRepository.deleteById(productId);
+        }catch (Exception e){
+            log.error("상품이 삭제되지 않았습니다 removeProduct()");
+        }
     }
 
 }
