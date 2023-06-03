@@ -41,4 +41,15 @@ public class ProductWriteService {
         }
     }
 
+    public Product updateProduct(Product product,ProductDto updateProductDto){
+
+        try{
+            modelMapper.map(updateProductDto,product);
+        }catch (Exception e){
+            log.error("update 실패했습니다. updateProduct()");
+        }
+
+        return product;
+    }
+
 }

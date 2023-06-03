@@ -31,7 +31,7 @@ public class ProductController {
         ProductDto productDto = null;
 
         try {
-            productDto = productUseCase.createMemberExecute(createProductDto);
+            productDto = productUseCase.createProductExecute(createProductDto);
         } catch (Exception exception) {
             log.error("상품 등록이 실패하였습니다.");
             throw new DataFormatException("create Fail createProduct()");
@@ -49,5 +49,30 @@ public class ProductController {
         }
 
         return ResponseEntity.ok().body("상품이 삭제 되었습니다.");
+    }
+
+    @GetMapping("/admin/{productId}")
+    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId){
+        ProductDto productDto = null;
+        try{
+            productDto = productUseCase.readProduct(productId);
+        }catch (Exception e){
+            log.error("상품을 불러오지 못했습니다. readProduct()");
+        }
+
+        return ResponseEntity.ok().body(productDto);
+    }
+
+    @PutMapping("/admin/{productId}")
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,ProductDto updateProductDto){
+        ProductDto productDto = null;
+
+        try{
+            productDto = productUseCase.updateProduct(productId,updateProductDto);
+        }catch (Exception e){
+
+        }
+
+        return ResponseEntity.ok().body(productDto);
     }
 }
