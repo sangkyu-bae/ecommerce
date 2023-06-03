@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,6 @@ import java.util.zip.DataFormatException;
 public class ProductController {
 
     private final ProductUseCase productUseCase;
-
     private final ProductWriteService productWriteService;
 
     /**
@@ -35,12 +35,13 @@ public class ProductController {
      * @return ProductDto
      * */
     @PostMapping("/admin/product")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto createProductDto, Errors errors) throws DataFormatException {
+    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto createProductDto,
+                @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"createProduct");
         }
         ProductDto productDto = productUseCase.createProductExecute(createProductDto);
-
+        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }
 
@@ -49,8 +50,9 @@ public class ProductController {
      * @Params productId(상품 고유 Id)
      * */
     @DeleteMapping("/admin/{productId}")
-    public ResponseEntity<String> removeProduct(@PathVariable("productId") long productId){
+    public ResponseEntity<String> removeProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
         productWriteService.removeProduct(productId);
+        log.info("{}가 상품을 삭제 하였습니다.",userId);
         return ResponseEntity.ok().body("상품이 삭제 되었습니다.");
     }
 
@@ -60,8 +62,9 @@ public class ProductController {
      * @return ProductDto
      * */
     @GetMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId){
+    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
         ProductDto productDto = productUseCase.readProduct(productId);
+        log.info("{}가 {} 상품을 조회하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }
     /**
@@ -70,9 +73,9 @@ public class ProductController {
      * @return ProductDto
      * */
     @PutMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,ProductDto updateProductDto){
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,ProductDto updateProductDto, @RequestHeader("X-User-Id") String userId){
         ProductDto productDto = productUseCase.updateProduct(productId,updateProductDto);
-
+        log.info("{}가 {} 상품을 수정 하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }
 
@@ -83,6 +86,7 @@ public class ProductController {
     @GetMapping("/admin")
     public ResponseEntity<List<Product>> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
         Page<Product> productPage = productUseCase.readProductWithPaging(pageable);
+        log.info("상품이 조회 되었습니다");
         return ResponseEntity.ok().body(productPage.getContent());
     }
 }

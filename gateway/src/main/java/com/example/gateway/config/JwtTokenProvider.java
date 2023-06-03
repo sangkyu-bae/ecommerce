@@ -39,4 +39,12 @@ public class JwtTokenProvider {
         }
     }
 
+    public Claims getClaimsFromJwtToken(String token) {
+        try {
+            return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims();
+        }
+    }
+
 }

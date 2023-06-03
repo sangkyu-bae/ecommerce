@@ -1,6 +1,7 @@
 package com.example.gateway.filter;
 
 import com.example.gateway.config.JwtTokenProvider;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
@@ -49,6 +50,12 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             if (!jwtTokenProvider.validateJwtToken(jwt)) {
                 return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
             }
+            Claims claims = jwtTokenProvider.getClaimsFromJwtToken(jwt);
+            String userId = claims.getSubject();
+            exchange = exchange.mutate()
+                    .request(builder -> builder.header("X-User-Id", userId))
+                    .build();
+
             return chain.filter(exchange);
         };
     }
