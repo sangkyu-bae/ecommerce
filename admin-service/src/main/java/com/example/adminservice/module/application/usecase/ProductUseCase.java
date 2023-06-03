@@ -6,6 +6,8 @@ import com.example.adminservice.module.domain.product.service.ProductReadService
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -48,5 +50,11 @@ public class ProductUseCase {
         }
 
         return productDto;
+    }
+
+    public Page<Product> readProductWithPaging(Pageable pageable){
+        Page<Product> productPage = productReadService.readProduct(pageable);
+
+        return productPage;
     }
 }
