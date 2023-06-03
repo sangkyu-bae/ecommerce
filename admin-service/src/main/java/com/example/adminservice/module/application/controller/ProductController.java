@@ -1,6 +1,8 @@
 package com.example.adminservice.module.application.controller;
 
 import com.example.adminservice.module.application.usecase.ProductUseCase;
+import com.example.adminservice.module.common.error.CustomException;
+import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
@@ -27,61 +29,57 @@ public class ProductController {
 
     private final ProductWriteService productWriteService;
 
+    /**
+     * 상품 등록하기
+     * @Params ProductDto(등록할 상품 정보)
+     * @return ProductDto
+     * */
     @PostMapping("/admin/product")
     public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto createProductDto, Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
-            log.error("product 입력이 잘못되었습니다.");
-            return ResponseEntity.badRequest().build();
+            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"createProduct");
         }
-
-        ProductDto productDto = null;
-
-        try {
-            productDto = productUseCase.createProductExecute(createProductDto);
-        } catch (Exception exception) {
-            log.error("상품 등록이 실패하였습니다.");
-            throw new DataFormatException("create Fail createProduct()");
-        }
+        ProductDto productDto = productUseCase.createProductExecute(createProductDto);
 
         return ResponseEntity.ok().body(productDto);
     }
 
+    /**
+     * 상품 삭제 하기
+     * @Params productId(상품 고유 Id)
+     * */
     @DeleteMapping("/admin/{productId}")
     public ResponseEntity<String> removeProduct(@PathVariable("productId") long productId){
-        try{
-            productWriteService.removeProduct(productId);
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body("상품이 삭제되지 않았습니다.");
-        }
-
+        productWriteService.removeProduct(productId);
         return ResponseEntity.ok().body("상품이 삭제 되었습니다.");
     }
 
+    /**
+     * 특정 상품 가져오기
+     * @Params productId(상품 고유 Id)
+     * @return ProductDto
+     * */
     @GetMapping("/admin/{productId}")
     public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId){
-        ProductDto productDto = null;
-        try{
-            productDto = productUseCase.readProduct(productId);
-        }catch (Exception e){
-            log.error("상품을 불러오지 못했습니다. readProduct()");
-        }
-
+        ProductDto productDto = productUseCase.readProduct(productId);
         return ResponseEntity.ok().body(productDto);
     }
-
+    /**
+     * 상품 수정
+     * @param productId (상품 고유 Id) updateProductDto (수정 상품 정보)
+     * @return ProductDto
+     * */
     @PutMapping("/admin/{productId}")
     public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,ProductDto updateProductDto){
-        ProductDto productDto = null;
-
-        try{
-            productDto = productUseCase.updateProduct(productId,updateProductDto);
-        }catch (Exception e){
-
-        }
+        ProductDto productDto = productUseCase.updateProduct(productId,updateProductDto);
 
         return ResponseEntity.ok().body(productDto);
     }
 
+    /**
+     * 메인 화면 상품 Paging
+     * @return List<Prouct>
+     * */
     @GetMapping("/admin")
     public ResponseEntity<List<Product>> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
         Page<Product> productPage = productUseCase.readProductWithPaging(pageable);

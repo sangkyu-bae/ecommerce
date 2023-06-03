@@ -25,36 +25,23 @@ public class ProductUseCase {
         return toProductDto;
     }
 
-    public ProductDto readProduct(long productId) throws IllegalAccessException {
-        ProductDto productDto = null;
-
-        try {
-            Product product = productReadService.readProduct(productId);
-            productDto = productReadService.toProductDto(product);
-        }catch (Exception e){
-            log.error("상품을 불러오지 못했습니다. readProduct()");
-        }
+    public ProductDto readProduct(long productId){
+        Product product = productReadService.readProduct(productId);
+        ProductDto productDto = productReadService.toProductDto(product);
 
         return productDto;
     }
 
     public ProductDto updateProduct(long productId, ProductDto updateProductDto){
-        ProductDto productDto = null;
-
-        try{
-            Product product = productReadService.readProduct(productId);
-            product = productWriteService.updateProduct(product,updateProductDto);
-            productDto = productReadService.toProductDto(product);
-        }catch (Exception e){
-
-        }
+        Product product = productReadService.readProduct(productId);
+        product = productWriteService.updateProduct(product,updateProductDto);
+        ProductDto productDto = productReadService.toProductDto(product);
 
         return productDto;
     }
 
     public Page<Product> readProductWithPaging(Pageable pageable){
         Page<Product> productPage = productReadService.readProduct(pageable);
-
         return productPage;
     }
 }

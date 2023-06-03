@@ -1,5 +1,7 @@
 package com.example.adminservice.module.domain.product.service;
 
+import com.example.adminservice.module.common.error.CustomException;
+import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
@@ -25,30 +27,23 @@ public class ProductWriteService {
         return product;
     }
 
-    private Product saveNewProduct(ProductDto productDto){
-        Product product = modelMapper.map(productDto,Product.class);
+    private Product saveNewProduct(ProductDto productDto) {
+        Product product = modelMapper.map(productDto, Product.class);
         product.setCreateAt(LocalDate.now());
         product.setUpdateAt(LocalDate.now());
 
-        return  productRepository.save(product);
+        return productRepository.save(product);
     }
 
-    public void removeProduct(long productId){
-        try{
-           productRepository.deleteById(productId);
-        }catch (Exception e){
-            log.error("상품이 삭제되지 않았습니다 removeProduct()");
+    public void removeProduct(long productId) {
+        if (!productRepository.existsById(productId)) {
+            throw new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"removeProduct");
         }
+        productRepository.deleteById(productId);
     }
 
-    public Product updateProduct(Product product,ProductDto updateProductDto){
-
-        try{
-            modelMapper.map(updateProductDto,product);
-        }catch (Exception e){
-            log.error("update 실패했습니다. updateProduct()");
-        }
-
+    public Product updateProduct(Product product, ProductDto updateProductDto) {
+        modelMapper.map(updateProductDto, product);
         return product;
     }
 

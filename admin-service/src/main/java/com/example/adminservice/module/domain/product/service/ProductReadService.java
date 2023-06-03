@@ -1,5 +1,7 @@
 package com.example.adminservice.module.domain.product.service;
 
+import com.example.adminservice.module.common.error.CustomException;
+import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
@@ -32,21 +34,17 @@ public class ProductReadService {
         return productDto;
     }
 
-    public Product readProduct(long productId) throws IllegalAccessException {
+    public Product readProduct(long productId)  {
         Product product = null;
-        try{
-            product = productRepository.findById(productId).orElseThrow(() ->
-                    new IllegalAccessException("존재하지 않은 상품입니다. readProduct()")
-            );
-        }catch (Exception e){
-            log.error("존재하지 않은 상품입니다. readProduct()");
-        }
+        product = productRepository.findById(productId).orElseThrow(() ->
+                new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"readProduct")
+        );
+
         return product;
     }
 
     public Page<Product> readProduct(Pageable pageable){
         Page<Product> productPage = productRepository.findWithPageByAll(pageable);
-
         return productPage;
     }
 
