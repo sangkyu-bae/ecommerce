@@ -6,6 +6,7 @@ import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

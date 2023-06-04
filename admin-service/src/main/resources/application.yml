@@ -35,3 +35,6 @@ logging:
           descriptor:
             sql: trace
     root: INFO
+
+token:
+  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
