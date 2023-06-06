@@ -1,0 +1,284 @@
+2023-06-06 20:40:44.243 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 22140 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
+2023-06-06 20:40:44.247 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-06-06 20:40:45.098 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
+2023-06-06 20:40:45.819 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
+2023-06-06 20:40:45.827 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
+2023-06-06 20:40:45.829 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-06 20:40:45.985 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-06-06 20:40:45.985 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 1697 ms
+2023-06-06 20:40:46.396 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2023-06-06 20:40:46.467 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-06-06 20:40:46.468 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-06-06 20:40:46.583 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-06-06 20:40:46.584 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-06-06 20:40:48.370 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
+2023-06-06 20:40:48.422 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-06 20:40:48.436 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-06-06 20:40:48.460 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-06-06 20:40:48.460 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
+2023-06-06 20:40:48.466 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1686051648465 with initial instances count: 0
+2023-06-06 20:40:48.494 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
+2023-06-06 20:40:48.496 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
+2023-06-06 20:40:48.499 WARN  ---- [main      ] [AnnotationConfigServletWebServerApplicationContext:591] refresh   Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.netflix.eureka.server.EurekaServerInitializerConfiguration': Unsatisfied dependency expressed through field 'eurekaServerBootstrap'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+2023-06-06 20:40:48.531 ERROR ---- [main      ] [PeerAwareInstanceRegistryImpl:178] shutdown   Cannot shutdown ReplicaAwareInstanceRegistry
+java.lang.NullPointerException: null
+	at com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl.shutdown(PeerAwareInstanceRegistryImpl.java:176)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:325)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:259)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1163)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:596)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.example.eureka.EurekaApplication.main(EurekaApplication.java:14)
+2023-06-06 20:40:48.532 WARN  ---- [main      ] [DisposableBeanAdapter:337] invokeCustomDestroyMethod   Custom destroy method 'shutdown' on bean with name 'peerAwareInstanceRegistry' threw an exception: java.lang.NullPointerException
+2023-06-06 20:40:48.536 INFO  ---- [main      ] [DiscoveryClient:935] shutdown   Shutting down DiscoveryClient ...
+2023-06-06 20:40:48.538 INFO  ---- [main      ] [DiscoveryClient:960] shutdown   Completed shut down of DiscoveryClient
+2023-06-06 20:40:48.539 INFO  ---- [main      ] [StandardService:173] log   Stopping service [Tomcat]
+2023-06-06 20:40:48.557 INFO  ---- [main      ] [ConditionEvaluationReportLoggingListener:136] logMessage   
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-06-06 20:40:48.579 ERROR ---- [main      ] [SpringApplication:821] reportFailure   Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.netflix.eureka.server.EurekaServerInitializerConfiguration': Unsatisfied dependency expressed through field 'eurekaServerBootstrap'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.example.eureka.EurekaApplication.main(EurekaApplication.java:14)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 33 common frames omitted
+Caused by: java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at com.netflix.eureka.cluster.PeerEurekaNodes.start(PeerEurekaNodes.java:106)
+	at com.netflix.eureka.DefaultEurekaServerContext.initialize(DefaultEurekaServerContext.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 46 common frames omitted
+Caused by: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at com.netflix.eureka.transport.JerseyReplicationClient.createReplicationClient(JerseyReplicationClient.java:170)
+	at org.springframework.cloud.netflix.eureka.server.EurekaServerAutoConfiguration$RefreshablePeerEurekaNodes.createPeerEurekaNode(EurekaServerAutoConfiguration.java:288)
+	at com.netflix.eureka.cluster.PeerEurekaNodes.updatePeerEurekaNodes(PeerEurekaNodes.java:189)
+	at com.netflix.eureka.cluster.PeerEurekaNodes.start(PeerEurekaNodes.java:87)
+	... 54 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/sun/jersey/client/apache4/config/DefaultApacheHttpClient4Config
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:800)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:698)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:621)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:579)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl$EurekaJerseyClientBuilder.build(EurekaJerseyClientImpl.java:183)
+	at com.netflix.eureka.transport.JerseyReplicationClient.createReplicationClient(JerseyReplicationClient.java:168)
+	... 57 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.sun.jersey.client.apache4.config.DefaultApacheHttpClient4Config
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 68 common frames omitted
+2023-06-06 20:42:12.431 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 14056 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
+2023-06-06 20:42:12.434 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-06-06 20:42:13.287 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
+2023-06-06 20:42:13.976 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
+2023-06-06 20:42:13.985 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
+2023-06-06 20:42:13.985 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-06 20:42:14.149 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-06-06 20:42:14.149 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 1677 ms
+2023-06-06 20:42:14.508 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2023-06-06 20:42:14.573 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-06-06 20:42:14.574 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-06-06 20:42:14.666 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-06-06 20:42:14.666 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-06-06 20:42:16.596 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
+2023-06-06 20:42:16.646 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-06 20:42:16.662 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-06-06 20:42:16.684 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-06-06 20:42:16.684 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
+2023-06-06 20:42:16.689 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1686051736688 with initial instances count: 0
+2023-06-06 20:42:16.713 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
+2023-06-06 20:42:16.715 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
+2023-06-06 20:42:16.718 WARN  ---- [main      ] [AnnotationConfigServletWebServerApplicationContext:591] refresh   Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.netflix.eureka.server.EurekaServerInitializerConfiguration': Unsatisfied dependency expressed through field 'eurekaServerBootstrap'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+2023-06-06 20:42:16.748 ERROR ---- [main      ] [PeerAwareInstanceRegistryImpl:178] shutdown   Cannot shutdown ReplicaAwareInstanceRegistry
+java.lang.NullPointerException: null
+	at com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl.shutdown(PeerAwareInstanceRegistryImpl.java:176)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:325)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:259)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1163)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:596)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.example.eureka.EurekaApplication.main(EurekaApplication.java:14)
+2023-06-06 20:42:16.750 WARN  ---- [main      ] [DisposableBeanAdapter:337] invokeCustomDestroyMethod   Custom destroy method 'shutdown' on bean with name 'peerAwareInstanceRegistry' threw an exception: java.lang.NullPointerException
+2023-06-06 20:42:16.753 INFO  ---- [main      ] [DiscoveryClient:935] shutdown   Shutting down DiscoveryClient ...
+2023-06-06 20:42:16.755 INFO  ---- [main      ] [DiscoveryClient:960] shutdown   Completed shut down of DiscoveryClient
+2023-06-06 20:42:16.757 INFO  ---- [main      ] [StandardService:173] log   Stopping service [Tomcat]
+2023-06-06 20:42:16.773 INFO  ---- [main      ] [ConditionEvaluationReportLoggingListener:136] logMessage   
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-06-06 20:42:16.794 ERROR ---- [main      ] [SpringApplication:821] reportFailure   Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.netflix.eureka.server.EurekaServerInitializerConfiguration': Unsatisfied dependency expressed through field 'eurekaServerBootstrap'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.example.eureka.EurekaApplication.main(EurekaApplication.java:14)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eurekaServerBootstrap' defined in class path resource [org/springframework/cloud/netflix/eureka/server/EurekaServerAutoConfiguration.class]: Unsatisfied dependency expressed through method 'eurekaServerBootstrap' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eurekaServerContext': Invocation of init method failed; nested exception is java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 33 common frames omitted
+Caused by: java.lang.IllegalStateException: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at com.netflix.eureka.cluster.PeerEurekaNodes.start(PeerEurekaNodes.java:106)
+	at com.netflix.eureka.DefaultEurekaServerContext.initialize(DefaultEurekaServerContext.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 46 common frames omitted
+Caused by: java.lang.RuntimeException: Cannot Create new Replica Node :JerseyReplicationClient: http://localhost:8761/eureka/apps/: 
+	at com.netflix.eureka.transport.JerseyReplicationClient.createReplicationClient(JerseyReplicationClient.java:170)
+	at org.springframework.cloud.netflix.eureka.server.EurekaServerAutoConfiguration$RefreshablePeerEurekaNodes.createPeerEurekaNode(EurekaServerAutoConfiguration.java:288)
+	at com.netflix.eureka.cluster.PeerEurekaNodes.updatePeerEurekaNodes(PeerEurekaNodes.java:189)
+	at com.netflix.eureka.cluster.PeerEurekaNodes.start(PeerEurekaNodes.java:87)
+	... 54 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/sun/jersey/client/apache4/config/DefaultApacheHttpClient4Config
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:800)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:698)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:621)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:579)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl$EurekaJerseyClientBuilder.build(EurekaJerseyClientImpl.java:183)
+	at com.netflix.eureka.transport.JerseyReplicationClient.createReplicationClient(JerseyReplicationClient.java:168)
+	... 57 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.sun.jersey.client.apache4.config.DefaultApacheHttpClient4Config
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 68 common frames omitted
