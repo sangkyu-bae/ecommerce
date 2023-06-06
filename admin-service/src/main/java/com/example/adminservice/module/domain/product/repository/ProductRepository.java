@@ -10,4 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ProductRepository extends JpaRepository<Product,Long>, ProductRepositoryExtension {
 
     Product findByName(String name);
+
+    boolean existsByName(String name);
 }

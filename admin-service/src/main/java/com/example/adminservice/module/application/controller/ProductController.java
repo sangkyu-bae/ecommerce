@@ -36,7 +36,7 @@ public class ProductController {
      * @return ProductDto
      * */
     @PostMapping("/admin/product")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto createProductDto,
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
                 @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"createProduct");
@@ -74,7 +74,12 @@ public class ProductController {
      * @return ProductDto
      * */
     @PutMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,ProductDto updateProductDto, @RequestHeader("X-User-Id") String userId){
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,
+                                                    @Valid @RequestBody ProductDto updateProductDto, Errors errors,
+                                                    @RequestHeader("X-User-Id") String userId){
+        if (errors.hasErrors()) {
+            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"updateProduct");
+        }
         ProductDto productDto = productUseCase.updateProduct(productId,updateProductDto);
         log.info("{}가 {} 상품을 수정 하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
