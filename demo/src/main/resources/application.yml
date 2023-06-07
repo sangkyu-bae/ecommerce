@@ -1,21 +1,13 @@
 server:
-  port: 8080
+  port: 0
+#  port: 8080
 redis:
   port: 5000
   host: localhost
 
-#spring:
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/e-commerce
-#    username: root
-#    password: wnsvaf309
-#  jpa:
-#    properties:
-#      hibernate:
-#        ddl-auto: create
-#        format_sql: true
-
 spring:
+  application:
+    name: auth-service
   datasource:
     url: jdbc:mysql://localhost:3306/e-commerce
     username: root
@@ -59,6 +51,26 @@ token:
   secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
   refresh-token-name: refresh-token
   access-token-name: access-token
+
+
+# 유레카 설정
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+
+
+
+
+
 
 
 

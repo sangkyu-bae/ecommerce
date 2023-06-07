@@ -2,15 +2,19 @@ server:
   port: 8000
 
 spring:
+  application:
+    name: api-gateway
   cloud:
     gateway:
       routes:
         - id: user-service
-          uri: http://localhost:8080/
+#          uri: http://localhost:8080/
+          uri: lb://auth-service
           predicates:
             - Path=/user/**
         - id: admin-service
-          uri: http://localhost:8081/
+#          uri: http://localhost:8081/
+          uri: lb://admin-service
           predicates:
               - Path=/admin/**
           filters:
@@ -46,3 +50,10 @@ token:
   refresh-token-name: refresh-token
   access-token-name: access-token
 
+# 유레카 설정
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka

@@ -1,6 +1,8 @@
 server:
-  port: 8081
+  port: 0
 spring:
+  application:
+    name: admin-service
   datasource:
     url: jdbc:mysql://localhost:3306/admin
     username: root
@@ -38,3 +40,11 @@ logging:
 
 token:
   secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+
+# 유레카 설정
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
