@@ -26,11 +26,11 @@ public class LogInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         String userId = request.getHeader("X-User-Id");
         String method = request.getMethod();
-        String uri = request.getPathInfo();
+        String uri = request.getRequestURI();
         Map<String,String []> parameterMap = request.getParameterMap();
-        System.out.println("uri"+uri);
+
         if(method.equals("GET")){
-            log.info("{}가 {}로 조회 요청하였습니다",userId,uri);
+            log.info("{}가 {} 로 조회 요청하였습니다",userId,handler.toString());
         }else if(method.equals("POST")){
             log.info("{}가 {}로 {}정보의 등록 요청하였습니다",userId,uri,parameterMap);
         }else if (method.equals("DELETE")) {
