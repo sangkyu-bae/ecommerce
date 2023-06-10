@@ -43,6 +43,7 @@ public class ProductWriteService {
     }
 
     public Product updateProduct(Product product, ProductDto updateProductDto) {
+        product.setUpdateAt(LocalDate.now());
         modelMapper.map(updateProductDto, product);
         return product;
     }

@@ -1,13 +1,14 @@
 package com.example.adminservice.module.domain.product.entity;
 
+import com.example.adminservice.module.domain.brand.entity.Brand;
+import com.example.adminservice.module.domain.category.entity.Category;
+import com.example.adminservice.module.domain.color.entity.Color;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -35,5 +36,14 @@ public class Product {
 
     @Lob
     private String productImage;
+
+    @ManyToOne
+    private Brand brand;
+
+    @ManyToOne
+    private Category category;
+
+    @OneToMany
+    private Set<ColorProduct> colorProductSet;
 
 }
