@@ -39,11 +39,10 @@ public class Product {
 
     @ManyToOne
     private Brand brand;
-
     @ManyToOne
     private Category category;
 
     @OneToMany
-    private Set<ColorProduct> colorProductSet;
+    private List<ColorProduct> colorProductList;
 
 }

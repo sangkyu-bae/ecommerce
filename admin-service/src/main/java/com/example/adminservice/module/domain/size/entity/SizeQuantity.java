@@ -1,22 +1,23 @@
-package com.example.adminservice.module.domain.size.dto;
+package com.example.adminservice.module.domain.size.entity;
 
 import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-public class Size {
+public class SizeQuantity {
 
     @Id @GeneratedValue
     private Long id;
 
-    private int size;
+    @ManyToOne
+    @JoinColumn(name = "size_id")
+    private Size size;
 
-    @OneToMany
-    private Set<Quantity> quantity;
-
+    @ManyToOne
+    @JoinColumn(name = "quantity_id")
+    private Quantity quantity;
 }

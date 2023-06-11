@@ -1,12 +1,11 @@
 package com.example.adminservice.module.domain.color.entity;
 
 import com.example.adminservice.module.domain.product.entity.ColorProduct;
-import com.example.adminservice.module.domain.size.dto.Size;
+import com.example.adminservice.module.domain.size.entity.Size;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -19,8 +18,5 @@ public class Color {
     private String name;
 
     @OneToMany
-    private Set<ColorProduct> colorProductSet;
-
-    @OneToMany
-    private Set<Size> sizes;
+    private List<ColorProduct> colorProductList;
 }

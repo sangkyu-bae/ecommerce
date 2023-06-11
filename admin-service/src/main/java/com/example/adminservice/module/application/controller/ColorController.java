@@ -1,0 +1,34 @@
+package com.example.adminservice.module.application.controller;
+
+import com.example.adminservice.module.application.usecase.ColorUseCase;
+import com.example.adminservice.module.common.error.CustomException;
+import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.domain.color.dto.ColorDto;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+@RestController
+@Slf4j
+@RequiredArgsConstructor
+public class ColorController {
+
+    private final ColorUseCase colorUseCase;
+
+    @PostMapping("/admin/color")
+    public ResponseEntity<ColorDto> createColor(@Valid @RequestBody ColorDto colorDto, Errors errors){
+        if(errors.hasErrors()){
+            throw new CustomException(ErrorCode.COLOR_FORM_NO_VALIDATE,"createColor");
+        }
+
+        ColorDto creatColorDto = colorUseCase.createColorExecute(colorDto);
+
+        return ResponseEntity.ok().body(creatColorDto);
+    }
+}

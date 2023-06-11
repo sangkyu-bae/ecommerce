@@ -19,7 +19,6 @@ import javax.validation.Valid;
 @RestController
 @Slf4j
 public class CategoryController {
-    private final CategoryRepository categoryRepository;
     private final CateGoryDtoValidator cateGoryDtoValidator;
     private final CategoryUseCase categoryUseCase;
 
@@ -29,8 +28,7 @@ public class CategoryController {
     }
 
     @PostMapping("/admin/category")
-    public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryDto,
-                                                      @RequestHeader("X-User-Id") String userId , Errors errors){
+    public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryDto, Errors errors){
         if(errors.hasErrors()){
             throw new CustomException(ErrorCode.CATEGORY_FORM_NO_VALIDATE,"createCategory");
         }

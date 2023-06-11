@@ -27,10 +27,9 @@ public class BrandController {
     }
 
     @PostMapping("/admin/brand")
-    public ResponseEntity<BrandDto> createBrand(@Valid @RequestBody BrandDto brandDto,
-                                                @RequestHeader("X-User-Id") String userId , Errors errors){
+    public ResponseEntity<BrandDto> createBrand(@Valid @RequestBody BrandDto brandDto, Errors errors){
         if(errors.hasErrors()){
-            throw new CustomException(ErrorCode.BRAND_NOT_FOUND,"createBrand");
+            throw new CustomException(ErrorCode.BRAND_FORM_NO_VALIDATE,"createBrand");
         }
 
         BrandDto createBrandDto = brandUseCase.createBrandExecute(brandDto);

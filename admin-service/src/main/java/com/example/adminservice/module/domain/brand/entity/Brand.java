@@ -24,6 +24,6 @@ public class Brand {
     @Lob
     private String brandImage;
 
-    @OneToMany
+    @OneToMany(mappedBy = "brand")
     private List<Product> product;
 }
