@@ -18,4 +18,5 @@ public class Size {
 
     @OneToMany
     private Set<Quantity> quantity;
+
 }

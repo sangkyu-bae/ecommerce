@@ -6,14 +6,12 @@ import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +37,7 @@ public class ProductController {
     public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
                 @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
-            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"createProduct");
+            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
         }
         ProductDto productDto = productUseCase.createProductExecute(createProductDto);
         log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
@@ -78,7 +76,7 @@ public class ProductController {
                                                     @Valid @RequestBody ProductDto updateProductDto, Errors errors,
                                                     @RequestHeader("X-User-Id") String userId){
         if (errors.hasErrors()) {
-            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIAD,"updateProduct");
+            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"updateProduct");
         }
         ProductDto productDto = productUseCase.updateProduct(productId,updateProductDto);
         log.info("{}가 {} 상품을 수정 하였습니다", userId, productDto.getName());

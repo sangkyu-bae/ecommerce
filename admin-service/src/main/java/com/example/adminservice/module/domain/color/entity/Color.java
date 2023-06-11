@@ -20,4 +20,7 @@ public class Color {
 
     @OneToMany
     private Set<ColorProduct> colorProductSet;
+
+    @OneToMany
+    private Set<Size> sizes;
 }
