@@ -38,4 +38,9 @@ public class BrandReadService {
         return brandDto;
     }
 
+    public Brand readBrand(String brandName){
+        Brand brand = brandRepository.findByName(brandName).orElseThrow(()->new CustomException(ErrorCode.BRAND_NOT_FOUND,"readBrand"));
+        return brand;
+    }
+
 }

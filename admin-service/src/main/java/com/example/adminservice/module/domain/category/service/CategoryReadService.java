@@ -29,4 +29,9 @@ public class CategoryReadService {
 
         return categoryDto;
     }
+
+    public Category readCategory(String categoryName){
+        Category category = categoryRepository.findByName(categoryName).orElseThrow(()->new CustomException(ErrorCode.CATEGORY_NOT_FOUND,"readCreate"));
+        return category;
+    }
 }

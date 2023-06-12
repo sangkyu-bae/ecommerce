@@ -19,7 +19,10 @@ public enum ErrorCode {
     CATEGORY_FORM_NO_VALIDATE(HttpStatus.BAD_REQUEST,"잘못된 category 형식입니다"),
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
     PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 상품을 찾을 수 없습니다."),
-    BRAND_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 브랜드를 찾을 수 없습니다.");
+    BRAND_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 브랜드를 찾을 수 없습니다."),
+    CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 카테고리를 찾을 수 없습니다."),
+    COLOR_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 컬러를 찾을 수 없습니다."),
+    SIZE_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 사이즈를 찾을 수 없습니다.");
 
 
     private final HttpStatus httpStatus;

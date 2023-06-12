@@ -18,11 +18,12 @@ public class ProductUseCase {
     private final ProductWriteService productWriteService;
     private final ProductReadService productReadService;
 
-    public ProductDto createProductExecute(ProductDto productDto) {
+//    public ProductDto createProductExecute(ProductDto productDto) {
+    public Product createProductExecute(ProductDto productDto) {
         Product product = productWriteService.createProduct(productDto);
         ProductDto toProductDto = productReadService.toProductDto(product);
 
-        return toProductDto;
+        return product;
     }
 
     public ProductDto readProduct(long productId){

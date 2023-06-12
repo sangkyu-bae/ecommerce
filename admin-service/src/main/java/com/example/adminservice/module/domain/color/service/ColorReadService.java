@@ -1,5 +1,7 @@
 package com.example.adminservice.module.domain.color.service;
 
+import com.example.adminservice.module.common.error.CustomException;
+import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.color.dto.ColorDto;
 import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.color.repository.ColorRepository;
@@ -18,8 +20,12 @@ public class ColorReadService {
 
     private final ModelMapper modelMapper;
     public ColorDto toColorDto(Color color){
-
         ColorDto colorDto = modelMapper.map(color,ColorDto.class);
         return colorDto;
+    }
+
+    public Color readColor(String colorName){
+        Color color = colorRepository.findByName(colorName).orElseThrow(()->new CustomException(ErrorCode.COLOR_NOT_FOUND,"readColor"));
+        return color;
     }
 }

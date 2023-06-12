@@ -6,11 +6,12 @@ import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Builder
 public class ColorProduct {
 
     @Id @GeneratedValue
@@ -25,5 +26,5 @@ public class ColorProduct {
     private Product product;
 
     @OneToMany
-    private List<SizeQuantity> sizeList;
+    private List<SizeQuantity> sizeList = new ArrayList<>();
 }

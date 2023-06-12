@@ -1,5 +1,6 @@
 package com.example.adminservice.module.domain.product.dto;
 
+import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.product.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,15 @@ public class ProductDto {
 
     private String productImage;
 
+    private String brandName;
+
+    private String categoryName;
+
+    private String colorName;
+
+    private int size;
+
+    private int quantity;
     public ProductDto(Product product){
         this.name = Objects.requireNonNull(product.getName());
         this.price = Objects.requireNonNull(product.getPrice());

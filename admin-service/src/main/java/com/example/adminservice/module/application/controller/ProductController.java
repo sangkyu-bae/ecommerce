@@ -34,12 +34,14 @@ public class ProductController {
      * @return ProductDto
      * */
     @PostMapping("/admin/product")
-    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
+//    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductDto createProductDto,
                 @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
         }
-        ProductDto productDto = productUseCase.createProductExecute(createProductDto);
+//        ProductDto productDto = productUseCase.createProductExecute(createProductDto);
+        Product productDto = productUseCase.createProductExecute(createProductDto);
         log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }
