@@ -1,5 +1,6 @@
 package com.example.adminservice.module.domain.size.entity;
 
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import lombok.*;
 
@@ -20,4 +21,7 @@ public class SizeQuantity {
     @ManyToOne
     @JoinColumn(name = "quantity_id")
     private Quantity quantity;
+
+    @ManyToOne
+    private ColorProduct colorProduct;
 }

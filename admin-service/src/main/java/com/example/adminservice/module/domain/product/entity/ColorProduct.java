@@ -25,6 +25,11 @@ public class ColorProduct {
     @JoinColumn(name="product_id")
     private Product product;
 
-    @OneToMany
-    private List<SizeQuantity> sizeList = new ArrayList<>();
+    @OneToMany(mappedBy = "colorProduct", cascade = CascadeType.ALL)
+    private List<SizeQuantity> sizeList;
+
+    public ColorProduct(Color color,Product product){
+        this.color = color;
+        this.product = product;
+    }
 }

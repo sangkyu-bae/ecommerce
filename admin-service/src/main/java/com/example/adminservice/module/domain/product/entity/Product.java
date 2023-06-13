@@ -3,6 +3,7 @@ package com.example.adminservice.module.domain.product.entity;
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.category.entity.Category;
 import com.example.adminservice.module.domain.color.entity.Color;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
+@ToString(exclude = "brand")
 public class Product {
 
     /**
@@ -43,7 +45,7 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<ColorProduct> colorProductList = new ArrayList<>();
 
 }

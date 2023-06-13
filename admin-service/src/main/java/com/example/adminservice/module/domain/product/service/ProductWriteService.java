@@ -14,6 +14,7 @@ import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import com.example.adminservice.module.domain.quantity.service.QuantityWriteService;
 import com.example.adminservice.module.domain.size.entity.Size;
 import com.example.adminservice.module.domain.size.entity.SizeQuantity;
+import com.example.adminservice.module.domain.size.repository.SizeQuantityRepository;
 import com.example.adminservice.module.domain.size.repository.SizeRepository;
 import com.example.adminservice.module.domain.size.service.SizeReadService;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,7 @@ public class ProductWriteService {
     private final SizeReadService sizeReadService;
     private final QuantityWriteService quantityWriteService;
     private final ColorProductWriteService colorProductWriteService;
+    private final SizeQuantityRepository sizeQuantityRepository;
     private final ModelMapper modelMapper;
 
     public Product createProduct(ProductDto productDto) {
@@ -55,24 +57,28 @@ public class ProductWriteService {
         product.setCategory(categoryReadService.readCategory(productDto.getCategoryName()));
 
         Size size = sizeReadService.readSize(productDto.getSize());
-        SizeQuantity sizeQuantity = settingSizeAndQuantity(size,productDto.getQuantity());
-
         Color color = colorReadService.readColor(productDto.getColorName());
-        ColorProduct colorProduct = colorProductWriteService.createColorProduct(color, sizeQuantity, product);
+        ColorProduct colorProduct = new ColorProduct(color,product);
 
-        product.setColorProductList(List.of(colorProduct));
+        SizeQuantity sizeQuantity = settingSizeAndQuantity(size,productDto.getQuantity(),colorProduct);
+        ColorProduct createColorProduct = colorProductWriteService.createColorProduct(colorProduct,sizeQuantity, product);
+
+        product.setColorProductList(List.of(createColorProduct));
 
         return productRepository.save(product);
     }
 
-    private SizeQuantity settingSizeAndQuantity(Size size, int quantity){
-        Quantity saveQuantity = quantityWriteService.createQuantity(quantity);
+    private SizeQuantity settingSizeAndQuantity(Size size, int quantity,ColorProduct colorProduct){
         SizeQuantity sizeQuantity = SizeQuantity.builder().
-                quantity(saveQuantity).
+                colorProduct(colorProduct).
                 size(size).
                 build();
+        Quantity saveQuantity = quantityWriteService.createQuantity(quantity,sizeQuantity);
 
-        return sizeQuantity;
+        sizeQuantity.setQuantity(saveQuantity);
+        SizeQuantity createSizeQuantity = sizeQuantityRepository.save(sizeQuantity);
+
+        return createSizeQuantity;
     }
 
     public void removeProduct(long productId) {

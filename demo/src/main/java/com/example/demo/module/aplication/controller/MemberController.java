@@ -18,7 +18,8 @@ import javax.validation.ValidationException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/member")
+//@RequestMapping("/api/member")
+@RequestMapping("/user/")
 public class MemberController {
     private final MemberUseCase memberUseCase;
     private final JoinMemberDtoValidator joinMemberDtoValidator;

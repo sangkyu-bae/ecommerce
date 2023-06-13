@@ -19,7 +19,7 @@ public class Quantity {
 
     private int quantity;
 
-    @OneToMany
+    @OneToMany(mappedBy = "quantity")
     private List<SizeQuantity> sizeQuantityList;
 
 }

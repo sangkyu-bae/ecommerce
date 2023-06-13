@@ -19,13 +19,9 @@ public class ColorProductWriteService {
 
     private final ColorProductRepository colorProductRepository;
 
-    public ColorProduct createColorProduct(Color color, SizeQuantity sizeQuantity, Product product){
-        ColorProduct colorProduct = ColorProduct.builder().
-                color(color).
-                product(product).
-                sizeList(List.of(sizeQuantity)).
-                build();
-
+    public ColorProduct createColorProduct(ColorProduct colorProduct,SizeQuantity sizeQuantity ,Product product){
+        colorProduct.setProduct(product);
+        colorProduct.setSizeList(List.of(sizeQuantity));
         return colorProductRepository.save(colorProduct);
     }
 }

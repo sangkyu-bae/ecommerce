@@ -17,6 +17,6 @@ public class Size {
 
     private int size;
 
-    @OneToMany
+    @OneToMany(mappedBy = "size")
     private List<SizeQuantity> sizeQuantityList;
 }
