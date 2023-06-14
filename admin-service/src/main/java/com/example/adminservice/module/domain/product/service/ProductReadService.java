@@ -79,10 +79,13 @@ public class ProductReadService {
 
     public Product readProduct(long productId)  {
         Product product = null;
-        product = productRepository.findById(productId).orElseThrow(() ->
+//        product = productRepository.findById(productId).orElseThrow(() ->
+//                new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"readProduct")
+//        );
+
+        product = productRepository.findWithBrandAndCategoryAndColorProductById(productId).orElseThrow(() ->
                 new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"readProduct")
         );
-
         return product;
     }
 

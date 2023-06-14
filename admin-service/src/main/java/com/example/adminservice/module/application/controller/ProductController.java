@@ -35,13 +35,11 @@ public class ProductController {
      * @return ProductDto
      * */
     @PostMapping("/admin/product")
-//    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
     public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
                 @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
         }
-//        ProductDto productDto = productUseCase.createProductExecute(createProductDto);
         ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
         log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
@@ -64,8 +62,9 @@ public class ProductController {
      * @return ProductDto
      * */
     @GetMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
-        ProductDto productDto = productUseCase.readProduct(productId);
+//    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
+    public ResponseEntity<ResponseProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
+        ResponseProductDto productDto = productUseCase.readProduct(productId);
         log.info("{}가 {} 상품을 조회하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }

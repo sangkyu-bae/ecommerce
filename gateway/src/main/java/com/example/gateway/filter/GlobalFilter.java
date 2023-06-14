@@ -35,8 +35,8 @@ public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Conf
             stopWatch.start();
             log.info("[글로벌 필터] REQUEST 요청 >>>> IP :{} ,URI : {}", request.getRemoteAddress().getAddress(),request.getURI());
             // Custom Post Filter. Suppose we can call error response handler based on error code.
+            stopWatch.stop();
             return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-                stopWatch.stop();
                 log.info("[글로벌 필터] RESPONSE 응답 >>>> IP : {}, URI : {}, 응답코드 : {} ---> 처리 시간 {}",
                         request.getRemoteAddress().getAddress(),
                         request.getURI(),

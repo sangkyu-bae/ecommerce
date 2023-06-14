@@ -22,17 +22,18 @@ public class ProductUseCase {
 //    public ProductDto createProductExecute(ProductDto productDto) {
     public ResponseProductDto createProductExecute(ProductDto productDto) {
         Product product = productWriteService.createProduct(productDto);
-        ProductDto toProductDto = productReadService.toProductDto(product);
-        ResponseProductDto toProductDtos = productReadService.toProductDtos(product);
+        ResponseProductDto toProductDto= productReadService.toProductDtos(product);
 
-        return toProductDtos;
+        return toProductDto;
     }
 
-    public ProductDto readProduct(long productId){
+//    public ProductDto readProduct(long productId){
+    public ResponseProductDto readProduct(long productId){
         Product product = productReadService.readProduct(productId);
-        ProductDto productDto = productReadService.toProductDto(product);
+        ResponseProductDto toProductDto= productReadService.toProductDtos(product);
+//        ProductDto productDto = productReadService.toProductDto(product);
 
-        return productDto;
+        return toProductDto;
     }
 
     public ProductDto updateProduct(long productId, ProductDto updateProductDto){

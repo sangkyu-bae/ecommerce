@@ -1,175 +1,166 @@
-2023-05-28 20:23:24.572 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 9572 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
-2023-05-28 20:23:24.582 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-05-28 20:23:24.634 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-05-28 20:23:24.634 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-05-28 20:23:25.275 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:23:25.275 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-28 20:23:25.297 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
-2023-05-28 20:23:25.545 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:23:25.545 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-05-28 20:23:25.614 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
-2023-05-28 20:23:25.636 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 86 ms. Found 1 JPA repository interfaces.
-2023-05-28 20:23:25.642 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:23:25.643 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-28 20:23:25.651 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2023-05-28 20:23:25.661 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 18 ms. Found 1 Redis repository interfaces.
-2023-05-28 20:23:26.789 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
-2023-05-28 20:23:26.799 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
-2023-05-28 20:23:26.799 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
-2023-05-28 20:23:26.907 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-05-28 20:23:26.907 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 2272 ms
-2023-05-28 20:23:27.154 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-28 20:23:27.220 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-28 20:23:27.374 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-28 20:23:27.477 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
-2023-05-28 20:23:27.726 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
-2023-05-28 20:23:27.747 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-05-28 20:23:28.396 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1685273008396 | took 3ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
+2023-06-14 16:35:12.137 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 5512 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
+2023-06-14 16:35:12.150 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-06-14 16:35:12.266 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-14 16:35:12.267 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-14 16:35:16.090 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-14 16:35:16.095 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-14 16:35:16.193 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 49 ms. Found 0 Redis repository interfaces.
+2023-06-14 16:35:16.888 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-14 16:35:16.888 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-14 16:35:17.040 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2023-06-14 16:35:17.155 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 258 ms. Found 1 JPA repository interfaces.
+2023-06-14 16:35:17.185 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-06-14 16:35:17.186 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-06-14 16:35:17.246 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2023-06-14 16:35:17.311 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 122 ms. Found 1 Redis repository interfaces.
+2023-06-14 16:35:18.468 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=c06a8971-890d-3192-8046-3a1361703674
+2023-06-14 16:35:23.308 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
+2023-06-14 16:35:23.353 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-06-14 16:35:23.356 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-06-14 16:35:24.145 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-06-14 16:35:24.147 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 11878 ms
+2023-06-14 16:35:24.992 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-14 16:35:25.072 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-06-14 16:35:25.445 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-06-14 16:35:25.799 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-06-14 16:35:27.228 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-06-14 16:35:27.282 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-06-14 16:35:29.239 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1686728129239 | took 12ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
 select * from `e-commerce`.`member` where 1=0
 select * from `e-commerce`.`member` where 1=0;
-2023-05-28 20:23:28.398 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-28 20:23:28.408 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-05-28 20:23:28.941 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
-2023-05-28 20:23:29.053 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-05-28 20:23:29.202 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-2023-05-28 20:23:29.203 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
-2023-05-28 20:23:29.229 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@33789cf3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@9ba5081, org.springframework.security.web.context.SecurityContextPersistenceFilter@52beb3a1, org.springframework.security.web.header.HeaderWriterFilter@e8e22eb, org.springframework.security.web.authentication.logout.LogoutFilter@4144ff66, com.example.demo.infra.security.LoginAuthenticationFilter@13cf9e69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61e4a0d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@51384660, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@768e4894, org.springframework.security.web.session.SessionManagementFilter@618a461e, org.springframework.security.web.access.ExceptionTranslationFilter@1eff2671, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@223f54a4]
-2023-05-28 20:23:29.685 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
-2023-05-28 20:23:29.984 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
-2023-05-28 20:23:29.993 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 5.931 seconds (JVM running for 6.54)
-2023-05-28 20:23:32.942 INFO  ---- [tartedMain] [ConditionEvaluationReportLoggingListener:136] logMessage   
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-05-28 20:23:33.107 ERROR ---- [tartedMain] [SpringApplication:821] reportFailure   Application run failed
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to localhost:5000
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.translateException(LettuceConnectionFactory.java:1689)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1597)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1383)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1366)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedConnection(LettuceConnectionFactory.java:1093)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getConnection(LettuceConnectionFactory.java:421)
-	at com.example.demo.infra.redis.RedisConfig.lambda$commandLineRunner$0(RedisConfig.java:59)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	... 10 common frames omitted
-Caused by: io.lettuce.core.RedisConnectionException: Unable to connect to localhost:5000
-	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
-	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
-	at io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:330)
-	at io.lettuce.core.RedisClient.connect(RedisClient.java:216)
-	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.lambda$getConnection$1(StandaloneConnectionProvider.java:115)
-	at java.base/java.util.Optional.orElseGet(Optional.java:369)
-	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.getConnection(StandaloneConnectionProvider.java:115)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1595)
-	... 16 common frames omitted
-Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:5000
-Caused by: java.net.ConnectException: Connection refused: no further information
-	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
-	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
-	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2023-05-28 20:23:35.175 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:651] destroy   Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-05-28 20:23:35.179 INFO  ---- [tartedMain] [HikariDataSource:350] close   HikariPool-1 - Shutdown initiated...
-2023-05-28 20:23:35.199 INFO  ---- [tartedMain] [HikariDataSource:352] close   HikariPool-1 - Shutdown completed.
-2023-05-28 20:24:49.503 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 9044 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
-2023-05-28 20:24:49.505 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-05-28 20:24:49.545 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-05-28 20:24:49.545 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-05-28 20:24:50.142 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:24:50.143 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-28 20:24:50.160 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
-2023-05-28 20:24:50.360 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:24:50.360 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-05-28 20:24:50.428 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
-2023-05-28 20:24:50.451 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 87 ms. Found 1 JPA repository interfaces.
-2023-05-28 20:24:50.459 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-28 20:24:50.459 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-28 20:24:50.474 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2023-05-28 20:24:50.486 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 26 ms. Found 1 Redis repository interfaces.
-2023-05-28 20:24:51.671 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
-2023-05-28 20:24:51.681 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
-2023-05-28 20:24:51.681 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
-2023-05-28 20:24:51.817 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-05-28 20:24:51.817 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 2271 ms
-2023-05-28 20:24:52.029 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-28 20:24:52.069 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-05-28 20:24:52.183 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-28 20:24:52.258 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
-2023-05-28 20:24:52.479 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
-2023-05-28 20:24:52.498 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-05-28 20:24:53.103 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1685273093103 | took 2ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
-select * from `e-commerce`.`member` where 1=0
-select * from `e-commerce`.`member` where 1=0;
-2023-05-28 20:24:53.106 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-28 20:24:53.116 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-05-28 20:24:53.593 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
-2023-05-28 20:24:53.685 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-05-28 20:24:53.792 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-2023-05-28 20:24:53.794 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
-2023-05-28 20:24:53.812 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5917e6ae, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@421fb758, org.springframework.security.web.context.SecurityContextPersistenceFilter@2fac89c8, org.springframework.security.web.header.HeaderWriterFilter@6a59cdd4, org.springframework.security.web.authentication.logout.LogoutFilter@204005, com.example.demo.infra.security.LoginAuthenticationFilter@3e86b4d2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29114e9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1377ce5c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e60da25, org.springframework.security.web.session.SessionManagementFilter@42b1aec6, org.springframework.security.web.access.ExceptionTranslationFilter@29a19436, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@64b1169e]
-2023-05-28 20:24:54.187 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
-2023-05-28 20:24:54.492 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
-2023-05-28 20:24:54.502 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 5.457 seconds (JVM running for 6.006)
-2023-05-28 20:25:05.334 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-28 20:25:05.335 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
-2023-05-28 20:25:05.338 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 2 ms
-2023-05-28 20:25:05.425 INFO  ---- [080-exec-1] [Test:17] tt   test 1
-2023-05-28 20:25:12.808 INFO  ---- [080-exec-3] [Test:17] tt   test 1
-2023-05-28 20:25:53.434 INFO  ---- [080-exec-4] [Test:17] tt   test 1
-2023-05-28 20:27:26.785 DEBUG ---- [80-exec-10] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-05-28 20:27:26.790 TRACE ---- [80-exec-10] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-05-28 20:27:26.797 INFO  ---- [80-exec-10] [p6spy:60] logSQL   #1685273246797 | took 3ms | statement | connection 2| url jdbc:mysql://localhost:3306/e-commerce
+2023-06-14 16:35:29.249 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-14 16:35:29.286 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-14 16:35:31.543 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-06-14 16:35:31.923 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-14 16:35:32.351 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-06-14 16:35:32.357 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
+2023-06-14 16:35:32.408 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71cae84, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10aecbb5, org.springframework.security.web.context.SecurityContextPersistenceFilter@1645f5c0, org.springframework.security.web.header.HeaderWriterFilter@479eecd3, org.springframework.security.web.authentication.logout.LogoutFilter@3b45024a, com.example.demo.infra.security.LoginAuthenticationFilter@2f595ac3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@50db94a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22eb616e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@544e68bc, org.springframework.security.web.session.SessionManagementFilter@4fa6f329, org.springframework.security.web.access.ExceptionTranslationFilter@3d7f15aa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@494aa67a]
+2023-06-14 16:35:33.357 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
+2023-06-14 16:35:38.857 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-06-14 16:35:42.073 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-14 16:35:42.163 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-06-14 16:35:42.327 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-06-14 16:35:42.347 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 16:35:42.460 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-06-14 16:35:42.461 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-06-14 16:35:42.462 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-06-14 16:35:42.463 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-06-14 16:35:42.464 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-06-14 16:35:42.465 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-06-14 16:35:42.465 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-06-14 16:35:43.767 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-06-14 16:35:43.779 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-06-14 16:35:43.789 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-06-14 16:35:43.805 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1686728143803 with initial instances count: 2
+2023-06-14 16:35:43.810 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application AUTH-SERVICE with eureka with status UP
+2023-06-14 16:35:43.815 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1686728143815, current=UP, previous=STARTING]
+2023-06-14 16:35:43.821 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_AUTH-SERVICE/192.168.0.9:310e3647b6adf9282f92ca468a1adef7: registering service...
+2023-06-14 16:35:43.901 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-14 16:35:43.904 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8080
+2023-06-14 16:35:44.005 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_AUTH-SERVICE/192.168.0.9:310e3647b6adf9282f92ca468a1adef7 - registration status: 204
+2023-06-14 16:35:47.668 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 39.476 seconds (JVM running for 40.943)
+2023-06-14 16:36:30.912 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-14 16:36:30.912 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-06-14 16:36:30.917 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 5 ms
+2023-06-14 16:36:31.312 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-06-14 16:36:31.321 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-06-14 16:36:31.327 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1686728191327 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/e-commerce
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-05-28 20:27:26.801 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-05-28 20:27:26.811 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-05-28 20:27:26.812 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-05-28 20:27:26.812 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-05-28 20:27:26.814 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-05-28 20:27:26.815 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-05-28 20:27:26.815 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-05-28 20:27:26.816 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-05-28 20:27:26.816 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-05-28 20:27:26.816 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-05-28 20:27:26.817 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-05-28 20:27:26.841 INFO  ---- [80-exec-10] [p6spy:60] logSQL   #1685273246841 | took 2ms | commit | connection 2| url jdbc:mysql://localhost:3306/e-commerce
+2023-06-14 16:36:31.335 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-06-14 16:36:31.345 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-06-14 16:36:31.346 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-06-14 16:36:31.346 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-06-14 16:36:31.351 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-06-14 16:36:31.353 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-06-14 16:36:31.355 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-06-14 16:36:31.355 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-06-14 16:36:31.356 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-06-14 16:36:31.356 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-06-14 16:36:31.357 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-06-14 16:36:31.401 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1686728191401 | took 1ms | commit | connection 2| url jdbc:mysql://localhost:3306/e-commerce
 
 ;
-2023-05-28 20:27:27.020 DEBUG ---- [80-exec-10] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-05-28 20:27:27.021 TRACE ---- [80-exec-10] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-05-28 20:27:27.022 INFO  ---- [80-exec-10] [p6spy:60] logSQL   #1685273247022 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/e-commerce
+2023-06-14 16:36:31.640 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-06-14 16:36:31.641 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-06-14 16:36:31.642 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1686728191642 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/e-commerce
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-05-28 20:27:27.024 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-05-28 20:27:27.024 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-05-28 20:27:27.025 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-05-28 20:27:27.026 TRACE ---- [80-exec-10] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-05-28 20:27:27.026 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-05-28 20:27:27.026 TRACE ---- [80-exec-10] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-05-28 20:27:27.140 INFO  ---- [80-exec-10] [p6spy:60] logSQL   #1685273247140 | took 1ms | commit | connection 3| url jdbc:mysql://localhost:3306/e-commerce
+2023-06-14 16:36:31.643 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-06-14 16:36:31.644 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-06-14 16:36:31.645 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-06-14 16:36:31.645 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-06-14 16:36:31.645 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-06-14 16:36:31.645 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-06-14 16:36:31.645 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-06-14 16:36:31.646 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-06-14 16:36:31.646 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-06-14 16:36:31.646 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-06-14 16:36:31.646 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-06-14 16:36:31.809 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1686728191809 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/e-commerce
 
 ;
+2023-06-14 16:40:42.482 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 16:45:42.499 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 16:50:42.501 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 16:55:42.515 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:00:42.531 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:05:42.534 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:10:42.545 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:11:17.980 DEBUG ---- [080-exec-5] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-06-14 17:11:17.982 TRACE ---- [080-exec-5] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-06-14 17:11:17.992 INFO  ---- [080-exec-5] [p6spy:60] logSQL   #1686730277992 | took 8ms | statement | connection 4| url jdbc:mysql://localhost:3306/e-commerce
+select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
+2023-06-14 17:11:17.994 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-06-14 17:11:17.996 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-06-14 17:11:17.997 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-06-14 17:11:17.998 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-06-14 17:11:17.999 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-06-14 17:11:18.000 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-06-14 17:11:18.001 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-06-14 17:11:18.002 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-06-14 17:11:18.002 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-06-14 17:11:18.003 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-06-14 17:11:18.004 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-06-14 17:11:18.009 INFO  ---- [080-exec-5] [p6spy:60] logSQL   #1686730278009 | took 1ms | commit | connection 4| url jdbc:mysql://localhost:3306/e-commerce
+
+;
+2023-06-14 17:11:18.197 DEBUG ---- [080-exec-5] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-06-14 17:11:18.198 TRACE ---- [080-exec-5] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-06-14 17:11:18.202 INFO  ---- [080-exec-5] [p6spy:60] logSQL   #1686730278202 | took 3ms | statement | connection 5| url jdbc:mysql://localhost:3306/e-commerce
+select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
+2023-06-14 17:11:18.202 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-06-14 17:11:18.203 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-06-14 17:11:18.203 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-06-14 17:11:18.204 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-06-14 17:11:18.204 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-06-14 17:11:18.204 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-06-14 17:11:18.204 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-06-14 17:11:18.205 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-06-14 17:11:18.205 TRACE ---- [080-exec-5] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-06-14 17:11:18.205 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-06-14 17:11:18.205 TRACE ---- [080-exec-5] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-06-14 17:11:18.250 INFO  ---- [080-exec-5] [p6spy:60] logSQL   #1686730278250 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/e-commerce
+
+;
+2023-06-14 17:15:42.551 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:20:42.557 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:25:42.571 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:30:42.578 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:35:42.582 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:40:42.586 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:45:42.594 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:50:42.597 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 17:55:42.599 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:00:42.603 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:05:42.609 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:10:42.621 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:15:42.633 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:20:42.640 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:25:42.645 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:30:42.646 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:35:42.653 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:40:42.665 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-06-14 18:45:42.680 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration

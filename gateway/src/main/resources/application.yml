@@ -6,6 +6,8 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      default-filters:
+#        - GlobalFilter
       routes:
         - id: user-service
 #          uri: http://localhost:8080/
@@ -19,8 +21,7 @@ spring:
               - Path=/admin/**
           filters:
             - AuthorizationHeaderFilter
-      default-filters:
-        - GlobalFilter
+
 
 logging:
   charset:

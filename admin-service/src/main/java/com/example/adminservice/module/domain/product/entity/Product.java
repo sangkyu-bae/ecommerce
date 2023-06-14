@@ -18,11 +18,6 @@ import java.util.Set;
 @ToString(exclude = "brand")
 public class Product {
 
-    /**
-     * 만들어야할 테이블
-     * brand, category, size--size별 수량, color
-     * */
-
     @Id @GeneratedValue
     private Long id;
 
