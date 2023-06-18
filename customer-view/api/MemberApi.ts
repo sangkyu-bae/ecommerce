@@ -13,7 +13,6 @@ const MemberApi={
         });
         return data;
     }
-
 }
 
 export default MemberApi;
