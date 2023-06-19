@@ -10,6 +10,7 @@ public enum ErrorCode {
     /* 422  UNPROCESSABLE_ENTITY : 데이터 누락*/
     BRAND_UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY,"잘못된 brand 형식입니다."),
     CATEGORY_UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY,"잘못된 category 형식 입니다"),
+    UNPROCESSABLE_ENTITY(HttpStatus.UNPROCESSABLE_ENTITY,"잘못된 클래스 형식 입니다"),
     /* 400 BAD_REQUEST : 잘못된 요청 */
     PRODUCT_FORM_NO_VALIDATE(HttpStatus.BAD_REQUEST,"잘못된 product 형식입니다"),
     BRAND_FORM_NO_VALIDATE(HttpStatus.BAD_REQUEST,"잘못된 Brand 형식입니다."),

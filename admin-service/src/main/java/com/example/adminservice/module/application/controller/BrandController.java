@@ -8,12 +8,14 @@ import com.example.adminservice.module.domain.brand.service.BrandWriteService;
 import com.example.adminservice.module.domain.brand.validator.BrandDtoValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +23,7 @@ import javax.validation.Valid;
 public class BrandController {
     private final BrandDtoValidator addValidators;
     private final BrandUseCase brandUseCase;
+
     @InitBinder("brandDto")
     public void initBinder(WebDataBinder webDataBinder){
         webDataBinder.addValidators(addValidators);
@@ -34,6 +37,12 @@ public class BrandController {
 
         BrandDto createBrandDto = brandUseCase.createBrandExecute(brandDto);
         return ResponseEntity.ok().body(createBrandDto);
+    }
+
+    @GetMapping("/admin/brands")
+    public ResponseEntity<List<BrandDto>> readBrandAll(){
+        var brandList =  brandUseCase.readAllBrandDtoExecute();
+        return ResponseEntity.ok().body(brandList);
     }
 
 }

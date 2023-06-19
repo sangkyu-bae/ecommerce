@@ -1,5 +1,8 @@
 package com.example.adminservice.module.application.controller;
 
+import com.example.adminservice.module.application.usecase.BrandUseCase;
+import com.example.adminservice.module.application.usecase.CategoryUseCase;
+import com.example.adminservice.module.application.usecase.ColorUseCase;
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCode;
@@ -18,7 +21,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.zip.DataFormatException;
 
 @RestController
@@ -28,6 +34,9 @@ public class ProductController {
 
     private final ProductUseCase productUseCase;
     private final ProductWriteService productWriteService;
+    private final CategoryUseCase categoryUseCase;
+    private final ColorUseCase colorUseCase;
+    private final BrandUseCase brandUseCase;
 
     /**
      * 상품 등록하기
@@ -94,5 +103,23 @@ public class ProductController {
         Page<Product> productPage = productUseCase.readProductWithPaging(pageable);
         log.info("상품이 조회 되었습니다");
         return ResponseEntity.ok().body(productPage.getContent());
+    }
+
+    /**
+     * 상품 등록을 위한 브랜드, 컬러, 카테고리 가져오기
+     * */
+    @GetMapping("/admin/product-info")
+    public ResponseEntity<Map<String, List<? extends Object>>> readProductInfo(){
+        var colorDtoAllList = colorUseCase.readAllColorDtoExecute();
+        var brandDtoAllList = brandUseCase.readAllBrandDtoExecute();
+        var categoryDtoAllList = categoryUseCase.readAllCategoryDtoExecute();
+
+        Map<String, List<? extends Object>> productInfoMap = Map.of(
+                "color",colorDtoAllList,
+                "brand",brandDtoAllList,
+                "category",categoryDtoAllList
+        );
+
+        return ResponseEntity.ok().body(productInfoMap);
     }
 }

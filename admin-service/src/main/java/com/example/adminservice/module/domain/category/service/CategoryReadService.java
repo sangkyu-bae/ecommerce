@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Slf4j
 @Transactional(readOnly = true)
@@ -33,5 +35,10 @@ public class CategoryReadService {
     public Category readCategory(String categoryName){
         Category category = categoryRepository.findByName(categoryName).orElseThrow(()->new CustomException(ErrorCode.CATEGORY_NOT_FOUND,"readCreate"));
         return category;
+    }
+
+    public List<Category> readAll(){
+        List<Category> categoryList = categoryRepository.findAll();
+        return categoryList;
     }
 }

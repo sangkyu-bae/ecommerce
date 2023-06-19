@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -28,4 +30,11 @@ public class ColorReadService {
         Color color = colorRepository.findByName(colorName).orElseThrow(()->new CustomException(ErrorCode.COLOR_NOT_FOUND,"readColor"));
         return color;
     }
+
+    public List<Color> readAllColor(){
+        List<Color> colorList = colorRepository.findAll();
+        return colorList;
+    }
+
+
 }
