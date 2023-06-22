@@ -8,7 +8,10 @@ type MemberRequest={
 }
 
 type ProductRequest={
-    createProduct : string
+    createProduct : string,
+    readAllBrand : string,
+    readAllCategory :string,
+    readAllColor : string
 }
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
@@ -17,4 +20,7 @@ export const memberRequest : MemberRequest={
 
 export const productRequest : ProductRequest={
     createProduct : `${productURL}/product`,
+    readAllBrand : `${productURL}/brands`,
+    readAllCategory : `${productURL}/categorys`,
+    readAllColor : `${productURL}/colors`
 }

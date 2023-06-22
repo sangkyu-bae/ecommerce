@@ -1,202 +1,90 @@
-2023-06-14 16:34:22.798 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 27612 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
-2023-06-14 16:34:22.812 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-06-14 16:34:24.501 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
-2023-06-14 16:34:25.906 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
-2023-06-14 16:34:25.926 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
-2023-06-14 16:34:25.927 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-06-14 16:34:26.315 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-06-14 16:34:26.328 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 3449 ms
-2023-06-14 16:34:27.083 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
-2023-06-14 16:34:27.196 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
-2023-06-14 16:34:27.198 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
-2023-06-14 16:34:27.429 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
-2023-06-14 16:34:27.430 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
-2023-06-14 16:34:38.290 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
-2023-06-14 16:34:38.432 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-06-14 16:34:38.469 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-06-14 16:34:38.548 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-06-14 16:34:38.549 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
-2023-06-14 16:34:38.567 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1686728078564 with initial instances count: 0
-2023-06-14 16:34:38.663 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
-2023-06-14 16:34:38.667 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
-2023-06-14 16:34:39.173 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
-2023-06-14 16:34:39.173 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
-2023-06-14 16:34:39.173 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
-2023-06-14 16:34:39.173 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
-2023-06-14 16:34:39.377 INFO  ---- [main      ] [PeerEurekaNodes:109] start   Replica node URL:  http://localhost:8761/eureka/
-2023-06-14 16:34:39.390 INFO  ---- [main      ] [AbstractInstanceRegistry:153] initRemoteRegionRegistry   Finished initializing remote region registries. All known remote regions: []
-2023-06-14 16:34:39.391 INFO  ---- [main      ] [DefaultEurekaServerContext:73] initialize   Initialized
-2023-06-14 16:34:39.403 INFO  ---- [main      ] [EndpointLinksResolver:58] <init>   Exposing 1 endpoint(s) beneath base path '/actuator'
-2023-06-14 16:34:39.447 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application MVC-EUREKA with eureka with status UP
-2023-06-14 16:34:39.477 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:143] isAws   isAws returned false
-2023-06-14 16:34:39.479 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:109] initEurekaServerContext   Initialized server context
-2023-06-14 16:34:39.480 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:244] openForTraffic   Got 1 instances from neighboring DS node
-2023-06-14 16:34:39.481 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:245] openForTraffic   Renew threshold is: 1
-2023-06-14 16:34:39.482 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:256] openForTraffic   Changing status to UP
-2023-06-14 16:34:39.497 INFO  ---- [Thread-9  ] [EurekaServerInitializerConfiguration:69] lambda$start$0   Started Eureka Server
-2023-06-14 16:34:39.505 INFO  ---- [main      ] [TomcatWebServer:220] start   Tomcat started on port(s): 8761 (http) with context path ''
-2023-06-14 16:34:39.506 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8761
-2023-06-14 16:34:40.887 INFO  ---- [main      ] [EurekaApplication:61] logStarted   Started EurekaApplication in 20.167 seconds (JVM running for 20.979)
-2023-06-14 16:34:53.974 INFO  ---- [761-exec-5] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-14 16:34:53.974 INFO  ---- [761-exec-5] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
-2023-06-14 16:34:53.976 INFO  ---- [761-exec-5] [DispatcherServlet:547] initServletBean   Completed initialization in 1 ms
-2023-06-14 16:34:54.451 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.9:8000 with status UP (replication=false)
-2023-06-14 16:34:55.151 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.9:8000 with status UP (replication=true)
-2023-06-14 16:35:24.330 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:35:24.781 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:35:39.498 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-06-14 16:35:44.000 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.9:310e3647b6adf9282f92ca468a1adef7 with status UP (replication=false)
-2023-06-14 16:35:44.529 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.9:310e3647b6adf9282f92ca468a1adef7 with status UP (replication=true)
-2023-06-14 16:36:39.508 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 16:37:31.603 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:37:32.135 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:37:39.516 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 16:38:28.762 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.9:8000 with status UP (replication=false)
-2023-06-14 16:38:29.294 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.9:8000 with status UP (replication=true)
-2023-06-14 16:38:39.522 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 16:39:39.523 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 16:40:39.532 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 16:41:39.545 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 16:42:39.574 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 28ms
-2023-06-14 16:43:39.575 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-06-14 16:44:39.578 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 16:45:39.591 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 16:46:39.596 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 16:47:39.608 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 16:48:39.610 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 16:48:39.611 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=1)
-2023-06-14 16:48:39.613 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for ADMIN-SERVICE/192.168.0.9:0
-2023-06-14 16:48:39.618 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance ADMIN-SERVICE/192.168.0.9:0 (replication=false)
-2023-06-14 16:49:39.391 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 5
-2023-06-14 16:49:39.625 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
-2023-06-14 16:50:10.678 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:50:11.217 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:50:39.634 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 16:51:39.639 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 16:52:10.851 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:52:11.382 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:52:39.653 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 16:53:39.656 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 16:53:53.224 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:53:53.758 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:54:39.670 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 16:55:39.685 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 16:56:39.695 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 16:57:39.699 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 16:58:16.688 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=false)
-2023-06-14 16:58:17.216 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.9:0 with status UP (replication=true)
-2023-06-14 16:58:39.700 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 16:59:39.715 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 17:00:39.729 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 17:01:39.745 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
-2023-06-14 17:02:39.750 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 17:03:39.762 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 17:04:39.404 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 17:04:39.776 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 17:05:39.784 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:06:39.789 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 17:07:39.802 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 17:08:39.812 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 17:09:39.814 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:10:39.826 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 17:11:39.833 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:12:39.845 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 17:13:39.859 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 17:14:39.862 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:15:39.870 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:16:39.882 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 17:17:39.890 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:18:39.898 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:19:39.423 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 17:19:39.909 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 17:20:39.911 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:21:39.913 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:22:39.922 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 17:23:39.924 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:24:39.936 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 17:25:39.945 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:26:40.084 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 139ms
-2023-06-14 17:27:40.094 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 17:28:40.101 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:29:40.108 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:30:40.113 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 17:31:40.133 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 19ms
-2023-06-14 17:32:40.141 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:33:40.153 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 17:34:39.415 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 17:34:40.161 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:35:40.162 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:36:40.169 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 17:37:40.184 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
-2023-06-14 17:38:40.185 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:39:40.198 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 17:40:40.202 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 17:41:40.203 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:42:40.208 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 17:43:40.210 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:44:40.214 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 17:45:40.228 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 17:46:40.240 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 17:47:40.243 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:48:40.250 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 17:49:39.418 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 17:49:40.252 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 17:50:40.267 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 17:51:40.273 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 17:52:40.287 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 17:53:40.288 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 17:54:40.294 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 17:55:40.309 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
-2023-06-14 17:56:40.317 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 17:57:40.329 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 17:58:40.332 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 17:59:40.336 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:00:40.336 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-06-14 18:01:40.340 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:02:40.355 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
-2023-06-14 18:03:40.361 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 18:04:39.418 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 18:04:40.364 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 18:05:40.373 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 18:06:40.381 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 18:07:40.386 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 18:08:40.393 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 18:09:40.398 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 18:10:40.404 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 18:11:40.417 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 18:12:40.428 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 18:13:40.438 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 18:14:40.451 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
-2023-06-14 18:15:40.459 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
-2023-06-14 18:16:40.462 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:17:40.467 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 18:18:40.467 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-06-14 18:19:39.431 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 18:19:40.476 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 18:20:40.479 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
-2023-06-14 18:21:40.488 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 18:22:40.492 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:23:40.495 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:24:40.500 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
-2023-06-14 18:25:40.508 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-06-14 18:26:40.517 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 18:27:40.529 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 18:28:40.535 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 18:29:40.536 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-06-14 18:30:40.537 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-06-14 18:31:40.540 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:32:40.551 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 18:33:40.560 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
-2023-06-14 18:34:39.439 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-06-14 18:34:40.575 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-06-14 18:35:40.581 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-06-14 18:36:40.594 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 18:37:40.597 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-06-14 18:38:40.607 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 18:39:40.620 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 18:40:40.632 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-06-14 18:41:40.643 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-06-14 18:42:40.655 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-06-14 18:43:40.660 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 18:44:40.665 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-06-14 18:45:40.670 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-06-22 19:50:43.969 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 8880 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
+2023-06-22 19:50:44.107 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-06-22 19:50:47.295 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
+2023-06-22 19:50:49.941 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
+2023-06-22 19:50:49.973 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
+2023-06-22 19:50:49.974 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-06-22 19:50:50.420 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-06-22 19:50:50.426 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 6110 ms
+2023-06-22 19:50:51.495 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2023-06-22 19:50:51.902 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-06-22 19:50:51.905 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-06-22 19:50:52.467 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-06-22 19:50:52.467 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-06-22 19:51:03.167 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
+2023-06-22 19:51:03.289 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-06-22 19:51:03.326 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-06-22 19:51:03.406 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-06-22 19:51:03.407 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
+2023-06-22 19:51:03.420 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1687431063418 with initial instances count: 0
+2023-06-22 19:51:03.482 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
+2023-06-22 19:51:03.486 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
+2023-06-22 19:51:03.810 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-06-22 19:51:03.810 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-06-22 19:51:03.811 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-06-22 19:51:03.811 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-06-22 19:51:03.979 INFO  ---- [main      ] [PeerEurekaNodes:109] start   Replica node URL:  http://localhost:8761/eureka/
+2023-06-22 19:51:03.991 INFO  ---- [main      ] [AbstractInstanceRegistry:153] initRemoteRegionRegistry   Finished initializing remote region registries. All known remote regions: []
+2023-06-22 19:51:03.993 INFO  ---- [main      ] [DefaultEurekaServerContext:73] initialize   Initialized
+2023-06-22 19:51:04.002 INFO  ---- [main      ] [EndpointLinksResolver:58] <init>   Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-06-22 19:51:04.031 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application MVC-EUREKA with eureka with status UP
+2023-06-22 19:51:04.049 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:143] isAws   isAws returned false
+2023-06-22 19:51:04.051 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:109] initEurekaServerContext   Initialized server context
+2023-06-22 19:51:04.051 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:244] openForTraffic   Got 1 instances from neighboring DS node
+2023-06-22 19:51:04.051 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:245] openForTraffic   Renew threshold is: 1
+2023-06-22 19:51:04.052 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:256] openForTraffic   Changing status to UP
+2023-06-22 19:51:04.059 INFO  ---- [Thread-9  ] [EurekaServerInitializerConfiguration:69] lambda$start$0   Started Eureka Server
+2023-06-22 19:51:04.070 INFO  ---- [main      ] [TomcatWebServer:220] start   Tomcat started on port(s): 8761 (http) with context path ''
+2023-06-22 19:51:04.072 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8761
+2023-06-22 19:51:05.195 INFO  ---- [main      ] [EurekaApplication:61] logStarted   Started EurekaApplication in 27.721 seconds (JVM running for 33.217)
+2023-06-22 19:51:43.987 INFO  ---- [761-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-22 19:51:43.987 INFO  ---- [761-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-06-22 19:51:43.991 INFO  ---- [761-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 3 ms
+2023-06-22 19:51:44.462 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=false)
+2023-06-22 19:51:45.172 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=true)
+2023-06-22 19:51:54.880 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.23:ff1991352de56617ffc24e4c2b2ca533 with status UP (replication=false)
+2023-06-22 19:51:55.536 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.23:ff1991352de56617ffc24e4c2b2ca533 with status UP (replication=true)
+2023-06-22 19:52:04.055 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-06-22 19:53:04.061 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-06-22 19:54:04.074 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-06-22 19:55:04.085 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-06-22 19:56:04.086 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-06-22 19:57:04.087 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-06-22 19:58:04.097 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-06-22 19:59:04.105 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-06-22 20:00:04.113 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-06-22 20:01:04.126 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-06-22 20:02:04.127 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-06-22 20:03:04.130 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-06-22 20:03:51.550 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=false)
+2023-06-22 20:03:52.079 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=true)
+2023-06-22 20:04:04.135 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-06-22 20:05:04.146 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-06-22 20:05:50.358 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=false)
+2023-06-22 20:05:50.881 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=true)
+2023-06-22 20:06:03.993 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 5
+2023-06-22 20:06:04.147 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-06-22 20:07:04.155 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-06-22 20:08:04.167 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-06-22 20:09:04.171 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-06-22 20:10:04.179 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-06-22 20:10:10.530 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=false)
+2023-06-22 20:10:11.056 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=true)
+2023-06-22 20:11:04.182 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
+2023-06-22 20:11:04.472 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=false)
+2023-06-22 20:11:04.994 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.23:8000 with status UP (replication=true)
+2023-06-22 20:12:04.191 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-06-22 20:13:04.195 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-06-22 20:13:25.222 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.23:e29593a87930c2a21423a5f94a089fde with status UP (replication=false)
+2023-06-22 20:13:25.743 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.23:e29593a87930c2a21423a5f94a089fde with status UP (replication=true)
+2023-06-22 20:14:04.210 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
+2023-06-22 20:15:04.210 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-06-22 20:16:04.226 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-06-22 20:17:04.233 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-06-22 20:18:04.236 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-06-22 20:19:04.240 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-06-22 20:20:04.253 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-06-22 20:21:03.999 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
+2023-06-22 20:21:04.262 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-06-22 20:22:04.268 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-06-22 20:23:04.268 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms

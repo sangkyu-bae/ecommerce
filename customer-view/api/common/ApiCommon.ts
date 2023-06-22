@@ -1,4 +1,6 @@
 import axios from "axios";
+import {getAccessToken} from "@/api/cookie/Cookie";
+const accessToken = getAccessToken()
 
 const ApiCommon={
     basicAPI:axios.create({
@@ -10,7 +12,8 @@ const ApiCommon={
     loginAPI:axios.create({
         baseURL:"/",
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization:`${accessToken}`
         }
     })
 }

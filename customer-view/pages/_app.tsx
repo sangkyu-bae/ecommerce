@@ -5,10 +5,10 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {AppBar, Toolbar, Typography} from "@mui/material";
 import Header from "@/components/common/Header";
 import CssBaseline from "@mui/material/CssBaseline";
-import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import Copyright from "@/components/common/Copyright";
 import {RecoilRoot} from "recoil";
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools }from '@tanstack/react-query-devtools';
 const theme = createTheme({
     palette: {
         primary: {
@@ -17,8 +17,19 @@ const theme = createTheme({
     },
 });
 const queryClient = new QueryClient();
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             networkMode: 'offlineFirst',
+//         },
+//         mutations: {
+//             networkMode: 'offlineFirst',
+//         },
+//     },
+// })
 export default function App({Component, pageProps}: AppProps) {
     return (
+
         <QueryClientProvider client={queryClient}>
             <RecoilRoot>
                 <div>

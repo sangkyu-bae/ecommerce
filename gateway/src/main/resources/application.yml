@@ -7,7 +7,20 @@ spring:
   cloud:
     gateway:
       default-filters:
-#        - GlobalFilter
+        - GlobalFilter
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: 'http://localhost:3000'
+            allow-credentials: true
+            allowedHeaders: '*'
+            allowedMethods:
+              - PUT
+              - GET
+              - POST
+              - DELETE
+              - OPTIONS
       routes:
         - id: user-service
 #          uri: http://localhost:8080/

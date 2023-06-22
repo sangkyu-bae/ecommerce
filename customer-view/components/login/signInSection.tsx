@@ -8,12 +8,12 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import {useForm} from "react-hook-form";
 import Validation from "@/components/common/Validation";
-import {useMutation} from "react-query";
 import MemberApi from "@/api/MemberApi";
 import {parse} from "postcss";
 import {setToken} from "@/api/cookie/Cookie";
 import {useRecoilState} from "recoil";
 import {loginState} from "@/recoil/Recoil";
+import {useMutation} from "@tanstack/react-query";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
@@ -34,7 +34,7 @@ function SignInSection(props) {
         onSuccess: (data, variables, context) => {
             // const loginData=data.data;
             const {accessToken,expiredTime}=data.data;
-            setToken('REFRESH_TOKEN',accessToken,expiredTime);
+            setToken('ACCESS_TOKEN',accessToken,expiredTime);
             setLogin({
                 token:accessToken,
                 expiredTime:expiredTime,

@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,6 +37,12 @@ public class CategoryController {
         CategoryDto createCategory = categoryUseCase.createCategoryExecute(categoryDto);
 
         return ResponseEntity.ok().body(createCategory);
+    }
+
+    @GetMapping("/admin/categorys")
+    public ResponseEntity<List<CategoryDto>> readAllCategory(){
+        var categoryList = categoryUseCase.readAllCategoryDtoExecute();
+        return ResponseEntity.ok().body(categoryList);
     }
 
 }

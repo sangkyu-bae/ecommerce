@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SideBar, {StyledSideBar} from "@/components/admin/sideBar";
 import styled from "styled-components";
 import GridComponent, {StyledContent, StyledMenu, StyledSetion} from "@/api/common/GridComponent";
@@ -7,30 +7,53 @@ import dynamic from "next/dynamic";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
 import {useForm} from "react-hook-form";
-import {useMutation} from "react-query";
 import {ProductApi} from "@/api/product/ProductApi";
 import Validation from "@/components/common/Validation";
 import {MenuItem} from "@mui/material";
+import axios from "axios";
+import {useMutation, useQueries} from "@tanstack/react-query"
+import {string} from "prop-types";
 
 
-const NoSsrEditor = dynamic(() => import('../../components/common/' +
-'ReactEdit'), { ssr: false });
+const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit'), {ssr: false});
 const StyledContainer = styled.div`
         display : flex;
         width : 100%;
         height : 100vh;
     `
+
 function MyPage(props) {
     const ref = useRef<any>(null);
-    const {register, handleSubmit,trigger,setValue, formState: {errors} }=useForm<ProductData>();
-    const onSubmit = (productData : ProductData) => {
+    const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
+    const onSubmit = (productData: ProductData) => {
         console.log(productData)
-        if(productData.description.length<15){
+        if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
         }
         // productMutation.mutate()
     };
+    const productInfo = useQueries({
+        queries: [
+            {
+                queryKey: ['brand'],
+                queryFn : ()=>ProductApi.readAllBrand()
+            },
+            {
+                queryKey: ['category'],
+                queryFn : ()=>ProductApi.readAllCategory()
+            },
+            {
+                queryKey: ['color'],
+                queryFn : ()=>ProductApi.readAllColor()
+            }
+        ],
+    });
+
+    useEffect(() => {
+        console.log(productInfo)
+    }, [productInfo]);
+
     const productMutation = useMutation(ProductApi.createProduct, {
         onMutate: variable => {
             console.log("onMutate", variable);
@@ -47,10 +70,10 @@ function MyPage(props) {
             console.log("end");
         }
     });
-    const validation= Validation;
-    const onChangeDescription = () =>{
-        const data:string = ref.current.getInstance().getHTML();
-        setValue("description",data, { shouldValidate : true } );
+    const validation = Validation;
+    const onChangeDescription = () => {
+        const data: string = ref.current.getInstance().getHTML();
+        setValue("description", data, {shouldValidate: true});
     }
 
     return (
@@ -88,13 +111,13 @@ function MyPage(props) {
                                 error={Boolean(errors.price)}
                                 helperText={errors.price?.message}
                                 name="price"
-                                style={{width:'33%'}}
+                                style={{width: '33%'}}
                                 autoFocus
                             />
                             <TextField
                                 type="number"
                                 margin="normal"
-                                style={{ marginLeft: '10px',width:'32%' }}
+                                style={{marginLeft: '10px', width: '32%'}}
                                 required
                                 id="price"
                                 label="수량(개)"
@@ -109,7 +132,7 @@ function MyPage(props) {
                             <TextField
                                 select
                                 margin="normal"
-                                style={{ marginLeft: '10px' ,width:'32%'}}
+                                style={{marginLeft: '10px', width: '32%'}}
                                 required
                                 id="price"
                                 label="브랜드"
@@ -135,7 +158,7 @@ function MyPage(props) {
                                 className="btn-submit"
                                 variant="contained"
                                 size="large"
-                                endIcon={<SendIcon />}>
+                                endIcon={<SendIcon/>}>
                                 상품등록
                             </Button>
                         </form>
