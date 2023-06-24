@@ -15,9 +15,7 @@ export const ProductApi = {
         return data;
     },
     readAllColor : async ()=>{
-        console.log('타?')
         const {data} = await ApiCommon.loginAPI.get(productRequest.readAllColor);
-        console.log("data"+data)
         return data;
     }
 }

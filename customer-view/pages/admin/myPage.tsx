@@ -11,7 +11,7 @@ import {ProductApi} from "@/api/product/ProductApi";
 import Validation from "@/components/common/Validation";
 import {MenuItem} from "@mui/material";
 import axios from "axios";
-import {useMutation, useQueries} from "@tanstack/react-query"
+import {useMutation, useQueries, useQuery} from "@tanstack/react-query"
 import {string} from "prop-types";
 
 
@@ -23,6 +23,7 @@ const StyledContainer = styled.div`
     `
 
 function MyPage(props) {
+    const [formState, setFormState] = useState<boolean>(false);
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
@@ -49,11 +50,9 @@ function MyPage(props) {
             }
         ],
     });
-
     useEffect(() => {
-        console.log(productInfo)
+        console.log("실행")
     }, [productInfo]);
-
     const productMutation = useMutation(ProductApi.createProduct, {
         onMutate: variable => {
             console.log("onMutate", variable);
@@ -76,97 +75,106 @@ function MyPage(props) {
         setValue("description", data, {shouldValidate: true});
     }
 
-    return (
-        <StyledContainer>
-            <SideBar></SideBar>
-            <StyledContent>
-                <StyledMenu></StyledMenu>
-                <StyledSetion>
-                    <div className="main-section">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <GridComponent title="🛒상품 등록"></GridComponent>
-                            <TextField
-                                margin="normal"
-                                required
-                                id="name"
-                                label="상품명"
-                                name="name"
-                                fullWidth
-                                autoFocus
-                                {...register("name", {
-                                    ...validation.name
-                                })}
-                                error={Boolean(errors.name)}
-                                helperText={errors.name?.message}
-                            />
-                            <TextField
-                                type="number"
-                                margin="normal"
-                                required
-                                id="price"
-                                label="가격(원)"
-                                {...register("price", {
-                                    ...validation.price
-                                })}
-                                error={Boolean(errors.price)}
-                                helperText={errors.price?.message}
-                                name="price"
-                                style={{width: '33%'}}
-                                autoFocus
-                            />
-                            <TextField
-                                type="number"
-                                margin="normal"
-                                style={{marginLeft: '10px', width: '32%'}}
-                                required
-                                id="price"
-                                label="수량(개)"
-                                {...register("price", {
-                                    ...validation.price
-                                })}
-                                error={Boolean(errors.price)}
-                                helperText={errors.price?.message}
-                                name="price"
-                                autoFocus
-                            />
-                            <TextField
-                                select
-                                margin="normal"
-                                style={{marginLeft: '10px', width: '32%'}}
-                                required
-                                id="price"
-                                label="브랜드"
-                                name="brand"
-                                autoFocus
-                            >
-                                {/* 여기에 옵션들을 추가하세요 */}
-                                <MenuItem value="option1">옵션 dsfasdfsdf1</MenuItem>
-                                <MenuItem value="option2">옵션 2</MenuItem>
-                                <MenuItem value="option3">옵션 3</MenuItem>
-                            </TextField>
-                            <div>
-                                <NoSsrEditor
-                                    content=""
-                                    onChangeDescription={onChangeDescription}
-                                    editorRef={ref}
-                                    id="description"
-                                    register={register}
+    if(productInfo){
+        const brand = productInfo[2].data;
+        console.log(brand)
+        let i = 0;
+        return (
+            <StyledContainer>
+                <SideBar></SideBar>
+                <StyledContent>
+                    <StyledMenu></StyledMenu>
+                    <StyledSetion>
+                        <div className="main-section">
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <GridComponent title="🛒상품 등록"></GridComponent>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    id="name"
+                                    label="상품명"
+                                    name="name"
+                                    fullWidth
+                                    autoFocus
+                                    {...register("name", {
+                                        ...validation.name
+                                    })}
+                                    error={Boolean(errors.name)}
+                                    helperText={errors.name?.message}
                                 />
-                            </div>
-                            <Button
-                                type="submit"
-                                className="btn-submit"
-                                variant="contained"
-                                size="large"
-                                endIcon={<SendIcon/>}>
-                                상품등록
-                            </Button>
-                        </form>
-                    </div>
-                </StyledSetion>
-            </StyledContent>
-        </StyledContainer>
-    );
+                                <TextField
+                                    type="number"
+                                    margin="normal"
+                                    required
+                                    id="price"
+                                    label="가격(원)"
+                                    {...register("price", {
+                                        ...validation.price
+                                    })}
+                                    error={Boolean(errors.price)}
+                                    helperText={errors.price?.message}
+                                    name="price"
+                                    style={{width: '33%'}}
+                                    autoFocus
+                                />
+                                <TextField
+                                    type="number"
+                                    margin="normal"
+                                    style={{marginLeft: '10px', width: '32%'}}
+                                    required
+                                    id="price"
+                                    label="수량(개)"
+                                    {...register("price", {
+                                        ...validation.price
+                                    })}
+                                    error={Boolean(errors.price)}
+                                    helperText={errors.price?.message}
+                                    name="price"
+                                    autoFocus
+                                />
+                                <TextField
+                                    select
+                                    margin="normal"
+                                    style={{marginLeft: '10px', width: '32%'}}
+                                    required
+                                    id="price"
+                                    label="브랜드"
+                                    name="brand"
+                                    autoFocus
+                                >
+                                    {/* 여기에 옵션들을 추가하세요 */}
+                                    {
+                                        brand && brand.map(br =><MenuItem key={i++} value={br}>{br}</MenuItem>)
+                                    }
+                                    {/*<MenuItem value="option1">옵션 dsfasdfsdf1</MenuItem>*/}
+                                    {/*<MenuItem value="option2">옵션 2</MenuItem>*/}
+                                    {/*<MenuItem value="option3">옵션 3</MenuItem>*/}
+                                </TextField>
+                                <div>
+                                    <NoSsrEditor
+                                        content=""
+                                        onChangeDescription={onChangeDescription}
+                                        editorRef={ref}
+                                        id="description"
+                                        register={register}
+                                    />
+                                </div>
+                                <Button
+                                    type="submit"
+                                    className="btn-submit"
+                                    variant="contained"
+                                    size="large"
+                                    endIcon={<SendIcon/>}>
+                                    상품등록
+                                </Button>
+                            </form>
+                        </div>
+                    </StyledSetion>
+                </StyledContent>
+            </StyledContainer>
+        );
+    }
+
 }
 
 export default MyPage;
