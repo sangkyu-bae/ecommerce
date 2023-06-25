@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
     `
 
 function MyPage(props) {
-    const [formState, setFormState] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
@@ -38,20 +38,23 @@ function MyPage(props) {
         queries: [
             {
                 queryKey: ['brand'],
-                queryFn : ()=>ProductApi.readAllBrand()
+                queryFn: () => ProductApi.readAllBrand()
             },
             {
                 queryKey: ['category'],
-                queryFn : ()=>ProductApi.readAllCategory()
+                queryFn: () => ProductApi.readAllCategory()
             },
             {
                 queryKey: ['color'],
-                queryFn : ()=>ProductApi.readAllColor()
+                queryFn: () => ProductApi.readAllColor()
             }
         ],
     });
     useEffect(() => {
-        console.log("실행")
+        const allQueriesSucceeded = productInfo.every(queryResult => queryResult.isSuccess);
+        if (allQueriesSucceeded) {
+            setIsSuccess(true)
+        }
     }, [productInfo]);
     const productMutation = useMutation(ProductApi.createProduct, {
         onMutate: variable => {
@@ -75,10 +78,10 @@ function MyPage(props) {
         setValue("description", data, {shouldValidate: true});
     }
 
-    if(productInfo){
+    if (isSuccess) {
+        console.log(productInfo)
         const brand = productInfo[2].data;
         console.log(brand)
-        let i = 0;
         return (
             <StyledContainer>
                 <SideBar></SideBar>
@@ -142,10 +145,11 @@ function MyPage(props) {
                                     name="brand"
                                     autoFocus
                                 >
-                                    {/* 여기에 옵션들을 추가하세요 */}
-                                    {
-                                        brand && brand.map(br =><MenuItem key={i++} value={br}>{br}</MenuItem>)
-                                    }
+                                    {brand && brand.map((br, index) => (
+                                        <MenuItem key={index} value={br.name}>
+                                            {br.name}
+                                        </MenuItem>
+                                    ))}
                                     {/*<MenuItem value="option1">옵션 dsfasdfsdf1</MenuItem>*/}
                                     {/*<MenuItem value="option2">옵션 2</MenuItem>*/}
                                     {/*<MenuItem value="option3">옵션 3</MenuItem>*/}
