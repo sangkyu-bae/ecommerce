@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -27,5 +29,10 @@ public class SizeReadService {
     public Size readSize(int size){
         Size readSize = sizeRepository.findBySize(size).orElseThrow(()->new CustomException(ErrorCode.SIZE_NOT_FOUND,"readSize"));
         return readSize;
+    }
+
+    public List<Size> readAllSize(){
+        List<Size> sizeList = sizeRepository.findAll();
+        return sizeList;
     }
 }

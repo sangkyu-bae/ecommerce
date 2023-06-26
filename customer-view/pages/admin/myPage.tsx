@@ -9,10 +9,14 @@ import SendIcon from '@mui/icons-material/Send';
 import {useForm} from "react-hook-form";
 import {ProductApi} from "@/api/product/ProductApi";
 import Validation from "@/components/common/Validation";
-import {MenuItem} from "@mui/material";
+import {FormGroup, MenuItem} from "@mui/material";
 import axios from "axios";
-import {useMutation, useQueries, useQuery} from "@tanstack/react-query"
+import {QueryClient, useMutation, useQueries, useQuery, useQueryClient} from "@tanstack/react-query"
 import {string} from "prop-types";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Input from "@/components/admin/Input";
+import SizeContainer from "@/components/admin/SizeContainer";
 
 
 const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit'), {ssr: false});
@@ -22,7 +26,8 @@ const StyledContainer = styled.div`
         height : 100vh;
     `
 
-function MyPage(props) {
+function MyPage() {
+
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
@@ -47,6 +52,10 @@ function MyPage(props) {
             {
                 queryKey: ['color'],
                 queryFn: () => ProductApi.readAllColor()
+            },
+            {
+                queryKey : ['size'],
+                queryFn: () => ProductApi.readAllSize()
             }
         ],
     });
@@ -79,9 +88,11 @@ function MyPage(props) {
     }
 
     if (isSuccess) {
-        console.log(productInfo)
-        const brand = productInfo[2].data;
-        console.log(brand)
+        const brand = productInfo[0].data;
+        const category = productInfo[1].data;
+        const color  = productInfo[2].data;
+        const size = productInfo[3].data;
+        console.log(size)
         return (
             <StyledContainer>
                 <SideBar></SideBar>
@@ -117,43 +128,26 @@ function MyPage(props) {
                                     error={Boolean(errors.price)}
                                     helperText={errors.price?.message}
                                     name="price"
-                                    style={{width: '33%'}}
+                                    style={{width: '32%'}}
                                     autoFocus
                                 />
-                                <TextField
-                                    type="number"
-                                    margin="normal"
-                                    style={{marginLeft: '10px', width: '32%'}}
-                                    required
-                                    id="price"
-                                    label="수량(개)"
-                                    {...register("price", {
-                                        ...validation.price
-                                    })}
-                                    error={Boolean(errors.price)}
-                                    helperText={errors.price?.message}
-                                    name="price"
-                                    autoFocus
-                                />
-                                <TextField
-                                    select
-                                    margin="normal"
-                                    style={{marginLeft: '10px', width: '32%'}}
-                                    required
-                                    id="price"
-                                    label="브랜드"
-                                    name="brand"
-                                    autoFocus
-                                >
-                                    {brand && brand.map((br, index) => (
-                                        <MenuItem key={index} value={br.name}>
-                                            {br.name}
-                                        </MenuItem>
-                                    ))}
-                                    {/*<MenuItem value="option1">옵션 dsfasdfsdf1</MenuItem>*/}
-                                    {/*<MenuItem value="option2">옵션 2</MenuItem>*/}
-                                    {/*<MenuItem value="option3">옵션 3</MenuItem>*/}
-                                </TextField>
+
+                                <Input names={category}
+                                      title="category"
+                                      width={32}
+                                      marginLeft={2}/>
+
+                                <Input names={brand}
+                                      title="brand"
+                                      width={32}
+                                      marginLeft={2}/>
+
+                                <Input names={color}
+                                      title="color"
+                                      width={100}
+                                      marginLeft={0}/>
+                                <SizeContainer sizes={size}/>
+
                                 <div>
                                     <NoSsrEditor
                                         content=""

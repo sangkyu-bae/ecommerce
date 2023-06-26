@@ -17,5 +17,9 @@ export const ProductApi = {
     readAllColor : async ()=>{
         const {data} = await ApiCommon.loginAPI.get(productRequest.readAllColor);
         return data;
+    },
+    readAllSize : async ()=>{
+        const {data} = await ApiCommon.loginAPI.get(productRequest.readAllSize);
+        return data;
     }
 }
