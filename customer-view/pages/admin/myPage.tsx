@@ -29,6 +29,8 @@ const StyledContainer = styled.div`
 function MyPage() {
 
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
+    const [colorCnt, setColorCnt] = useState<number>(1);
+
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
@@ -54,7 +56,7 @@ function MyPage() {
                 queryFn: () => ProductApi.readAllColor()
             },
             {
-                queryKey : ['size'],
+                queryKey: ['size'],
                 queryFn: () => ProductApi.readAllSize()
             }
         ],
@@ -90,9 +92,29 @@ function MyPage() {
     if (isSuccess) {
         const brand = productInfo[0].data;
         const category = productInfo[1].data;
-        const color  = productInfo[2].data;
+        const color = productInfo[2].data;
         const size = productInfo[3].data;
-        console.log(size)
+
+        const setSizeColor = (element: String) => {
+            if (element == 'plus' && colorCnt < color.length ) {
+                setColorCnt(colorCnt + 1);
+            } else if (element == 'remove' && colorCnt > 1) {
+                setColorCnt(colorCnt - 1);
+            }
+        }
+
+        const renderComponents = () => {
+            return Array.from({length: colorCnt}).map((_, index) => (
+                <SizeContainer
+                    key={index}
+                    sizes={size}
+                    colors={color}
+                    setSizeColor={setSizeColor}
+                    colorCnt = {colorCnt}
+                    index={index}
+                />
+            ));
+        };
         return (
             <StyledContainer>
                 <SideBar></SideBar>
@@ -133,21 +155,19 @@ function MyPage() {
                                 />
 
                                 <Input names={category}
-                                      title="category"
-                                      width={32}
-                                      marginLeft={2}/>
+                                       title="category"
+                                       width={32}
+                                       marginLeft={2}
+                                       register={register}
+                                />
 
                                 <Input names={brand}
-                                      title="brand"
-                                      width={32}
-                                      marginLeft={2}/>
-
-                                <Input names={color}
-                                      title="color"
-                                      width={100}
-                                      marginLeft={0}/>
-                                <SizeContainer sizes={size}/>
-
+                                       title="brand"
+                                       width={32}
+                                       marginLeft={2}/>
+                                {
+                                    renderComponents()
+                                }
                                 <div>
                                     <NoSsrEditor
                                         content=""

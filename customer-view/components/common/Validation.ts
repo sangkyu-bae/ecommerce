@@ -44,7 +44,8 @@ const Validation={
             value:3,
             message:'상품 가격은 100원 이상입니다.'
         }
-    }
+    },
 }
+
 
 export default Validation;
