@@ -34,11 +34,29 @@ function MyPage() {
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
-        console.log(productData)
-        if (productData.description.length < 15) {
-            alert("상품 설명을 등록하시오")
-            return;
+        // console.log(productData)
+        const colors = Object.keys(productData)
+            .filter(key => key.startsWith('color_'))
+            .map(key => productData[key]);
+
+
+
+         let tranceProductData = Object.keys(productData).reduce((acc:ProductData, key:string) => {
+            if (!key.startsWith('color_')) {
+                acc[key] = productData[key];
+            }
+            return acc;
+        }, {});
+
+        tranceProductData={
+            ...tranceProductData,
+            colors:colors
         }
+        console.log(tranceProductData);
+        // if (productData.description.length < 15) {
+        //     alert("상품 설명을 등록하시오")
+        //     return;
+        // }
         // productMutation.mutate()
     };
     const productInfo = useQueries({
@@ -112,6 +130,8 @@ function MyPage() {
                     setSizeColor={setSizeColor}
                     colorCnt = {colorCnt}
                     index={index}
+                    register={register}
+                    errors={errors}
                 />
             ));
         };
@@ -159,12 +179,15 @@ function MyPage() {
                                        width={32}
                                        marginLeft={2}
                                        register={register}
+                                       errors={errors}
                                 />
 
                                 <Input names={brand}
                                        title="brand"
                                        width={32}
-                                       marginLeft={2}/>
+                                       marginLeft={2}
+                                       register={register}
+                                       errors={errors}/>
                                 {
                                     renderComponents()
                                 }
@@ -175,6 +198,7 @@ function MyPage() {
                                         editorRef={ref}
                                         id="description"
                                         register={register}
+                                        erros
                                     />
                                 </div>
                                 <Button

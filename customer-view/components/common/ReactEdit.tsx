@@ -1,13 +1,15 @@
 import React from 'react';
 import {Editor} from "@toast-ui/react-editor";
 import '@toast-ui/editor/dist/toastui-editor.css';
+import Validation from "@/components/common/Validation";
+
 interface InfoProps {
     content: string;
     editorRef: React.MutableRefObject<any>;
-    onChangeDescription : ()=>void;
+    onChangeDescription: () => void;
 }
-function ReactEdit({content, editorRef,onChangeDescription}:InfoProps) {
 
+function ReactEdit({content, editorRef, onChangeDescription}: InfoProps) {
     return (
         <>
             {
@@ -26,7 +28,8 @@ function ReactEdit({content, editorRef,onChangeDescription}:InfoProps) {
                             ['table', 'image', 'link'],
                             ['code', 'codeblock']
                         ]}
-                        name="content"
+                        name="description"
+                        id="description"
                         onChange={onChangeDescription}
                     ></Editor>
                 )

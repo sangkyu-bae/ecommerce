@@ -12,19 +12,21 @@ interface ISizeData {
     colors: object[],
     colorCnt: number,
     index: number,
-    setSizeColor: (element: string) => void
+    setSizeColor: (element: string) => void,
+    register: object,
+    errors: object
 }
 
-function SizeContainer({sizes, colors, setSizeColor, colorCnt, index}: ISizeData) {
-    useEffect(() => {
+function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,errors}: ISizeData) {
 
-    }, [])
     return (
         <>
             <Input names={colors}
-                   title="color"
+                   title={'color_'+index}
                    width={100}
-                   marginLeft={0}/>
+                   marginLeft={0}
+                   register={register}
+                   errors={errors}/>
             {
                 colorCnt == index + 1 && colorCnt < colors.length ?
                     <Button
@@ -63,9 +65,9 @@ function SizeContainer({sizes, colors, setSizeColor, colorCnt, index}: ISizeData
                     }
                     label='all'
                 />
-                {sizes.map((size) => (
+                {sizes.map((size,index:number) => (
                     <FormControlLabel
-                        key={size}
+                        key={index}
                         control={
                             <Checkbox
                                 name={size.size}
