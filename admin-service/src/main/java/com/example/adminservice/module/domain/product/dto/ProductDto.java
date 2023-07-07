@@ -1,6 +1,7 @@
 package com.example.adminservice.module.domain.product.dto;
 
 import com.example.adminservice.module.domain.brand.entity.Brand;
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Data@Builder
@@ -38,6 +40,7 @@ public class ProductDto {
     private int size;
 
     private int quantity;
+
     public ProductDto(Product product){
         this.name = Objects.requireNonNull(product.getName());
         this.price = Objects.requireNonNull(product.getPrice());

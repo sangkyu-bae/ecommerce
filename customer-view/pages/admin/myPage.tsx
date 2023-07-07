@@ -39,8 +39,6 @@ function MyPage() {
             .filter(key => key.startsWith('color_'))
             .map(key => productData[key]);
 
-
-
          let tranceProductData = Object.keys(productData).reduce((acc:ProductData, key:string) => {
             if (!key.startsWith('color_')) {
                 acc[key] = productData[key];

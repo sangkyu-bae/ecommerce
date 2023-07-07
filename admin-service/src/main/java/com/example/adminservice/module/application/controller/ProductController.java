@@ -45,7 +45,7 @@ public class ProductController {
      * */
     @PostMapping("/admin/product")
     public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
-                @RequestHeader("X-User-Id") String userId ,Errors errors) throws DataFormatException {
+                @RequestHeader("X-User-Id") String userId ,Errors errors) {
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
         }

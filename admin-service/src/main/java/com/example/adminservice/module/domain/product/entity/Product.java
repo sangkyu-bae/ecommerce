@@ -15,7 +15,6 @@ import java.util.Set;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-@ToString(exclude = "brand")
 public class Product {
 
     @Id @GeneratedValue
@@ -40,7 +39,6 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ColorProduct> colorProductList = new ArrayList<>();
-
 }
