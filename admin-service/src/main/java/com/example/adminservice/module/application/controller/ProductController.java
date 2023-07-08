@@ -6,6 +6,7 @@ import com.example.adminservice.module.application.usecase.ColorUseCase;
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
@@ -38,20 +39,35 @@ public class ProductController {
     private final ColorUseCase colorUseCase;
     private final BrandUseCase brandUseCase;
 
+//    /**
+//     * 상품 등록하기
+//     * @Params ProductDto(등록할 상품 정보)
+//     * @return ProductDto
+//     * */
+//    @PostMapping("/admin/product")
+//    public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
+//                @RequestHeader("X-User-Id") String userId ,Errors errors) {
+//        if (errors.hasErrors()) {
+//            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
+//        }
+//        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
+//        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
+//        return ResponseEntity.ok().body(productDto);
+//    }
     /**
      * 상품 등록하기
      * @Params ProductDto(등록할 상품 정보)
      * @return ProductDto
      * */
     @PostMapping("/admin/product")
-    public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
-                @RequestHeader("X-User-Id") String userId ,Errors errors) {
-        if (errors.hasErrors()) {
-            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
-        }
-        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
-        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
-        return ResponseEntity.ok().body(productDto);
+    public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody CreateProductDto createProductDto,
+                                                            @RequestHeader("X-User-Id") String userId ,Errors errors) {
+//        if (errors.hasErrors()) {
+//            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
+//        }
+//        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
+//        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
+        return ResponseEntity.ok().body(new ResponseProductDto());
     }
 
     /**

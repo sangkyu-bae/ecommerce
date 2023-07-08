@@ -16,7 +16,15 @@ const theme = createTheme({
         },
     },
 });
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+});
+
 // const queryClient = new QueryClient({
 //     defaultOptions: {
 //         queries: {

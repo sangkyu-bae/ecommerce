@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import Input from "@/components/admin/Input";
 import RemoveIcon from '@mui/icons-material/Remove';
+import Validation from "@/components/common/Validation";
 
 interface ISizeData {
     sizes: object[],
@@ -16,7 +17,7 @@ interface ISizeData {
     register: object,
     errors: object
 }
-
+const validation = Validation;
 function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,errors}: ISizeData) {
 
     return (
@@ -55,28 +56,30 @@ function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,er
             }
             <div> size</div>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                <FormControlLabel
-                    key='all'
-                    control={
-                        <Checkbox
-                            name='all'
-                            color="primary"
-                        />
-                    }
-                    label='all'
-                />
-                {sizes.map((size,index:number) => (
-                    <FormControlLabel
-                        key={index}
-                        control={
-                            <Checkbox
-                                name={size.size}
-                                color="primary"
-                            />
-                        }
-                        label={size.size}
-                    />
-                ))}
+                {/*<FormControlLabel*/}
+                {/*    key='all'*/}
+                {/*    control={*/}
+                {/*        <Checkbox*/}
+                {/*            name='all'*/}
+                {/*            color="primary"*/}
+                {/*        />*/}
+                {/*    }*/}
+                {/*    label='all'*/}
+                {/*/>*/}
+                {/*{sizes.map((size,index:number) => (*/}
+                {/*    <FormControlLabel*/}
+                {/*        key={index}*/}
+                {/*        control={*/}
+                {/*            <Checkbox*/}
+                {/*                name={size.size}*/}
+                {/*                color="primary"*/}
+
+
+                {/*            />*/}
+                {/*        }*/}
+                {/*        label={size.size}*/}
+                {/*    />*/}
+                {/*))}*/}
             </div>
         </>
     );

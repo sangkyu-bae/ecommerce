@@ -29,15 +29,16 @@ public class CreateProductDto {
 
     private String categoryName;
 
+    List<ColorWithSizeAndQuantity> sizeAndQuantities;
 }
 @Data
 class ColorWithSizeAndQuantity{
     private String colorName;
+    List<SizeAndQuantity> sizeAndQuantities;
 }
 
 @Data
 class SizeAndQuantity{
-
     private int size;
-
+    private int quantity;
 }

@@ -34,7 +34,7 @@ function MyPage() {
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
-        // console.log(productData)
+        console.log(productData)
         const colors = Object.keys(productData)
             .filter(key => key.startsWith('color_'))
             .map(key => productData[key]);
@@ -187,7 +187,7 @@ function MyPage() {
                                        register={register}
                                        errors={errors}/>
                                 {
-                                    renderComponents()
+                                    // renderComponents()
                                 }
                                 <div>
                                     <NoSsrEditor
