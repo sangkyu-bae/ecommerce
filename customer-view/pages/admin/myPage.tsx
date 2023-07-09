@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {ChangeEvent, useEffect, useRef, useState} from 'react';
 import SideBar, {StyledSideBar} from "@/components/admin/sideBar";
 import styled from "styled-components";
 import GridComponent, {StyledContent, StyledMenu, StyledSetion} from "@/api/common/GridComponent";
@@ -25,11 +25,28 @@ const StyledContainer = styled.div`
         width : 100%;
         height : 100vh;
     `
+interface ColorData {
+    colorName : string;
+    colorSize : SizeQuantityData[]
 
+}
+interface SizeQuantityData {
+    size : number,
+    quantity : number;
+}
 function MyPage() {
 
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [colorCnt, setColorCnt] = useState<number>(1);
+
+    const [colorObject,setColorObject] = useState<ColorData>({
+        colorName:'',
+        colorSize:[]
+    });
+
+    const handleChangeColorData = (event: ChangeEvent<HTMLInputElement>, field: keyof ColorData) =>{
+        console.log(event);
+    }
 
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
@@ -128,8 +145,8 @@ function MyPage() {
                     setSizeColor={setSizeColor}
                     colorCnt = {colorCnt}
                     index={index}
-                    register={register}
-                    errors={errors}
+                    handleChangeColorData={handleChangeColorData}
+
                 />
             ));
         };
@@ -187,7 +204,7 @@ function MyPage() {
                                        register={register}
                                        errors={errors}/>
                                 {
-                                    // renderComponents()
+                                    renderComponents()
                                 }
                                 <div>
                                     <NoSsrEditor

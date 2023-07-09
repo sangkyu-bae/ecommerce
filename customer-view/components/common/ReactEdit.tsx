@@ -10,6 +10,7 @@ interface InfoProps {
 }
 
 function ReactEdit({content, editorRef, onChangeDescription}: InfoProps) {
+    const validation = Validation;
     return (
         <>
             {

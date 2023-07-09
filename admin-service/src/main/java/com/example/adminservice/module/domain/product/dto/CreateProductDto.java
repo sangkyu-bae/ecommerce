@@ -32,13 +32,13 @@ public class CreateProductDto {
     List<ColorWithSizeAndQuantity> sizeAndQuantities;
 }
 @Data
-class ColorWithSizeAndQuantity{
+ class ColorWithSizeAndQuantity{
     private String colorName;
     List<SizeAndQuantity> sizeAndQuantities;
 }
 
 @Data
-class SizeAndQuantity{
+ class SizeAndQuantity{
     private int size;
     private int quantity;
 }

@@ -14,8 +14,7 @@ interface ISizeData {
     colorCnt: number,
     index: number,
     setSizeColor: (element: string) => void,
-    register: object,
-    errors: object
+
 }
 const validation = Validation;
 function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,errors}: ISizeData) {
@@ -27,7 +26,8 @@ function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,er
                    width={100}
                    marginLeft={0}
                    register={register}
-                   errors={errors}/>
+                   errors={errors}
+            />
             {
                 colorCnt == index + 1 && colorCnt < colors.length ?
                     <Button
@@ -56,30 +56,28 @@ function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,er
             }
             <div> size</div>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                {/*<FormControlLabel*/}
-                {/*    key='all'*/}
-                {/*    control={*/}
-                {/*        <Checkbox*/}
-                {/*            name='all'*/}
-                {/*            color="primary"*/}
-                {/*        />*/}
-                {/*    }*/}
-                {/*    label='all'*/}
-                {/*/>*/}
-                {/*{sizes.map((size,index:number) => (*/}
-                {/*    <FormControlLabel*/}
-                {/*        key={index}*/}
-                {/*        control={*/}
-                {/*            <Checkbox*/}
-                {/*                name={size.size}*/}
-                {/*                color="primary"*/}
-
-
-                {/*            />*/}
-                {/*        }*/}
-                {/*        label={size.size}*/}
-                {/*    />*/}
-                {/*))}*/}
+                <FormControlLabel
+                    key='all'
+                    control={
+                        <Checkbox
+                            name='all'
+                            color="primary"
+                        />
+                    }
+                    label='all'
+                />
+                {sizes.map((size,index:number) => (
+                    <FormControlLabel
+                        key={index}
+                        control={
+                            <Checkbox
+                                name={size.size}
+                                color="primary"
+                            />
+                        }
+                        label={size.size}
+                    />
+                ))}
             </div>
         </>
     );
