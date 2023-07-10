@@ -25,15 +25,7 @@ const StyledContainer = styled.div`
         width : 100%;
         height : 100vh;
     `
-interface ColorData {
-    colorName : string;
-    colorSize : SizeQuantityData[]
 
-}
-interface SizeQuantityData {
-    size : number,
-    quantity : number;
-}
 function MyPage() {
 
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -146,7 +138,8 @@ function MyPage() {
                     colorCnt = {colorCnt}
                     index={index}
                     handleChangeColorData={handleChangeColorData}
-
+                    register = {register}
+                    errors = {errors}
                 />
             ));
         };

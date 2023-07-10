@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from '@mui/material/Button';
@@ -14,11 +14,13 @@ interface ISizeData {
     colorCnt: number,
     index: number,
     setSizeColor: (element: string) => void,
-
+    errors : object,
+    register : object
+    handleChangeColorData : (event: ChangeEvent<HTMLInputElement>, field: keyof ColorData) =>void
 }
 const validation = Validation;
-function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,errors}: ISizeData) {
-
+function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,errors,handleChangeColorData}: ISizeData) {
+    console.log(handleChangeColorData)
     return (
         <>
             <Input names={colors}
@@ -65,6 +67,7 @@ function SizeContainer({sizes, colors, setSizeColor, colorCnt, index,register,er
                         />
                     }
                     label='all'
+                    onChange ={(e) =>handleChangeColorData(e,'colorSize') }
                 />
                 {sizes.map((size,index:number) => (
                     <FormControlLabel
