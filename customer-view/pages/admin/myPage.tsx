@@ -31,14 +31,14 @@ function MyPage() {
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [colorCnt, setColorCnt] = useState<number>(1);
 
-    const [colorObject,setColorObject] = useState<ColorData>({
-        colorName:'',
-        colorSize:[]
-    });
+    const [colorObject,setColorObject] = useState<ColorData[]>([]);
 
-    const handleChangeColorData = (event: ChangeEvent<HTMLInputElement>, field: keyof ColorData) =>{
-        console.log(event);
+    const handleChangeColorData = (colorData:ColorData) =>{
+        setColorObject([...colorObject,colorData]);
     }
+    useEffect(()=>{
+        console.log(colorObject)
+    },[colorObject])
 
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();

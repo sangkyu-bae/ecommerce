@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import TextField from "@mui/material/TextField";
 import {MenuItem} from "@mui/material";
 import {string} from "prop-types";
@@ -10,17 +10,24 @@ interface ITest {
     width: number,
     marginLeft: number,
     register: object,
-    errors: object
+    errors: object,
+    onChangeColorName : (event: ChangeEvent<HTMLInputElement>,fieId:string) =>void
 }
 
-function Input({names, title, width, marginLeft, register, errors}: ITest) {
+function Input({names, title, width, marginLeft, register, errors,onChangeColorName}: ITest) {
     const validation = Validation;
     const [labelTitle,setLabelTitle]=useState<String>("");
     useEffect(() => {
         setLabelTitle( title.includes("_") ? title.split("_")[0] : title);
     }, [])
 
+    useEffect(()=>{
+
+    },[])
+
+
     return (
+
         <TextField
             select
             margin="normal"
@@ -33,8 +40,10 @@ function Input({names, title, width, marginLeft, register, errors}: ITest) {
             })}
             error={Boolean(errors.test)}
             name={title}
+            onChange={onChangeColorName ?(e)=> onChangeColorName(e,'colorName'):null}
             autoFocus
         >
+
             {names && names.map((br, index) => (
                 <MenuItem key={index} value={br.name}>
                     {br.name}
