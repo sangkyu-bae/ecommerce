@@ -1,5 +1,6 @@
 package com.example.adminservice.module.application.usecase;
 
+import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
@@ -20,7 +21,7 @@ public class ProductUseCase {
     private final ProductReadService productReadService;
 
 //    public ProductDto createProductExecute(ProductDto productDto) {
-    public ResponseProductDto createProductExecute(ProductDto productDto) {
+    public ResponseProductDto createProductExecute(CreateProductDto productDto) {
         Product product = productWriteService.createProduct(productDto);
         ResponseProductDto toProductDto= productReadService.toProductDtos(product);
 

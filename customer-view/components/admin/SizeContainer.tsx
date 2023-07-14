@@ -16,7 +16,7 @@ interface ISizeData {
     setSizeColor: (element: string) => void,
     errors: object,
     register: object
-    handleChangeColorData: ( colorData: ColorData) => void
+    handleChangeColorData: ( colorData: ColorData, type: string) => void
 }
 
 const validation = Validation;
@@ -35,17 +35,21 @@ function SizeContainer({
         colorName: '',
         colorSize: []
     })
-    const onChangeColorData = (event: ChangeEvent<HTMLInputElement>, fieId: string) => {
+    const onChangeColorData = (event: ChangeEvent<HTMLInputElement>, fieId: string, type:string) => {
         const checked = event.target.checked
-        if (fieId == 'colorName') {
-            setColorData({
-                ...colorData,
-                colorName: event.target.value
-            })
-        } else if (fieId == 'colorSize') {
-            let {colorSize} = colorData;
-            const name = event.target.name
-            settingColorSize(name, checked);
+        if(type=='add'){
+            if (fieId == 'colorName') {
+                setColorData({
+                    ...colorData,
+                    colorName: event.target.value
+                })
+            } else if (fieId == 'colorSize') {
+                let {colorSize} = colorData;
+                const name = event.target.name
+                settingColorSize(name, checked);
+            }
+        }else if(type =='remove'){
+            handleChangeColorData(colorData,'remove');
         }
     }
 
@@ -63,7 +67,6 @@ function SizeContainer({
             } else {
                 colorSize = [];
             }
-
         } else {
             const sizeName: number = parseInt(name)
             if (checked) {
@@ -82,7 +85,8 @@ function SizeContainer({
     }
 
     useEffect(() => {
-        if(colorData.colorName) handleChangeColorData(colorData);
+        const {colorName,colorSize} = colorData;
+        if(colorName) handleChangeColorData(colorData,'add');
     }, [colorData])
     return (
         <>
@@ -114,7 +118,10 @@ function SizeContainer({
                         startIcon={<RemoveIcon/>}
                         style={{float: 'right', marginRight: '1%'}}
                         color="error"
-                        onClick={() => setSizeColor('remove')}
+                        onClick={(e) => {
+                            setSizeColor('remove')
+                            onChangeColorData(e, '','remove')
+                        }}
                     >
                         remove
                     </Button> :
@@ -131,8 +138,7 @@ function SizeContainer({
                         />
                     }
                     label='all'
-                    // onChange ={(e) =>handleChangeColorData(e,'colorSize') }
-                    onChange={(e) => onChangeColorData(e, 'colorSize')}
+                    onChange={(e) => onChangeColorData(e, 'colorSize','add')}
                 />
                 {sizes.map((size, index: number) => (
                     <FormControlLabel
@@ -144,6 +150,7 @@ function SizeContainer({
                             />
                         }
                         label={size.size}
+                        onChange={(e) => onChangeColorData(e, 'colorSize','add')}
                     />
                 ))}
             </div>

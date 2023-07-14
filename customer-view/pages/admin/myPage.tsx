@@ -30,12 +30,32 @@ function MyPage() {
 
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [colorCnt, setColorCnt] = useState<number>(1);
-
     const [colorObject,setColorObject] = useState<ColorData[]>([]);
 
-    const handleChangeColorData = (colorData:ColorData) =>{
-        setColorObject([...colorObject,colorData]);
+    const handleChangeColorData = (colorData:ColorData,type:string) =>{
+        if(type == 'add'){
+            addColorData(colorData);
+        }else if(type == 'remove'){
+            removeData(colorData);
+        }
     }
+
+    const addColorData =(colorData:ColorData)=>{
+        let color = colorObject.filter(obj => obj.colorName == colorData.colorName);
+        if(color){
+            let colorDatas = colorObject.filter(obj =>obj.colorName !=colorData.colorName);
+            colorDatas.push(colorData);
+            setColorObject(colorDatas)
+        }else{
+            setColorObject([...colorObject,colorData]);
+        }
+    }
+
+    const removeData =(colorData:ColorData)=>{
+        let colorDatas = colorObject.filter(obj => obj.colorName != colorData.colorName);
+        setColorObject(colorDatas);
+    }
+
     useEffect(()=>{
         console.log(colorObject)
     },[colorObject])
@@ -43,29 +63,30 @@ function MyPage() {
     const ref = useRef<any>(null);
     const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
-        console.log(productData)
-        const colors = Object.keys(productData)
-            .filter(key => key.startsWith('color_'))
-            .map(key => productData[key]);
+        if (productData.description.length < 15) {
+            alert("상품 설명을 등록하시오")
+            return;
+        }
+        if(!validation.colorValidate(colorObject)){
+           alert("색상정보를 확인하세요.");
+        }
+        const createProduct : ProductData = createProductObj(productData);
+        console.log(createProduct)
+        // productMutation.mutate()
+    };
+    const createProductObj =(productData : ProductData) :ProductData=>{
+        productData.colorData = colorObject;
 
-         let tranceProductData = Object.keys(productData).reduce((acc:ProductData, key:string) => {
+        let tranceProductData: ProductData = Object.keys(productData).reduce((acc: ProductData, key: string) => {
             if (!key.startsWith('color_')) {
                 acc[key] = productData[key];
             }
             return acc;
-        }, {});
+        }, {} as ProductData);
 
-        tranceProductData={
-            ...tranceProductData,
-            colors:colors
-        }
-        console.log(tranceProductData);
-        // if (productData.description.length < 15) {
-        //     alert("상품 설명을 등록하시오")
-        //     return;
-        // }
-        // productMutation.mutate()
-    };
+        return tranceProductData;
+    }
+
     const productInfo = useQueries({
         queries: [
             {

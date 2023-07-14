@@ -1,5 +1,5 @@
-const Validation={
-    rules:{
+const Validation = {
+    rules: {
         required: "이름을 입력해주세요.",
         maxLength: {
             value: 10,
@@ -10,15 +10,15 @@ const Validation={
             message: "이름은 최소 2자 이상 입력해야 합니다.",
         },
     },
-    email:{
-        required:true,
+    email: {
+        required: true,
         pattern: {
             value:
                 /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
             message: "이메일 형식에 맞지 않습니다.",
         },
     },
-    password:{
+    password: {
         required: true,
         minLength: 8,
         maxLength: 20,
@@ -27,8 +27,8 @@ const Validation={
             message: '비밀번호는 영문자, 특수문자, 숫자를 모두 포함하여 8자 이상 입력하세요.',
         },
     },
-    name:{
-        required:true,
+    name: {
+        required: true,
         maxLength: {
             value: 20,
             message: "상품명은 최대 20자까지 입력 가능합니다.",
@@ -38,19 +38,29 @@ const Validation={
             message: "상품명은 최소 2자 이상 입력해야 합니다.",
         },
     },
-    price:{
-        required:true,
-        minLength:{
-            value:3,
-            message:'상품 가격은 100원 이상입니다.'
+    price: {
+        required: true,
+        minLength: {
+            value: 3,
+            message: '상품 가격은 100원 이상입니다.'
         }
     },
-    test : {
-        required : '입력이볅',
-        minLength:{
-            value:3,
-            message:'상품 가격은 100원 이상입니다.'
+    test: {
+        required: '입력이볅',
+        minLength: {
+            value: 3,
+            message: '상품 가격은 100원 이상입니다.'
         }
+    },
+    colorValidate: function (colorData: ColorData[]) {
+        if(colorData.length == 0){
+            return false;
+        }
+        const errorColor = colorData.find(colorObj => colorObj.colorSize.length == 0);
+        if (errorColor) {
+            return false;
+        }
+        return true;
     }
 }
 

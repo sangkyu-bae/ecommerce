@@ -5,8 +5,12 @@ import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.brand.service.BrandReadService;
 import com.example.adminservice.module.domain.category.service.CategoryReadService;
 import com.example.adminservice.module.domain.color.entity.Color;
+import com.example.adminservice.module.domain.color.repository.ColorRepository;
 import com.example.adminservice.module.domain.color.service.ColorReadService;
+import com.example.adminservice.module.domain.product.dto.ColorDataDto;
+import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
+import com.example.adminservice.module.domain.product.dto.SizeAndQuantityDto;
 import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
@@ -25,13 +29,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
 public class ProductWriteService {
+    private final ColorRepository colorRepository;
     private final SizeRepository sizeRepository;
     private final ProductRepository productRepository;
     private final BrandReadService brandReadService;
@@ -43,31 +50,52 @@ public class ProductWriteService {
     private final SizeQuantityRepository sizeQuantityRepository;
     private final ModelMapper modelMapper;
 
-    public Product createProduct(ProductDto productDto) {
+    public Product createProduct(CreateProductDto productDto) {
         Product product = saveNewProduct(productDto);
         return product;
     }
 
-    private Product saveNewProduct(ProductDto productDto) {
-        Product product = modelMapper.map(productDto, Product.class);
+    private Product saveNewProduct(CreateProductDto createProductDto) {
+        Product product = modelMapper.map(createProductDto, Product.class);
         product.setCreateAt(LocalDate.now());
         product.setUpdateAt(LocalDate.now());
 
-        product.setBrand(brandReadService.readBrand(productDto.getBrandName()));
-        product.setCategory(categoryReadService.readCategory(productDto.getCategoryName()));
+        product.setBrand(brandReadService.readBrand(createProductDto.getBrandName()));
+        product.setCategory(categoryReadService.readCategory(createProductDto.getCategoryName()));
 
-        Size size = sizeReadService.readSize(productDto.getSize());
-        Color color = colorReadService.readColor(productDto.getColorName());
-        ColorProduct colorProduct = new ColorProduct(color,product);
-
-        SizeQuantity sizeQuantity = settingSizeAndQuantity(size,productDto.getQuantity(),colorProduct);
-        ColorProduct createColorProduct = colorProductWriteService.createColorProduct(colorProduct,sizeQuantity, product);
-
-        product.setColorProductList(List.of(createColorProduct));
+        List<ColorProduct> colorProductList = new ArrayList<>();
+        List<ColorDataDto> d= createProductDto.getColorDataList();
+        colorProductList = d.stream().map(dd-> test(dd)).collect(Collectors.toList());
 
         return productRepository.save(product);
     }
 
+    private ColorProduct test(ColorDataDto colorDataDto){
+        Color color = colorReadService.readColor(colorDataDto.getColorName());
+        List<SizeQuantity> sizeQuantityList= colorDataDto.getSizeAndQuantities().stream()
+                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity)).collect(Collectors.toList());
+
+        ColorProduct colorProduct = ColorProduct.builder()
+                .color(color)
+                .sizeList(sizeQuantityList)
+                .build();
+
+        return colorProduct;
+    }
+
+    private SizeQuantity toSizeQuantity(SizeAndQuantityDto sizeAndQuantityDto){
+        Size size =sizeReadService.readSize(sizeAndQuantityDto.getSize());
+        Quantity quantity = Quantity.builder()
+                .quantity(sizeAndQuantityDto.getQuantity())
+                .build();
+
+        SizeQuantity sizeQuantity = SizeQuantity.builder()
+                .quantity(quantity)
+                .size(size)
+                .build();
+
+        return sizeQuantity;
+    }
     private SizeQuantity settingSizeAndQuantity(Size size, int quantity,ColorProduct colorProduct){
         SizeQuantity sizeQuantity = SizeQuantity.builder().
                 colorProduct(colorProduct).

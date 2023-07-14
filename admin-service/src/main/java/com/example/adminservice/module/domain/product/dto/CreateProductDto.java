@@ -1,9 +1,6 @@
 package com.example.adminservice.module.domain.product.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -29,16 +26,6 @@ public class CreateProductDto {
 
     private String categoryName;
 
-    List<ColorWithSizeAndQuantity> sizeAndQuantities;
-}
-@Data
- class ColorWithSizeAndQuantity{
-    private String colorName;
-    List<SizeAndQuantity> sizeAndQuantities;
+    List<ColorDataDto> colorDataList;
 }
 
-@Data
- class SizeAndQuantity{
-    private int size;
-    private int quantity;
-}

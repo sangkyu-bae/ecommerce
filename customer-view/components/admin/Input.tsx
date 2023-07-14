@@ -11,7 +11,7 @@ interface ITest {
     marginLeft: number,
     register: object,
     errors: object,
-    onChangeColorName : (event: ChangeEvent<HTMLInputElement>,fieId:string) =>void
+    onChangeColorName : (event: ChangeEvent<HTMLInputElement>,fieId:string,type:string) =>void
 }
 
 function Input({names, title, width, marginLeft, register, errors,onChangeColorName}: ITest) {
@@ -32,7 +32,7 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
             select
             margin="normal"
             style={{width: `${width}%`, marginLeft: `${marginLeft}%`}}
-            // required
+            required
             id={title}
             label={labelTitle}
             {...register(title, {
@@ -40,7 +40,7 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
             })}
             error={Boolean(errors.test)}
             name={title}
-            onChange={onChangeColorName ?(e)=> onChangeColorName(e,'colorName'):null}
+            onChange={onChangeColorName ?(e)=> onChangeColorName(e,'colorName','add'):null}
             autoFocus
         >
 

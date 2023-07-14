@@ -3,10 +3,7 @@ package com.example.adminservice.module.domain.quantity.entity;
 import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,7 +16,7 @@ public class Quantity {
 
     private int quantity;
 
-    @OneToMany(mappedBy = "quantity")
+    @OneToMany(mappedBy = "quantity",cascade = CascadeType.ALL)
     private List<SizeQuantity> sizeQuantityList;
 
 }
