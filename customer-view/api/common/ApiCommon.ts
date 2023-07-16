@@ -15,6 +15,13 @@ const ApiCommon={
             'Content-Type': 'application/x-www-form-urlencoded',
             Authorization:`${accessToken}`
         }
+    }),
+    testAPI:axios.create({
+        baseURL:"/",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization:`${accessToken}`
+        }
     })
 }
 

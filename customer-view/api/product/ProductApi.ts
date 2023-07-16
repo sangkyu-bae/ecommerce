@@ -3,7 +3,8 @@ import {productRequest} from "@/api/common/Url";
 
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{
-        const {data} = await ApiCommon.loginAPI.post(productRequest.createProduct,product);
+        console.log(product)
+        const {data} = await ApiCommon.testAPI.post(productRequest.createProduct,product);
         return data;
     },
     readAllBrand: async ():Promise<any>=>{

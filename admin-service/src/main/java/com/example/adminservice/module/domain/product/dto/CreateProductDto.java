@@ -1,6 +1,10 @@
 package com.example.adminservice.module.domain.product.dto;
 
+import com.example.adminservice.module.domain.brand.entity.Brand;
+import com.example.adminservice.module.domain.category.entity.Category;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -8,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
+@AllArgsConstructor @NoArgsConstructor
 public class CreateProductDto {
 
     @NotBlank
@@ -22,9 +27,9 @@ public class CreateProductDto {
 
     private String productImage;
 
-    private String brandName;
+    private Brand brand;
 
-    private String categoryName;
+    private Category category;
 
     List<ColorDataDto> colorDataList;
 }

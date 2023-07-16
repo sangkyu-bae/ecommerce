@@ -44,49 +44,67 @@ function SizeContainer({
                     colorName: event.target.value
                 })
             } else if (fieId == 'colorSize') {
-                let {colorSize} = colorData;
-                const name = event.target.name
-                settingColorSize(name, checked);
+
+                const size = event.target.value
+                const id = event.target.name;
+                let sizeValue: Size = {
+                    size: parseInt(size),
+                    id: parseInt(id),
+                };
+
+                settingColorSize(sizeValue, checked);
             }
         }else if(type =='remove'){
             handleChangeColorData(colorData,'remove');
         }
     }
 
-    const settingColorSize = (name: string, checked: boolean) => {
+    const settingColorSize = (value: Size, checked: boolean) => {
+        console.log(value)
         let {colorSize} = colorData;
-        if (name == 'all') {
-            if (checked) {
-                const sizeQuantityData = sizes.map((size: { size: number }) => {
-                    return {
-                        size: size.size,
-                        quantity: 100
-                    };
-                });
-                colorSize = sizeQuantityData;
-            } else {
-                colorSize = [];
-            }
-        } else {
-            const sizeName: number = parseInt(name)
-            if (checked) {
-                colorSize.push({
-                    size: sizeName,
-                    quantity: 100
-                })
-            } else {
-                colorSize = colorSize.filter(color => color.size != sizeName);
-            }
+        if (checked) {
+            colorSize.push({
+                size: value,
+                quantity: 100
+            })
         }
         setColorData({
             ...colorData,
             colorSize
         })
+        // if (name == 'all') {
+        //     if (checked) {
+        //         const sizeQuantityData = sizes.map((size: { size: number }) => {
+        //             return {
+        //                 size: size.size,
+        //                 quantity: 100
+        //             };
+        //         });
+        //         colorSize = sizeQuantityData;
+        //     } else {
+        //         colorSize = [];
+        //     }
+        // } else {
+        //     const sizeName: number = parseInt(name)
+        //     if (checked) {
+        //         colorSize.push({
+        //             size: sizeName,
+        //             quantity: 100
+        //         })
+        //     } else {
+        //         colorSize = colorSize.filter(color => color.size != sizeName);
+        //     }
+        // }
+        // setColorData({
+        //     ...colorData,
+        //     colorSize
+        // })
     }
 
     useEffect(() => {
-        const {colorName,colorSize} = colorData;
-        if(colorName) handleChangeColorData(colorData,'add');
+        // const {colorName,colorSize} = colorData;
+        // if(colorName) handleChangeColorData(colorData,'add');
+        console.log(colorData)
     }, [colorData])
     return (
         <>
@@ -142,11 +160,12 @@ function SizeContainer({
                 />
                 {sizes.map((size, index: number) => (
                     <FormControlLabel
-                        key={index}
+                        key={size.id}
                         control={
                             <Checkbox
                                 name={size.size}
                                 color="primary"
+                                value={size.id}
                             />
                         }
                         label={size.size}

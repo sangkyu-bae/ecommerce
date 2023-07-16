@@ -22,14 +22,12 @@ import com.example.adminservice.module.domain.size.repository.SizeQuantityReposi
 import com.example.adminservice.module.domain.size.repository.SizeRepository;
 import com.example.adminservice.module.domain.size.service.SizeReadService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,38 +58,40 @@ public class ProductWriteService {
         product.setCreateAt(LocalDate.now());
         product.setUpdateAt(LocalDate.now());
 
-        product.setBrand(brandReadService.readBrand(createProductDto.getBrandName()));
-        product.setCategory(categoryReadService.readCategory(createProductDto.getCategoryName()));
+//        product.setBrand(brandReadService.readBrand(createProductDto.getBrand()));
+//        product.setCategory(categoryReadService.readCategory(createProductDto.getCategory()));
 
-        List<ColorProduct> colorProductList = new ArrayList<>();
         List<ColorDataDto> d= createProductDto.getColorDataList();
-        colorProductList = d.stream().map(dd-> test(dd)).collect(Collectors.toList());
+        List<ColorProduct> colorProductList  = d.stream()
+                .map(dd-> test(dd,product)).collect(Collectors.toList());
+
+        product.addColorProductAll(colorProductList);
 
         return productRepository.save(product);
     }
 
-    private ColorProduct test(ColorDataDto colorDataDto){
-        Color color = colorReadService.readColor(colorDataDto.getColorName());
-        List<SizeQuantity> sizeQuantityList= colorDataDto.getSizeAndQuantities().stream()
-                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity)).collect(Collectors.toList());
-
+    private ColorProduct test(ColorDataDto colorDataDto,Product product){
+//        Color color = colorReadService.readColor(colorDataDto.getColorName());
         ColorProduct colorProduct = ColorProduct.builder()
-                .color(color)
-                .sizeList(sizeQuantityList)
+                .color(colorDataDto.getColorName())
+                .product(product)
                 .build();
 
+        List<SizeQuantity> sizeQuantityList= colorDataDto.getColorSize().stream()
+                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity,colorProduct)).collect(Collectors.toList());
+
+        colorProduct.addSizeAll(sizeQuantityList);
         return colorProduct;
     }
 
-    private SizeQuantity toSizeQuantity(SizeAndQuantityDto sizeAndQuantityDto){
-        Size size =sizeReadService.readSize(sizeAndQuantityDto.getSize());
-        Quantity quantity = Quantity.builder()
-                .quantity(sizeAndQuantityDto.getQuantity())
-                .build();
+    private SizeQuantity toSizeQuantity(SizeAndQuantityDto sizeAndQuantityDto,ColorProduct colorProduct){
+//        Size size =sizeReadService.readSize(sizeAndQuantityDto.getSize());
+        Quantity quantity = quantityWriteService.creatQuantity(sizeAndQuantityDto.getQuantity());
 
         SizeQuantity sizeQuantity = SizeQuantity.builder()
                 .quantity(quantity)
-                .size(size)
+                .size(sizeAndQuantityDto.getSize())
+                .colorProduct(colorProduct)
                 .build();
 
         return sizeQuantity;

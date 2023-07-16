@@ -26,4 +26,12 @@ public class QuantityWriteService {
 
         return quantityRepository.save(createQuantity);
     }
+
+    public Quantity creatQuantity(int quantity){
+        Quantity createQuantity = Quantity.builder().
+                quantity(quantity).
+                build();
+
+        return quantityRepository.save(createQuantity);
+    }
 }

@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class SizeDto {
 
+    private Long id;
     @NotNull
-    int size;
+    private int size;
 }

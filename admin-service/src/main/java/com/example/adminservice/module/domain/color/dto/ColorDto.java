@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class ColorDto {
 
+    private Long id;
     @NotBlank
     @Length(min = 2,max = 20)
     private String name;

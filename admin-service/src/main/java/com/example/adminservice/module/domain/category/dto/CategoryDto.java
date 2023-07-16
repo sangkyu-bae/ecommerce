@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class CategoryDto {
 
+    private Long id;
     @NotBlank
     @Length(min = 2,max = 30)
     private String name;

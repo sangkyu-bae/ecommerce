@@ -32,4 +32,17 @@ public class ColorProduct {
         this.color = color;
         this.product = product;
     }
+
+    private void addSize(SizeQuantity sizeQuantity){
+        if(sizeList ==null){
+            sizeList =new ArrayList<>();
+        }
+        if(!sizeList.contains(sizeQuantity)){
+            this.sizeList.add(sizeQuantity);
+        }
+    }
+
+    public void addSizeAll(List<SizeQuantity> sizeQuantityList){
+        sizeQuantityList.stream().forEach(sizeQuantity -> addSize(sizeQuantity));
+    }
 }

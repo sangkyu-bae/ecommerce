@@ -41,4 +41,14 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ColorProduct> colorProductList = new ArrayList<>();
+
+    private void addColorProduct(ColorProduct colorProduct){
+        if(!colorProductList.contains(colorProduct)){
+            this.colorProductList.add(colorProduct);
+        }
+    }
+
+    public void addColorProductAll(List<ColorProduct> colorProductList){
+        colorProductList.stream().forEach(colorProduct -> addColorProduct(colorProduct));
+    }
 }

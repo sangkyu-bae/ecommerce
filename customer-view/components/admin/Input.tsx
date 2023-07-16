@@ -45,7 +45,7 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
         >
 
             {names && names.map((br, index) => (
-                <MenuItem key={index} value={br.name}>
+                <MenuItem key={br.id} value={br}>
                     {br.name}
                 </MenuItem>
             ))}

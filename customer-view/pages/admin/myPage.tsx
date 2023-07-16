@@ -61,8 +61,9 @@ function MyPage() {
     },[colorObject])
 
     const ref = useRef<any>(null);
-    const {register, handleSubmit, trigger, setValue, formState: {errors}} = useForm<ProductData>();
+    const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
+
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
@@ -72,10 +73,10 @@ function MyPage() {
         }
         const createProduct : ProductData = createProductObj(productData);
         console.log(createProduct)
-        // productMutation.mutate()
+        // productMutation.mutate(createProduct)
     };
     const createProductObj =(productData : ProductData) :ProductData=>{
-        productData.colorData = colorObject;
+        productData.colorDataList = colorObject;
 
         let tranceProductData: ProductData = Object.keys(productData).reduce((acc: ProductData, key: string) => {
             if (!key.startsWith('color_')) {

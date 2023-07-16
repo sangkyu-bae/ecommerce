@@ -62,11 +62,11 @@ public class ProductController {
     @PostMapping("/admin/product")
     public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody CreateProductDto createProductDto,
                                                             @RequestHeader("X-User-Id") String userId ,Errors errors) {
-//        if (errors.hasErrors()) {
-//            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
-//        }
-//        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
-//        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
+        if (errors.hasErrors()) {
+            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
+        }
+        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
+        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
         return ResponseEntity.ok().body(new ResponseProductDto());
     }
 
