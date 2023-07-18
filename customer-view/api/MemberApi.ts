@@ -1,5 +1,5 @@
 import ApiCommon from "@/api/common/ApiCommon";
-import {memberRequest} from "@/api/common/Url";
+import {memberRequest} from "@/constants/Url";
 const MemberApi={
     signUp: async (member:SignUpFormData)=>{
         const {data} = await ApiCommon.basicAPI.post(memberRequest.signUp,member);

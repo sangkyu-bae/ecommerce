@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
 import {useForm} from "react-hook-form";
 import {ProductApi} from "@/api/product/ProductApi";
-import Validation from "@/components/common/Validation";
+import Validation from "@/utils/Validation";
 import {FormGroup, MenuItem} from "@mui/material";
 import axios from "axios";
 import {QueryClient, useMutation, useQueries, useQuery, useQueryClient} from "@tanstack/react-query"

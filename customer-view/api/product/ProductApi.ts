@@ -1,5 +1,5 @@
 import ApiCommon from "@/api/common/ApiCommon";
-import {productRequest} from "@/api/common/Url";
+import {productRequest} from "@/constants/Url";
 
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{

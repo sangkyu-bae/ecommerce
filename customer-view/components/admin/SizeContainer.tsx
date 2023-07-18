@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import Input from "@/components/admin/Input";
 import RemoveIcon from '@mui/icons-material/Remove';
-import Validation from "@/components/common/Validation";
+import Validation from "@/utils/Validation";
 
 interface ISizeData {
     sizes: object[],
