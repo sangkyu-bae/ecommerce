@@ -16,6 +16,7 @@ Shoes Market은 신발을 사랑하는 사람들을 위한 쇼핑몰 홈페이�
   <li>QueryDsl</li>
   <li>MySql</li>
   <li>Redis</li>
+  <li>Kafka</li>
 </ul>
 
 **Front-End**
