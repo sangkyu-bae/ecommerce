@@ -12,11 +12,13 @@ Shoes Market은 신발을 사랑하는 사람들을 위한 쇼핑몰 홈페이�
 <ul>
   <li>Sprig boot</li>
   <li>Java 11</li>
+  <li>Kafka</li>
+  <li>Spring eureka</li>
+  <li>Spring GateWay</li>
   <li>Sprig Data JPA</li>
   <li>QueryDsl</li>
   <li>MySql</li>
   <li>Redis</li>
-  <li>Kafka</li>
 </ul>
 
 **Front-End**
