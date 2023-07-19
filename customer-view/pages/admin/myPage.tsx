@@ -170,7 +170,7 @@ function MyPage() {
                 <SideBar></SideBar>
                 <StyledContent>
                     <StyledMenu></StyledMenu>
-                    <StyledSetion>
+                    <StyledSetion isProduct={false}>
                         <div className="main-section">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <GridComponent title="🛒상품 등록"></GridComponent>

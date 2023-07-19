@@ -23,14 +23,18 @@ public class CreateProductDto {
     private int price;
 
     @NotBlank
+    @Length(min = 15)
     private String description;
 
     private String productImage;
 
+    @NotNull
     private Brand brand;
 
+    @NotNull
     private Category category;
 
+    @NotNull
     List<ColorDataDto> colorDataList;
 }
 

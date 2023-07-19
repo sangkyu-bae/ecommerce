@@ -18,6 +18,4 @@ public interface ProductRepository extends JpaRepository<Product,Long>, ProductR
 
     @EntityGraph(attributePaths = {"brand","category","colorProductList"})
     Optional<Product> findWithBrandAndCategoryAndColorProductById(long productId);
-
-
 }

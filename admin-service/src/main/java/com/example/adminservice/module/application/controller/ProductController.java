@@ -11,6 +11,7 @@ import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
+import com.example.adminservice.module.domain.product.validator.CreateProductDtoValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,22 +40,12 @@ public class ProductController {
     private final CategoryUseCase categoryUseCase;
     private final ColorUseCase colorUseCase;
     private final BrandUseCase brandUseCase;
+    private final CreateProductDtoValidator createProductDtoValidator;
+    @InitBinder("createProductDto")
+    public void initBinder(WebDataBinder webDataBinder){
+        webDataBinder.addValidators(createProductDtoValidator);
+    }
 
-//    /**
-//     * 상품 등록하기
-//     * @Params ProductDto(등록할 상품 정보)
-//     * @return ProductDto
-//     * */
-//    @PostMapping("/admin/product")
-//    public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody ProductDto createProductDto,
-//                @RequestHeader("X-User-Id") String userId ,Errors errors) {
-//        if (errors.hasErrors()) {
-//            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
-//        }
-//        ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
-//        log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
-//        return ResponseEntity.ok().body(productDto);
-//    }
     /**
      * 상품 등록하기
      * @Params ProductDto(등록할 상품 정보)
