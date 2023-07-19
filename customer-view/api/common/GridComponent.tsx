@@ -39,7 +39,8 @@ export const StyledContent = styled.div`
         display:flex;
     `
 export const StyledSetion = styled.div`
-    flex:0.8;
+    flex: ${(props) => props.isProduct ? '1':'0.8'};
+    // flex:0.8;
     .main-section{
         width : 80%;
         margin : 0 auto;
@@ -48,8 +49,18 @@ export const StyledSetion = styled.div`
         float: right;
         margin-top: 2em;
     }
+    .first-section{
+        flex:1;
+        width : 100%;
+        margin : 0 auto;
+    }
 `
 export const StyledMenu = styled.div`
     flex:0.2;
 `
+export const StyledContainer = styled.div`
+        display : flex;
+        width : 100%;
+        height : 100vh;
+    `
 export default GridComponent;
