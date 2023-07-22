@@ -56,10 +56,6 @@ function MyPage() {
         setColorObject(colorDatas);
     }
 
-    useEffect(()=>{
-        console.log(colorObject)
-    },[colorObject])
-
     const ref = useRef<any>(null);
     const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
@@ -170,7 +166,7 @@ function MyPage() {
                 <SideBar></SideBar>
                 <StyledContent>
                     <StyledMenu></StyledMenu>
-                    <StyledSetion isProduct={false}>
+                    <StyledSetion isproduct={false}>
                         <div className="main-section">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <GridComponent title="🛒상품 등록"></GridComponent>

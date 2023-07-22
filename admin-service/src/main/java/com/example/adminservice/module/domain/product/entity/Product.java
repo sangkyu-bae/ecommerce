@@ -34,9 +34,9 @@ public class Product {
     @Lob
     private String productImage;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)

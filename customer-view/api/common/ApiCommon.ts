@@ -16,7 +16,7 @@ const ApiCommon={
             Authorization:`${accessToken}`
         }
     }),
-    testAPI:axios.create({
+    loginJsonAPI:axios.create({
         baseURL:"/",
         headers: {
             'Content-Type': 'application/json',

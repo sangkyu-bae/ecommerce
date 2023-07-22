@@ -4,7 +4,7 @@ import {productRequest} from "@/constants/Url";
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{
         console.log(product)
-        const {data} = await ApiCommon.testAPI.post(productRequest.createProduct,product);
+        const {data} = await ApiCommon.loginJsonAPI.post(productRequest.createProduct,product);
         return data;
     },
     readAllBrand: async ():Promise<any>=>{
@@ -22,5 +22,10 @@ export const ProductApi = {
     readAllSize : async ()=>{
         const {data} = await ApiCommon.loginAPI.get(productRequest.readAllSize);
         return data;
+    },
+    readProduct: async ()=>{
+        const {data} = await ApiCommon.loginJsonAPI.get(productRequest.readProduct)
+        console.log(data)
+        return data
     }
 }

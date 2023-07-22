@@ -1,5 +1,8 @@
 package com.example.adminservice.module.domain.product.repository.querydsl;
 
+import com.example.adminservice.module.domain.brand.entity.QBrand;
+import com.example.adminservice.module.domain.category.entity.Category;
+import com.example.adminservice.module.domain.category.entity.QCategory;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.entity.QProduct;
 import com.querydsl.core.QueryResults;
@@ -22,12 +25,15 @@ public class ProductRepositoryExtensionImpl extends QuerydslRepositorySupport im
      * */
     @Override
     public Page<Product> findWithPageByAll(Pageable pageable) {
-        QProduct Product = QProduct.product;
+        QProduct qProduct = QProduct.product;
 
-        JPQLQuery<Product> query = from(Product);
+        JPQLQuery<Product> query = from(qProduct)
+                .leftJoin(qProduct.category, QCategory.category).fetchJoin()
+                .leftJoin(qProduct.brand, QBrand.brand).fetchJoin()
+                .distinct();
         JPQLQuery<Product> pageableQuery =getQuerydsl().applyPagination(pageable, query);
-
         QueryResults<Product> fetchResults = pageableQuery.fetchResults();
+
         return new PageImpl<>(fetchResults.getResults(),pageable,fetchResults.getTotal());
     }
 }

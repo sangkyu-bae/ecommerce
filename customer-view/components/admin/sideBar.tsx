@@ -31,7 +31,7 @@ function SideBar(props) {
     `;
 
     const StyledMenu = styled.div`
-        // font-size :${(props) => props.isFirst ? '1.2em' : '0.7em'} ;
+        // font-size :${(props) => props.$isfirst ? '1.2em' : '0.7em'} ;
         font-size :${(props) => props.isSecond ? '0.7em' : '1.2em'} ;
         padding : 0.5em;
         color : #fffaf0;
@@ -40,7 +40,7 @@ function SideBar(props) {
           color : blue;
           cursor: pointer;
         }
-        display : ${(props) => props.isFirst ? "block" : "none"};
+        display : ${(props) => props.$isfirst ? "block" : "none"};
        
     `
     const a = (index) => {
@@ -84,7 +84,7 @@ function SideBar(props) {
         ];
         return menuList.map((menu, index) =>
             <Link key={index} href={menu.url} style={{textDecoration: "none"}}>
-                <StyledMenu isFirst={true}>{menu.menuName}</StyledMenu>
+                <StyledMenu $isfirst={true}>{menu.menuName}</StyledMenu>
             </Link>
         );
 

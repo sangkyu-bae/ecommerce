@@ -39,7 +39,7 @@ export const StyledContent = styled.div`
         display:flex;
     `
 export const StyledSetion = styled.div`
-    flex: ${(props) => props.isProduct ? '1':'0.8'};
+    flex: ${(props) => props.$isproduct ? '1':'0.8'};
     // flex:0.8;
     .main-section{
         width : 80%;
