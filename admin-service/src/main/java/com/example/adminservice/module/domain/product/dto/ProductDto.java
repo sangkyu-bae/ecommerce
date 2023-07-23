@@ -60,10 +60,10 @@ public class ProductDto {
 //
 //    private int quantity;
 //
-//    public ProductDto(Product product){
-//        this.name = Objects.requireNonNull(product.getName());
-//        this.price = Objects.requireNonNull(product.getPrice());
-//        this.description = Objects.requireNonNull(product.getDescription());
-//        this.productImage = product.getProductImage();
-//    }
+    public ProductDto(Product product){
+        this.name = Objects.requireNonNull(product.getName());
+        this.price = Objects.requireNonNull(product.getPrice());
+        this.description = Objects.requireNonNull(product.getDescription());
+        this.productImage = product.getProductImage();
+    }
 }

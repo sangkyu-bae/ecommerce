@@ -8,6 +8,7 @@ import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
+import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
@@ -107,10 +108,12 @@ public class ProductController {
      * @return List<Prouct>
      * */
     @GetMapping("/admin")
-    public ResponseEntity<List<Product>> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
-        Page<Product> productPage = productUseCase.readProductWithPaging(pageable);
+//    public ResponseEntity<List<Product>> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
+    public ResponseEntity<ProductSearchDto> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
+//        Page<Product> productPage = productUseCase.readProductWithPaging(pageable);
+        ProductSearchDto productSearchDto = productUseCase.readProductWithPaging(pageable);
         log.info("상품이 조회 되었습니다");
-        return ResponseEntity.ok().body(productPage.getContent());
+        return ResponseEntity.ok().body(productSearchDto);
     }
 
     /**

@@ -8,6 +8,7 @@ import com.example.adminservice.module.domain.color.dto.ColorDto;
 import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.product.dto.ColorProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
+import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
@@ -92,6 +93,20 @@ public class ProductReadService {
     public Page<Product> readProduct(Pageable pageable){
         Page<Product> productPage = productRepository.findWithPageByAll(pageable);
         return productPage;
+    }
+
+    public ProductSearchDto readProductSearch(Page<Product> productPage){
+        List<ResponseProductDto> productDtoList = productPage.stream().map(this::toProductDtos).collect(Collectors.toList());
+
+        ProductSearchDto productSearchDto = ProductSearchDto.builder().
+                productList(productDtoList).
+                pageNumber(productPage.getNumber()).
+                pageSize(productPage.getSize()).
+                totalElements(productPage.getTotalElements()).
+                build();
+
+        return productSearchDto;
+
     }
 
 }
