@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -25,8 +26,8 @@ public class ColorProduct {
     @JoinColumn(name="product_id")
     private Product product;
 
-    @OneToMany(mappedBy = "colorProduct", cascade = CascadeType.ALL)
-    private List<SizeQuantity> sizeList;
+    @OneToMany(mappedBy = "colorProduct", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<SizeQuantity> sizeList;
 
     public ColorProduct(Color color,Product product){
         this.color = color;
@@ -34,12 +35,7 @@ public class ColorProduct {
     }
 
     private void addSize(SizeQuantity sizeQuantity){
-        if(sizeList ==null){
-            sizeList =new ArrayList<>();
-        }
-        if(!sizeList.contains(sizeQuantity)){
-            this.sizeList.add(sizeQuantity);
-        }
+        this.sizeList.add(sizeQuantity);
     }
 
     public void addSizeAll(List<SizeQuantity> sizeQuantityList){

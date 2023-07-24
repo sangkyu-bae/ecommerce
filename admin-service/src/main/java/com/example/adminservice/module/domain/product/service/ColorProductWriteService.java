@@ -21,7 +21,7 @@ public class ColorProductWriteService {
 
     public ColorProduct createColorProduct(ColorProduct colorProduct,SizeQuantity sizeQuantity ,Product product){
         colorProduct.setProduct(product);
-        colorProduct.setSizeList(List.of(sizeQuantity));
+//        colorProduct.setSizeList(List.of(sizeQuantity));
         return colorProductRepository.save(colorProduct);
     }
 }

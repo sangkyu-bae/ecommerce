@@ -108,9 +108,7 @@ public class ProductController {
      * @return List<Prouct>
      * */
     @GetMapping("/admin")
-//    public ResponseEntity<List<Product>> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
     public ResponseEntity<ProductSearchDto> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
-//        Page<Product> productPage = productUseCase.readProductWithPaging(pageable);
         ProductSearchDto productSearchDto = productUseCase.readProductWithPaging(pageable);
         log.info("상품이 조회 되었습니다");
         return ResponseEntity.ok().body(productSearchDto);
