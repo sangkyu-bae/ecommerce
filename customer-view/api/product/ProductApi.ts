@@ -25,7 +25,6 @@ export const ProductApi = {
     },
     readProduct: async ()=>{
         const {data} = await ApiCommon.loginJsonAPI.get(productRequest.readProduct)
-        console.log(data)
         return data
     }
 }

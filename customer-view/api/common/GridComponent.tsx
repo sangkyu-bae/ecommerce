@@ -54,6 +54,9 @@ export const StyledSetion = styled.div`
         width : 100%;
         margin : 0 auto;
     }
+    .flex{
+        display:flex;
+    }
 `
 export const StyledMenu = styled.div`
     flex:0.2;

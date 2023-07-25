@@ -12,8 +12,7 @@ import {ProductApi} from "../../api/product/ProductApi";
 function Product(props) {
     const { data, isLoading, isError, error } = useQuery(['data'], ProductApi.readProduct,{
         onSuccess: data => {
-            console.log(data.content);
-            console.log(data.total);
+            console.log(data);
         },
         onError: e => {
             console.log(e.message);
@@ -29,8 +28,12 @@ function Product(props) {
                     <div className="first-section">
                         <GridComponent title="👩‍🔧상품 관리"></GridComponent>
                         <div className="main-section">
-                            <CardComponent></CardComponent>
-                            <CardComponent></CardComponent>
+                            <div className="flex">
+                                <CardComponent></CardComponent>
+                                <CardComponent></CardComponent>
+                                <CardComponent></CardComponent>
+                                <CardComponent></CardComponent>
+                            </div>
                         </div>
                     </div>
                 </StyledSetion>

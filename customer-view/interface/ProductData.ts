@@ -4,5 +4,6 @@ interface ProductData{
     description : string,
     category : string,
     brand : string,
+    image :string,
     colorDataList : ColorData[]
 }
