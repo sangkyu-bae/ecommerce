@@ -56,6 +56,7 @@ export const StyledSetion = styled.div`
     }
     .flex{
         display:flex;
+        flex-wrap: wrap;
     }
 `
 export const StyledMenu = styled.div`

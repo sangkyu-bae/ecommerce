@@ -10,10 +10,10 @@ interface ProductData{
 
 
 interface ProductPageData{
+    pageNumber : number,
+    pageSize : number,
+    totalElements : number,
     productList : Product[],
-    brandDto : brandData,
-    categoryDto : Data,
-    colorProductDtoList : colorProductData[]
 }
 
 interface Product{
@@ -21,6 +21,9 @@ interface Product{
     price : number,
     productImage : string,
     description : string
+    brandDto : brandData,
+    categoryDto : Data,
+    colorProductDtoList : colorProductData[]
 }
 
 interface brandData extends Data{

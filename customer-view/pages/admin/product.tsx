@@ -8,10 +8,14 @@ import SendIcon from "@mui/icons-material/Send";
 import CardComponent from "@/components/common/CardComponent";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "../../api/product/ProductApi";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import {getTotalPageNumber} from "@/utils/CommonUtil";
 
 function Product(props) {
     const [productData, setProductData] = useState<ProductPageData | undefined>(undefined);
-    const { data, isLoading, isError, error } = useQuery(['data'], ProductApi.readProduct,{
+    const [pageCnt, setPageCnt] = useState<number>(0);
+    const {data, isLoading, isError, error} = useQuery(['data'], ProductApi.readProduct, {
         onSuccess: data => {
             setProductData(data);
         },
@@ -20,9 +24,10 @@ function Product(props) {
         }
     });
 
-    useEffect(()=>{
-        console.log(productData)
-    },[productData])
+    useEffect(() => {
+        if(productData)
+            setPageCnt(getTotalPageNumber(productData?.totalElements,productData?.pageSize))
+    }, [productData])
     return (
         <StyledContainer>
             <SideBar></SideBar>
@@ -31,18 +36,26 @@ function Product(props) {
                     <div className="first-section">
                         <GridComponent title="👩‍🔧상품 관리"></GridComponent>
                         <div className="main-section">
-                            {
-                                productData &&
-                                productData.productList.map((product,index)=>{
-                                    return(
-                                        <div className="flex" key={index}>
-                                            <CardComponent></CardComponent>
-                                            <CardComponent></CardComponent>
-                                            <CardComponent></CardComponent>
-                                        </div>
+                            <div className="flex">
+                                {
+                                    productData &&
+                                    productData.productList.map((product, index) => {
+                                        return (
+                                            <>
+                                                <CardComponent
+                                                    key={index}
+                                                    product={product}
+                                                    />
+                                            </>
                                         )
-                                })
-                            }
+                                    })
+                                }
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center' ,marginTop:'3%'}}>
+                                {
+                                    pageCnt != 0 && <Pagination count={pageCnt} />
+                                }
+                            </div>
 
                         </div>
                     </div>
