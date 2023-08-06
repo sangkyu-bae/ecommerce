@@ -15,8 +15,12 @@ import {getTotalPageNumber} from "@/utils/CommonUtil";
 function Product(props) {
     const [productData, setProductData] = useState<ProductPageData | undefined>(undefined);
     const [pageCnt, setPageCnt] = useState<number>(0);
-    const {data, isLoading, isError, error} = useQuery(['data'], ProductApi.readProduct, {
+    const [page,setPage] = useState<number>(1);
+    const {data, isLoading, isError, error,refetch} = useQuery(
+        ['data'],
+        () => ProductApi.readProduct(page), {
         onSuccess: data => {
+            // console.log(data)
             setProductData(data);
         },
         onError: e => {
@@ -28,6 +32,16 @@ function Product(props) {
         if(productData)
             setPageCnt(getTotalPageNumber(productData?.totalElements,productData?.pageSize))
     }, [productData])
+
+    const changePageData =e=>{
+        const pageTarget = parseInt(e.target.outerText);
+        setPage(pageTarget)
+    }
+
+    useEffect(()=>{
+        console.log(page)
+        refetch()
+    },[page])
     return (
         <StyledContainer>
             <SideBar></SideBar>
@@ -53,7 +67,7 @@ function Product(props) {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center' ,marginTop:'3%'}}>
                                 {
-                                    pageCnt != 0 && <Pagination count={pageCnt} />
+                                    pageCnt != 0 && <Pagination count={pageCnt} onChange={(e)=>changePageData(e)}/>
                                 }
                             </div>
 

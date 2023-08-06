@@ -3,7 +3,6 @@ import {productRequest} from "@/constants/Url";
 
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{
-        console.log(product)
         const {data} = await ApiCommon.loginJsonAPI.post(productRequest.createProduct,product);
         return data;
     },
@@ -23,8 +22,8 @@ export const ProductApi = {
         const {data} = await ApiCommon.loginAPI.get(productRequest.readAllSize);
         return data;
     },
-    readProduct: async ()=>{
-        const {data} = await ApiCommon.loginJsonAPI.get(productRequest.readProduct)
+    readProduct: async (pageNum : number)=>{
+        const {data} = await ApiCommon.loginJsonAPI.get(`${productRequest.readProduct}/${pageNum}`)
         return data
     }
 }

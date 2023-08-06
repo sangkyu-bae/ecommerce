@@ -59,17 +59,19 @@ function MyPage() {
     const ref = useRef<any>(null);
     const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<ProductData>();
     const onSubmit = (productData: ProductData) => {
-
+        console.log(productData)
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
         }
         if(!validation.colorValidate(colorObject)){
            alert("색상정보를 확인하세요.");
+           return;
         }
         const createProduct : ProductData = createProductObj(productData);
+
         console.log(createProduct)
-        // productMutation.mutate(createProduct)
+        productMutation.mutate(createProduct)
     };
     const createProductObj =(productData : ProductData) :ProductData=>{
         productData.colorDataList = colorObject;

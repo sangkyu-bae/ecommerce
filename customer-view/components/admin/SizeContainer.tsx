@@ -35,6 +35,7 @@ function SizeContainer({
         colorName: '',
         colorSize: []
     })
+    const [type, setType] =useState<string>("");
     const onChangeColorData = (event: ChangeEvent<HTMLInputElement>, fieId: string, type:string) => {
         const checked = event.target.checked
         if(type=='add'){
@@ -45,66 +46,42 @@ function SizeContainer({
                 })
             } else if (fieId == 'colorSize') {
 
-                const size = event.target.value
-                const id = event.target.name;
+                const size = event.target.name
+                const id = event.target.value;
                 let sizeValue: Size = {
                     size: parseInt(size),
                     id: parseInt(id),
                 };
-
                 settingColorSize(sizeValue, checked);
             }
+            setType("add")
         }else if(type =='remove'){
             handleChangeColorData(colorData,'remove');
+            setType("remove")
         }
     }
 
     const settingColorSize = (value: Size, checked: boolean) => {
-        console.log(value)
         let {colorSize} = colorData;
         if (checked) {
             colorSize.push({
                 size: value,
                 quantity: 100
             })
+        }else {
+            colorSize = colorSize.filter(obj => obj.size.id != value.id);
         }
         setColorData({
             ...colorData,
             colorSize
         })
-        // if (name == 'all') {
-        //     if (checked) {
-        //         const sizeQuantityData = sizes.map((size: { size: number }) => {
-        //             return {
-        //                 size: size.size,
-        //                 quantity: 100
-        //             };
-        //         });
-        //         colorSize = sizeQuantityData;
-        //     } else {
-        //         colorSize = [];
-        //     }
-        // } else {
-        //     const sizeName: number = parseInt(name)
-        //     if (checked) {
-        //         colorSize.push({
-        //             size: sizeName,
-        //             quantity: 100
-        //         })
-        //     } else {
-        //         colorSize = colorSize.filter(color => color.size != sizeName);
-        //     }
-        // }
-        // setColorData({
-        //     ...colorData,
-        //     colorSize
-        // })
     }
 
     useEffect(() => {
-        // const {colorName,colorSize} = colorData;
-        // if(colorName) handleChangeColorData(colorData,'add');
-        console.log(colorData)
+        console.log(type)
+        if(type =='add' && colorData){
+            handleChangeColorData(colorData,'add');
+        }
     }, [colorData])
     return (
         <>

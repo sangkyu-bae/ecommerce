@@ -16,6 +16,7 @@ import com.example.adminservice.module.domain.product.validator.CreateProductDto
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -107,8 +108,11 @@ public class ProductController {
      * 메인 화면 상품 Paging
      * @return List<Prouct>
      * */
-    @GetMapping("/admin")
-    public ResponseEntity<ProductSearchDto> readProduct(@PageableDefault(size=9,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
+    @GetMapping("/admin/page/{pageNum}")
+    public ResponseEntity<ProductSearchDto> readProduct(@PathVariable("pageNum") int pageNum){
+        int pageSize = 6;
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize, Sort.Direction.ASC, "id");
+
         ProductSearchDto productSearchDto = productUseCase.readProductWithPaging(pageable);
         log.info("상품이 조회 되었습니다");
         return ResponseEntity.ok().body(productSearchDto);

@@ -25,5 +25,5 @@ export const productRequest : ProductRequest={
     readAllCategory : `${productURL}/categorys`,
     readAllColor : `${productURL}/colors`,
     readAllSize : `${productURL}/sizes`,
-    readProduct :`${productURL}`
+    readProduct :`${productURL}/page`
 }

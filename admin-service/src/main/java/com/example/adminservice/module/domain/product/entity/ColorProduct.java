@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,10 +36,13 @@ public class ColorProduct {
     }
 
     private void addSize(SizeQuantity sizeQuantity){
+        if(sizeList == null){
+            sizeList = new HashSet<>();
+        }
         this.sizeList.add(sizeQuantity);
     }
 
-    public void addSizeAll(List<SizeQuantity> sizeQuantityList){
+    public void addSizeAll(Set<SizeQuantity> sizeQuantityList){
         sizeQuantityList.stream().forEach(sizeQuantity -> addSize(sizeQuantity));
     }
 }
