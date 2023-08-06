@@ -1,6 +1,6 @@
 const basicUrl : string ="http://localhost:8000";
 const userURL : string = `${basicUrl}/user`
-const productURL : string = `${basicUrl}/admin`
+export const productURL : string = `${basicUrl}/admin`
 
 type MemberRequest={
     signUp:string;
@@ -12,7 +12,7 @@ type ProductRequest={ createProduct : string,
     readAllCategory :string,
     readAllColor : string,
     readAllSize : string,
-    readProduct : string
+    readProduct : string,
 }
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
@@ -25,5 +25,5 @@ export const productRequest : ProductRequest={
     readAllCategory : `${productURL}/categorys`,
     readAllColor : `${productURL}/colors`,
     readAllSize : `${productURL}/sizes`,
-    readProduct :`${productURL}/page`
+    readProduct :`${productURL}/page`,
 }

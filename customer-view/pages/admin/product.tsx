@@ -11,6 +11,7 @@ import {ProductApi} from "../../api/product/ProductApi";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import {getTotalPageNumber} from "@/utils/CommonUtil";
+import Link from "next/link";
 
 function Product(props) {
     const [productData, setProductData] = useState<ProductPageData | undefined>(undefined);
@@ -20,7 +21,7 @@ function Product(props) {
         ['data'],
         () => ProductApi.readProduct(page), {
         onSuccess: data => {
-            // console.log(data)
+            console.log(data)
             setProductData(data);
         },
         onError: e => {
@@ -39,7 +40,6 @@ function Product(props) {
     }
 
     useEffect(()=>{
-        console.log(page)
         refetch()
     },[page])
     return (
@@ -56,10 +56,23 @@ function Product(props) {
                                     productData.productList.map((product, index) => {
                                         return (
                                             <>
-                                                <CardComponent
-                                                    key={index}
-                                                    product={product}
+                                                <Link
+                                                    style={{
+                                                        textDecoration: 'none',
+                                                        color: 'inherit',
+                                                        width:'32%',
+                                                        margin:'0.5em'
+                                                     }}
+                                                    href={{
+                                                        pathname: `/admin/product/[productId]`,
+                                                        query: { productId: `${product.id}` },
+                                                    }}
+                                                >
+                                                    <CardComponent
+                                                        key={index}
+                                                        product={product}
                                                     />
+                                                </Link>
                                             </>
                                         )
                                     })

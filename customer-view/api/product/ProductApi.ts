@@ -1,5 +1,5 @@
 import ApiCommon from "@/api/common/ApiCommon";
-import {productRequest} from "@/constants/Url";
+import {productRequest, productURL} from "@/constants/Url";
 
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{
@@ -25,5 +25,11 @@ export const ProductApi = {
     readProduct: async (pageNum : number)=>{
         const {data} = await ApiCommon.loginJsonAPI.get(`${productRequest.readProduct}/${pageNum}`)
         return data
+    },
+    readDetailProduct : async (productId : number) => {
+        const url =`${productURL}/${productId}`;
+        console.log(url)
+        const {data} = await ApiCommon.loginJsonAPI.get(url);
+        return data;
     }
 }

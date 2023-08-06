@@ -16,13 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ResponseProductDto extends ProductDto {
 
-//    private String name;
-//
-//    private int price;
-//
-//    private String description;
-//
-//    private String productImage;
+    private Long id;
 
     private BrandDto brandDto;
 
