@@ -45,13 +45,17 @@ public class ProductWriteService {
         product.setCreateAt(LocalDate.now());
         product.setUpdateAt(LocalDate.now());
 
-        List<ColorDataDto> dataList= createProductDto.getColorDataList();
+        toColorProduct(createProductDto,product);
+
+        return productRepository.save(product);
+    }
+
+    private void toColorProduct(CreateProductDto productDto, Product product){
+        List<ColorDataDto> dataList= productDto.getColorDataList();
         List<ColorProduct> colorProductList  = dataList.stream()
                 .map(data-> setColorProductData(data,product)).collect(Collectors.toList());
 
         product.addColorProductAll(colorProductList);
-
-        return productRepository.save(product);
     }
 
     private ColorProduct setColorProductData(ColorDataDto colorDataDto, Product product){
@@ -86,9 +90,11 @@ public class ProductWriteService {
         productRepository.deleteById(productId);
     }
 
-    public Product updateProduct(Product product, ProductDto updateProductDto) {
+    public Product updateProduct(Product product, CreateProductDto updateProductDto) {
         product.setUpdateAt(LocalDate.now());
         modelMapper.map(updateProductDto, product);
+
+        toColorProduct(updateProductDto,product);
         return product;
     }
 

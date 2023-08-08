@@ -87,19 +87,20 @@ public class ProductController {
         log.info("{}가 {} 상품을 조회하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }
+
     /**
      * 상품 수정
      * @param productId (상품 고유 Id) updateProductDto (수정 상품 정보)
      * @return ProductDto
      * */
     @PutMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") long productId,
-                                                    @Valid @RequestBody ProductDto updateProductDto, Errors errors,
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") Product product,
+                                                    @Valid @RequestBody CreateProductDto updateProductDto, Errors errors,
                                                     @RequestHeader("X-User-Id") String userId){
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"updateProduct");
         }
-        ProductDto productDto = productUseCase.updateProduct(productId,updateProductDto);
+        ProductDto productDto = productUseCase.updateProduct(product,updateProductDto);
         log.info("{}가 {} 상품을 수정 하였습니다", userId, productDto.getName());
         return ResponseEntity.ok().body(productDto);
     }

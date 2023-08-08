@@ -15,19 +15,6 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 public class CreateProductDto extends ProductDto{
 
-//    @NotBlank
-//    @Length(min = 2,max = 30)
-//    private String name;
-//
-//    @NotNull
-//    private int price;
-//
-//    @NotBlank
-//    @Length(min = 15)
-//    private String description;
-//
-//    private String productImage;
-
     @NotNull
     private Brand brand;
 

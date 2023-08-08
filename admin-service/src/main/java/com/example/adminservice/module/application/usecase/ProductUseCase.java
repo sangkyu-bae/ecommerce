@@ -24,32 +24,27 @@ public class ProductUseCase {
     private final ProductWriteService productWriteService;
     private final ProductReadService productReadService;
 
-//    public ProductDto createProductExecute(ProductDto productDto) {
     public ResponseProductDto createProductExecute(CreateProductDto productDto) {
         Product product = productWriteService.createProduct(productDto);
         ResponseProductDto toProductDto= productReadService.toProductDtos(product);
 
         return toProductDto;
     }
-
-//    public ProductDto readProduct(long productId){
     public ResponseProductDto readProduct(long productId){
         Product product = productReadService.readProduct(productId);
         ResponseProductDto toProductDto= productReadService.toProductDtos(product);
-//        ProductDto productDto = productReadService.toProductDto(product);
 
         return toProductDto;
     }
 
-    public ProductDto updateProduct(long productId, ProductDto updateProductDto){
-        Product product = productReadService.readProduct(productId);
+
+    public ProductDto updateProduct(Product product, CreateProductDto updateProductDto){
         product = productWriteService.updateProduct(product,updateProductDto);
         ProductDto productDto = productReadService.toProductDto(product);
 
         return productDto;
     }
 
-//    public Page<Product> readProductWithPaging(Pageable pageable){
     public ProductSearchDto readProductWithPaging(Pageable pageable){
         Page<Product> productPage = productReadService.readProduct(pageable);
         ProductSearchDto productSearchDto = productReadService.readProductSearch(productPage);

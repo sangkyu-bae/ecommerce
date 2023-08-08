@@ -58,6 +58,12 @@ export const StyledSetion = styled.div`
         display:flex;
         flex-wrap: wrap;
     }
+    .flex .image{
+        flex:0.2;
+    }
+    .flex .section{
+        flex:0.8;
+    }
 `
 export const StyledMenu = styled.div`
     flex:0.2;
