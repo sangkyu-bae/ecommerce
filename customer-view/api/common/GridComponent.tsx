@@ -59,10 +59,17 @@ export const StyledSetion = styled.div`
         flex-wrap: wrap;
     }
     .flex .image{
-        flex:0.2;
+        flex:0.5;
     }
     .flex .section{
-        flex:0.8;
+        flex:0.5;
+    }
+    .flex .bold{
+        font-weight: bold;
+        font-size : 1.2em;
+    }
+    .bold .gray{
+        color : gray;
     }
 `
 export const StyledMenu = styled.div`

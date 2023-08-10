@@ -10,13 +10,15 @@ import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "../../api/product/ProductApi";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import {getTotalPageNumber} from "@/utils/CommonUtil";
+// import {getTotalPageNumber} from "@/utils/CommonUtil";
 import Link from "next/link";
+import Util from "@/utils/CommonUtil";
 
 function Product(props) {
     const [productData, setProductData] = useState<ProductPageData | undefined>(undefined);
     const [pageCnt, setPageCnt] = useState<number>(0);
     const [page,setPage] = useState<number>(1);
+    const util = new Util();
     const {data, isLoading, isError, error,refetch} = useQuery(
         ['data'],
         () => ProductApi.readProduct(page), {
@@ -30,8 +32,11 @@ function Product(props) {
     });
 
     useEffect(() => {
-        if(productData)
-            setPageCnt(getTotalPageNumber(productData?.totalElements,productData?.pageSize))
+        if(productData){
+            const pageCnt = util.getTotalPageNumber(productData.totalElements, productData.pageSize);
+            setPageCnt(pageCnt);
+        }
+
     }, [productData])
 
     const changePageData =e=>{
