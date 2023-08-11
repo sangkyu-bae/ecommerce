@@ -1,16 +1,12 @@
-import {useRouter} from 'next/router';
+import React, {useEffect, useState} from 'react';
 import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/api/common/GridComponent";
 import SideBar from "@/components/admin/sideBar";
-import CardComponent from "@/components/common/CardComponent";
-import Pagination from "@mui/material/Pagination";
-import React, {useEffect, useState} from "react";
+import ProductInfo from "@/components/admin/ProductInfo";
+import {useRouter} from "next/router";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/api/product/ProductApi";
-import Util from "@/utils/CommonUtil";
-import ProductInfo from "@/components/admin/ProductInfo";
 
-
-const ProductDetail = () => {
+const ProductUpdate =()=>{
     const router = useRouter();
     const {productId}: number = router.query;
     const [productData, setProductData] = useState<Product | undefined>(undefined);
@@ -27,24 +23,23 @@ const ProductDetail = () => {
         }
     )
 
-    return (
+    useEffect(() => {
+        console.log(productData)
+    }, [productData])
+    return(
         <StyledContainer>
             <SideBar></SideBar>
             <StyledContent>
                 <StyledSetion $isproduct={true}>
                     <div className="first-section">
-                        <GridComponent title={`📰${productData?.name}`}></GridComponent>
+                        <GridComponent title={`🛒상품 수정`}></GridComponent>
                         <div className="main-section">
-                            {
-                                productData != undefined && <ProductInfo productData={productData}></ProductInfo>
-                            }
+                            
                         </div>
                     </div>
                 </StyledSetion>
             </StyledContent>
         </StyledContainer>
-
-    );
-};
-
-export default ProductDetail;
+    )
+}
+export default ProductUpdate;

@@ -43,7 +43,7 @@ interface colorProductData{
 
 interface sizeQuantityData{
     quantity : number,
-    sizeData : sizeData
+    sizeDto : sizeData
 }
 interface sizeData{
     id : number,

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Util from "@/utils/CommonUtil";
+import SelectBox from "@/components/common/SelectBox";
+import Button from "@mui/material/Button";
 
-function ProductInfo(productData :Product) {
+function ProductInfo({productData}:{Product}) {
     const util = new Util();
-
+    useEffect(()=>{
+        console.log(productData)
+    },[productData])
     return (
         <>
             <div className="flex">
@@ -26,7 +30,14 @@ function ProductInfo(productData :Product) {
                         <span className="bold"><span>가격</span> <span className="gray">{productData?.price && util.addCommasToNumber(productData.price)}</span></span>
                     </div>
                     <div>
-                        <span className="bold"><span>색상/사이즈 수량</span> <span className="gray">...</span></span>
+                        <div className="bold">
+                            {
+                                productData && <SelectBox colorProduct={productData.colorProductDtoList}></SelectBox>
+                            }
+                            <Button variant="outlined"  sx={{marginTop:2}}>
+                                수정하기
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,6 +46,7 @@ function ProductInfo(productData :Product) {
                     productData?.description &&
                     <div dangerouslySetInnerHTML={{__html: productData.description}}></div>
                 }
+
             </div>
         </>
     );
