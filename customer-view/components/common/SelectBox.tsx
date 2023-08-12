@@ -6,8 +6,6 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {useEffect} from "react";
 function SelectBox({colorProduct}:{colorProduct:colorProductData[]}) {
-
-    console.log('?')
     useEffect(()=>{
         console.log(colorProduct)
     },[colorProduct])
@@ -30,7 +28,6 @@ function SelectBox({colorProduct}:{colorProduct:colorProductData[]}) {
                     {
                         colorProduct.map(colorProduct=>{
                             return colorProduct.sizeQuantityDtoList.map(sizeQuantity=>{
-                                // return <option key={sizeQuantity.sizeDto.id}>색상 {colorProduct.colorDto.name}/사이즈 {sizeQuantity.sizeDto.size} /수량 {sizeQuantity.quantity}</option>
                                 return   <MenuItem key ={sizeQuantity.sizeDto.id} >색상 {colorProduct.colorDto.name}/사이즈 {sizeQuantity.sizeDto.size} /수량 {sizeQuantity.quantity}</MenuItem>
                             })
 

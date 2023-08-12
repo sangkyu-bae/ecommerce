@@ -5,6 +5,7 @@ import ProductInfo from "@/components/admin/ProductInfo";
 import {useRouter} from "next/router";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/api/product/ProductApi";
+import ProductAdmin from "@/components/admin/ProductAdmin";
 
 const ProductUpdate =()=>{
     const router = useRouter();
@@ -16,6 +17,7 @@ const ProductUpdate =()=>{
             enabled: !!productId,
             onSuccess: data => {
                 setProductData(data);
+                console.log(data)
             },
             onError: e => {
                 console.log(e.message);
@@ -23,23 +25,14 @@ const ProductUpdate =()=>{
         }
     )
 
-    useEffect(() => {
-        console.log(productData)
-    }, [productData])
     return(
-        <StyledContainer>
-            <SideBar></SideBar>
-            <StyledContent>
-                <StyledSetion $isproduct={true}>
-                    <div className="first-section">
-                        <GridComponent title={`🛒상품 수정`}></GridComponent>
-                        <div className="main-section">
-                            
-                        </div>
-                    </div>
-                </StyledSetion>
-            </StyledContent>
-        </StyledContainer>
+        productData &&
+        <ProductAdmin
+            isCreate={false}
+            title="🛒상품 수정"
+            buttonTitle="상품수정"
+            productData ={productData}
+        />
     )
 }
 export default ProductUpdate;

@@ -30,7 +30,6 @@ public class MemberController {
     @PostMapping("/sign-up")
     public ResponseEntity<MemberDto> joinMember(@RequestBody @Valid JoinMemberDto joinMemberDto, Errors errors){
         if(errors.hasErrors()){
-//            return ResponseEntity.badRequest().body("회원가입 형식이 잘못됨");
             throw new ValidationException("회원가입 형식이 잘못되었습니다.");
         }
         MemberDto memberDto=memberUseCase.joinMemberExecute(joinMemberDto);;

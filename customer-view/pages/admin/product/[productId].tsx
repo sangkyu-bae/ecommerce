@@ -37,7 +37,7 @@ const ProductDetail = () => {
                         <div className="main-section">
                             {
                                 productData != undefined && <ProductInfo productData={productData}></ProductInfo>
-                            }
+                            }ㅅ
                         </div>
                     </div>
                 </StyledSetion>
