@@ -2,12 +2,15 @@ import React, {useEffect} from 'react';
 import Util from "@/utils/CommonUtil";
 import SelectBox from "@/components/common/SelectBox";
 import Button from "@mui/material/Button";
+import {useRouter} from "next/router";
 
 function ProductInfo({productData}:{Product}) {
     const util = new Util();
-    useEffect(()=>{
-        console.log(productData)
-    },[productData])
+    const router = useRouter();
+    const handleUpdateButtonClick = () => {
+        const {productId}: number = router.query;
+        router.push(`/admin/product/update/${productId}`)
+    }
     return (
         <>
             <div className="flex">
@@ -34,7 +37,7 @@ function ProductInfo({productData}:{Product}) {
                             {
                                 productData && <SelectBox colorProduct={productData.colorProductDtoList}></SelectBox>
                             }
-                            <Button variant="outlined"  sx={{marginTop:2}}>
+                            <Button variant="outlined"  sx={{marginTop:2}} onClick={handleUpdateButtonClick}>
                                 수정하기
                             </Button>
                         </div>

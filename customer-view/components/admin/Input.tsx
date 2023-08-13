@@ -4,27 +4,23 @@ import {MenuItem} from "@mui/material";
 import {string} from "prop-types";
 import Validation from "@/utils/Validation";
 
-interface ITest {
+type ITest = {
     names: object[],
     title: string,
     width: number,
     marginLeft: number,
     register: object,
     errors: object,
-    onChangeColorName : (event: ChangeEvent<HTMLInputElement>,fieId:string,type:string) =>void
+    onChangeColorName : (event: ChangeEvent<HTMLInputElement>,fieId:string,type:string) =>void,
+    value : number
 }
 
-function Input({names, title, width, marginLeft, register, errors,onChangeColorName}: ITest) {
+function Input({names, title, width, marginLeft, register, errors,onChangeColorName,value}: ITest) {
     const validation = Validation;
     const [labelTitle,setLabelTitle]=useState<String>("");
     useEffect(() => {
         setLabelTitle( title.includes("_") ? title.split("_")[0] : title);
     }, [])
-
-    useEffect(()=>{
-
-    },[])
-
 
     return (
 
@@ -42,10 +38,11 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
             name={title}
             onChange={onChangeColorName ?(e)=> onChangeColorName(e,'colorName','add'):null}
             autoFocus
+            value={value != 0 && value}
         >
 
             {names && names.map((br, index) => (
-                <MenuItem key={br.id} value={br}>
+                <MenuItem key={br.id} value={br.id}>
                     {br.name}
                 </MenuItem>
             ))}

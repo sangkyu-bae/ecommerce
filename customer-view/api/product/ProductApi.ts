@@ -1,9 +1,16 @@
 import ApiCommon from "@/api/common/ApiCommon";
 import {productRequest, productURL} from "@/constants/Url";
+import {useRouter} from "next/router";
 
 export const ProductApi = {
     createProduct: async (product:ProductData)=>{
         const {data} = await ApiCommon.loginJsonAPI.post(productRequest.createProduct,product);
+        return data;
+    },
+    updateProduct: async ({product, productId}:{ProductData,number})=>{
+        console.log(product)
+        console.log(productId)
+        const {data} = await ApiCommon.loginJsonAPI.put(`${productURL}/${productId}`,product);
         return data;
     },
     readAllBrand: async ():Promise<any>=>{

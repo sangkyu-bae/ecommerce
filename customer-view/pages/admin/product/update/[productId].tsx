@@ -31,7 +31,7 @@ const ProductUpdate =()=>{
             isCreate={false}
             title="🛒상품 수정"
             buttonTitle="상품수정"
-            productData ={productData}
+            severProductData={productData}
         />
     )
 }

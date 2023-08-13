@@ -7,7 +7,8 @@ type MemberRequest={
     signIn:string;
 }
 
-type ProductRequest={ createProduct : string,
+type ProductRequest={
+    createProduct : string,
     readAllBrand : string,
     readAllCategory :string,
     readAllColor : string,

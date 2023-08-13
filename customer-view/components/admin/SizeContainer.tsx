@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Input from "@/components/admin/Input";
 import RemoveIcon from '@mui/icons-material/Remove';
 import Validation from "@/utils/Validation";
+import AdminFunc from "@/components/admin/AdminFunc";
 
 interface ISizeData {
     sizes: object[],
@@ -16,7 +17,8 @@ interface ISizeData {
     setSizeColor: (element: string) => void,
     errors: object,
     register: object
-    handleChangeColorData: ( colorData: ColorData, type: string) => void
+    handleChangeColorData: (colorData: ColorData, type: string) => void,
+    colorProductData : colorProductData | null
 }
 
 const validation = Validation;
@@ -29,16 +31,25 @@ function SizeContainer({
                            index,
                            register,
                            errors,
-                           handleChangeColorData
+                           handleChangeColorData,
+                           colorProductData
                        }: ISizeData) {
+    const adminFunc = new AdminFunc();
     const [colorData, setColorData] = useState<ColorData>({
         colorName: '',
         colorSize: []
     })
-    const [type, setType] =useState<string>("");
-    const onChangeColorData = (event: ChangeEvent<HTMLInputElement>, fieId: string, type:string) => {
+
+    useEffect(()=>{
+        if(colorProductData){
+            setColorData(adminFunc.toColorData(colorProductData));
+            setType('add')
+        }
+    },[])
+    const [type, setType] = useState<string>("");
+    const onChangeColorData = (event: ChangeEvent<HTMLInputElement>, fieId: string, type: string) => {
         const checked = event.target.checked
-        if(type=='add'){
+        if (type == 'add') {
             if (fieId == 'colorName') {
                 setColorData({
                     ...colorData,
@@ -55,8 +66,8 @@ function SizeContainer({
                 settingColorSize(sizeValue, checked);
             }
             setType("add")
-        }else if(type =='remove'){
-            handleChangeColorData(colorData,'remove');
+        } else if (type == 'remove') {
+            handleChangeColorData(colorData, 'remove');
             setType("remove")
         }
     }
@@ -68,7 +79,7 @@ function SizeContainer({
                 size: value,
                 quantity: 100
             })
-        }else {
+        } else {
             colorSize = colorSize.filter(obj => obj.size.id != value.id);
         }
         setColorData({
@@ -79,10 +90,11 @@ function SizeContainer({
 
     useEffect(() => {
         console.log(type)
-        if(type =='add' && colorData){
-            handleChangeColorData(colorData,'add');
+        if (type == 'add' && colorData) {
+            handleChangeColorData(colorData, 'add');
         }
     }, [colorData])
+
     return (
         <>
             <Input names={colors}
@@ -92,6 +104,7 @@ function SizeContainer({
                    register={register}
                    errors={errors}
                    onChangeColorName={onChangeColorData}
+                   value={colorProductData != null ? colorProductData.colorDto.id : 0}
             />
             {
                 colorCnt == index + 1 && colorCnt < colors.length ?
@@ -115,7 +128,7 @@ function SizeContainer({
                         color="error"
                         onClick={(e) => {
                             setSizeColor('remove')
-                            onChangeColorData(e, '','remove')
+                            onChangeColorData(e, '', 'remove')
                         }}
                     >
                         remove
@@ -133,7 +146,7 @@ function SizeContainer({
                         />
                     }
                     label='all'
-                    onChange={(e) => onChangeColorData(e, 'colorSize','add')}
+                    onChange={(e) => onChangeColorData(e, 'colorSize', 'add')}
                 />
                 {sizes.map((size, index: number) => (
                     <FormControlLabel
@@ -143,10 +156,11 @@ function SizeContainer({
                                 name={size.size}
                                 color="primary"
                                 value={size.id}
+                                checked={colorProductData?.sizeQuantityDtoList.find(sizeDto =>sizeDto.sizeDto.id == parseInt(size.id))}
                             />
                         }
                         label={size.size}
-                        onChange={(e) => onChangeColorData(e, 'colorSize','add')}
+                        onChange={(e) => onChangeColorData(e, 'colorSize', 'add')}
                     />
                 ))}
             </div>

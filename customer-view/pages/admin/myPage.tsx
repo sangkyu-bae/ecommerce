@@ -42,7 +42,7 @@ function MyPage() {
         <ProductAdmin isCreate={true}
                       title="🛒상품 등록"
                       buttonTitle="상품등록"
-                      productData={emptyProduct}
+                      severProductData={emptyProduct}
         />
     )
 
