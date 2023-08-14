@@ -4,14 +4,12 @@ import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.product.dto.ColorDataDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
-import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.SizeAndQuantityDto;
 import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
 import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import com.example.adminservice.module.domain.quantity.service.QuantityWriteService;
-import com.example.adminservice.module.domain.size.entity.Size;
 import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import com.example.adminservice.module.domain.size.repository.SizeQuantityRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -60,13 +59,23 @@ public class ProductWriteService {
 
     private ColorProduct setColorProductData(ColorDataDto colorDataDto, Product product){
         ColorProduct colorProduct = ColorProduct.builder()
-                .color(colorDataDto.getColorName())
+                .color(colorDataDto.getColorDto())
                 .product(product)
                 .build();
 
-        Set<SizeQuantity> sizeQuantityList= colorDataDto.getColorSize().stream()
-                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity,colorProduct)).collect(Collectors.toSet());
+//        Set<SizeQuantity> sizeQuantityList= colorDataDto.getSizeQuantityDtoList().stream()
+//                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity,colorProduct)).collect(Collectors.toSet());
 
+        Set<SizeQuantity> sizeQuantityList= new HashSet<>();
+        for(SizeAndQuantityDto sizeAndQuantityDto :colorDataDto.getSizeQuantityDtoList()){
+            SizeQuantity quantity = toSizeQuantity(sizeAndQuantityDto,colorProduct);
+            if(sizeQuantityList.contains(quantity)){
+                System.out.println("?");
+            }
+            sizeQuantityList.add(quantity);
+
+        }
+        System.out.println(sizeQuantityList.size());
         colorProduct.setSizeList(sizeQuantityList);
         return colorProduct;
     }
@@ -76,7 +85,7 @@ public class ProductWriteService {
 
         SizeQuantity sizeQuantity = SizeQuantity.builder()
                 .quantity(quantity)
-                .size(sizeAndQuantityDto.getSize())
+                .size(sizeAndQuantityDto.getSizeDto())
                 .colorProduct(colorProduct)
                 .build();
 

@@ -11,6 +11,7 @@ import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
 import com.example.adminservice.module.domain.product.entity.Product;
+import com.example.adminservice.module.domain.product.service.ProductReadService;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
 import com.example.adminservice.module.domain.product.validator.CreateProductDtoValidator;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,7 @@ public class ProductController {
     private final ColorUseCase colorUseCase;
     private final BrandUseCase brandUseCase;
     private final CreateProductDtoValidator createProductDtoValidator;
+    private final ProductReadService productReadService;
     @InitBinder("createProductDto")
     public void initBinder(WebDataBinder webDataBinder){
         webDataBinder.addValidators(createProductDtoValidator);
@@ -94,9 +96,11 @@ public class ProductController {
      * @return ProductDto
      * */
     @PutMapping("/admin/{productId}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") Product product,
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("productId") Long productId,
+//                                                    @PathVariable("productId") Product product,
                                                     @Valid @RequestBody CreateProductDto updateProductDto, Errors errors,
                                                     @RequestHeader("X-User-Id") String userId){
+        Product product = productReadService.readProduct(productId);
         if (errors.hasErrors()) {
             throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"updateProduct");
         }

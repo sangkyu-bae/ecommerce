@@ -22,8 +22,12 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
         setLabelTitle( title.includes("_") ? title.split("_")[0] : title);
     }, [])
 
-    return (
+    const [componentValue,setComponentValue] = useState(value);
+    const changeValue =(e)=>{
+       setComponentValue(e.target.value)
+    }
 
+    return (
         <TextField
             select
             margin="normal"
@@ -36,9 +40,12 @@ function Input({names, title, width, marginLeft, register, errors,onChangeColorN
             })}
             error={Boolean(errors.test)}
             name={title}
-            onChange={onChangeColorName ?(e)=> onChangeColorName(e,'colorName','add'):null}
+            onChange={onChangeColorName ?(e)=> {
+                onChangeColorName(e,'colorName','add');
+                changeValue(e)
+            }: (e) => changeValue(e)}
             autoFocus
-            value={value != 0 && value}
+            value={componentValue}
         >
 
             {names && names.map((br, index) => (

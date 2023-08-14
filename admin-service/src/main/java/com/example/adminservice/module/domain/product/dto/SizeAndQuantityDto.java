@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor @AllArgsConstructor
 public class SizeAndQuantityDto {
-//    private int size;
-    private Size size;
+    private Size sizeDto;
     private int quantity;
 }

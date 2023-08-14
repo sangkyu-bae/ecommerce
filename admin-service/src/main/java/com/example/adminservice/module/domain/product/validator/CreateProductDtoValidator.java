@@ -4,13 +4,10 @@ import com.example.adminservice.module.domain.brand.repository.BrandRepository;
 import com.example.adminservice.module.domain.category.repository.CategoryRepository;
 import com.example.adminservice.module.domain.color.repository.ColorRepository;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
-import com.example.adminservice.module.domain.size.repository.SizeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -39,7 +36,7 @@ public class CreateProductDtoValidator implements Validator {
         }
 
         createProductDto.getColorDataList().stream()
-                .filter(colorDataDto -> !colorRepository.existsById(colorDataDto.getColorName().getId()))
+                .filter(colorDataDto -> !colorRepository.existsById(colorDataDto.getColorDto().getId()))
                 .findAny()
                 .ifPresent(colorDataDto -> errors.rejectValue("color", "Invalid.Color"));
     }

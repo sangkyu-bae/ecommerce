@@ -34,9 +34,9 @@ function MyPage() {
         price: 0,
         productImage: "",
         description: "",
-        brandDto: {},
-        categoryDto: {},
-        colorProductDtoList: []
+        brand: {},
+        category: {},
+        colorDataList: []
     };
     return (
         <ProductAdmin isCreate={true}

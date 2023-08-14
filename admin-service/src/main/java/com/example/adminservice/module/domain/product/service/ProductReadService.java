@@ -5,12 +5,10 @@ import com.example.adminservice.module.common.error.ErrorCode;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
 import com.example.adminservice.module.domain.category.dto.CategoryDto;
 import com.example.adminservice.module.domain.color.dto.ColorDto;
-import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.product.dto.ColorProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
-import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.product.repository.ProductRepository;
 import com.example.adminservice.module.domain.size.dto.SizeDto;
@@ -50,11 +48,11 @@ public class ProductReadService {
         ResponseProductDto responseProductDto = null;
         try {
             responseProductDto = modelMapper.map(product,ResponseProductDto.class);
-            responseProductDto.setBrandDto(modelMapper.map(product.getBrand(), BrandDto.class));
-            responseProductDto.setCategoryDto(modelMapper.map(product.getCategory(), CategoryDto.class));
+            responseProductDto.setBrand(modelMapper.map(product.getBrand(), BrandDto.class));
+            responseProductDto.setCategory(modelMapper.map(product.getCategory(), CategoryDto.class));
 
             List<ColorProductDto> colorProductDtoList = getColorProductDtoList(product);
-            responseProductDto.setColorProductDtoList(colorProductDtoList);
+            responseProductDto.setColorDataList(colorProductDtoList);
         } catch (Exception exception) {
             log.error("ProductDto 변환 실패하였습니다. Error toProductDto()");
             throw new UnknownFormatConversionException("could Not Convert Member to toProductDto");

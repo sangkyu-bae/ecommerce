@@ -10,6 +10,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor @NoArgsConstructor
 public class ColorDataDto {
-    private Color colorName;
-    List<SizeAndQuantityDto> colorSize;
+    private Color colorDto;
+    List<SizeAndQuantityDto> sizeQuantityDtoList;
 }

@@ -5,6 +5,7 @@ import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -24,4 +25,19 @@ public class SizeQuantity {
 
     @ManyToOne
     private ColorProduct colorProduct;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SizeQuantity that = (SizeQuantity) o;
+
+        return id != null && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

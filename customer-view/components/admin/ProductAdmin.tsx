@@ -14,6 +14,8 @@ import {ProductApi} from "@/api/product/ProductApi";
 import Validation from "@/utils/Validation";
 import SizeContainer from "@/components/admin/SizeContainer";
 import {useRouter} from "next/router";
+import AdminFunc from "@/components/admin/AdminFunc";
+
 
 const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit'), {ssr: false});
 const StyledContainer = styled.div`
@@ -30,12 +32,15 @@ type ProductAdmin ={
 
 function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin) {
     const router = useRouter();
-    const {productId}: number = router.query;
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
-    const cnt : number = isCreate ? 1 : severProductData.colorProductDtoList.length;
+    const cnt : number = isCreate ? 1 : severProductData.colorDataList.length;
+    // const cnt : number =1
     const [colorCnt, setColorCnt] = useState<number>(cnt);
     const [colorObject, setColorObject] = useState<ColorData[]>([]);
-
+    const adminFunc = new AdminFunc();
+    useEffect(()=>{
+        console.log(severProductData)
+    },[severProductData])
     useEffect(()=>{
         if(!isCreate){
             const data : string =severProductData.description;
@@ -81,10 +86,11 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
             return;
         }
         const createProduct: ProductData = createProductObj(productData);
-
+        const tt :Product = adminFunc.toProductData(createProduct);
+        console.log(tt)
         isCreate ?
-            productMutation.mutate(productData):
-            productMutation.mutate({ product: createProduct, productId: severProductData.id});
+            productMutation.mutate(tt):
+            productMutation.mutate({ product: tt, productId: severProductData.id});
     };
     const createProductObj = (productData: ProductData): ProductData => {
         productData.colorDataList = colorObject;
@@ -175,7 +181,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
                     handleChangeColorData={handleChangeColorData}
                     register={register}
                     errors={errors}
-                    colorProductData = {!isCreate ? severProductData.colorProductDtoList[index] : null}
+                    colorProductData = {!isCreate ? severProductData.colorDataList[index] : null}
                 />
             ));
         };
@@ -226,7 +232,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
                                        marginLeft={2}
                                        register={register}
                                        errors={errors}
-                                       value = {!isCreate ? severProductData.categoryDto.id : 0}
+                                       value = {!isCreate ? severProductData.category.id : 0}
                                 />
 
                                 <Input names={brand}
@@ -235,7 +241,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
                                        marginLeft={2}
                                        register={register}
                                        errors={errors}
-                                       value = {!isCreate ? severProductData.brandDto.id : 0 }
+                                       value = {!isCreate ? severProductData.brand.id : 0 }
                                 />
                                 {
                                     renderComponents()

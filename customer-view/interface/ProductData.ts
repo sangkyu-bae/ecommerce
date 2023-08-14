@@ -2,8 +2,8 @@ interface ProductData{
     name : string,
     price : number,
     description : string,
-    category : string,
-    brand : string,
+    category : number,
+    brand : number,
     image :string,
     colorDataList : ColorData[]
 }
@@ -22,9 +22,10 @@ interface Product{
     price : number,
     productImage : string,
     description : string
-    brandDto : brandData,
-    categoryDto : Data,
-    colorProductDtoList : colorProductData[]
+    brand : brandData,
+    category : Data,
+    colorDataList : colorProductData[]
+    // colorDataList : ColorData[]
 }
 
 interface brandData extends Data{
@@ -36,16 +37,16 @@ interface colorProductData{
 }
 
 interface sizeQuantityData{
-    quantity : number,
+    quantity : number
     sizeDto : sizeData
-}
-
-interface sizeData{
-    id : number,
-    size: number
 }
 
 interface Data{
     id : number,
     name :string
+}
+
+interface sizeData{
+    id : number,
+    size: number
 }

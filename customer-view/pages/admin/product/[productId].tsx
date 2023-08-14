@@ -36,8 +36,8 @@ const ProductDetail = () => {
                         <GridComponent title={`📰${productData?.name}`}></GridComponent>
                         <div className="main-section">
                             {
-                                productData != undefined && <ProductInfo productData={productData}></ProductInfo>
-                            }ㅅ
+                                productData != undefined && <ProductInfo severProductData={productData}></ProductInfo>
+                            }
                         </div>
                     </div>
                 </StyledSetion>

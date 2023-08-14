@@ -3,13 +3,14 @@ import {productRequest, productURL} from "@/constants/Url";
 import {useRouter} from "next/router";
 
 export const ProductApi = {
-    createProduct: async (product:ProductData)=>{
+    createProduct: async (product:Product)=>{
+        console.log(product)
         const {data} = await ApiCommon.loginJsonAPI.post(productRequest.createProduct,product);
         return data;
     },
-    updateProduct: async ({product, productId}:{ProductData,number})=>{
-        console.log(product)
+    updateProduct: async ({product, productId}:{Product,number})=>{
         console.log(productId)
+        console.log(product)
         const {data} = await ApiCommon.loginJsonAPI.put(`${productURL}/${productId}`,product);
         return data;
     },
