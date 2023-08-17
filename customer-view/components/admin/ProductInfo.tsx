@@ -4,18 +4,21 @@ import SelectBox from "@/components/common/SelectBox";
 import Button from "@mui/material/Button";
 import {useRouter} from "next/router";
 
-function ProductInfo({productData}:{Product}) {
+function ProductInfo({severProductData}:{Product}) {
     const util = new Util();
     const router = useRouter();
     const handleUpdateButtonClick = () => {
         const {productId}: number = router.query;
         router.push(`/admin/product/update/${productId}`)
     }
+    useEffect(()=>{
+        console.log((severProductData))
+    },[])
     return (
         <>
             <div className="flex">
                 <div className="image">
-                    {productData?.productImage ? productData.productImage : "image가 없습니다."}
+                    {severProductData?.productImage ? severProductData.productImage : "image가 없습니다."}
                 </div>
                 <div className="section">
                     <div>
@@ -25,17 +28,17 @@ function ProductInfo({productData}:{Product}) {
                     <div>
                                         <span className="bold"><span>브랜드 / 카테고리</span>
                                             <span className="gray">
-                                                {productData?.brandDto && productData.brandDto.name} / {productData?.categoryDto && productData.categoryDto.name}
+                                                {severProductData?.brand && severProductData.brand.name} / {severProductData?.category && severProductData.category.name}
                                             </span>
                                         </span>
                     </div>
                     <div>
-                        <span className="bold"><span>가격</span> <span className="gray">{productData?.price && util.addCommasToNumber(productData.price)}</span></span>
+                        <span className="bold"><span>가격</span> <span className="gray">{severProductData?.price && util.addCommasToNumber(severProductData.price)}</span></span>
                     </div>
                     <div>
                         <div className="bold">
                             {
-                                productData && <SelectBox colorProduct={productData.colorProductDtoList}></SelectBox>
+                                severProductData && <SelectBox colorProduct={severProductData.colorDataList}></SelectBox>
                             }
                             <Button variant="outlined"  sx={{marginTop:2}} onClick={handleUpdateButtonClick}>
                                 수정하기
@@ -46,8 +49,8 @@ function ProductInfo({productData}:{Product}) {
             </div>
             <div>
                 {
-                    productData?.description &&
-                    <div dangerouslySetInnerHTML={{__html: productData.description}}></div>
+                    severProductData?.description &&
+                    <div dangerouslySetInnerHTML={{__html: severProductData.description}}></div>
                 }
 
             </div>

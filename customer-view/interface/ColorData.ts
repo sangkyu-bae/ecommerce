@@ -1,5 +1,5 @@
 interface ColorData {
-    colorName : string;
+    colorDto : Data;
     colorSize : SizeQuantityData[]
 }
 interface SizeQuantityData {

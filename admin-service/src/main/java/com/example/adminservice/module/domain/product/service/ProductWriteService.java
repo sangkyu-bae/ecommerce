@@ -63,19 +63,11 @@ public class ProductWriteService {
                 .product(product)
                 .build();
 
-//        Set<SizeQuantity> sizeQuantityList= colorDataDto.getSizeQuantityDtoList().stream()
-//                .map(sizeAndQuantity-> toSizeQuantity(sizeAndQuantity,colorProduct)).collect(Collectors.toSet());
-
         Set<SizeQuantity> sizeQuantityList= new HashSet<>();
         for(SizeAndQuantityDto sizeAndQuantityDto :colorDataDto.getSizeQuantityDtoList()){
             SizeQuantity quantity = toSizeQuantity(sizeAndQuantityDto,colorProduct);
-            if(sizeQuantityList.contains(quantity)){
-                System.out.println("?");
-            }
             sizeQuantityList.add(quantity);
-
         }
-        System.out.println(sizeQuantityList.size());
         colorProduct.setSizeList(sizeQuantityList);
         return colorProduct;
     }
@@ -102,9 +94,9 @@ public class ProductWriteService {
     public Product updateProduct(Product product, CreateProductDto updateProductDto) {
         product.setUpdateAt(LocalDate.now());
         modelMapper.map(updateProductDto, product);
-
         toColorProduct(updateProductDto,product);
-        return product;
+
+        return productRepository.save(product);
     }
 
 }

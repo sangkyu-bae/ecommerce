@@ -2,15 +2,13 @@ package com.example.adminservice.module.domain.product.entity;
 
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.category.entity.Category;
-import com.example.adminservice.module.domain.color.entity.Color;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.example.adminservice.module.domain.quantity.entity.Quantity;
+import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -49,6 +47,42 @@ public class Product {
     }
 
     public void addColorProductAll(List<ColorProduct> colorProductList){
-        colorProductList.stream().forEach(colorProduct -> addColorProduct(colorProduct));
+        for(ColorProduct colorProduct:colorProductList){
+            boolean isColor = this.checkColor(colorProduct);
+            if(!isColor) addColorProduct(colorProduct);
+        }
+//        colorProductList.stream().forEach(colorProduct -> addColorProduct(colorProduct));
+    }
+
+    public boolean checkColor(ColorProduct colorProduct){
+        Map<Long,SizeQuantity> quantityMap =new HashMap<>();
+        boolean isColor = false;
+        for(ColorProduct nowProduct:this.colorProductList){
+            quantityMap.isEmpty();
+            Long nowProductColorId = nowProduct.getColor().getId();
+            Long updateProductColorId = colorProduct.getColor().getId();
+
+            if(nowProductColorId==updateProductColorId){
+                isColor =true;
+                for(SizeQuantity sizeQuantity:nowProduct.getSizeList()){
+                    quantityMap.put(sizeQuantity.getSize().getId(),sizeQuantity);
+                }
+
+                for(SizeQuantity sizeQuantity :colorProduct.getSizeList()){
+                    Long sizeId =sizeQuantity.getSize().getId();
+                    int quantity = sizeQuantity.getQuantity().getQuantity();
+
+                    if(quantityMap.containsKey(sizeId)){
+                        SizeQuantity updateSizeQuantity = quantityMap.get(sizeId);
+                        Quantity updateQuantity = updateSizeQuantity.getQuantity();
+                        updateQuantity.setQuantity(quantity);
+                    }else{
+                        nowProduct.addSize(sizeQuantity);
+                    }
+                }
+            }
+        }
+        
+        return isColor;
     }
 }

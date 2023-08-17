@@ -34,19 +34,27 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
     const router = useRouter();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const cnt : number = isCreate ? 1 : severProductData.colorDataList.length;
-    // const cnt : number =1
     const [colorCnt, setColorCnt] = useState<number>(cnt);
     const [colorObject, setColorObject] = useState<ColorData[]>([]);
     const adminFunc = new AdminFunc();
-    useEffect(()=>{
-        console.log(severProductData)
-    },[severProductData])
     useEffect(()=>{
         if(!isCreate){
             const data : string =severProductData.description;
             setValue("description", data, {shouldValidate: true});
         }
     },[])
+
+    const a=()=>{
+        console.log()
+        const a= watch("description")
+        const b= watch("name")
+        const c= watch("price")
+        const d= watch("category")
+        const e= watch("brand")
+        const g= watch("color_0")
+        const f= watch("color_1")
+        debugger
+    }
 
     const handleChangeColorData = (colorData: ColorData, type: string) => {
         if (type == 'add') {
@@ -57,9 +65,9 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
     }
 
     const addColorData = (colorData: ColorData) => {
-        let color = colorObject.filter(obj => obj.colorName == colorData.colorName);
+        let color = colorObject.filter(obj => obj.colorDto.name == colorData.colorDto.name);
         if (color) {
-            let colorDatas = colorObject.filter(obj => obj.colorName != colorData.colorName);
+            let colorDatas = colorObject.filter(obj => obj.colorDto.name != colorData.colorDto.name);
             colorDatas.push(colorData);
             setColorObject(colorDatas)
         } else {
@@ -68,7 +76,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
     }
 
     const removeData = (colorData: ColorData) => {
-        let colorDatas = colorObject.filter(obj => obj.colorName != colorData.colorName);
+        let colorDatas = colorObject.filter(obj => obj.colorDto.name != colorData.colorDto.name);
         setColorObject(colorDatas);
     }
 
@@ -77,6 +85,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
 
 
     const onSubmit = (productData: ProductData) => {
+        debugger
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
@@ -85,9 +94,15 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
             alert("색상정보를 확인하세요.");
             return;
         }
-        const createProduct: ProductData = createProductObj(productData);
+
+        let createProduct :ProductData = productData;
+        productData.colorDataList = colorObject;
+        debugger
+        if(isCreate){
+            createProduct = createProductObj(productData);
+        }
+
         const tt :Product = adminFunc.toProductData(createProduct);
-        console.log(tt)
         isCreate ?
             productMutation.mutate(tt):
             productMutation.mutate({ product: tt, productId: severProductData.id});

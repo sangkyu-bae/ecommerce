@@ -5,6 +5,7 @@ class AdminFunc{
     }
     toColorData= (colorProductData:colorProductData) : ColorData=>{
         let sizeQuantityDataList :SizeQuantityData[];
+        console.log(colorProductData)
         const colorName :string =colorProductData.colorDto.name;
         sizeQuantityDataList = colorProductData.sizeQuantityDtoList
             .map(sizeQuantity=>{
@@ -18,10 +19,16 @@ class AdminFunc{
                 return parseSizeQuntitiy
             })
 
+        const id = colorProductData.colorDto.id;
+        const name = colorProductData.colorDto.name;
         const colorData : ColorData={
-            colorName:colorName,
+            colorDto:{
+                id:id,
+                name:name
+            },
             colorSize : sizeQuantityDataList
         }
+        console.log(colorData)
         return colorData
     }
     toProductData = (productData :ProductData):Product => {
@@ -42,6 +49,8 @@ class AdminFunc{
             }, // 예시로 0으로 초기화, 필요에 따라 수정해주세요
             colorDataList: [],
         };
+
+        console.log(productData)
         product.name ='sdkjskj';
         product.price = productData.price;
         product.productImage = productData.image;
@@ -57,8 +66,8 @@ class AdminFunc{
         const sizeQuantity :sizeQuantityData[] = this.toSizeQuantity(colorData.colorSize);
         let colorProduct :colorProductData= {
             colorDto:{
-                name:'',
-                id : colorData.colorName !=NaN ? parseInt(colorData.colorName):0
+                name:colorData.colorDto.name,
+                id : colorData.colorDto.id
             },
             sizeQuantityDtoList:sizeQuantity
         }

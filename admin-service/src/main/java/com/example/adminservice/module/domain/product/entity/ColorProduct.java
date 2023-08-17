@@ -23,19 +23,24 @@ public class ColorProduct {
     @JoinColumn(name = "color_id")
     private Color color;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="product_id")
     private Product product;
 
     @OneToMany(mappedBy = "colorProduct", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<SizeQuantity> sizeList;
+    private Set<SizeQuantity> sizeList=new HashSet<>();
 
     public ColorProduct(Color color,Product product){
         this.color = color;
         this.product = product;
     }
 
-    private void addSize(SizeQuantity sizeQuantity){
+    public void removeSize(SizeQuantity sizeQuantity){
+        if(sizeList.contains(sizeQuantity)){
+            sizeList.remove(sizeQuantity);
+        }
+    }
+    public void addSize(SizeQuantity sizeQuantity){
         if(sizeList == null){
             sizeList = new HashSet<>();
         }
@@ -45,4 +50,5 @@ public class ColorProduct {
     public void addSizeAll(Set<SizeQuantity> sizeQuantityList){
         sizeQuantityList.stream().forEach(sizeQuantity -> addSize(sizeQuantity));
     }
+
 }

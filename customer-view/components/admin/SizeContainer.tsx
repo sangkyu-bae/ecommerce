@@ -36,7 +36,11 @@ function SizeContainer({
                        }: ISizeData) {
     const adminFunc = new AdminFunc();
     const [colorData, setColorData] = useState<ColorData>({
-        colorName: '',
+        // colorName: '',
+        colorDto:{
+            id:0,
+            name:''
+        },
         colorSize: []
     })
 
@@ -51,9 +55,16 @@ function SizeContainer({
         const checked = event.target.checked
         if (type == 'add') {
             if (fieId == 'colorName') {
+                // setColorData({
+                //     ...colorData,
+                //     colorName: event.target.value
+                // })
                 setColorData({
                     ...colorData,
-                    colorName: event.target.value
+                    colorDto:{
+                        id:parseInt(event.target.value),
+                        name:''
+                    }
                 })
             } else if (fieId == 'colorSize') {
 
@@ -89,7 +100,6 @@ function SizeContainer({
     }
 
     useEffect(() => {
-        console.log(type)
         if (type == 'add' && colorData) {
             handleChangeColorData(colorData, 'add');
         }

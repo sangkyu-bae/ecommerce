@@ -45,13 +45,6 @@ const Validation = {
             message: '상품 가격은 100원 이상입니다.'
         }
     },
-    test: {
-        required: '입력이볅',
-        minLength: {
-            value: 3,
-            message: '상품 가격은 100원 이상입니다.'
-        }
-    },
     colorValidate: function (colorData: ColorData[]) {
         if(colorData.length == 0){
             return false;
