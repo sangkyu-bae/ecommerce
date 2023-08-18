@@ -47,42 +47,14 @@ public class Product {
     }
 
     public void addColorProductAll(List<ColorProduct> colorProductList){
-        for(ColorProduct colorProduct:colorProductList){
-            boolean isColor = this.checkColor(colorProduct);
-            if(!isColor) addColorProduct(colorProduct);
-        }
-//        colorProductList.stream().forEach(colorProduct -> addColorProduct(colorProduct));
+        resetColorProduct();
+        colorProductList.stream().forEach(colorProduct -> addColorProduct(colorProduct));
     }
 
-    public boolean checkColor(ColorProduct colorProduct){
-        Map<Long,SizeQuantity> quantityMap =new HashMap<>();
-        boolean isColor = false;
-        for(ColorProduct nowProduct:this.colorProductList){
-            quantityMap.isEmpty();
-            Long nowProductColorId = nowProduct.getColor().getId();
-            Long updateProductColorId = colorProduct.getColor().getId();
-
-            if(nowProductColorId==updateProductColorId){
-                isColor =true;
-                for(SizeQuantity sizeQuantity:nowProduct.getSizeList()){
-                    quantityMap.put(sizeQuantity.getSize().getId(),sizeQuantity);
-                }
-
-                for(SizeQuantity sizeQuantity :colorProduct.getSizeList()){
-                    Long sizeId =sizeQuantity.getSize().getId();
-                    int quantity = sizeQuantity.getQuantity().getQuantity();
-
-                    if(quantityMap.containsKey(sizeId)){
-                        SizeQuantity updateSizeQuantity = quantityMap.get(sizeId);
-                        Quantity updateQuantity = updateSizeQuantity.getQuantity();
-                        updateQuantity.setQuantity(quantity);
-                    }else{
-                        nowProduct.addSize(sizeQuantity);
-                    }
-                }
-            }
+    private void resetColorProduct(){
+        if(!this.colorProductList.isEmpty()){
+            this.colorProductList.clear();
         }
-        
-        return isColor;
     }
+
 }

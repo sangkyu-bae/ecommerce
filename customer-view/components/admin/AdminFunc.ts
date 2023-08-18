@@ -51,7 +51,7 @@ class AdminFunc{
         };
 
         console.log(productData)
-        product.name ='sdkjskj';
+        product.name = productData.name;
         product.price = productData.price;
         product.productImage = productData.image;
         product.description = productData.description;

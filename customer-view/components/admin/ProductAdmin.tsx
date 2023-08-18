@@ -85,7 +85,6 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
 
 
     const onSubmit = (productData: ProductData) => {
-        debugger
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
@@ -97,7 +96,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
 
         let createProduct :ProductData = productData;
         productData.colorDataList = colorObject;
-        debugger
+
         if(isCreate){
             createProduct = createProductObj(productData);
         }

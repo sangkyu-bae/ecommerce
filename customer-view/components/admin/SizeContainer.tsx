@@ -104,7 +104,6 @@ function SizeContainer({
             handleChangeColorData(colorData, 'add');
         }
     }, [colorData])
-
     return (
         <>
             <Input names={colors}
@@ -166,7 +165,9 @@ function SizeContainer({
                                 name={size.size}
                                 color="primary"
                                 value={size.id}
-                                checked={colorProductData?.sizeQuantityDtoList.find(sizeDto =>sizeDto.sizeDto.id == parseInt(size.id))}
+                                checked={colorProductData?.sizeQuantityDtoList.some(
+                                    (sizeQuantityDto) => sizeQuantityDto.sizeDto.id === size.id
+                                )}
                             />
                         }
                         label={size.size}

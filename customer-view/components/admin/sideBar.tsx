@@ -43,35 +43,8 @@ function SideBar(props) {
         display : ${(props) => props.$isfirst ? "block" : "none"};
        
     `
-    const a = (index) => {
-        console.log(index)
-    }
 
     const menuList = () => {
-        // const menuDatas : MenuData[] = [
-        //     {
-        //         firstName:'상품관리',
-        //         secondMenuNames:['상품등록', '상품확인']
-        //     },
-        //     {
-        //         firstName:'회원관리',
-        //         secondMenuNames:['회원로그','회원탈퇴']
-        //     }
-        // ]
-        // const b : string[]=['상품등록','상품관리'];
-        // const d = menuDatas.map((menuData,index)=>{
-        //     const dd:string = menuData.firstName;
-        //     const g:string[] =menuData.secondMenuNames;
-        //     const cc = g.map((dg,index)=><StyledMenu key={index} isFirst={false} isSecond={true}>{dg}</StyledMenu>);
-        //
-        //     return <StyledMenu key={index} isFirst={true} isSecond={false} onClick={()=>a(index)}>
-        //         {dd}
-        //         {cc}
-        //     </StyledMenu>
-        // })
-        // return d;
-
-        // const menuList : string[]=['상품관리','상품등록'];
         const menuList: MenuData[] = [
             {
                 menuName:'상품관리',
@@ -93,7 +66,6 @@ function SideBar(props) {
         <StyledSideBar>
             {menuList()}
         </StyledSideBar>
-
     );
 }
 
