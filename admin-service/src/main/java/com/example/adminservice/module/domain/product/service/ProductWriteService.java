@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.product.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.product.dto.ColorDataDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.SizeAndQuantityDto;
@@ -86,7 +86,7 @@ public class ProductWriteService {
 
     public void removeProduct(long productId) {
         if (!productRepository.existsById(productId)) {
-            throw new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"removeProduct");
+            throw new CustomException(ErrorCodet.PRODUCT_NOT_FOUND,"removeProduct");
         }
         productRepository.deleteById(productId);
     }

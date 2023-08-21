@@ -29,7 +29,7 @@ const ProductDetail = () => {
 
     return (
         <StyledContainer>
-            <SideBar></SideBar>
+            <SideBar type={'admin'}></SideBar>
             <StyledContent>
                 <StyledSetion $isproduct={true}>
                     <div className="first-section">

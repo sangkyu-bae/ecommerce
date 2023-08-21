@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.category.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.category.dto.CategoryDto;
 import com.example.adminservice.module.domain.category.entity.Category;
 import com.example.adminservice.module.domain.category.repository.CategoryRepository;
@@ -26,14 +26,14 @@ public class CategoryReadService {
         try{
             categoryDto = modelMapper.map(category, CategoryDto.class);
         }catch (CustomException exception){
-            throw new CustomException(ErrorCode.CATEGORY_UNPROCESSABLE_ENTITY,"toCategoryDto");
+            throw new CustomException(ErrorCodet.CATEGORY_UNPROCESSABLE_ENTITY,"toCategoryDto");
         }
 
         return categoryDto;
     }
 
     public Category readCategory(String categoryName){
-        Category category = categoryRepository.findByName(categoryName).orElseThrow(()->new CustomException(ErrorCode.CATEGORY_NOT_FOUND,"readCreate"));
+        Category category = categoryRepository.findByName(categoryName).orElseThrow(()->new CustomException(ErrorCodet.CATEGORY_NOT_FOUND,"readCreate"));
         return category;
     }
 

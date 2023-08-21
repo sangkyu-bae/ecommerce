@@ -5,7 +5,7 @@ import com.example.adminservice.module.application.usecase.CategoryUseCase;
 import com.example.adminservice.module.application.usecase.ColorUseCase;
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
@@ -16,22 +16,17 @@ import com.example.adminservice.module.domain.product.service.ProductWriteServic
 import com.example.adminservice.module.domain.product.validator.CreateProductDtoValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.zip.DataFormatException;
 
 @RestController
 @RequiredArgsConstructor
@@ -59,7 +54,7 @@ public class ProductController {
     public ResponseEntity<ResponseProductDto> createProduct(@Valid @RequestBody CreateProductDto createProductDto,
                                                             @RequestHeader("X-User-Id") String userId ,Errors errors) {
         if (errors.hasErrors()) {
-            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"createProduct");
+            throw new CustomException(ErrorCodet.PRODUCT_FORM_NO_VALIDATE,"createProduct");
         }
         ResponseProductDto productDto = productUseCase.createProductExecute(createProductDto);
         log.info("{}가 {} 상품을 등록 하였습니다",userId, productDto.getName());
@@ -102,7 +97,7 @@ public class ProductController {
                                                     @RequestHeader("X-User-Id") String userId){
         Product product = productReadService.readProduct(productId);
         if (errors.hasErrors()) {
-            throw new CustomException(ErrorCode.PRODUCT_FORM_NO_VALIDATE,"updateProduct");
+            throw new CustomException(ErrorCodet.PRODUCT_FORM_NO_VALIDATE,"updateProduct");
         }
         ProductDto productDto = productUseCase.updateProduct(product,updateProductDto);
         log.info("{}가 {} 상품을 수정 하였습니다", userId, productDto.getName());

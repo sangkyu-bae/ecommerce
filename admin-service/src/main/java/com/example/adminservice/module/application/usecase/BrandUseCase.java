@@ -29,7 +29,7 @@ public class BrandUseCase {
     }
 
     public List<BrandDto> readAllBrandDtoExecute(){
-        var brandList = brandReadService.readAllBrand();
+        var brandList = brandReadService.readAll();
         var brandDtpList = brandList.stream().
                 map(brand -> commonMethod.toDto(brand,BrandDto.class)).collect(Collectors.toList());
 

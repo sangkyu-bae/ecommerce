@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.color.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.color.dto.ColorDto;
 import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.color.repository.ColorRepository;
@@ -27,7 +27,7 @@ public class ColorReadService {
     }
 
     public Color readColor(String colorName){
-        Color color = colorRepository.findByName(colorName).orElseThrow(()->new CustomException(ErrorCode.COLOR_NOT_FOUND,"readColor"));
+        Color color = colorRepository.findByName(colorName).orElseThrow(()->new CustomException(ErrorCodet.COLOR_NOT_FOUND,"readColor"));
         return color;
     }
 

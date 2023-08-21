@@ -1,7 +1,10 @@
 package com.example.adminservice.module.domain.brand.service;
 
+import com.example.adminservice.module.common.CRUDReadService;
+import com.example.adminservice.module.common.error.BrandErrorCode;
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.brand.repository.BrandRepository;
@@ -17,12 +20,20 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional(readOnly = true)
-public class BrandReadService {
+public class BrandReadService implements CRUDReadService<Brand> {
 
     private final BrandRepository brandRepository;
 
     private final ModelMapper modelMapper;
-    public List<Brand> readAllBrand(){
+
+    @Override
+    public Brand read(long id) {
+        return brandRepository.findById(id)
+                .orElseThrow(()->new ErrorException(BrandErrorCode.BRAND_NOT_FOUND,"read"));
+    }
+
+    @Override
+    public List<Brand> readAll(){
         List<Brand> brandList = brandRepository.findAll();
         return brandList;
     }
@@ -32,15 +43,11 @@ public class BrandReadService {
         try{
             brandDto = modelMapper.map(brand,BrandDto.class);
         }catch (CustomException exception){
-            throw new CustomException(ErrorCode.BRAND_UNPROCESSABLE_ENTITY,"toBrandDto");
+            throw new CustomException(ErrorCodet.BRAND_UNPROCESSABLE_ENTITY,"toBrandDto");
         }
 
         return brandDto;
     }
 
-    public Brand readBrand(String brandName){
-        Brand brand = brandRepository.findByName(brandName).orElseThrow(()->new CustomException(ErrorCode.BRAND_NOT_FOUND,"readBrand"));
-        return brand;
-    }
 
 }

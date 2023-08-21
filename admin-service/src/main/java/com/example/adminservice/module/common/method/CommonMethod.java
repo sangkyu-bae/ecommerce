@@ -1,7 +1,7 @@
 package com.example.adminservice.module.common.method;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class CommonMethod {
         try {
             return modelMapper.map(entity, dtoClass);
         } catch (CustomException exception) {
-            throw new CustomException(ErrorCode.UNPROCESSABLE_ENTITY, "toDto");
+            throw new CustomException(ErrorCodet.UNPROCESSABLE_ENTITY, "toDto");
         }
     }
 }

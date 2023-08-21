@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.size.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.size.dto.SizeDto;
 import com.example.adminservice.module.domain.size.entity.Size;
 import com.example.adminservice.module.domain.size.repository.SizeRepository;
@@ -27,7 +27,7 @@ public class SizeReadService {
     }
 
     public Size readSize(int size){
-        Size readSize = sizeRepository.findBySize(size).orElseThrow(()->new CustomException(ErrorCode.SIZE_NOT_FOUND,"readSize"));
+        Size readSize = sizeRepository.findBySize(size).orElseThrow(()->new CustomException(ErrorCodet.SIZE_NOT_FOUND,"readSize"));
         return readSize;
     }
 

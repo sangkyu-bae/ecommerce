@@ -44,18 +44,6 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
         }
     },[])
 
-    const a=()=>{
-        console.log()
-        const a= watch("description")
-        const b= watch("name")
-        const c= watch("price")
-        const d= watch("category")
-        const e= watch("brand")
-        const g= watch("color_0")
-        const f= watch("color_1")
-        debugger
-    }
-
     const handleChangeColorData = (colorData: ColorData, type: string) => {
         if (type == 'add') {
             addColorData(colorData);
@@ -201,7 +189,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
         };
         return (
             <StyledContainer>
-                <SideBar></SideBar>
+                <SideBar type={'admin'}></SideBar>
                 <StyledContent>
                     <StyledMenu></StyledMenu>
                     <StyledSetion isproduct={false}>

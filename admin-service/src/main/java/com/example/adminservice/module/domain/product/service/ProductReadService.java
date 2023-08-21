@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.product.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
 import com.example.adminservice.module.domain.category.dto.CategoryDto;
 import com.example.adminservice.module.domain.color.dto.ColorDto;
@@ -83,7 +83,7 @@ public class ProductReadService {
 //        );
 
         product = productRepository.findWithBrandAndCategoryAndColorProductById(productId).orElseThrow(() ->
-                new CustomException(ErrorCode.PRODUCT_NOT_FOUND,"readProduct")
+                new CustomException(ErrorCodet.PRODUCT_NOT_FOUND,"readProduct")
         );
         return product;
     }

@@ -1,7 +1,7 @@
 package com.example.adminservice.module.domain.brand.service;
 
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.brand.repository.BrandRepository;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +33,7 @@ public class BrandWriteService {
 
     public void removeBrand(long brandId){
         if(!brandRepository.existsById(brandId)){
-            throw new CustomException(ErrorCode.BRAND_NOT_FOUND,"removeBrand");
+            throw new CustomException(ErrorCodet.BRAND_NOT_FOUND,"removeBrand");
         }
 
         brandRepository.deleteById(brandId);

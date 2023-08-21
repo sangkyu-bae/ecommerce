@@ -2,9 +2,8 @@ package com.example.adminservice.module.application.controller;
 
 import com.example.adminservice.module.application.usecase.BrandUseCase;
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
-import com.example.adminservice.module.domain.brand.service.BrandWriteService;
 import com.example.adminservice.module.domain.brand.validator.BrandDtoValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +31,7 @@ public class BrandController {
     @PostMapping("/admin/brand")
     public ResponseEntity<BrandDto> createBrand(@Valid @RequestBody BrandDto brandDto, Errors errors){
         if(errors.hasErrors()){
-            throw new CustomException(ErrorCode.BRAND_FORM_NO_VALIDATE,"createBrand");
+            throw new CustomException(ErrorCodet.BRAND_FORM_NO_VALIDATE,"createBrand");
         }
 
         BrandDto createBrandDto = brandUseCase.createBrandExecute(brandDto);

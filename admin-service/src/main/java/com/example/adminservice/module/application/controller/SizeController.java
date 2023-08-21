@@ -2,7 +2,7 @@ package com.example.adminservice.module.application.controller;
 
 import com.example.adminservice.module.application.usecase.SizeUseCase;
 import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCode;
+import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.size.dto.SizeDto;
 import com.example.adminservice.module.domain.size.repository.SizeRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class SizeController {
     @PostMapping("/admin/size")
     public ResponseEntity<SizeDto> createSize(@Valid @RequestBody SizeDto sizeDto, Errors errors){
         if(errors.hasErrors()){
-            throw new CustomException(ErrorCode.SIZE_FORM_NO_VALIDATE,"createSize");
+            throw new CustomException(ErrorCodet.SIZE_FORM_NO_VALIDATE,"createSize");
         }
 
         SizeDto createSize = sizeUseCase.createSizeExecute(sizeDto);

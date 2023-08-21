@@ -2,15 +2,14 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import StoreIcon from '@mui/icons-material/Store';
 import Link from "next/link";
+import CommonUtil from "@/utils/CommonUtil";
 
 interface MenuData {
-    // firstName : string;
-    // secondMenuNames : string[];
     menuName: string;
     url: string;
 }
 
-function SideBar(props) {
+function SideBar({type}:string) {
     const StyledButton = styled.button`
       padding: 6px 12px;
       border-radius: 8px;
@@ -43,18 +42,20 @@ function SideBar(props) {
         display : ${(props) => props.$isfirst ? "block" : "none"};
        
     `
+    const common = new CommonUtil();
 
     const menuList = () => {
-        const menuList: MenuData[] = [
-            {
-                menuName:'상품관리',
-                url :"/admin/product"
-            },
-            {
-                menuName:'상품등록',
-                url :"/admin/myPage"
-            }
-        ];
+        // const menuList: MenuData[] = [
+        //     {
+        //         menuName:'상품관리',
+        //         url :"/admin/product"
+        //     },
+        //     {
+        //         menuName:'상품등록',
+        //         url :"/admin/myPage"
+        //     }
+        // ];
+        const menuList:MenuData[] = common.getMenuList(type);
         return menuList.map((menu, index) =>
             <Link key={index} href={menu.url} style={{textDecoration: "none"}}>
                 <StyledMenu $isfirst={true}>{menu.menuName}</StyledMenu>

@@ -2,8 +2,6 @@ package com.example.adminservice.module.domain.product.entity;
 
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.category.entity.Category;
-import com.example.adminservice.module.domain.quantity.entity.Quantity;
-import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import lombok.*;
 
 import javax.persistence.*;
