@@ -51,4 +51,8 @@ public class ProductUseCase {
 
         return productSearchDto;
     }
+
+    public int updateQuantity(Long quantityId,int updateQuantity){
+        return 1;
+    }
 }

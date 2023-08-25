@@ -134,4 +134,11 @@ public class ProductController {
 
         return ResponseEntity.ok().body(productInfoMap);
     }
+
+    @PutMapping("/admin/quantity/{quantityId}/{buyQuantity}")
+    public ResponseEntity<Integer> updateBuyProductQuantity(@PathVariable("quantityId") Long quantityId,
+                                                         @PathVariable("buyQuantity") int buyQuantity){
+
+        return ResponseEntity.ok().body(1);
+    }
 }
