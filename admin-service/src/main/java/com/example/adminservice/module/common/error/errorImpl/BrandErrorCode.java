@@ -1,5 +1,6 @@
-package com.example.adminservice.module.common.error;
+package com.example.adminservice.module.common.error.errorImpl;
 
+import com.example.adminservice.module.common.error.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 public enum BrandErrorCode implements ErrorCode {

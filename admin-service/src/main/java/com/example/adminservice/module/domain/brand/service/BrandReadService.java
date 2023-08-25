@@ -1,9 +1,7 @@
 package com.example.adminservice.module.domain.brand.service;
 
 import com.example.adminservice.module.common.CRUDReadService;
-import com.example.adminservice.module.common.error.BrandErrorCode;
-import com.example.adminservice.module.common.error.CustomException;
-import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.common.error.errorImpl.BrandErrorCode;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
 import com.example.adminservice.module.domain.brand.entity.Brand;
@@ -42,8 +40,8 @@ public class BrandReadService implements CRUDReadService<Brand> {
         BrandDto brandDto =null;
         try{
             brandDto = modelMapper.map(brand,BrandDto.class);
-        }catch (CustomException exception){
-            throw new CustomException(ErrorCodet.BRAND_UNPROCESSABLE_ENTITY,"toBrandDto");
+        }catch (ErrorException exception){
+            throw new ErrorException(BrandErrorCode.BRAND_UNPROCESSABLE_ENTITY,"toBrandDto");
         }
 
         return brandDto;

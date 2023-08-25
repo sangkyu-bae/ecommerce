@@ -78,7 +78,6 @@ public class ProductController {
      * @return ProductDto
      * */
     @GetMapping("/admin/{productId}")
-//    public ResponseEntity<ProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
     public ResponseEntity<ResponseProductDto> readProduct(@PathVariable("productId") long productId, @RequestHeader("X-User-Id") String userId){
         ResponseProductDto productDto = productUseCase.readProduct(productId);
         log.info("{}가 {} 상품을 조회하였습니다", userId, productDto.getName());

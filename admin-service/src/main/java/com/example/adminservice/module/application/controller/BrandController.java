@@ -4,6 +4,9 @@ import com.example.adminservice.module.application.usecase.BrandUseCase;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
+import com.example.adminservice.module.domain.brand.entity.Brand;
+import com.example.adminservice.module.domain.brand.repository.BrandRepository;
+import com.example.adminservice.module.domain.brand.service.BrandReadService;
 import com.example.adminservice.module.domain.brand.validator.BrandDtoValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +23,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class BrandController {
+    private final BrandRepository brandRepository;
     private final BrandDtoValidator addValidators;
     private final BrandUseCase brandUseCase;
+
+    private final BrandReadService brandReadService;
 
     @InitBinder("brandDto")
     public void initBinder(WebDataBinder webDataBinder){
@@ -43,5 +49,4 @@ public class BrandController {
         var brandList =  brandUseCase.readAllBrandDtoExecute();
         return ResponseEntity.ok().body(brandList);
     }
-
 }

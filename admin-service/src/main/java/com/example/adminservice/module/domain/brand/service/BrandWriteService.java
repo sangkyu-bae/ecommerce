@@ -1,5 +1,6 @@
 package com.example.adminservice.module.domain.brand.service;
 
+import com.example.adminservice.module.common.CRUDWriteService;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
 import com.example.adminservice.module.domain.brand.dto.BrandDto;
@@ -17,7 +18,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class BrandWriteService {
+public class BrandWriteService implements CRUDWriteService<Brand,BrandDto> {
 
     private final BrandRepository brandRepository;
 
@@ -30,21 +31,19 @@ public class BrandWriteService {
 
         return brandRepository.save(brand);
     }
-
-    public void removeBrand(long brandId){
+    @Override
+    public boolean delete(long brandId) {
         if(!brandRepository.existsById(brandId)){
             throw new CustomException(ErrorCodet.BRAND_NOT_FOUND,"removeBrand");
         }
-
         brandRepository.deleteById(brandId);
+        return true;
     }
 
-    public Brand updateBrand(Brand brand, BrandDto updateBrandDto){
+    @Override
+    public Brand update(Brand brand, BrandDto updateBrandDto) {
         brand.setUpdateAt(LocalDate.now());
         modelMapper.map(updateBrandDto, brand);
         return brand;
     }
-
-
-
 }
