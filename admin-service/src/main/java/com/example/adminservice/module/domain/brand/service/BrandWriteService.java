@@ -32,12 +32,11 @@ public class BrandWriteService implements CRUDWriteService<Brand,BrandDto> {
         return brandRepository.save(brand);
     }
     @Override
-    public boolean delete(long brandId) {
+    public void delete(long brandId) {
         if(!brandRepository.existsById(brandId)){
             throw new CustomException(ErrorCodet.BRAND_NOT_FOUND,"removeBrand");
         }
         brandRepository.deleteById(brandId);
-        return true;
     }
 
     @Override
