@@ -1,10 +1,11 @@
+
 server:
-  port: 8085
+  port: 0
 spring:
   application:
-    name: admin-service
+    name: order-service
   datasource:
-    url: jdbc:mysql://localhost:3306/admins
+    url: jdbc:mysql://localhost:3306/order
     username: root
     password: wnsvaf309
   jpa:
@@ -32,7 +33,7 @@ logging:
 
   file:
     name: adminLog # ?? ??? ??? ?????.
-    path: C:/logs/admin # ?? ??? ??? ?????.
+    path: C:/logs/order # ?? ??? ??? ?????.
     max-history: 30
 
   pattern:
@@ -52,11 +53,11 @@ logging:
 token:
   secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
 
-# 유레카 설정
+# ??? ??
 eureka:
   instance:
-#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+        instance-id: ${spring.cloud.client.ip-address}:${random.value}
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka

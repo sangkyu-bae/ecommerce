@@ -14,14 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Transactional
+@Transactional
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class QuantityWriteService implements CRUDWriteService<Quantity,Quantity> {
 
     private final QuantityRepository quantityRepository;
-    private final CommonMethod commonMethod;
     public Quantity createQuantity(int quantity, SizeQuantity sizeQuantity){
         Quantity createQuantity = Quantity.builder().
                 quantity(quantity).
@@ -44,7 +43,6 @@ public class QuantityWriteService implements CRUDWriteService<Quantity,Quantity>
         if(!quantityRepository.existsById(id)){
             throw new ErrorException(QuantityErrorCode.QUANTITY_NOT_FOUND,"delete");
         }
-
         quantityRepository.deleteById(id);
     }
 
@@ -56,7 +54,6 @@ public class QuantityWriteService implements CRUDWriteService<Quantity,Quantity>
         return quantity;
     }
 
-    @Transactional
     public Quantity test(Quantity quantity,int qua){
         quantity.changeQuantity(qua);
         return quantity;

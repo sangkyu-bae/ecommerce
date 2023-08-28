@@ -34,6 +34,13 @@ spring:
               - Path=/admin/**
           filters:
             - AuthorizationHeaderFilter
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - AuthorizationHeaderFilter
+
 
 
 logging:

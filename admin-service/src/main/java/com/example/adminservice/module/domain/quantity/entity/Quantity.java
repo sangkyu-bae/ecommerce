@@ -29,7 +29,4 @@ public class Quantity {
             throw new ErrorException(QuantityErrorCode.QUANTITY_BAD_CHANGE,"changeQuantity");
         }
     }
-    public void adminUpdateQuantity(int quantity){
-
-    }
 }

@@ -21,25 +21,10 @@ public class QuantityUseCase {
 
     private final QuantityReadService quantityReadService;
 
-    private final QuantityRepository quantityRepository;
-
     public int updateQuantity(Long quantityId, int buyQuantity){
         Quantity quantity = quantityReadService.read(quantityId);
         quantityWriteService.test(quantity,buyQuantity);
-//        Quantity quantity = read(quantityId);
-//        test(quantity,buyQuantity);
         System.out.println(quantity.getQuantity());
         return quantity.getQuantity();
-    }
-    @Transactional
-    public Quantity test(Quantity quantity,int qua){
-        quantity.changeQuantity(qua);
-        return quantity;
-    }
-    @Transactional
-    public Quantity read(long quantityId) {
-        Quantity quantity = quantityRepository.findById(quantityId).
-                orElseThrow(()->new ErrorException(QuantityErrorCode.QUANTITY_NOT_FOUND,"read"));
-        return quantity;
     }
 }

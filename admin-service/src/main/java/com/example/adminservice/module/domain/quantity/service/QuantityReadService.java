@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Transactional(readOnly = true)
-//@Transactional
+@Transactional(readOnly = true)
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -24,10 +23,7 @@ public class QuantityReadService implements CRUDReadService<Quantity> {
     private final QuantityRepository quantityRepository;
 
     @Override
-    @Transactional
     public Quantity read(long quantityId) {
-//        Quantity quantity = quantityRepository.findWithIdForUpdate(quantityId).
-//                orElseThrow(()->new ErrorException(QuantityErrorCode.QUANTITY_NOT_FOUND,"read"));
         Quantity quantity = quantityRepository.findById(quantityId).
                 orElseThrow(()->new ErrorException(QuantityErrorCode.QUANTITY_NOT_FOUND,"read"));
         return quantity;

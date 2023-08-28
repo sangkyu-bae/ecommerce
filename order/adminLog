@@ -1,0 +1,111 @@
+2023-08-28 21:49:23.650 INFO  ---- [tartedMain] [OrderApplication:55] logStarting   Starting OrderApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 20476 (C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\order)
+2023-08-28 21:49:23.653 INFO  ---- [tartedMain] [OrderApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-08-28 21:49:23.716 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-28 21:49:23.716 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-28 21:49:24.670 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-08-28 21:49:24.671 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-08-28 21:49:24.682 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-08-28 21:49:24.691 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-08-28 21:49:24.692 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-28 21:49:24.700 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2023-08-28 21:49:25.039 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=2c486707-2b5d-3628-a9ba-9633f3b9cc5c
+2023-08-28 21:49:25.920 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 0 (http)
+2023-08-28 21:49:25.930 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-08-28 21:49:25.931 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.79]
+2023-08-28 21:49:26.211 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-08-28 21:49:26.212 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 2495 ms
+2023-08-28 21:49:26.278 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-08-28 21:49:26.955 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-08-28 21:49:26.967 INFO  ---- [tartedMain] [H2ConsoleAutoConfiguration:98] logDataSources   H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/order'
+2023-08-28 21:49:27.096 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-28 21:49:27.191 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-28 21:49:27.463 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-28 21:49:27.603 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-28 21:49:28.005 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-28 21:49:28.034 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 21:49:28.119 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-28 21:49:28.889 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-08-28 21:49:29.925 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-08-28 21:49:31.605 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-08-28 21:49:31.830 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 57529 (http) with context path ''
+2023-08-28 21:49:31.835 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 57529
+2023-08-28 21:49:31.843 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-08-28 21:49:31.886 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-08-28 21:49:31.891 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-08-28 21:49:31.919 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-08-28 21:49:31.920 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-08-28 21:49:31.920 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-08-28 21:49:31.920 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-08-28 21:49:31.920 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-08-28 21:49:31.921 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-08-28 21:49:31.921 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-08-28 21:49:32.403 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-08-28 21:49:32.406 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-08-28 21:49:32.409 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-08-28 21:49:32.416 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1693226972415 with initial instances count: 3
+2023-08-28 21:49:32.419 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application ADMIN-SERVICE with eureka with status UP
+2023-08-28 21:49:32.419 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1693226972419, current=UP, previous=STARTING]
+2023-08-28 21:49:32.422 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ADMIN-SERVICE/192.168.0.223:8193e8ef769609e80c18b884b71d041d: registering service...
+2023-08-28 21:49:32.475 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_ADMIN-SERVICE/192.168.0.223:8193e8ef769609e80c18b884b71d041d - registration status: 204
+2023-08-28 21:49:33.316 INFO  ---- [tartedMain] [OrderApplication:61] logStarted   Started OrderApplication in 11.633 seconds (JVM running for 18.75)
+2023-08-28 21:49:43.233 INFO  ---- [utdownHook] [EurekaServiceRegistry:62] deregister   Unregistering application ADMIN-SERVICE with eureka with status DOWN
+2023-08-28 21:49:43.234 INFO  ---- [utdownHook] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1693226983234, current=DOWN, previous=UP]
+2023-08-28 21:49:43.236 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ADMIN-SERVICE/192.168.0.223:8193e8ef769609e80c18b884b71d041d: registering service...
+2023-08-28 21:49:43.256 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_ADMIN-SERVICE/192.168.0.223:8193e8ef769609e80c18b884b71d041d - registration status: 204
+2023-08-28 21:49:44.220 INFO  ---- [utdownHook] [LocalContainerEntityManagerFactoryBean:651] destroy   Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 21:49:44.228 INFO  ---- [utdownHook] [HikariDataSource:350] close   HikariPool-1 - Shutdown initiated...
+2023-08-28 21:49:44.245 INFO  ---- [utdownHook] [HikariDataSource:352] close   HikariPool-1 - Shutdown completed.
+2023-08-28 21:49:44.245 INFO  ---- [utdownHook] [DiscoveryClient:935] shutdown   Shutting down DiscoveryClient ...
+2023-08-28 21:49:47.256 INFO  ---- [utdownHook] [DiscoveryClient:971] unregister   Unregistering ...
+2023-08-28 21:49:47.288 INFO  ---- [utdownHook] [DiscoveryClient:973] unregister   DiscoveryClient_ADMIN-SERVICE/192.168.0.223:8193e8ef769609e80c18b884b71d041d - deregister  status: 200
+2023-08-28 21:49:47.296 INFO  ---- [utdownHook] [DiscoveryClient:960] shutdown   Completed shut down of DiscoveryClient
+2023-08-28 21:51:49.648 INFO  ---- [tartedMain] [OrderApplication:55] logStarting   Starting OrderApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 15452 (C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\order)
+2023-08-28 21:51:49.650 INFO  ---- [tartedMain] [OrderApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-08-28 21:51:49.704 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-28 21:51:49.705 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-28 21:51:50.877 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-08-28 21:51:50.878 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-08-28 21:51:50.892 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-08-28 21:51:50.908 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-08-28 21:51:50.909 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-28 21:51:50.920 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2023-08-28 21:51:51.279 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=2c486707-2b5d-3628-a9ba-9633f3b9cc5c
+2023-08-28 21:51:52.181 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 0 (http)
+2023-08-28 21:51:52.194 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-08-28 21:51:52.194 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.79]
+2023-08-28 21:51:52.572 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-08-28 21:51:52.572 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 2866 ms
+2023-08-28 21:51:52.606 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-08-28 21:51:52.977 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-08-28 21:51:53.007 INFO  ---- [tartedMain] [H2ConsoleAutoConfiguration:98] logDataSources   H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/order'
+2023-08-28 21:51:53.272 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-28 21:51:53.329 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-28 21:51:53.532 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-28 21:51:53.720 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-28 21:51:54.012 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-28 21:51:54.028 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 21:51:54.108 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-28 21:51:54.726 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-08-28 21:51:56.054 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-08-28 21:51:57.739 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-08-28 21:51:57.864 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 57593 (http) with context path ''
+2023-08-28 21:51:57.867 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 57593
+2023-08-28 21:51:57.874 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-08-28 21:51:57.933 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-08-28 21:51:57.940 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-08-28 21:51:57.979 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-08-28 21:51:57.979 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-08-28 21:51:57.980 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-08-28 21:51:57.980 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-08-28 21:51:57.980 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-08-28 21:51:57.982 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-08-28 21:51:57.983 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-08-28 21:51:58.574 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-08-28 21:51:58.578 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-08-28 21:51:58.583 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-08-28 21:51:58.591 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1693227118590 with initial instances count: 3
+2023-08-28 21:51:58.593 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application ORDER-SERVICE with eureka with status UP
+2023-08-28 21:51:58.593 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1693227118593, current=UP, previous=STARTING]
+2023-08-28 21:51:58.597 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:e00a9012fa171ad600e1d5503fe3f38f: registering service...
+2023-08-28 21:51:58.669 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:e00a9012fa171ad600e1d5503fe3f38f - registration status: 204
+2023-08-28 21:52:02.410 INFO  ---- [tartedMain] [OrderApplication:61] logStarted   Started OrderApplication in 15.477 seconds (JVM running for 18.404)
