@@ -11,4 +11,5 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("app")
 public class AppProperties {
     private String bootstrapServer;
+    private String orderTopic;
 }

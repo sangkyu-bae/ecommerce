@@ -20,7 +20,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaProducerConfig {
 
-    @Autowired
     private final AppProperties appProperties;
 
     @Bean

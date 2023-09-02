@@ -66,4 +66,7 @@ eureka:
 ##########################
 # System config #########
 ##########################
-bootstrap-server = localhost:9092
+#bootstrap-server : localhost:9092
+app:
+  bootstrapServer: localhost:9092
+  orderTopic : order
