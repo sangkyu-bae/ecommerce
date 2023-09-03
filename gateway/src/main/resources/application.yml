@@ -23,12 +23,10 @@ spring:
               - OPTIONS
       routes:
         - id: user-service
-#          uri: http://localhost:8080/
           uri: lb://auth-service
           predicates:
             - Path=/user/**
         - id: admin-service
-#          uri: http://localhost:8081/
           uri: lb://admin-service
           predicates:
               - Path=/admin/**

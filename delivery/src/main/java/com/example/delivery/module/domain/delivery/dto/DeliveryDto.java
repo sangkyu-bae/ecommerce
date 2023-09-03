@@ -1,14 +1,14 @@
-package com.example.order.module.domain.order.dto;
+package com.example.delivery.module.domain.delivery.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
-public class OrderDto {
-
+public class DeliveryDto {
     @NotNull
     private Long productId;
 
@@ -19,6 +19,9 @@ public class OrderDto {
     private Long sizeId;
 
     @NotNull
+    private Long orderId;
+
+    @NotNull
     private int amount;
 
     @NotBlank
@@ -27,4 +30,7 @@ public class OrderDto {
 
     @NotBlank
     private int payment;
+
+    @NotNull
+    private LocalDate createAt;
 }

@@ -1,4 +1,4 @@
-package com.example.order.module.domain.order.enitity;
+package com.example.delivery.module.domain.delivery.entity;
 
 import lombok.*;
 
@@ -9,10 +9,10 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Setter @Getter @EqualsAndHashCode(of ="id")
+@Getter @Setter @EqualsAndHashCode(of = "id")
 @AllArgsConstructor @NoArgsConstructor
-@Table(name = "tb_order")
-public class Order {
+@Table(name = "tb_delivery")
+public class Delivery {
 
     @Id @GeneratedValue
     private Long id;
@@ -21,18 +21,17 @@ public class Order {
 
     private Long colorId;
 
+    private Long sizeId;
+
     private Long userId;
 
-    private Long sizeId;
+    private Long orderId;
 
     private int amount;
 
     private String address;
 
-    private int payment;
-
     private LocalDate createAt;
 
     private LocalDate updateAt;
-
 }
