@@ -7,5 +7,5 @@ public interface CRUDWriteService <T,V>{
 
     T update(T domain);
 
-    T create(V domain);
+    T create(T domain);
 }

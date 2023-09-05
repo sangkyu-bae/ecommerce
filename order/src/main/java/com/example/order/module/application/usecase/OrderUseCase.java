@@ -9,8 +9,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 @Service
 @Slf4j
@@ -23,6 +25,8 @@ public class OrderUseCase {
     private final AppProperties appProperties;
     private final KafkaTemplate<String,String> kafkaTemplate;
 
+    private final ModelMapper modelMapper;
+
     public Order createOrder(OrderDto createOrderDto){
         Order order = orderWriteService.create(createOrderDto);
         sendToKafka(order);
@@ -31,7 +35,8 @@ public class OrderUseCase {
 
     public void sendToKafka(Order order){
         try{
-            String jsonInString = objectMapper.writeValueAsString(order);
+            OrderDto orderDto = modelMapper.map(order,OrderDto.class);
+            String jsonInString = objectMapper.writeValueAsString(orderDto);
             kafkaTemplate.send(appProperties.getOrderTopic(),jsonInString);
             log.info("success sendToKafka");
         }catch (Exception e){
