@@ -2,6 +2,7 @@ package com.example.adminservice.module.domain.product.service;
 
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.domain.product.OrderDto;
 import com.example.adminservice.module.domain.product.dto.ColorDataDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.SizeAndQuantityDto;
@@ -14,6 +15,7 @@ import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import com.example.adminservice.module.domain.size.repository.SizeQuantityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Order;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -97,6 +99,10 @@ public class ProductWriteService {
         toColorProduct(updateProductDto,product);
 
         return productRepository.save(product);
+    }
+
+    public boolean checkQuantityAndOrder (OrderDto orderDto, Product product){
+
     }
 
 }

@@ -6,6 +6,7 @@ import com.example.adminservice.module.application.usecase.ColorUseCase;
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.domain.product.OrderDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
@@ -133,6 +134,14 @@ public class ProductController {
         );
 
         return ResponseEntity.ok().body(productInfoMap);
+    }
+
+    @PostMapping("/admin/product-order/{productId}")
+    public OrderDto createOrder(@PathVariable ("productId") Long productId,
+                                @RequestBody OrderDto createOrderDto,
+                                @RequestHeader("X-User-Id") String userId){
+
+        return createOrderDto;
     }
 
 

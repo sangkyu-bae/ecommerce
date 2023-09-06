@@ -1,4 +1,4 @@
-package com.example.order.module.domain.order.dto;
+package com.example.adminservice.module.domain.product;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class OrderDto {
-
     @NotNull
     private Long productId;
 
@@ -28,6 +27,5 @@ public class OrderDto {
     @NotBlank
     private int payment;
 
-    @NotBlank
     private String userId;
 }

@@ -1,11 +1,14 @@
 package com.example.order.module.domain.order.service;
 
+import com.example.order.module.common.error.ErrorException;
+import com.example.order.module.common.error.errorImpl.OrderErrorCode;
 import com.example.order.module.common.method.CRUDWriteService;
 import com.example.order.module.domain.order.dto.OrderDto;
 import com.example.order.module.domain.order.enitity.Order;
 import com.example.order.module.domain.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.asm.Advice;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +23,25 @@ public class OrderWriteService implements CRUDWriteService<Order, OrderDto> {
 
     private final OrderRepository orderRepository;
 
-    private final ModelMapper modelMapper;
-
     @Override
-    public boolean delete(Long id) {
-        return false;
+    public void delete(Long id) {
+        if(orderRepository.existsById(id)){
+            orderRepository.deleteById(id);
+        }else{
+            throw new ErrorException(OrderErrorCode.ORDER_NOT_FOUND,"delete");
+        }
     }
 
     @Override
     public boolean deleteAll() {
+
+        try{
+            orderRepository.deleteAll();
+            return true;
+        }catch (Exception e){
+            log.error("deleteAll Exception",e);
+        }
+
         return false;
     }
 
@@ -39,7 +52,7 @@ public class OrderWriteService implements CRUDWriteService<Order, OrderDto> {
 
     @Override
     public Order create(OrderDto createOrderDto) {
-        Order order =  modelMapper.map(createOrderDto,Order.class);
+        Order order = orderReadService.toEntity(createOrderDto);
         order.setCreateAt(LocalDate.now());
         order.setUpdateAt(LocalDate.now());
         Order createOrder = orderRepository.save(order);

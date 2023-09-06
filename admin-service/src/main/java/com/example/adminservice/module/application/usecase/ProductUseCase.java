@@ -1,5 +1,6 @@
 package com.example.adminservice.module.application.usecase;
 
+import com.example.adminservice.module.domain.product.OrderDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
@@ -52,7 +53,8 @@ public class ProductUseCase {
         return productSearchDto;
     }
 
-    public int updateQuantity(Long quantityId,int updateQuantity){
-        return 1;
+    public OrderDto createOrder(OrderDto orderDto){
+
+        return orderDto;
     }
 }

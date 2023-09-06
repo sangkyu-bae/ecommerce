@@ -1,6 +1,7 @@
-package com.example.adminservice.infra.config;
+package com.example.order.infra.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,18 +13,19 @@ import java.util.Map;
 public class LogInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
         String userId = request.getHeader("X-User-Id");
         if(userId.isBlank()){
             log.error("요청한 사용자가 없습니다.");
             return false;
         }
-
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public  void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                            @Nullable ModelAndView modelAndView) throws Exception {
         String userId = request.getHeader("X-User-Id");
         String method = request.getMethod();
         String uri = request.getRequestURI();
@@ -38,5 +40,7 @@ public class LogInterceptor implements HandlerInterceptor {
         }else if (method.equals("PUT")){
             log.info("{}가 {}로 {}정보 수정 요청하였습니다",userId,uri,parameterMap);
         }
+
     }
+
 }

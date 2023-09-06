@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -53,6 +54,12 @@ public class Product {
         if(!this.colorProductList.isEmpty()){
             this.colorProductList.clear();
         }
+    }
+
+    public void colorProduct(Long colorId){
+        ColorProduct readColorProduct = colorProductList.stream().
+                filter(colorProduct -> colorProduct.getColor().getId() == colorId).
+                findFirst().orElseThrow(()->new IllegalArgumentException());
     }
 
 }
