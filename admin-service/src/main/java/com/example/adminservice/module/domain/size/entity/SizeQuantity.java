@@ -40,4 +40,8 @@ public class SizeQuantity {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public long getSizeId(){
+        return size.getId();
+    }
 }

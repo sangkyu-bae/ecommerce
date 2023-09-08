@@ -56,7 +56,7 @@ public class Product {
         }
     }
 
-    public void colorProduct(Long colorId){
+    public void colorProduct(Long colorId,Long sizeId){
         ColorProduct readColorProduct = colorProductList.stream().
                 filter(colorProduct -> colorProduct.getColor().getId() == colorId).
                 findFirst().orElseThrow(()->new IllegalArgumentException());

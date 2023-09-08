@@ -1,6 +1,7 @@
 package com.example.adminservice.module.domain.product.entity;
 
 import com.example.adminservice.module.domain.color.entity.Color;
+import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import com.example.adminservice.module.domain.size.entity.Size;
 import com.example.adminservice.module.domain.size.entity.SizeQuantity;
 import lombok.*;
@@ -49,6 +50,13 @@ public class ColorProduct {
 
     public void addSizeAll(Set<SizeQuantity> sizeQuantityList){
         sizeQuantityList.stream().forEach(sizeQuantity -> addSize(sizeQuantity));
+    }
+
+    public boolean minusSizeQuantity(Long sizeId){
+        SizeQuantity sameSize = sizeList.stream().filter(sizeQuantity -> sizeQuantity.getSizeId() == sizeId)
+                .findFirst().orElseThrow(()->new IllegalArgumentException());
+        Quantity quantity = sameSize.getQuantity();
+        quantity.changeQuantity()
     }
 
 }

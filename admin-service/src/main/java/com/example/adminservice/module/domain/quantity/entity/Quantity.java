@@ -22,11 +22,14 @@ public class Quantity {
     @OneToMany(mappedBy = "quantity",cascade = CascadeType.ALL)
     private List<SizeQuantity> sizeQuantityList;
 
-    public void changeQuantity(int minQuantity){
+    public boolean changeQuantity(int minQuantity){
         if(quantity > 0 && quantity-minQuantity > 0){
             this.quantity -= minQuantity;
+            return true;
         }else{
             throw new ErrorException(QuantityErrorCode.QUANTITY_BAD_CHANGE,"changeQuantity");
         }
+
+        return false;
     }
 }
