@@ -101,8 +101,10 @@ public class ProductWriteService {
         return productRepository.save(product);
     }
 
-    public boolean checkQuantityAndOrder (OrderDto orderDto, Product product){
-
+    public void checkQuantityAndOrder (OrderDto orderDto, Product product){
+        ColorProduct colorProduct = product.colorProduct(orderDto);
+        Quantity quantity = colorProduct.readMinQuantity(orderDto.getSizeId());
+        quantity.changeQuantity(orderDto.getAmount());
     }
 
 }

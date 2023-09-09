@@ -18,7 +18,7 @@ public class KafkaService {
     private final ObjectMapper objectMapper;
     private final AppProperties appProperties;
 
-    public void sendToKafka(OrderDto orderDto){
+    public void sendOrderToKafka(OrderDto orderDto){
         try{
             String jsonInString = objectMapper.writeValueAsString(orderDto);
             kafkaTemplate.send(appProperties.getOrderTopic(),jsonInString);

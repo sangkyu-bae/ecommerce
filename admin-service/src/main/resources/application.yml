@@ -60,3 +60,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+app:
+  bootstrapServer: localhost:9092
+  orderTopic : order
+  groupId : delivery.group.v1

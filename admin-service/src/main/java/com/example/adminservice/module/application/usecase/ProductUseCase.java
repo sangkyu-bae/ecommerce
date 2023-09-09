@@ -5,9 +5,14 @@ import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.module.domain.product.dto.ResponseProductDto;
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import com.example.adminservice.module.domain.product.entity.Product;
+import com.example.adminservice.module.domain.product.service.ColorProductReadService;
 import com.example.adminservice.module.domain.product.service.ProductReadService;
 import com.example.adminservice.module.domain.product.service.ProductWriteService;
+import com.example.adminservice.module.domain.quantity.entity.Quantity;
+import com.example.adminservice.module.domain.quantity.service.QuantityReadService;
+import com.example.adminservice.module.domain.quantity.service.QuantityWriteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -24,6 +29,11 @@ public class ProductUseCase {
 
     private final ProductWriteService productWriteService;
     private final ProductReadService productReadService;
+    private final ColorProductReadService colorProductReadService;
+
+    private final QuantityReadService quantityReadService;
+    private final QuantityWriteService quantityWriteService;
+
 
     public ResponseProductDto createProductExecute(CreateProductDto productDto) {
         Product product = productWriteService.createProduct(productDto);
@@ -53,8 +63,10 @@ public class ProductUseCase {
         return productSearchDto;
     }
 
-    public OrderDto createOrder(OrderDto orderDto){
-
+    public OrderDto checkQuantityAndOrderProduct(OrderDto orderDto){
+        Quantity quantity = quantityReadService.read(orderDto.getQuantityId());
+        quantityWriteService.buyProductQuantity(orderDto,quantity);
         return orderDto;
     }
+
 }

@@ -15,6 +15,9 @@ public class OrderDto {
     private Long colorId;
 
     @NotNull
+    private long quantityId;
+
+    @NotNull
     private Long sizeId;
 
     @NotNull

@@ -52,11 +52,12 @@ public class ColorProduct {
         sizeQuantityList.stream().forEach(sizeQuantity -> addSize(sizeQuantity));
     }
 
-    public boolean minusSizeQuantity(Long sizeId){
+    public Quantity readMinQuantity(Long sizeId){
         SizeQuantity sameSize = sizeList.stream().filter(sizeQuantity -> sizeQuantity.getSizeId() == sizeId)
                 .findFirst().orElseThrow(()->new IllegalArgumentException());
         Quantity quantity = sameSize.getQuantity();
-        quantity.changeQuantity()
+
+        return quantity;
     }
 
 }

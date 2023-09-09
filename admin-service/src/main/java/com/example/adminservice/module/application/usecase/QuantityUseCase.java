@@ -2,6 +2,9 @@ package com.example.adminservice.module.application.usecase;
 
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.QuantityErrorCode;
+import com.example.adminservice.module.domain.product.OrderDto;
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
+import com.example.adminservice.module.domain.product.entity.Product;
 import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import com.example.adminservice.module.domain.quantity.repository.QuantityRepository;
 import com.example.adminservice.module.domain.quantity.service.QuantityReadService;
@@ -23,8 +26,7 @@ public class QuantityUseCase {
 
     public int updateQuantity(Long quantityId, int buyQuantity){
         Quantity quantity = quantityReadService.read(quantityId);
-        quantityWriteService.test(quantity,buyQuantity);
-        System.out.println(quantity.getQuantity());
         return quantity.getQuantity();
     }
+
 }

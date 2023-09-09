@@ -4,6 +4,7 @@ import com.example.adminservice.module.common.CRUDWriteService;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.QuantityErrorCode;
 import com.example.adminservice.module.common.method.CommonMethod;
+import com.example.adminservice.module.domain.product.OrderDto;
 import com.example.adminservice.module.domain.quantity.entity.Quantity;
 import com.example.adminservice.module.domain.quantity.repository.QuantityRepository;
 import com.example.adminservice.module.domain.size.entity.SizeQuantity;
@@ -54,8 +55,9 @@ public class QuantityWriteService implements CRUDWriteService<Quantity,Quantity>
         return quantity;
     }
 
-    public Quantity test(Quantity quantity,int qua){
-        quantity.changeQuantity(qua);
+    public Quantity buyProductQuantity(OrderDto orderDto,Quantity quantity){
+        quantity.changeQuantity(orderDto.getAmount());
         return quantity;
     }
+
 }

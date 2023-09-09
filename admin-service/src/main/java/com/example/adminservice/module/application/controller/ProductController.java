@@ -6,6 +6,7 @@ import com.example.adminservice.module.application.usecase.ColorUseCase;
 import com.example.adminservice.module.application.usecase.ProductUseCase;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.common.kafka.KafkaService;
 import com.example.adminservice.module.domain.product.OrderDto;
 import com.example.adminservice.module.domain.product.dto.CreateProductDto;
 import com.example.adminservice.module.domain.product.dto.ProductDto;
@@ -41,6 +42,7 @@ public class ProductController {
     private final BrandUseCase brandUseCase;
     private final CreateProductDtoValidator createProductDtoValidator;
     private final ProductReadService productReadService;
+    private final KafkaService kafkaService;
     @InitBinder("createProductDto")
     public void initBinder(WebDataBinder webDataBinder){
         webDataBinder.addValidators(createProductDtoValidator);
@@ -135,13 +137,25 @@ public class ProductController {
 
         return ResponseEntity.ok().body(productInfoMap);
     }
+    /**
+     * 상품재고 확인 및 재고 감소
+     * 주문 모듈로 이벤트 전송
+     *  */
 
-    @PostMapping("/admin/product-order/{productId}")
-    public OrderDto createOrder(@PathVariable ("productId") Long productId,
+    @PostMapping("/admin/product-order/{quantityId}")
+    public ResponseEntity<OrderDto> createOrder(@PathVariable ("quantityId") Long quantityId,
                                 @RequestBody OrderDto createOrderDto,
                                 @RequestHeader("X-User-Id") String userId){
+        createOrderDto.setQuantityId(quantityId);
+        createOrderDto.setUserId(userId);
+        try{
+            productUseCase.checkQuantityAndOrderProduct(createOrderDto);
+            kafkaService.sendOrderToKafka(createOrderDto);
+        }catch (Exception e){
+            log.error("createOrder Error",e);
+        }
 
-        return createOrderDto;
+        return ResponseEntity.ok().body(createOrderDto);
     }
 
 

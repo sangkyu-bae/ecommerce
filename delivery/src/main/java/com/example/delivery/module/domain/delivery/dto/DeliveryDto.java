@@ -19,6 +19,12 @@ public class DeliveryDto {
     private Long sizeId;
 
     @NotNull
+    private long quantityId;
+
+    @NotNull
+    private String userId;
+
+    @NotNull
     private Long orderId;
 
     @NotNull

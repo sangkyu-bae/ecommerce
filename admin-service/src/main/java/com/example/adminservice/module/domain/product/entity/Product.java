@@ -2,6 +2,8 @@ package com.example.adminservice.module.domain.product.entity;
 
 import com.example.adminservice.module.domain.brand.entity.Brand;
 import com.example.adminservice.module.domain.category.entity.Category;
+import com.example.adminservice.module.domain.color.entity.Color;
+import com.example.adminservice.module.domain.product.OrderDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -56,10 +58,12 @@ public class Product {
         }
     }
 
-    public void colorProduct(Long colorId,Long sizeId){
+    public ColorProduct colorProduct(OrderDto orderDto){
         ColorProduct readColorProduct = colorProductList.stream().
-                filter(colorProduct -> colorProduct.getColor().getId() == colorId).
+                filter(colorProduct -> colorProduct.getColor().getId() == orderDto.getColorId()).
                 findFirst().orElseThrow(()->new IllegalArgumentException());
+
+        return readColorProduct;
     }
 
 }

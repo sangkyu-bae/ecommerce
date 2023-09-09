@@ -33,4 +33,5 @@ public class QuantityReadService implements CRUDReadService<Quantity> {
     public List<Quantity> readAll() {
         return null;
     }
+
 }

@@ -2,9 +2,12 @@ package com.example.adminservice.module.domain.color.service;
 
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;
+import com.example.adminservice.module.common.error.ErrorException;
+import com.example.adminservice.module.common.error.errorImpl.ColorProductErrorCode;
 import com.example.adminservice.module.domain.color.dto.ColorDto;
 import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.color.repository.ColorRepository;
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

@@ -23,7 +23,7 @@ public class Delivery {
 
     private Long sizeId;
 
-    private Long userId;
+    private String userId;
 
     private Long orderId;
 

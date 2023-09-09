@@ -5,6 +5,7 @@ import com.example.adminservice.module.domain.color.dto.ColorDto;
 import com.example.adminservice.module.domain.color.entity.Color;
 import com.example.adminservice.module.domain.color.service.ColorReadService;
 import com.example.adminservice.module.domain.color.service.ColorWriteService;
+import com.example.adminservice.module.domain.product.entity.ColorProduct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,4 +35,6 @@ public class ColorUseCase {
                 map(color -> commonMethod.toDto(color,ColorDto.class)).collect(Collectors.toList());
         return colorDtoList;
     }
+
+
 }

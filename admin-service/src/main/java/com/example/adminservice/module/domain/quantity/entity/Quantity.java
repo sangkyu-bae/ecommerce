@@ -29,7 +29,5 @@ public class Quantity {
         }else{
             throw new ErrorException(QuantityErrorCode.QUANTITY_BAD_CHANGE,"changeQuantity");
         }
-
-        return false;
     }
 }

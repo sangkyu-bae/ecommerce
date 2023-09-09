@@ -28,7 +28,7 @@ public class DeliveryKafkaConsumer {
 //    private String groupId;
 
     private final static String topics = "order";
-    private final static String groupId = "delivery.group.v13";
+    private final static String groupId = "delivery.group.v14";
 //    @KafkaListener(topics ="#{@topics}",groupId = "#{@groupId}")
     @KafkaListener(topics =topics ,groupId = groupId)
     public void deliveryListener(String orderMessage){
