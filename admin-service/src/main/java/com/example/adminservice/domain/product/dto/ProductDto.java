@@ -1,0 +1,37 @@
+package com.example.adminservice.domain.product.dto;
+
+import com.example.adminservice.adapter.out.persistence.Product;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+@Data@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductDto {
+    @NotBlank
+    @Length(min = 2,max = 30)
+    private String name;
+
+    @NotNull
+    private int price;
+
+    @NotBlank
+    @Length(min = 15)
+    private String description;
+
+    private String productImage;
+
+    public ProductDto(Product product){
+        this.name = Objects.requireNonNull(product.getName());
+        this.price = Objects.requireNonNull(product.getPrice());
+        this.description = Objects.requireNonNull(product.getDescription());
+        this.productImage = product.getProductImage();
+    }
+}

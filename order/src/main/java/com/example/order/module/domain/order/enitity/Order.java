@@ -21,7 +21,7 @@ public class Order {
 
     private Long colorId;
 
-    private Long userId;
+    private String userId;
 
     private Long sizeId;
 

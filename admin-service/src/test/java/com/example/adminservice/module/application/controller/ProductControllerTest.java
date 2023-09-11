@@ -1,8 +1,8 @@
 package com.example.adminservice.module.application.controller;
 
-import com.example.adminservice.module.domain.product.dto.ProductDto;
-import com.example.adminservice.module.domain.product.entity.Product;
-import com.example.adminservice.module.domain.product.repository.ProductRepository;
+import com.example.adminservice.domain.product.dto.ProductDto;
+import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.repository.ProductRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

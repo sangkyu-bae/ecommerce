@@ -1,7 +1,7 @@
 package com.example.adminservice.module.common.kafka;
 
 import com.example.adminservice.infra.properties.AppProperties;
-import com.example.adminservice.module.domain.product.OrderDto;
+import com.example.adminservice.domain.product.OrderDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
