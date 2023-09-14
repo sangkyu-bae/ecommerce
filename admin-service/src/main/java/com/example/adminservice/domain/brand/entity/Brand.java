@@ -1,6 +1,6 @@
 package com.example.adminservice.domain.brand.entity;
 
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 

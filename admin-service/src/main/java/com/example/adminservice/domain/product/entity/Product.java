@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.domain.product.entity;
 
 import com.example.adminservice.domain.brand.entity.Brand;
 import com.example.adminservice.domain.category.entity.Category;

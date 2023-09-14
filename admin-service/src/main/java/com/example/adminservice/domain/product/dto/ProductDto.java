@@ -1,6 +1,6 @@
 package com.example.adminservice.domain.product.dto;
 
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

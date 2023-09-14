@@ -1,7 +1,7 @@
 package com.example.adminservice.domain.product.service;
 
 import com.example.adminservice.domain.product.entity.ColorProduct;
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.product.repository.ProductRepository;
 import com.example.adminservice.module.common.error.CustomException;
 import com.example.adminservice.module.common.error.ErrorCodet;

@@ -1,6 +1,7 @@
 package com.example.adminservice.adapter.out.persistence;
 
 import com.example.adminservice.domain.color.entity.Color;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.size.entity.Size;
 import lombok.*;
 
@@ -21,6 +22,10 @@ public class ProductComponent {
     private Color color;
 
     @OneToMany
-    private Set<Size> sizes;
+    private Set<SizeEntity> sizes;
 
+    private int quantity;
+
+    @ManyToOne
+    private Product product;
 }

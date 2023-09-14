@@ -1,5 +1,7 @@
 package com.example.adminservice.adapter.in.web;
 
+import com.example.adminservice.adapter.out.persistence.ProductComponent;
+import com.example.adminservice.adapter.out.persistence.SizeEntity;
 import com.example.adminservice.domain.brand.entity.Brand;
 import com.example.adminservice.domain.category.entity.Category;
 import com.example.adminservice.domain.product.dto.ColorDataDto;
@@ -10,18 +12,26 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterProductRequest extends ProductDto {
+public class RegisterProductRequest {
 
-    @NotNull
+    private String name;
+
+    private int price;
+
+    private String description;
+
+    private String productImage;
+
     private Brand brand;
 
-    @NotNull
     private Category category;
 
-    @NotNull
-    List<ColorDataDto> colorDataList;
+    private Set<ProductComponent> productComponents;
+
+
 }

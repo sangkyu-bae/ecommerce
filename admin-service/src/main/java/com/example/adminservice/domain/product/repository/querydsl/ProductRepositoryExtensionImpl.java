@@ -1,6 +1,6 @@
 package com.example.adminservice.domain.product.repository.querydsl;
 
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.module.domain.brand.entity.QBrand;
 import com.example.adminservice.module.domain.category.entity.QCategory;
 import com.example.adminservice.module.domain.color.entity.QColor;

@@ -1,6 +1,5 @@
 package com.example.adminservice.domain.product.entity;
 
-import com.example.adminservice.adapter.out.persistence.Product;
 import com.example.adminservice.domain.color.entity.Color;
 import com.example.adminservice.domain.quantity.entity.Quantity;
 import com.example.adminservice.domain.size.entity.SizeQuantity;

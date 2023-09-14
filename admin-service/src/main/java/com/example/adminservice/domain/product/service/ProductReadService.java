@@ -4,7 +4,7 @@ import com.example.adminservice.domain.color.dto.ColorDto;
 import com.example.adminservice.domain.product.dto.ColorProductDto;
 import com.example.adminservice.domain.product.dto.ProductDto;
 import com.example.adminservice.domain.product.dto.ResponseProductDto;
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.product.repository.ProductRepository;
 import com.example.adminservice.domain.size.dto.SizeDto;
 import com.example.adminservice.module.common.error.CustomException;

@@ -6,5 +6,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface SpringDataProductRepository extends JpaRepository<Product,Long> {
+public interface SpringDataProductRepository extends JpaRepository<ProductEntity,Long> {
 }

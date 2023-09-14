@@ -1,6 +1,6 @@
 package com.example.adminservice.domain.product.repository;
 
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.product.repository.querydsl.ProductRepositoryExtension;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

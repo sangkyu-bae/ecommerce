@@ -1,7 +1,7 @@
 package com.example.adminservice.domain.product.service;
 
 import com.example.adminservice.domain.product.entity.ColorProduct;
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.product.repository.ColorProductRepository;
 import com.example.adminservice.domain.size.entity.SizeQuantity;
 import lombok.RequiredArgsConstructor;

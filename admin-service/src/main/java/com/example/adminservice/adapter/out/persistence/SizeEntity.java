@@ -17,6 +17,4 @@ public class SizeEntity {
     private long id;
 
     private int size;
-
-    private int quantity;
 }

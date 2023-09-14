@@ -1,6 +1,6 @@
 package com.example.adminservice.domain.category.entity;
 
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import lombok.*;
 
 import javax.persistence.*;

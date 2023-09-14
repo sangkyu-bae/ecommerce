@@ -5,10 +5,11 @@ import com.example.adminservice.domain.category.entity.Category;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Builder
 @Table(name = "tb_product")
 public class ProductEntity {
 
@@ -22,12 +23,16 @@ public class ProductEntity {
     @Lob
     private String description;
 
+    @Lob
+    private String productImage;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
-
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<ProductComponent> productComponents;
 
 }

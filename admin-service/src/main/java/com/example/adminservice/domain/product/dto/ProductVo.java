@@ -1,5 +1,8 @@
 package com.example.adminservice.domain.product.dto;
 
+import com.example.adminservice.adapter.out.persistence.SizeEntity;
+import com.example.adminservice.domain.brand.entity.Brand;
+import com.example.adminservice.domain.category.entity.Category;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 /**
  * Entity에 접근하는 오염되지 안되는 클래스
@@ -17,32 +21,38 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class ProductVo {
 
-    @NotBlank
-    @NotNull
-    @Length(min = 2, max = 30)
     private final String name;
 
-    @NotNull
     private final int price;
 
-    @NotBlank
-    @Length(min = 15)
     private final String description;
 
     private final String productImage;
+
+    private final Brand brand;
+
+    private final Category category;
+
+    private final Set<SizeEntity> sizeEntities;
 
     public static ProductVo createGenerateProductVo(
             ProductName productName,
             ProductPrice productPrice,
             ProductDescription productDescription,
-            ProductImage productImage
+            ProductImage productImage,
+            Brand brand,
+            Category category,
+            Set<SizeEntity> sizeEntities
     ){
-        return new ProductVo(
-                productName.productName,
-                productPrice.price,
-                productDescription.description,
-                productImage.image
-        );
+      return new ProductVo(
+              productName.getProductName(),
+              productPrice.getPrice(),
+              productDescription.getDescription(),
+              productImage.getImage(),
+              brand,
+              category,
+              sizeEntities
+      );
     }
 
     @Value

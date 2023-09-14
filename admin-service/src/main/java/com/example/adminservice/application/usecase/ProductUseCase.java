@@ -5,7 +5,7 @@ import com.example.adminservice.domain.product.dto.CreateProductDto;
 import com.example.adminservice.domain.product.dto.ProductDto;
 import com.example.adminservice.domain.product.dto.ProductSearchDto;
 import com.example.adminservice.domain.product.dto.ResponseProductDto;
-import com.example.adminservice.adapter.out.persistence.Product;
+import com.example.adminservice.domain.product.entity.Product;
 import com.example.adminservice.domain.product.service.ColorProductReadService;
 import com.example.adminservice.domain.product.service.ProductReadService;
 import com.example.adminservice.domain.product.service.ProductWriteService;

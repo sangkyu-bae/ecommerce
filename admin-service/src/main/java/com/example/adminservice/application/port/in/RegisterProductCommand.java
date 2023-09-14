@@ -1,5 +1,7 @@
 package com.example.adminservice.application.port.in;
 
+import com.example.adminservice.adapter.out.persistence.ProductComponent;
+import com.example.adminservice.adapter.out.persistence.SizeEntity;
 import com.example.adminservice.common.SelfValidating;
 import com.example.adminservice.domain.brand.entity.Brand;
 import com.example.adminservice.domain.category.entity.Category;
@@ -12,6 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Data
@@ -20,15 +23,6 @@ import java.util.List;
 @NoArgsConstructor
 //public class RegisterProductCommand extends SelfValidating<RegisterProductCommand> {
 public class RegisterProductCommand extends SelfValidating<RegisterProductCommand> {
-
-    @NotNull
-    private Brand brand;
-
-    @NotNull
-    private Category category;
-
-    @NotNull
-    List<ColorDataDto> colorDataList;
 
     @NotBlank
     @Length(min = 2, max = 30)
@@ -43,10 +37,20 @@ public class RegisterProductCommand extends SelfValidating<RegisterProductComman
 
     private String productImage;
 
+    @NotNull
+    private Brand brand;
+
+    @NotNull
+    private Category category;
+
+    @NotNull
+    private Set<ProductComponent> productComponents;
+
+
     public RegisterProductCommand(
             Brand brand,
             Category category,
-            List<ColorDataDto> colorDataList,
+            Set<ProductComponent> productComponents,
             String name,
             int price,
             String description,
@@ -54,7 +58,7 @@ public class RegisterProductCommand extends SelfValidating<RegisterProductComman
     ) {
         this.brand = brand;
         this.category = category;
-        this.colorDataList = colorDataList;
+        this.productComponents = productComponents;
         this.name = name;
         this.price = price;
         this.description = description;
