@@ -18,14 +18,12 @@ public class ProductComponent {
     @Id @GeneratedValue
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Color color;
-
-    @OneToMany
-    private Set<SizeEntity> sizes;
-
-    private int quantity;
-
-    @ManyToOne
-    private Product product;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private ColorEntity color;
+//
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<SizeEntity> sizes;
+//
+//    @ManyToOne
+//    private ProductEntity product;
 }

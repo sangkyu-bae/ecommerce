@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @Documented
 @Component
 public @interface UseCase {
-    @AliasFor
+    @AliasFor(annotation = Component.class)
     String value() default "";
 }

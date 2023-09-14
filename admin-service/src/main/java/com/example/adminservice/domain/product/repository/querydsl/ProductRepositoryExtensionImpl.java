@@ -1,14 +1,15 @@
 package com.example.adminservice.domain.product.repository.querydsl;
 
+import com.example.adminservice.domain.brand.entity.QBrand;
+import com.example.adminservice.domain.category.entity.QCategory;
+import com.example.adminservice.domain.color.entity.QColor;
 import com.example.adminservice.domain.product.entity.Product;
-import com.example.adminservice.module.domain.brand.entity.QBrand;
-import com.example.adminservice.module.domain.category.entity.QCategory;
-import com.example.adminservice.module.domain.color.entity.QColor;
-import com.example.adminservice.module.domain.product.entity.QColorProduct;
-import com.example.adminservice.module.domain.product.entity.QProduct;
-import com.example.adminservice.module.domain.quantity.entity.QQuantity;
-import com.example.adminservice.module.domain.size.entity.QSize;
-import com.example.adminservice.module.domain.size.entity.QSizeQuantity;
+import com.example.adminservice.domain.product.entity.QColorProduct;
+import com.example.adminservice.domain.product.entity.QProduct;
+import com.example.adminservice.domain.quantity.entity.QQuantity;
+import com.example.adminservice.domain.size.entity.QSize;
+import com.example.adminservice.domain.size.entity.QSizeQuantity;
+
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;

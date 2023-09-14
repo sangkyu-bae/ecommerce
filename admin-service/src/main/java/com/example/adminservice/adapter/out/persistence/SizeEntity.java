@@ -2,10 +2,7 @@ package com.example.adminservice.adapter.out.persistence;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
@@ -16,5 +13,10 @@ public class SizeEntity {
     @Id @GeneratedValue
     private long id;
 
-    private int size;
+//    private int size;
+//
+//    private int quantity;
+//
+//    @ManyToOne
+//    private ProductComponent productComponent;
 }

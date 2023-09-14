@@ -5,6 +5,5 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class BrandVo {
-    
-    private 
+
 }

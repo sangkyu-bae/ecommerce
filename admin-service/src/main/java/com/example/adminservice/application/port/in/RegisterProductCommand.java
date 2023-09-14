@@ -1,5 +1,7 @@
 package com.example.adminservice.application.port.in;
 
+import com.example.adminservice.adapter.out.persistence.BrandEntity;
+import com.example.adminservice.adapter.out.persistence.CategoryEntity;
 import com.example.adminservice.adapter.out.persistence.ProductComponent;
 import com.example.adminservice.adapter.out.persistence.SizeEntity;
 import com.example.adminservice.common.SelfValidating;
@@ -38,18 +40,18 @@ public class RegisterProductCommand extends SelfValidating<RegisterProductComman
     private String productImage;
 
     @NotNull
-    private Brand brand;
+    private BrandEntity brand;
 
     @NotNull
-    private Category category;
+    private CategoryEntity category;
 
     @NotNull
     private Set<ProductComponent> productComponents;
 
 
     public RegisterProductCommand(
-            Brand brand,
-            Category category,
+            BrandEntity brand,
+            CategoryEntity category,
             Set<ProductComponent> productComponents,
             String name,
             int price,

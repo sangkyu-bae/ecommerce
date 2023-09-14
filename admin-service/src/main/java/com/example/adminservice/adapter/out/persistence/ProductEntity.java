@@ -9,12 +9,12 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
-@AllArgsConstructor @NoArgsConstructor @Builder
-@Table(name = "tb_product")
+@AllArgsConstructor @NoArgsConstructor
+@Table(name = "tb_product") @Builder
 public class ProductEntity {
 
     @Id @GeneratedValue
-    private long id;
+    private Long id;
 
     private String name;
 
@@ -27,10 +27,10 @@ public class ProductEntity {
     private String productImage;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Brand brand;
+    private BrandEntity brand;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Category category;
+    private CategoryEntity category;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<ProductComponent> productComponents;

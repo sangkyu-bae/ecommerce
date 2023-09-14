@@ -14,10 +14,10 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String userId = request.getHeader("X-User-Id");
-        if(userId.isBlank()){
-            log.error("요청한 사용자가 없습니다.");
-            return false;
-        }
+//        if(userId.isBlank()){
+//            log.error("요청한 사용자가 없습니다.");
+//            return false;
+//        }
 
         return true;
     }

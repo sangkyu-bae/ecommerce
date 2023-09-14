@@ -12,7 +12,6 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor
-@Builder
 public class CreateProductDto extends ProductDto{
 
     @NotNull

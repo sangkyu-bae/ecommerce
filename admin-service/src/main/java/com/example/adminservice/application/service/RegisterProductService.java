@@ -4,6 +4,7 @@ import com.example.adminservice.adapter.out.persistence.ProductEntity;
 import com.example.adminservice.application.port.in.RegisterProductCommand;
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.RegisterProductPort;
+import com.example.adminservice.common.UseCase;
 import com.example.adminservice.domain.product.dto.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
+@UseCase
 @Transactional
 @Slf4j
 public class RegisterProductService implements RegisterProductUseCase {
