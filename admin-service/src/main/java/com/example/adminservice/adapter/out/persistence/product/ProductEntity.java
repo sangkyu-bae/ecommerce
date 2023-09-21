@@ -1,7 +1,5 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.product;
 
-import com.example.adminservice.domain.brand.entity.Brand;
-import com.example.adminservice.domain.category.entity.Category;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,7 +30,7 @@ public class ProductEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<ProductComponent> productComponents;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "product")
+    private Set<ProductComponentEntity> productComponents;
 
 }

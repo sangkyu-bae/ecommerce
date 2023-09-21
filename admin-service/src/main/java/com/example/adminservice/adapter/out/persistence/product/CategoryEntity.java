@@ -1,6 +1,5 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.product;
 
-import com.example.adminservice.domain.product.entity.Product;
 import lombok.*;
 
 import javax.persistence.*;

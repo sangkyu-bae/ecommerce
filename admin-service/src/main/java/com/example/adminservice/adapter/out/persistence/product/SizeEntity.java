@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.product;
 
 import lombok.*;
 
@@ -13,10 +13,10 @@ public class SizeEntity {
     @Id @GeneratedValue
     private long id;
 
-//    private int size;
-//
-//    private int quantity;
-//
-//    @ManyToOne
-//    private ProductComponent productComponent;
+    private int size;
+
+    private int quantity;
+
+    @ManyToOne
+    private ProductComponentEntity productComponent;
 }

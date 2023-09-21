@@ -1,16 +1,11 @@
 package com.example.adminservice.domain.product.dto;
 
-import com.example.adminservice.adapter.out.persistence.SizeEntity;
-import com.example.adminservice.domain.brand.entity.Brand;
-import com.example.adminservice.domain.category.entity.Category;
+import com.example.adminservice.adapter.out.persistence.product.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
-import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 /**
@@ -29,20 +24,20 @@ public class ProductVo {
 
     private final String productImage;
 
-    private final Brand brand;
+    private final BrandEntity brand;
 
-    private final Category category;
+    private final CategoryEntity category;
 
-    private final Set<SizeEntity> sizeEntities;
+    private final Set<ProductComponentEntity> productComponents;
 
     public static ProductVo createGenerateProductVo(
             ProductName productName,
             ProductPrice productPrice,
             ProductDescription productDescription,
             ProductImage productImage,
-            Brand brand,
-            Category category,
-            Set<SizeEntity> sizeEntities
+            BrandEntity brand,
+            CategoryEntity category,
+            Set<ProductComponentEntity> components
     ){
       return new ProductVo(
               productName.getProductName(),
@@ -51,7 +46,7 @@ public class ProductVo {
               productImage.getImage(),
               brand,
               category,
-              sizeEntities
+              components
       );
     }
 
@@ -87,4 +82,5 @@ public class ProductVo {
         }
         String image;
     }
+
 }
