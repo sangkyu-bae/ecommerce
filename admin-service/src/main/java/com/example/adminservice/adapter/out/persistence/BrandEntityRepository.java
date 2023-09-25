@@ -7,5 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-public interface BrandEntityRepository extends JpaRepository<Long, BrandEntity> {
+public interface BrandEntityRepository extends JpaRepository<BrandEntity,Long> {
 }

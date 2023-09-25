@@ -4,6 +4,7 @@ import com.example.adminservice.adapter.in.web.request.productRequest.RegisterPr
 import com.example.adminservice.adapter.out.persistence.product.BrandEntity;
 import com.example.adminservice.adapter.out.persistence.product.CategoryEntity;
 import com.example.adminservice.adapter.out.persistence.product.ProductComponentEntity;
+import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.application.port.in.product.RegisterBrandCommand;
 import com.example.adminservice.application.port.in.product.RegisterCategoryCommand;
 import com.example.adminservice.application.port.in.product.RegisterProductCommand;
@@ -34,29 +35,23 @@ public class RegisterProductController {
 
     private final RegisterProductUseCase registerProductUseCase;
 
+    private final ProductMapper productMapper;
+
     private final RegisterProductPort registerProductPort;
 
     private final ModelMapper modelMapper;
 
     @Operation(summary = "get posts", description = "지역에 대한 posts들 가져오기")
     @PostMapping("/admin/register/product")
-    ResponseEntity<ProductVo> registerProduct(@RequestBody RegisterProductRequest registerProductRequest) {
+    public ResponseEntity<ProductVo> registerProduct(@RequestBody RegisterProductRequest registerProductRequest) {
         ProductVo productVo = null;
         try {
             String productImage = registerProductRequest.getProductImage();
             productImage = productImage == null ? "" : productImage;
 
-            RegisterBrandCommand registerBrandCommand = modelMapper.map(
-                    registerProductRequest.getBrand(), RegisterBrandCommand.class
-            );
-
-            RegisterCategoryCommand registerCategoryCommand = modelMapper.map(
-                    registerProductRequest.getCategory(), RegisterCategoryCommand.class
-            );
-
-
-            Set<RegisterProductComponentCommand> componentCommands = registerProductRequest.getProductComponents().
-                    stream().map(componet -> modelMapper.map(componet, RegisterProductComponentCommand.class)).collect(Collectors.toSet());
+            RegisterBrandCommand registerBrandCommand = productMapper.mapToBrand(registerProductRequest.getBrand());
+            RegisterCategoryCommand registerCategoryCommand = productMapper.mapToCategory(registerProductRequest.getCategory());
+            Set<RegisterProductComponentCommand> componentCommands = productMapper.mapToCommandProductComponents(registerProductRequest.getProductComponents());
 
             RegisterProductCommand command = RegisterProductCommand.builder()
                     .brand(registerBrandCommand)
@@ -67,21 +62,7 @@ public class RegisterProductController {
                     .description(registerProductRequest.getDescription())
                     .productImage(productImage)
                     .build();
-//            productVo = registerProductUseCase.registerProduct(command);
-
-            BrandEntity brand = modelMapper.map(command.getBrand(),BrandEntity.class);
-            CategoryEntity category = modelMapper.map(command.getCategory(),CategoryEntity.class);
-            Set<ProductComponentEntity> componentEntities = command.getProductComponents()
-                    .stream().map(component -> modelMapper.map(component,ProductComponentEntity.class)).collect(Collectors.toSet());
-
-            ProductVo createProduct = ProductVo.createGenerateProductVo(
-                    new ProductVo.ProductName(command.getName()),
-                    new ProductVo.ProductPrice(command.getPrice()),
-                    new ProductVo.ProductDescription(command.getDescription()),
-                    new ProductVo.ProductImage(command.getProductImage()),
-                    brand,category,componentEntities
-            );
-            registerProductPort.createProduct(createProduct);
+            productVo = registerProductUseCase.registerProduct(command);
 
         } catch (Exception exception) {
 

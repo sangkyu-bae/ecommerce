@@ -1,10 +1,6 @@
 package com.example.adminservice.domain.product.dto;
 
-import com.example.adminservice.adapter.out.persistence.product.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 
 import java.util.Set;
 
@@ -24,28 +20,28 @@ public class ProductVo {
 
     private final String productImage;
 
-    private final BrandEntity brand;
+    private final ProductCategoryVo category;
 
-    private final CategoryEntity category;
+    private final ProductBrandVo brand;
 
-    private final Set<ProductComponentEntity> productComponents;
+    private final Set<ProductComponentEntityVo> productComponents;
 
     public static ProductVo createGenerateProductVo(
             ProductName productName,
             ProductPrice productPrice,
             ProductDescription productDescription,
             ProductImage productImage,
-            BrandEntity brand,
-            CategoryEntity category,
-            Set<ProductComponentEntity> components
+            ProductBrandVo brand,
+            ProductCategoryVo category,
+            Set<ProductComponentEntityVo> components
     ){
       return new ProductVo(
               productName.getProductName(),
               productPrice.getPrice(),
               productDescription.getDescription(),
               productImage.getImage(),
-              brand,
               category,
+              brand,
               components
       );
     }
@@ -81,6 +77,77 @@ public class ProductVo {
             this.image = value;
         }
         String image;
+    }
+
+    @Value
+    public static class ProductCategoryVo{
+        public ProductCategoryVo(Long id,String name){
+            this.id = id;
+            this.name = name;
+        }
+        private Long id;
+
+        private String name;
+    }
+
+    @Value
+    public static class ProductBrandVo{
+        public ProductBrandVo(Long id,String name){
+            this.id = id;
+            this.name = name;
+        }
+        private Long id;
+
+        private String name;
+
+
+    }
+
+    @AllArgsConstructor
+    @Value
+    public static class ProductComponentEntityVo{
+        public static ProductComponentEntityVo createProductComponentEntityVo(ProductColorVo productColorVo, Set<ProductSizeVo> ProductSizeVos){
+            return new ProductComponentEntityVo(null,productColorVo,ProductSizeVos);
+        }
+
+        public static ProductComponentEntityVo readProductComponentEntityVo(Long id, ProductColorVo productColorVo, Set<ProductSizeVo> ProductSizeVos){
+            return new ProductComponentEntityVo(id,productColorVo,ProductSizeVos);
+        }
+        private Long id;
+
+        private ProductColorVo color;
+
+        private Set<ProductSizeVo> sizes;
+
+    }
+    @Value
+    public static class ProductColorVo{
+        public ProductColorVo(Long id, String name){
+            this.id = id;
+            this. name = name;
+        }
+
+        private Long id;
+
+        private String name;
+    }
+
+    @AllArgsConstructor
+    @Value
+    public static class ProductSizeVo{
+        public static ProductSizeVo createProductSizeVo(int size, int quantity){
+            return new ProductSizeVo(null,size,quantity);
+        }
+
+        public static ProductSizeVo readProductSizeVo(Long id, int size, int quantity){
+            return new ProductSizeVo(id,size,quantity);
+        }
+
+        private Long id;
+
+        private int size;
+
+        private int quantity;
     }
 
 }

@@ -14,4 +14,5 @@ public class RegisterSizeCommand {
     private int size;
 
     @NotNull
-    private int quantity;}
+    private int quantity;
+}

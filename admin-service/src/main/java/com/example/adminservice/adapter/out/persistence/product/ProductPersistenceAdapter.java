@@ -17,7 +17,7 @@ public class ProductPersistenceAdapter implements RegisterProductPort {
 
     private final SpringDataProductRepository springDataProductRepository;
 
-    private final ModelMapper modelMapper;
+    private final ProductMapper productMapper;
 
 
     @Override
@@ -28,20 +28,18 @@ public class ProductPersistenceAdapter implements RegisterProductPort {
                 .price(productVo.getPrice())
                 .description(productVo.getDescription())
                 .productImage(productVo.getProductImage())
-                .brand(productVo.getBrand())
-                .category(productVo.getCategory())
-                .productComponents(productVo.getProductComponents())
+                .brand(productMapper.mapToBrand(productVo.getBrand()))
+                .category(productMapper.mapToCategory(productVo.getCategory()))
+                .productComponents(productMapper.mapToProductComponents(productVo.getProductComponents()))
                 .build();
 
-        productVo.getProductComponents()
+        createProductEntity.getProductComponents()
                 .forEach(component -> {
                             component.setProduct(createProductEntity);
                             component.getSizes().forEach(size->size.setProductComponent(component));
                         }
                 );
 
-        ProductEntity a = springDataProductRepository.save(createProductEntity);
-//        return springDataProductRepository.save(createProductEntity);
-        return a;
+        return springDataProductRepository.save(createProductEntity);
     }
 }
