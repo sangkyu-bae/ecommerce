@@ -1,7 +1,7 @@
 package com.example.adminservice.application.service;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
 import com.example.adminservice.adapter.out.persistence.product.*;
+import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.in.product.*;
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.RegisterProductPort;
@@ -9,12 +9,8 @@ import com.example.adminservice.common.UseCase;
 import com.example.adminservice.domain.product.dto.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @UseCase
@@ -31,6 +27,7 @@ public class RegisterProductService implements RegisterProductUseCase {
         ProductVo.ProductCategoryVo category =createCategory(command.getCategory());
 
         ProductVo createProduct = ProductVo.createGenerateProductVo(
+                new ProductVo.ProductId(0),
                 new ProductVo.ProductName(command.getName()),
                 new ProductVo.ProductPrice(command.getPrice()),
                 new ProductVo.ProductDescription(command.getDescription()),

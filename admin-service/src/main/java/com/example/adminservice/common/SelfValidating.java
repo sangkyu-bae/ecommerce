@@ -1,5 +1,8 @@
 package com.example.adminservice.common;
 
+import com.example.adminservice.module.common.error.ErrorCode;
+import org.springframework.validation.Errors;
+
 import javax.validation.*;
 import java.util.Set;
 
@@ -12,10 +15,11 @@ public abstract class SelfValidating<T> {
         validator = factory.getValidator();
     }
 
-    protected void validateSelf(){
+    public void validateSelf(){
         Set<ConstraintViolation<T>> violations = validator.validate((T) this);
         if(!violations.isEmpty()){
             throw new ConstraintViolationException(violations);
         }
     }
+
 }

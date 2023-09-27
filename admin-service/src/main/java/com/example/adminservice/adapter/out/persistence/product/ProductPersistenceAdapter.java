@@ -1,19 +1,22 @@
 package com.example.adminservice.adapter.out.persistence.product;
 
 import com.example.adminservice.adapter.out.persistence.SpringDataProductRepository;
+import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
+import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RegisterProductPort;
 import com.example.adminservice.common.WebAdapter;
 import com.example.adminservice.domain.product.dto.ProductVo;
+import com.example.adminservice.module.common.error.ErrorException;
+import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.transaction.annotation.Transactional;
 
 @WebAdapter
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class ProductPersistenceAdapter implements RegisterProductPort {
+public class ProductPersistenceAdapter implements RegisterProductPort, FindProductPort {
 
     private final SpringDataProductRepository springDataProductRepository;
 
@@ -41,5 +44,11 @@ public class ProductPersistenceAdapter implements RegisterProductPort {
                 );
 
         return springDataProductRepository.save(createProductEntity);
+    }
+
+    @Override
+    public ProductEntity findProduct(ProductVo.ProductId productId) {
+        return springDataProductRepository.findById(productId.getId())
+                .orElseThrow(()-> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE,"findProduct"));
     }
 }

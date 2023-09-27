@@ -28,18 +28,6 @@ public class ErrorResponse {
                 );
     }
 
-    public static ResponseEntity<ErrorResponse> toResponseEntity(AbstractErrorCode error, String method) {
-        return ResponseEntity
-                .status(error.getHttpStatus())
-                .body(ErrorResponse.builder()
-                        .status(error.getHttpStatus().value())
-                        .error(error.getHttpStatus().name())
-                        .message(error.getDetail())
-                        .method(method)
-                        .build()
-                );
-    }
-
     public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode errorCode, String method) {
         return ResponseEntity
                 .status(errorCode.getHttpStatus())

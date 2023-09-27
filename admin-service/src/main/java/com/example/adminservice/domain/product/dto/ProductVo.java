@@ -12,6 +12,8 @@ import java.util.Set;
 @Getter
 public class ProductVo {
 
+    private final Long id;
+
     private final String name;
 
     private final int price;
@@ -27,6 +29,7 @@ public class ProductVo {
     private final Set<ProductComponentEntityVo> productComponents;
 
     public static ProductVo createGenerateProductVo(
+            ProductId productId,
             ProductName productName,
             ProductPrice productPrice,
             ProductDescription productDescription,
@@ -36,6 +39,7 @@ public class ProductVo {
             Set<ProductComponentEntityVo> components
     ){
       return new ProductVo(
+              productId.getId(),
               productName.getProductName(),
               productPrice.getPrice(),
               productDescription.getDescription(),
@@ -46,6 +50,17 @@ public class ProductVo {
       );
     }
 
+    @Value
+    public static class ProductId{
+        public ProductId(int value){
+            this.id = (long) value;
+        }
+
+        public ProductId(Long value){
+            this.id = value;
+        }
+        Long id;
+    }
     @Value
     public static class ProductName{
         public ProductName(String value){

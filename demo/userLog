@@ -1,325 +1,105 @@
-2023-06-22 19:51:31.077 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 26808 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
-2023-06-22 19:51:31.091 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-06-22 19:51:31.197 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-22 19:51:31.197 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-22 19:51:33.334 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-22 19:51:33.336 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-22 19:51:33.387 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-2023-06-22 19:51:34.026 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-22 19:51:34.027 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-22 19:51:34.193 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
-2023-06-22 19:51:34.241 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 205 ms. Found 1 JPA repository interfaces.
-2023-06-22 19:51:34.255 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-06-22 19:51:34.255 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-06-22 19:51:34.275 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2023-06-22 19:51:34.296 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 40 ms. Found 1 Redis repository interfaces.
-2023-06-22 19:51:34.923 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=c06a8971-890d-3192-8046-3a1361703674
-2023-06-22 19:51:37.327 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
-2023-06-22 19:51:37.356 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
-2023-06-22 19:51:37.357 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
-2023-06-22 19:51:37.710 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-06-22 19:51:37.710 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 6511 ms
-2023-06-22 19:51:38.635 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-22 19:51:38.819 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-06-22 19:51:40.728 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-06-22 19:51:41.970 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
-2023-06-22 19:51:42.695 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
-2023-06-22 19:51:42.733 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-06-22 19:51:45.149 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1687431105149 | took 11ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
+2023-09-09 18:15:46.228 INFO  ---- [tartedMain] [DemoApplication:55] logStarting   Starting DemoApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 21484 (C:\Users\tkdrb\IdeaProjects\ecommerce\demo\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\demo)
+2023-09-09 18:15:46.240 INFO  ---- [tartedMain] [DemoApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-09-09 18:15:46.329 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-09-09 18:15:46.330 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-09-09 18:15:48.150 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-09-09 18:15:48.152 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-09-09 18:15:48.193 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-09-09 18:15:48.889 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-09-09 18:15:48.890 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-09 18:15:49.020 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.redis.repository.RefreshTokenRedisRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2023-09-09 18:15:49.057 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 158 ms. Found 1 JPA repository interfaces.
+2023-09-09 18:15:49.068 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-09-09 18:15:49.068 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-09-09 18:15:49.086 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.demo.module.domain.member.respository.MemberRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2023-09-09 18:15:49.108 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 39 ms. Found 1 Redis repository interfaces.
+2023-09-09 18:15:49.770 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=c06a8971-890d-3192-8046-3a1361703674
+2023-09-09 18:15:52.504 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8080 (http)
+2023-09-09 18:15:52.524 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-09-09 18:15:52.526 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-09-09 18:15:52.829 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-09-09 18:15:52.830 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 6499 ms
+2023-09-09 18:15:53.407 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-09 18:15:53.496 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-09-09 18:15:53.878 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-09-09 18:15:54.129 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-09-09 18:15:54.647 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-09-09 18:15:54.689 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-09-09 18:15:56.934 INFO  ---- [tartedMain] [p6spy:60] logSQL   #1694250956934 | took 13ms | statement | connection 1| url jdbc:mysql://localhost:3306/e-commerce
 select * from `e-commerce`.`member` where 1=0
 select * from `e-commerce`.`member` where 1=0;
-2023-06-22 19:51:45.154 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-22 19:51:45.177 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-22 19:51:46.524 INFO  ---- [tartedMain] [OptionalLiveReloadServer:59] startServer   LiveReload server is running on port 35729
-2023-06-22 19:51:46.781 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-22 19:51:46.989 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-2023-06-22 19:51:46.990 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
-2023-06-22 19:51:47.026 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77117bcf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fef9cc4, org.springframework.security.web.context.SecurityContextPersistenceFilter@3b10753b, org.springframework.security.web.header.HeaderWriterFilter@78c3562d, org.springframework.security.web.authentication.logout.LogoutFilter@7576788b, com.example.demo.infra.security.LoginAuthenticationFilter@387f6fb1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64dbc4cb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ec45ebe, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c1fad2e, org.springframework.security.web.session.SessionManagementFilter@1428b0a3, org.springframework.security.web.access.ExceptionTranslationFilter@36905d54, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@559b29db]
-2023-06-22 19:51:47.577 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
-2023-06-22 19:51:49.493 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
-2023-06-22 19:51:52.701 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-06-22 19:51:52.777 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-06-22 19:51:52.917 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-06-22 19:51:52.935 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 19:51:53.113 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-06-22 19:51:53.114 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-06-22 19:51:53.116 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-06-22 19:51:53.118 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-06-22 19:51:53.120 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-06-22 19:51:53.121 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
-2023-06-22 19:51:53.122 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-06-22 19:51:54.495 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-06-22 19:51:54.502 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
-2023-06-22 19:51:54.513 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-06-22 19:51:54.534 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1687431114530 with initial instances count: 0
-2023-06-22 19:51:54.542 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application AUTH-SERVICE with eureka with status UP
-2023-06-22 19:51:54.546 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1687431114546, current=UP, previous=STARTING]
-2023-06-22 19:51:54.583 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_AUTH-SERVICE/192.168.0.23:ff1991352de56617ffc24e4c2b2ca533: registering service...
-2023-06-22 19:51:54.678 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-22 19:51:54.680 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8080
-2023-06-22 19:51:54.882 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_AUTH-SERVICE/192.168.0.23:ff1991352de56617ffc24e4c2b2ca533 - registration status: 204
-2023-06-22 19:51:58.251 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 30.132 seconds (JVM running for 31.727)
-2023-06-22 19:52:24.508 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-06-22 19:52:24.509 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-06-22 19:52:24.509 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-06-22 19:52:24.509 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-06-22 19:52:24.511 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-06-22 19:52:24.511 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
-2023-06-22 19:52:24.512 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-06-22 19:52:24.533 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-06-22 19:52:43.284 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-22 19:52:43.285 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
-2023-06-22 19:52:43.290 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 4 ms
-2023-06-22 19:52:43.838 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 19:52:43.846 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 19:52:43.855 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687431163855 | took 4ms | statement | connection 2| url jdbc:mysql://localhost:3306/e-commerce
+2023-09-09 18:15:56.942 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-09 18:15:56.966 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-09 18:15:58.864 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-09-09 18:15:59.366 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-09 18:15:59.999 WARN  ---- [tartedMain] [WebSecurity:305] performBuild   You are asking Spring Security to ignore Ant [pattern='/favicon.ico']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2023-09-09 18:16:00.002 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:52] <init>   Will not secure Ant [pattern='/favicon.ico']
+2023-09-09 18:16:00.064 INFO  ---- [tartedMain] [DefaultSecurityFilterChain:55] <init>   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f62f6f9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76c708a3, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b180b3b, org.springframework.security.web.header.HeaderWriterFilter@726d1806, org.springframework.security.web.authentication.logout.LogoutFilter@24929958, com.example.demo.infra.security.LoginAuthenticationFilter@6d147928, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@71f1f22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3bb21f41, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49fe95c2, org.springframework.security.web.session.SessionManagementFilter@1465295e, org.springframework.security.web.access.ExceptionTranslationFilter@411b4fa0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@8e8a06c]
+2023-09-09 18:16:01.477 WARN  ---- [Finalizer ] [DefaultClientResources:707] finalize   io.lettuce.core.resource.DefaultClientResources was not shut down properly, shutdown() was not called before it's garbage-collected. Call shutdown() or shutdown(long,long,TimeUnit) 
+2023-09-09 18:16:04.863 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-09-09 18:16:06.527 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-09-09 18:16:06.561 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-09-09 18:16:06.633 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-09-09 18:16:06.642 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-09-09 18:16:06.682 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-09-09 18:16:06.683 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-09-09 18:16:06.683 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-09-09 18:16:06.683 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-09-09 18:16:06.684 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-09-09 18:16:06.684 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-09-09 18:16:06.685 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-09-09 18:16:07.126 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-09-09 18:16:07.132 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-09-09 18:16:07.137 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-09-09 18:16:07.144 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1694250967143 with initial instances count: 6
+2023-09-09 18:16:07.147 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application AUTH-SERVICE with eureka with status UP
+2023-09-09 18:16:07.149 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1694250967149, current=UP, previous=STARTING]
+2023-09-09 18:16:07.154 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_AUTH-SERVICE/192.168.0.15:1105b309459f4e4fd963b27be6c95db9: registering service...
+2023-09-09 18:16:07.197 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-09 18:16:07.199 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8080
+2023-09-09 18:16:07.237 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_AUTH-SERVICE/192.168.0.15:1105b309459f4e4fd963b27be6c95db9 - registration status: 204
+2023-09-09 18:16:08.758 INFO  ---- [tartedMain] [DemoApplication:61] logStarted   Started DemoApplication in 25.842 seconds (JVM running for 28.633)
+2023-09-09 18:18:24.896 INFO  ---- [080-exec-1] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-09 18:18:24.899 INFO  ---- [080-exec-1] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-09-09 18:18:24.908 INFO  ---- [080-exec-1] [DispatcherServlet:547] initServletBean   Completed initialization in 7 ms
+2023-09-09 18:18:25.393 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-09-09 18:18:25.403 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-09-09 18:18:25.418 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1694251105418 | took 11ms | statement | connection 2| url jdbc:mysql://localhost:3306/e-commerce
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 19:52:43.860 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 19:52:43.874 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 19:52:43.874 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 19:52:43.875 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 19:52:43.879 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:52:43.881 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:52:43.882 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 19:52:43.883 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:52:43.884 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 19:52:43.885 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 19:52:43.885 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:52:43.915 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687431163915 | took 1ms | commit | connection 2| url jdbc:mysql://localhost:3306/e-commerce
+2023-09-09 18:18:25.421 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-09-09 18:18:25.432 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-09-09 18:18:25.435 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-09-09 18:18:25.436 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-09-09 18:18:25.438 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-09-09 18:18:25.440 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-09-09 18:18:25.441 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-09-09 18:18:25.441 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-09-09 18:18:25.443 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-09-09 18:18:25.443 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-09-09 18:18:25.444 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-09-09 18:18:25.496 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1694251105496 | took 2ms | commit | connection 2| url jdbc:mysql://localhost:3306/e-commerce
 
 ;
-2023-06-22 19:52:44.140 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 19:52:44.141 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 19:52:44.144 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687431164144 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/e-commerce
+2023-09-09 18:18:25.867 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
+2023-09-09 18:18:25.868 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
+2023-09-09 18:18:25.869 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1694251105869 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/e-commerce
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
 select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 19:52:44.145 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 19:52:44.146 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 19:52:44.146 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 19:52:44.147 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 19:52:44.147 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:52:44.147 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:52:44.149 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 19:52:44.150 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:52:44.150 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 19:52:44.151 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 19:52:44.152 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:52:44.286 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687431164286 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/e-commerce
+2023-09-09 18:18:25.870 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
+2023-09-09 18:18:25.871 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
+2023-09-09 18:18:25.872 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
+2023-09-09 18:18:25.872 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
+2023-09-09 18:18:25.873 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
+2023-09-09 18:18:25.873 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
+2023-09-09 18:18:25.873 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
+2023-09-09 18:18:25.874 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
+2023-09-09 18:18:25.875 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
+2023-09-09 18:18:25.875 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
+2023-09-09 18:18:25.876 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
+2023-09-09 18:18:26.087 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1694251106087 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/e-commerce
 
 ;
-2023-06-22 19:53:10.444 DEBUG ---- [080-exec-2] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 19:53:10.445 TRACE ---- [080-exec-2] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 19:53:10.446 INFO  ---- [080-exec-2] [p6spy:60] logSQL   #1687431190446 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 19:53:10.447 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 19:53:10.448 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 19:53:10.448 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 19:53:10.448 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 19:53:10.448 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:53:10.449 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:53:10.449 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 19:53:10.449 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:53:10.449 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 19:53:10.450 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 19:53:10.450 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:53:10.451 INFO  ---- [080-exec-2] [p6spy:60] logSQL   #1687431190451 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 19:53:10.543 DEBUG ---- [080-exec-2] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 19:53:10.543 TRACE ---- [080-exec-2] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 19:53:10.544 INFO  ---- [080-exec-2] [p6spy:60] logSQL   #1687431190544 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 19:53:10.545 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 19:53:10.545 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 19:53:10.545 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 19:53:10.546 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 19:53:10.546 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:53:10.546 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:53:10.546 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 19:53:10.546 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 19:53:10.547 TRACE ---- [080-exec-2] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 19:53:10.547 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 19:53:10.547 TRACE ---- [080-exec-2] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 19:53:10.565 INFO  ---- [080-exec-2] [p6spy:60] logSQL   #1687431190565 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 19:56:53.130 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 20:01:53.136 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 20:04:22.290 DEBUG ---- [080-exec-6] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:04:22.292 TRACE ---- [080-exec-6] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:04:22.294 INFO  ---- [080-exec-6] [p6spy:60] logSQL   #1687431862294 | took 1ms | statement | connection 6| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:04:22.295 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:04:22.296 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:04:22.296 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:04:22.296 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:04:22.296 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:04:22.297 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:04:22.297 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:04:22.297 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:04:22.297 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:04:22.298 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:04:22.299 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:04:22.300 INFO  ---- [080-exec-6] [p6spy:60] logSQL   #1687431862300 | took 0ms | commit | connection 6| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:04:22.448 DEBUG ---- [080-exec-6] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:04:22.450 TRACE ---- [080-exec-6] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:04:22.453 INFO  ---- [080-exec-6] [p6spy:60] logSQL   #1687431862453 | took 2ms | statement | connection 7| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:04:22.454 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:04:22.455 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:04:22.456 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:04:22.456 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:04:22.457 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:04:22.457 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:04:22.458 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:04:22.458 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:04:22.459 TRACE ---- [080-exec-6] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:04:22.459 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:04:22.460 TRACE ---- [080-exec-6] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:04:22.473 INFO  ---- [080-exec-6] [p6spy:60] logSQL   #1687431862473 | took 0ms | commit | connection 7| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:05:30.632 DEBUG ---- [080-exec-3] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:05:30.633 TRACE ---- [080-exec-3] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:05:30.635 INFO  ---- [080-exec-3] [p6spy:60] logSQL   #1687431930635 | took 1ms | statement | connection 8| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:05:30.637 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:05:30.637 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:05:30.638 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:05:30.638 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:05:30.638 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:05:30.638 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:05:30.638 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:05:30.639 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:05:30.639 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:05:30.639 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:05:30.639 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:05:30.640 INFO  ---- [080-exec-3] [p6spy:60] logSQL   #1687431930640 | took 0ms | commit | connection 8| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:05:30.742 DEBUG ---- [080-exec-3] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:05:30.743 TRACE ---- [080-exec-3] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:05:30.756 INFO  ---- [080-exec-3] [p6spy:60] logSQL   #1687431930756 | took 12ms | statement | connection 9| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:05:30.756 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:05:30.757 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:05:30.758 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:05:30.758 TRACE ---- [080-exec-3] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:05:30.758 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:05:30.758 TRACE ---- [080-exec-3] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:05:30.767 INFO  ---- [080-exec-3] [p6spy:60] logSQL   #1687431930767 | took 0ms | commit | connection 9| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:06:21.868 DEBUG ---- [080-exec-4] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:06:21.869 TRACE ---- [080-exec-4] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:06:21.870 INFO  ---- [080-exec-4] [p6spy:60] logSQL   #1687431981870 | took 0ms | statement | connection 10| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:06:21.870 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:21.871 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:06:21.872 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:21.872 TRACE ---- [080-exec-4] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:06:21.872 TRACE ---- [080-exec-4] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:21.872 TRACE ---- [080-exec-4] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:21.873 INFO  ---- [080-exec-4] [p6spy:60] logSQL   #1687431981873 | took 0ms | commit | connection 10| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:06:41.027 DEBUG ---- [080-exec-7] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:06:41.028 TRACE ---- [080-exec-7] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:06:41.030 INFO  ---- [080-exec-7] [p6spy:60] logSQL   #1687432001030 | took 1ms | statement | connection 11| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:06:41.031 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:06:41.031 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:41.031 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:06:41.032 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:41.033 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:41.036 INFO  ---- [080-exec-7] [p6spy:60] logSQL   #1687432001036 | took 0ms | commit | connection 11| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:06:41.131 DEBUG ---- [080-exec-7] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:06:41.131 TRACE ---- [080-exec-7] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:06:41.133 INFO  ---- [080-exec-7] [p6spy:60] logSQL   #1687432001133 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:06:41.133 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:06:41.133 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:06:41.134 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:06:41.135 TRACE ---- [080-exec-7] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:06:41.135 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:06:41.135 TRACE ---- [080-exec-7] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:06:41.142 INFO  ---- [080-exec-7] [p6spy:60] logSQL   #1687432001142 | took 0ms | commit | connection 12| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:06:53.150 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 20:11:51.378 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:11:51.379 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:11:51.383 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687432311383 | took 1ms | statement | connection 13| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:11:51.384 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:11:51.385 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:11:51.386 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:11:51.386 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:11:51.387 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:11:51.388 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:11:51.388 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:11:51.388 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:11:51.389 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:11:51.389 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:11:51.389 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:11:51.391 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687432311391 | took 0ms | commit | connection 13| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:11:51.544 DEBUG ---- [080-exec-1] [SQL:144] logStatement   select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-2023-06-22 20:11:51.545 TRACE ---- [080-exec-1] [BasicBinder:64] bind   binding parameter [1] as [VARCHAR] - [uiwv29l@naver.com]
-2023-06-22 20:11:51.548 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687432311548 | took 1ms | statement | connection 14| url jdbc:mysql://localhost:3306/e-commerce
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email=?
-select member0_.userId as userid1_1_, member0_.address as address2_1_, member0_.email as email3_1_, member0_.emailCheckToken as emailche4_1_, member0_.emailVerified as emailver5_1_, member0_.joinAt as joinat6_1_, member0_.name as name7_1_, member0_.notificationByEmail as notifica8_1_, member0_.password as password9_1_, member0_.phone as phone10_1_, member0_.updateAt as updatea11_1_ from Member member0_ where member0_.email='uiwv29l@naver.com';
-2023-06-22 20:11:51.549 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([userid1_1_] : [BIGINT]) - [1]
-2023-06-22 20:11:51.550 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([address2_1_] : [VARCHAR]) - [null]
-2023-06-22 20:11:51.550 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([email3_1_] : [VARCHAR]) - [uiwv29l@naver.com]
-2023-06-22 20:11:51.550 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailche4_1_] : [VARCHAR]) - [c9bf0ed9-06a4-482a-8427-d508b765b243]
-2023-06-22 20:11:51.550 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([emailver5_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:11:51.551 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([joinat6_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:11:51.551 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([name7_1_] : [VARCHAR]) - [배상규]
-2023-06-22 20:11:51.552 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([notifica8_1_] : [BOOLEAN]) - [false]
-2023-06-22 20:11:51.552 TRACE ---- [080-exec-1] [BasicExtractor:60] extract   extracted value ([password9_1_] : [VARCHAR]) - [$2a$10$IiZYwWo1pKjhM8yQOVbR3.q6rXTHK.F6xq3RTXu/RipEJjBDnCXHW]
-2023-06-22 20:11:51.553 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([phone10_1_] : [VARCHAR]) - [null]
-2023-06-22 20:11:51.553 TRACE ---- [080-exec-1] [BasicExtractor:50] extract   extracted value ([updatea11_1_] : [TIMESTAMP]) - [null]
-2023-06-22 20:11:51.563 INFO  ---- [080-exec-1] [p6spy:60] logSQL   #1687432311563 | took 0ms | commit | connection 14| url jdbc:mysql://localhost:3306/e-commerce
-
-;
-2023-06-22 20:11:53.152 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 20:16:53.165 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-06-22 20:21:53.181 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-09-09 18:21:06.704 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-09-09 18:26:06.714 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-09-09 18:31:06.730 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration

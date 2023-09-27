@@ -1,6 +1,7 @@
 package com.example.adminservice.application.port.in.product;
 
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
+import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductRequest;
 import com.example.adminservice.common.SelfValidating;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -8,8 +9,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
-
-@Builder @Data @EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@Builder @Data
 @AllArgsConstructor @NoArgsConstructor
 public class RegisterProductCommand extends SelfValidating<RegisterProductCommand> {
 
@@ -51,10 +52,24 @@ public class RegisterProductCommand extends SelfValidating<RegisterProductComman
         this.productImage = productImage;
         this.brand = brand;
         this.productComponents = productComponents;
-        this.category =category;
+        this.category = category;
         this.validateSelf();
     }
 
-
+    public static RegisterProductCommand createProductCommand(RegisterProductRequest registerProductRequest,
+                                                              RegisterBrandCommand registerBrandCommand,
+                                                              RegisterCategoryCommand registerCategoryCommand,
+                                                              Set<RegisterProductComponentCommand> componentCommands
+                                                              ){
+        return new RegisterProductCommand(
+                registerBrandCommand,
+                registerCategoryCommand,
+                componentCommands,
+                registerProductRequest.getName(),
+                registerProductRequest.getPrice(),
+                registerProductRequest.getDescription(),
+                registerProductRequest.getProductImage()
+        );
+    }
 
 }

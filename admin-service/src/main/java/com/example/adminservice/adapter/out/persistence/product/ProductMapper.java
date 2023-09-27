@@ -4,6 +4,7 @@ import com.example.adminservice.adapter.in.web.request.productRequest.RegisterBr
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterCategoryRequest;
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductComponentRequest;
+import com.example.adminservice.adapter.out.persistence.product.entity.*;
 import com.example.adminservice.application.port.in.product.*;
 import com.example.adminservice.domain.product.dto.ProductVo;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -24,6 +24,7 @@ public class ProductMapper {
         ProductVo.ProductCategoryVo category = mapToCategoryVo(productEntity.getCategory());
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = mapToProductComponentEntityVo(productEntity);
         return ProductVo.createGenerateProductVo(
+                new ProductVo.ProductId(productEntity.getId()),
                 new ProductVo.ProductName(productEntity.getName()),
                 new ProductVo.ProductPrice(productEntity.getPrice()),
                 new ProductVo.ProductDescription(productEntity.getDescription()),

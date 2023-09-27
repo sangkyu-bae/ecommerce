@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence.product;
+package com.example.adminservice.adapter.out.persistence.product.entity;
 
 import lombok.*;
 

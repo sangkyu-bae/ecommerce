@@ -1,6 +1,6 @@
 package com.example.adminservice.adapter.in.web.request.productRequest;
 
-//import com.example.adminservice.adapter.out.persistence.product.SizeEntity;
+//import com.example.adminservice.adapter.out.persistence.product.entity.SizeEntity;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.AllArgsConstructor;
 import lombok.Data;
