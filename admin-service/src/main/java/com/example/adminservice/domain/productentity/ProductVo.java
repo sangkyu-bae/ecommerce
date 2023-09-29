@@ -1,4 +1,4 @@
-package com.example.adminservice.domain.product.dto;
+package com.example.adminservice.domain.productentity;
 
 import lombok.*;
 

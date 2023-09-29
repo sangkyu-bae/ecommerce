@@ -47,8 +47,8 @@ logging:
     file: UTF-8
 
   file:
-    name: userLog
-    path: C:/logs/gateway
+    name: gateway
+    path: C:\logs\gateway\gateway.log
     max-history: 30
 
   pattern:

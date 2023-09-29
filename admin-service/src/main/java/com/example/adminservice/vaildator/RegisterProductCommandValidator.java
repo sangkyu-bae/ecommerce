@@ -8,6 +8,7 @@ import com.example.adminservice.application.port.in.product.RegisterProductCompo
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
 import com.example.adminservice.common.SelfValidating;
 import com.example.adminservice.domain.brand.repository.BrandRepository;
+import com.example.adminservice.domain.productentity.SizeVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.BrandErrorCode;
 import com.example.adminservice.module.common.error.errorImpl.CategoryErrorCode;
@@ -47,7 +48,7 @@ public class RegisterProductCommandValidator implements Validator {
         }
          Set<RegisterProductComponentCommand> registerProductComponentCommandSet = registerProductCommand.getProductComponents();
 
-        List<Integer> sizeList = CommonMethod.SIZE_LIST;
+        List<Integer> sizeList = SizeVo.getSize();
         List<Integer> accumulateSizeList = new ArrayList<>();
         for(RegisterProductComponentCommand registerProductComponentCommand : registerProductComponentCommandSet){
             for(RegisterSizeCommand sizeCommand :registerProductComponentCommand.getSizes()){

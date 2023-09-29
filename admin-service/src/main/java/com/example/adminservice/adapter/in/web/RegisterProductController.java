@@ -8,7 +8,7 @@ import com.example.adminservice.application.port.in.product.RegisterProductComma
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.common.WebAdapter;
-import com.example.adminservice.domain.product.dto.ProductVo;
+import com.example.adminservice.domain.productentity.ProductVo;
 
 
 import com.example.adminservice.module.common.error.ErrorException;

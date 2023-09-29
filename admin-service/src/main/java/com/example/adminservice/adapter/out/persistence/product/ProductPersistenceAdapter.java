@@ -5,11 +5,13 @@ import com.example.adminservice.adapter.out.persistence.product.entity.ProductEn
 import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RegisterProductPort;
 import com.example.adminservice.common.WebAdapter;
-import com.example.adminservice.domain.product.dto.ProductVo;
+import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 @WebAdapter
@@ -17,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Transactional
 public class ProductPersistenceAdapter implements RegisterProductPort, FindProductPort {
-
     private final SpringDataProductRepository springDataProductRepository;
 
     private final ProductMapper productMapper;
@@ -51,4 +52,11 @@ public class ProductPersistenceAdapter implements RegisterProductPort, FindProdu
         return springDataProductRepository.findById(productId.getId())
                 .orElseThrow(()-> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE,"findProduct"));
     }
+
+    @Override
+    public Page<ProductEntity> findPagingProduct(Pageable pageable) {
+        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
+        return productPage;
+    }
+
 }

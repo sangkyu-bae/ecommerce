@@ -6,13 +6,17 @@ import com.example.adminservice.adapter.in.web.request.productRequest.RegisterCo
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductComponentRequest;
 import com.example.adminservice.adapter.out.persistence.product.entity.*;
 import com.example.adminservice.application.port.in.product.*;
-import com.example.adminservice.domain.product.dto.ProductVo;
+import com.example.adminservice.domain.productentity.ProductSearchVo;
+import com.example.adminservice.domain.productentity.ProductVo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -33,6 +37,17 @@ public class ProductMapper {
         );
     }
 
+    public ProductSearchVo mapToDomainEntity(Page<ProductEntity> pagingProduct){
+        List<ProductVo> productVoList = pagingProduct.stream()
+                .map(product -> mapToDomainEntity(product)).collect(Collectors.toList());
+
+        return ProductSearchVo.createGenerateProductSearchVo(
+                new ProductSearchVo.ProductList(productVoList),
+                new ProductSearchVo.PageNumber(pagingProduct.getNumber()),
+                new ProductSearchVo.PageSize(pagingProduct.getSize()),
+                new ProductSearchVo.TotalElement(pagingProduct.getTotalElements())
+        );
+    }
     private ProductVo.ProductBrandVo mapToBrandVo(BrandEntity brandEntity){
         return new ProductVo.ProductBrandVo(brandEntity.getId(), brandEntity.getName());
     }
