@@ -125,6 +125,11 @@ public class ProductVo {
             return new ProductComponentEntityVo(null,productColorVo,ProductSizeVos);
         }
 
+        public static ProductComponentEntityVo updateProductComponentEntityVo(long id,ProductColorVo productColorVo,
+                                                                              Set<ProductSizeVo> ProductSizeVos){
+            return new ProductComponentEntityVo(id, productColorVo,ProductSizeVos);
+        }
+
         public static ProductComponentEntityVo readProductComponentEntityVo(Long id, ProductColorVo productColorVo, Set<ProductSizeVo> ProductSizeVos){
             return new ProductComponentEntityVo(id,productColorVo,ProductSizeVos);
         }

@@ -12,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 public class RegisterProductComponentCommand {
+    private long id;
     @NotNull
     private RegisterColorRequest color;
 

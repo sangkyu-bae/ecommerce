@@ -104,7 +104,9 @@ public class ProductMapper {
         Set<RegisterProductComponentCommand> productComponentCommands = command.getProductComponents();
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = new HashSet<>();
 
+
         for(RegisterProductComponentCommand registerProductCommand : productComponentCommands){
+
             RegisterColorRequest registerColorRequest = registerProductCommand.getColor();
             ProductVo.ProductColorVo productColorVo = new ProductVo.ProductColorVo(registerColorRequest.getId(), registerColorRequest.getName());
 
@@ -115,10 +117,18 @@ public class ProductMapper {
                         .createProductSizeVo(sizeCommand.getSize(),sizeCommand.getQuantity());
                 productSizeVos.add(productSizeVo);
             }
+            ProductVo.ProductComponentEntityVo productComponentEntityVo = null;
+            long componentId = registerProductCommand.getId();
 
-            ProductVo.ProductComponentEntityVo productComponentEntityVo = ProductVo
-                    .ProductComponentEntityVo
-                    .createProductComponentEntityVo(productColorVo,productSizeVos);
+            if(componentId > 0){
+                productComponentEntityVo  = ProductVo
+                        .ProductComponentEntityVo
+                        .updateProductComponentEntityVo(componentId,productColorVo,productSizeVos);
+            }else{
+                productComponentEntityVo  = ProductVo
+                        .ProductComponentEntityVo
+                        .createProductComponentEntityVo(productColorVo,productSizeVos);
+            }
 
             productComponentEntityVos.add(productComponentEntityVo);
         }
@@ -146,5 +156,13 @@ public class ProductMapper {
 
     private ProductComponentEntity mapToProductComponent(ProductVo.ProductComponentEntityVo productComponentEntityVo){
         return modelMapper.map(productComponentEntityVo,ProductComponentEntity.class);
+    }
+
+    public ProductVo.ProductBrandVo mapToBrand(RegisterBrandCommand registerBrandCommand){
+        return new ProductVo.ProductBrandVo(registerBrandCommand.getId(),registerBrandCommand.getName());
+    }
+
+    public ProductVo.ProductCategoryVo mapToCategory(RegisterCategoryCommand registerCategoryCommand){
+        return new ProductVo.ProductCategoryVo(registerCategoryCommand.getId(),registerCategoryCommand.getName());
     }
 }

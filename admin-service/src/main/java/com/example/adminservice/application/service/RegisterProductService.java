@@ -23,8 +23,8 @@ public class RegisterProductService implements RegisterProductUseCase {
     public ProductVo registerProduct(RegisterProductCommand command) {
 
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = productMapper.mapToProductComponentEntityVo(command);
-        ProductVo.ProductBrandVo brand = createBrand(command.getBrand());
-        ProductVo.ProductCategoryVo category =createCategory(command.getCategory());
+        ProductVo.ProductBrandVo brand = productMapper.mapToBrand(command.getBrand());
+        ProductVo.ProductCategoryVo category =productMapper.mapToCategory(command.getCategory());
 
         ProductVo createProduct = ProductVo.createGenerateProductVo(
                 new ProductVo.ProductId(0),
@@ -40,12 +40,12 @@ public class RegisterProductService implements RegisterProductUseCase {
         return productMapper.mapToDomainEntity(productEntity);
     }
 
-    private ProductVo.ProductBrandVo createBrand(RegisterBrandCommand registerBrandCommand){
-        return new ProductVo.ProductBrandVo(registerBrandCommand.getId(),registerBrandCommand.getName());
-    }
-
-    private ProductVo.ProductCategoryVo createCategory(RegisterCategoryCommand registerCategoryCommand){
-        return new ProductVo.ProductCategoryVo(registerCategoryCommand.getId(),registerCategoryCommand.getName());
-    }
+//    private ProductVo.ProductBrandVo createBrand(RegisterBrandCommand registerBrandCommand){
+//        return new ProductVo.ProductBrandVo(registerBrandCommand.getId(),registerBrandCommand.getName());
+//    }
+//
+//    private ProductVo.ProductCategoryVo createCategory(RegisterCategoryCommand registerCategoryCommand){
+//        return new ProductVo.ProductCategoryVo(registerCategoryCommand.getId(),registerCategoryCommand.getName());
+//    }
 
 }

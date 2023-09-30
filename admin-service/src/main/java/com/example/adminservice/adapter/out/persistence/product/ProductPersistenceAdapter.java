@@ -4,7 +4,9 @@ import com.example.adminservice.adapter.out.persistence.SpringDataProductReposit
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RegisterProductPort;
+import com.example.adminservice.application.port.out.UpdateProductPort;
 import com.example.adminservice.common.WebAdapter;
+import com.example.adminservice.domain.product.repository.ProductRepository;
 import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
@@ -18,11 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class ProductPersistenceAdapter implements RegisterProductPort, FindProductPort {
+public class ProductPersistenceAdapter implements RegisterProductPort, FindProductPort, UpdateProductPort {
     private final SpringDataProductRepository springDataProductRepository;
 
     private final ProductMapper productMapper;
-
 
     @Override
     public ProductEntity createProduct(ProductVo productVo) {
@@ -59,4 +60,26 @@ public class ProductPersistenceAdapter implements RegisterProductPort, FindProdu
         return productPage;
     }
 
+    @Override
+    public ProductEntity updateProduct(ProductVo productVo) {
+        ProductEntity updateProductEntity = ProductEntity.builder()
+                .id(productVo.getId())
+                .name(productVo.getName())
+                .price(productVo.getPrice())
+                .description(productVo.getDescription())
+                .productImage(productVo.getProductImage())
+                .brand(productMapper.mapToBrand(productVo.getBrand()))
+                .category(productMapper.mapToCategory(productVo.getCategory()))
+                .productComponents(productMapper.mapToProductComponents(productVo.getProductComponents()))
+                .build();
+
+        updateProductEntity.getProductComponents()
+                .forEach(component -> {
+                            component.setProduct(updateProductEntity);
+                            component.getSizes().forEach(size->size.setProductComponent(component));
+                        }
+                );
+
+        return springDataProductRepository.save(updateProductEntity);
+    }
 }

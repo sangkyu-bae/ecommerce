@@ -10,6 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterProductComponentRequest {
+    private long id;
 
     private RegisterColorRequest color;
 

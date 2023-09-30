@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonAutoDetect
 public class RegisterProductRequest {
 
     private String name;
