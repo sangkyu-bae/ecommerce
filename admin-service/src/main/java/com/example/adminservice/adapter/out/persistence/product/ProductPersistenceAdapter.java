@@ -1,12 +1,12 @@
 package com.example.adminservice.adapter.out.persistence.product;
 
-import com.example.adminservice.adapter.out.persistence.SpringDataProductRepository;
+import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RegisterProductPort;
+import com.example.adminservice.application.port.out.RemoveProductPort;
 import com.example.adminservice.application.port.out.UpdateProductPort;
 import com.example.adminservice.common.WebAdapter;
-import com.example.adminservice.domain.product.repository.ProductRepository;
 import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class ProductPersistenceAdapter implements RegisterProductPort, FindProductPort, UpdateProductPort {
+public class ProductPersistenceAdapter implements FindProductPort, UpdateProductPort, RegisterProductPort, RemoveProductPort {
     private final SpringDataProductRepository springDataProductRepository;
 
     private final ProductMapper productMapper;
@@ -49,12 +49,14 @@ public class ProductPersistenceAdapter implements RegisterProductPort, FindProdu
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductEntity findProduct(ProductVo.ProductId productId) {
         return springDataProductRepository.findById(productId.getId())
                 .orElseThrow(()-> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE,"findProduct"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<ProductEntity> findPagingProduct(Pageable pageable) {
         Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
         return productPage;
@@ -81,5 +83,16 @@ public class ProductPersistenceAdapter implements RegisterProductPort, FindProdu
                 );
 
         return springDataProductRepository.save(updateProductEntity);
+    }
+
+    @Override
+    public boolean removeProduct(ProductVo.ProductId productId) {
+        try{
+            springDataProductRepository.deleteById(productId.getId());
+        }catch (Exception e){
+            throw new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"removeProduct");
+        }
+
+        return true;
     }
 }

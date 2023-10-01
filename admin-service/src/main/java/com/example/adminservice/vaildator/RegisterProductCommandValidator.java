@@ -1,25 +1,17 @@
 package com.example.adminservice.vaildator;
 
-import com.example.adminservice.adapter.out.persistence.BrandEntityRepository;
-import com.example.adminservice.adapter.out.persistence.CategoryEntityRepository;
-import com.example.adminservice.application.port.in.product.RegisterBrandCommand;
+import com.example.adminservice.adapter.out.persistence.repository.BrandEntityRepository;
+import com.example.adminservice.adapter.out.persistence.repository.CategoryEntityRepository;
 import com.example.adminservice.application.port.in.product.RegisterProductCommand;
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
-import com.example.adminservice.common.SelfValidating;
-import com.example.adminservice.domain.brand.repository.BrandRepository;
 import com.example.adminservice.domain.productentity.SizeVo;
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.BrandErrorCode;
-import com.example.adminservice.module.common.error.errorImpl.CategoryErrorCode;
-import com.example.adminservice.module.common.method.CommonMethod;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.validation.ConstraintViolation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

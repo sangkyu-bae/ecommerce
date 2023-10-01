@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.repository;
 
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import org.springframework.data.domain.Page;

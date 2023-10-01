@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor@AllArgsConstructor
 @Data
 public class RegisterSizeCommand {
+    private long id;
 
     @NotNull
     private int size;

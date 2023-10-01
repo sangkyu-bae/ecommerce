@@ -159,6 +159,10 @@ public class ProductVo {
             return new ProductSizeVo(null,size,quantity);
         }
 
+        public static ProductSizeVo updateProductSizeVo(long id, int size,int quantity){
+            return new ProductSizeVo(id,size,quantity);
+        }
+
         public static ProductSizeVo readProductSizeVo(Long id, int size, int quantity){
             return new ProductSizeVo(id,size,quantity);
         }

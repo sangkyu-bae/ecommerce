@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.repository;
 
 import com.example.adminservice.adapter.out.persistence.product.entity.BrandEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

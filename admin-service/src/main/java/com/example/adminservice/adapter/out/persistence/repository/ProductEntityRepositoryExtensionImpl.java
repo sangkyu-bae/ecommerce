@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.out.persistence;
+package com.example.adminservice.adapter.out.persistence.repository;
 
 import com.example.adminservice.adapter.out.persistence.product.entity.*;
 import com.querydsl.core.QueryResults;

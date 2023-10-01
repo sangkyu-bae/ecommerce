@@ -38,7 +38,6 @@ public class RegisterProductController {
     @Operation(summary = "register product", description = "상품 등록하기")
     @PostMapping("/admin/register/product")
     public ResponseEntity<ProductVo> registerProduct(@RequestBody RegisterProductRequest registerProductRequest) {
-        ProductVo productVo = null;
         String productImage = registerProductRequest.getProductImage();
         productImage = productImage == null ? "" : productImage;
         registerProductRequest.setProductImage(productImage);
@@ -64,7 +63,7 @@ public class RegisterProductController {
             throw new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE,"registerProduct");
         }
 
-        productVo = registerProductUseCase.registerProduct(command);
+        ProductVo productVo = registerProductUseCase.registerProduct(command);
 
         return ResponseEntity.ok().body(productVo);
     }
