@@ -1,5 +1,7 @@
 package com.example.adminservice.adapter.out.persistence.product.entity;
 
+import com.example.adminservice.module.common.error.ErrorException;
+import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,5 +34,14 @@ public class ProductEntity {
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "product")
     private Set<ProductComponentEntity> productComponents;
+
+    public void updateProductQuantity(long colorId,int amount,int size){
+        ProductComponentEntity productComponent = productComponents.stream()
+                .filter(component-> component.getColor().getId() == colorId)
+                .findFirst()
+                .orElseThrow(()->new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"updateProductQuantity"));
+
+        productComponent.updateQuantity(size,amount);
+    }
 
 }

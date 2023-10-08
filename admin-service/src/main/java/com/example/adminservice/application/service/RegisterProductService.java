@@ -40,12 +40,4 @@ public class RegisterProductService implements RegisterProductUseCase {
         return productMapper.mapToDomainEntity(productEntity);
     }
 
-//    private ProductVo.ProductBrandVo createBrand(RegisterBrandCommand registerBrandCommand){
-//        return new ProductVo.ProductBrandVo(registerBrandCommand.getId(),registerBrandCommand.getName());
-//    }
-//
-//    private ProductVo.ProductCategoryVo createCategory(RegisterCategoryCommand registerCategoryCommand){
-//        return new ProductVo.ProductCategoryVo(registerCategoryCommand.getId(),registerCategoryCommand.getName());
-//    }
-
 }

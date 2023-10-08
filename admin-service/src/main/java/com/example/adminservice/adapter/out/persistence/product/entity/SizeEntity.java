@@ -1,5 +1,7 @@
 package com.example.adminservice.adapter.out.persistence.product.entity;
 
+import com.example.adminservice.module.common.error.ErrorException;
+import com.example.adminservice.module.common.error.errorImpl.QuantityErrorCode;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,4 +21,12 @@ public class SizeEntity {
 
     @ManyToOne
     private ProductComponentEntity productComponent;
+
+    public void updateQuantity(int amount){
+        if(this.quantity < amount){
+            throw new ErrorException(QuantityErrorCode.QUANTITY_BAD_CHANGE,"updateQuantity");
+        }else{
+            this.quantity = this.quantity - amount;
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.adminservice.adapter.out.persistence.product.entity;
 
+import com.example.adminservice.module.common.error.ErrorException;
+import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,4 +23,13 @@ public class ProductComponentEntity {
     private Set<SizeEntity> sizes;
     @ManyToOne
     private ProductEntity product;
+
+    public void updateQuantity(int size,int amount){
+        SizeEntity sizeEntity = sizes.stream()
+                .filter(sizeComponent->sizeComponent.getSize() == size)
+                .findFirst()
+                .orElseThrow(()->new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"updateQuantity"));
+
+        sizeEntity.updateQuantity(amount);
+    }
 }

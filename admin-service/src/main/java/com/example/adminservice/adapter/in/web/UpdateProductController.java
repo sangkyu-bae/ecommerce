@@ -2,6 +2,7 @@ package com.example.adminservice.adapter.in.web;
 
 import com.example.adminservice.adapter.in.web.request.productRequest.UpdateProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
+import com.example.adminservice.application.port.in.FindProductUseCase;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.product.*;
 import com.example.adminservice.common.WebAdapter;
@@ -15,10 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -29,8 +27,8 @@ import java.util.Set;
 public class UpdateProductController {
     private final ProductMapper productMapper;
     private final UpdateProductUseCase updateProductUseCase;
-
     private final UpdateProductCommandValidator validator;
+    private final FindProductUseCase findProductUseCase;
 
     @Operation(summary = "update product", description = "상품 수정하기")
     @PutMapping("/admin/update/{productId}")
@@ -66,4 +64,25 @@ public class UpdateProductController {
 
         return ResponseEntity.ok().body(updateProductVo);
     }
+
+    @Operation(summary = "update product quantity",description = "상품 컬러별 수량 변경(상품 주문)")
+    @PutMapping("/admin/{productId}/{colorId}/{amount}")
+    public ResponseEntity<Boolean> updateProductQuantity(
+            @RequestParam("productId") long productId,
+            @RequestParam("colorId") long colorId,
+            @RequestParam("amount") int amount
+    ){
+        UpdateProductQuantityCommand command = UpdateProductQuantityCommand.builder()
+                .productId(productId)
+                .colorId(colorId)
+                .amount(amount)
+                .build();
+        command.validateSelf();
+
+        boolean isUpdate = updateProductUseCase.updateProductQuantity(command);
+
+        return ResponseEntity.ok().body(isUpdate);
+    }
+
+
 }

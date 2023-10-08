@@ -21,6 +21,8 @@ public class RegisterOrderCommand {
 
     private int status;
 
+    private String userId;
+
     public static enum StatusCode{
         ORDER(1,"주문완료"),
 
