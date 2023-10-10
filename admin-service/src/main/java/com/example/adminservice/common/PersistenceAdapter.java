@@ -1,3 +1,4 @@
+//package com.example.adminservice.common;
 package com.example.adminservice.common;
 
 import org.springframework.core.annotation.AliasFor;

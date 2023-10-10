@@ -1,7 +1,6 @@
+//package com.example.adminservice.common;
 package com.example.adminservice.common;
 
-import com.example.adminservice.module.common.error.ErrorCode;
-import org.springframework.validation.Errors;
 
 import javax.validation.*;
 import java.util.Set;
