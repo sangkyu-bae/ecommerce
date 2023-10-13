@@ -7,7 +7,7 @@ import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRep
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductCommand;
-import com.example.adminservice.domain.productentity.SizeVo;
+import com.example.adminservice.domain.productentity.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -47,7 +47,7 @@ public class UpdateProductCommandValidator implements Validator {
         }
         Set<RegisterProductComponentCommand> updateProductComponentCommandSet = updateProductCommand.getProductComponents();
 
-        SIZE_LIST = SizeVo.getSize();
+        SIZE_LIST = SizeCheck.getSize();
 
         for(RegisterProductComponentCommand updateProductComponentCommand : updateProductComponentCommandSet){
             if(!existByColor(updateProductComponentCommand)){

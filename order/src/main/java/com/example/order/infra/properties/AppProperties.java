@@ -11,5 +11,12 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("app")
 public class AppProperties {
     private String bootstrapServer;
+
     private String orderTopic;
+
+    private String sendProduct;
+
+    private String  consumerProduct;
+
+    private String createOrder;
 }

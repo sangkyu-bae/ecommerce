@@ -1,13 +1,13 @@
 package com.example.adminservice.adapter.out.persistence.product;
 
+import com.example.adminservice.adapter.out.persistence.product.entity.SizeEntity;
+import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRepository;
 import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
-import com.example.adminservice.application.port.out.FindProductPort;
-import com.example.adminservice.application.port.out.RegisterProductPort;
-import com.example.adminservice.application.port.out.RemoveProductPort;
-import com.example.adminservice.application.port.out.UpdateProductPort;
+import com.example.adminservice.application.port.out.*;
 import com.example.adminservice.common.WebAdapter;
 import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.productentity.SizeVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +20,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class ProductPersistenceAdapter implements FindProductPort, UpdateProductPort, RegisterProductPort, RemoveProductPort {
+public class ProductPersistenceAdapter implements FindProductPort,
+        UpdateProductPort,
+        RegisterProductPort,
+        RemoveProductPort,
+        UpdateProductSizePort {
     private final SpringDataProductRepository springDataProductRepository;
 
     private final ProductMapper productMapper;
+
+    private final SizeEntityRepository sizeEntityRepository;
 
     @Override
     public ProductEntity createProduct(ProductVo productVo) {
@@ -41,7 +47,7 @@ public class ProductPersistenceAdapter implements FindProductPort, UpdateProduct
         createProductEntity.getProductComponents()
                 .forEach(component -> {
                             component.setProduct(createProductEntity);
-                            component.getSizes().forEach(size->size.setProductComponent(component));
+                            component.getSizes().forEach(size -> size.setProductComponent(component));
                         }
                 );
 
@@ -52,7 +58,7 @@ public class ProductPersistenceAdapter implements FindProductPort, UpdateProduct
     @Transactional(readOnly = true)
     public ProductEntity findProduct(ProductVo.ProductId productId) {
         return springDataProductRepository.findById(productId.getId())
-                .orElseThrow(()-> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE,"findProduct"));
+                .orElseThrow(() -> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE, "findProduct"));
     }
 
     @Override
@@ -78,7 +84,7 @@ public class ProductPersistenceAdapter implements FindProductPort, UpdateProduct
         updateProductEntity.getProductComponents()
                 .forEach(component -> {
                             component.setProduct(updateProductEntity);
-                            component.getSizes().forEach(size->size.setProductComponent(component));
+                            component.getSizes().forEach(size -> size.setProductComponent(component));
                         }
                 );
 
@@ -87,12 +93,20 @@ public class ProductPersistenceAdapter implements FindProductPort, UpdateProduct
 
     @Override
     public boolean removeProduct(ProductVo.ProductId productId) {
-        try{
+        try {
             springDataProductRepository.deleteById(productId.getId());
-        }catch (Exception e){
-            throw new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"removeProduct");
+        } catch (Exception e) {
+            throw new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND, "removeProduct");
         }
 
         return true;
+    }
+
+    @Override
+    public void updateProductSize(SizeVo sizeVo) {
+        SizeEntity sizeEntity = sizeEntityRepository.findById(sizeVo.getId())
+                .orElseThrow(()->new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"updateProductSize"));
+
+        sizeEntity.updateQuantity(sizeVo.getQuantity());
     }
 }

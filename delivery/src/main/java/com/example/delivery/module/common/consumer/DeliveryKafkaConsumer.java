@@ -1,13 +1,12 @@
 package com.example.delivery.module.common.consumer;
 
-import com.example.delivery.infra.properties.AppProperties;
 import com.example.delivery.module.application.usecase.DeliveryUseCase;
 import com.example.delivery.module.domain.delivery.dto.DeliveryDto;
 import com.example.delivery.module.domain.delivery.service.DeliveryWriteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 

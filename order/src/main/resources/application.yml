@@ -70,3 +70,6 @@ eureka:
 app:
   bootstrapServer: localhost:9092
   orderTopic : order
+  consumerProduct: update-product
+  sendProduct : request-product
+  createOrder: create-order

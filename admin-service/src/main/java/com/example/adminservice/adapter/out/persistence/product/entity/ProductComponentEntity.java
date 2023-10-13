@@ -32,4 +32,5 @@ public class ProductComponentEntity {
 
         sizeEntity.updateQuantity(amount);
     }
+
 }

@@ -1,12 +1,59 @@
 package com.example.adminservice.domain.productentity;
 
-import java.util.List;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Value;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public class SizeVo {
 
-    private static final List<Integer> SIZE_LIST = List.of(220,225,230,235,240,245,250,255,260,265,270,275,280,285,290);
+    private final Long id;
 
-    public static List<Integer> getSize(){
-      return SIZE_LIST;
+    private final int size;
+
+    private final int quantity;
+
+
+    public static SizeVo createGenerateSizeVo(
+            SizeId sizeId,
+            Size size,
+            Quantity quantity
+    ){
+        return new SizeVo(
+                sizeId.getId(),
+                size.getSize(),
+                quantity.getQuantity()
+        );
+    }
+
+    @Value
+    public static class SizeId{
+        public SizeId(long value){
+            this.id = value;
+        }
+        Long id;
+    }
+
+    @Value
+    public static class Size{
+        public Size(int value){
+            this.size = value;
+        }
+        int size;
+    }
+
+    @Value
+    public static class Quantity{
+        public Quantity(int value){
+            this.quantity = value;
+        }
+
+        int quantity;
     }
 }

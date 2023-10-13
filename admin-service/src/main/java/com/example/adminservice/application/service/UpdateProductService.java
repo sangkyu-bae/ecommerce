@@ -1,14 +1,19 @@
 package com.example.adminservice.application.service;
 
+import com.example.adminservice.adapter.in.web.request.productRequest.DeliveryInfoRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
+import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductQuantityCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
+import com.example.adminservice.application.port.out.RequestDeliveryPort;
 import com.example.adminservice.application.port.out.UpdateProductPort;
+import com.example.adminservice.application.port.out.UpdateProductSizePort;
 import com.example.adminservice.common.UseCase;
 import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.productentity.SizeVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +28,10 @@ public class UpdateProductService implements UpdateProductUseCase {
 
     private final UpdateProductPort updateProductPort;
     private final ProductMapper productMapper;
-
     private final FindProductPort findProductPort;
+    private final UpdateProductSizePort updateProductSizePort;
+
+    private final RequestDeliveryPort requestDeliveryPort;
     @Override
     public ProductVo updateProduct(UpdateProductCommand command) {
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = productMapper.mapToProductComponentEntityVo(command);
@@ -62,5 +69,25 @@ public class UpdateProductService implements UpdateProductUseCase {
         }
 
         return true;
+    }
+
+    @Override
+    public void updateProductQuantity(CreateOrderToUpdateProductCommand command) {
+
+        SizeVo sizeVo = SizeVo.createGenerateSizeVo(
+                new SizeVo.SizeId(command.getSizeId()),
+                new SizeVo.Size(0),
+                new SizeVo.Quantity(command.getAmount())
+        );
+
+        updateProductSizePort.updateProductSize(sizeVo);
+
+        DeliveryInfoRequest deliveryInfoRequest = DeliveryInfoRequest.builder()
+                .address(command.getAddress())
+                .orderId(command.getOrderId())
+                .sizeId(command.getSizeId())
+                .build();
+
+        requestDeliveryPort.sendCreateOrderEvent(deliveryInfoRequest);
     }
 }

@@ -5,6 +5,7 @@ import com.example.order.adapter.in.web.request.RegisterOrderRequest;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class RegisterOrderController {
     private final RegisterOrderUseCase registerOrderUseCase;
 
     @PostMapping("/order/register")
-    public ResponseEntity<OrderVo> registerOrder(@RequestBody RegisterOrderRequest request){
+    public ResponseEntity<OrderVo> registerOrder(@RequestBody RegisterOrderRequest request) throws JsonProcessingException {
 
         RegisterOrderCommand command = RegisterOrderCommand.builder()
                 .productId(request.getProductId())

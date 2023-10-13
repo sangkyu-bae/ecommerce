@@ -1,22 +1,27 @@
 package com.example.order.adapter.out.external.product;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor @NoArgsConstructor @Builder
+@Getter
+@AllArgsConstructor
 public class ProductInfoRequest {
 
-    private Long productId;
+    private final Long productId;
 
-    private Long colorId;
+    private final Long colorId;
 
-    private int amount;
+    private final int amount;
+
+    private final Long sizeId;
+
+    private final Long orderId;
 
 
-    public static ProductInfoRequest createGenerateProductRequest(Long productId, Long colorId, int amount){
-        return new ProductInfoRequest(productId,colorId,amount);
+    public static ProductInfoRequest createGenerateProductRequest(long productId,
+                                                                  long colorId,
+                                                                  int amount,
+                                                                  long sizeId,
+                                                                  long orderId){
+        return new ProductInfoRequest(productId,colorId,amount,sizeId,orderId);
     }
 }

@@ -10,6 +10,7 @@ import com.example.order.application.port.out.RegisterOrderPort;
 import com.example.order.application.port.out.RequestProductInfoPort;
 import com.example.order.application.port.out.ResponseDeliveryInfoPort;
 import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,24 +28,9 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     private final RequestProductInfoPort requestProductInfoPort;
 
     @Override
-    public OrderVo registerOrder(RegisterOrderCommand command) {
+    public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
 
         int status = OrderVo.StatusCode.ORDER.getStatus();
-
-        boolean isOrder = requestProductInfoPort.getProductQuantity(ProductInfoRequest.
-                createGenerateProductRequest(
-                        command.getProductId(),
-                        command.getColorId(),
-                        command.getAmount()
-                )
-        );
-
-        if(isOrder){
-            responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
-        }else{
-
-        }
-
 
         OrderVo createOrder = OrderVo.createGenerateOrderVo(
                 new OrderVo.OrderId(0),
@@ -60,7 +46,21 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         );
 
         OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);
+        OrderVo mapOrderVo = orderMapper.mapToDomainEntity(createOrderEntity);
 
-        return orderMapper.mapToDomainEntity(createOrderEntity);
+        requestProductInfoPort.createOrderEvent(ProductInfoRequest
+                .createGenerateProductRequest(
+                        mapOrderVo.getProductId(),
+                        mapOrderVo.getColorId(),
+                        mapOrderVo.getAmount(),
+                        mapOrderVo.getSizeId(),
+                        mapOrderVo.getId()
+                ));
+
+        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
+
+
+
+        return mapOrderVo;
     }
 }

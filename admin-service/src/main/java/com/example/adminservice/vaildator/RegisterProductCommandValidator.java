@@ -5,7 +5,7 @@ import com.example.adminservice.adapter.out.persistence.repository.CategoryEntit
 import com.example.adminservice.application.port.in.product.RegisterProductCommand;
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
-import com.example.adminservice.domain.productentity.SizeVo;
+import com.example.adminservice.domain.productentity.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
@@ -40,7 +40,7 @@ public class RegisterProductCommandValidator implements Validator {
         }
          Set<RegisterProductComponentCommand> registerProductComponentCommandSet = registerProductCommand.getProductComponents();
 
-        List<Integer> sizeList = SizeVo.getSize();
+        List<Integer> sizeList = SizeCheck.getSize();
         List<Integer> accumulateSizeList = new ArrayList<>();
         for(RegisterProductComponentCommand registerProductComponentCommand : registerProductComponentCommandSet){
             for(RegisterSizeCommand sizeCommand :registerProductComponentCommand.getSizes()){

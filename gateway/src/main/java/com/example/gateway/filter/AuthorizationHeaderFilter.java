@@ -54,6 +54,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             String userId = claims.getSubject();
             exchange = exchange.mutate()
                     .request(builder -> builder.header("X-User-Id", userId))
+                    .request(builder -> builder.header("token",jwt))
                     .build();
 
             return chain.filter(exchange);

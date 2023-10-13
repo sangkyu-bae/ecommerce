@@ -20,5 +20,4 @@ public abstract class SelfValidating<T> {
             throw new ConstraintViolationException(violations);
         }
     }
-
 }
