@@ -1,6 +1,6 @@
-package com.example.adminservice.adapter.in.web;
+package com.example.adminservice.adapter.in.event;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.CreateOrderToUpdateProductRequest;
+import com.example.adminservice.adapter.in.event.request.CreateOrderToUpdateProductRequest;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
 import com.example.adminservice.common.WebAdapter;
@@ -12,7 +12,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 @WebAdapter
 @Slf4j
 @RequiredArgsConstructor
-public class UpdateProductEvent {
+public class OrderCreateConsummer {
     private final ObjectMapper objectMapper;
     private final UpdateProductUseCase updateProductUseCase;
     public static final String CREATE_ORDER = "create-order";

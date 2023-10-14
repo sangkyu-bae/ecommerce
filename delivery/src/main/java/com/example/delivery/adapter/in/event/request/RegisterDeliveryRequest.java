@@ -1,21 +1,20 @@
-package com.example.adminservice.adapter.in.web.request.productRequest;
+package com.example.delivery.adapter.in.event.request;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor
-@Builder
-public class DeliveryInfoRequest {
+public class RegisterDeliveryRequest {
 
     private Long sizeId;
 
-    private Long orderId;
+    private String userId;
 
     private String address;
 
-    private String userId;
+    private int quantity;
 
+    private Long orderId;
 }

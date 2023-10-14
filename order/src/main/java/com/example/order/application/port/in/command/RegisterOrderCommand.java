@@ -1,11 +1,12 @@
 package com.example.order.application.port.in.command;
 
+import com.example.order.common.SelfValidating;
 import lombok.*;
 
 
 @Builder @Data
 @AllArgsConstructor @NoArgsConstructor
-public class RegisterOrderCommand {
+public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private long productId;
 

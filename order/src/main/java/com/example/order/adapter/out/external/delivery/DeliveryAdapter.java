@@ -1,6 +1,8 @@
 package com.example.order.adapter.out.external.delivery;
 
 import com.example.order.application.port.out.ResponseDeliveryInfoPort;
+import com.example.order.common.PersistenceAdapter;
+import com.example.order.common.WebAdapter;
 import com.example.order.infra.properties.AppProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@WebAdapter
 public class DeliveryAdapter implements ResponseDeliveryInfoPort {
 
     private final KafkaTemplate<String,String> kafkaTemplate;

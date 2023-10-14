@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class AppProperties {
     private String bootstrapServer;
     private String orderTopic;
+    private String  deliveryRollBack;
 }

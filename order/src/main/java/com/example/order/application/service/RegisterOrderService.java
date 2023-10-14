@@ -9,6 +9,7 @@ import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.application.port.out.RegisterOrderPort;
 import com.example.order.application.port.out.RequestProductInfoPort;
 import com.example.order.application.port.out.ResponseDeliveryInfoPort;
+import com.example.order.common.UseCase;
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @RequiredArgsConstructor
-@Service
+@UseCase
 @Slf4j
 public class RegisterOrderService implements RegisterOrderUseCase {
 
@@ -58,8 +59,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 ));
 
         responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
-
-
 
         return mapOrderVo;
     }

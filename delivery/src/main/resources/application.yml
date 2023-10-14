@@ -70,3 +70,4 @@ app:
   bootstrapServer: localhost:9092
   orderTopic : order
   groupId : delivery.group.v1
+  deliveryRollBack : delivery-rollback

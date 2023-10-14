@@ -2,6 +2,7 @@ package com.example.order.adapter.in.web;
 
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
+import com.example.order.common.WebAdapter;
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@WebAdapter
 @Slf4j
 public class FindOrderController {
 

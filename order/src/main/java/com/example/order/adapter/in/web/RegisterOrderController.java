@@ -4,6 +4,7 @@ package com.example.order.adapter.in.web;
 import com.example.order.adapter.in.web.request.RegisterOrderRequest;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
+import com.example.order.common.WebAdapter;
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@WebAdapter
 public class RegisterOrderController {
 
     private final RegisterOrderUseCase registerOrderUseCase;

@@ -1,4 +1,4 @@
-package com.example.adminservice.adapter.in.web.request.productRequest;
+package com.example.adminservice.adapter.in.event.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

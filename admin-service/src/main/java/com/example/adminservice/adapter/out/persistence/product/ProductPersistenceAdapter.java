@@ -5,6 +5,7 @@ import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRep
 import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.out.*;
+import com.example.adminservice.common.PersistenceAdapter;
 import com.example.adminservice.common.WebAdapter;
 import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.domain.productentity.SizeVo;
@@ -16,7 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
-@WebAdapter
+@PersistenceAdapter
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
