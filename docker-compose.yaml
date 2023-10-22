@@ -10,7 +10,7 @@ services:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
     env_file: .env
     ports:
-      - "3308:3308"
+      - "3306:3306"
     environment:
       - TZ=Asia/Seoul
       - MYSQL_ROOT_PASSWORD=wnsvaf309
@@ -26,12 +26,27 @@ services:
     depends_on:
       - mysql
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3308/test?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=tkdrb136
       - SPRING_DATASOURCE_PASSWORD=wnsvaf309
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
+  user-service:
+    image: demo:1.0.0
+    networks:
+      - ecommerce_network
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/user?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 networks:
   ecommerce_network:
     driver: bridge
+

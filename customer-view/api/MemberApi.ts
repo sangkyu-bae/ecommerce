@@ -9,7 +9,6 @@ const MemberApi={
         const {data}=await ApiCommon.loginAPI.post(memberRequest.signIn,{
             "email":loginRequest.email,
             "password":loginRequest.password
-
         });
         return data;
     }

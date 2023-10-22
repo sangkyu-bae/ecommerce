@@ -1,34 +1,100 @@
-2023-09-25 19:30:18.105 INFO  ---- [tartedMain] [OrderApplication:55] logStarting   Starting OrderApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 20464 (C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\order)
-2023-09-25 19:30:18.118 INFO  ---- [tartedMain] [OrderApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-09-25 19:30:18.235 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-09-25 19:30:18.236 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-09-25 19:30:19.990 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-09-25 19:30:19.993 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2023-09-25 19:30:20.078 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.order.module.domain.order.repository.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-09-25 19:30:20.080 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 75 ms. Found 0 JDBC repository interfaces.
-2023-09-25 19:30:20.095 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
-2023-09-25 19:30:20.097 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-25 19:30:20.234 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 129 ms. Found 1 JPA repository interfaces.
-2023-09-25 19:30:20.780 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=5a04843d-ca87-3f81-8bea-3f2e186cd9ac
-2023-09-25 19:30:23.061 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 0 (http)
-2023-09-25 19:30:23.073 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
-2023-09-25 19:30:23.073 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.80]
-2023-09-25 19:30:23.493 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-09-25 19:30:23.494 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 5247 ms
-2023-09-25 19:30:23.531 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
-2023-09-25 19:30:23.967 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
-2023-09-25 19:30:23.985 INFO  ---- [tartedMain] [H2ConsoleAutoConfiguration:98] logDataSources   H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/order'
-2023-09-25 19:30:24.208 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-25 19:30:24.291 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-09-25 19:30:24.621 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-09-25 19:30:24.917 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-09-25 19:30:26.380 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-25 19:30:26.404 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-25 19:30:27.147 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-25 19:30:27.985 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
-2023-09-25 19:30:29.449 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
-2023-09-25 19:30:30.583 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-09-25 19:30:30.771 INFO  ---- [tartedMain] [ConsumerConfig:376] logAll   ConsumerConfig values: 
+2023-10-12 10:19:05.716 INFO  ---- [tartedMain] [OrderApplication:55] logStarting   Starting OrderApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 15676 (C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\order)
+2023-10-12 10:19:05.735 INFO  ---- [tartedMain] [OrderApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-10-12 10:19:05.848 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-12 10:19:05.848 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-12 10:19:10.028 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-12 10:19:10.029 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-10-12 10:19:10.114 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.order.adapter.out.persistence.repository.OrderEntityRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-12 10:19:10.119 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.order.module.domain.order.repository.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-12 10:19:10.122 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 84 ms. Found 0 JDBC repository interfaces.
+2023-10-12 10:19:10.137 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-12 10:19:10.137 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-12 10:19:10.272 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 125 ms. Found 2 JPA repository interfaces.
+2023-10-12 10:19:10.774 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=eb09d194-3256-3ef0-ad14-ea4afb3906d6
+2023-10-12 10:19:12.788 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 0 (http)
+2023-10-12 10:19:12.806 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-10-12 10:19:12.807 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-12 10:19:13.190 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-10-12 10:19:13.191 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 7341 ms
+2023-10-12 10:19:13.234 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-10-12 10:19:13.591 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-10-12 10:19:13.603 INFO  ---- [tartedMain] [H2ConsoleAutoConfiguration:98] logDataSources   H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/order'
+2023-10-12 10:19:13.794 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-12 10:19:13.873 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-10-12 10:19:14.159 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-10-12 10:19:14.357 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-10-12 10:19:15.519 DEBUG ---- [tartedMain] [SQL:144] logStatement   
+    
+    create table tb_orderd (
+       id bigint not null,
+        address varchar(255),
+        amount integer not null,
+        color_id bigint not null,
+        create_at date,
+        payment integer not null,
+        product_id bigint not null,
+        size_id bigint not null,
+        status integer not null,
+        update_at date,
+        primary key (id)
+    ) engine=InnoDB
+2023-10-12 10:19:15.592 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-12 10:19:15.608 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-12 10:19:19.468 WARN  ---- [tartedMain] [AnnotationConfigServletWebServerApplicationContext:591] refresh   Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'registerOrderController' defined in file [C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main\com\example\order\adapter\in\web\RegisterOrderController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'registerOrderService' defined in file [C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main\com\example\order\application\service\RegisterOrderService.class]: Unsatisfied dependency expressed through constructor parameter 3; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productAdapter' defined in file [C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main\com\example\order\adapter\out\external\product\ProductAdapter.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.web.client.RestTemplate' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-10-12 10:19:19.470 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:651] destroy   Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-10-12 10:19:19.474 INFO  ---- [tartedMain] [HikariDataSource:350] close   HikariPool-1 - Shutdown initiated...
+2023-10-12 10:19:19.490 INFO  ---- [tartedMain] [HikariDataSource:352] close   HikariPool-1 - Shutdown completed.
+2023-10-12 10:19:19.493 INFO  ---- [tartedMain] [StandardService:173] log   Stopping service [Tomcat]
+2023-10-12 10:19:19.516 INFO  ---- [tartedMain] [ConditionEvaluationReportLoggingListener:136] logMessage   
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-12 10:19:19.562 ERROR ---- [tartedMain] [LoggingFailureAnalysisReporter:40] report   
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in com.example.order.adapter.out.external.product.ProductAdapter required a bean of type 'org.springframework.web.client.RestTemplate' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.web.client.RestTemplate' in your configuration.
+
+2023-10-12 10:22:52.616 INFO  ---- [tartedMain] [OrderApplication:55] logStarting   Starting OrderApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 18276 (C:\Users\tkdrb\IdeaProjects\ecommerce\order\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\order)
+2023-10-12 10:22:52.620 INFO  ---- [tartedMain] [OrderApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-10-12 10:22:52.703 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-12 10:22:52.703 INFO  ---- [tartedMain] [DevToolsPropertyDefaultsPostProcessor:255] logTo   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-12 10:22:54.526 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-12 10:22:54.527 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-10-12 10:22:54.624 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.order.adapter.out.persistence.repository.OrderEntityRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-12 10:22:54.628 INFO  ---- [tartedMain] [RepositoryConfigurationExtensionSupport:349] isStrictRepositoryCandidate   Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.order.module.domain.order.repository.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-12 10:22:54.631 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 97 ms. Found 0 JDBC repository interfaces.
+2023-10-12 10:22:54.651 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:262] multipleStoresDetected   Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-12 10:22:54.652 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:132] registerRepositoriesIn   Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-12 10:22:54.770 INFO  ---- [tartedMain] [RepositoryConfigurationDelegate:201] registerRepositoriesIn   Finished Spring Data repository scanning in 112 ms. Found 2 JPA repository interfaces.
+2023-10-12 10:22:55.242 INFO  ---- [tartedMain] [GenericScope:283] setSerializationId   BeanFactory id=eb09d194-3256-3ef0-ad14-ea4afb3906d6
+2023-10-12 10:22:57.426 INFO  ---- [tartedMain] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 0 (http)
+2023-10-12 10:22:57.465 INFO  ---- [tartedMain] [StandardService:173] log   Starting service [Tomcat]
+2023-10-12 10:22:57.467 INFO  ---- [tartedMain] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-12 10:22:57.942 INFO  ---- [tartedMain] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-10-12 10:22:57.943 INFO  ---- [tartedMain] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 5238 ms
+2023-10-12 10:22:57.991 INFO  ---- [tartedMain] [HikariDataSource:110] getConnection   HikariPool-1 - Starting...
+2023-10-12 10:22:58.601 INFO  ---- [tartedMain] [HikariDataSource:123] getConnection   HikariPool-1 - Start completed.
+2023-10-12 10:22:58.638 INFO  ---- [tartedMain] [H2ConsoleAutoConfiguration:98] logDataSources   H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/order'
+2023-10-12 10:22:58.902 INFO  ---- [tartedMain] [LogHelper:31] logPersistenceUnitInformation   HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-12 10:22:58.996 INFO  ---- [tartedMain] [Version:44] logVersion   HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-10-12 10:22:59.312 INFO  ---- [tartedMain] [Version:56] <clinit>   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-10-12 10:22:59.625 INFO  ---- [tartedMain] [Dialect:175] <init>   HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-10-12 10:23:00.858 INFO  ---- [tartedMain] [JtaPlatformInitiator:52] initiateService   HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-12 10:23:00.898 INFO  ---- [tartedMain] [LocalContainerEntityManagerFactoryBean:437] buildNativeEntityManagerFactory   Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-12 10:23:02.281 WARN  ---- [tartedMain] [JpaBaseConfiguration$JpaWebConfiguration:223] openEntityManagerInViewInterceptor   spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-12 10:23:04.143 WARN  ---- [tartedMain] [OptionalLiveReloadServer:62] startServer   Unable to start LiveReload server
+2023-10-12 10:23:05.496 INFO  ---- [tartedMain] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-10-12 10:23:07.221 WARN  ---- [tartedMain] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-10-12 10:23:07.367 INFO  ---- [tartedMain] [ConsumerConfig:376] logAll   ConsumerConfig values: 
 	allow.auto.create.topics = true
 	auto.commit.interval.ms = 5000
 	auto.offset.reset = latest
@@ -121,564 +187,170 @@
 	ssl.truststore.type = JKS
 	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
 
-2023-09-25 19:30:31.068 INFO  ---- [tartedMain] [AppInfoParser:119] <init>   Kafka version: 3.1.2
-2023-09-25 19:30:31.069 INFO  ---- [tartedMain] [AppInfoParser:120] <init>   Kafka commitId: f8c67dc3ae0a3265
-2023-09-25 19:30:31.070 INFO  ---- [tartedMain] [AppInfoParser:121] <init>   Kafka startTimeMs: 1695637831065
-2023-09-25 19:30:31.075 INFO  ---- [tartedMain] [KafkaConsumer:966] subscribe   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Subscribed to topic(s): order
-2023-09-25 19:30:31.117 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 60637 (http) with context path ''
-2023-09-25 19:30:31.118 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 60637
-2023-09-25 19:30:31.127 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-09-25 19:30:31.206 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-09-25 19:30:31.212 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-09-25 19:30:31.241 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
-2023-09-25 19:30:31.242 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-09-25 19:30:33.532 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:33.541 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:33.542 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:33.717 INFO  ---- [tartedMain] [RedirectingEurekaHttpClient:84] execute   Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://127.0.0.1:8761/eureka/}, exception=I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791)
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:717)
-	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:608)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.getApplicationsInternal(RestTemplateEurekaHttpClient.java:145)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.getApplications(RestTemplateEurekaHttpClient.java:135)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry(DiscoveryClient.java:1101)
-	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:1014)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:441)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:283)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:279)
-	at org.springframework.cloud.netflix.eureka.CloudEurekaClient.<init>(CloudEurekaClient.java:66)
-	at org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration$RefreshableEurekaClientConfiguration.eurekaClient(EurekaClientAutoConfiguration.java:295)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:633)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:374)
-	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.getBean(GenericScope.java:376)
-	at org.springframework.cloud.context.scope.GenericScope.get(GenericScope.java:179)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
-	at org.springframework.aop.target.SimpleBeanTargetSource.getTarget(SimpleBeanTargetSource.java:35)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.getTargetObject(EurekaRegistration.java:127)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.getEurekaClient(EurekaRegistration.java:115)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
-	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:485)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:707)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration$$EnhancerBySpringCGLIB$$15b2e134.getEurekaClient(<generated>)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.maybeInitializeClient(EurekaServiceRegistry.java:54)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.register(EurekaServiceRegistry.java:38)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.start(EurekaAutoServiceRegistration.java:83)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:146)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:131)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:171)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
-	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
-	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:179)
-	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
-	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:357)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:156)
-	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:124)
-	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:938)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at com.example.order.OrderApplication.main(OrderApplication.java:12)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87)
-	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782)
-	... 81 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 94 more
-
-2023-09-25 19:30:33.724 WARN  ---- [tartedMain] [RetryableEurekaHttpClient:130] execute   Request execution failed with message: I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-2023-09-25 19:30:33.726 INFO  ---- [tartedMain] [DiscoveryClient:1021] fetchRegistry   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997 - was unable to refresh its cache! This periodic background refresh will be retried in 30 seconds. status = Cannot execute request on any known server stacktrace = com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry(DiscoveryClient.java:1101)
-	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:1014)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:441)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:283)
-	at com.netflix.discovery.DiscoveryClient.<init>(DiscoveryClient.java:279)
-	at org.springframework.cloud.netflix.eureka.CloudEurekaClient.<init>(CloudEurekaClient.java:66)
-	at org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration$RefreshableEurekaClientConfiguration.eurekaClient(EurekaClientAutoConfiguration.java:295)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:633)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$1(AbstractBeanFactory.java:374)
-	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.getBean(GenericScope.java:376)
-	at org.springframework.cloud.context.scope.GenericScope.get(GenericScope.java:179)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
-	at org.springframework.aop.target.SimpleBeanTargetSource.getTarget(SimpleBeanTargetSource.java:35)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.getTargetObject(EurekaRegistration.java:127)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.getEurekaClient(EurekaRegistration.java:115)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282)
-	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:485)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:762)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:707)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration$$EnhancerBySpringCGLIB$$15b2e134.getEurekaClient(<generated>)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.maybeInitializeClient(EurekaServiceRegistry.java:54)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.register(EurekaServiceRegistry.java:38)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.start(EurekaAutoServiceRegistration.java:83)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:146)
-	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:131)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:178)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:171)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
-	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
-	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:179)
-	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
-	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:357)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:156)
-	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:124)
-	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:938)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at com.example.order.OrderApplication.main(OrderApplication.java:12)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-
-2023-09-25 19:30:33.731 INFO  ---- [tartedMain] [DiscoveryClient:443] <init>   Initial registry fetch from primary servers failed
-2023-09-25 19:30:33.731 WARN  ---- [tartedMain] [DiscoveryClient:304] get   Using default backup registry implementation which does not do anything.
-2023-09-25 19:30:33.733 INFO  ---- [tartedMain] [DiscoveryClient:448] <init>   Initial registry fetch from backup servers failed
-2023-09-25 19:30:33.736 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
-2023-09-25 19:30:33.755 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-09-25 19:30:33.762 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1695637833761 with initial instances count: 0
-2023-09-25 19:30:33.765 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application ORDER-SERVICE with eureka with status UP
-2023-09-25 19:30:33.766 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1695637833766, current=UP, previous=STARTING]
-2023-09-25 19:30:33.770 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997: registering service...
-2023-09-25 19:30:34.921 INFO  ---- [tartedMain] [OrderApplication:61] logStarted   Started OrderApplication in 18.391 seconds (JVM running for 19.64)
-2023-09-25 19:30:35.678 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:35.679 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:35.679 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:35.912 INFO  ---- [plicator-0] [RedirectingEurekaHttpClient:84] execute   Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://127.0.0.1:8761/eureka/}, exception=I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791)
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:717)
-	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:608)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.register(RestTemplateEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87)
-	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782)
-	... 22 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 35 more
-
-2023-09-25 19:30:35.914 WARN  ---- [plicator-0] [RetryableEurekaHttpClient:130] execute   Request execution failed with message: I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-2023-09-25 19:30:35.929 WARN  ---- [plicator-0] [DiscoveryClient:878] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997 - registration failed Cannot execute request on any known server
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2023-09-25 19:30:35.934 WARN  ---- [plicator-0] [InstanceInfoReplicator:125] run   There was a problem with the instance info replicator
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2023-09-25 19:30:37.837 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:37.839 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:37.840 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:40.051 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:40.053 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:40.055 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:42.467 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:42.467 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:42.467 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:45.354 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:45.356 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:45.357 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:48.307 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:48.309 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:48.310 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:51.270 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:51.271 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:51.272 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:54.369 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:54.370 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:54.370 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:30:57.399 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:30:57.400 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:30:57.401 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:31:00.495 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:31:00.497 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:31:00.497 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:31:03.463 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:31:03.464 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:31:03.464 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:31:03.745 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-09-25 19:31:03.747 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-09-25 19:31:03.747 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-09-25 19:31:03.748 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-09-25 19:31:03.748 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-09-25 19:31:03.749 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
-2023-09-25 19:31:03.749 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-09-25 19:31:05.827 INFO  ---- [Executor-0] [RedirectingEurekaHttpClient:84] execute   Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://127.0.0.1:8761/eureka/}, exception=I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791)
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:717)
-	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:608)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.getApplicationsInternal(RestTemplateEurekaHttpClient.java:145)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.getApplications(RestTemplateEurekaHttpClient.java:135)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry(DiscoveryClient.java:1101)
-	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:1014)
-	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1531)
-	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1498)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87)
-	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782)
-	... 23 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 36 more
-
-2023-09-25 19:31:05.827 INFO  ---- [Executor-0] [RedirectingEurekaHttpClient:84] execute   Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://127.0.0.1:8761/eureka/}, exception=I/O error on PUT request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on PUT request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791)
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:717)
-	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:608)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.sendHeartBeat(RestTemplateEurekaHttpClient.java:99)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:893)
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1457)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87)
-	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782)
-	... 20 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 33 more
-
-2023-09-25 19:31:05.828 WARN  ---- [Executor-0] [RetryableEurekaHttpClient:130] execute   Request execution failed with message: I/O error on GET request for "http://127.0.0.1:8761/eureka/apps/": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-2023-09-25 19:31:05.830 WARN  ---- [Executor-0] [RetryableEurekaHttpClient:130] execute   Request execution failed with message: I/O error on PUT request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-2023-09-25 19:31:05.831 INFO  ---- [Executor-0] [DiscoveryClient:1021] fetchRegistry   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997 - was unable to refresh its cache! This periodic background refresh will be retried in 30 seconds. status = Cannot execute request on any known server stacktrace = com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
-	at com.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry(DiscoveryClient.java:1101)
-	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:1014)
-	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1531)
-	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1498)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-
-2023-09-25 19:31:05.833 ERROR ---- [Executor-0] [DiscoveryClient:907] renew   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997 - was unable to send heartbeat!
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:893)
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1457)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2023-09-25 19:31:05.949 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997: registering service...
-2023-09-25 19:31:06.492 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
-2023-09-25 19:31:06.493 WARN  ---- [er#0-0-C-1] [NetworkClient:775] processDisconnection   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2023-09-25 19:31:06.494 WARN  ---- [er#0-0-C-1] [NetworkClient:1063] handleServerDisconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2023-09-25 19:31:08.014 INFO  ---- [plicator-0] [RedirectingEurekaHttpClient:84] execute   Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://127.0.0.1:8761/eureka/}, exception=I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:791)
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:717)
-	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:608)
-	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.register(RestTemplateEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87)
-	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:782)
-	... 21 more
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 34 more
-
-2023-09-25 19:31:08.015 WARN  ---- [plicator-0] [RetryableEurekaHttpClient:130] execute   Request execution failed with message: I/O error on POST request for "http://127.0.0.1:8761/eureka/apps/ORDER-SERVICE": Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:8761 [/127.0.0.1] failed: Connection refused: connect
-2023-09-25 19:31:08.026 WARN  ---- [plicator-0] [DiscoveryClient:878] register   DiscoveryClient_ORDER-SERVICE/192.168.0.223:44b0ce8bda53fcc2f50eb4103e608997 - registration failed Cannot execute request on any known server
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2023-09-25 19:31:08.035 WARN  ---- [plicator-0] [InstanceInfoReplicator:125] run   There was a problem with the instance info replicator
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:876)
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-10-12 10:23:07.647 INFO  ---- [tartedMain] [AppInfoParser:119] <init>   Kafka version: 3.1.2
+2023-10-12 10:23:07.648 INFO  ---- [tartedMain] [AppInfoParser:120] <init>   Kafka commitId: f8c67dc3ae0a3265
+2023-10-12 10:23:07.649 INFO  ---- [tartedMain] [AppInfoParser:121] <init>   Kafka startTimeMs: 1697073787642
+2023-10-12 10:23:07.654 INFO  ---- [tartedMain] [KafkaConsumer:966] subscribe   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Subscribed to topic(s): order
+2023-10-12 10:23:07.711 INFO  ---- [tartedMain] [TomcatWebServer:220] start   Tomcat started on port(s): 57877 (http) with context path ''
+2023-10-12 10:23:07.712 INFO  ---- [tartedMain] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 57877
+2023-10-12 10:23:07.720 INFO  ---- [tartedMain] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-10-12 10:23:07.801 INFO  ---- [tartedMain] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-10-12 10:23:07.812 INFO  ---- [tartedMain] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 10:23:07.853 INFO  ---- [tartedMain] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-10-12 10:23:07.854 INFO  ---- [tartedMain] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-10-12 10:23:07.855 INFO  ---- [tartedMain] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-10-12 10:23:07.855 INFO  ---- [tartedMain] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-10-12 10:23:07.855 INFO  ---- [tartedMain] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-10-12 10:23:07.856 INFO  ---- [tartedMain] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-10-12 10:23:07.856 INFO  ---- [tartedMain] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-10-12 10:23:08.198 INFO  ---- [er#0-0-C-1] [Metadata:287] update   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Cluster ID: DX9VXblnStu5f1IhKDnwfA
+2023-10-12 10:23:08.201 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 10:23:08.206 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 10:23:08.228 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: need to re-join with the given member-id
+2023-10-12 10:23:08.229 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 10:23:08.235 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:595] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully joined group with generation Generation{generationId=9, memberId='consumer-delivery.group.v13-1-e765f813-70b1-4af0-b824-3136786bbd37', protocol='range'}
+2023-10-12 10:23:08.239 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:659] performAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Finished assignment for group at generation 9: {consumer-delivery.group.v13-1-e765f813-70b1-4af0-b824-3136786bbd37=Assignment(partitions=[order-0])}
+2023-10-12 10:23:08.251 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:761] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully synced group in generation Generation{generationId=9, memberId='consumer-delivery.group.v13-1-e765f813-70b1-4af0-b824-3136786bbd37', protocol='range'}
+2023-10-12 10:23:08.252 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:280] invokeOnAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Notifying assignor about the new Assignment(partitions=[order-0])
+2023-10-12 10:23:08.256 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:292] invokePartitionsAssigned   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Adding newly assigned partitions: order-0
+2023-10-12 10:23:08.274 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:851] refreshCommittedOffsetsIfNeeded   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Setting offset for partition order-0 to the committed offset FetchPosition{offset=13, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[127.0.0.1:9092 (id: 1001 rack: null)], epoch=0}}
+2023-10-12 10:23:08.275 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions assigned: [order-0]
+2023-10-12 10:23:08.295 INFO  ---- [tartedMain] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-10-12 10:23:08.299 INFO  ---- [tartedMain] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-10-12 10:23:08.302 INFO  ---- [tartedMain] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-10-12 10:23:08.308 INFO  ---- [tartedMain] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1697073788306 with initial instances count: 4
+2023-10-12 10:23:08.311 INFO  ---- [tartedMain] [EurekaServiceRegistry:41] register   Registering application ORDER-SERVICE with eureka with status UP
+2023-10-12 10:23:08.312 INFO  ---- [tartedMain] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1697073788312, current=UP, previous=STARTING]
+2023-10-12 10:23:08.315 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_ORDER-SERVICE/172.30.1.61:54b7166ab3fe769c20eeeb82286c696d: registering service...
+2023-10-12 10:23:08.374 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_ORDER-SERVICE/172.30.1.61:54b7166ab3fe769c20eeeb82286c696d - registration status: 204
+2023-10-12 10:23:09.688 INFO  ---- [tartedMain] [OrderApplication:61] logStarted   Started OrderApplication in 19.336 seconds (JVM running for 20.658)
+2023-10-12 10:28:07.876 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 10:36:11.405 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node -1 disconnected.
+2023-10-12 10:36:11.412 INFO  ---- [er#0-0-C-1] [NetworkClient:797] handleTimedOutRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Disconnecting from node 1001 due to request timeout.
+2023-10-12 10:36:11.413 INFO  ---- [er#0-0-C-1] [NetworkClient:341] cancelInFlightRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Cancelled in-flight FETCH request with correlation id 1063 due to node 1001 being disconnected (elapsed time since creation: 324692ms, elapsed time since send: 324692ms, request timeout: 30000ms)
+2023-10-12 10:36:11.414 INFO  ---- [.group.v13] [ConsumerCoordinator:916] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response.isDisconnected: false. Rediscovery will be attempted.
+2023-10-12 10:36:11.416 INFO  ---- [.group.v13] [ConsumerCoordinator:929] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Requesting disconnect from last known coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 10:36:11.417 INFO  ---- [.group.v13] [NetworkClient:324] disconnect   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Client requested disconnect from node 2147482646
+2023-10-12 10:36:11.419 INFO  ---- [er#0-0-C-1] [FetchSessionHandler:602] handleError   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Error sending fetch request (sessionId=1357343101, epoch=900) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2023-10-12 10:36:11.798 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 10:36:11.834 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1153] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Attempt to heartbeat with Generation{generationId=9, memberId='consumer-delivery.group.v13-1-e765f813-70b1-4af0-b824-3136786bbd37', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-10-12 10:36:11.835 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:972] resetStateAndGeneration   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 10:36:11.835 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 10:36:11.836 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:724] onJoinPrepare   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-10-12 10:36:11.836 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:330] invokePartitionsLost   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Lost previously assigned partitions order-0
+2023-10-12 10:36:11.837 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions lost: [order-0]
+2023-10-12 10:36:11.838 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions revoked: [order-0]
+2023-10-12 10:36:11.838 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 10:36:11.871 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: need to re-join with the given member-id
+2023-10-12 10:36:11.871 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 10:36:11.891 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:595] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully joined group with generation Generation{generationId=11, memberId='consumer-delivery.group.v13-1-595310cf-4592-4f64-b44b-ff15aed0b634', protocol='range'}
+2023-10-12 10:36:11.892 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:659] performAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Finished assignment for group at generation 11: {consumer-delivery.group.v13-1-595310cf-4592-4f64-b44b-ff15aed0b634=Assignment(partitions=[order-0])}
+2023-10-12 10:36:11.922 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:761] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully synced group in generation Generation{generationId=11, memberId='consumer-delivery.group.v13-1-595310cf-4592-4f64-b44b-ff15aed0b634', protocol='range'}
+2023-10-12 10:36:11.922 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:280] invokeOnAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Notifying assignor about the new Assignment(partitions=[order-0])
+2023-10-12 10:36:11.923 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:292] invokePartitionsAssigned   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Adding newly assigned partitions: order-0
+2023-10-12 10:36:12.231 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:851] refreshCommittedOffsetsIfNeeded   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Setting offset for partition order-0 to the committed offset FetchPosition{offset=13, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[127.0.0.1:9092 (id: 1001 rack: null)], epoch=0}}
+2023-10-12 10:36:12.339 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions assigned: [order-0]
+2023-10-12 10:36:23.060 WARN  ---- [ousekeeper] [HikariPool:788] run   HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m54s194ms990µs300ns).
+2023-10-12 10:37:04.163 DEBUG ---- [er#0-0-C-1] [SQL:144] logStatement   
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+2023-10-12 10:37:04.191 DEBUG ---- [er#0-0-C-1] [SQL:144] logStatement   
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+2023-10-12 10:37:04.338 DEBUG ---- [er#0-0-C-1] [SQL:144] logStatement   
+    /* insert com.example.order.module.domain.order.enitity.Order
+        */ insert 
+        into
+            tb_order
+            (address, amount, color_id, create_at, payment, product_id, size_id, update_at, user_id, id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-10-12 10:38:32.061 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 10:43:32.064 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 10:48:32.080 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 10:53:46.438 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 11:48:23.459 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node 2147482646 disconnected.
+2023-10-12 11:48:23.460 INFO  ---- [er#0-0-C-1] [NetworkClient:797] handleTimedOutRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Disconnecting from node 1001 due to request timeout.
+2023-10-12 11:48:23.460 INFO  ---- [er#0-0-C-1] [NetworkClient:341] cancelInFlightRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Cancelled in-flight FETCH request with correlation id 3952 due to node 1001 being disconnected (elapsed time since creation: 3073028ms, elapsed time since send: 3073028ms, request timeout: 30000ms)
+2023-10-12 11:48:23.461 INFO  ---- [er#0-0-C-1] [FetchSessionHandler:602] handleError   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Error sending fetch request (sessionId=1703925126, epoch=2459) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2023-10-12 11:48:23.461 INFO  ---- [.group.v13] [ConsumerCoordinator:916] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable.isDisconnected: true. Rediscovery will be attempted.
+2023-10-12 11:48:24.635 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 11:48:24.743 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1153] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Attempt to heartbeat with Generation{generationId=11, memberId='consumer-delivery.group.v13-1-595310cf-4592-4f64-b44b-ff15aed0b634', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-10-12 11:48:24.743 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:972] resetStateAndGeneration   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 11:48:24.744 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 11:48:24.745 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:724] onJoinPrepare   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-10-12 11:48:24.745 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:330] invokePartitionsLost   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Lost previously assigned partitions order-0
+2023-10-12 11:48:24.745 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions lost: [order-0]
+2023-10-12 11:48:24.745 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions revoked: [order-0]
+2023-10-12 11:48:24.745 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 11:48:24.767 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: need to re-join with the given member-id
+2023-10-12 11:48:24.767 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 11:48:24.824 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:595] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully joined group with generation Generation{generationId=13, memberId='consumer-delivery.group.v13-1-422b1d9d-d3da-4638-a4a9-c991dbf25278', protocol='range'}
+2023-10-12 11:48:24.825 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:659] performAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Finished assignment for group at generation 13: {consumer-delivery.group.v13-1-422b1d9d-d3da-4638-a4a9-c991dbf25278=Assignment(partitions=[order-0])}
+2023-10-12 11:48:24.863 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:761] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully synced group in generation Generation{generationId=13, memberId='consumer-delivery.group.v13-1-422b1d9d-d3da-4638-a4a9-c991dbf25278', protocol='range'}
+2023-10-12 11:48:24.864 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:280] invokeOnAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Notifying assignor about the new Assignment(partitions=[order-0])
+2023-10-12 11:48:24.864 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:292] invokePartitionsAssigned   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Adding newly assigned partitions: order-0
+2023-10-12 11:48:24.878 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:851] refreshCommittedOffsetsIfNeeded   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Setting offset for partition order-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[127.0.0.1:9092 (id: 1001 rack: null)], epoch=0}}
+2023-10-12 11:48:24.878 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions assigned: [order-0]
+2023-10-12 11:57:54.077 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node 2147482646 disconnected.
+2023-10-12 11:57:54.169 INFO  ---- [er#0-0-C-1] [NetworkClient:797] handleTimedOutRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Disconnecting from node 1001 due to request timeout.
+2023-10-12 11:57:54.173 INFO  ---- [er#0-0-C-1] [NetworkClient:341] cancelInFlightRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Cancelled in-flight FETCH request with correlation id 3971 due to node 1001 being disconnected (elapsed time since creation: 565866ms, elapsed time since send: 565866ms, request timeout: 30000ms)
+2023-10-12 11:57:54.175 INFO  ---- [.group.v13] [ConsumerCoordinator:916] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response.isDisconnected: false. Rediscovery will be attempted.
+2023-10-12 11:57:54.176 INFO  ---- [.group.v13] [ConsumerCoordinator:929] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Requesting disconnect from last known coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 11:57:54.174 INFO  ---- [er#0-0-C-1] [FetchSessionHandler:602] handleError   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Error sending fetch request (sessionId=460740673, epoch=7) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2023-10-12 11:57:54.486 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 11:57:54.488 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 11:57:54.518 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1153] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Attempt to heartbeat with Generation{generationId=13, memberId='consumer-delivery.group.v13-1-422b1d9d-d3da-4638-a4a9-c991dbf25278', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-10-12 11:57:54.519 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:972] resetStateAndGeneration   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 11:57:54.520 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 11:57:54.521 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:724] onJoinPrepare   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-10-12 11:57:54.521 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:330] invokePartitionsLost   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Lost previously assigned partitions order-0
+2023-10-12 11:57:54.521 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions lost: [order-0]
+2023-10-12 11:57:54.521 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions revoked: [order-0]
+2023-10-12 11:57:54.522 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 11:57:54.533 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: need to re-join with the given member-id
+2023-10-12 11:57:54.534 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 11:57:54.546 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:595] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully joined group with generation Generation{generationId=15, memberId='consumer-delivery.group.v13-1-612798be-0b0c-45ed-b296-23a3d7f5aa55', protocol='range'}
+2023-10-12 11:57:54.546 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:659] performAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Finished assignment for group at generation 15: {consumer-delivery.group.v13-1-612798be-0b0c-45ed-b296-23a3d7f5aa55=Assignment(partitions=[order-0])}
+2023-10-12 11:57:54.576 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:761] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully synced group in generation Generation{generationId=15, memberId='consumer-delivery.group.v13-1-612798be-0b0c-45ed-b296-23a3d7f5aa55', protocol='range'}
+2023-10-12 11:57:54.577 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:280] invokeOnAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Notifying assignor about the new Assignment(partitions=[order-0])
+2023-10-12 11:57:54.577 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:292] invokePartitionsAssigned   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Adding newly assigned partitions: order-0
+2023-10-12 11:57:54.591 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:851] refreshCommittedOffsetsIfNeeded   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Setting offset for partition order-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[127.0.0.1:9092 (id: 1001 rack: null)], epoch=0}}
+2023-10-12 11:57:54.592 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions assigned: [order-0]
+2023-10-12 13:51:47.949 INFO  ---- [er#0-0-C-1] [NetworkClient:935] handleDisconnections   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Node 2147482646 disconnected.
+2023-10-12 13:51:47.953 INFO  ---- [er#0-0-C-1] [NetworkClient:797] handleTimedOutRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Disconnecting from node 1001 due to request timeout.
+2023-10-12 13:51:47.953 INFO  ---- [er#0-0-C-1] [NetworkClient:341] cancelInFlightRequests   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Cancelled in-flight FETCH request with correlation id 3993 due to node 1001 being disconnected (elapsed time since creation: 6828826ms, elapsed time since send: 6828826ms, request timeout: 30000ms)
+2023-10-12 13:51:47.954 INFO  ---- [er#0-0-C-1] [FetchSessionHandler:602] handleError   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Error sending fetch request (sessionId=1504044776, epoch=9) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2023-10-12 13:51:47.954 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:916] markCoordinatorUnknown   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable.isDisconnected: true. Rediscovery will be attempted.
+2023-10-12 13:51:48.242 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:853] onSuccess   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Discovered group coordinator 127.0.0.1:9092 (id: 2147482646 rack: null)
+2023-10-12 13:51:48.281 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1153] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Attempt to heartbeat with Generation{generationId=15, memberId='consumer-delivery.group.v13-1-612798be-0b0c-45ed-b296-23a3d7f5aa55', protocol='range'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, resetting generation
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:972] resetStateAndGeneration   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Resetting generation due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: encountered UNKNOWN_MEMBER_ID from HEARTBEAT response
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:724] onJoinPrepare   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Giving away all assigned partitions as lost since generation has been reset,indicating that consumer is no longer part of the group
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:330] invokePartitionsLost   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Lost previously assigned partitions order-0
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions lost: [order-0]
+2023-10-12 13:51:48.282 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions revoked: [order-0]
+2023-10-12 13:51:48.283 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 13:51:48.310 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:1000] requestRejoin   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Request joining group due to: need to re-join with the given member-id
+2023-10-12 13:51:48.310 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:535] sendJoinGroupRequest   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] (Re-)joining group
+2023-10-12 13:51:48.328 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:595] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully joined group with generation Generation{generationId=17, memberId='consumer-delivery.group.v13-1-0c933e11-6748-4cfc-8f3a-40226904e7a7', protocol='range'}
+2023-10-12 13:51:48.329 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:659] performAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Finished assignment for group at generation 17: {consumer-delivery.group.v13-1-0c933e11-6748-4cfc-8f3a-40226904e7a7=Assignment(partitions=[order-0])}
+2023-10-12 13:51:48.339 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:761] handle   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Successfully synced group in generation Generation{generationId=17, memberId='consumer-delivery.group.v13-1-0c933e11-6748-4cfc-8f3a-40226904e7a7', protocol='range'}
+2023-10-12 13:51:48.340 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:280] invokeOnAssignment   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Notifying assignor about the new Assignment(partitions=[order-0])
+2023-10-12 13:51:48.340 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:292] invokePartitionsAssigned   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Adding newly assigned partitions: order-0
+2023-10-12 13:51:48.448 INFO  ---- [er#0-0-C-1] [ConsumerCoordinator:851] refreshCommittedOffsetsIfNeeded   [Consumer clientId=consumer-delivery.group.v13-1, groupId=delivery.group.v13] Setting offset for partition order-0 to the committed offset FetchPosition{offset=14, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[127.0.0.1:9092 (id: 1001 rack: null)], epoch=0}}
+2023-10-12 13:51:48.448 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   delivery.group.v13: partitions assigned: [order-0]
+2023-10-12 13:52:04.663 WARN  ---- [ousekeeper] [HikariPool:788] run   HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h54m56s901ms563µs900ns).
+2023-10-12 13:53:13.335 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-12 13:58:13.348 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration

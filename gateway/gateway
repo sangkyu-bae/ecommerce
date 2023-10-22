@@ -1,80 +1,59 @@
-2023-10-01 18:36:52.363 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 12956 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
-2023-10-01 18:36:52.380 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-10-01 18:36:53.912 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=acc88657-14f5-3213-b191-0de15a2e1da7
-2023-10-01 18:36:54.014 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-10-01 18:36:54.015 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-10-01 18:36:54.017 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-10-01 18:36:57.385 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
-2023-10-01 18:36:57.387 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
-2023-10-01 18:36:57.388 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
-2023-10-01 18:36:57.390 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
-2023-10-01 18:36:57.391 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
-2023-10-01 18:36:57.391 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
-2023-10-01 18:36:57.393 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
-2023-10-01 18:36:57.395 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
-2023-10-01 18:36:57.396 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
-2023-10-01 18:36:57.396 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
-2023-10-01 18:36:57.396 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
-2023-10-01 18:36:57.399 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
-2023-10-01 18:36:57.399 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
-2023-10-01 18:36:57.400 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
-2023-10-01 18:36:58.103 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
-2023-10-01 18:37:03.387 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-10-01 18:37:03.476 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-10-01 18:37:03.777 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-10-01 18:37:03.802 INFO  ---- [main      ] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 18:37:03.887 INFO  ---- [main      ] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-10-01 18:37:03.889 INFO  ---- [main      ] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-10-01 18:37:03.890 INFO  ---- [main      ] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-10-01 18:37:03.890 INFO  ---- [main      ] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-10-01 18:37:03.892 INFO  ---- [main      ] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-10-01 18:37:03.893 INFO  ---- [main      ] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
-2023-10-01 18:37:03.893 INFO  ---- [main      ] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-10-01 18:37:05.700 INFO  ---- [main      ] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-10-01 18:37:05.712 INFO  ---- [main      ] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
-2023-10-01 18:37:05.723 INFO  ---- [main      ] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-10-01 18:37:05.742 INFO  ---- [main      ] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1696153025740 with initial instances count: 0
-2023-10-01 18:37:05.746 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application API-GATEWAY with eureka with status UP
-2023-10-01 18:37:05.748 INFO  ---- [main      ] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1696153025748, current=UP, previous=STARTING]
-2023-10-01 18:37:05.755 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_API-GATEWAY/192.168.0.5:8000: registering service...
-2023-10-01 18:37:06.257 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_API-GATEWAY/192.168.0.5:8000 - registration status: 204
-2023-10-01 18:37:08.508 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
-2023-10-01 18:37:08.515 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8000
-2023-10-01 18:37:15.738 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 25.955 seconds (JVM running for 26.962)
-2023-10-01 18:37:35.727 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-10-01 18:37:35.728 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-10-01 18:37:35.729 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-10-01 18:37:35.730 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-10-01 18:37:35.730 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-10-01 18:37:35.730 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
-2023-10-01 18:37:35.732 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-10-01 18:37:35.767 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-10-01 18:42:03.905 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 18:47:03.912 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 18:52:03.925 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 18:57:03.930 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:02:04.005 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:07:04.016 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:12:04.029 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:17:04.036 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:22:04.051 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:27:04.060 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:32:04.068 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:37:04.070 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:42:04.078 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:47:04.092 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:52:06.313 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 19:57:06.326 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:02:06.341 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:07:06.342 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:12:06.350 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:17:06.354 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:22:06.357 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:27:06.362 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:32:06.371 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:37:06.385 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:42:06.398 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:47:06.402 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:52:06.409 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 20:57:06.414 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-10-01 21:02:06.421 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:20:02.322 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 8648 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-10-19 22:20:02.336 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-10-19 22:20:03.657 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=acc88657-14f5-3213-b191-0de15a2e1da7
+2023-10-19 22:20:03.758 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 22:20:03.760 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 22:20:03.763 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-19 22:20:10.307 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-10-19 22:20:10.308 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-10-19 22:20:10.313 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-10-19 22:20:10.313 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-10-19 22:20:10.314 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-10-19 22:20:10.315 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-10-19 22:20:10.315 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-10-19 22:20:10.315 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-10-19 22:20:10.315 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-10-19 22:20:10.315 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-10-19 22:20:10.316 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-10-19 22:20:10.316 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-10-19 22:20:10.317 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-10-19 22:20:10.319 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-10-19 22:20:11.459 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-10-19 22:20:18.593 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-10-19 22:20:18.654 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-10-19 22:20:18.983 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-10-19 22:20:19.003 INFO  ---- [main      ] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:20:19.058 INFO  ---- [main      ] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-10-19 22:20:19.059 INFO  ---- [main      ] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-10-19 22:20:19.060 INFO  ---- [main      ] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-10-19 22:20:19.061 INFO  ---- [main      ] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-10-19 22:20:19.061 INFO  ---- [main      ] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-10-19 22:20:19.062 INFO  ---- [main      ] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-10-19 22:20:19.063 INFO  ---- [main      ] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-10-19 22:20:20.575 INFO  ---- [main      ] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-10-19 22:20:20.583 INFO  ---- [main      ] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-10-19 22:20:20.594 INFO  ---- [main      ] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-10-19 22:20:20.613 INFO  ---- [main      ] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1697721620609 with initial instances count: 0
+2023-10-19 22:20:20.618 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application API-GATEWAY with eureka with status UP
+2023-10-19 22:20:20.621 INFO  ---- [main      ] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1697721620620, current=UP, previous=STARTING]
+2023-10-19 22:20:20.628 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_API-GATEWAY/192.168.0.234:8000: registering service...
+2023-10-19 22:20:21.054 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_API-GATEWAY/192.168.0.234:8000 - registration status: 204
+2023-10-19 22:20:23.797 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-10-19 22:20:23.804 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8000
+2023-10-19 22:20:30.715 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 35.592 seconds (JVM running for 39.076)
+2023-10-19 22:20:50.629 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-10-19 22:20:50.630 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-10-19 22:20:50.630 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-10-19 22:20:50.630 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-10-19 22:20:50.631 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-10-19 22:20:50.631 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
+2023-10-19 22:20:50.632 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-10-19 22:20:50.659 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-10-19 22:22:01.123 INFO  ---- [http-nio-2] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login
+2023-10-19 22:22:01.433 WARN  ---- [http-nio-2] [RoundRobinLoadBalancer:98] getInstanceResponse   No servers available for service: auth-service
+2023-10-19 22:25:19.073 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:30:19.088 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:35:19.091 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:40:19.092 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:45:19.108 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-10-19 22:50:19.113 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
