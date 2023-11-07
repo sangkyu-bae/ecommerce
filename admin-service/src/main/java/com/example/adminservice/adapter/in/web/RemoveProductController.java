@@ -2,10 +2,10 @@ package com.example.adminservice.adapter.in.web;
 
 import com.example.adminservice.application.port.in.RemoveProductUseCase;
 import com.example.adminservice.application.port.in.product.DeleteProductCommand;
-import com.example.adminservice.common.WebAdapter;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;

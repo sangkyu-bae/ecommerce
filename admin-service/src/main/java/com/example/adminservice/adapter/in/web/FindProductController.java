@@ -3,12 +3,14 @@ package com.example.adminservice.adapter.in.web;
 import com.example.adminservice.application.port.in.FindProductUseCase;
 import com.example.adminservice.application.port.in.product.FindPagingProductCommand;
 import com.example.adminservice.application.port.in.product.FindProductCommand;
-import com.example.adminservice.common.WebAdapter;
+
+
 import com.example.adminservice.domain.productentity.ProductSearchVo;
 import com.example.adminservice.domain.productentity.ProductVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

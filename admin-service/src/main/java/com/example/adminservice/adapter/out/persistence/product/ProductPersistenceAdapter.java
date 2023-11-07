@@ -5,14 +5,14 @@ import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRep
 import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.out.*;
-import com.example.adminservice.common.PersistenceAdapter;
-import com.example.adminservice.common.WebAdapter;
+
 import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.domain.productentity.SizeVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.PersistenceAdapter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;

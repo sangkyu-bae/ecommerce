@@ -2,8 +2,9 @@ package com.example.adminservice.application.port.in.product;
 
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
 import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductRequest;
-import com.example.adminservice.common.SelfValidating;
+
 import lombok.*;
+import org.example.SelfValidating;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;

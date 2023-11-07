@@ -5,7 +5,7 @@ import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.application.port.in.FindProductUseCase;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.product.*;
-import com.example.adminservice.common.WebAdapter;
+
 import com.example.adminservice.domain.productentity.ProductVo;
 import com.example.adminservice.module.common.error.ErrorException;
 import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
@@ -13,6 +13,7 @@ import com.example.adminservice.vaildator.UpdateProductCommandValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
