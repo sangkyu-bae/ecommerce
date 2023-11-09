@@ -4,12 +4,12 @@ import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.adapter.out.persistence.repository.OrderEntityRepository;
 import com.example.order.application.port.out.FindOrderPort;
 import com.example.order.application.port.out.RegisterOrderPort;
-import com.example.order.common.PersistenceAdapter;
 import com.example.order.module.common.error.ErrorException;
 import com.example.order.module.common.error.errorImpl.OrderErrorCode;
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.PersistenceAdapter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -4,6 +4,6 @@ include 'common'
 include 'admin-service'
 include 'test'
 include 'common'
-include 'delivery-service'
 include 'delivery'
+include 'order'
 

@@ -5,9 +5,10 @@ import com.example.delivery.application.port.in.command.RegisterDeliveryCommand;
 import com.example.delivery.application.port.in.command.RequestRollbackDeliveryCommand;
 import com.example.delivery.application.port.in.usecase.RegisterDeliveryUseCase;
 import com.example.delivery.application.port.in.usecase.RollbackDeliveryEventUseCase;
-import com.example.delivery.common.WebAdapter;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.example.WebAdapter;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @WebAdapter

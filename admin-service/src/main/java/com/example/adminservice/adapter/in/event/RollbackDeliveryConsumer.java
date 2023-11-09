@@ -2,8 +2,9 @@ package com.example.adminservice.adapter.in.event;
 
 import com.example.adminservice.adapter.in.event.request.RequestDeliveryRollback;
 import com.example.adminservice.application.port.in.product.RollBackOrderCommand;
-import com.example.adminservice.common.WebAdapter;
+
 import lombok.RequiredArgsConstructor;
+import org.example.WebAdapter;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @WebAdapter

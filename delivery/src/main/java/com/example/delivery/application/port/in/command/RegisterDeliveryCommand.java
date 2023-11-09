@@ -1,7 +1,8 @@
 package com.example.delivery.application.port.in.command;
 
-import com.example.delivery.common.SelfValidating;
+
 import lombok.*;
+import org.example.SelfValidating;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

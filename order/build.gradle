@@ -1,7 +1,8 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.16-SNAPSHOT'
+	id 'org.springframework.boot' version '2.7.13'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "com.palantir.docker" version '0.35.0'
 }
 
 group = 'com.example'
@@ -48,6 +49,7 @@ dependencies {
 	// restTemplate
 	implementation 'org.apache.httpcomponents:httpcore:4.4.15'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation project(path: ':common')
 }
 
 dependencyManagement {
@@ -59,3 +61,14 @@ dependencyManagement {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+docker {
+	println(tasks.bootJar.outputs.files)
+	name project.name+":"+version
+	dockerfile file('../Dockerfile')
+
+	files tasks.bootJar.outputs.files
+
+	buildArgs(['JAR_FILE':tasks.bootJar.outputs.files.singleFile.name])
+}
+

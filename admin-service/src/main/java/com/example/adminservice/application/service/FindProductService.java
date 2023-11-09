@@ -6,12 +6,13 @@ import com.example.adminservice.application.port.in.FindProductUseCase;
 import com.example.adminservice.application.port.in.product.FindPagingProductCommand;
 import com.example.adminservice.application.port.in.product.FindProductCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
-import com.example.adminservice.common.UseCase;
+
 import com.example.adminservice.domain.product.repository.ColorProductRepository;
 import com.example.adminservice.domain.productentity.ProductSearchVo;
 import com.example.adminservice.domain.productentity.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.UseCase;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

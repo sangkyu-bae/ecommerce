@@ -6,10 +6,11 @@ import com.example.order.adapter.out.persistence.repository.OrderEntityRepositor
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.application.port.out.FindOrderPort;
-import com.example.order.common.UseCase;
+
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.UseCase;
 import org.springframework.stereotype.Service;
 
 @UseCase

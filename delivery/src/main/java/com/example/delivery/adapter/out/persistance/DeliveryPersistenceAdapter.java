@@ -3,10 +3,11 @@ package com.example.delivery.adapter.out.persistance;
 import com.example.delivery.adapter.out.persistance.entity.DeliveryEntity;
 import com.example.delivery.adapter.out.persistance.repository.DeliveryEntityRepository;
 import com.example.delivery.application.port.out.RegisterDeliveryPort;
-import com.example.delivery.common.PersistenceAdapter;
+
 import com.example.delivery.domain.delivery.DeliveryVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.PersistenceAdapter;
 import org.springframework.transaction.annotation.Transactional;
 
 @PersistenceAdapter

@@ -1,7 +1,7 @@
 package com.example.order.application.port.in.command;
 
-import com.example.order.common.SelfValidating;
 import lombok.*;
+import org.example.SelfValidating;
 
 
 @Builder @Data

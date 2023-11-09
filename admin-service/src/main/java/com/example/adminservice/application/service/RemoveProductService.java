@@ -3,10 +3,11 @@ package com.example.adminservice.application.service;
 import com.example.adminservice.application.port.in.RemoveProductUseCase;
 import com.example.adminservice.application.port.in.product.DeleteProductCommand;
 import com.example.adminservice.application.port.out.RemoveProductPort;
-import com.example.adminservice.common.UseCase;
+
 import com.example.adminservice.domain.productentity.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.UseCase;
 
 @RequiredArgsConstructor
 @UseCase

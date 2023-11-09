@@ -3,10 +3,11 @@ package com.example.adminservice.adapter.in.event;
 import com.example.adminservice.adapter.in.event.request.CreateOrderToUpdateProductRequest;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
-import com.example.adminservice.common.WebAdapter;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.WebAdapter;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @WebAdapter
