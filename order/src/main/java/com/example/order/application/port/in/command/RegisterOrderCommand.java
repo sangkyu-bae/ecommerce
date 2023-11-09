@@ -22,7 +22,7 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private int status;
 
-    private String userId;
+    private String useremail;
 
     public static enum StatusCode{
         ORDER(1,"주문완료"),

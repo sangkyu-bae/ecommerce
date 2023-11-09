@@ -6,6 +6,15 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
+        </processorPath>
+        <module name="ecommerce.delivery.main" />
+        <module name="ecommerce.demo.main" />
+        <module name="ecommerce.order.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.querydsl/querydsl-apt/5.0.0/fa5554c395bdcbe9846242824857a82874ad3223/querydsl-apt-5.0.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.querydsl/querydsl-codegen/5.0.0/d690e92300f528e4161307b286f76aeaf348e2fb/querydsl-codegen-5.0.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.querydsl/querydsl-core/5.0.0/7a469f78b7a89bae429f17766fb92687d0ab9e5b/querydsl-core-5.0.0.jar" />
@@ -16,14 +25,6 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.26.0/4837be609a3368a0f7e7cf0dc1bdbc7fe94993de/ecj-3.26.0.jar" />
         </processorPath>
         <module name="ecommerce.admin-service.main" />
-      </profile>
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
-        </processorPath>
-        <module name="ecommerce.delivery.main" />
-        <module name="ecommerce.order.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
@@ -36,9 +37,6 @@
       <module name="common" target="11" />
       <module name="common.main" target="11" />
       <module name="common.test" target="11" />
-      <module name="demo" target="11" />
-      <module name="demo.main" target="11" />
-      <module name="demo.test" target="11" />
       <module name="ecommerce.tt" target="11" />
       <module name="ecommerce.tt.main" target="11" />
       <module name="ecommerce.tt.test" target="11" />

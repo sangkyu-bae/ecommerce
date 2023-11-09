@@ -6,4 +6,6 @@ include 'test'
 include 'common'
 include 'delivery'
 include 'order'
+include 'demo'
+include 'task-consumer'
 

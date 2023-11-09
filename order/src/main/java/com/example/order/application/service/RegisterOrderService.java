@@ -6,16 +6,15 @@ import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
-import com.example.order.application.port.out.RegisterOrderPort;
-import com.example.order.application.port.out.RequestProductInfoPort;
-import com.example.order.application.port.out.ResponseDeliveryInfoPort;
+import com.example.order.application.port.out.*;
 
 import com.example.order.module.domain.order.orderentity.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.CountDownLatchManager;
+import org.example.task.OrderSubTask;
 import org.example.UseCase;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
@@ -28,9 +27,32 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     private final OrderMapper orderMapper;
     private final ResponseDeliveryInfoPort responseDeliveryInfoPort;
     private final RequestProductInfoPort requestProductInfoPort;
+    private final GetMemberPort getMemberPort;
+
+    private final CountDownLatchManager countDownLatchManager;
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
+        //동기처리
+        Member member = getMemberPort.getMemberId(command.getUseremail());
+        // 에외 처리 필요 ex member email이 없는 것이라면
+
+        //비동기 처리 kafka
+        OrderSubTask validMemberTask = OrderSubTask.builder()
+                .subTaskName("validMemberTask : 멤버십 유효성 검사")
+//                .memberId(command.getUseremail())
+                .taskType("member")
+                .status("ready")
+                .build();
+
+        OrderSubTask validProductTask = OrderSubTask.builder()
+                .subTaskName("validProductTask : 상품 유효성 검사")
+                .build();
+        try {
+            countDownLatchManager.getCountDownLatch("createOrderTask").await();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         int status = OrderVo.StatusCode.ORDER.getStatus();
 

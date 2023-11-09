@@ -29,7 +29,7 @@ public class OrderInfoRequest {
                 .colorId(command.getColorId())
                 .amount(command.getAmount())
                 .address(command.getAddress())
-                .userId(command.getUserId())
+                .userId(command.getUseremail())
                 .build();
     }
 }
