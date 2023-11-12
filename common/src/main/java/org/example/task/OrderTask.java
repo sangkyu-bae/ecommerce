@@ -14,8 +14,8 @@ import java.util.List;
 public class OrderTask {
 
     private String taskId;
-    private String taskName;
-    private long memberId;
-    private List<OrderSubTask> subTaskList;
 
+    private String taskName;
+
+    private List<OrderSubTask> subTaskList;
 }

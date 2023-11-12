@@ -13,10 +13,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.CountDownLatchManager;
+import org.example.task.MemberTask;
 import org.example.task.OrderSubTask;
 import org.example.UseCase;
+import org.example.task.OrderTask;
+import org.example.task.ProductTask;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @UseCase
@@ -36,24 +42,53 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         //동기처리
         Member member = getMemberPort.getMemberId(command.getUseremail());
         // 에외 처리 필요 ex member email이 없는 것이라면
-
         //비동기 처리 kafka
-        OrderSubTask validMemberTask = OrderSubTask.builder()
+        MemberTask validMemberTask =MemberTask.builder()
                 .subTaskName("validMemberTask : 멤버십 유효성 검사")
-//                .memberId(command.getUseremail())
-                .taskType("member")
-                .status("ready")
+                .memberEmail(command.getUseremail())
+                .taskType(OrderSubTask.TaskType.MEMBER)
+                .status(OrderSubTask.Status.READY)
                 .build();
 
-        OrderSubTask validProductTask = OrderSubTask.builder()
+        ProductTask validProductTask = ProductTask.builder()
                 .subTaskName("validProductTask : 상품 유효성 검사")
+                .taskType(OrderSubTask.TaskType.PRODUCT)
+                .status(OrderSubTask.Status.READY)
+                .productId(command.getProductId())
+                .colorId(command.getColorId())
+                .sizeId(command.getSizeId())
+                .quantity(command.getAmount())
                 .build();
+
+        List<OrderSubTask> orderSubTaskList = new ArrayList<>();
+        orderSubTaskList.add(validMemberTask);
+        orderSubTaskList.add(validProductTask);
+        OrderTask orderSubTaskOrderTask = OrderTask.builder()
+                .subTaskList(orderSubTaskList)
+                .taskId(UUID.randomUUID().toString())
+                .taskName("orderTask")
+                .build();
+
         try {
-            countDownLatchManager.getCountDownLatch("createOrderTask").await();
+            countDownLatchManager.getCountDownLatch(orderSubTaskOrderTask.getTaskId()).await();
+            String result = countDownLatchManager.getDataForKey(orderSubTaskOrderTask.getTaskId());
+            if(result.equals("success")){
+                OrderVo mapOrderVo = getOrderRequest(command);
+                return mapOrderVo;
+            }else{
+                //오류 공통화작업 필요
+                throw new Exception();
+            }
         } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+//        return mapOrderVo;
+    }
+
+    private OrderVo getOrderRequest(RegisterOrderCommand command) throws JsonProcessingException {
         int status = OrderVo.StatusCode.ORDER.getStatus();
 
         OrderVo createOrder = OrderVo.createGenerateOrderVo(
@@ -81,8 +116,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                         mapOrderVo.getId()
                 ));
 
-        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
-
+//        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
         return mapOrderVo;
     }
 }

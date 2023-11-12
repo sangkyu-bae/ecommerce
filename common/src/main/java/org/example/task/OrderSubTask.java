@@ -11,16 +11,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OrderSubTask {
 
-    private String memberId;
+    private String taskId;
 
     private String subTaskName;
 
-    private String taskType;
+    private Status status;
 
-    private String status;
-
-    private TaskType task;
+    private TaskType taskType;
     public static enum TaskType{
-        MEMEBER,DELIVERY
+        MEMBER, PRODUCT
+    }
+
+    public static enum Status{
+        READY,SUCCESS,FAIL
     }
 }

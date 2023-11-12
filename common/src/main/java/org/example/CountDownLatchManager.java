@@ -33,4 +33,8 @@ public class CountDownLatchManager {
     public CountDownLatch getCountDownLatch(String key){
         return this.countDownLatchMap.get(key);
     }
+
+    public void removeDataForKey(String key){
+        this.stringMap.remove(key);
+    }
 }
