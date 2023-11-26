@@ -1,22 +1,27 @@
-package com.example.taskconsumer.consum;
+package com.example.taskconsumer.application.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.CountDownLatchManager;
+import org.example.UseCase;
 import org.example.task.MemberTask;
 import org.example.task.OrderSubTask;
 import org.example.task.ProductTask;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
-@Component
-@Slf4j
+import org.springframework.kafka.annotation.KafkaListener;
 @RequiredArgsConstructor
+@UseCase
+@Slf4j
 public class OrderSubTaskConsumer {
+
+
     private final ObjectMapper objectMapper;
 
     private final CountDownLatchManager countDownLatchManager;
+
+
     @KafkaListener(topics ="${kafka.topic}",groupId = "${kafka.task.group}")
     public void memberTaskListener(String memberTaskMessage){
         MemberTask task = null;
@@ -42,14 +47,14 @@ public class OrderSubTaskConsumer {
     private void setCountManager(OrderSubTask task, String latchKey) {
         boolean taskResult = true;
 
-        if(task.getStatus()!= OrderSubTask.Status.SUCCESS){
+        if(task.getStatus() != OrderSubTask.Status.SUCCESS){
             taskResult = false;
         }
-        if (taskResult) {
-            this.countDownLatchManager.setDataForKey(task.getTaskId(), "success");
-        } else{
-            this.countDownLatchManager.setDataForKey(task.getTaskId(), "fail");
-        }
-        this.countDownLatchManager.getCountDownLatch(latchKey).countDown();
+//        if (taskResult) {
+//            this.countDownLatchManager.setDataForKey(task.getTaskId(), "success");
+//        } else{
+//            this.countDownLatchManager.setDataForKey(task.getTaskId(), "fail");
+//        }
+//        this.countDownLatchManager.getCountDownLatch(latchKey).countDown();
     }
 }
