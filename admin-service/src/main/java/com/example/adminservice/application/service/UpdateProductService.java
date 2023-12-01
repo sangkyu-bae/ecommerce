@@ -82,12 +82,12 @@ public class UpdateProductService implements UpdateProductUseCase {
 
         updateProductSizePort.updateProductSize(sizeVo);
 
-        DeliveryInfoRequest deliveryInfoRequest = DeliveryInfoRequest.builder()
-                .address(command.getAddress())
-                .orderId(command.getOrderId())
-                .sizeId(command.getSizeId())
-                .build();
+//        DeliveryInfoRequest deliveryInfoRequest = DeliveryInfoRequest.builder()
+//                .address(command.getAddress())
+//                .orderId(command.getOrderId())
+//                .sizeId(command.getSizeId())
+//                .build();
 
-        requestDeliveryPort.sendCreateOrderEvent(deliveryInfoRequest);
+//        requestDeliveryPort.sendCreateOrderEvent(deliveryInfoRequest);
     }
 }

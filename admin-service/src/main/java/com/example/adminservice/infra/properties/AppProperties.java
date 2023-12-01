@@ -11,4 +11,5 @@ public class AppProperties {
     private String bootstrapServer;
     private String orderTopic;
     private String createDelivery;
+    private String productTaskResultTopic;
 }

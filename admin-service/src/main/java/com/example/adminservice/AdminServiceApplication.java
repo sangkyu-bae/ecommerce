@@ -7,8 +7,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"com.example.adminservice"})
-//@EntityScan(basePackages = {"com.example.adminservice.module.domain", "com.example.adminservice.adapter.out.persistence"})
-//@EntityScan(basePackages = "com.example.adminservice.adapter.out.persistence")
 @EnableDiscoveryClient
 public class AdminServiceApplication {
 

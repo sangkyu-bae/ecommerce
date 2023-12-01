@@ -5,7 +5,7 @@ import org.example.SelfValidating;
 
 
 @Builder @Data
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @EqualsAndHashCode(callSuper = true)
 public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private long productId;
@@ -22,7 +22,7 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private int status;
 
-    private String useremail;
+    private long userId;
 
     public static enum StatusCode{
         ORDER(1,"주문완료"),

@@ -1,15 +1,32 @@
 package com.example.order.adapter.out.kafka;
 
 import com.example.order.application.port.out.SendCreateOrderTaskPort;
+import com.example.order.infra.properties.AppProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.task.OrderTask;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 
-@ComponentScan
+@Component
+@Slf4j
+@RequiredArgsConstructor
 public class TaskProducer implements SendCreateOrderTaskPort {
 
+    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final AppProperties appProperties;
+    private final ObjectMapper objectMapper;
     @Override
     public void sendCreateOrderTask(OrderTask task) {
-
+        try {
+            String inputTask = objectMapper.writeValueAsString(task);
+            kafkaTemplate.send(appProperties.getOrderTopic(),inputTask);
+        } catch (JsonProcessingException e) {
+            log.error("taskListener Error message = {}", task, e);
+        }
     }
 
 }

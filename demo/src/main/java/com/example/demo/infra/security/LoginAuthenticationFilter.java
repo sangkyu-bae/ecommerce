@@ -6,6 +6,8 @@ import com.example.demo.infra.security.dto.Result;
 import com.example.demo.infra.security.provider.CookieProvider;
 import com.example.demo.infra.security.provider.JwtTokenProvider;
 import com.example.demo.infra.security.refreshToken.RefreshTokenServiceImpl;
+import com.example.demo.module.domain.member.entity.Member;
+import com.example.demo.module.domain.member.respository.MemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -47,6 +49,8 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
 
     private final RedisService redisService;
 
+    private final MemberRepository memberRepository;
+
 
     @SneakyThrows
     @Override
@@ -79,8 +83,12 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
 
         String userId = user.getUsername();
 
+        Member member = memberRepository.findByEmail(user.getUsername()).orElseThrow();
+        String userKey = String.valueOf(member.getUserId());
+
         // response body에 넣어줄 access token 및 expired time 생성
-        String accessToken = jwtTokenProvider.createJwtAccessToken(userId, request.getRequestURI(), roles);
+//        String accessToken = jwtTokenProvider.createJwtAccessToken(userId, request.getRequestURI(), roles);
+        String accessToken = jwtTokenProvider.createJwtAccessToken(userKey, request.getRequestURI(), roles);
         Date expiredTime = jwtTokenProvider.getExpiredTime(accessToken);
         // 쿠키에 넣어줄 refresh token 생성
         String refreshToken = jwtTokenProvider.createJwtRefreshToken();

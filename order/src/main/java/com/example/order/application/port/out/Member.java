@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor@NoArgsConstructor
 public class Member {
-
     private long memberId;
 }

@@ -30,13 +30,15 @@ public class MemberCheckConsumer {
     );
     
 
-    @KafkaListener(topics ="${kafka.member.topic}",groupId = "${kafka.member.task.group}")
+    @KafkaListener(topics ="${kafka.member.task.topic}",groupId = "${kafka.member.task.group}")
     public void resultTaskListener(String memberTaskMessage){
         MemberTask task = null;
+        System.out.println(memberTaskMessage);
         try{
             task = objectMapper.readValue(memberTaskMessage, MemberTask.class);
+            System.out.println("task user Id? :" + task.getUserId());
             FindMemberCommand command = FindMemberCommand.builder()
-                    .email(task.getMemberEmail())
+                    .userId(task.getUserId())
                     .build();
             boolean isExistMember = findMemberUseCase.existMember(command);
             task.setStatus(STATUS_MAP.get(isExistMember));

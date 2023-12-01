@@ -16,7 +16,7 @@ public class AppProperties {
 
     private String sendProduct;
 
-    private String  consumerProduct;
+    private String consumerProduct;
 
     private String createOrder;
 }

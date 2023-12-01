@@ -4,6 +4,7 @@ import com.example.demo.infra.redis.RedisService;
 import com.example.demo.infra.security.provider.CookieProvider;
 import com.example.demo.infra.security.provider.JwtTokenProvider;
 import com.example.demo.infra.security.refreshToken.RefreshTokenServiceImpl;
+import com.example.demo.module.domain.member.respository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CookieProvider cookieProvider;
     private final RedisService redisService;
     private PasswordEncoder passwordEncoder;
+    private final MemberRepository memberRepository;
 //    @Bean
 //    public AuthenticationManager authenticationManager() throws Exception{
 //        return super.authenticationManagerBean();
@@ -67,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         // Custom Login Authentication 필터를 사용함
         LoginAuthenticationFilter loginAuthenticationFilter =
-                new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider, redisService);
+                new LoginAuthenticationFilter(authenticationManagerBean(), jwtTokenProvider, refreshTokenServiceImpl, cookieProvider, redisService,memberRepository);
         loginAuthenticationFilter.setFilterProcessesUrl("/user/login");
 
         http.csrf().disable();

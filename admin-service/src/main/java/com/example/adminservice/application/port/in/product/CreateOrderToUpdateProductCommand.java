@@ -18,10 +18,4 @@ public class CreateOrderToUpdateProductCommand extends SelfValidating<CreateOrde
     @NotNull
     private Long sizeId;
 
-    @NotNull
-    private Long orderId;
-
-    @NotNull
-    @NotBlank
-    private String address;
 }

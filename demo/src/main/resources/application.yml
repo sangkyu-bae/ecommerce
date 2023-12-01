@@ -1,77 +1,85 @@
-#server:
-##  port: 0
+server:
+  port: 0
 #  port: 8080
-#redis:
-#  port: 5000
-#  host: localhost
-#
-#spring:
-#  application:
-#    name: auth-service
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/e-commerce
-#    username: root
-#    password: wnsvaf309
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#      show-sql: true
-#      format_sql: true
-#logging:
-#
-#  charset:
-#    console: UTF-8
-#    file: UTF-8
-#
-#  file:
-#    name: userLog # 로그 파일의 이름을 지정합니다.
-#    path: C:/logs/user # 로그 파일의 경로를 지정합니다.
-#    max-history: 30
-#
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
-#    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
-#
-#  level:
-#    org:
-#      hibernate:
-#        SQL: debug
-#        type:
-#          descriptor:
-#            sql: trace
-#    root: INFO
-#  #jwt:
-#  #  secret: securtytest
-#
-#token:
-#  access-expired-time: 3600000
-#  refresh-expired-time: 604800000
-#  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
-#  refresh-token-name: refresh-token
-#  access-token-name: access-token
-#
-#
-## 유레카 설정
+redis:
+  port: 5000
+  host: localhost
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/e-commerce
+    username: root
+    password: wnsvaf309
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: true
+      format_sql: true
+logging:
+
+  charset:
+    console: UTF-8
+    file: UTF-8
+
+  file:
+    name: userLog # 로그 파일의 이름을 지정합니다.
+    path: C:/logs/user # 로그 파일의 경로를 지정합니다.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+    root: INFO
+  #jwt:
+  #  secret: securtytest
+
+token:
+  access-expired-time: 3600000
+  refresh-expired-time: 604800000
+  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+  refresh-token-name: refresh-token
+  access-token-name: access-token
+
+
+# 유레카 설정
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
 #eureka:
-#  instance:
-#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
 #  client:
+#    register-with-eureka: true
+#    fetch-registry: true
 #    service-url:
-#      defaultZone: http://127.0.0.1:8761/eureka
-##eureka:
-##  client:
-##    register-with-eureka: true
-##    fetch-registry: true
-##    service-url:
-##      defaultZone: http://localhost:8761/eureka/
-#
-#
-#
-#
-#
-#
-#
-#
-#
+#      defaultZone: http://localhost:8761/eureka/
+
+app:
+  bootstrapServer: localhost:9092
+  orderTopic : order
+  consumerProduct: update-product
+  sendProduct : request-product
+  createOrder: create-order
+  memberTopic : task-member
+kafka:
+  member:
+    task :
+      group : member.check.v1
+      topic: member-check
+
+
+
+

@@ -20,7 +20,7 @@ public class OrderInfoRequest {
 
     private String address;
 
-    private String userId;
+    private long userId;
 
     public static OrderInfoRequest createGenerateOrderRequest(RegisterOrderCommand command){
         return OrderInfoRequest.builder()
@@ -29,7 +29,7 @@ public class OrderInfoRequest {
                 .colorId(command.getColorId())
                 .amount(command.getAmount())
                 .address(command.getAddress())
-                .userId(command.getUseremail())
+                .userId(command.getUserId())
                 .build();
     }
 }

@@ -1,16 +1,12 @@
 package org.example.task;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
+@NoArgsConstructor @Data
 @Builder
-@Data
 public class OrderTask {
 
     private String taskId;
@@ -18,4 +14,9 @@ public class OrderTask {
     private String taskName;
 
     private List<OrderSubTask> subTaskList;
+    public OrderTask(String taskId, String taskName, List<OrderSubTask> subTaskList){
+        this.taskId = taskId;
+        this.taskName = taskName;
+        this.subTaskList = subTaskList;
+    }
 }

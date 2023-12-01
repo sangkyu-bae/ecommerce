@@ -25,27 +25,27 @@ public class ProductTaskConsumer {
     private final UpdateProductUseCase updateProductUseCase;
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @KafkaListener(topics ="${kafka.member.topic}",groupId = "${kafka.member.task.group}")
+    @KafkaListener(topics ="${kafka.product.topic}",groupId = "${kafka.product.task.group}")
     public void resultTaskListener(String memberTaskMessage) throws JsonProcessingException {
         ProductTask task = null;
         try{
-//            task = objectMapper.readValue(memberTaskMessage, ProductTask.class);
-//
-//            CreateOrderToUpdateProductCommand command = CreateOrderToUpdateProductCommand.builder()
-//                    .amount(task.getQuantity())
-//                    .sizeId(task.getSizeId())
-//                    .build();
-//
-//            command.validateSelf();
-//
-//            updateProductUseCase.updateProductQuantity(command);
+            task = objectMapper.readValue(memberTaskMessage, ProductTask.class);
 
-//            task.setStatus(OrderSubTask.Status.SUCCESS);
+            CreateOrderToUpdateProductCommand command = CreateOrderToUpdateProductCommand.builder()
+                    .amount(task.getQuantity())
+                    .sizeId(task.getSizeId())
+                    .build();
+
+            command.validateSelf();
+
+            updateProductUseCase.updateProductQuantity(command);
+
+            task.setStatus(OrderSubTask.Status.SUCCESS);
         } catch (ErrorException e){
-//            task.setStatus(OrderSubTask.Status.FAIL);
+            task.setStatus(OrderSubTask.Status.FAIL);
         } catch (Exception e){
-            log.error("taskListener Error message = {}",memberTaskMessage,e);
-//            task.setStatus(OrderSubTask.Status.FAIL);
+            log.error("resultTaskListener Error message = {}",memberTaskMessage,e);
+            task.setStatus(OrderSubTask.Status.FAIL);
         }finally {
             String inputProductTask = objectMapper.writeValueAsString(task);
             kafkaTemplate.send(appProperties.getProductTaskResultTopic(),inputProductTask);

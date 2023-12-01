@@ -1,28 +1,36 @@
 package org.example.task;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.*;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type",visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ProductTask.class,name = "PRODUCT"),
+        @JsonSubTypes.Type(value = MemberTask.class, name = "MEMBER")
+})
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class OrderSubTask {
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
+public abstract class OrderSubTask<T> {
+    protected String taskId;
+    protected String subTaskName;
 
-    private String taskId;
+    protected Status status;
 
-    private String subTaskName;
+    protected Type type;
 
-    private Status status;
+    abstract public String getTaskType();
 
-    private TaskType taskType;
-    public static enum TaskType{
-        MEMBER, PRODUCT
-    }
+//    abstract public void setStatus(Status value);
 
     public static enum Status{
         READY,SUCCESS,FAIL
+    }
+
+    public static enum Type{
+        MEMBER,PRODUCT
     }
 }

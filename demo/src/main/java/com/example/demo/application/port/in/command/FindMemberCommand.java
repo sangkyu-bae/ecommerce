@@ -14,13 +14,10 @@ import javax.validation.constraints.NotNull;
 @Builder @NoArgsConstructor
 public class FindMemberCommand extends SelfValidating<FindMemberCommand> {
 
-    @NotBlank
-    @NotNull
-    @Email
-    private String email;
+    private long userId;
 
-    public FindMemberCommand(String email){
-        this.email = email;
+    public FindMemberCommand(long userId){
+        this.userId = userId;
         this.validateSelf();
     }
 }

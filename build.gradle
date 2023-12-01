@@ -10,7 +10,27 @@ plugins {
 repositories {
     mavenCentral()
 }
-
+//subprojects {
+//    apply plugin: 'java' // 예시로 Java 플러그인 적용
+//
+//    task runAll {
+//        dependsOn {
+//            tasks.withType(JavaExec) // 모든 JavaExec 타입의 task에 의존
+//        }
+//
+//        doLast {
+//            println "Run all subprojects"
+//        }
+//    }
+//}
+//task startAllModules {
+//    dependsOn ':common:run', // common 모듈의 run task에 의존
+//            ':delivery:run', // delivery 모듈의 run task 실행
+//            ':order:run', // order 모듈의 run task 실행
+//            ':demo:run', // demo 모듈의 run task 실행
+//            ':task-consumer:run' // task-consumer 모듈의 run task 실행
+//    // 각 모듈의 run task에 대한 의존성을 설정하여 모든 모듈을 실행합니다.
+//}
 //dependencies {
 //
 ////    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'

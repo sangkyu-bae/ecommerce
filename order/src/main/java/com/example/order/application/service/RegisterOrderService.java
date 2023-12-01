@@ -34,44 +34,52 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     private final ResponseDeliveryInfoPort responseDeliveryInfoPort;
     private final RequestProductInfoPort requestProductInfoPort;
     private final GetMemberPort getMemberPort;
-
     private final CountDownLatchManager countDownLatchManager;
+
+    private final SendCreateOrderTaskPort sendCreateOrderTaskPort;
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
         //동기처리
-        Member member = getMemberPort.getMemberId(command.getUseremail());
+//        Member member = getMemberPort.getMemberId(command.getUseremail());
         // 에외 처리 필요 ex member email이 없는 것이라면
-        //비동기 처리 kafka
-        MemberTask validMemberTask =MemberTask.builder()
-                .subTaskName("validMemberTask : 멤버십 유효성 검사")
-                .memberEmail(command.getUseremail())
-                .taskType(OrderSubTask.TaskType.MEMBER)
-                .status(OrderSubTask.Status.READY)
-                .build();
+        // 비동기 처리 kafka
 
-        ProductTask validProductTask = ProductTask.builder()
-                .subTaskName("validProductTask : 상품 유효성 검사")
-                .taskType(OrderSubTask.TaskType.PRODUCT)
-                .status(OrderSubTask.Status.READY)
-                .productId(command.getProductId())
-                .colorId(command.getColorId())
-                .sizeId(command.getSizeId())
-                .quantity(command.getAmount())
-                .build();
+        System.out.println("registerOrder : " +command.getUserId());
+        String MemberSubTaskName ="validMemberTask : 멤버십 유효성 검사";
+        MemberTask validMemberTask =new MemberTask(
+                command.getUserId(),
+                UUID.randomUUID().toString(),
+                MemberSubTaskName,
+                OrderSubTask.Status.READY
+                );
+        String productSubTaskName = "validProductTask : 상품 유효성 검사";
+        ProductTask validProductTask = new ProductTask(UUID.randomUUID().toString(),
+                productSubTaskName,
+                OrderSubTask.Status.READY,
+                command.getProductId(),
+                command.getColorId(),
+                command.getAmount(),
+                command.getSizeId()
+                );
+
 
         List<OrderSubTask> orderSubTaskList = new ArrayList<>();
         orderSubTaskList.add(validMemberTask);
         orderSubTaskList.add(validProductTask);
-        OrderTask orderSubTaskOrderTask = OrderTask.builder()
-                .subTaskList(orderSubTaskList)
-                .taskId(UUID.randomUUID().toString())
-                .taskName("orderTask")
-                .build();
+
+        OrderTask orderTask = new OrderTask(UUID.randomUUID().toString(),
+                "orderTask",
+                orderSubTaskList);
 
         try {
-            countDownLatchManager.getCountDownLatch(orderSubTaskOrderTask.getTaskId()).await();
-            String result = countDownLatchManager.getDataForKey(orderSubTaskOrderTask.getTaskId());
+            sendCreateOrderTaskPort.sendCreateOrderTask(orderTask);
+            System.out.println("orderTaskId:" + orderTask.getTaskId());
+
+            countDownLatchManager.addCountDownLatch(orderTask.getTaskId());
+            countDownLatchManager.getCountDownLatch(orderTask.getTaskId()).await();
+            String result = countDownLatchManager.getDataForKey(orderTask.getTaskId());
+            System.out.println(result);
             if(result.equals("success")){
                 OrderVo mapOrderVo = getOrderRequest(command);
                 return mapOrderVo;
@@ -84,8 +92,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-//        return mapOrderVo;
     }
 
     private OrderVo getOrderRequest(RegisterOrderCommand command) throws JsonProcessingException {

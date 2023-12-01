@@ -1,6 +1,6 @@
 
 server:
-  port: 0
+  port: 8084
 spring:
   application:
     name: order-service
@@ -56,8 +56,8 @@ token:
 # ??? ??
 eureka:
   instance:
-        instance-id: ${spring.cloud.client.ip-address}:${random.value}
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#        instance-id: ${spring.cloud.client.ip-address}:${random.value}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
@@ -77,3 +77,10 @@ app:
 member:
   service:
     url : http://localhost:8000/user
+
+kafka:
+  order:
+    result:
+      topic : order-topic
+  task:
+    group : order-topic.v1

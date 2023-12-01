@@ -66,13 +66,13 @@ public class OrderWriteService implements CRUDWriteService<Order, OrderDto> {
         return createOrder;
     }
 
-    @KafkaListener(topics = topics,groupId = groupId)
-    public void orderListener(String orderMessage){
-        try{
-            OrderDto orderDto = objectMapper.readValue(orderMessage,OrderDto.class);
-            create(orderDto);
-        }catch (Exception e){
-            log.error("orderListener Error Message = {}",orderMessage,e);
-        }
-    }
+//    @KafkaListener(topics = topics,groupId = groupId)
+//    public void orderListener(String orderMessage){
+//        try{
+//            OrderDto orderDto = objectMapper.readValue(orderMessage,OrderDto.class);
+//            create(orderDto);
+//        }catch (Exception e){
+//            log.error("orderListener Error Message = {}",orderMessage,e);
+//        }
+//    }
 }

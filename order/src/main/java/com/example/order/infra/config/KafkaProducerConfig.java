@@ -1,5 +1,6 @@
 package com.example.order.infra.config;
 
+//import com.example.order.infra.properties.AppProperties;
 import com.example.order.infra.properties.AppProperties;
 import kafka.tools.ConsoleProducer;
 import lombok.RequiredArgsConstructor;

@@ -9,7 +9,7 @@ eureka:
 
 spring:
   application:
-    name: mvc-eureka
+    name: ecommerce-eureka
 
 logging:
 

@@ -30,14 +30,20 @@ spring:
           uri: lb://admin-service
           predicates:
               - Path=/admin/**
-          filters:
-            - AuthorizationHeaderFilter
+#          filters:
+#            - AuthorizationHeaderFilter
         - id: order-service
           uri: lb://order-service
           predicates:
             - Path=/order/**
           filters:
             - AuthorizationHeaderFilter
+        - id: delivery-service
+          uri: lb://delivery-service
+          predicates:
+            - Path=/delivery/**
+#          filters:
+#            - AuthorizationHeaderFilter
 
 
 

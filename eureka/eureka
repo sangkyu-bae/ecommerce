@@ -1,81 +1,289 @@
-2023-10-19 22:19:58.365 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 16168 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
-2023-10-19 22:19:58.383 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-10-19 22:20:02.618 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
-2023-10-19 22:20:03.974 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
-2023-10-19 22:20:03.995 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
-2023-10-19 22:20:03.996 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
-2023-10-19 22:20:04.324 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
-2023-10-19 22:20:04.325 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 5779 ms
-2023-10-19 22:20:05.087 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
-2023-10-19 22:20:05.210 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
-2023-10-19 22:20:05.212 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
-2023-10-19 22:20:05.431 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
-2023-10-19 22:20:05.432 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
-2023-10-19 22:20:15.174 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
-2023-10-19 22:20:15.546 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-10-19 22:20:15.605 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-10-19 22:20:15.911 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-10-19 22:20:15.920 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
-2023-10-19 22:20:15.944 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1697721615940 with initial instances count: 0
-2023-10-19 22:20:16.057 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
-2023-10-19 22:20:16.076 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
-2023-10-19 22:20:18.032 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
-2023-10-19 22:20:18.034 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
-2023-10-19 22:20:18.035 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
-2023-10-19 22:20:18.036 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
-2023-10-19 22:20:18.409 INFO  ---- [main      ] [PeerEurekaNodes:109] start   Replica node URL:  http://localhost:8761/eureka/
-2023-10-19 22:20:18.813 INFO  ---- [main      ] [AbstractInstanceRegistry:153] initRemoteRegionRegistry   Finished initializing remote region registries. All known remote regions: []
-2023-10-19 22:20:18.817 INFO  ---- [main      ] [DefaultEurekaServerContext:73] initialize   Initialized
-2023-10-19 22:20:18.857 INFO  ---- [main      ] [EndpointLinksResolver:58] <init>   Exposing 1 endpoint(s) beneath base path '/actuator'
-2023-10-19 22:20:18.933 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application MVC-EUREKA with eureka with status UP
-2023-10-19 22:20:19.103 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:143] isAws   isAws returned false
-2023-10-19 22:20:19.108 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:109] initEurekaServerContext   Initialized server context
-2023-10-19 22:20:19.109 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:244] openForTraffic   Got 1 instances from neighboring DS node
-2023-10-19 22:20:19.110 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:245] openForTraffic   Renew threshold is: 1
-2023-10-19 22:20:19.111 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:256] openForTraffic   Changing status to UP
-2023-10-19 22:20:19.138 INFO  ---- [Thread-9  ] [EurekaServerInitializerConfiguration:69] lambda$start$0   Started Eureka Server
-2023-10-19 22:20:19.205 INFO  ---- [main      ] [TomcatWebServer:220] start   Tomcat started on port(s): 8761 (http) with context path ''
-2023-10-19 22:20:19.208 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8761
-2023-10-19 22:20:20.337 INFO  ---- [761-exec-2] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-10-19 22:20:20.339 INFO  ---- [761-exec-2] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
-2023-10-19 22:20:20.344 INFO  ---- [761-exec-2] [DispatcherServlet:547] initServletBean   Completed initialization in 5 ms
-2023-10-19 22:20:21.043 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.234:8000 with status UP (replication=false)
-2023-10-19 22:20:22.008 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.234:8000 with status UP (replication=true)
-2023-10-19 22:20:22.457 INFO  ---- [main      ] [EurekaApplication:61] logStarted   Started EurekaApplication in 31.344 seconds (JVM running for 35.863)
-2023-10-19 22:21:17.995 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.234:8085 with status UP (replication=false)
-2023-10-19 22:21:18.515 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.234:8085 with status UP (replication=true)
-2023-10-19 22:21:19.182 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-10-19 22:22:19.193 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-10-19 22:22:20.174 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.234:0cbb76d6d53e74ae3321f7ad5ded8a9a with status UP (replication=false)
-2023-10-19 22:22:20.710 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.234:0cbb76d6d53e74ae3321f7ad5ded8a9a with status UP (replication=true)
-2023-10-19 22:23:19.193 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-10-19 22:24:19.199 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-10-19 22:25:19.210 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-10-19 22:26:19.212 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-10-19 22:27:19.225 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-10-19 22:28:19.226 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-10-19 22:29:19.230 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-10-19 22:30:19.240 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-10-19 22:31:19.247 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-10-19 22:32:19.255 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-10-19 22:33:19.269 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-10-19 22:34:19.280 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
-2023-10-19 22:35:18.786 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-10-19 22:35:19.289 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-10-19 22:36:19.295 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
-2023-10-19 22:37:19.297 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-10-19 22:38:19.309 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-10-19 22:39:19.320 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-10-19 22:40:19.335 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-10-19 22:41:19.349 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-10-19 22:42:19.350 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
-2023-10-19 22:43:19.355 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
-2023-10-19 22:44:19.368 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-10-19 22:45:19.382 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
-2023-10-19 22:46:19.390 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
-2023-10-19 22:47:19.393 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
-2023-10-19 22:48:19.404 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
-2023-10-19 22:49:19.416 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
-2023-10-19 22:50:18.791 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 6
-2023-10-19 22:50:19.418 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
-2023-10-19 22:51:19.431 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
+2023-12-01 15:42:34.906 INFO  ---- [main      ] [EurekaApplication:55] logStarting   Starting EurekaApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 33632 (C:\Users\tkdrb\IdeaProjects\ecommerce\eureka\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\eureka)
+2023-12-01 15:42:34.955 INFO  ---- [main      ] [EurekaApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-12-01 15:42:38.341 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=18f8ad0a-1895-3075-80db-6fec9f749cba
+2023-12-01 15:42:42.456 INFO  ---- [main      ] [TomcatWebServer:108] initialize   Tomcat initialized with port(s): 8761 (http)
+2023-12-01 15:42:42.504 INFO  ---- [main      ] [StandardService:173] log   Starting service [Tomcat]
+2023-12-01 15:42:42.505 INFO  ---- [main      ] [StandardEngine:173] log   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-12-01 15:42:44.040 INFO  ---- [main      ] [[/]:173] log   Initializing Spring embedded WebApplicationContext
+2023-12-01 15:42:44.041 INFO  ---- [main      ] [ServletWebServerApplicationContext:292] prepareWebApplicationContext   Root WebApplicationContext: initialization completed in 8635 ms
+2023-12-01 15:42:46.181 INFO  ---- [main      ] [WebApplicationImpl:815] _initiate   Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2023-12-01 15:42:46.377 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-12-01 15:42:46.383 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-12-01 15:42:46.834 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-12-01 15:42:46.836 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-12-01 15:43:02.436 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:91] discoveryClientOptionalArgs   Eureka HTTP Client uses Jersey
+2023-12-01 15:43:02.590 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-12-01 15:43:02.633 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-12-01 15:43:02.724 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-12-01 15:43:02.725 INFO  ---- [main      ] [DiscoveryClient:375] <init>   Client configured to neither register nor query for data.
+2023-12-01 15:43:02.775 INFO  ---- [main      ] [DiscoveryClient:390] <init>   Discovery Client initialized at timestamp 1701412982772 with initial instances count: 0
+2023-12-01 15:43:02.939 INFO  ---- [main      ] [DefaultEurekaServerContext:66] initialize   Initializing ...
+2023-12-01 15:43:02.945 INFO  ---- [main      ] [PeerEurekaNodes:187] updatePeerEurekaNodes   Adding new peer nodes [http://localhost:8761/eureka/]
+2023-12-01 15:43:03.373 INFO  ---- [main      ] [DiscoveryJerseyProvider:70] <init>   Using JSON encoding codec LegacyJacksonJson
+2023-12-01 15:43:03.374 INFO  ---- [main      ] [DiscoveryJerseyProvider:71] <init>   Using JSON decoding codec LegacyJacksonJson
+2023-12-01 15:43:03.375 INFO  ---- [main      ] [DiscoveryJerseyProvider:80] <init>   Using XML encoding codec XStreamXml
+2023-12-01 15:43:03.375 INFO  ---- [main      ] [DiscoveryJerseyProvider:81] <init>   Using XML decoding codec XStreamXml
+2023-12-01 15:43:03.652 INFO  ---- [main      ] [PeerEurekaNodes:109] start   Replica node URL:  http://localhost:8761/eureka/
+2023-12-01 15:43:03.914 INFO  ---- [main      ] [AbstractInstanceRegistry:153] initRemoteRegionRegistry   Finished initializing remote region registries. All known remote regions: []
+2023-12-01 15:43:03.916 INFO  ---- [main      ] [DefaultEurekaServerContext:73] initialize   Initialized
+2023-12-01 15:43:03.929 INFO  ---- [main      ] [EndpointLinksResolver:58] <init>   Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-12-01 15:43:03.985 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application ECOMMERCE-EUREKA with eureka with status UP
+2023-12-01 15:43:04.182 INFO  ---- [main      ] [TomcatWebServer:220] start   Tomcat started on port(s): 8761 (http) with context path ''
+2023-12-01 15:43:04.184 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8761
+2023-12-01 15:43:04.299 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:143] isAws   isAws returned false
+2023-12-01 15:43:04.304 INFO  ---- [Thread-9  ] [EurekaServerBootstrap:109] initEurekaServerContext   Initialized server context
+2023-12-01 15:43:04.304 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:244] openForTraffic   Got 1 instances from neighboring DS node
+2023-12-01 15:43:04.305 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:245] openForTraffic   Renew threshold is: 1
+2023-12-01 15:43:04.305 INFO  ---- [Thread-9  ] [PeerAwareInstanceRegistryImpl:256] openForTraffic   Changing status to UP
+2023-12-01 15:43:04.322 INFO  ---- [Thread-9  ] [EurekaServerInitializerConfiguration:69] lambda$start$0   Started Eureka Server
+2023-12-01 15:43:05.125 INFO  ---- [761-exec-9] [[/]:173] log   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-01 15:43:05.130 INFO  ---- [761-exec-9] [DispatcherServlet:525] initServletBean   Initializing Servlet 'dispatcherServlet'
+2023-12-01 15:43:05.132 INFO  ---- [761-exec-9] [DispatcherServlet:547] initServletBean   Completed initialization in 2 ms
+2023-12-01 15:43:05.652 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.17:8000 with status UP (replication=false)
+2023-12-01 15:43:06.386 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance API-GATEWAY/192.168.0.17:8000 with status UP (replication=true)
+2023-12-01 15:43:08.027 INFO  ---- [main      ] [EurekaApplication:61] logStarted   Started EurekaApplication in 38.706 seconds (JVM running for 40.043)
+2023-12-01 15:43:21.325 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:6f51861f2dedd59369f6de219195a800 with status UP (replication=false)
+2023-12-01 15:43:21.883 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:6f51861f2dedd59369f6de219195a800 with status UP (replication=true)
+2023-12-01 15:44:04.320 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 15:44:04.506 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 15:44:05.040 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 15:44:40.095 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 15:44:40.617 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 15:44:47.127 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:d56070dc7244564c26ef7c2464f8bda1 with status UP (replication=false)
+2023-12-01 15:44:47.664 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:d56070dc7244564c26ef7c2464f8bda1 with status UP (replication=true)
+2023-12-01 15:45:04.330 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 15:46:04.336 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 15:47:04.340 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 15:48:04.349 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-12-01 15:49:04.362 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-12-01 15:50:04.368 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 15:51:04.372 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 15:52:16.018 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11646ms
+2023-12-01 15:53:16.021 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 15:54:16.022 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 15:55:16.028 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 15:56:16.039 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 15:57:16.046 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-12-01 15:58:15.557 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 10
+2023-12-01 15:58:16.048 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-01 15:59:10.617 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 15:59:11.154 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 15:59:16.052 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-01 16:00:16.057 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-01 16:01:16.071 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
+2023-12-01 16:02:16.080 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:03:16.092 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 16:03:40.144 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:03:40.670 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:04:16.102 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 16:04:59.187 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:04:59.730 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:05:16.109 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 16:06:16.116 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 16:06:38.585 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:41e429f3252f45d754835a98fb0d526e with status UP (replication=false)
+2023-12-01 16:06:39.114 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:41e429f3252f45d754835a98fb0d526e with status UP (replication=true)
+2023-12-01 16:07:16.123 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 16:08:16.132 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:09:05.774 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:99352df3843028fd6fb9c827e7d103a1 with status UP (replication=false)
+2023-12-01 16:09:06.294 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:99352df3843028fd6fb9c827e7d103a1 with status UP (replication=true)
+2023-12-01 16:09:16.147 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-12-01 16:09:16.150 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=2)
+2023-12-01 16:09:16.154 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:6f51861f2dedd59369f6de219195a800
+2023-12-01 16:09:16.211 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:6f51861f2dedd59369f6de219195a800 (replication=false)
+2023-12-01 16:09:57.298 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:904486aa0885800a3131468b756e40c4 with status UP (replication=false)
+2023-12-01 16:09:57.827 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:904486aa0885800a3131468b756e40c4 with status UP (replication=true)
+2023-12-01 16:10:16.161 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
+2023-12-01 16:11:16.172 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:11:16.174 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:11:16.184 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:99352df3843028fd6fb9c827e7d103a1
+2023-12-01 16:11:16.185 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:99352df3843028fd6fb9c827e7d103a1 (replication=false)
+2023-12-01 16:11:16.186 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:41e429f3252f45d754835a98fb0d526e
+2023-12-01 16:11:16.188 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:41e429f3252f45d754835a98fb0d526e (replication=false)
+2023-12-01 16:12:16.182 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:13:15.569 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 10
+2023-12-01 16:13:16.186 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 16:13:55.162 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:27b5e5b507fc0b274a0081a5d47bd40b with status UP (replication=false)
+2023-12-01 16:13:55.684 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:27b5e5b507fc0b274a0081a5d47bd40b with status UP (replication=true)
+2023-12-01 16:14:16.193 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-12-01 16:15:16.195 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-01 16:16:16.198 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
+2023-12-01 16:16:16.199 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=1)
+2023-12-01 16:16:16.199 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:904486aa0885800a3131468b756e40c4
+2023-12-01 16:16:16.200 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:904486aa0885800a3131468b756e40c4 (replication=false)
+2023-12-01 16:17:16.206 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 16:17:25.933 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:17:26.463 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:18:16.218 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:19:16.229 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:20:16.239 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:21:06.643 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:21:07.171 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:21:16.248 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 16:22:16.256 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 16:23:03.854 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:23:04.389 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:23:16.271 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-12-01 16:23:23.156 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:ad9fa6d403dd902dc60d0ebe2fc63a38 with status UP (replication=false)
+2023-12-01 16:23:23.797 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:ad9fa6d403dd902dc60d0ebe2fc63a38 with status UP (replication=true)
+2023-12-01 16:23:26.433 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:23:26.955 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:23:27.996 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:747a85599c2d229b83cb0e62fd95399f with status UP (replication=false)
+2023-12-01 16:23:28.518 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:747a85599c2d229b83cb0e62fd95399f with status UP (replication=true)
+2023-12-01 16:24:16.283 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-01 16:25:16.288 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-01 16:25:16.289 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=2)
+2023-12-01 16:25:16.289 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:27b5e5b507fc0b274a0081a5d47bd40b
+2023-12-01 16:25:16.290 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:27b5e5b507fc0b274a0081a5d47bd40b (replication=false)
+2023-12-01 16:26:16.294 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:26:16.294 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=1)
+2023-12-01 16:26:16.294 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:d56070dc7244564c26ef7c2464f8bda1
+2023-12-01 16:26:16.305 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:d56070dc7244564c26ef7c2464f8bda1 (replication=false)
+2023-12-01 16:27:16.305 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:27:50.314 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:36b1cf321a631ba30f3bdb264d35dcf6 with status UP (replication=false)
+2023-12-01 16:27:50.582 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:36b1cf321a631ba30f3bdb264d35dcf6 with status UP (replication=true)
+2023-12-01 16:28:15.583 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 11
+2023-12-01 16:28:16.309 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 16:28:20.812 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:28:21.340 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:28:21.711 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:28:22.230 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:28:28.515 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:a6eb407c60ec203ddea012e4907cdf77 with status UP (replication=false)
+2023-12-01 16:28:29.045 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:a6eb407c60ec203ddea012e4907cdf77 with status UP (replication=true)
+2023-12-01 16:29:16.312 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 16:30:16.324 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:30:16.325 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:30:16.325 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:ad9fa6d403dd902dc60d0ebe2fc63a38
+2023-12-01 16:30:16.326 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:ad9fa6d403dd902dc60d0ebe2fc63a38 (replication=false)
+2023-12-01 16:30:16.326 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:747a85599c2d229b83cb0e62fd95399f
+2023-12-01 16:30:16.327 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:747a85599c2d229b83cb0e62fd95399f (replication=false)
+2023-12-01 16:31:16.329 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:31:37.462 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:31:37.991 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:31:45.603 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:5750317851b2def076f868e9b792bc51 with status UP (replication=false)
+2023-12-01 16:31:46.127 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:5750317851b2def076f868e9b792bc51 with status UP (replication=true)
+2023-12-01 16:31:53.761 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b with status UP (replication=false)
+2023-12-01 16:31:54.284 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b with status UP (replication=true)
+2023-12-01 16:32:00.058 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:32:00.589 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:32:16.343 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
+2023-12-01 16:33:16.344 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-01 16:34:16.350 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 16:34:16.351 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:34:16.362 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:36b1cf321a631ba30f3bdb264d35dcf6
+2023-12-01 16:34:16.362 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:36b1cf321a631ba30f3bdb264d35dcf6 (replication=false)
+2023-12-01 16:34:16.363 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:a6eb407c60ec203ddea012e4907cdf77
+2023-12-01 16:34:16.363 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:a6eb407c60ec203ddea012e4907cdf77 (replication=false)
+2023-12-01 16:35:16.361 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:36:16.362 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-01 16:36:45.465 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b with status DOWN (replication=false)
+2023-12-01 16:36:45.991 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b with status DOWN (replication=true)
+2023-12-01 16:36:47.130 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status DOWN (replication=false)
+2023-12-01 16:36:47.658 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status DOWN (replication=true)
+2023-12-01 16:36:49.923 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b (replication=false)
+2023-12-01 16:36:50.473 WARN  ---- [761-exec-4] [AbstractInstanceRegistry:313] internalCancel   DS: Registry: cancel failed because Lease is not registered for: AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b
+2023-12-01 16:36:50.474 INFO  ---- [761-exec-4] [InstanceResource:288] cancelLease   Not Found (Cancel): AUTH-SERVICE - 192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b
+2023-12-01 16:36:50.475 WARN  ---- [calhost-12] [ReplicationTask:35] handleFailure   The replication of task AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b:Cancel@localhost failed with response code 404
+2023-12-01 16:36:50.487 WARN  ---- [calhost-12] [PeerEurekaNode:171] handleFailure   AUTH-SERVICE/192.168.0.17:70a655e5bc3aa0b6273c1ec17874b88b:Cancel@localhost: missing entry.
+2023-12-01 16:36:54.094 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance ORDER-SERVICE/192.168.0.17:8084 (replication=false)
+2023-12-01 16:36:54.630 WARN  ---- [761-exec-5] [AbstractInstanceRegistry:313] internalCancel   DS: Registry: cancel failed because Lease is not registered for: ORDER-SERVICE/192.168.0.17:8084
+2023-12-01 16:36:54.631 INFO  ---- [761-exec-5] [InstanceResource:288] cancelLease   Not Found (Cancel): ORDER-SERVICE - 192.168.0.17:8084
+2023-12-01 16:36:54.633 WARN  ---- [ocalhost-2] [ReplicationTask:35] handleFailure   The replication of task ORDER-SERVICE/192.168.0.17:8084:Cancel@localhost failed with response code 404
+2023-12-01 16:36:54.633 WARN  ---- [ocalhost-2] [PeerEurekaNode:171] handleFailure   ORDER-SERVICE/192.168.0.17:8084:Cancel@localhost: missing entry.
+2023-12-01 16:37:16.374 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:38:03.319 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:1db46a66687574af32c83e75dc5d13e1 with status UP (replication=false)
+2023-12-01 16:38:03.840 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:1db46a66687574af32c83e75dc5d13e1 with status UP (replication=true)
+2023-12-01 16:38:16.378 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-01 16:38:42.932 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:38:43.460 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:38:45.973 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:38:46.495 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:38:51.755 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:142562c76d39bd21f98f449b9114231d with status UP (replication=false)
+2023-12-01 16:38:52.280 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:142562c76d39bd21f98f449b9114231d with status UP (replication=true)
+2023-12-01 16:39:16.382 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 16:40:16.392 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 16:40:16.400 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 1 items (expired=1, evictionLimit=1)
+2023-12-01 16:40:16.400 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:5750317851b2def076f868e9b792bc51
+2023-12-01 16:40:16.401 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:5750317851b2def076f868e9b792bc51 (replication=false)
+2023-12-01 16:40:52.021 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:40:52.565 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:41:07.339 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:023181473c8b34d448ab7cb5496c95f8 with status UP (replication=false)
+2023-12-01 16:41:07.942 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:023181473c8b34d448ab7cb5496c95f8 with status UP (replication=true)
+2023-12-01 16:41:16.393 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 16:41:36.361 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:41:36.881 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:41:47.060 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:10af9f02aa6c4ae7cbbfcdaccbcdc585 with status UP (replication=false)
+2023-12-01 16:41:47.587 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:10af9f02aa6c4ae7cbbfcdaccbcdc585 with status UP (replication=true)
+2023-12-01 16:42:16.398 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:43:15.584 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 13
+2023-12-01 16:43:16.407 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 16:43:16.408 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:43:16.409 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:142562c76d39bd21f98f449b9114231d
+2023-12-01 16:43:16.410 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:142562c76d39bd21f98f449b9114231d (replication=false)
+2023-12-01 16:43:16.411 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:1db46a66687574af32c83e75dc5d13e1
+2023-12-01 16:43:16.411 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:1db46a66687574af32c83e75dc5d13e1 (replication=false)
+2023-12-01 16:44:16.423 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 15ms
+2023-12-01 16:45:16.425 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 2ms
+2023-12-01 16:46:16.437 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 16:47:16.437 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 16:48:16.443 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:49:09.405 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:49:09.929 INFO  ---- [761-exec-3] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:49:10.479 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:aa514d78c7d5b91ed2a49e75ca588c5c with status UP (replication=false)
+2023-12-01 16:49:11.017 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:aa514d78c7d5b91ed2a49e75ca588c5c with status UP (replication=true)
+2023-12-01 16:49:14.794 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:6d2be226f8cc9691f97ef5fd8a3a1417 with status UP (replication=false)
+2023-12-01 16:49:15.326 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:6d2be226f8cc9691f97ef5fd8a3a1417 with status UP (replication=true)
+2023-12-01 16:49:16.450 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-01 16:49:23.681 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:49:24.203 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:50:16.466 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:51:16.468 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-01 16:51:16.469 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:51:16.470 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:023181473c8b34d448ab7cb5496c95f8
+2023-12-01 16:51:16.480 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:023181473c8b34d448ab7cb5496c95f8 (replication=false)
+2023-12-01 16:51:16.480 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:10af9f02aa6c4ae7cbbfcdaccbcdc585
+2023-12-01 16:51:16.480 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:10af9f02aa6c4ae7cbbfcdaccbcdc585 (replication=false)
+2023-12-01 16:52:16.477 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 16:53:16.488 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-01 16:54:16.489 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 16:54:27.026 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:9120e3ccdbd2659326e66823b1b4aba8 with status UP (replication=false)
+2023-12-01 16:54:27.548 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:9120e3ccdbd2659326e66823b1b4aba8 with status UP (replication=true)
+2023-12-01 16:54:45.633 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:54:46.158 INFO  ---- [761-exec-2] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:54:58.101 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:54:58.623 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:55:08.092 INFO  ---- [61-exec-10] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:b008bec2f5e8959c4009a62563954c6f with status UP (replication=false)
+2023-12-01 16:55:08.624 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:b008bec2f5e8959c4009a62563954c6f with status UP (replication=true)
+2023-12-01 16:55:16.501 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-01 16:56:16.506 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-01 16:57:16.511 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-01 16:57:16.511 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 16:57:16.512 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:6d2be226f8cc9691f97ef5fd8a3a1417
+2023-12-01 16:57:16.512 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:6d2be226f8cc9691f97ef5fd8a3a1417 (replication=false)
+2023-12-01 16:57:16.513 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:aa514d78c7d5b91ed2a49e75ca588c5c
+2023-12-01 16:57:16.513 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:aa514d78c7d5b91ed2a49e75ca588c5c (replication=false)
+2023-12-01 16:57:43.669 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 16:57:44.202 INFO  ---- [761-exec-4] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 16:57:54.344 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:08c82ab939e68fefe7ee477be6eb3888 with status UP (replication=false)
+2023-12-01 16:57:54.878 INFO  ---- [761-exec-8] [AbstractInstanceRegistry:266] register   Registered instance TASK-SERVICE/192.168.0.17:08c82ab939e68fefe7ee477be6eb3888 with status UP (replication=true)
+2023-12-01 16:57:58.759 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:49c80198c98dc3cabf62e1647ac85853 with status UP (replication=false)
+2023-12-01 16:57:59.296 INFO  ---- [761-exec-9] [AbstractInstanceRegistry:266] register   Registered instance AUTH-SERVICE/192.168.0.17:49c80198c98dc3cabf62e1647ac85853 with status UP (replication=true)
+2023-12-01 16:58:04.836 INFO  ---- [761-exec-7] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=false)
+2023-12-01 16:58:05.366 INFO  ---- [761-exec-1] [AbstractInstanceRegistry:266] register   Registered instance ORDER-SERVICE/192.168.0.17:8084 with status UP (replication=true)
+2023-12-01 16:58:15.601 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 13
+2023-12-01 16:58:16.523 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-01 16:59:16.524 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-01 17:00:16.532 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-01 17:00:16.533 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:618] evict   Evicting 2 items (expired=2, evictionLimit=2)
+2023-12-01 17:00:16.533 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for AUTH-SERVICE/192.168.0.17:b008bec2f5e8959c4009a62563954c6f
+2023-12-01 17:00:16.533 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance AUTH-SERVICE/192.168.0.17:b008bec2f5e8959c4009a62563954c6f (replication=false)
+2023-12-01 17:00:16.533 WARN  ---- [ctionTimer] [AbstractInstanceRegistry:630] evict   DS: Registry: expired lease for TASK-SERVICE/192.168.0.17:9120e3ccdbd2659326e66823b1b4aba8
+2023-12-01 17:00:16.533 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:328] internalCancel   Cancelled instance TASK-SERVICE/192.168.0.17:9120e3ccdbd2659326e66823b1b4aba8 (replication=false)
+2023-12-01 17:01:16.542 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 17:02:09.455 INFO  ---- [761-exec-5] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=false)
+2023-12-01 17:02:09.996 INFO  ---- [761-exec-6] [AbstractInstanceRegistry:266] register   Registered instance ADMIN-SERVICE/192.168.0.17:8085 with status UP (replication=true)
+2023-12-01 17:02:16.556 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-12-01 17:03:16.566 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 10ms
+2023-12-01 17:04:16.574 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-12-01 17:05:16.573 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-01 17:06:16.583 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-01 17:07:16.583 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms

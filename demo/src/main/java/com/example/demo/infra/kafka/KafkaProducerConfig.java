@@ -1,5 +1,6 @@
 package com.example.demo.infra.kafka;
 
+import com.example.demo.infra.config.AppProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

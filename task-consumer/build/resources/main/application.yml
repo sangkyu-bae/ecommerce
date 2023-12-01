@@ -36,6 +36,7 @@ app:
   createOrder: create-order
   memberTopic : member-check
   productTopic : product-check
+  orderResultTopic: order-topic
 
 kafka:
   bootstrapserver: localhost:9092

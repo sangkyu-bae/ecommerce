@@ -31,10 +31,9 @@ public class OrderResultConsumer {
                 }
             }
             this.countDownLatchManager.setDataForKey(task.getTaskId(),result);
-
             this.countDownLatchManager.getCountDownLatch(task.getTaskId()).countDown();
         }catch (Exception e){
-            log.error("taskListener Error message = {}",resultTaskMessage,e);
+            log.error("resultTaskListener Error message = {}",resultTaskMessage,e);
         }
     }
 }

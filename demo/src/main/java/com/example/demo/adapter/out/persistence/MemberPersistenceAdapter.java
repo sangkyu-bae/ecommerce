@@ -14,7 +14,7 @@ public class MemberPersistenceAdapter implements FindMemberPort {
 
     private final MemberRepository memberRepository;
     @Override
-    public boolean existMember(String email) {
-        return memberRepository.existsByEmail(email);
+    public boolean existMember(long userId) {
+        return memberRepository.existsById(userId);
     }
 }
