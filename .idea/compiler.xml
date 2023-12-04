@@ -9,6 +9,8 @@
         </processorPath>
         <module name="ecommerce.common.test" />
         <module name="ecommerce.delivery.main" />
+        <module name="ecommerce.member-aggregation-service.test" />
+        <module name="ecommerce.member-aggregation-service.main" />
         <module name="ecommerce.common.main" />
         <module name="ecommerce.order.main" />
         <module name="ecommerce.demo.main" />

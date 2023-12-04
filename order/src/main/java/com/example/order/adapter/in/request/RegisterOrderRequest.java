@@ -1,4 +1,4 @@
-package com.example.order.adapter.in.web.request;
+package com.example.order.adapter.in.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.example.order.adapter.in.web;
 
 
-import com.example.order.adapter.in.web.request.RegisterOrderRequest;
+import com.example.order.adapter.in.request.RegisterOrderRequest;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.module.domain.order.orderentity.OrderVo;

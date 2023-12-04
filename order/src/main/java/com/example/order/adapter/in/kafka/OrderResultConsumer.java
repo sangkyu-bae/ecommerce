@@ -1,4 +1,4 @@
-package com.example.order.adapter.in.web.kafka;
+package com.example.order.adapter.in.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

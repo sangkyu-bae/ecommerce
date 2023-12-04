@@ -280,7 +280,7 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4674)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
-	at com.example.order.adapter.in.web.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:25)
+	at com.example.order.adapter.in.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:25)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -588,7 +588,7 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4674)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
-	at com.example.order.adapter.in.web.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:25)
+	at com.example.order.adapter.in.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:25)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3003,7 +3003,7 @@ java.lang.InterruptedException: null
 2023-12-01 16:58:08.197 INFO  ---- [er#0-0-C-1] [KafkaMessageListenerContainer:292] info   order-topic.v1: partitions assigned: [order-topic-0]
 2023-12-01 16:58:08.255 ERROR ---- [er#0-0-C-1] [OrderResultConsumer:36] resultTaskListener   resultTaskListener Error message = {"taskId":"e7fcacb2-e251-4070-ab4b-a31e4526ce1f","taskName":"orderTask","subTaskList":[{"taskId":"8bd1bd9a-ad8e-4ab7-b351-de7aeea1c396","subTaskName":"validMemberTask : 멤버십 유효성 검사","status":"SUCCESS","type":"MEMBER","userId":1},{"taskId":"673ebb90-ac9f-4780-9e3f-5d2b8f824f4e","subTaskName":"validProductTask : 상품 유효성 검사","status":"FAIL","type":"PRODUCT","productId":269,"colorId":1,"quantity":3,"sizeId":271}]}
 java.lang.NullPointerException: null
-	at com.example.order.adapter.in.web.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:34)
+	at com.example.order.adapter.in.kafka.OrderResultConsumer.resultTaskListener(OrderResultConsumer.java:34)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

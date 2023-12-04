@@ -1,4 +1,4 @@
-package com.example.demo.adapter.in.web.kafka;
+package com.example.demo.adapter.in.kafka;
 
 import com.example.demo.application.port.in.command.FindMemberCommand;
 import com.example.demo.application.port.in.usecase.FindMemberUseCase;

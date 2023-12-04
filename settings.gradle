@@ -6,4 +6,5 @@ include 'admin-service'
 include 'delivery'
 include 'demo'
 include 'task-consumer'
+include 'member-aggregation-service'
 

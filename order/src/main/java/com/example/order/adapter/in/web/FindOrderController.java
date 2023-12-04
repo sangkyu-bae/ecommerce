@@ -1,5 +1,7 @@
 package com.example.order.adapter.in.web;
 
+import com.example.order.adapter.in.request.FindMemberOrderListByMemberIdsRequest;
+import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.module.domain.order.orderentity.OrderVo;
@@ -10,6 +12,7 @@ import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,4 +33,15 @@ public class FindOrderController {
 
         return ResponseEntity.ok().body(orderVo);
     }
+
+    @GetMapping("/order/member-order")
+    void findMemberOrderListByMemberIds(@RequestBody FindMemberOrderListByMemberIdsRequest request){
+        FindMemberOrderListByMemberIdsCommand command = FindMemberOrderListByMemberIdsCommand.builder()
+                .memberIds(request.getMemberIds())
+                .build();
+
+        findOrderUseCase.findMemberOrderListByMemberIds(command);
+    }
+
+
 }
