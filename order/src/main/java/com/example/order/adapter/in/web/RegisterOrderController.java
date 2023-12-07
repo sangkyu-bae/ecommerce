@@ -4,7 +4,7 @@ package com.example.order.adapter.in.web;
 import com.example.order.adapter.in.request.RegisterOrderRequest;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;

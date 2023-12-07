@@ -2,7 +2,7 @@ package com.example.order.application.port.in.usecase;
 
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 
 import java.util.List;
 

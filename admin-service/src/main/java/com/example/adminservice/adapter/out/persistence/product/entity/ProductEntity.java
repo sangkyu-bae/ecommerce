@@ -1,7 +1,7 @@
 package com.example.adminservice.adapter.out.persistence.product.entity;
 
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.ProductErrorCode;
 import lombok.*;
 
 import javax.persistence.*;

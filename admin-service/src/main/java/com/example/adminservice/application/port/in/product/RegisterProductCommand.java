@@ -1,7 +1,6 @@
 package com.example.adminservice.application.port.in.product;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductRequest;
+import com.example.adminservice.adapter.in.request.RegisterProductRequest;
 
 import lombok.*;
 import org.example.SelfValidating;

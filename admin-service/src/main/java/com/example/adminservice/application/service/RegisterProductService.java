@@ -6,7 +6,7 @@ import com.example.adminservice.application.port.in.product.*;
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.RegisterProductPort;
 
-import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;

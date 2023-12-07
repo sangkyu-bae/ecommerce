@@ -7,7 +7,7 @@ import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRep
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductCommand;
-import com.example.adminservice.domain.productentity.SizeCheck;
+import com.example.adminservice.domain.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

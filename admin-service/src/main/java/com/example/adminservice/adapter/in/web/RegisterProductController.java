@@ -1,17 +1,17 @@
 package com.example.adminservice.adapter.in.web;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductRequest;
+import com.example.adminservice.adapter.in.request.RegisterProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.application.port.in.product.RegisterBrandCommand;
 import com.example.adminservice.application.port.in.product.RegisterCategoryCommand;
 import com.example.adminservice.application.port.in.product.RegisterProductCommand;
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
-import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.ProductVo;
 
 
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.ProductErrorCode;
 import com.example.adminservice.vaildator.RegisterProductCommandValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;

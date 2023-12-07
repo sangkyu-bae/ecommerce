@@ -1,6 +1,6 @@
 package com.example.adminservice.application.port.in.product;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
+import com.example.adminservice.adapter.in.request.RegisterColorRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

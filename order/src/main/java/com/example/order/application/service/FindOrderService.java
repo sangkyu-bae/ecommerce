@@ -2,19 +2,16 @@ package com.example.order.application.service;
 
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
-import com.example.order.adapter.out.persistence.repository.OrderEntityRepository;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.application.port.out.FindOrderPort;
 
 import com.example.order.application.port.out.GetMemberOrderPort;
-import com.example.order.module.domain.order.enitity.Order;
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;

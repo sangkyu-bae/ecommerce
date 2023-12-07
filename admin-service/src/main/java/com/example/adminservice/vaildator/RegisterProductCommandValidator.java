@@ -5,7 +5,7 @@ import com.example.adminservice.adapter.out.persistence.repository.CategoryEntit
 import com.example.adminservice.application.port.in.product.RegisterProductCommand;
 import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
 import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
-import com.example.adminservice.domain.productentity.SizeCheck;
+import com.example.adminservice.domain.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;

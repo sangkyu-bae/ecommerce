@@ -2,7 +2,6 @@ package com.example.order.adapter.out.external.product;
 
 import com.example.order.application.port.out.RequestProductInfoPort;
 import com.example.order.infra.properties.AppProperties;
-import com.example.order.module.domain.order.orderentity.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

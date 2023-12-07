@@ -1,7 +1,7 @@
 package com.example.delivery.adapter.out.persistance;
 
 import com.example.delivery.adapter.out.persistance.entity.DeliveryEntity;
-import com.example.delivery.domain.delivery.DeliveryVo;
+import com.example.delivery.domain.DeliveryVo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

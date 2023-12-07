@@ -6,10 +6,10 @@ import com.example.adminservice.adapter.out.persistence.repository.SpringDataPro
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.out.*;
 
-import com.example.adminservice.domain.productentity.ProductVo;
-import com.example.adminservice.domain.productentity.SizeVo;
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
+import com.example.adminservice.domain.ProductVo;
+import com.example.adminservice.domain.SizeVo;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;

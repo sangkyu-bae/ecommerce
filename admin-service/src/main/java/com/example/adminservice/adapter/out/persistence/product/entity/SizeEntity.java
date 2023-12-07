@@ -1,7 +1,7 @@
 package com.example.adminservice.adapter.out.persistence.product.entity;
 
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.QuantityErrorCode;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.QuantityErrorCode;
 import lombok.*;
 
 import javax.persistence.*;

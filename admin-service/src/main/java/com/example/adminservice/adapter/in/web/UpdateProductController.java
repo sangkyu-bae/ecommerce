@@ -1,14 +1,14 @@
 package com.example.adminservice.adapter.in.web;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.UpdateProductRequest;
+import com.example.adminservice.adapter.in.request.UpdateProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.application.port.in.FindProductUseCase;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.product.*;
 
-import com.example.adminservice.domain.productentity.ProductVo;
-import com.example.adminservice.module.common.error.ErrorException;
-import com.example.adminservice.module.common.error.errorImpl.ProductErrorCode;
+import com.example.adminservice.domain.ProductVo;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.ProductErrorCode;
 import com.example.adminservice.vaildator.UpdateProductCommandValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;

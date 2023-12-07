@@ -5,7 +5,7 @@ import com.example.delivery.adapter.out.persistance.entity.DeliveryEntity;
 import com.example.delivery.application.port.in.command.RegisterDeliveryCommand;
 import com.example.delivery.application.port.in.usecase.RegisterDeliveryUseCase;
 import com.example.delivery.application.port.out.RegisterDeliveryPort;
-import com.example.delivery.domain.delivery.DeliveryVo;
+import com.example.delivery.domain.DeliveryVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.example.adminservice.application.port.out;
 
-import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.ProductVo;
 
 public interface RemoveProductPort {
 

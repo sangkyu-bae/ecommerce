@@ -1,6 +1,5 @@
 package com.example.order.application.service;
 
-import com.example.order.adapter.out.external.delivery.OrderInfoRequest;
 import com.example.order.adapter.out.external.product.ProductInfoRequest;
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
@@ -8,7 +7,7 @@ import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.application.port.out.*;
 
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

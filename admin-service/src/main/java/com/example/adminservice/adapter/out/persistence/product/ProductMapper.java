@@ -1,13 +1,13 @@
 package com.example.adminservice.adapter.out.persistence.product;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterBrandRequest;
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterCategoryRequest;
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterColorRequest;
-import com.example.adminservice.adapter.in.web.request.productRequest.RegisterProductComponentRequest;
+import com.example.adminservice.adapter.in.request.RegisterBrandRequest;
+import com.example.adminservice.adapter.in.request.RegisterCategoryRequest;
+import com.example.adminservice.adapter.in.request.RegisterColorRequest;
+import com.example.adminservice.adapter.in.request.RegisterProductComponentRequest;
 import com.example.adminservice.adapter.out.persistence.product.entity.*;
 import com.example.adminservice.application.port.in.product.*;
-import com.example.adminservice.domain.productentity.ProductSearchVo;
-import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.ProductSearchVo;
+import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

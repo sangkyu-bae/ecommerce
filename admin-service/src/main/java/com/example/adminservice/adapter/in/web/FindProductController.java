@@ -5,8 +5,8 @@ import com.example.adminservice.application.port.in.product.FindPagingProductCom
 import com.example.adminservice.application.port.in.product.FindProductCommand;
 
 
-import com.example.adminservice.domain.productentity.ProductSearchVo;
-import com.example.adminservice.domain.productentity.ProductVo;
+import com.example.adminservice.domain.ProductSearchVo;
+import com.example.adminservice.domain.ProductVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @WebAdapter
 @RestController

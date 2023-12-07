@@ -1,6 +1,5 @@
 package com.example.adminservice.application.service;
 
-import com.example.adminservice.adapter.in.web.request.productRequest.DeliveryInfoRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
@@ -11,10 +10,9 @@ import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RequestDeliveryPort;
 import com.example.adminservice.application.port.out.UpdateProductPort;
 import com.example.adminservice.application.port.out.UpdateProductSizePort;
-import com.example.adminservice.domain.productentity.ProductVo;
-import com.example.adminservice.domain.productentity.SizeVo;
-import com.example.adminservice.module.common.error.ErrorException;
-import lombok.AllArgsConstructor;
+import com.example.adminservice.domain.ProductVo;
+import com.example.adminservice.domain.SizeVo;
+import com.example.adminservice.infra.error.ErrorException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;

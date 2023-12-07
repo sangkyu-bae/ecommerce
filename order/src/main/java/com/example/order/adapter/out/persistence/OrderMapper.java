@@ -1,7 +1,7 @@
 package com.example.order.adapter.out.persistence;
 
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

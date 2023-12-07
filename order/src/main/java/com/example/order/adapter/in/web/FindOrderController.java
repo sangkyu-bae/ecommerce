@@ -4,10 +4,9 @@ import com.example.order.adapter.in.request.FindMemberOrderListByMemberIdsReques
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
-import com.example.order.module.domain.order.orderentity.OrderVo;
+import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Or;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
