@@ -1,7 +1,7 @@
 package com.example.adminservice.adapter.in.kafka;
 
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
-import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
+import com.example.adminservice.application.port.in.product.OrderToUpdateProductCommand;
 import com.example.adminservice.infra.properties.AppProperties;
 import com.example.adminservice.infra.error.ErrorException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class ProductTaskConsumer {
+public class CreateOrderWithProductTaskConsumer {
 
     private final AppProperties appProperties;
     private final ObjectMapper objectMapper;
@@ -30,7 +30,7 @@ public class ProductTaskConsumer {
         try{
             task = objectMapper.readValue(memberTaskMessage, ProductTask.class);
 
-            CreateOrderToUpdateProductCommand command = CreateOrderToUpdateProductCommand.builder()
+            OrderToUpdateProductCommand command = OrderToUpdateProductCommand.builder()
                     .amount(task.getQuantity())
                     .sizeId(task.getSizeId())
                     .build();

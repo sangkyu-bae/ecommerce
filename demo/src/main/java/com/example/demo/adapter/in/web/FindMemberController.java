@@ -1,6 +1,7 @@
 package com.example.demo.adapter.in.web;
 
 import com.example.demo.application.port.in.command.FindMemberByAddressCommand;
+import com.example.demo.application.port.in.command.FindMemberCommand;
 import com.example.demo.application.port.in.usecase.FindMemberUseCase;
 import com.example.demo.module.domain.member.MemberVo;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,15 @@ public class FindMemberController {
         List<MemberVo> memberVoList = findMemberUseCase.findMemberListByAddress(command);
 
         return ResponseEntity.ok().body(memberVoList);
+    }
+
+    @GetMapping("/member/{memberId}")
+    public ResponseEntity<Boolean> existMemberByMemberId(@PathVariable("memberId") long memberId){
+
+        FindMemberCommand command = FindMemberCommand.builder()
+                .userId(memberId)
+                .build();
+        boolean isMember = findMemberUseCase.existMember(command);
+        return ResponseEntity.ok().body(isMember);
     }
 }

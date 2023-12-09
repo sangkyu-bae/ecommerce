@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 public interface OrderEntityRepository extends JpaRepository<OrderEntity,Long> {
@@ -14,4 +15,5 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity,Long> {
     @Query("SELECT e FROM OrderEntity e WHERE e.id in :meberIds")
     List<OrderEntity> findMemberOrderListByMemberIds(@Param("memberIds") List<Long> memberIds);
 
+    Optional <OrderEntity> findByIdAndUserId(long orderId, long userId);
 }

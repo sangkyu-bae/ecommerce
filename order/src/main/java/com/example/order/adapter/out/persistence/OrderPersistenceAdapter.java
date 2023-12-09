@@ -5,6 +5,7 @@ import com.example.order.adapter.out.persistence.repository.OrderEntityRepositor
 import com.example.order.application.port.out.FindOrderPort;
 import com.example.order.application.port.out.GetMemberOrderPort;
 import com.example.order.application.port.out.RegisterOrderPort;
+import com.example.order.application.port.out.RemoveOrderPort;
 import com.example.order.infra.error.ErrorException;
 import com.example.order.infra.error.OrderErrorCode;
 import com.example.order.domain.OrderVo;
@@ -19,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort, GetMemberOrderPort {
+public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort, GetMemberOrderPort, RemoveOrderPort {
 
     private final OrderEntityRepository orderEntityRepository;
     @Override
@@ -48,5 +49,14 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
     @Override
     public List<OrderEntity> getMemberOrderPort(List<Long> memberIds) {
         return orderEntityRepository.findMemberOrderListByMemberIds(memberIds);
+    }
+
+    @Override
+    public OrderEntity removeOrder(OrderVo.OrderId orderId) {
+
+        OrderEntity orderEntity = findOrder(orderId);
+        orderEntityRepository.deleteById(orderId.getId());
+
+        return orderEntity;
     }
 }

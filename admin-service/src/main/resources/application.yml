@@ -71,4 +71,8 @@ kafka:
     topic : product-check
     task:
       group : check.member.response.v1
+  order:
+    remove:
+      topic: remove.order.update.product
+      group: remove.order.update.product.v1
 

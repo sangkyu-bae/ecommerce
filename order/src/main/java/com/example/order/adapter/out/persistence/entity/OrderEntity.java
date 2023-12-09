@@ -19,6 +19,8 @@ public class OrderEntity {
 
     private long productId;
 
+    private long userId;
+
     private long colorId;
 
     private long sizeId;

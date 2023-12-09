@@ -4,13 +4,12 @@ package com.example.adminservice.application.port.in.product;
 import lombok.*;
 import org.example.SelfValidating;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Builder @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
-public class CreateOrderToUpdateProductCommand extends SelfValidating<CreateOrderToUpdateProductCommand> {
+public class OrderToUpdateProductCommand extends SelfValidating<OrderToUpdateProductCommand> {
 
     @NotNull
     private int amount;

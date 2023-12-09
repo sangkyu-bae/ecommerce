@@ -3,7 +3,7 @@ package com.example.adminservice.application.service;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.application.port.in.UpdateProductUseCase;
-import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
+import com.example.adminservice.application.port.in.product.OrderToUpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductQuantityCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
@@ -70,7 +70,7 @@ public class UpdateProductService implements UpdateProductUseCase {
     }
 
     @Override
-    public void updateProductQuantity(CreateOrderToUpdateProductCommand command) {
+    public void updateProductQuantity(OrderToUpdateProductCommand command) {
 
         SizeVo sizeVo = SizeVo.createGenerateSizeVo(
                 new SizeVo.SizeId(command.getSizeId()),

@@ -1,6 +1,6 @@
 package com.example.adminservice.application.port.in;
 
-import com.example.adminservice.application.port.in.product.CreateOrderToUpdateProductCommand;
+import com.example.adminservice.application.port.in.product.OrderToUpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductCommand;
 import com.example.adminservice.application.port.in.product.UpdateProductQuantityCommand;
 import com.example.adminservice.domain.ProductVo;
@@ -10,5 +10,5 @@ public interface UpdateProductUseCase {
 
     boolean updateProductQuantity(UpdateProductQuantityCommand command);
 
-    void updateProductQuantity (CreateOrderToUpdateProductCommand command);
+    void updateProductQuantity (OrderToUpdateProductCommand command);
 }
