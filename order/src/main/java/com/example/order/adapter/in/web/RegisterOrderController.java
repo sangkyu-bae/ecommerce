@@ -25,7 +25,6 @@ public class RegisterOrderController {
     public ResponseEntity<OrderVo> registerOrder(@RequestBody RegisterOrderRequest request ,
                                                  @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
 
-        System.out.println(userId);
         RegisterOrderCommand command = RegisterOrderCommand.builder()
                 .productId(request.getProductId())
                 .colorId(request.getColorId())

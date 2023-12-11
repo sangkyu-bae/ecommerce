@@ -11,4 +11,6 @@ public class AppProperties {
 
     private String bootstrapServer;
     private String memberTopic;
+    private String removeOrderTopic;
+    private String removeRollbackTopic;
 }

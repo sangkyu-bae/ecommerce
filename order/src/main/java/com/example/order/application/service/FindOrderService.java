@@ -38,6 +38,7 @@ public class FindOrderService implements FindOrderUseCase {
     @Override
     public List<OrderVo> findMemberOrderListByMemberIds(FindMemberOrderListByMemberIdsCommand command) {
         List<OrderEntity> orders = getMemberOrderPort.getMemberOrderPort(command.getMemberIds());
+
         List<OrderVo> orderVoList = orders.stream()
                 .map(order -> orderMapper.mapToDomainEntity(order))
                 .collect(Collectors.toList());

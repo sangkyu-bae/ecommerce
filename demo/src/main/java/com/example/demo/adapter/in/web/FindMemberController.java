@@ -18,7 +18,7 @@ public class FindMemberController {
 
     private final FindMemberUseCase findMemberUseCase;
 
-    @GetMapping("/member/{addressName}")
+    @GetMapping("/user/{addressName}")
     public ResponseEntity<List<MemberVo>> findMemberListByAddress(@PathVariable("addressName") String addressName){
         FindMemberByAddressCommand command = FindMemberByAddressCommand.builder()
                 .addressName(addressName)
@@ -29,7 +29,7 @@ public class FindMemberController {
         return ResponseEntity.ok().body(memberVoList);
     }
 
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/user/{memberId}")
     public ResponseEntity<Boolean> existMemberByMemberId(@PathVariable("memberId") long memberId){
 
         FindMemberCommand command = FindMemberCommand.builder()

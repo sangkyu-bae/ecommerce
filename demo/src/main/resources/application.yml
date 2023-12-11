@@ -74,6 +74,8 @@ app:
   sendProduct : request-product
   createOrder: create-order
   memberTopic : task-member
+  removeOrderTopic: remove-order-product
+  removeRollbackTopic: remove-order-rollback
 kafka:
   member:
     task :

@@ -2,7 +2,6 @@ package com.example.adminservice.module.application.bulktest;
 
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
 import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
-import com.example.adminservice.domain.product.service.ProductWriteService;
 import com.example.adminservice.module.util.ProductFixtureFactory;
 import com.netflix.discovery.converters.Auto;
 import org.jeasy.random.EasyRandom;

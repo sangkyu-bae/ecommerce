@@ -19,4 +19,6 @@ public class AppProperties {
     private String consumerProduct;
 
     private String createOrder;
+
+    private String sendToRemoveOrder;
 }

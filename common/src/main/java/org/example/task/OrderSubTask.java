@@ -23,9 +23,6 @@ public abstract class OrderSubTask<T> {
     protected Type type;
 
     abstract public String getTaskType();
-
-//    abstract public void setStatus(Status value);
-
     public static enum Status{
         READY,SUCCESS,FAIL
     }

@@ -21,7 +21,6 @@ public class RemoveOrderService implements RemoveOrderUseCase {
 
     private final RemoveOrderPort removeOrderPort;
     private final GetMemberPort getMemberPort;
-
     private final SendRemoveOrderTaskPort sendRemoveOrderTaskPort;
 
     @Override
@@ -30,24 +29,27 @@ public class RemoveOrderService implements RemoveOrderUseCase {
          * 1. 현재 주문 배송 상태인지 배송 서비스 확인 (구현X)
          * 2. 멤버인지 확인 (구현 O)
          * */
-        boolean isMember = getMemberPort.getMember(command.getUserId());
 
-        if(!isMember){
-            throw new ErrorException(OrderErrorCode.MEMBER_NOT_FOUND,"removeOrder");
-        }
+        /** FeignClients 확인 */
+//        boolean isMember = getMemberPort.getMember(command.getUserId());
+//
+//        if(!isMember){
+//            throw new ErrorException(OrderErrorCode.MEMBER_NOT_FOUND,"removeOrder");
+//        }
 
         OrderEntity orderEntity = removeOrderPort.removeOrder(
                 new OrderVo.OrderId(command.getOrderId())
         );
 
         /**
-         * 주문취소 -> 상품 수량 증가 kafka 전송 -> 실패시 saga 구현 X
+         * 주문취소 -> 상품 수량 증가 kafka 전송 -> 실패시 saga 구현 X -> 주문 취소만 되면 사실 비즈니스에 큰 상관 X
          * 1. 상품 수량 실패시 실패 메세지 전송 받으면, 삭제 상태값만 변경
          * 2. 하루마다 스프링 배치를 통한 정합성 검증 (구현 해야함)
          * */
 
         RemoveOrderTask task = RemoveOrderTask.builder()
                 .sizeId(orderEntity.getSizeId())
+                .userId(command.getUserId())
                 .productId(orderEntity.getProductId())
                 .amount(orderEntity.getAmount())
                 .build();

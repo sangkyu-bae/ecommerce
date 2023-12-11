@@ -73,6 +73,7 @@ app:
   consumerProduct: update-product
   sendProduct : request-product
   createOrder: create-order
+  sendToRemoveOrder : remove-order
 
 member:
   service:
