@@ -12,4 +12,5 @@ public class AppProperties {
     private String memberTopic;
     private String productTopic;
     private String orderResultTopic;
+    private String orderRemoveTopic;
 }

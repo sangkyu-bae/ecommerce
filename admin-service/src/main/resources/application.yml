@@ -66,6 +66,7 @@ app:
   groupId : delivery.group.v1
   createDelivery : create-delivery
   productTaskResultTopic : task-product
+  rollbackRemoveOrderTopic : rollback-remove-order
 kafka:
   product:
     topic : product-check
@@ -73,6 +74,6 @@ kafka:
       group : check.member.response.v1
   order:
     remove:
-      topic: remove.order.update.product
-      group: remove.order.update.product.v1
+      topic: remove-order-product
+      group: remove-order-product.v1
 

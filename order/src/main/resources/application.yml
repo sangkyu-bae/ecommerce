@@ -75,6 +75,7 @@ app:
   createOrder: create-order
   sendToRemoveOrder : remove-order
 
+
 member:
   service:
     url : http://localhost:8000/user
@@ -83,5 +84,9 @@ kafka:
   order:
     result:
       topic : order-topic
+    remove :
+      rollback:
+        topic : rollback-remove-order
+        group : rollback-remove-order.v1
   task:
     group : order-topic.v1

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-@Table(name = "tb_orderd") @Builder
+@Table(name = "tb_order") @Builder
 public class OrderEntity {
 
     @Id @GeneratedValue

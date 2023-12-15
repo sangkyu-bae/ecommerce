@@ -28,6 +28,7 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
 
         OrderEntity createOrderEntity = OrderEntity.builder()
                 .productId(orderVo.getProductId())
+                .userId(orderVo.getUserId())
                 .colorId(orderVo.getColorId())
                 .sizeId(orderVo.getSizeId())
                 .amount(orderVo.getAmount())
@@ -52,11 +53,11 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
     }
 
     @Override
-    public OrderEntity removeOrder(OrderVo.OrderId orderId) {
+    public OrderEntity updateRemoveOrder(OrderVo.OrderId orderId,OrderVo.OrderStatus status) {
 
         OrderEntity orderEntity = findOrder(orderId);
-        orderEntityRepository.deleteById(orderId.getId());
+        orderEntity.setStatus(status.getStatus());
 
-        return orderEntity;
+        return orderEntityRepository.save(orderEntity);
     }
 }

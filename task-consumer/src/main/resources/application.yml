@@ -37,6 +37,7 @@ app:
   memberTopic : member-check
   productTopic : product-check
   orderResultTopic: order-topic
+  orderRemoveTopic : member.check.remove.order
 
 kafka:
   bootstrapserver: localhost:9092

@@ -37,10 +37,14 @@ app:
   memberTopic : member-check
   productTopic : product-check
   orderResultTopic: order-topic
+  orderRemoveTopic : member.check.remove.order
 
 kafka:
   bootstrapserver: localhost:9092
   order:
+    remove:
+      topic : remove-order
+      group : remove.order.v1
     task:
       topic: order
       group : order.group.v1

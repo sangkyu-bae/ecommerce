@@ -1,6 +1,7 @@
 package com.example.order.application.service;
 
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
+import com.example.order.application.port.in.command.FailRemoveOrderCommand;
 import com.example.order.application.port.in.command.RemoveOrderCommand;
 import com.example.order.application.port.in.usecase.RemoveOrderUseCase;
 import com.example.order.application.port.out.GetMemberPort;
@@ -37,8 +38,9 @@ public class RemoveOrderService implements RemoveOrderUseCase {
 //            throw new ErrorException(OrderErrorCode.MEMBER_NOT_FOUND,"removeOrder");
 //        }
 
-        OrderEntity orderEntity = removeOrderPort.removeOrder(
-                new OrderVo.OrderId(command.getOrderId())
+        OrderEntity orderEntity = removeOrderPort.updateRemoveOrder(
+                new OrderVo.OrderId(command.getOrderId()),
+                new OrderVo.OrderStatus(OrderVo.StatusCode.ORDER_REMOVE_SUCCESS.getStatus())
         );
 
         /**
@@ -52,9 +54,19 @@ public class RemoveOrderService implements RemoveOrderUseCase {
                 .userId(command.getUserId())
                 .productId(orderEntity.getProductId())
                 .amount(orderEntity.getAmount())
+                .orderId(orderEntity.getId())
                 .build();
 
         sendRemoveOrderTaskPort.removeOrderTask(task);
 
+    }
+
+    @Override
+    public void failRemoveOrder(FailRemoveOrderCommand command) {
+        log.info("orderId : "+command.getOrderId());
+        removeOrderPort.updateRemoveOrder(
+                new OrderVo.OrderId(command.getOrderId()),
+                new OrderVo.OrderStatus(OrderVo.StatusCode.ORDER_REMOVE_FAIL.getStatus())
+        );
     }
 }

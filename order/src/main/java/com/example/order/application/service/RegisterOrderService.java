@@ -44,7 +44,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         // 에외 처리 필요 ex member email이 없는 것이라면
         // 비동기 처리 kafka
 
-        System.out.println("registerOrder : " +command.getUserId());
         String MemberSubTaskName ="validMemberTask : 멤버십 유효성 검사";
         MemberTask validMemberTask =new MemberTask(
                 command.getUserId(),
@@ -73,12 +72,10 @@ public class RegisterOrderService implements RegisterOrderUseCase {
 
         try {
             sendCreateOrderTaskPort.sendCreateOrderTask(orderTask);
-            System.out.println("orderTaskId:" + orderTask.getTaskId());
 
             countDownLatchManager.addCountDownLatch(orderTask.getTaskId());
             countDownLatchManager.getCountDownLatch(orderTask.getTaskId()).await();
             String result = countDownLatchManager.getDataForKey(orderTask.getTaskId());
-            System.out.println(result);
             if(result.equals("success")){
                 OrderVo mapOrderVo = getOrderRequest(command);
                 return mapOrderVo;
@@ -98,6 +95,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
 
         OrderVo createOrder = OrderVo.createGenerateOrderVo(
                 new OrderVo.OrderId(0),
+                new OrderVo.OrderProductUserId(command.getUserId()),
                 new OrderVo.OrderProductId(command.getProductId()),
                 new OrderVo.OrderColorId(command.getColorId()),
                 new OrderVo.OrderSizeId(command.getSizeId()),

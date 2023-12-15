@@ -12,4 +12,5 @@ public class AppProperties {
     private String orderTopic;
     private String createDelivery;
     private String productTaskResultTopic;
+    private String rollbackRemoveOrderTopic;
 }

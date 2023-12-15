@@ -14,6 +14,8 @@ public class OrderVo {
 
     private final long id;
 
+    private final long userId;
+
     private final long productId;
 
     private final long colorId;
@@ -34,6 +36,7 @@ public class OrderVo {
 
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
+            OrderProductUserId orderProductUserId,
             OrderProductId orderProductId,
             OrderColorId orderColorId,
             OrderSizeId orderSizeId,
@@ -46,6 +49,7 @@ public class OrderVo {
     ){
         return new OrderVo(
                 orderId.getId(),
+                orderProductUserId.getUserId(),
                 orderProductId.getProductId(),
                 orderColorId.getColorId(),
                 orderSizeId.getSizeId(),
@@ -67,6 +71,14 @@ public class OrderVo {
         private long id;
     }
 
+    @Value
+    public static class OrderProductUserId{
+        private long userId;
+
+        public OrderProductUserId(long value) {
+            this.userId = value;
+        }
+    }
     @Value
     public static class OrderProductId{
         public OrderProductId(long value){
@@ -152,7 +164,13 @@ public class OrderVo {
 
         DELIVERY_OK(5,"배송완료"),
 
-        PAY_OK(6,"구매완료");
+        PAY_OK(6,"구매완료"),
+
+        ORDER_REMOVE_READY(7,"주문취소대기"),
+
+        ORDER_REMOVE_SUCCESS(8,"주문취소완료"),
+
+        ORDER_REMOVE_FAIL(9,"주문취소실패");
 
         private final int status;
         private final String name;

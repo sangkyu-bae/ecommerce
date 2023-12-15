@@ -11,9 +11,12 @@ public class RemoveOrderTask {
 
     private long productId;
 
+    private long orderId;
+
     private long userId;
 
     private long sizeId;
 
     private int amount;
+
 }

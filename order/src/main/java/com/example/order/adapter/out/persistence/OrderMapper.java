@@ -15,6 +15,7 @@ public class OrderMapper {
     public OrderVo mapToDomainEntity(OrderEntity orderEntity){
         OrderVo orderVo = OrderVo.createGenerateOrderVo(
                 new OrderVo.OrderId(orderEntity.getId()),
+                new OrderVo.OrderProductUserId(orderEntity.getUserId()),
                 new OrderVo.OrderProductId(orderEntity.getProductId()),
                 new OrderVo.OrderColorId(orderEntity.getColorId()),
                 new OrderVo.OrderSizeId(orderEntity.getSizeId()),

@@ -75,12 +75,17 @@ app:
   createOrder: create-order
   memberTopic : task-member
   removeOrderTopic: remove-order-product
-  removeRollbackTopic: remove-order-rollback
+  removeRollbackTopic: rollback-remove-order
 kafka:
+  order :
+    remove :
+      topic : member.check.remove.order
+      group : member.check.remove.order.v1
   member:
     task :
       group : member.check.v1
       topic: member-check
+
 
 
 

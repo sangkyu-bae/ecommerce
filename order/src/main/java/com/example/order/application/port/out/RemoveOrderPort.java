@@ -4,5 +4,5 @@ import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.domain.OrderVo;
 
 public interface RemoveOrderPort {
-    OrderEntity removeOrder(OrderVo.OrderId orderId);
+    OrderEntity updateRemoveOrder(OrderVo.OrderId orderId, OrderVo.OrderStatus status);
 }

@@ -51,7 +51,7 @@ public class MemberCheckConsumer {
         }
     }
 
-    @KafkaListener(topics ="${kafka.member.task.topic}",groupId = "${kafka.member.task.group}")
+    @KafkaListener(topics ="${kafka.order.remove.topic}",groupId = "${kafka.order.remove.group}")
     public void removeOrderMemberCheckTaskListener(String removeOrderTaskMessage){
         RemoveOrderTask task = null;
         try{
@@ -65,7 +65,7 @@ public class MemberCheckConsumer {
             if(isExistMember){
                 kafkaTemplate.send(appProperties.getRemoveOrderTopic(),inputTask);
             }else{
-                kafkaTemplate.send(appProperties.getRemoveRollbackTopic(),"roll back");
+                kafkaTemplate.send(appProperties.getRemoveRollbackTopic(),inputTask);
             }
 
 

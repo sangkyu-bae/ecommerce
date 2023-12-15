@@ -36,7 +36,7 @@ public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTas
         try{
             String inputTask = objectMapper.writeValueAsString(task);
             // kafka 설정 필요
-//            kafkaTemplate.send(appProperties.getOrderTopic(),inputTask);
+            kafkaTemplate.send(appProperties.getSendToRemoveOrder(),inputTask);
         } catch (JsonProcessingException e) {
             log.error("removeOrderTask Error message = {}, e = {}", task, e);
         }
