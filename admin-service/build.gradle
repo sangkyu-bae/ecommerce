@@ -28,7 +28,10 @@ repositories {
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
 }
-
+ext {
+	set('springCloudVersion', "2021.0.7")
+	axonVersion = "4.8.0"
+}
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -54,14 +57,16 @@ dependencies {
 	// EasyRandom 라이브러리 추가
 	implementation 'org.jeasy:easy-random-core:4.0.0'
 	implementation project(path: ':common')
+
+	//axon
+	implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
+	implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
-ext {
-	set('springCloudVersion', "2021.0.7")
-}
+
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"

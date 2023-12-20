@@ -33,6 +33,7 @@ public class ProductMapper {
                 new ProductVo.ProductPrice(productEntity.getPrice()),
                 new ProductVo.ProductDescription(productEntity.getDescription()),
                 new ProductVo.ProductImage(productEntity.getProductImage()),
+                new ProductVo.ProductAggregateIdentifier(productEntity.getAggregateIdentifier()),
                 brand, category, productComponentEntityVos
         );
     }

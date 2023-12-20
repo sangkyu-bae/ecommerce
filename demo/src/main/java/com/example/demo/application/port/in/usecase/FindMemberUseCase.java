@@ -9,6 +9,5 @@ import java.util.List;
 
 public interface FindMemberUseCase {
     boolean existMember(FindMemberCommand command);
-
     List<MemberVo> findMemberListByAddress(FindMemberByAddressCommand command);
 }

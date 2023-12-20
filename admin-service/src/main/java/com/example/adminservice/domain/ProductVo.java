@@ -22,6 +22,8 @@ public class ProductVo {
 
     private final String productImage;
 
+    private String aggregateIdentifier;
+
     private final ProductCategoryVo category;
 
     private final ProductBrandVo brand;
@@ -34,6 +36,7 @@ public class ProductVo {
             ProductPrice productPrice,
             ProductDescription productDescription,
             ProductImage productImage,
+            ProductAggregateIdentifier aggregateIdentifier,
             ProductBrandVo brand,
             ProductCategoryVo category,
             Set<ProductComponentEntityVo> components
@@ -44,6 +47,7 @@ public class ProductVo {
               productPrice.getPrice(),
               productDescription.getDescription(),
               productImage.getImage(),
+              aggregateIdentifier.getAggregateIdentifier(),
               category,
               brand,
               components
@@ -92,6 +96,15 @@ public class ProductVo {
             this.image = value;
         }
         String image;
+    }
+
+    @Value
+    public static class ProductAggregateIdentifier{
+        public ProductAggregateIdentifier(String value){
+            this.aggregateIdentifier = value;
+        }
+
+        String aggregateIdentifier;
     }
 
     @Value

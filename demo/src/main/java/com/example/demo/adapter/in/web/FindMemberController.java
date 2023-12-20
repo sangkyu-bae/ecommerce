@@ -38,4 +38,14 @@ public class FindMemberController {
         boolean isMember = findMemberUseCase.existMember(command);
         return ResponseEntity.ok().body(isMember);
     }
+
+    @GetMapping("/user/eda/{memberId}")
+    public void existMemberByMemberIdByEvent(@PathVariable("memberId") long memberId){
+
+        FindMemberCommand command = FindMemberCommand.builder()
+                .userId(memberId)
+                .build();
+         findMemberUseCase.existMemberByEvent(command);
+
+    }
 }

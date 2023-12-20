@@ -1,5 +1,6 @@
 package com.example.demo.application.service;
 
+import com.example.demo.adapter.in.axon.command.CheckRegisteredMemberCommand;
 import com.example.demo.adapter.out.persistence.MemberMapper;
 import com.example.demo.application.port.in.command.FindMemberByAddressCommand;
 import com.example.demo.application.port.in.command.FindMemberCommand;
@@ -9,6 +10,7 @@ import com.example.demo.module.domain.member.MemberVo;
 import com.example.demo.module.domain.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.UseCase;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,8 @@ public class FindMemberService implements FindMemberUseCase {
 
     private final FindMemberPort findMemberPort;
     private final MemberMapper memberMapper;
+
+    private final CommandGateway commandGateway;
     @Override
     public boolean existMember(FindMemberCommand command) {
         return findMemberPort.existMember(command.getUserId());
@@ -37,4 +41,6 @@ public class FindMemberService implements FindMemberUseCase {
 
         return memberVoList;
     }
+
+
 }

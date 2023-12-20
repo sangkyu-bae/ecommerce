@@ -26,6 +26,7 @@ public class ProductEntity {
     @Lob
     private String productImage;
 
+    private String aggregateIdentifier;
     @ManyToOne(fetch = FetchType.LAZY)
     private BrandEntity brand;
 

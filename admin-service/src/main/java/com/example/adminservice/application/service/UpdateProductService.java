@@ -41,6 +41,7 @@ public class UpdateProductService implements UpdateProductUseCase {
                 new ProductVo.ProductPrice(command.getPrice()),
                 new ProductVo.ProductDescription(command.getDescription()),
                 new ProductVo.ProductImage(command.getProductImage()),
+                new ProductVo.ProductAggregateIdentifier(null),
                 brand, category,productComponentEntityVos
         );
 

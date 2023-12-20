@@ -19,8 +19,8 @@ public class RemoveProductController {
 
     private final RemoveProductUseCase removeProductUseCase;
 
-    @Operation(summary = "remove product", description = "상품 삭제하기")
-    @DeleteMapping("/admin/delete/{productId}")
+    @Operation(summary = "remove product with kafka", description = "카프카로 상품 삭제하기")
+    @DeleteMapping("/admin/delete/kafka/{productId}")
     public ResponseEntity<Boolean> removeProduct(@PathVariable("productId") final long productId){
 
         DeleteProductCommand command = DeleteProductCommand.builder()

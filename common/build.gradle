@@ -10,6 +10,11 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    axonVersion = "4.8.0"
+}
+
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -18,7 +23,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor('org.projectlombok:lombok')
-
+    //axon
+    implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
+    implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
 }
 
 test {
