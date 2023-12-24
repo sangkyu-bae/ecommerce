@@ -43,6 +43,7 @@ public class ProductPersistenceAdapter implements FindProductPort,
                 .brand(productMapper.mapToBrand(productVo.getBrand()))
                 .category(productMapper.mapToCategory(productVo.getCategory()))
                 .productComponents(productMapper.mapToProductComponents(productVo.getProductComponents()))
+                .aggregateIdentifier(productVo.getAggregateIdentifier())
                 .build();
 
         createProductEntity.getProductComponents()

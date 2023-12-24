@@ -1,6 +1,5 @@
 package com.example.demo.application.service;
 
-import com.example.demo.adapter.in.axon.command.CheckRegisteredMemberCommand;
 import com.example.demo.adapter.out.persistence.MemberMapper;
 import com.example.demo.application.port.in.command.FindMemberByAddressCommand;
 import com.example.demo.application.port.in.command.FindMemberCommand;
@@ -40,6 +39,12 @@ public class FindMemberService implements FindMemberUseCase {
                 .collect(Collectors.toList());
 
         return memberVoList;
+    }
+
+    @Override
+    public MemberVo findMemberByMemberId(FindMemberCommand command) {
+        Member member = findMemberPort.findMemberByMemberId(new MemberVo.MemberUserId(command.getUserId()));
+        return memberMapper.mapToDomainEntity(member);
     }
 
 

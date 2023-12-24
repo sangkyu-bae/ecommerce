@@ -9,4 +9,6 @@ public interface FindMemberPort {
     boolean existMember(long userId);
 
     List<Member> findMemberListByAddress(MemberVo.MemberAddress memberAddress);
+
+    Member findMemberByMemberId(MemberVo.MemberUserId memberUserId);
 }

@@ -45,7 +45,7 @@ public class RegisterProductService implements RegisterProductUseCase {
                 );
 
 
-       ProductEntity productEntity = registerProductPort.createProduct(createProduct);
+        ProductEntity productEntity = registerProductPort.createProduct(createProduct);
 
         ProductCreateCommand axonCommand = ProductCreateCommand.builder()
                 .productImage(command.getProductImage())

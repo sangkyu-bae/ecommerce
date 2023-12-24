@@ -13,6 +13,20 @@ public class CheckRegisteredMemberCommand {
 
     private String createOrderId;
 
-    private long memberId;
+    private String checkRegisteredMemberId;
+
+    private long productId;
+
+    private long sizeId;
+
+    private int amount;
+
+    private int payment;
+
+    private String address;
+
+    private int status;
+
+    private long userId;
 
 }

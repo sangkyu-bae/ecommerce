@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterOrderController {
 
     private final RegisterOrderUseCase registerOrderUseCase;
-    @Operation(summary = "register order", description = "주문 등록")
-    @PostMapping("/order/register")
-    public ResponseEntity<OrderVo> registerOrder(@RequestBody RegisterOrderRequest request ,
+    @Operation(summary = "register order with kafka", description = "kafka로 주문 등록하기 (쓰레드 락)")
+    @PostMapping("/order/register/kafka")
+    public ResponseEntity<OrderVo> registerOrderByKafka(@RequestBody RegisterOrderRequest request ,
                                                  @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
 
         RegisterOrderCommand command = RegisterOrderCommand.builder()
@@ -40,4 +40,23 @@ public class RegisterOrderController {
         return ResponseEntity.ok().body(orderVo);
     }
 
+    @Operation(summary = "register order with axon", description = "axon 주문 등록하기 (saga구현 eda)")
+    @PostMapping("/order/register/axon")
+    public ResponseEntity<OrderVo> registerOrderByAxon(@RequestBody RegisterOrderRequest request ,
+                                                 @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
+
+        RegisterOrderCommand command = RegisterOrderCommand.builder()
+                .productId(request.getProductId())
+                .colorId(request.getColorId())
+                .sizeId(request.getSizeId())
+                .amount(request.getAmount())
+                .payment(request.getPayment())
+                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
+                .userId(userId)
+                .build();
+
+        OrderVo orderVo = registerOrderUseCase.registerOderByEvent(command);
+
+        return ResponseEntity.ok().body(orderVo);
+    }
 }

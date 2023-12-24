@@ -2,13 +2,18 @@ package com.example.adminservice.adapter.axon.aggregate;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.axon.event.ProductCreateEvent;
+import com.example.adminservice.application.port.out.UpdateProductSizePort;
+import com.example.adminservice.domain.SizeVo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
+import org.example.event.CheckRegisteredProductCommand;
+import org.example.event.CheckRegisteredProductEvent;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
@@ -31,16 +36,42 @@ public class ProductAggregate {
 
 
     @CommandHandler
-    public void handler(ProductCreateCommand command){
-        ProductCreateEvent event = ProductCreateEvent.builder()
-                .description(command.getDescription())
-                .price(command.getPrice())
-                .productImage(command.getProductImage())
-                .name(command.getName())
-                .aggregateIdentifier(command.getAggregateIdentifier())
-                .build();
+    public ProductAggregate(ProductCreateCommand command){
 
-        apply(event);
+        log.info("ProductCreateEvent Sourcing Handler!");
+        apply(new ProductCreateEvent(
+                command.getName(),
+                command.getPrice(),
+                command.getDescription(),
+                command.getProductImage(),
+                command.getAggregateIdentifier()
+        ));
+    }
+
+    @CommandHandler
+    public void handler(CheckRegisteredProductCommand command, UpdateProductSizePort port){
+        log.info("CheckRegisteredProductCommand Handler");
+
+        id = command.getAggregateIdentifier();
+
+        SizeVo sizeVo = SizeVo.createGenerateSizeVo(
+                new SizeVo.SizeId(command.getSizeId()),
+                new SizeVo.Size(0),
+                new SizeVo.Quantity(command.getAmount())
+        );
+
+        port.updateProductSize(sizeVo);
+
+        apply(new CheckRegisteredProductEvent(
+                command.getCreateOrderId(),
+                command.getProductId(),
+                command.getSizeId(),
+                command.getAmount(),
+                true,
+                command.getCheckRegisteredProductIdAndAmount()
+        ));
+
+
     }
 
     @EventSourcingHandler
@@ -53,4 +84,7 @@ public class ProductAggregate {
         productImage = event.getProductImage();
     }
 
+    public ProductAggregate(){
+
+    }
 }

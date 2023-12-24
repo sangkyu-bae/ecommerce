@@ -10,4 +10,9 @@ public interface MemberFeignClient {
 
     @GetMapping("/{memberId}")
     boolean getIsMember(@PathVariable("memberId") long memberId);
+
+    @GetMapping("/user/id/{memberId}")
+    Member getMember(@PathVariable("memberId") long memberId);
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.demo.module.domain.member;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,9 +14,12 @@ import java.util.Set;
 @Getter
 public class MemberVo {
 
-    private final long userId;
+    private final Long userId;
 
     private final String email;
+
+    @JsonIgnore
+    private final String password;
 
     private final String name;
 
@@ -33,10 +37,13 @@ public class MemberVo {
 
     private final LocalDateTime updateAt;
 
+    private final String aggregateIdentifier;
+
 
     public static MemberVo createGenerateMemberVo(
            MemberUserId memberUserId,
            MemberEmail memberEmail,
+           MemberPassword memberPassword,
            MemberName memberName,
            MemberAddress memberAddress,
            MemberEmailVerified memberEmailVerified,
@@ -44,11 +51,13 @@ public class MemberVo {
            MemberPhone memberPhone,
            MemberNotificationByEmail memberNotificationByEmail,
            MemberJoinAt memberJoinAt,
-           MemberUpdateAt memberUpdateAt
+           MemberUpdateAt memberUpdateAt,
+           MemberAggregateIdentifier memberAggregateIdentifier
     ){
         return new MemberVo(
                 memberUserId.getUserId(),
                 memberEmail.getEmail(),
+                memberPassword.getPassword(),
                 memberName.getName(),
                 memberAddress.getAddress(),
                 memberEmailVerified.emailVerified,
@@ -56,15 +65,16 @@ public class MemberVo {
                 memberPhone.getPhone(),
                 memberNotificationByEmail.notificationByEmail,
                 memberJoinAt.getJoinAt(),
-                memberUpdateAt.getUpdateAt()
+                memberUpdateAt.getUpdateAt(),
+                memberAggregateIdentifier.getAggregateIdentifier()
         );
     }
 
     @Value
     public static class MemberUserId{
-        long userId;
+        Long userId;
 
-        public MemberUserId(long value){
+        public MemberUserId(Long value){
             this.userId = value;
         }
     }
@@ -74,6 +84,15 @@ public class MemberVo {
 
         public MemberEmail(String value){
             this.email = value;
+        }
+    }
+
+    @Value
+    public static class MemberPassword{
+        String password;
+
+        public MemberPassword(String value){
+            this.password = value;
         }
     }
     @Value
@@ -138,6 +157,15 @@ public class MemberVo {
 
         public MemberUpdateAt(LocalDateTime value){
             this.updateAt = value;
+        }
+    }
+
+    @Value
+    public static class MemberAggregateIdentifier{
+        String aggregateIdentifier;
+
+        public MemberAggregateIdentifier(String value){
+            this.aggregateIdentifier= value;
         }
     }
 

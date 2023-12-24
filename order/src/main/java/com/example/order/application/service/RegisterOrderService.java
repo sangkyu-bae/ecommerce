@@ -1,5 +1,6 @@
 package com.example.order.application.service;
 
+import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
 import com.example.order.adapter.out.external.product.ProductInfoRequest;
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
@@ -11,6 +12,7 @@ import com.example.order.domain.OrderVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.CountDownLatchManager;
 import org.example.task.MemberTask;
 import org.example.task.OrderSubTask;
@@ -30,12 +32,10 @@ public class RegisterOrderService implements RegisterOrderUseCase {
 
     private final RegisterOrderPort registerOrderPort;
     private final OrderMapper orderMapper;
-    private final ResponseDeliveryInfoPort responseDeliveryInfoPort;
     private final RequestProductInfoPort requestProductInfoPort;
-    private final GetMemberPort getMemberPort;
     private final CountDownLatchManager countDownLatchManager;
-
     private final SendCreateOrderTaskPort sendCreateOrderTaskPort;
+    private final CommandGateway commandGateway;
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
@@ -88,6 +88,41 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public OrderVo registerOderByEvent(RegisterOrderCommand command) {
+
+        String orderAggregateIdentifier = UUID.randomUUID().toString();
+        OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
+                orderAggregateIdentifier,
+                command.getProductId(),
+                command.getColorId(),
+                command.getSizeId(),
+                command.getAmount(),
+                command.getPayment(),
+                command.getAddress(),
+                command.getStatus(),
+                command.getUserId()
+        );
+
+        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
+            if (throwable != null) {
+                log.error("throwable = " + throwable);
+                throw new RuntimeException(throwable);
+            } else{
+                System.out.println("result = " + result);
+                try {
+                    getOrderRequest(command);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+
+
+        return null;
     }
 
     private OrderVo getOrderRequest(RegisterOrderCommand command) throws JsonProcessingException {

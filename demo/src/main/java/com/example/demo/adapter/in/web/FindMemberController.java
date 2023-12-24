@@ -29,7 +29,7 @@ public class FindMemberController {
         return ResponseEntity.ok().body(memberVoList);
     }
 
-    @GetMapping("/user/{memberId}")
+    @GetMapping("/user/exist/{memberId}")
     public ResponseEntity<Boolean> existMemberByMemberId(@PathVariable("memberId") long memberId){
 
         FindMemberCommand command = FindMemberCommand.builder()
@@ -39,13 +39,14 @@ public class FindMemberController {
         return ResponseEntity.ok().body(isMember);
     }
 
-    @GetMapping("/user/eda/{memberId}")
-    public void existMemberByMemberIdByEvent(@PathVariable("memberId") long memberId){
+    @GetMapping("/user/id/{memberId}")
+    public ResponseEntity<MemberVo> findMemberById(@PathVariable("memberId") long memberId){
 
         FindMemberCommand command = FindMemberCommand.builder()
                 .userId(memberId)
                 .build();
-         findMemberUseCase.existMemberByEvent(command);
 
+        MemberVo memberVo = findMemberUseCase.findMemberByMemberId(command);
+        return ResponseEntity.ok().body(memberVo);
     }
 }

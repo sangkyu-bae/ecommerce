@@ -4,7 +4,7 @@ spring:
   application:
     name: admin-service
   datasource:
-    url: jdbc:mysql://localhost:3306/admins
+    url: jdbc:mysql://localhost:3306/shoes_product
     username: root
     password: wnsvaf309
   jpa:
@@ -51,14 +51,8 @@ logging:
 
 token:
   secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
-###################
-# Axon config #####
-###################
-axon:
-  serializer:
-    general : xstream
-  axonserver:
-    servers: 127.0.0.1:8124
+
+
 # 유레카 설정
 eureka:
   instance:
@@ -84,3 +78,13 @@ kafka:
       topic: remove-order-product
       group: remove-order-product.v1
 
+###################
+# Axon config #####
+###################
+axon:
+  serializer:
+    general : xstream
+    events : jackson
+    messages: jackson
+  axonserver:
+    servers: 127.0.0.1:8124

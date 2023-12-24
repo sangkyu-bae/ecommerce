@@ -1,101 +1,521 @@
-2023-12-15 14:21:23.497 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 18568 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
-2023-12-15 14:21:23.511 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
-2023-12-15 14:21:24.561 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=acc88657-14f5-3213-b191-0de15a2e1da7
-2023-12-15 14:21:24.652 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-12-15 14:21:24.654 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-12-15 14:21:24.656 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-12-15 14:21:26.927 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
-2023-12-15 14:21:26.928 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
-2023-12-15 14:21:26.928 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
-2023-12-15 14:21:26.928 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
-2023-12-15 14:21:26.928 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
-2023-12-15 14:21:26.929 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
-2023-12-15 14:21:26.929 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
-2023-12-15 14:21:26.929 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
-2023-12-15 14:21:26.929 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
-2023-12-15 14:21:26.929 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
-2023-12-15 14:21:26.930 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
-2023-12-15 14:21:26.930 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
-2023-12-15 14:21:26.930 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
-2023-12-15 14:21:26.930 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
-2023-12-15 14:21:27.261 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
-2023-12-15 14:21:29.309 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-12-15 14:21:29.337 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
-2023-12-15 14:21:29.412 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
-2023-12-15 14:21:29.441 INFO  ---- [main      ] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:21:29.461 INFO  ---- [main      ] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-12-15 14:21:29.462 INFO  ---- [main      ] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-12-15 14:21:29.462 INFO  ---- [main      ] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-12-15 14:21:29.462 INFO  ---- [main      ] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-12-15 14:21:29.462 INFO  ---- [main      ] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-12-15 14:21:29.462 INFO  ---- [main      ] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
-2023-12-15 14:21:29.463 INFO  ---- [main      ] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-12-15 14:21:29.990 INFO  ---- [main      ] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-12-15 14:21:29.992 INFO  ---- [main      ] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
-2023-12-15 14:21:29.996 INFO  ---- [main      ] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-12-15 14:21:30.002 INFO  ---- [main      ] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1702617690001 with initial instances count: 0
-2023-12-15 14:21:30.004 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application API-GATEWAY with eureka with status UP
-2023-12-15 14:21:30.004 INFO  ---- [main      ] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1702617690004, current=UP, previous=STARTING]
-2023-12-15 14:21:30.006 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000: registering service...
-2023-12-15 14:21:30.189 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000 - registration status: 204
-2023-12-15 14:21:31.005 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
-2023-12-15 14:21:31.009 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8000
-2023-12-15 14:21:32.738 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 10.818 seconds (JVM running for 11.463)
-2023-12-15 14:21:59.997 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
-2023-12-15 14:21:59.998 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
-2023-12-15 14:21:59.999 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
-2023-12-15 14:21:59.999 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
-2023-12-15 14:22:00.000 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
-2023-12-15 14:22:00.001 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
-2023-12-15 14:22:00.002 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
-2023-12-15 14:22:00.028 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
-2023-12-15 14:26:29.467 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:31:29.469 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:36:29.476 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:41:29.488 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:46:29.496 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:51:29.509 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 14:56:29.523 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:01:29.547 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:06:29.564 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:11:29.579 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:16:29.595 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:18:29.177 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309!
-2023-12-15 15:18:31.186 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309!, 응답코드 : 200 OK ---> 처리 시간 4
-2023-12-15 15:19:08.829 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/16
-2023-12-15 15:19:09.428 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/16, 응답코드 : 400 BAD_REQUEST ---> 처리 시간 1
-2023-12-15 15:21:29.643 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:22:23.554 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register
-2023-12-15 15:22:27.155 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register, 응답코드 : 200 OK ---> 처리 시간 2
-2023-12-15 15:26:29.656 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:27:48.461 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register
-2023-12-15 15:27:49.949 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:28:42.846 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:28:43.141 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 3
-2023-12-15 15:29:50.951 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:29:51.028 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:31:29.662 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:32:15.813 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:32:15.900 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 2
-2023-12-15 15:34:09.946 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:34:10.062 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:34:20.697 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:34:20.783 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:35:09.339 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:35:09.422 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 2
-2023-12-15 15:35:20.046 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:35:20.130 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:36:29.679 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:39:36.803 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:39:36.924 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 4
-2023-12-15 15:41:29.705 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:44:22.226 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:44:23.434 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 4
-2023-12-15 15:45:28.126 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:45:28.239 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 2
-2023-12-15 15:45:42.076 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:45:42.165 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 1
-2023-12-15 15:46:29.723 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
-2023-12-15 15:48:10.839 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/18
-2023-12-15 15:48:10.918 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/18, 응답코드 : 200 OK ---> 처리 시간 2
-2023-12-15 15:51:29.737 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 15:56:43.817 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 13844 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-12-24 15:56:43.844 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-12-24 15:56:47.176 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=acc88657-14f5-3213-b191-0de15a2e1da7
+2023-12-24 15:56:47.464 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 15:56:47.467 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 15:56:47.471 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 15:56:54.506 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-12-24 15:56:54.509 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-12-24 15:56:54.511 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-12-24 15:56:54.512 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-12-24 15:56:54.513 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-12-24 15:56:54.513 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-12-24 15:56:54.514 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-12-24 15:56:54.516 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-12-24 15:56:54.517 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-12-24 15:56:54.518 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-12-24 15:56:54.518 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-12-24 15:56:54.519 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-12-24 15:56:54.520 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-12-24 15:56:54.521 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-12-24 15:56:55.383 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-12-24 15:57:03.170 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-12-24 15:57:03.276 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-12-24 15:57:03.644 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-12-24 15:57:03.664 INFO  ---- [main      ] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 15:57:03.741 INFO  ---- [main      ] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-12-24 15:57:03.743 INFO  ---- [main      ] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-12-24 15:57:03.744 INFO  ---- [main      ] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-12-24 15:57:03.745 INFO  ---- [main      ] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-12-24 15:57:03.747 INFO  ---- [main      ] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-12-24 15:57:03.748 INFO  ---- [main      ] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-12-24 15:57:03.749 INFO  ---- [main      ] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-12-24 15:57:06.622 INFO  ---- [main      ] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-12-24 15:57:06.631 INFO  ---- [main      ] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-12-24 15:57:06.641 INFO  ---- [main      ] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-12-24 15:57:06.658 INFO  ---- [main      ] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1703401026655 with initial instances count: 0
+2023-12-24 15:57:06.661 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application API-GATEWAY with eureka with status UP
+2023-12-24 15:57:06.665 INFO  ---- [main      ] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1703401026665, current=UP, previous=STARTING]
+2023-12-24 15:57:06.673 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000: registering service...
+2023-12-24 15:57:07.181 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000 - registration status: 204
+2023-12-24 15:57:10.023 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-12-24 15:57:10.028 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8000
+2023-12-24 15:57:16.239 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 39.074 seconds (JVM running for 41.158)
+2023-12-24 15:57:36.640 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-12-24 15:57:36.642 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-12-24 15:57:36.643 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-12-24 15:57:36.644 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-12-24 15:57:36.645 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-12-24 15:57:36.645 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
+2023-12-24 15:57:36.647 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-12-24 15:57:36.678 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-12-24 16:02:03.767 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:07:03.782 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:12:03.786 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:14:28.733 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:14:30.150 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 500 INTERNAL_SERVER_ERROR ---> 처리 시간 4
+2023-12-24 16:17:03.799 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:22:03.809 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:22:35.571 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:22:35.575 WARN  ---- [http-nio-3] [RoundRobinLoadBalancer:98] getInstanceResponse   No servers available for service: auth-service
+2023-12-24 16:22:58.041 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:22:58.725 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 500 INTERNAL_SERVER_ERROR ---> 처리 시간 0
+2023-12-24 16:26:42.656 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:26:44.722 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-4]  500 Server Error for HTTP POST "/user"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65173
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:26:52.553 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:26:53.617 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 200 OK ---> 처리 시간 2
+2023-12-24 16:27:03.831 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:30:00.165 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:30:02.206 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-6]  500 Server Error for HTTP POST "/user"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65062
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:30:04.090 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:30:06.136 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-7]  500 Server Error for HTTP POST "/user"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65173
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:30:12.749 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user
+2023-12-24 16:30:13.743 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user, 응답코드 : 200 OK ---> 처리 시간 11
+2023-12-24 16:31:16.279 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 16:31:18.312 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-9]  500 Server Error for HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65173
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:31:20.352 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 16:31:22.383 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-10]  500 Server Error for HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65288
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:31:23.450 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 16:31:25.484 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-11]  500 Server Error for HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:65062
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 16:31:38.066 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 16:31:38.489 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 16:32:03.855 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:37:03.874 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:41:39.420 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/admin/register/product
+2023-12-24 16:41:40.252 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/admin/register/product, 응답코드 : 400 BAD_REQUEST ---> 처리 시간 1
+2023-12-24 16:42:03.883 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:43:52.364 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/admin/register/product
+2023-12-24 16:43:52.670 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/admin/register/product, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 16:47:03.897 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:52:03.911 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 16:57:03.912 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:02:03.929 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:07:03.933 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:12:03.950 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:13:50.098 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 17:13:52.146 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-15]  500 Server Error for HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:49211
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/user/login?email=uiwv29l@naver.com&password=wnsvaf309" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:13:57.892 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 17:13:58.646 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:14:15.745 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register
+2023-12-24 17:14:16.136 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register, 응답코드 : 405 METHOD_NOT_ALLOWED ---> 처리 시간 0
+2023-12-24 17:15:53.670 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:15:53.778 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:17:03.952 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:17:28.948 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/2
+2023-12-24 17:17:28.976 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/2, 응답코드 : 500 INTERNAL_SERVER_ERROR ---> 처리 시간 1
+2023-12-24 17:18:51.484 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:18:53.526 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-20]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:18:57.623 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:18:59.671 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-21]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:00.780 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:02.834 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-22]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:09.150 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:11.214 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-23]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:17.242 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:19.288 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-24]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:20.740 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:22.776 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-25]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:27.425 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:29.467 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-26]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:30.953 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:31.363 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/id/2, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:19:46.156 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:48.194 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [cf1de2a1-28]  500 Server Error for HTTP GET "/user/id/2"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:51825
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP GET "/user/id/2" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:19:49.560 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:19:49.602 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/id/2, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:22:02.061 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:22:02.140 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 3
+2023-12-24 17:22:03.953 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:26:34.829 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:26:35.567 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 12
+2023-12-24 17:27:03.970 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:28:29.078 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:28:29.882 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 2
+2023-12-24 17:29:37.534 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:29:37.601 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/id/2, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:32:03.981 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:35:20.876 INFO  ---- [main      ] [GatewayApplication:55] logStarting   Starting GatewayApplication using Java 11.0.13 on DESKTOP-MNMB87E with PID 28208 (C:\Users\tkdrb\IdeaProjects\ecommerce\gateway\build\classes\java\main started by tkdrb in C:\Users\tkdrb\IdeaProjects\ecommerce\gateway)
+2023-12-24 17:35:20.882 INFO  ---- [main      ] [GatewayApplication:631] logStartupProfileInfo   No active profile set, falling back to 1 default profile: "default"
+2023-12-24 17:35:22.157 INFO  ---- [main      ] [GenericScope:283] setSerializationId   BeanFactory id=acc88657-14f5-3213-b191-0de15a2e1da7
+2023-12-24 17:35:22.260 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 17:35:22.263 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 17:35:22.265 INFO  ---- [main      ] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:376] postProcessAfterInitialization   Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-12-24 17:35:25.056 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [After]
+2023-12-24 17:35:25.057 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Before]
+2023-12-24 17:35:25.057 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Between]
+2023-12-24 17:35:25.058 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Cookie]
+2023-12-24 17:35:25.058 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Header]
+2023-12-24 17:35:25.059 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Host]
+2023-12-24 17:35:25.059 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Method]
+2023-12-24 17:35:25.059 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Path]
+2023-12-24 17:35:25.060 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Query]
+2023-12-24 17:35:25.060 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [ReadBody]
+2023-12-24 17:35:25.061 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [RemoteAddr]
+2023-12-24 17:35:25.061 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2023-12-24 17:35:25.061 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [Weight]
+2023-12-24 17:35:25.061 INFO  ---- [main      ] [RouteDefinitionRouteLocator:89] lambda$initFactories$1   Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2023-12-24 17:35:25.479 INFO  ---- [main      ] [DiscoveryClientOptionalArgsConfiguration:71] restTemplateDiscoveryClientOptionalArgs   Eureka HTTP Client uses RestTemplate.
+2023-12-24 17:35:28.264 WARN  ---- [main      ] [LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger:83] logWarning   Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-12-24 17:35:28.294 INFO  ---- [main      ] [InstanceInfoFactory:67] create   Setting initial instance status as: STARTING
+2023-12-24 17:35:28.393 INFO  ---- [main      ] [DiscoveryClient:372] <init>   Initializing Eureka in region us-east-1
+2023-12-24 17:35:28.411 INFO  ---- [main      ] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:35:28.445 INFO  ---- [main      ] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-12-24 17:35:28.446 INFO  ---- [main      ] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-12-24 17:35:28.446 INFO  ---- [main      ] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-12-24 17:35:28.447 INFO  ---- [main      ] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-12-24 17:35:28.447 INFO  ---- [main      ] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-12-24 17:35:28.448 INFO  ---- [main      ] [DiscoveryClient:1013] fetchRegistry   Application version is -1: true
+2023-12-24 17:35:28.448 INFO  ---- [main      ] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-12-24 17:35:28.888 INFO  ---- [main      ] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-12-24 17:35:28.892 INFO  ---- [main      ] [DiscoveryClient:1321] initScheduledTasks   Starting heartbeat executor: renew interval is: 30
+2023-12-24 17:35:28.896 INFO  ---- [main      ] [InstanceInfoReplicator:60] <init>   InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-12-24 17:35:28.904 INFO  ---- [main      ] [DiscoveryClient:492] <init>   Discovery Client initialized at timestamp 1703406928902 with initial instances count: 0
+2023-12-24 17:35:28.906 INFO  ---- [main      ] [EurekaServiceRegistry:41] register   Registering application API-GATEWAY with eureka with status UP
+2023-12-24 17:35:28.907 INFO  ---- [main      ] [DiscoveryClient:1352] notify   Saw local status change event StatusChangeEvent [timestamp=1703406928907, current=UP, previous=STARTING]
+2023-12-24 17:35:28.909 INFO  ---- [plicator-0] [DiscoveryClient:873] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000: registering service...
+2023-12-24 17:35:28.978 INFO  ---- [plicator-0] [DiscoveryClient:882] register   DiscoveryClient_API-GATEWAY/192.168.0.236:8000 - registration status: 204
+2023-12-24 17:35:29.954 INFO  ---- [main      ] [NettyWebServer:111] start   Netty started on port 8000
+2023-12-24 17:35:29.957 INFO  ---- [main      ] [EurekaAutoServiceRegistration:144] onApplicationEvent   Updating port to 8000
+2023-12-24 17:35:32.511 INFO  ---- [main      ] [GatewayApplication:61] logStarted   Started GatewayApplication in 14.445 seconds (JVM running for 15.493)
+2023-12-24 17:35:58.899 INFO  ---- [Executor-0] [DiscoveryClient:1007] fetchRegistry   Disable delta property : false
+2023-12-24 17:35:58.901 INFO  ---- [Executor-0] [DiscoveryClient:1008] fetchRegistry   Single vip registry refresh property : null
+2023-12-24 17:35:58.902 INFO  ---- [Executor-0] [DiscoveryClient:1009] fetchRegistry   Force full registry fetch : false
+2023-12-24 17:35:58.903 INFO  ---- [Executor-0] [DiscoveryClient:1010] fetchRegistry   Application is null : false
+2023-12-24 17:35:58.904 INFO  ---- [Executor-0] [DiscoveryClient:1011] fetchRegistry   Registered Applications size is zero : true
+2023-12-24 17:35:58.905 INFO  ---- [Executor-0] [DiscoveryClient:1013] fetchRegistry   Application version is -1: false
+2023-12-24 17:35:58.905 INFO  ---- [Executor-0] [DiscoveryClient:1097] getAndStoreFullRegistry   Getting all instance registry info from the eureka server
+2023-12-24 17:35:58.929 INFO  ---- [Executor-0] [DiscoveryClient:1106] getAndStoreFullRegistry   The response status is 200
+2023-12-24 17:39:05.749 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:39:06.617 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:40:28.461 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:41:12.193 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:41:12.642 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/id/2, 응답코드 : 200 OK ---> 처리 시간 2
+2023-12-24 17:41:17.611 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:41:17.943 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:43:31.495 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:43:31.841 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:44:19.370 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:44:19.655 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:45:22.586 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/id/2
+2023-12-24 17:45:22.619 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/id/2, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 17:45:28.470 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:49:27.676 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:49:28.086 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:50:28.475 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 17:51:16.158 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:51:16.675 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 2
+2023-12-24 17:53:23.660 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:53:25.753 ERROR ---- [http-nio-3] [AbstractErrorWebExceptionHandler:102] error   [e653c4b8-9]  500 Server Error for HTTP POST "/order/register/axon"
+io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:8084
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ⇢ HTTP POST "/order/register/axon" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:779)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-12-24 17:54:24.854 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 17:54:26.155 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 1
+2023-12-24 17:55:28.487 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:00:28.502 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:00:57.174 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309
+2023-12-24 18:00:58.088 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/user/login?email=uiwv29l@naver.com&password=wnsvaf309, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 18:01:08.258 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
+2023-12-24 18:01:08.566 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
+2023-12-24 18:05:28.509 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration

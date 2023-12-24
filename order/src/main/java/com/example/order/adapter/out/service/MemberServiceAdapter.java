@@ -11,8 +11,14 @@ public class MemberServiceAdapter implements GetMemberPort {
 
     private final MemberFeignClient memberFeignClient;
     @Override
-    public boolean getMember(long memberId) {
+    public boolean getIsMember(long memberId) {
         boolean isMember = memberFeignClient.getIsMember(memberId);
         return isMember;
+    }
+
+    @Override
+    public Member getMember(long userId) {
+        Member member = memberFeignClient.getMember(userId);
+        return member;
     }
 }

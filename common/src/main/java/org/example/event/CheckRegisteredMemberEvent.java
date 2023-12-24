@@ -13,10 +13,11 @@ public class CheckRegisteredMemberEvent {
 
     private String createOrderId;
 
+    private String checkRegisteredMemberId;
     private long productId;
-
-    private long colorId;
-
+//
+//    private long colorId;
+//
     private long sizeId;
 
     private int amount;

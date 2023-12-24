@@ -7,4 +7,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public interface RegisterOrderUseCase {
 
     OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException;
+
+    OrderVo registerOderByEvent(RegisterOrderCommand command);
 }

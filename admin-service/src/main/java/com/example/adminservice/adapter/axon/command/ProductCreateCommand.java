@@ -2,10 +2,7 @@ package com.example.adminservice.adapter.axon.command;
 
 
 import com.example.adminservice.adapter.axon.event.ProductCreateEvent;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.SelfValidating;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,7 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor @Builder
+@Builder
+@EqualsAndHashCode(callSuper = false)
 public class ProductCreateCommand extends SelfValidating<ProductCreateCommand> {
     @NotBlank
     @Length(min = 2, max = 30)
@@ -38,5 +36,9 @@ public class ProductCreateCommand extends SelfValidating<ProductCreateCommand> {
         this.productImage = productImage;
         this.aggregateIdentifier = aggregateIdentifier;
         this.validateSelf();
+    }
+
+    public ProductCreateCommand(){
+
     }
 }

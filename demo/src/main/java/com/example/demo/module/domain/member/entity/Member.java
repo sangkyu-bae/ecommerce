@@ -43,6 +43,7 @@ public class Member {
 
     private LocalDateTime updateAt;
 
+    private String aggregateIdentifier;
     @OneToMany(mappedBy = "member", cascade = ALL, orphanRemoval = true)
     @Builder.Default
     private Set<Authority> authorities = new HashSet<>();
