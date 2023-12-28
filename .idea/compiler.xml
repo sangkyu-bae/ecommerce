@@ -8,8 +8,10 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
         </processorPath>
         <module name="ecommerce.common.test" />
+        <module name="ecommerce.coupon.test" />
         <module name="ecommerce.delivery.main" />
         <module name="ecommerce.member-aggregation-service.test" />
+        <module name="ecommerce.coupon.main" />
         <module name="ecommerce.member-aggregation-service.main" />
         <module name="ecommerce.common.main" />
         <module name="ecommerce.order.main" />

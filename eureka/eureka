@@ -301,3 +301,24 @@
 2023-12-24 18:05:03.533 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
 2023-12-24 18:06:03.539 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
 2023-12-24 18:07:03.550 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-24 18:08:03.559 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 8ms
+2023-12-24 18:09:03.563 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-24 18:10:03.566 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-24 18:11:03.581 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 14ms
+2023-12-24 18:12:03.587 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-24 18:13:03.601 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 13ms
+2023-12-24 18:14:03.608 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 6ms
+2023-12-24 18:15:03.620 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-24 18:16:03.622 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 1ms
+2023-12-24 18:17:03.631 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 9ms
+2023-12-24 18:18:03.639 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 7ms
+2023-12-24 18:19:03.650 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 11ms
+2023-12-24 18:20:03.265 INFO  ---- [oldUpdater] [PeerAwareInstanceRegistryImpl:552] updateRenewalThreshold   Current renewal threshold is : 8
+2023-12-24 18:20:03.653 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-24 18:21:03.653 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-24 18:22:03.666 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 12ms
+2023-12-24 18:23:03.670 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 3ms
+2023-12-24 18:24:03.675 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms
+2023-12-24 18:25:03.679 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 4ms
+2023-12-24 18:26:03.680 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 0ms
+2023-12-24 18:27:03.685 INFO  ---- [ctionTimer] [AbstractInstanceRegistry:1247] run   Running the evict task with compensationTime 5ms

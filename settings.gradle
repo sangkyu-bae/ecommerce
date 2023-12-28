@@ -7,4 +7,5 @@ include 'delivery'
 include 'demo'
 include 'task-consumer'
 include 'member-aggregation-service'
+include 'coupon'
 

@@ -519,3 +519,7 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 2023-12-24 18:01:08.258 INFO  ---- [http-nio-3] [GlobalFilter:36] lambda$apply$1   [글로벌 필터] REQUEST 요청 >>>> IP :/0:0:0:0:0:0:0:1 ,URI : http://localhost:8000/order/register/axon
 2023-12-24 18:01:08.566 INFO  ---- [http-nio-3] [GlobalFilter:40] lambda$apply$0   [글로벌 필터] RESPONSE 응답 >>>> IP : /0:0:0:0:0:0:0:1, URI : http://localhost:8000/order/register/axon, 응답코드 : 200 OK ---> 처리 시간 0
 2023-12-24 18:05:28.509 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:10:28.521 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:15:28.534 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:20:28.551 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
+2023-12-24 18:25:28.562 INFO  ---- [executor-0] [ConfigClusterResolver:43] getClusterEndpoints   Resolving eureka endpoints via configuration
