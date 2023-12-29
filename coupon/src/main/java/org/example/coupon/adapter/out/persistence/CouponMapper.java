@@ -21,7 +21,8 @@ public class CouponMapper {
                 new CouponVo.CouponSalePercent(coupon.getSalePercent()),
                 new CouponVo.CouponName(coupon.getName()),
                 new CouponVo.CouponCreateAt(coupon.getCreateAt()),
-                null
+                null,
+                new CouponVo.CouponAggregateIdentifier(coupon.getAggregateIdentifier())
         );
 
         List<CouponComponentVo> couponComponentVoList = coupon.getCouponComponents().stream()
@@ -30,7 +31,7 @@ public class CouponMapper {
                         new CouponComponentVo.CouponComponentUserId(couponComponentEntity.getUserId()),
                         CouponComponentVo.CouponStatusCode.findStatusCode(couponComponentEntity.getStatus()),
                         new CouponComponentVo.CouponComponentEndAt(couponComponentEntity.getEndAt()),
-                        couponVo
+                        null
                 )).collect(Collectors.toList());
 
         couponVo.setCouponComponentVoList(couponComponentVoList);

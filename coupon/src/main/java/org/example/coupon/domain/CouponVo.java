@@ -20,13 +20,16 @@ public class CouponVo {
     private final LocalDateTime creatAt;
     @Setter
     private List<CouponComponentVo> couponComponentVoList;
+
+    private String aggregateIdentifier;
     public static CouponVo createGenerateCouponVo(
             CouponId couponId,
             CouponCreateAdminId couponCreateAdminUserId,
             CouponSalePercent couponSalePercent,
             CouponName couponName,
             CouponCreateAt couponCreateAt,
-            List<CouponComponentVo> couponComponentVoList
+            List<CouponComponentVo> couponComponentVoList,
+            CouponAggregateIdentifier couponAggregateIdentifier
     ){
         return new CouponVo(
                 couponId.getId(),
@@ -34,7 +37,8 @@ public class CouponVo {
                 couponSalePercent.getSalePercent(),
                 couponName.getName(),
                 couponCreateAt.getCreateAt(),
-                couponComponentVoList
+                couponComponentVoList,
+                couponAggregateIdentifier.getAggregateIdentifier()
         );
     }
 
@@ -93,5 +97,13 @@ public class CouponVo {
         }
     }
 
+    @Value
+    public static class CouponAggregateIdentifier{
+        String aggregateIdentifier;
+
+        public CouponAggregateIdentifier(String value){
+            this.aggregateIdentifier = value;
+        }
+    }
 
 }

@@ -28,4 +28,6 @@ public class CouponEntity {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "coupon")
     private List<CouponComponentEntity> couponComponents;
+
+    private String aggregateIdentifier;
 }

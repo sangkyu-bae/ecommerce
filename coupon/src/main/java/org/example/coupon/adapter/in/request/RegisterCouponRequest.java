@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegisterCouponRequest {
     private String name;
+
+    private int salePercent;
 }

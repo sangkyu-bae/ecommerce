@@ -11,4 +11,6 @@ public interface FindMemberPort {
     List<Member> findMemberListByAddress(MemberVo.MemberAddress memberAddress);
 
     Member findMemberByMemberId(MemberVo.MemberUserId memberUserId);
+
+    List<Member> findMemberAll();
 }

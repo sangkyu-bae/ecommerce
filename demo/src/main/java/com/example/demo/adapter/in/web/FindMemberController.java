@@ -49,4 +49,11 @@ public class FindMemberController {
         MemberVo memberVo = findMemberUseCase.findMemberByMemberId(command);
         return ResponseEntity.ok().body(memberVo);
     }
+
+    @GetMapping("/user/all")
+    public ResponseEntity<List<MemberVo>> findAllMember(){
+
+        List<MemberVo> memberVoList = findMemberUseCase.findAllMember();
+        return ResponseEntity.ok().body(memberVoList);
+    }
 }

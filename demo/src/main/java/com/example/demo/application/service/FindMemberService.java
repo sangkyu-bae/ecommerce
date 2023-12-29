@@ -26,6 +26,7 @@ public class FindMemberService implements FindMemberUseCase {
     private final MemberMapper memberMapper;
 
     private final CommandGateway commandGateway;
+
     @Override
     public boolean existMember(FindMemberCommand command) {
         return findMemberPort.existMember(command.getUserId());
@@ -35,7 +36,7 @@ public class FindMemberService implements FindMemberUseCase {
     public List<MemberVo> findMemberListByAddress(FindMemberByAddressCommand command) {
         List<Member> members = findMemberPort.findMemberListByAddress(new MemberVo.MemberAddress(command.getAddressName()));
         List<MemberVo> memberVoList = members.stream().
-                map(member-> memberMapper.mapToDomainEntity(member))
+                map(member -> memberMapper.mapToDomainEntity(member))
                 .collect(Collectors.toList());
 
         return memberVoList;
@@ -47,5 +48,13 @@ public class FindMemberService implements FindMemberUseCase {
         return memberMapper.mapToDomainEntity(member);
     }
 
+    @Override
+    public List<MemberVo> findAllMember() {
+        List<Member> memberList = findMemberPort.findMemberAll();
+        List<MemberVo> memberVoList = memberList.stream()
+                .map(member -> memberMapper.mapToDomainEntity(member))
+                .collect(Collectors.toList());
 
+        return memberVoList;
+    }
 }

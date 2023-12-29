@@ -25,6 +25,7 @@ public class CouponPersistenceAdapter implements RegisterCouponPort {
                 .createAdminId(couponVo.getCreateAdminId())
                 .salePercent(couponVo.getSalePercent())
                 .createAt(couponVo.getCreatAt())
+                .aggregateIdentifier(couponVo.getAggregateIdentifier())
                 .build();
 
         List<CouponComponentEntity> couponComponentEntityList = couponVo.getCouponComponentVoList().stream()

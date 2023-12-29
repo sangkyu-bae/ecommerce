@@ -12,4 +12,6 @@ public interface FindMemberUseCase {
     List<MemberVo> findMemberListByAddress(FindMemberByAddressCommand command);
 
     MemberVo findMemberByMemberId(FindMemberCommand command);
+
+    List<MemberVo> findAllMember();
 }

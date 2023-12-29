@@ -44,4 +44,10 @@ public class MemberPersistenceAdapter implements FindMemberPort, RegisterMemberP
                 .build();
         return memberRepository.save(joinMember);
     }
+
+    @Override
+    public List<Member> findMemberAll() {
+        return memberRepository.findAll();
+    }
+
 }

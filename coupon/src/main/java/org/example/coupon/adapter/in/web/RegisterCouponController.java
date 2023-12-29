@@ -27,9 +27,25 @@ public class RegisterCouponController {
         RegisterCouponCommand command = RegisterCouponCommand.builder()
                 .name(request.getName())
                 .createAdminUserId(userId)
+                .salePercent(request.getSalePercent())
                 .build();
 
         CouponVo createCoupon = registerCouponUseCase.RegisterCouponByAllUser(command);
+
+        return ResponseEntity.ok().body(createCoupon);
+    }
+
+    @Operation(summary = "register coupon with axon", description = "모든 유저에게 쿠폰 등록하기 axon")
+    @PostMapping("/coupon/all-user/axon")
+    public ResponseEntity<CouponVo> registerCouponWithAxon(@RequestBody RegisterCouponRequest request,
+                                                   @RequestHeader("X-User-Id") Long userId){
+        RegisterCouponCommand command = RegisterCouponCommand.builder()
+                .name(request.getName())
+                .createAdminUserId(userId)
+                .salePercent(request.getSalePercent())
+                .build();
+
+        CouponVo createCoupon = registerCouponUseCase.RegisterCouponByAllUserWithAxon(command);
 
         return ResponseEntity.ok().body(createCoupon);
     }

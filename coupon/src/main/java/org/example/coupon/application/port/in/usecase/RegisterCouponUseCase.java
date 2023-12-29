@@ -5,5 +5,7 @@ import org.example.coupon.domain.CouponVo;
 
 public interface RegisterCouponUseCase {
     CouponVo RegisterCouponByAllUser(RegisterCouponCommand command);
+
+    CouponVo RegisterCouponByAllUserWithAxon(RegisterCouponCommand command);
 }
 
