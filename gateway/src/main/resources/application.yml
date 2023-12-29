@@ -42,8 +42,14 @@ spring:
           uri: lb://delivery-service
           predicates:
             - Path=/delivery/**
-#          filters:
-#            - AuthorizationHeaderFilter
+          filters:
+            - AuthorizationHeaderFilter
+        - id: coupon-service
+          uri: lb://coupon-service
+          predicates:
+            - Path=/coupon/**
+          filters:
+            - AuthorizationHeaderFilter
 
 
 

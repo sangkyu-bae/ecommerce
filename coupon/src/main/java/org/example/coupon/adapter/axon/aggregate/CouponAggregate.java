@@ -9,6 +9,8 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.example.coupon.adapter.axon.command.CouponRequestCreateCommand;
 import org.example.coupon.adapter.axon.event.CouponCreateEvent;
+import org.example.event.CheckRegisteredCouponCommand;
+import org.example.event.CheckRegisteredCouponEvent;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -62,6 +64,23 @@ public class CouponAggregate {
                 command.getCreateAt(),
                 command.getName(),
                 couponComponentCreateEvents
+        ));
+    }
+
+    @CommandHandler
+    public void handler(CheckRegisteredCouponCommand command){
+        log.info("CheckRegisteredCouponCommand Sourcing Handler!");
+        /**
+         * port 만들어서 true,fail 선택
+         * Exeception 상황 시 
+         * */
+        apply(new CheckRegisteredCouponEvent(
+                command.getCreateOrderId(),
+                true,
+                command.getCheckRegisteredCoupon(),
+                command.getCouponId(),
+                command.getProductSizeId(),
+                command.getProductAmount()
         ));
     }
 

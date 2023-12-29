@@ -31,7 +31,7 @@ public class RegisterOrderController {
                 .sizeId(request.getSizeId())
                 .amount(request.getAmount())
                 .payment(request.getPayment())
-                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
+//                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
                 .userId(userId)
                 .build();
 
@@ -51,11 +51,11 @@ public class RegisterOrderController {
                 .sizeId(request.getSizeId())
                 .amount(request.getAmount())
                 .payment(request.getPayment())
-                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
                 .userId(userId)
+                .couponId(request.getCouponId())
                 .build();
 
-        OrderVo orderVo = registerOrderUseCase.registerOderByEvent(command);
+        OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
 
         return ResponseEntity.ok().body(orderVo);
     }

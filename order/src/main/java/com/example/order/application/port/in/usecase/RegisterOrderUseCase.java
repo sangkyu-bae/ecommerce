@@ -8,5 +8,5 @@ public interface RegisterOrderUseCase {
 
     OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException;
 
-    OrderVo registerOderByEvent(RegisterOrderCommand command);
+    OrderVo registerOrderByEvent(RegisterOrderCommand command);
 }

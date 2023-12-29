@@ -91,7 +91,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     }
 
     @Override
-    public OrderVo registerOderByEvent(RegisterOrderCommand command) {
+    public OrderVo registerOrderByEvent(RegisterOrderCommand command) {
 
         String orderAggregateIdentifier = UUID.randomUUID().toString();
         OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
@@ -102,8 +102,9 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 command.getAmount(),
                 command.getPayment(),
                 command.getAddress(),
-                command.getStatus(),
-                command.getUserId()
+                OrderVo.StatusCode.ORDER.getStatus(),
+                command.getUserId(),
+                command.getCouponId()
         );
 
         commandGateway.send(axonCommand).whenComplete((result, throwable) -> {

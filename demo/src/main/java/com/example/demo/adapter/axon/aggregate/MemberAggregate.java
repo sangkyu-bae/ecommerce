@@ -80,7 +80,8 @@ public class MemberAggregate {
                 command.getAmount(),
                 command.getPayment(),
                 command.getAddress(),
-                existMember
+                existMember,
+                command.getCouponId()
         ));
     }
 

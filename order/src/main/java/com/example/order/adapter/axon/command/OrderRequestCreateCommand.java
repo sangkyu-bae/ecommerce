@@ -3,7 +3,6 @@ package com.example.order.adapter.axon.command;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @AllArgsConstructor
@@ -27,4 +26,6 @@ public class OrderRequestCreateCommand {
     private int status;
 
     private long userId;
+
+    private Long couponId;
 }

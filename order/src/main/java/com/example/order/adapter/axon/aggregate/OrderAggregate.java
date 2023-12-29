@@ -42,34 +42,11 @@ public class OrderAggregate {
                 command.getPayment(),
                 command.getAddress(),
                 command.getStatus(),
-                command.getUserId()
+                command.getUserId(),
+                command.getCouponId()
         ));
 
     }
-//    @CommandHandler
-//    public void handler(OrderRequestCreateCommand command){
-//        System.out.println("RechargingMoneyRequestCreateCommand Handler");
-//
-//        //axon에 이벤트 생성하여 식별자를 만들 위한 event 소싱
-//        apply(new OrderCreateEvent(
-//                command.getCreateOrderId(),
-//                command.getUserId()
-//        ));
-//
-//        // Saga Start
-////        apply(new RegisterOrderCreatedEvent(
-////                command.getCreateOrderId(),
-////                command.getProductId(),
-////                command.getColorId(),
-////                command.getSizeId(),
-////                command.getAmount(),
-////                command.getPayment(),
-////                command.getAddress(),
-////                command.getStatus(),
-////                command.getUserId()
-////        ));
-//    }
-
     @EventSourcingHandler
     public void on (OrderCreateEvent event){
         this.id = event.getAggregateIdentifier();

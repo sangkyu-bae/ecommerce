@@ -37,8 +37,8 @@ public class RegisterCouponController {
 
     @Operation(summary = "register coupon with axon", description = "모든 유저에게 쿠폰 등록하기 axon")
     @PostMapping("/coupon/all-user/axon")
-    public ResponseEntity<CouponVo> registerCouponWithAxon(@RequestBody RegisterCouponRequest request,
-                                                   @RequestHeader("X-User-Id") Long userId){
+    public ResponseEntity<CouponVo> registerCouponByAllUserWithAxon(@RequestBody RegisterCouponRequest request,
+                                                                    @RequestHeader("X-User-Id") Long userId){
         RegisterCouponCommand command = RegisterCouponCommand.builder()
                 .name(request.getName())
                 .createAdminUserId(userId)

@@ -29,4 +29,6 @@ public class CheckRegisteredMemberCommand {
 
     private long userId;
 
+    private Long couponId;
+
 }

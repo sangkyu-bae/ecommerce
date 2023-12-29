@@ -8,20 +8,18 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CheckRegisteredProductCommand {
-
+public class CheckRegisteredCouponCommand {
     @TargetAggregateIdentifier
     private String aggregateIdentifier;
 
     private String createOrderId;
 
-    private String checkRegisteredProductIdAndAmount;
+    private String checkRegisteredCoupon;
 
-    private long productId;
+    private long couponId;
 
-    private long sizeId;
+    private long productSizeId;
 
-    private int amount;
+    private int productAmount;
 
-    private Long couponId;
 }

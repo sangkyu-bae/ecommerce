@@ -20,4 +20,6 @@ public class CheckRegisteredProductEvent {
 
     private String checkRegisteredProductIdAndAmount;
 
+    private Long couponId;
+
 }

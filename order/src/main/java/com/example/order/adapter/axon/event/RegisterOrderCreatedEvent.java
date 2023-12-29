@@ -27,4 +27,6 @@ public class RegisterOrderCreatedEvent {
     private int status;
 
     private long userId;
+
+    private Long couponId;
 }

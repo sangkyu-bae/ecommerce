@@ -21,7 +21,7 @@ public class CouponVo {
     @Setter
     private List<CouponComponentVo> couponComponentVoList;
 
-    private String aggregateIdentifier;
+    private final String aggregateIdentifier;
     public static CouponVo createGenerateCouponVo(
             CouponId couponId,
             CouponCreateAdminId couponCreateAdminUserId,

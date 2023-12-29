@@ -15,9 +15,6 @@ public class CheckRegisteredMemberEvent {
 
     private String checkRegisteredMemberId;
     private long productId;
-//
-//    private long colorId;
-//
     private long sizeId;
 
     private int amount;
@@ -27,4 +24,6 @@ public class CheckRegisteredMemberEvent {
     private String address;
 
     private boolean status;
+
+    private Long couponId;
 }

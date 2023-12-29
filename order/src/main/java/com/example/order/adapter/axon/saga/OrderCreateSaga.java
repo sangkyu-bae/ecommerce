@@ -1,8 +1,10 @@
 package com.example.order.adapter.axon.saga;
 
 import com.example.order.adapter.axon.event.RegisterOrderCreatedEvent;
+import com.example.order.adapter.out.service.Coupon;
 import com.example.order.adapter.out.service.Member;
 import com.example.order.adapter.out.service.Product;
+import com.example.order.application.port.out.GetCouponPort;
 import com.example.order.application.port.out.GetMemberPort;
 import com.example.order.application.port.out.GetProductPort;
 import lombok.NoArgsConstructor;
@@ -14,13 +16,9 @@ import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.SagaLifecycle;
 import org.axonframework.modelling.saga.StartSaga;
 import org.axonframework.spring.stereotype.Saga;
-import org.example.event.CheckRegisteredMemberCommand;
-import org.example.event.CheckRegisteredMemberEvent;
-import org.example.event.CheckRegisteredProductCommand;
-import org.example.event.CheckRegisteredProductEvent;
+import org.example.event.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Saga
@@ -59,7 +57,8 @@ public class OrderCreateSaga {
                 event.getPayment(),
                 event.getAddress(),
                 event.getStatus(),
-                event.getUserId()
+                event.getUserId(),
+                event.getCouponId()
         );
         commandGateway.send(command).whenComplete(
                 (result, throwable) -> {
@@ -75,12 +74,12 @@ public class OrderCreateSaga {
 
     @SagaEventHandler(associationProperty = "checkRegisteredMemberId")
     public void handle(CheckRegisteredMemberEvent event, GetProductPort getProductPort) {
-        log.info("CheckedRegisteredBankAccountEvent saga: " + event.toString());
+        log.info("CheckedRegisteredMember saga: " + event.toString());
         boolean status = event.isStatus();
         if (status) {
-            log.info("CheckedRegisteredBankAccountEvent event success");
+            log.info("CheckedRegisteredMember event success");
         } else {
-            log.error("CheckedRegisteredBankAccountEvent event Failed");
+            log.error("CheckedRegisteredMember event Failed");
         }
 
         Product findProduct = getProductPort.getProduct(event.getProductId());
@@ -94,7 +93,8 @@ public class OrderCreateSaga {
                 checkRegisteredProductIdAndAmount,
                 event.getProductId(),
                 event.getSizeId(),
-                event.getAmount()
+                event.getAmount(),
+                event.getCouponId()
         );
 
         commandGateway.send(command).whenComplete(
@@ -110,10 +110,48 @@ public class OrderCreateSaga {
     }
 
     @SagaEventHandler(associationProperty = "checkRegisteredProductIdAndAmount")
+    public void handle(CheckRegisteredProductEvent event, GetCouponPort getCouponPort) {
+       if(event.isSuccess()){
+
+       }else{
+            //에러 처리
+       }
+
+       if(event.getCouponId() == null){
+           SagaLifecycle.end();
+       }else{
+
+           Coupon coupon = getCouponPort.getCoupon(event.getCouponId());
+
+           String checkRegisteredCoupon = UUID.randomUUID().toString();
+
+           CheckRegisteredCouponCommand command = new CheckRegisteredCouponCommand(
+                   coupon.getAggregateIdentifier(),
+                   event.getCreateOrderId(),
+                   checkRegisteredCoupon,
+                   event.getCouponId(),
+                   event.getSizeId(),
+                   event.getAmount()
+           );
+           commandGateway.send(command).whenComplete(
+                   (result, throwable) -> {
+                       if (throwable != null) {
+                           throwable.printStackTrace();
+                           log.error("CheckRegisteredCouponCommand Command failed");
+                       } else {
+                           log.info("CheckRegisteredCouponCommand Command success");
+                       }
+                   }
+           );
+       }
+    }
+
+    @SagaEventHandler(associationProperty = "checkRegisteredCoupon")
     @EndSaga
-    public void handle(CheckRegisteredProductEvent event) {
+    public void handel(CheckRegisteredCouponEvent event){
         System.out.println("end saga");
         SagaLifecycle.end();
     }
+
 
 }
