@@ -20,4 +20,8 @@ public class CheckRegisteredCouponEvent {
     private long productSizeId;
 
     private int productAmount;
+
+    private long userId;
+
+    private String productAggregate;
 }

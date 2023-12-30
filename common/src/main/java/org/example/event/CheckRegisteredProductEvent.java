@@ -22,4 +22,8 @@ public class CheckRegisteredProductEvent {
 
     private Long couponId;
 
+    private Long userId;
+
+    private String productAggregate;
+
 }

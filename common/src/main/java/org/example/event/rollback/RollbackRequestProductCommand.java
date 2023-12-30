@@ -1,4 +1,4 @@
-package org.example.event;
+package org.example.event.rollback;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,22 +8,15 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CheckRegisteredProductCommand {
+public class RollbackRequestProductCommand {
 
     @TargetAggregateIdentifier
     private String aggregateIdentifier;
 
-    private String createOrderId;
-
-    private String checkRegisteredProductIdAndAmount;
-
-    private long productId;
-
-    private long sizeId;
+    private Long sizeId;
 
     private int amount;
 
-    private Long couponId;
+    private String rollbackProductId;
 
-    private Long userId;
 }

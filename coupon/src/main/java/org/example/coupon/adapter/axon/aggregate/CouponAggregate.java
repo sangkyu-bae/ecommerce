@@ -9,8 +9,12 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.example.coupon.adapter.axon.command.CouponRequestCreateCommand;
 import org.example.coupon.adapter.axon.event.CouponCreateEvent;
+import org.example.coupon.adapter.out.persistence.entity.CouponEntity;
+import org.example.coupon.application.port.out.UpdateCouponPort;
+import org.example.coupon.infra.error.ErrorException;
 import org.example.event.CheckRegisteredCouponCommand;
 import org.example.event.CheckRegisteredCouponEvent;
+import org.example.event.rollback.RollbackRequestProductCommand;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -68,19 +72,30 @@ public class CouponAggregate {
     }
 
     @CommandHandler
-    public void handler(CheckRegisteredCouponCommand command){
+    public void handler(CheckRegisteredCouponCommand command, UpdateCouponPort port){
         log.info("CheckRegisteredCouponCommand Sourcing Handler!");
         /**
          * port 만들어서 true,fail 선택
-         * Exeception 상황 시 
+         * Exeception 상황 시
          * */
+        boolean isSuccess = true;
+        id = command.getAggregateIdentifier();
+
+        try{
+            port.updateCoupon(command.getCouponId(),command.getUserId());
+        }catch (ErrorException e){
+            log.error("error : {}", e);
+            isSuccess = false;
+        }
         apply(new CheckRegisteredCouponEvent(
                 command.getCreateOrderId(),
-                true,
+                isSuccess,
                 command.getCheckRegisteredCoupon(),
                 command.getCouponId(),
                 command.getProductSizeId(),
-                command.getProductAmount()
+                command.getProductAmount(),
+                command.getUserId(),
+                command.getProductAggregate()
         ));
     }
 

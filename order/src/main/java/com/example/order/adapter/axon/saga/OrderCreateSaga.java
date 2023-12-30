@@ -17,6 +17,8 @@ import org.axonframework.modelling.saga.SagaLifecycle;
 import org.axonframework.modelling.saga.StartSaga;
 import org.axonframework.spring.stereotype.Saga;
 import org.example.event.*;
+import org.example.event.rollback.RollbackProductFinishedEvent;
+import org.example.event.rollback.RollbackRequestProductCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;
@@ -94,7 +96,8 @@ public class OrderCreateSaga {
                 event.getProductId(),
                 event.getSizeId(),
                 event.getAmount(),
-                event.getCouponId()
+                event.getCouponId(),
+                event.getMemberId()
         );
 
         commandGateway.send(command).whenComplete(
@@ -112,46 +115,78 @@ public class OrderCreateSaga {
     @SagaEventHandler(associationProperty = "checkRegisteredProductIdAndAmount")
     public void handle(CheckRegisteredProductEvent event, GetCouponPort getCouponPort) {
        if(event.isSuccess()){
+           if(event.getCouponId() == null){
+               SagaLifecycle.end();
+           }else{
 
-       }else{
-            //에러 처리
-       }
+               Coupon coupon = getCouponPort.getCoupon(event.getCouponId());
 
-       if(event.getCouponId() == null){
-           SagaLifecycle.end();
-       }else{
+               String checkRegisteredCoupon = UUID.randomUUID().toString();
+               SagaLifecycle.associateWith("checkRegisteredCoupon", checkRegisteredCoupon);
 
-           Coupon coupon = getCouponPort.getCoupon(event.getCouponId());
+               CheckRegisteredCouponCommand command = new CheckRegisteredCouponCommand(
+                       coupon.getAggregateIdentifier(),
+                       event.getCreateOrderId(),
+                       checkRegisteredCoupon,
+                       event.getCouponId(),
+                       event.getSizeId(),
+                       event.getAmount(),
+                       128,
+                       event.getProductAggregate()
+               );
 
-           String checkRegisteredCoupon = UUID.randomUUID().toString();
-
-           CheckRegisteredCouponCommand command = new CheckRegisteredCouponCommand(
-                   coupon.getAggregateIdentifier(),
-                   event.getCreateOrderId(),
-                   checkRegisteredCoupon,
-                   event.getCouponId(),
-                   event.getSizeId(),
-                   event.getAmount()
-           );
-           commandGateway.send(command).whenComplete(
-                   (result, throwable) -> {
-                       if (throwable != null) {
-                           throwable.printStackTrace();
-                           log.error("CheckRegisteredCouponCommand Command failed");
-                       } else {
-                           log.info("CheckRegisteredCouponCommand Command success");
+               commandGateway.send(command).whenComplete(
+                       (result, throwable) -> {
+                           if (throwable != null) {
+                               throwable.printStackTrace();
+                               log.error("CheckRegisteredCouponCommand Command failed");
+                           } else {
+                               log.info("CheckRegisteredCouponCommand Command success");
+                           }
                        }
-                   }
-           );
+               );
+           }
+       }else{
+           //에러 처리
        }
     }
 
     @SagaEventHandler(associationProperty = "checkRegisteredCoupon")
-    @EndSaga
     public void handel(CheckRegisteredCouponEvent event){
-        System.out.println("end saga");
-        SagaLifecycle.end();
+        log.info("?? {}",event);
+        if(event.isSuccess()){
+            System.out.println("end saga");
+            SagaLifecycle.end();
+        }else{
+            String rollbackProductId = UUID.randomUUID().toString();
+            SagaLifecycle.associateWith("rollbackProductId", rollbackProductId);
+
+            RollbackRequestProductCommand command = new RollbackRequestProductCommand(
+                    event.getProductAggregate(),
+                    event.getProductSizeId(),
+                    event.getProductAmount(),
+                    rollbackProductId
+            );
+
+            commandGateway.send(command).whenComplete(
+                    (result, throwable) -> {
+                        if (throwable != null) {
+                            throwable.printStackTrace();
+                            log.error("RollbackRequestProductCommand Command failed");
+                        } else {
+                            log.info("RollbackRequestProductCommand Command success");
+                        }
+                    }
+            );
+        }
     }
+
+    @SagaEventHandler(associationProperty = "rollbackProductId")
+    @EndSaga
+    public void handle(RollbackProductFinishedEvent event){
+        log.info("end Saga event : {}", event);
+    }
+
 
 
 }

@@ -22,4 +22,7 @@ public class CheckRegisteredCouponCommand {
 
     private int productAmount;
 
+    private long userId;
+
+    private String productAggregate;
 }

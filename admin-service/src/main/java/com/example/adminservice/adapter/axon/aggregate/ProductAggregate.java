@@ -12,6 +12,8 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.example.event.CheckRegisteredProductCommand;
 import org.example.event.CheckRegisteredProductEvent;
+import org.example.event.rollback.RollbackProductFinishedEvent;
+import org.example.event.rollback.RollbackRequestProductCommand;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -36,7 +38,7 @@ public class ProductAggregate {
 
 
     @CommandHandler
-    public ProductAggregate(ProductCreateCommand command){
+    public ProductAggregate(ProductCreateCommand command) {
 
         log.info("ProductCreateEvent Sourcing Handler!");
         apply(new ProductCreateEvent(
@@ -49,7 +51,7 @@ public class ProductAggregate {
     }
 
     @CommandHandler
-    public void handler(CheckRegisteredProductCommand command, UpdateProductSizePort port){
+    public void handler(CheckRegisteredProductCommand command, UpdateProductSizePort port) {
         log.info("CheckRegisteredProductCommand Handler");
 
         id = command.getAggregateIdentifier();
@@ -68,14 +70,45 @@ public class ProductAggregate {
                 command.getSizeId(),
                 command.getAmount(),
                 true,
-                command.getCheckRegisteredProductIdAndAmount()
+                command.getCheckRegisteredProductIdAndAmount(),
+                command.getCouponId(),
+                command.getUserId(),
+                command.getAggregateIdentifier()
         ));
+    }
 
+    @CommandHandler
+    public void handler(RollbackRequestProductCommand command, UpdateProductSizePort port) {
+        log.info("RollbackRequestProductCommand Handler");
+
+        log.info("command : {}",command);
+        id = command.getAggregateIdentifier();
+
+
+        try{
+            SizeVo sizeVo = SizeVo.createGenerateSizeVo(
+                    new SizeVo.SizeId(command.getSizeId()),
+                    new SizeVo.Size(0),
+                    new SizeVo.Quantity(-command.getAmount())
+            );
+
+            port.updateProductSize(sizeVo);
+        }catch (Exception e){
+            log.error("error : {} ", e);
+        }
+
+
+        apply(new RollbackProductFinishedEvent(
+                command.getRollbackProductId(),
+                command.getAggregateIdentifier(),
+                command.getSizeId(),
+                command.getAmount()
+        ));
 
     }
 
     @EventSourcingHandler
-    public void on (ProductCreateEvent event){
+    public void on(ProductCreateEvent event) {
         log.info("ProductCreateEvent Sourcing Handler");
         id = event.getAggregateIdentifier();
         name = event.getName();
@@ -84,7 +117,7 @@ public class ProductAggregate {
         productImage = event.getProductImage();
     }
 
-    public ProductAggregate(){
+    public ProductAggregate() {
 
     }
 }
