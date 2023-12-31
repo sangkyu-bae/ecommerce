@@ -1,4 +1,4 @@
-package com.example.delivery.adapter.in.event.request;
+package com.example.delivery.adapter.in.kafka.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

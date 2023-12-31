@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -116,6 +117,13 @@ public class DeliveryVo {
 
         public int getStatus() {
             return status;
+        }
+
+        public static StatusCode findStatusCode(int status){
+            return Arrays.stream(StatusCode.values())
+                    .filter(couponStatus -> couponStatus.getStatus()== status)
+                    .findFirst()
+                    .orElseThrow();
         }
     }
 

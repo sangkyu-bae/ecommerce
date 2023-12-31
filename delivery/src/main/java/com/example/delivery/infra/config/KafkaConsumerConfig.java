@@ -39,4 +39,31 @@ public class KafkaConsumerConfig {
 
         return factory;
     }
+
+    @Bean
+    public Map<String, Object> batchConsumerConfig() {
+        Map<String, Object> props = new HashMap<>();
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, appProperties.getBootstrapServer());
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 1000);
+        props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, 1024 * 1024);
+        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 2000);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class);
+
+        return props;
+    }
+
+    @Bean
+    public ConsumerFactory<Object, Object> batchConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(batchConsumerConfig());
+    }
+
+    @Bean("batchKafkaListenerContainerFactory")
+    ConcurrentKafkaListenerContainerFactory<Object, Object> batchKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setBatchListener(true);
+        factory.setConsumerFactory(batchConsumerFactory());
+        factory.setConcurrency(2);
+        return factory;
+    }
 }

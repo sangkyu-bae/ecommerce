@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Slf4j
@@ -28,5 +31,23 @@ public class DeliveryPersistenceAdapter implements RegisterDeliveryPort {
                 .updateAt(deliveryVo.getUpdateAt())
                 .build();
         return deliveryEntityRepository.save(createDelivery);
+    }
+
+    @Override
+    public List<DeliveryEntity> bulkRegisterDelivery(List<DeliveryVo> deliveryVos) {
+
+        List<DeliveryEntity> deliveryEntityList = deliveryVos.stream()
+                .map(deliveryVo -> DeliveryEntity.builder()
+                        .sizeId(deliveryVo.getSizeId())
+                        .userId(deliveryVo.getUserId())
+                        .orderId(deliveryVo.getOrderId())
+                        .address(deliveryVo.getAddress())
+                        .status(deliveryVo.getStatus())
+                        .createAt(deliveryVo.getCreateAt())
+                        .updateAt(deliveryVo.getUpdateAt())
+                        .build())
+                .collect(Collectors.toList());
+
+        return deliveryEntityRepository.saveAll(deliveryEntityList);
     }
 }

@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +35,29 @@ public class RegisterDeliveryService implements RegisterDeliveryUseCase {
         DeliveryEntity createDelivery = registerDeliveryPort.registerDelivery(deliveryVo);
 
         return deliveryMapper.DeliveryEntityToDelivery(createDelivery);
+    }
+
+    @Override
+    public List<DeliveryVo> bulkRegisterDelivery(List<RegisterDeliveryCommand> commands) {
+        int status = DeliveryVo.StatusCode.READY.getStatus();
+        List<DeliveryVo> deliveryVos = commands.stream().map(command ->
+                        DeliveryVo.createGenerateDeliveryVo(
+                                new DeliveryVo.DeliveryId(0),
+                                new DeliveryVo.DeliverySizeId(command.getSizeId()),
+                                new DeliveryVo.DeliveryUserId(command.getUserId()),
+                                new DeliveryVo.DeliveryOrderId(command.getOrderId()),
+                                new DeliveryVo.DeliveryAddress(command.getAddress()),
+                                new DeliveryVo.DeliveryStatus(status),
+                                new DeliveryVo.DeliveryCreateAt(LocalDate.now()),
+                                new DeliveryVo.DeliveryUpdateAt(LocalDate.now())
+                        )
+                ).collect(Collectors.toList());
+        List<DeliveryEntity> deliveryEntityList = registerDeliveryPort.bulkRegisterDelivery(deliveryVos);
+
+        List<DeliveryVo> insertDeliveryVoList = deliveryEntityList.stream()
+                .map(deliveryEntity -> deliveryMapper.DeliveryEntityToDelivery(deliveryEntity))
+                .collect(Collectors.toList());
+
+        return insertDeliveryVoList;
     }
 }
