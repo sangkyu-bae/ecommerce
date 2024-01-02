@@ -17,7 +17,7 @@ public class RegisterDeliveryCommand extends SelfValidating<RegisterDeliveryComm
 
     @NotNull
     @NotBlank
-    private String userId;
+    private Long userId;
 
     @NotNull
     @NotBlank

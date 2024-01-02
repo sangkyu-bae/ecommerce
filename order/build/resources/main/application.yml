@@ -86,6 +86,8 @@ app:
   sendProduct : request-product
   createOrder: create-order
   sendToRemoveOrder : remove-order
+  createDelivery : delivery-bulk
+#  createDelivery : delivery-topic
 
 
 member:

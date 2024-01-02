@@ -73,3 +73,10 @@ app:
   orderTopic : order
   groupId : delivery.group.v1
   deliveryRollBack : delivery-rollback
+
+kafka:
+  bulk:
+    insert:
+      delivery:
+        topic: delivery-bulk
+        group: delivery-bulk.v1

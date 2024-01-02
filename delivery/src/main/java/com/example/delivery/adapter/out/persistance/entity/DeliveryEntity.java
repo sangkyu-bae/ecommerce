@@ -19,7 +19,7 @@ public class DeliveryEntity {
 
     private Long sizeId;
 
-    private String userId;
+    private Long userId;
 
     private Long orderId;
 

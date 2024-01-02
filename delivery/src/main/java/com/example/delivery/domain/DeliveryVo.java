@@ -16,7 +16,7 @@ public class DeliveryVo {
 
     private Long sizeId;
 
-    private String userId;
+    private Long userId;
 
     private Long orderId;
 
@@ -81,10 +81,10 @@ public class DeliveryVo {
     @Value
     public static class DeliveryUserId{
 
-        public DeliveryUserId(String value){
+        public DeliveryUserId(Long value){
             this.userId = value;
         }
-        private String userId;
+        private Long userId;
     }
 
     @Value
@@ -103,6 +103,24 @@ public class DeliveryVo {
             this.address = value;
         }
         private String address;
+    }
+
+    @Value
+    public static class DeliveryCreateAt{
+
+        public DeliveryCreateAt(LocalDate value){
+            this.createAt = value;
+        }
+        private LocalDate createAt;
+    }
+
+    @Value
+    public static class DeliveryUpdateAt{
+        public DeliveryUpdateAt(LocalDate value){
+            this.updateAt = value;
+        }
+
+        private LocalDate updateAt;
     }
 
     public static enum StatusCode{
@@ -125,24 +143,6 @@ public class DeliveryVo {
                     .findFirst()
                     .orElseThrow();
         }
-    }
-
-    @Value
-    public static class DeliveryCreateAt{
-
-        public DeliveryCreateAt(LocalDate value){
-            this.createAt = value;
-        }
-        private LocalDate createAt;
-    }
-
-    @Value
-    public static class DeliveryUpdateAt{
-        public DeliveryUpdateAt(LocalDate value){
-            this.updateAt = value;
-        }
-
-        private LocalDate updateAt;
     }
 
 }
