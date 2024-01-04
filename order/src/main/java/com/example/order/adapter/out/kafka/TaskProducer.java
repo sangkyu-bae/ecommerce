@@ -1,5 +1,8 @@
 package com.example.order.adapter.out.kafka;
 
+import com.example.order.adapter.out.external.delivery.DeliveryEvent;
+import com.example.order.adapter.out.external.delivery.OrderInfoRequest;
+import com.example.order.application.port.out.SendCreateDeliveryEventPort;
 import com.example.order.application.port.out.SendCreateOrderTaskPort;
 import com.example.order.application.port.out.SendRemoveOrderTaskPort;
 import com.example.order.infra.properties.AppProperties;
@@ -16,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTaskPort {
+public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTaskPort, SendCreateDeliveryEventPort {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final AppProperties appProperties;
@@ -39,6 +42,16 @@ public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTas
             kafkaTemplate.send(appProperties.getSendToRemoveOrder(),inputTask);
         } catch (JsonProcessingException e) {
             log.error("removeOrderTask Error message = {}, e = {}", task, e);
+        }
+    }
+
+    @Override
+    public void createDeliveryEvent(DeliveryEvent event) {
+        try {
+            String inputTask = objectMapper.writeValueAsString(event);
+            kafkaTemplate.send(appProperties.getCreateDelivery(),inputTask);
+        } catch (JsonProcessingException e) {
+            log.error("createDeliveryEvent Error message = {} , {}", event, e);
         }
     }
 }

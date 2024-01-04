@@ -21,4 +21,6 @@ public class AppProperties {
     private String createOrder;
 
     private String sendToRemoveOrder;
+
+    private String  createDelivery;
 }

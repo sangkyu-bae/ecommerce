@@ -1,6 +1,7 @@
 package com.example.order.application.service;
 
 import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
+import com.example.order.adapter.out.external.delivery.DeliveryEvent;
 import com.example.order.adapter.out.external.product.ProductInfoRequest;
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
@@ -36,6 +37,8 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     private final CountDownLatchManager countDownLatchManager;
     private final SendCreateOrderTaskPort sendCreateOrderTaskPort;
     private final CommandGateway commandGateway;
+
+    private final SendCreateDeliveryEventPort sendCreateDeliveryEventPort;
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
@@ -91,7 +94,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     }
 
     @Override
-    public OrderVo registerOrderByEvent(RegisterOrderCommand command) {
+    public OrderVo registerOrderByEvent(RegisterOrderCommand command) throws JsonProcessingException {
 
         String orderAggregateIdentifier = UUID.randomUUID().toString();
         OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
@@ -121,8 +124,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
             }
         });
 
-
-
+        getOrderRequest(command);
         return null;
     }
 
@@ -154,6 +156,14 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                         mapOrderVo.getSizeId(),
                         mapOrderVo.getId()
                 ));
+
+        DeliveryEvent event = new DeliveryEvent(
+                mapOrderVo.getSizeId(),
+                mapOrderVo.getUserId(),
+                mapOrderVo.getAddress(),
+                mapOrderVo.getId()
+        );
+        sendCreateDeliveryEventPort.createDeliveryEvent(event);
 
 //        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
         return mapOrderVo;
