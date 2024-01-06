@@ -4,6 +4,11 @@
 /gradle/*
 .gradle
 .gradle/*
+.gradle/7.4
+.gradle/7.6.1
+.gradle/buildOutputCleanup
+.gradle/vcs-1
+.gradle/file-system.probe
 
 /admin-service/build
 /admin-service/adminLog
@@ -12,6 +17,7 @@
 
 /coupon/build
 /coupon/couponLog
+/coupon/couponLog*
 
 /delivery/build
 /delivery/adminLog
