@@ -34,14 +34,25 @@ gradlew.bat
 
 /eureka/build
 /eureka/eureka
+/eureka/eureka*
+/eureka/gradle
+/eureka/gradlew.bat
+/eureka/gradlew
+
 
 /gateway/build
 /gateway/gateway
+/gateway/gradle
+/gateway/gateway
+/gateway/gradlew
+/gateway/gradlew.bat
+/gateway/gateway.*
 
 /member-aggregation-service/build
 
 /order/build
 /order/orderLog
+/order/adminLog
 /order/orderLog*
 
 /task-consumer/build
