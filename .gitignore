@@ -1,6 +1,10 @@
 /.idea
 /db/data/*
 
+.env
+gradlew
+gradlew.bat
+
 /gradle/*
 .gradle
 .gradle/*
@@ -41,4 +45,7 @@
 /order/orderLog*
 
 /task-consumer/build
+/task-consumer/task-consumeLog
+/task-consumer/task-consumeLog*
+/task-consumer/task-consumeLog.2023-12-15.0.gz
 
