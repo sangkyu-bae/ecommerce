@@ -12,6 +12,7 @@
 
 /admin-service/build
 /admin-service/adminLog
+/admin-service/adminLog*
 
 /common/build
 
@@ -21,9 +22,11 @@
 
 /delivery/build
 /delivery/adminLog
+/delivery/adminLog*
 
 /demo/build
 /demo/userLog
+/demo/userLog*
 
 /eureka/build
 /eureka/eureka
@@ -35,6 +38,7 @@
 
 /order/build
 /order/orderLog
+/order/orderLog*
 
 /task-consumer/build
 
