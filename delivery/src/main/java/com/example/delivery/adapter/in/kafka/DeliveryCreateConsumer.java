@@ -34,17 +34,17 @@ public class DeliveryCreateConsumer {
 
     private final ObjectMapper objectMapper;
 
-    private static int i = 0;
-    long startTime = System.currentTimeMillis();
+    private long time;
+
     @KafkaListener(
             topics = DELIVERY_CREATE_TOPIC,
             groupId = DELIVERY_GROUP_ID,
             containerFactory = "kafkaListenerContainerFactory"
     )
     public void createDeliveryListener(String deliveryJson) {
+        long startTime = System.currentTimeMillis();
         RegisterDeliveryRequest request = null;
         try {
-
 
             request = objectMapper.readValue(deliveryJson, RegisterDeliveryRequest.class);
 
@@ -55,14 +55,12 @@ public class DeliveryCreateConsumer {
                     .orderId(request.getOrderId())
                     .build();
             registerDeliveryUseCase.registerDelivery(command);
+              long endTime = System.currentTimeMillis();
+              long dbInsertTime = endTime - startTime;
 
-            i++;
-            System.out.println(i);
-            if(i == 100){
-                long endTime = System.currentTimeMillis();
-                long dbInsertTime = endTime - startTime;
-                log.info("insertTime : {}", dbInsertTime);
-            }
+              time += dbInsertTime;
+              log.info("insertTime : {}", dbInsertTime);
+              log.info("totalTime : {}", time);
 
         } catch (Exception e) {
 //            RequestRollbackDeliveryCommand command = RequestRollbackDeliveryCommand.builder()
@@ -80,29 +78,26 @@ public class DeliveryCreateConsumer {
     @KafkaListener(topics = "${kafka.bulk.insert.delivery.topic}",
             groupId = "${kafka.bulk.insert.delivery.group}",
             containerFactory = "batchKafkaListenerContainerFactory")
-    public void createDeliveryListenerByBulkInsert(List<RegisterDeliveryEvent> deliveryJsonList) {
-        log.info("deliveryJsonList : {}", deliveryJsonList);
-        log.info("size {}", deliveryJsonList.size());
+    public void createDeliveryListenerByBulkInsert(List<RegisterDeliveryEvent> registerDeliveryEventList) {
+        long startTime = System.currentTimeMillis();
+        log.info("size {}", registerDeliveryEventList.size());
         try {
-
-            List<RegisterDeliveryCommand> commands = deliveryJsonList.stream()
+            List<RegisterDeliveryCommand> commands = registerDeliveryEventList.stream()
                     .map(request -> RegisterDeliveryCommand.builder()
                             .userId(request.getUserId())
                             .address(request.getAddress())
                             .orderId(request.getOrderId())
+                            .sizeId(request.getSizeId())
                             .build())
                     .collect(Collectors.toList());
 
             List<DeliveryVo> insertDeliveryVoList =registerDeliveryUseCase.bulkRegisterDelivery(commands);
-
-            log.info("bulk insert delivery Info : {}", insertDeliveryVoList);
-
             long endTime = System.currentTimeMillis();
             long dbInsertTime = endTime - startTime;
             log.info("insertTime : {}", dbInsertTime);
         } catch (Exception e) {
             log.error("Error occurred while parsing JSON: {}", e.getMessage());
-            log.error("data {}" ,deliveryJsonList);
+            log.error("data {}" ,registerDeliveryEventList);
         }
     }
 }

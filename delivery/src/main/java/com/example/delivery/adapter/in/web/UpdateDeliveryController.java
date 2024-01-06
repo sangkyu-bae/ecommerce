@@ -22,14 +22,15 @@ public class UpdateDeliveryController {
 
     private final UpdateDeliveryUseCase updateDeliveryUseCase;
 
-    @Operation(summary = "update delivery", description = "배송상태 수정하기")
-    @PutMapping("/delivery/{deliveryId}")
+    @Operation(summary = "update delivery", description = "배송상태 수정하기(배송의 수정은 배송 상태와, 주소만 수정 가능하다.)")
+    @PutMapping("/delivery/status/{deliveryId}")
     public ResponseEntity<DeliveryVo> updateDeliveryVo(@RequestBody UpdateDeliveryRequest request,
                                        @RequestParam("deliveryId") long deliveryId){
 
         UpdateDeliveryCommand command = UpdateDeliveryCommand.builder()
                 .status(request.getStatus())
                 .deliveryId(deliveryId)
+                .address(request.getAddress())
                 .build();
         Errors errors = new BeanPropertyBindingResult(command,"command");
         validator.validate(command,errors);

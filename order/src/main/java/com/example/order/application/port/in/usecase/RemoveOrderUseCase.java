@@ -7,4 +7,6 @@ public interface RemoveOrderUseCase {
     void removeOrder(RemoveOrderCommand command);
 
     void failRemoveOrder(FailRemoveOrderCommand command);
+
+    void removeOrderByEvent(RemoveOrderCommand command);
 }

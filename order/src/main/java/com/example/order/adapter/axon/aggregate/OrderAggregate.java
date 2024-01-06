@@ -1,6 +1,7 @@
 package com.example.order.adapter.axon.aggregate;
 
 
+import com.example.order.adapter.axon.command.OrderRemoveByEventCommand;
 import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
 import com.example.order.adapter.axon.event.OrderCreateEvent;
 import com.example.order.adapter.axon.event.RegisterOrderCreatedEvent;
@@ -45,8 +46,13 @@ public class OrderAggregate {
                 command.getUserId(),
                 command.getCouponId()
         ));
+    }
+
+    @CommandHandler
+    public void handler(OrderRemoveByEventCommand command){
 
     }
+
     @EventSourcingHandler
     public void on (OrderCreateEvent event){
         this.id = event.getAggregateIdentifier();

@@ -24,4 +24,5 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private Long couponId;
 
+    private String aggregateIdentifier;
 }

@@ -24,7 +24,8 @@ public class OrderMapper {
                 new OrderVo.OrderAddress(orderEntity.getAddress()),
                 new OrderVo.OrderCreateAt(orderEntity.getCreateAt()),
                 new OrderVo.OrderUpdateAt(orderEntity.getUpdateAt()),
-                new OrderVo.OrderStatus(orderEntity.getStatus())
+                new OrderVo.OrderStatus(orderEntity.getStatus()),
+                new OrderVo.OrderAggregateIdentifier(orderEntity.getAggregateIdentifier())
         );
 
         return orderVo;

@@ -48,9 +48,9 @@ public class KafkaConsumerConfig {
     public Map<String, Object> batchConsumerConfig() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, appProperties.getBootstrapServer());
-        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 10);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 1000);
         props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, 1024 * 1024);
-        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 10000);
+        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 20000);
 
         return props;
     }

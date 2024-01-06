@@ -1,9 +1,11 @@
 package com.example.order.application.service;
 
+import com.example.order.adapter.axon.command.OrderRemoveByEventCommand;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.application.port.in.command.FailRemoveOrderCommand;
 import com.example.order.application.port.in.command.RemoveOrderCommand;
 import com.example.order.application.port.in.usecase.RemoveOrderUseCase;
+import com.example.order.application.port.out.FindOrderPort;
 import com.example.order.application.port.out.GetMemberPort;
 import com.example.order.application.port.out.RemoveOrderPort;
 import com.example.order.application.port.out.SendRemoveOrderTaskPort;
@@ -15,6 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
 import org.example.task.order.RemoveOrderTask;
 
+import java.util.UUID;
+
 @UseCase
 @RequiredArgsConstructor
 @Slf4j
@@ -24,6 +28,8 @@ public class RemoveOrderService implements RemoveOrderUseCase {
     private final GetMemberPort getMemberPort;
     private final SendRemoveOrderTaskPort sendRemoveOrderTaskPort;
 
+    private final FindOrderPort findOrderPort;
+
     @Override
     public void removeOrder(RemoveOrderCommand command) {
         /**
@@ -31,7 +37,7 @@ public class RemoveOrderService implements RemoveOrderUseCase {
          * 2. 멤버인지 확인 (구현 O)
          * */
 
-        /** FeignClients 확인 */
+        /** figen 확인 */
 //        boolean isMember = getMemberPort.getMember(command.getUserId());
 //
 //        if(!isMember){
@@ -67,6 +73,18 @@ public class RemoveOrderService implements RemoveOrderUseCase {
         removeOrderPort.updateRemoveOrder(
                 new OrderVo.OrderId(command.getOrderId()),
                 new OrderVo.OrderStatus(OrderVo.StatusCode.ORDER_REMOVE_FAIL.getStatus())
+        );
+    }
+
+    @Override
+    public void removeOrderByEvent(RemoveOrderCommand command) {
+        OrderEntity orderEntity = findOrderPort.findOrder(new OrderVo.OrderId(command.getOrderId()));
+
+        String removeOrderAggregate = UUID.randomUUID().toString();
+        OrderRemoveByEventCommand axonCommand = new OrderRemoveByEventCommand(
+                orderEntity.getAggregateIdentifier(),
+                removeOrderAggregate,
+                orderEntity.getId()
         );
     }
 }

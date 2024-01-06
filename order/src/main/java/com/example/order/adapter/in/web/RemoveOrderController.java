@@ -45,4 +45,25 @@ public class RemoveOrderController {
 
         return ResponseEntity.ok().body("success remove order :"+ orderId);
     }
+
+    @DeleteMapping("/order/axon/{orderId}")
+    @Operation(summary = "remove order By Id", description = "주문 취소 하기")
+    public ResponseEntity<String> removeOrderByAxon(@PathVariable("orderId") long orderId,
+                                              @RequestHeader("X-User-Id") long userId){
+
+        RemoveOrderCommand command = RemoveOrderCommand.builder()
+                .orderId(orderId)
+                .userId(userId)
+                .build();
+
+        Errors errors = new BeanPropertyBindingResult(command,"command");
+        validator.validate(command,errors);
+        if(errors.hasErrors()){
+            throw new ErrorException(OrderErrorCode.ORDER_NO_VALIDATE,"removeOrder");
+        }
+
+        removeOrderUseCase.removeOrder(command);
+
+        return ResponseEntity.ok().body("success remove order :"+ orderId);
+    }
 }

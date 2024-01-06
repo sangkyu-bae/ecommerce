@@ -22,7 +22,7 @@ public class DeliveryVo {
 
     private String address;
 
-    private int status;
+    private Integer status;
 
     private LocalDate createAt;
 
@@ -54,10 +54,10 @@ public class DeliveryVo {
 
     @Value
     public static class DeliveryStatus{
-        public DeliveryStatus(int value){
+        public DeliveryStatus(Integer value){
             this.status = value;
         }
-        private int status;
+        private Integer status;
     }
 
     @Value
@@ -72,7 +72,7 @@ public class DeliveryVo {
     @Value
     public static class DeliverySizeId{
 
-        public DeliverySizeId(long value){
+        public DeliverySizeId(Long value){
             this.id = value;
         }
         private Long id;
@@ -90,7 +90,7 @@ public class DeliveryVo {
     @Value
     public static class DeliveryOrderId{
 
-        public DeliveryOrderId(long value){
+        public DeliveryOrderId(Long value){
             this.orderId = value;
         }
         private Long orderId;

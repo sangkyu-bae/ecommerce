@@ -8,4 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor @AllArgsConstructor
 public class UpdateDeliveryRequest {
     private int status;
+
+    private String address;
 }

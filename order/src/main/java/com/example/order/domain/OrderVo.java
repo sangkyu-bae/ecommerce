@@ -35,6 +35,8 @@ public class OrderVo {
 
     private int status;
 
+    private String aggregateIdentifier;
+
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
             OrderProductUserId orderProductUserId,
@@ -46,7 +48,8 @@ public class OrderVo {
             OrderAddress orderAddress,
             OrderCreateAt orderCreateAt,
             OrderUpdateAt orderUpdateAt,
-            OrderStatus orderStatus
+            OrderStatus orderStatus,
+            OrderAggregateIdentifier orderAggregateIdentifier
     ){
         return new OrderVo(
                 orderId.getId(),
@@ -59,7 +62,8 @@ public class OrderVo {
                 orderAddress.getAddress(),
                 orderCreateAt.getCreateAt(),
                 orderUpdateAt.getUpdateAt(),
-                orderStatus.getStatus()
+                orderStatus.getStatus(),
+                orderAggregateIdentifier.getAggregateIdentifier()
         );
     }
 
@@ -152,6 +156,15 @@ public class OrderVo {
             this.status = value;
         }
         int status;
+    }
+
+    @Value
+    public static class OrderAggregateIdentifier{
+        public OrderAggregateIdentifier(String value) {
+            this.aggregateIdentifier = value;
+        }
+
+        String aggregateIdentifier;
     }
 
     public static enum StatusCode{

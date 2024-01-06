@@ -37,4 +37,6 @@ public class OrderEntity {
 
     private int status;
 
+    private String aggregateIdentifier;
+
 }

@@ -70,8 +70,10 @@ public class CouponComponentVo {
     public static enum CouponStatusCode {
 
         PUBLISH(0,"발급"),
+
         USE_READY(1,"사용대기"),
         USE_SUCCESS(2,"사용완료"),
+
         USE_FAIL(3,"사용취소");
 
         private final int status;

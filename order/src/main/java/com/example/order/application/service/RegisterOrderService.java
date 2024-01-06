@@ -110,6 +110,8 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 command.getCouponId()
         );
 
+        command.setAggregateIdentifier(orderAggregateIdentifier);
+
         commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
             if (throwable != null) {
                 log.error("throwable = " + throwable);
@@ -124,7 +126,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
             }
         });
 
-        getOrderRequest(command);
+//        getOrderRequest(command);
         return null;
     }
 
@@ -142,7 +144,8 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 new OrderVo.OrderAddress(command.getAddress()),
                 new OrderVo.OrderCreateAt(LocalDate.now()),
                 new OrderVo.OrderUpdateAt(LocalDate.now()),
-                new OrderVo.OrderStatus(status)
+                new OrderVo.OrderStatus(status),
+                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier())
         );
 
         OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);
