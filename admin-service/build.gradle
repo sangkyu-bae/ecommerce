@@ -58,6 +58,8 @@ dependencies {
 	implementation 'org.jeasy:easy-random-core:4.0.0'
 	implementation project(path: ':common')
 
+	//redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	//axon
 	implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
 	implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
