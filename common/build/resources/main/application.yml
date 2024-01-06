@@ -1,8 +1,0 @@
-###################
-# Axon config #####
-###################
-axon:
-  serializer:
-    general : xstream
-  axonserver:
-    servers: 127.0.0.1:8124
