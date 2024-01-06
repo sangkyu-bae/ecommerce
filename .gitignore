@@ -2,6 +2,7 @@
 /db/data/*
 
 /gradle/*
+.gradle
 
 /admin-service/build
 /admin-service/adminLog
