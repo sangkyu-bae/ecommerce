@@ -14,7 +14,7 @@ public class RankingUpdateConsumer {
             topics = "${kafka.update.raking.topic}",
             groupId = "${kafka.update.raking.group}"
     )
-    public void createRankingListener(String clickProductId){
+    public void updateRankingListener(String clickProductId){
         try{
 
         }catch (Exception e){

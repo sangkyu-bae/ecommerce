@@ -3,6 +3,7 @@ package org.example.ranking.adapter.in.kafka;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
+import org.example.ranking.adapter.in.request.RegisterRankingRequest;
 import org.example.ranking.application.port.in.command.RegisterRankingCommand;
 import org.example.ranking.application.port.in.usecase.RegisterRankingUseCase;
 import org.example.ranking.domain.Ranking;
@@ -18,10 +19,11 @@ public class RankingCreateConsumer {
             topics = "${kafka.insert.raking.topic}",
             groupId = "${kafka.insert.raking.group}"
     )
-    public void createRankingListener(long productId){
+    public void createRankingListener(RegisterRankingRequest request){
         try{
             RegisterRankingCommand command = RegisterRankingCommand.builder()
-                    .productId(productId)
+                    .productId(request.getProductId())
+                    .productName(request.getProductName())
                     .build();
 
             Ranking registerRanking = registerRankingUseCase.registerRaking(command);
@@ -30,6 +32,5 @@ public class RankingCreateConsumer {
         }catch (Exception e){
             log.error("create Raking error : {} " ,e);
         }
-
     }
 }

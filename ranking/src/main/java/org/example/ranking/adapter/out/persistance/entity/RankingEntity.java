@@ -21,6 +21,8 @@ public class RankingEntity {
 
     private long productId;
 
+    private String productName;
+
     private long clickNum;
 
     private long saleNum;

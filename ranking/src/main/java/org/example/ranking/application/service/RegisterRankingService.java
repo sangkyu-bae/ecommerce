@@ -24,6 +24,7 @@ public class RegisterRankingService implements RegisterRankingUseCase {
         Ranking ranking = Ranking.createGenerateRanking(
                 new Ranking.RankingId(null),
                 new Ranking.RankingProductId(command.getProductId()),
+                new Ranking.RankingProductName(command.getProductName()),
                 new Ranking.RankingClickNum(0),
                 new Ranking.RankingSaleNum(0)
         );

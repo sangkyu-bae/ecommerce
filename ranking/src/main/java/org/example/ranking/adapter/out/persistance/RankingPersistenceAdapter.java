@@ -11,6 +11,8 @@ import org.example.ranking.domain.Ranking;
 @RequiredArgsConstructor
 public class RankingPersistenceAdapter implements RegisterRankingPort {
     private final RankingRepository rankingRepository;
+
+
     @Override
     public RankingEntity registerRanking(Ranking ranking) {
 
@@ -22,4 +24,6 @@ public class RankingPersistenceAdapter implements RegisterRankingPort {
 
         return rankingRepository.save(rankingEntity);
     }
+
+
 }
