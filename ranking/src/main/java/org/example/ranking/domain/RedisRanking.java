@@ -1,21 +1,25 @@
-package org.example.ranking.adapter.out.persistance;
+package org.example.ranking.domain;
 
 import lombok.*;
 
 @Getter
 @AllArgsConstructor (access = AccessLevel.PRIVATE)
-public class RedisRanking {
+public class RedisRanking{
 
     private String productName;
 
-    private long score;
+    private long productId;
 
-    public RedisRanking createGenerateRedisRanking(
+    private Long score;
+
+    public static RedisRanking createGenerateRedisRanking(
             RedisRankingProductName rankingProductName,
+            RedisRankingProductId rankingProductId,
             RedisRankingScore redisRankingScore
     ){
         return new RedisRanking(
                 rankingProductName.productName,
+                rankingProductId.productId,
                 redisRankingScore.score
         );
     }
@@ -28,11 +32,18 @@ public class RedisRanking {
         private String productName;
     }
 
+    public static class RedisRankingProductId{
+        public RedisRankingProductId(long value){
+            this.productId = value;
+        }
+
+        private long productId;
+    }
     public static class RedisRankingScore{
-        public RedisRankingScore(long value){
+        public RedisRankingScore(Long value){
             this.score = value;
         }
 
-        private long score;
+        private Long score;
     }
 }

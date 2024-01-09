@@ -17,8 +17,12 @@ public class UpdateClickRankingCommand extends SelfValidating<UpdateClickRanking
     @NotNull
     private String productName;
 
-    public UpdateClickRankingCommand(String productName){
+    @NotNull
+    private long productId;
+
+    public UpdateClickRankingCommand(String productName, long productId){
         this.productName = productName;
+        this.productId = productId;
         this.validateSelf();
     }
 }
