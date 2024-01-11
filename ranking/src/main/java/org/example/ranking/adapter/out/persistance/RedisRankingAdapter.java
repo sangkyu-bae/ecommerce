@@ -5,6 +5,7 @@ import org.example.PersistenceAdapter;
 import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
 import org.example.ranking.adapter.out.persistance.repository.RedisRankingRepository;
 import org.example.ranking.application.port.out.FindRankingRedisPort;
+import org.example.ranking.application.port.out.RemoveRankingRedisPort;
 import org.example.ranking.application.port.out.UpdateRankingRedisPort;
 import org.example.ranking.domain.Ranking;
 import org.example.ranking.domain.RedisRanking;
@@ -18,7 +19,7 @@ import java.util.stream.StreamSupport;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
-public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingRedisPort {
+public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingRedisPort, RemoveRankingRedisPort {
     private static final String PRODUCT_KEY = "leaderProduct";
 
     private static final String PRODUCT_RANK_KEY = "productView";
@@ -43,7 +44,6 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     @Override
     public void updateClickRankingView(RedisRanking redisRanking) {
         HashOperations<String, String, String> hashOperations = redisTemplate.opsForHash();
-
         String productViewKey = PRODUCT_RANK_KEY + ":" + redisRanking.getProductId();
 
         redisRankingRepository.findById(productViewKey)
@@ -63,6 +63,31 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
                         });
     }
 
+    @Override
+    public void updateSaleRankingView(RedisRanking redisRanking) {
+        HashOperations<String, String, String> hashOperations = redisTemplate.opsForHash();
+        String productViewKey = PRODUCT_RANK_KEY + ":" + redisRanking.getProductId();
+
+        redisRankingRepository.findById(productViewKey)
+                .ifPresentOrElse(
+                        findRanking -> {
+                            hashOperations.increment(productViewKey, "saleCount", 1);
+                        },
+                        () -> {
+                            RedisRankingEntity rankingEntity = RedisRankingEntity.builder()
+                                    .id(productViewKey)
+                                    .productId(redisRanking.getProductId())
+                                    .productName(redisRanking.getProductName())
+                                    .build();
+
+                            hashOperations.increment(productViewKey, "saleCount", 1);
+                            redisRankingRepository.save(rankingEntity);
+                        });
+    }
+    @Override
+    public void removeRakingAll() {
+        redisRankingRepository.deleteAll();
+    }
     private void incrementClickCountBySortedSet(String productName, int clickCnt) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
         zSetOps.add(PRODUCT_KEY, productName, clickCnt + 1);
@@ -77,8 +102,6 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
             return 0;
         }
     }
-
-
 
 
 }

@@ -11,10 +11,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 public class RankingUpdateConsumer {
 
     @KafkaListener(
-            topics = "${kafka.update.raking.topic}",
-            groupId = "${kafka.update.raking.group}"
+            topics = "${kafka.update.click.raking.topic}",
+            groupId = "${kafka.update.click.raking.group}"
     )
-    public void updateRankingListener(String clickProductId){
+    public void updateClickRankingListener(String clickProductId){
         try{
 
         }catch (Exception e){

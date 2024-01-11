@@ -18,6 +18,10 @@ public class RedisRankingEntity {
 
     private long productId;
 
-    private long viewCount;
+    private int viewCount;
+
+    private int saleCount;
+
+    private long rakingEntityId;
 
 }
