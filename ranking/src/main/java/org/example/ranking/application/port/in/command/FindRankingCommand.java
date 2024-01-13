@@ -12,17 +12,13 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class UpdateClickRankingCommand extends SelfValidating<UpdateClickRankingCommand> {
+public class FindRankingCommand extends SelfValidating<FindRankingCommand> {
 
     @NotNull
-    private String productName;
+    private int size;
 
-    @NotNull
-    private long productId;
-
-    public UpdateClickRankingCommand(String productName, long productId){
-        this.productName = productName;
-        this.productId = productId;
+    public FindRankingCommand(int size){
+        this.size = size;
         this.validateSelf();
     }
 }

@@ -7,6 +7,7 @@ public interface UpdateRankingRedisPort {
 
     void updateClickRankingBySortedSet(Ranking.RankingProductName rankingProductName);
 
+    void updateSaleRakingBySortedSet(Ranking.RankingProductName rankingProductName);
     void updateClickRankingView(RedisRanking redisRanking);
 
     void updateSaleRankingView(RedisRanking redisRanking);

@@ -1,9 +1,9 @@
 package org.example.ranking.application.port.in.usecase;
 
-import org.example.ranking.application.port.in.command.UpdateClickRankingCommand;
-import org.example.ranking.domain.Ranking;
+import org.example.ranking.application.port.in.command.UpdateRankingCommand;
 
 public interface UpdateRankingUseCase {
+    void updateClickRanking(UpdateRankingCommand command);
 
-    void updateClickRanking(UpdateClickRankingCommand command);
+    void updateSaleRanking(UpdateRankingCommand command);
 }
