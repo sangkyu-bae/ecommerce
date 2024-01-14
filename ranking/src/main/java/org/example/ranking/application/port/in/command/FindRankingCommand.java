@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 public class FindRankingCommand extends SelfValidating<FindRankingCommand> {
 
     @NotNull
-    private int size;
+    private int limit;
 
-    public FindRankingCommand(int size){
-        this.size = size;
+    public FindRankingCommand(int limit){
+        this.limit = limit;
         this.validateSelf();
     }
 }

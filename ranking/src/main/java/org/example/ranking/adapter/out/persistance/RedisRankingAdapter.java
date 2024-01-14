@@ -15,7 +15,9 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -42,17 +44,31 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     }
 
     @Override
-    public void updateClickRankingBySortedSet(Ranking.RankingProductName rankingProductName) {
-        String productName = rankingProductName.getProductName();
-        int clickCnt = getProductCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productName);
-        incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productName, clickCnt);
+    public List<String> findRankingByClickAndLimit(int limit) {
+        ZSetOperations zSetOps = redisTemplate.opsForZSet();
+        Set<String> rangeRakingSet = zSetOps.reverseRange(PRODUCT_CLICK_RANK_KEY,0,limit-1);
+        return new ArrayList<>(rangeRakingSet);
     }
 
     @Override
-    public void updateSaleRakingBySortedSet(Ranking.RankingProductName rankingProductName) {
-        String productName = rankingProductName.getProductName();
-        int saleCnt = getProductCountBySortedSet(PRODUCT_SALE_RANK_KEY,productName);
-        incrementCountBySortedSet(PRODUCT_SALE_RANK_KEY,productName,saleCnt);
+    public List<String> findRankingBySaleAndLimit(int limit) {
+        ZSetOperations zSetOps = redisTemplate.opsForZSet();
+        Set<String> rangeRakingSet = zSetOps.reverseRange(PRODUCT_SALE_RANK_KEY,0,limit-1);
+        return new ArrayList<>(rangeRakingSet);
+    }
+
+    @Override
+    public void updateClickRankingBySortedSet(Ranking.RankingProductId rankingProductId) {
+        long productId = rankingProductId.getProductId();
+        int clickCnt = getProductCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId);
+        incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId, clickCnt);
+    }
+
+    @Override
+    public void updateSaleRakingBySortedSet(Ranking.RankingProductId rankingProductId) {
+        long productId = rankingProductId.getProductId();
+        int saleCnt = getProductCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId);
+        incrementCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId,saleCnt);
     }
 
     @Override
@@ -79,7 +95,6 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
                             RedisRankingEntity rankingEntity = RedisRankingEntity.builder()
                                     .id(rankKey)
                                     .productId(redisRanking.getProductId())
-                                    .productName(redisRanking.getProductName())
                                     .build();
 
                             hashOperations.increment(rankKey, hashKey, 1);
@@ -90,22 +105,20 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     public void removeRakingAll() {
         redisRankingRepository.deleteAll();
     }
-    private void incrementCountBySortedSet(String keyName, String productName, int clickCnt) {
+    private void incrementCountBySortedSet(String keyName, long productId, int clickCnt) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
-        zSetOps.add(keyName, productName, clickCnt + 1);
+        zSetOps.add(keyName, productId, clickCnt + 1);
     }
 
-    private int getProductCountBySortedSet(String keyName, String productName) {
+    private int getProductCountBySortedSet(String keyName, long productId) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
-        Double score = zSetOps.score(keyName, productName);
+        Double score = zSetOps.score(keyName, productId);
         if (score != null) {
             return (int) Math.round(score);
         } else {
             return 0;
         }
     }
-
-
 
 
 }

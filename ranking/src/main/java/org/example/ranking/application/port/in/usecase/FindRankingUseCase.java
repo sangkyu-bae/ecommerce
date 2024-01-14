@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface FindRankingUseCase {
 
-    List<RedisRanking> findRankByClickAndSize(FindRankingCommand command);
+    List<RedisRanking> findRankByClickAndLimit(FindRankingCommand command);
+
+    List<RedisRanking> findRankBySaleAndLimit(FindRankingCommand command);
+
 }

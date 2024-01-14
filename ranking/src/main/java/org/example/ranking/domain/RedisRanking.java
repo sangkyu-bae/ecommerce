@@ -6,30 +6,18 @@ import lombok.*;
 @AllArgsConstructor (access = AccessLevel.PRIVATE)
 public class RedisRanking{
 
-    private String productName;
-
     private long productId;
 
     private Long score;
 
     public static RedisRanking createGenerateRedisRanking(
-            RedisRankingProductName rankingProductName,
             RedisRankingProductId rankingProductId,
             RedisRankingScore redisRankingScore
     ){
         return new RedisRanking(
-                rankingProductName.productName,
                 rankingProductId.productId,
                 redisRankingScore.score
         );
-    }
-
-    public static class RedisRankingProductName{
-        public RedisRankingProductName(String value){
-            this.productName = value;
-        }
-
-        private String productName;
     }
 
     public static class RedisRankingProductId{

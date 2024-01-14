@@ -13,7 +13,6 @@ public class RankingMapper {
         return Ranking.createGenerateRanking(
                 new Ranking.RankingId(rankingEntity.getId()),
                 new Ranking.RankingProductId(rankingEntity.getProductId()),
-                new Ranking.RankingProductName(rankingEntity.getProductName()),
                 new Ranking.RankingClickNum(rankingEntity.getClickNum()),
                 new Ranking.RankingSaleNum(rankingEntity.getSaleNum())
         );

@@ -5,9 +5,9 @@ import org.example.ranking.domain.RedisRanking;
 
 public interface UpdateRankingRedisPort {
 
-    void updateClickRankingBySortedSet(Ranking.RankingProductName rankingProductName);
+    void updateClickRankingBySortedSet(Ranking.RankingProductId rankingProductId);
 
-    void updateSaleRakingBySortedSet(Ranking.RankingProductName rankingProductName);
+    void updateSaleRakingBySortedSet(Ranking.RankingProductId rankingProductId);
     void updateClickRankingView(RedisRanking redisRanking);
 
     void updateSaleRankingView(RedisRanking redisRanking);

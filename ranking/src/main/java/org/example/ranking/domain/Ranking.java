@@ -10,8 +10,6 @@ public class Ranking {
 
     private long productId;
 
-    private String productName;
-
     private long clickNum;
 
     private long saleNum;
@@ -19,7 +17,6 @@ public class Ranking {
     public static Ranking createGenerateRanking(
             RankingId rankingId,
             RankingProductId rankingProductId,
-            RankingProductName rankingProductName,
             RankingClickNum rankingClickNum,
             RankingSaleNum rankingSaleNum
 
@@ -27,7 +24,6 @@ public class Ranking {
         return new Ranking(
                 rankingId.getId(),
                 rankingProductId.getProductId(),
-                rankingProductName.getProductName(),
                 rankingClickNum.getClickNum(),
                 rankingSaleNum.getSaleNum()
         );
@@ -50,13 +46,6 @@ public class Ranking {
         private long productId;
     }
 
-    @Value
-    public static class RankingProductName{
-        public RankingProductName(String value){
-            this.productName = value;
-        }
-        private String productName;
-    }
     @Value
     public static class RankingClickNum{
         public RankingClickNum(long value){
