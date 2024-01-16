@@ -7,6 +7,7 @@ import com.example.adminservice.application.port.in.product.*;
 import com.example.adminservice.application.port.in.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.RegisterProductPort;
 
+import com.example.adminservice.application.port.out.SendCreateProductTaskPort;
 import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,8 @@ public class RegisterProductService implements RegisterProductUseCase {
     private final ProductMapper productMapper;
 
     private final CommandGateway commandGateway;
+
+    private final SendCreateProductTaskPort sendCreateProductTaskPort;
     @Override
     public ProductVo registerProduct(RegisterProductCommand command) {
 
@@ -65,7 +68,7 @@ public class RegisterProductService implements RegisterProductUseCase {
             }
         });
 
-
+        sendCreateProductTaskPort.sendCreateProductTask(productEntity.getId());
        return productMapper.mapToDomainEntity(productEntity);
     }
 

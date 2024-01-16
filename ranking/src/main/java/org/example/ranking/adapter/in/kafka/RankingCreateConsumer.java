@@ -16,20 +16,19 @@ public class RankingCreateConsumer {
 
     private final RegisterRankingUseCase registerRankingUseCase;
     @KafkaListener(
-            topics = "${kafka.insert.raking.topic}",
-            groupId = "${kafka.insert.raking.group}"
+            topics = "${kafka.raking.create.topic}",
+            groupId = "${kafka.raking.create.group}"
     )
-    public void createRankingListener(RegisterRankingRequest request){
+    public void createRankingListener(String productIdMessage){
         try{
             RegisterRankingCommand command = RegisterRankingCommand.builder()
-                    .productId(request.getProductId())
-                    .productName(request.getProductName())
+                    .productId(Long.parseLong(productIdMessage))
                     .build();
 
             Ranking registerRanking = registerRankingUseCase.registerRaking(command);
-
             log.info("create Ranking {}" ,registerRanking);
         }catch (Exception e){
+            // 재시도는 필요없음 상품 클릭 이벤트등이 들어올시 없으면 생성
             log.error("create Raking error : {} " ,e);
         }
     }

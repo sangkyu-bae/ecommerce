@@ -5,9 +5,9 @@ redis:
   host: localhost
 spring:
   application:
-    name: coupon-service
+    name: ranking-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_ranking
+    url: jdbc:mysql://localhost:3306/shoes_ranking?rewriteBatchedStatements=true
     username: root
     password: wnsvaf309
   jpa:
@@ -68,3 +68,25 @@ axon:
 ##########################
 app:
   bootstrapServer: localhost:9092
+
+##########################
+# kafka config #########
+##########################
+kafka:
+  raking:
+    create:
+      topic: create-ranking
+      group: create-ranking.v1
+    update:
+      click:
+        topic : update-click-ranking
+        group : update-click-ranking.v1
+
+##########################
+# redis config #########
+##########################
+redis_key:
+  product:
+    click: CLICK_RANK
+    sale : SALE_RANK
+    rank : RANK

@@ -7,6 +7,9 @@ import org.example.ranking.adapter.out.persistance.repository.RankingRepository;
 import org.example.ranking.application.port.out.RegisterRankingPort;
 import org.example.ranking.domain.Ranking;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @PersistenceAdapter
 @RequiredArgsConstructor
 public class RankingPersistenceAdapter implements RegisterRankingPort {
@@ -23,6 +26,19 @@ public class RankingPersistenceAdapter implements RegisterRankingPort {
                 .build();
 
         return rankingRepository.save(rankingEntity);
+    }
+
+    @Override
+    public List<RankingEntity> bulkRegisterRanking(List<Ranking> rankingList) {
+        List<RankingEntity> rankingEntities = rankingList.stream()
+                .map(rank -> RankingEntity.builder()
+                        .productId(rank.getProductId())
+                        .saleNum(rank.getSaleNum())
+                        .clickNum(rank.getClickNum())
+                        .build()
+                ).collect(Collectors.toList());
+
+        return rankingRepository.saveAll(rankingEntities);
     }
 
 

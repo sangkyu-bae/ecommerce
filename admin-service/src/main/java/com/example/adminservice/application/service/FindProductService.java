@@ -7,6 +7,7 @@ import com.example.adminservice.application.port.in.product.FindPagingProductCom
 import com.example.adminservice.application.port.in.product.FindProductCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
 
+import com.example.adminservice.application.port.out.SendFindProductTaskPort;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +25,14 @@ public class FindProductService implements FindProductUseCase {
     private final FindProductPort findProductPort;
     private final ProductMapper productMapper;
 
+    private final SendFindProductTaskPort sendFindProductTaskPort;
+
     @Override
     public ProductVo findProduct(FindProductCommand command) {
         ProductVo.ProductId productId = new ProductVo.ProductId(command.getProductId());
         ProductEntity findProduct =  findProductPort.findProduct(productId);
 
+        sendFindProductTaskPort.sendFindProductTask(productId.getId());
         return productMapper.mapToDomainEntity(findProduct);
     }
 

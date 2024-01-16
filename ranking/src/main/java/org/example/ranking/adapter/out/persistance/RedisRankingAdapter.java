@@ -2,6 +2,7 @@ package org.example.ranking.adapter.out.persistance;
 
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
 import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
 import org.example.ranking.adapter.out.persistance.repository.RedisRankingRepository;
@@ -23,15 +24,16 @@ import java.util.stream.StreamSupport;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
+@Slf4j
 public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingRedisPort, RemoveRankingRedisPort {
-    @Value("${product.click.key}")
-    private static String PRODUCT_CLICK_RANK_KEY;
+    @Value("${redis_key.product.click}")
+    private String PRODUCT_CLICK_RANK_KEY;
 
-    @Value("${product.sale.key}")
-    private static String PRODUCT_SALE_RANK_KEY;
+    @Value("${redis_key.product.sale}")
+    private String PRODUCT_SALE_RANK_KEY;
 
-    @Value("${product.rank.key}")
-    private static String PRODUCT_RANK_KEY;
+    @Value("${redis_key.product.rank}")
+    private String PRODUCT_RANK_KEY;
 
     private final StringRedisTemplate redisTemplate;
     private final RedisRankingRepository redisRankingRepository;
@@ -60,7 +62,9 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     @Override
     public void updateClickRankingBySortedSet(Ranking.RankingProductId rankingProductId) {
         long productId = rankingProductId.getProductId();
+        log.info("leaderboard click key : {}", PRODUCT_CLICK_RANK_KEY);
         int clickCnt = getProductCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId);
+
         incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId, clickCnt);
     }
 
@@ -73,7 +77,9 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
 
     @Override
     public void updateClickRankingView(RedisRanking redisRanking) {
+        log.info(PRODUCT_RANK_KEY);
         String productViewKey = PRODUCT_RANK_KEY + ":" + redisRanking.getProductId();
+        log.info("productVieKey : {}" ,productViewKey);
         updateRanking(productViewKey,"viewCount",redisRanking);
     }
 
@@ -107,12 +113,18 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     }
     private void incrementCountBySortedSet(String keyName, long productId, int clickCnt) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
-        zSetOps.add(keyName, productId, clickCnt + 1);
+        String productKey =String.valueOf(productId);
+        zSetOps.add(keyName, productKey, clickCnt + 1);
     }
 
     private int getProductCountBySortedSet(String keyName, long productId) {
+        log.info("keyName : {}",keyName);
+        log.info("productId : {}",productId);
+
+        String productKey =String.valueOf(productId);
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
-        Double score = zSetOps.score(keyName, productId);
+        Double score = zSetOps.score(keyName, productKey);
+        log.info("score : {}",score);
         if (score != null) {
             return (int) Math.round(score);
         } else {

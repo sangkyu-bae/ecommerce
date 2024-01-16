@@ -77,6 +77,13 @@ kafka:
     remove:
       topic: remove-order-product
       group: remove-order-product.v1
+  ranking :
+    create :
+      topic : create-ranking
+    click :
+      update :
+        topic : update-click-ranking
+
 
 ###################
 # Axon config #####

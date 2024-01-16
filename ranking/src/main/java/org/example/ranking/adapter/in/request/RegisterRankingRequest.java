@@ -6,8 +6,5 @@ import lombok.*;
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
 public class RegisterRankingRequest {
-
     private long productId;
-
-    private String productName;
 }

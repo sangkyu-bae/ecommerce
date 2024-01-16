@@ -15,13 +15,9 @@ public class RegisterRankingCommand extends SelfValidating<RegisterRankingComman
     @NotNull
     private long productId;
 
-    @NotNull
-    @NotBlank
-    private String productName;
 
-    public RegisterRankingCommand(long productId, String productName){
+    public RegisterRankingCommand(long productId){
         this.productId = productId;
-        this.productName = productName;
         this.validateSelf();
     }
 }

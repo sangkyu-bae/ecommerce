@@ -12,14 +12,19 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class UpdateRankingCommand extends SelfValidating<UpdateRankingCommand> {
-
+public class BulkRegisterRankingCommand extends SelfValidating<BulkRegisterRankingCommand> {
 
     @NotNull
-    private long productId;
+    private Long productId;
 
-    public UpdateRankingCommand(long productId){
-        this.productId = productId;
+    private int clickNum;
+
+    private int saleNum;
+
+    public BulkRegisterRankingCommand(long productId, int clickNum, int saleNum){
+        this.productId= productId;
+        this.clickNum = clickNum;
+        this.saleNum = saleNum;
         this.validateSelf();
     }
 }

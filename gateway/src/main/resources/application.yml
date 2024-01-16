@@ -50,6 +50,11 @@ spring:
             - Path=/coupon/**
           filters:
             - AuthorizationHeaderFilter
+        - id: ranking-service
+          uri: lb://ranking-service
+          predicates:
+            - Path=/rank/**
+
 
 
 

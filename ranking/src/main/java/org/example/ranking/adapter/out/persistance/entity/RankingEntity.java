@@ -37,7 +37,7 @@ public class RankingEntity {
     }
 
     private void incrementSaleNum(int saleCnt){
-        saleNum += saleNum;
+        saleNum += saleCnt;
     }
 
     public void changeBatchData(int clickCnt, int saleCnt){

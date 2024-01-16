@@ -26,9 +26,20 @@ public class FindRankController {
                 .limit(limit)
                 .build();
 
-        findRankingUseCase.findRankByClickAndLimit(command);
+        List<RedisRanking> redisRankingList = findRankingUseCase.findRankByClickAndLimit(command);
 
-        return null;
+        return ResponseEntity.ok().body(redisRankingList);
     }
 
+    @GetMapping("/rank/sale/{limit}")
+    public ResponseEntity<List<RedisRanking>> findRankBySale(@PathVariable("limit") int limit){
+
+        FindRankingCommand command = FindRankingCommand.builder()
+                .limit(limit)
+                .build();
+
+        List<RedisRanking> redisRankingList = findRankingUseCase.findRankBySaleAndLimit(command);
+
+        return ResponseEntity.ok().body(redisRankingList);
+    }
 }
