@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
 import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
+import org.example.ranking.adapter.out.persistance.repository.RankingRepository;
 import org.example.ranking.adapter.out.persistance.repository.RedisRankingRepository;
 import org.example.ranking.application.port.out.FindRankingRedisPort;
 import org.example.ranking.application.port.out.RemoveRankingRedisPort;
@@ -26,6 +27,7 @@ import java.util.stream.StreamSupport;
 @RequiredArgsConstructor
 @Slf4j
 public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingRedisPort, RemoveRankingRedisPort {
+    private final RankingRepository rankingRepository;
     @Value("${redis_key.product.click}")
     private String PRODUCT_CLICK_RANK_KEY;
 
@@ -60,19 +62,24 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     }
 
     @Override
+    public List<RedisRankingEntity> findRankInId(List<String> ids) {
+        return redisRankingRepository.findByIdIn(ids);
+    }
+
+    @Override
     public void updateClickRankingBySortedSet(Ranking.RankingProductId rankingProductId) {
         long productId = rankingProductId.getProductId();
         log.info("leaderboard click key : {}", PRODUCT_CLICK_RANK_KEY);
         int clickCnt = getProductCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId);
 
-        incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId, clickCnt);
+        incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId, clickCnt + 1);
     }
 
     @Override
     public void updateSaleRakingBySortedSet(Ranking.RankingProductId rankingProductId) {
         long productId = rankingProductId.getProductId();
         int saleCnt = getProductCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId);
-        incrementCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId,saleCnt);
+        incrementCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId,saleCnt + 1);
     }
 
     @Override
@@ -89,6 +96,15 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
         updateRanking(productViewKey,"saleCount",redisRanking);
     }
 
+    @Override
+    public void reloadRankBySortedSet(Ranking reloadRanking) {
+        long productId = reloadRanking.getProductId();
+
+        incrementCountBySortedSet(PRODUCT_SALE_RANK_KEY,productId, (int) reloadRanking.getSaleNum());
+        incrementCountBySortedSet(PRODUCT_CLICK_RANK_KEY,productId, (int) reloadRanking.getSaleNum());
+    }
+
+
     private void updateRanking(String rankKey,String hashKey,RedisRanking redisRanking){
         HashOperations<String, String, String> hashOperations = redisTemplate.opsForHash();
 
@@ -101,6 +117,7 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
                             RedisRankingEntity rankingEntity = RedisRankingEntity.builder()
                                     .id(rankKey)
                                     .productId(redisRanking.getProductId())
+                                    .productName(redisRanking.getProductName())
                                     .build();
 
                             hashOperations.increment(rankKey, hashKey, 1);
@@ -111,12 +128,12 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     public void removeRakingAll() {
         redisRankingRepository.deleteAll();
     }
+
     private void incrementCountBySortedSet(String keyName, long productId, int clickCnt) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
         String productKey =String.valueOf(productId);
-        zSetOps.add(keyName, productKey, clickCnt + 1);
+        zSetOps.add(keyName, productKey, clickCnt );
     }
-
     private int getProductCountBySortedSet(String keyName, long productId) {
         log.info("keyName : {}",keyName);
         log.info("productId : {}",productId);
@@ -131,6 +148,4 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
             return 0;
         }
     }
-
-
 }

@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
 import org.example.ranking.adapter.out.persistance.RankingMapper;
 import org.example.ranking.adapter.out.persistance.entity.RankingEntity;
-import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
 import org.example.ranking.application.port.in.command.BulkRegisterRankingCommand;
 import org.example.ranking.application.port.in.command.RegisterRankingCommand;
 import org.example.ranking.application.port.in.usecase.RegisterRankingUseCase;

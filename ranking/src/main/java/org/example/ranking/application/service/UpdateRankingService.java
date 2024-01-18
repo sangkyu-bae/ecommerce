@@ -24,6 +24,7 @@ public class UpdateRankingService implements UpdateRankingUseCase {
 
         RedisRanking ranking = RedisRanking.createGenerateRedisRanking(
                 new RedisRanking.RedisRankingProductId(command.getProductId()),
+                new RedisRanking.RedisRankingProductName(command.getProductName()),
                 new RedisRanking.RedisRankingScore(null)
         );
 
@@ -32,38 +33,6 @@ public class UpdateRankingService implements UpdateRankingUseCase {
                 ,new Ranking.RankingProductId(command.getProductId())
                 ,ranking
         );
-
     }
-
-    @Override
-    public void updateClickRanking(UpdateRankingCommand command) {
-        RedisRanking ranking = RedisRanking.createGenerateRedisRanking(
-                new RedisRanking.RedisRankingProductId(command.getProductId()),
-                new RedisRanking.RedisRankingScore(null)
-        );
-
-        updateRankingPort.updateClickRankingView(ranking);
-
-        updateRankingPort.updateClickRankingBySortedSet(
-                new Ranking.RankingProductId(command.getProductId())
-        );
-
-
-    }
-
-    @Override
-    public void updateSaleRanking(UpdateRankingCommand command) {
-        updateRankingPort.updateSaleRakingBySortedSet(
-                new Ranking.RankingProductId(command.getProductId())
-        );
-
-        RedisRanking ranking = RedisRanking.createGenerateRedisRanking(
-                new RedisRanking.RedisRankingProductId(command.getProductId()),
-                null
-        );
-
-        updateRankingPort.updateSaleRankingView(ranking);
-    }
-
 
 }

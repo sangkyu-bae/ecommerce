@@ -14,6 +14,8 @@ public class RedisRankingEntity {
     @Id
     private String id;
 
+    private String productName;
+
     private long productId;
 
     private int viewCount;

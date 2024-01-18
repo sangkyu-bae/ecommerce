@@ -10,4 +10,6 @@ public interface FindRankingRedisPort {
     List<String> findRankingByClickAndLimit(int limit);
 
     List<String> findRankingBySaleAndLimit(int limit);
+
+    List<RedisRankingEntity> findRankInId(List<String> ids);
 }

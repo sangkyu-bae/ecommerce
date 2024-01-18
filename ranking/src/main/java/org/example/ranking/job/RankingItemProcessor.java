@@ -1,18 +1,21 @@
 package org.example.ranking.job;
 
-import com.netflix.discovery.converters.Auto;
 import org.example.ranking.adapter.out.persistance.entity.RankingEntity;
 import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
 import org.example.ranking.application.port.in.command.BulkRegisterRankingCommand;
 import org.example.ranking.application.port.in.usecase.RegisterRankingUseCase;
 import org.example.ranking.application.port.out.FindRankingRedisPort;
 import org.example.ranking.application.port.out.RemoveRankingRedisPort;
+import org.example.ranking.application.port.out.UpdateRankingRedisPort;
+import org.example.ranking.domain.Ranking;
+import org.example.ranking.domain.RedisRanking;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemStream;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +32,15 @@ public class RankingItemProcessor implements ItemProcessor<RankingEntity, Rankin
     @Autowired
     private RemoveRankingRedisPort removeRankingRedisPort;
 
-    @Auto
+    @Autowired
+    private UpdateRankingRedisPort updateRankingRedisPort;
+
+    @Autowired
     private RegisterRankingUseCase registerRankingUseCase;
 
     private Map<Long, RedisRankingEntity> rankingMap;
+
+    private List<Ranking> reloadRedisRankList;
 
     @Override
     public void open(ExecutionContext executionContext) {
@@ -51,6 +59,10 @@ public class RankingItemProcessor implements ItemProcessor<RankingEntity, Rankin
         // 스텝 종료 시 호출되는 메서드
         // (여기서는 특별히 해야 할 일이 없다면 비워둬도 됨)
 
+        for(Ranking ranking : reloadRedisRankList){
+            updateRankingRedisPort.reloadRankBySortedSet(ranking);
+        }
+
         removeRankingRedisPort.removeRakingAll();
         creteRankEntity();
     }
@@ -58,11 +70,11 @@ public class RankingItemProcessor implements ItemProcessor<RankingEntity, Rankin
     private void initializeRankingMap() {
         List<RedisRankingEntity> redisRankingList = findRankingRedisPort.findRankingAll();
         rankingMap = new HashMap<>();
+
+        reloadRedisRankList = new ArrayList<>();
         for (RedisRankingEntity rankingEntity : redisRankingList) {
             rankingMap.put(rankingEntity.getProductId(), rankingEntity);
         }
-
-
     }
 
     private void creteRankEntity(){
@@ -80,6 +92,7 @@ public class RankingItemProcessor implements ItemProcessor<RankingEntity, Rankin
                 ).collect(Collectors.toList());
 
         registerRankingUseCase.bulkRegisterRanking(bulkRegisterRankingCommandList);
+
     }
 
     @Override
@@ -92,6 +105,16 @@ public class RankingItemProcessor implements ItemProcessor<RankingEntity, Rankin
         rankingEntity.changeBatchData(clickCnt,saleCnt);
 
         rankingMap.remove(rankingEntity.getId());
+
+        Ranking reloadRanking = Ranking.createGenerateRanking(
+                new Ranking.RankingId(rankingEntity.getProductId()),
+                new Ranking.RankingProductId(rankingEntity.getProductId()),
+                new Ranking.RankingClickNum(rankingEntity.getClickNum()),
+                new Ranking.RankingSaleNum(rankingEntity.getSaleNum())
+        );
+
+        reloadRedisRankList.add(reloadRanking);
+
         return rankingEntity;
     }
 }

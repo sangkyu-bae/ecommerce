@@ -18,8 +18,12 @@ public class UpdateRankingCommand extends SelfValidating<UpdateRankingCommand> {
     @NotNull
     private long productId;
 
-    public UpdateRankingCommand(long productId){
+    @NotNull
+    private String productName;
+
+    public UpdateRankingCommand(long productId,String productName){
         this.productId = productId;
+        this.productName = productName;
         this.validateSelf();
     }
 }
