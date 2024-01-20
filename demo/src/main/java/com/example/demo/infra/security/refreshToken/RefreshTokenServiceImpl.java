@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.webjars.NotFoundException;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Slf4j
@@ -23,7 +25,18 @@ public class RefreshTokenServiceImpl implements RefreshTokenService{
     public void updateRefreshToken(String email, String uuid) {
         Member member=memberRepository.findByEmail(email)
                 .orElseThrow(()->new NotFoundException("id :" + email + "는 없는 사용자 입니다."));
+        refreshTokenRedisRepository.save(RefreshToken.of(String.valueOf(member.getUserId()), uuid));
+    }
 
-        refreshTokenRedisRepository.save(RefreshToken.of(member.getEmail(), uuid));
+    @Override
+    public boolean existRefreshToken(String userId,String refreshToken) {
+        //예외처리 필요
+        RefreshToken token = refreshTokenRedisRepository.findById(userId).orElseThrow();
+
+        if(!token.getRefreshTokenId().equals(refreshToken)){
+            return false;
+        }
+
+        return true;
     }
 }
