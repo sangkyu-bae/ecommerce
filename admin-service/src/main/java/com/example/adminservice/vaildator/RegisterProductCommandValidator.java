@@ -2,9 +2,9 @@ package com.example.adminservice.vaildator;
 
 import com.example.adminservice.adapter.out.persistence.repository.BrandEntityRepository;
 import com.example.adminservice.adapter.out.persistence.repository.CategoryEntityRepository;
-import com.example.adminservice.application.port.in.product.RegisterProductCommand;
-import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
-import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
+import com.example.adminservice.application.port.in.command.RegisterProductCommand;
+import com.example.adminservice.application.port.in.command.RegisterProductComponentCommand;
+import com.example.adminservice.application.port.in.command.RegisterSizeCommand;
 import com.example.adminservice.domain.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

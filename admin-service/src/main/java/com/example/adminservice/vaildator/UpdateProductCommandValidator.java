@@ -4,9 +4,9 @@ import com.example.adminservice.adapter.out.persistence.repository.BrandEntityRe
 import com.example.adminservice.adapter.out.persistence.repository.CategoryEntityRepository;
 import com.example.adminservice.adapter.out.persistence.repository.ColorEntityRepository;
 import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRepository;
-import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
-import com.example.adminservice.application.port.in.product.RegisterSizeCommand;
-import com.example.adminservice.application.port.in.product.UpdateProductCommand;
+import com.example.adminservice.application.port.in.command.RegisterProductComponentCommand;
+import com.example.adminservice.application.port.in.command.RegisterSizeCommand;
+import com.example.adminservice.application.port.in.command.UpdateProductCommand;
 import com.example.adminservice.domain.SizeCheck;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

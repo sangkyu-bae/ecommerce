@@ -3,8 +3,8 @@ package com.example.adminservice.application.service;
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.out.persistence.product.*;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
-import com.example.adminservice.application.port.in.product.*;
-import com.example.adminservice.application.port.in.RegisterProductUseCase;
+import com.example.adminservice.application.port.in.command.RegisterProductCommand;
+import com.example.adminservice.application.port.in.usecase.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.RegisterProductPort;
 
 import com.example.adminservice.application.port.out.SendCreateProductTaskPort;

@@ -2,9 +2,10 @@ package com.example.adminservice.application.service;
 
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
-import com.example.adminservice.application.port.in.FindProductUseCase;
-import com.example.adminservice.application.port.in.product.FindPagingProductCommand;
-import com.example.adminservice.application.port.in.product.FindProductCommand;
+import com.example.adminservice.application.port.in.command.ExistProductCommand;
+import com.example.adminservice.application.port.in.usecase.FindProductUseCase;
+import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
+import com.example.adminservice.application.port.in.command.FindProductCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
 
 import com.example.adminservice.application.port.out.SendFindProductTaskPort;
@@ -45,5 +46,10 @@ public class FindProductService implements FindProductUseCase {
         Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
 
         return productMapper.mapToDomainEntity(findPagingProduct);
+    }
+
+    @Override
+    public boolean existProductBySizeId(ExistProductCommand command) {
+        return findProductPort.existProductBySize(command.getSizeId());
     }
 }

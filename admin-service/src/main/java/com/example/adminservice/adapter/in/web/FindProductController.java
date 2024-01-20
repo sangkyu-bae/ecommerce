@@ -1,8 +1,9 @@
 package com.example.adminservice.adapter.in.web;
 
-import com.example.adminservice.application.port.in.FindProductUseCase;
-import com.example.adminservice.application.port.in.product.FindPagingProductCommand;
-import com.example.adminservice.application.port.in.product.FindProductCommand;
+import com.example.adminservice.application.port.in.command.ExistProductCommand;
+import com.example.adminservice.application.port.in.usecase.FindProductUseCase;
+import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
+import com.example.adminservice.application.port.in.command.FindProductCommand;
 
 
 import com.example.adminservice.domain.ProductSearchVo;
@@ -35,6 +36,22 @@ public class FindProductController {
 
         return ResponseEntity.ok().body(productVo);
     }
+
+    @Operation(summary = "find product", description = "해당 컬러 및 사이즈 제품 조회하기")
+    @GetMapping("/admin/find/product-size/{sizeId}")
+    public ResponseEntity<Boolean> existProduct(@PathVariable ("sizeId") long sizeId){
+
+        ExistProductCommand command = ExistProductCommand.builder()
+                .sizeId(sizeId)
+                .build();
+
+
+        boolean isExist = findProductUseCase.existProductBySizeId(command);
+
+        return ResponseEntity.ok().body(isExist);
+    }
+
+
 
     @Operation(summary = "find paging product", description = "상품 페이징")
     @GetMapping("/admin/page/product/{pageNum}")

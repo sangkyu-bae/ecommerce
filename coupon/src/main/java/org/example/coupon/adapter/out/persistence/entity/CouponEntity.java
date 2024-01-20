@@ -47,7 +47,6 @@ public class CouponEntity {
             throw new ErrorException(CouponErrorCode.COUPON_NOT_FOUND,"checkAndUpdateCoupon??");
         }
 
-        System.out.println(couponComponentEntity.toString());
         couponComponentEntity.setStatus(CouponComponentVo.CouponStatusCode.USE_SUCCESS.getStatus());
     }
 }

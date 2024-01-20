@@ -64,4 +64,8 @@ gradlew.bat
 /ranking/rankingLog
 /ranking/rankingLog*
 
+/basket/build
+/basket/basketLog
+/basket/basketLog*
+
 

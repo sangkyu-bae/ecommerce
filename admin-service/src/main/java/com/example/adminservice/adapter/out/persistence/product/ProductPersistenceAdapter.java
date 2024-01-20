@@ -71,6 +71,11 @@ public class ProductPersistenceAdapter implements FindProductPort,
     }
 
     @Override
+    public boolean existProductBySize(long sizeId) {
+        return sizeEntityRepository.existsById(sizeId);
+    }
+
+    @Override
     public ProductEntity updateProduct(ProductVo productVo) {
         ProductEntity updateProductEntity = ProductEntity.builder()
                 .id(productVo.getId())

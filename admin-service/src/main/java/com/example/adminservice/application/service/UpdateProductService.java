@@ -2,10 +2,10 @@ package com.example.adminservice.application.service;
 
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
-import com.example.adminservice.application.port.in.UpdateProductUseCase;
-import com.example.adminservice.application.port.in.product.OrderToUpdateProductCommand;
-import com.example.adminservice.application.port.in.product.UpdateProductCommand;
-import com.example.adminservice.application.port.in.product.UpdateProductQuantityCommand;
+import com.example.adminservice.application.port.in.usecase.UpdateProductUseCase;
+import com.example.adminservice.application.port.in.command.OrderToUpdateProductCommand;
+import com.example.adminservice.application.port.in.command.UpdateProductCommand;
+import com.example.adminservice.application.port.in.command.UpdateProductQuantityCommand;
 import com.example.adminservice.application.port.out.FindProductPort;
 import com.example.adminservice.application.port.out.RequestDeliveryPort;
 import com.example.adminservice.application.port.out.UpdateProductPort;

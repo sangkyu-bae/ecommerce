@@ -2,9 +2,9 @@ package com.example.adminservice.adapter.in.web;
 
 import com.example.adminservice.adapter.in.request.UpdateProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
-import com.example.adminservice.application.port.in.FindProductUseCase;
-import com.example.adminservice.application.port.in.UpdateProductUseCase;
-import com.example.adminservice.application.port.in.product.*;
+import com.example.adminservice.application.port.in.usecase.FindProductUseCase;
+import com.example.adminservice.application.port.in.usecase.UpdateProductUseCase;
+import com.example.adminservice.application.port.in.command.*;
 
 import com.example.adminservice.domain.ProductVo;
 import com.example.adminservice.infra.error.ErrorException;

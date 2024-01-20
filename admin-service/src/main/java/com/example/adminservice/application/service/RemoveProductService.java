@@ -1,7 +1,7 @@
 package com.example.adminservice.application.service;
 
-import com.example.adminservice.application.port.in.RemoveProductUseCase;
-import com.example.adminservice.application.port.in.product.DeleteProductCommand;
+import com.example.adminservice.application.port.in.usecase.RemoveProductUseCase;
+import com.example.adminservice.application.port.in.command.DeleteProductCommand;
 import com.example.adminservice.application.port.out.RemoveProductPort;
 
 import com.example.adminservice.domain.ProductVo;

@@ -2,11 +2,11 @@ package com.example.adminservice.adapter.in.web;
 
 import com.example.adminservice.adapter.in.request.RegisterProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
-import com.example.adminservice.application.port.in.product.RegisterBrandCommand;
-import com.example.adminservice.application.port.in.product.RegisterCategoryCommand;
-import com.example.adminservice.application.port.in.product.RegisterProductCommand;
-import com.example.adminservice.application.port.in.RegisterProductUseCase;
-import com.example.adminservice.application.port.in.product.RegisterProductComponentCommand;
+import com.example.adminservice.application.port.in.command.RegisterBrandCommand;
+import com.example.adminservice.application.port.in.command.RegisterCategoryCommand;
+import com.example.adminservice.application.port.in.command.RegisterProductCommand;
+import com.example.adminservice.application.port.in.usecase.RegisterProductUseCase;
+import com.example.adminservice.application.port.in.command.RegisterProductComponentCommand;
 import com.example.adminservice.domain.ProductVo;
 
 

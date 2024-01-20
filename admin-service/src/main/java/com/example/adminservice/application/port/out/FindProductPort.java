@@ -11,4 +11,6 @@ public interface FindProductPort {
     ProductEntity findProduct(ProductVo.ProductId productId);
 
     Page<ProductEntity> findPagingProduct(Pageable pageable);
+
+    boolean existProductBySize(long sizeId );
 }
