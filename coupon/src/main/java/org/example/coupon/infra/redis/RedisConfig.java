@@ -1,8 +1,11 @@
-package org.example.ranking.infra.redis;
+package org.example.coupon.infra.redis;
 
 import lombok.RequiredArgsConstructor;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -18,10 +21,16 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableRedisRepositories
 public class RedisConfig {
+    @Value("${spring.redis.host}")
+    private String redisHost;
 
+    @Value("${spring.redis.port}")
+    private int redisPort;
+
+    private static final String REDISSON_HOST_PREFIX = "redis://";
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration("localhost", 5000);
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
         LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(config);
         connectionFactory.afterPropertiesSet();
         return connectionFactory;
@@ -65,5 +74,13 @@ public class RedisConfig {
                 connection.close();
             }
         };
+    }
+    @Bean
+    public RedissonClient redissonClient() {
+        RedissonClient redisson = null;
+        Config config = new Config();
+        config.useSingleServer().setAddress(REDISSON_HOST_PREFIX + redisHost + ":" + redisPort);
+        redisson = Redisson.create(config);
+        return redisson;
     }
 }

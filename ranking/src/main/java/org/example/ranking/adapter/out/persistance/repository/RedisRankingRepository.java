@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface RedisRankingRepository extends CrudRepository<RedisRankingEntity, String> {
-    List<RedisRankingEntity> findByIdIn(List<String> ids);
+    List<RedisRankingEntity> findAllById(List<String> ids);
 }

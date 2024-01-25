@@ -5,4 +5,5 @@ import org.example.ranking.domain.RankingEvent;
 
 public interface UpdateRankingUseCase {
     void updateRanking(UpdateRankingCommand command, RankingEvent event);
+
 }

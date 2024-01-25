@@ -4,15 +4,18 @@ import lombok.RequiredArgsConstructor;
 import org.example.PersistenceAdapter;
 import org.example.ranking.adapter.out.persistance.entity.RankingEntity;
 import org.example.ranking.adapter.out.persistance.repository.RankingRepository;
+import org.example.ranking.application.port.out.FindRankingPort;
 import org.example.ranking.application.port.out.RegisterRankingPort;
 import org.example.ranking.domain.Ranking;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
-public class RankingPersistenceAdapter implements RegisterRankingPort {
+public class RankingPersistenceAdapter implements RegisterRankingPort , FindRankingPort {
     private final RankingRepository rankingRepository;
 
 
@@ -42,4 +45,10 @@ public class RankingPersistenceAdapter implements RegisterRankingPort {
     }
 
 
+    @Override
+    public List<RankingEntity> findRankByClickAndLimit(int limit) {
+        Pageable pageable = PageRequest.of(0, limit);
+        List<RankingEntity> result = rankingRepository.findWithPagingOrderByClickNum(pageable);
+        return result;
+    }
 }

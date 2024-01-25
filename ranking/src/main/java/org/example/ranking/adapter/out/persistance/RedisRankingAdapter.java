@@ -63,7 +63,12 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
 
     @Override
     public List<RedisRankingEntity> findRankInId(List<String> ids) {
-        return redisRankingRepository.findByIdIn(ids);
+        return redisRankingRepository.findAllById(ids);
+    }
+
+    @Override
+    public RedisRankingEntity findRedisRankById(String key) {
+        return redisRankingRepository.findById(key).orElseThrow();
     }
 
     @Override
