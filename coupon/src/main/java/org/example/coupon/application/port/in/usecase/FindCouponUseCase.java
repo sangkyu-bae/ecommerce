@@ -1,9 +1,9 @@
 package org.example.coupon.application.port.in.usecase;
 
 import org.example.coupon.application.port.in.command.FindCouponCommand;
-import org.example.coupon.domain.CouponVo;
+import org.example.coupon.domain.Coupon;
 
 public interface FindCouponUseCase {
 
-    CouponVo findCouponByCouponId(FindCouponCommand command);
+    Coupon findCouponByCouponId(FindCouponCommand command);
 }

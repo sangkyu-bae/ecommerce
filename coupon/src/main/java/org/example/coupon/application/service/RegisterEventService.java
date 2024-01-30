@@ -5,11 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
 import org.example.coupon.adapter.out.persistence.EventMapper;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
+import org.example.coupon.application.port.in.command.RegisterCouponCommand;
 import org.example.coupon.application.port.in.command.RegisterEventCouponCommand;
+import org.example.coupon.application.port.in.usecase.RegisterCouponUseCase;
 import org.example.coupon.application.port.in.usecase.RegisterEventCouponUseCase;
 import org.example.coupon.application.port.out.RegisterEventPort;
+import org.example.coupon.domain.Coupon;
 import org.example.coupon.domain.Event;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.time.LocalDateTime;
 
 @UseCase
 @Transactional(readOnly = false)
@@ -19,10 +25,23 @@ public class RegisterEventService implements RegisterEventCouponUseCase {
 
     private final RegisterEventPort registerEventPort;
 
+    private final RegisterCouponUseCase registerCouponUseCase;
+
     private final EventMapper eventMapper;
 
     @Override
     public Event registerEventCoupon(RegisterEventCouponCommand command) {
+
+        /**
+         * 수정 필요
+         * */
+        RegisterCouponCommand registerCouponCommand = RegisterCouponCommand.builder()
+                .createAdminUserId(command.getAdminUser())
+                .name(command.getCouponName())
+                .salePercent(command.getSalePercent())
+                .build();
+
+        registerCouponUseCase.RegisterCouponByAllUserWithAxon(registerCouponCommand);
 
         Event registerEvent = Event.createGenerateEvent(
                 new Event.EventId(null),

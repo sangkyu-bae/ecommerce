@@ -1,7 +1,6 @@
 package org.example.coupon.adapter.axon.command;
 
 import lombok.*;
-import org.example.coupon.domain.CouponComponentVo;
 
 import java.time.LocalDateTime;
 import java.util.List;

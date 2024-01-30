@@ -12,8 +12,8 @@ import org.example.coupon.application.port.in.command.RegisterCouponCommand;
 import org.example.coupon.application.port.in.usecase.RegisterCouponUseCase;
 import org.example.coupon.application.port.out.GetMemberPort;
 import org.example.coupon.application.port.out.RegisterCouponPort;
-import org.example.coupon.domain.CouponComponentVo;
-import org.example.coupon.domain.CouponVo;
+import org.example.coupon.domain.CouponComponent;
+import org.example.coupon.domain.Coupon;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -35,26 +35,26 @@ public class RegisterCouponService implements RegisterCouponUseCase {
     private final CommandGateway commandGateway;
 
     @Override
-    public CouponVo RegisterCouponByAllUser(RegisterCouponCommand command) {
+    public Coupon RegisterCouponByAllUser(RegisterCouponCommand command) {
 
         List<Member> memberList = getMemberPort.getMemberList();
 
-        CouponVo couponVo = CouponVo.createGenerateCouponVo(
-                new CouponVo.CouponId(null),
-                new CouponVo.CouponCreateAdminId(command.getCreateAdminUserId()),
-                new CouponVo.CouponSalePercent(command.getSalePercent()),
-                new CouponVo.CouponName(command.getName()),
-                new CouponVo.CouponCreateAt(LocalDateTime.now()),
+        Coupon couponVo = Coupon.createGenerateCoupon(
+                new Coupon.CouponId(null),
+                new Coupon.CouponCreateAdminId(command.getCreateAdminUserId()),
+                new Coupon.CouponSalePercent(command.getSalePercent()),
+                new Coupon.CouponName(command.getName()),
+                new Coupon.CouponCreateAt(LocalDateTime.now()),
                 null,
-                new CouponVo.CouponAggregateIdentifier(null)
+                new Coupon.CouponAggregateIdentifier(null)
         );
 
-        List<CouponComponentVo> couponComponentVos = memberList.stream()
-                .map(member -> CouponComponentVo.createGenerateCouponComponentVo(
-                        new CouponComponentVo.CouponComponentId(null),
-                        new CouponComponentVo.CouponComponentUserId(member.getUserId()),
-                        CouponComponentVo.CouponStatusCode.PUBLISH,
-                        new CouponComponentVo.CouponComponentEndAt(LocalDateTime.now().plusDays(5)),
+        List<CouponComponent> couponComponentVos = memberList.stream()
+                .map(member -> CouponComponent.createGenerateCouponComponentVo(
+                        new CouponComponent.CouponComponentId(null),
+                        new CouponComponent.CouponComponentUserId(member.getUserId()),
+                        CouponComponent.CouponStatusCode.PUBLISH,
+                        new CouponComponent.CouponComponentEndAt(LocalDateTime.now().plusDays(5)),
                         couponVo
                 )).collect(Collectors.toList());
 
@@ -67,14 +67,14 @@ public class RegisterCouponService implements RegisterCouponUseCase {
     }
 
     @Override
-    public CouponVo RegisterCouponByAllUserWithAxon(RegisterCouponCommand command) {
+    public Coupon RegisterCouponByAllUserWithAxon(RegisterCouponCommand command) {
         List<Member> memberList = getMemberPort.getMemberList();
 
         LocalDateTime endAt = LocalDateTime.now().plusDays(5);
         List<CouponRequestCreateCommand.CouponComponentRequestCreateCommand> couponComponentRequestCreateCommands = memberList.stream()
                 .map(member -> new CouponRequestCreateCommand.CouponComponentRequestCreateCommand(
                         member.getUserId(),
-                        CouponComponentVo.CouponStatusCode.PUBLISH.getStatus(),
+                        CouponComponent.CouponStatusCode.PUBLISH.getStatus(),
                         endAt
                 )).collect(Collectors.toList());
 
@@ -89,22 +89,22 @@ public class RegisterCouponService implements RegisterCouponUseCase {
 
         try {
             Object result = commandGateway.sendAndWait(axonCommand);
-            CouponVo couponVo = CouponVo.createGenerateCouponVo(
-                    new CouponVo.CouponId(null),
-                    new CouponVo.CouponCreateAdminId(command.getCreateAdminUserId()),
-                    new CouponVo.CouponSalePercent(command.getSalePercent()),
-                    new CouponVo.CouponName(command.getName()),
-                    new CouponVo.CouponCreateAt(LocalDateTime.now()),
+            Coupon couponVo = Coupon.createGenerateCoupon(
+                    new Coupon.CouponId(null),
+                    new Coupon.CouponCreateAdminId(command.getCreateAdminUserId()),
+                    new Coupon.CouponSalePercent(command.getSalePercent()),
+                    new Coupon.CouponName(command.getName()),
+                    new Coupon.CouponCreateAt(LocalDateTime.now()),
                     null,
-                    new CouponVo.CouponAggregateIdentifier(result.toString())
+                    new Coupon.CouponAggregateIdentifier(result.toString())
             );
 
-            List<CouponComponentVo> couponComponentVos = memberList.stream()
-                    .map(member -> CouponComponentVo.createGenerateCouponComponentVo(
-                            new CouponComponentVo.CouponComponentId(null),
-                            new CouponComponentVo.CouponComponentUserId(member.getUserId()),
-                            CouponComponentVo.CouponStatusCode.PUBLISH,
-                            new CouponComponentVo.CouponComponentEndAt(endAt),
+            List<CouponComponent> couponComponentVos = memberList.stream()
+                    .map(member -> CouponComponent.createGenerateCouponComponentVo(
+                            new CouponComponent.CouponComponentId(null),
+                            new CouponComponent.CouponComponentUserId(member.getUserId()),
+                            CouponComponent.CouponStatusCode.PUBLISH,
+                            new CouponComponent.CouponComponentEndAt(endAt),
                             couponVo
                     )).collect(Collectors.toList());
             couponVo.setCouponComponentVoList(couponComponentVos);

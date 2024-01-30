@@ -2,15 +2,15 @@ package org.example.coupon.infra.error;
 
 import org.springframework.http.HttpStatus;
 
-public enum CouponErrorCode implements ErrorCode {
-    COUPON_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 쿠폰을 찾을 수 없습니다."),
+public enum EventErrorCode implements ErrorCode {
 
-    COUPON_NO_VALIDATE(HttpStatus.BAD_REQUEST,"권한 및 주문이 잘못되었습니다")
+    EVENT_COUPON_NOT_FOUND(HttpStatus.NOT_FOUND,"해당 이벤트 쿠폰을 찾을 수 없습니다."),
+    EVENT_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED,"해당 쿠폰이 소진 되었습니다.")
     ;
 
     private final HttpStatus httpStatus;
     private final String detail;
-    CouponErrorCode(HttpStatus httpStatus, String detail){
+    EventErrorCode(HttpStatus httpStatus, String detail){
         this.httpStatus = httpStatus;
         this.detail = detail;
     }

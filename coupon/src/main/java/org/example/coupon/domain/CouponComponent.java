@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class CouponComponentVo {
+public class CouponComponent {
 
     private final Long id;
 
@@ -21,17 +21,17 @@ public class CouponComponentVo {
 
     private final LocalDateTime endAt;
 
-    private final CouponVo coupon;
+    private final Coupon coupon;
 
 
-    public static CouponComponentVo createGenerateCouponComponentVo(
+    public static CouponComponent createGenerateCouponComponentVo(
             CouponComponentId couponComponentId,
             CouponComponentUserId couponComponentUserId,
             CouponStatusCode statusCode,
             CouponComponentEndAt couponComponentEndAt,
-            CouponVo couponVo
+            Coupon couponVo
     ){
-        return new CouponComponentVo(
+        return new CouponComponent(
                 couponComponentId.getId(),
                 couponComponentUserId.getUserId(),
                 statusCode.getStatus(),

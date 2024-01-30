@@ -21,9 +21,10 @@ public class RegisterCouponEventController {
 
     private final RegisterEventCouponUseCase registerEventCouponUseCase;
 
-    @Operation(summary = "register event", description = "이벤트 쿠폰 등록하기 선착순")
+    @Operation(summary = "register event", description = "이벤트 쿠폰 등록하기")
     @PostMapping("/coupon/event")
-    public ResponseEntity<Event> registerEventCoupon(@RequestBody RegisterEventCouponRequest request){
+    public ResponseEntity<Event> registerEventCoupon(@RequestBody RegisterEventCouponRequest request,
+                                                     @RequestHeader("X-User-Id") Long userId){
 
         RegisterEventCouponCommand command = RegisterEventCouponCommand.builder()
                 .couponName(request.getCouponName())
@@ -31,6 +32,7 @@ public class RegisterCouponEventController {
                 .quantity(request.getQuantity())
                 .startAt(request.getStartAt())
                 .endAt(request.getEndAt())
+                .adminUser(userId)
                 .build();
 
         //유효성 검사 추가

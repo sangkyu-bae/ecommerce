@@ -35,16 +35,21 @@ public class RegisterEventCouponCommand extends SelfValidating<RegisterEventCoup
     @NotNull
     private LocalDateTime endAt;
 
+    @NotNull
+    private long adminUser;
+
     public RegisterEventCouponCommand(String couponName,
                                       int salePercent,
                                       int quantity,
                                       LocalDateTime startAt,
-                                      LocalDateTime endAt){
+                                      LocalDateTime endAt,
+                                      long adminUser){
         this.couponName = couponName;
         this.salePercent = salePercent;
         this.quantity = quantity;
         this.startAt = startAt;
         this.endAt = endAt;
+        this.adminUser = adminUser;
         this.validateSelf();
     }
 }

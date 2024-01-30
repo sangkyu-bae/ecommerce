@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.WebAdapter;
 import org.example.coupon.application.port.in.command.FindCouponCommand;
 import org.example.coupon.application.port.in.usecase.FindCouponUseCase;
-import org.example.coupon.domain.CouponVo;
+import org.example.coupon.domain.Coupon;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +18,12 @@ public class FindCouponController {
 
     @Operation(summary = "find coupon by couponComponentId", description = "couponComponentId로 쿠폰 정보 가져오기")
     @GetMapping("/coupon/{couponId}")
-    public ResponseEntity<CouponVo> registerCoupon(@PathVariable("couponId")long couponId){
+    public ResponseEntity<Coupon> registerCoupon(@PathVariable("couponId")long couponId){
         FindCouponCommand command = FindCouponCommand.builder()
                 .couponId(couponId)
                 .build();
 
-        CouponVo couponVo = findCouponUseCase.findCouponByCouponId(command);
-        return ResponseEntity.ok().body(couponVo);
+        Coupon coupon = findCouponUseCase.findCouponByCouponId(command);
+        return ResponseEntity.ok().body(coupon);
     }
 }

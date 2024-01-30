@@ -7,7 +7,7 @@ import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class CouponVo {
+public class Coupon {
 
     private final Long id;
 
@@ -19,19 +19,19 @@ public class CouponVo {
 
     private final LocalDateTime creatAt;
     @Setter
-    private List<CouponComponentVo> couponComponentVoList;
+    private List<CouponComponent> couponComponentVoList;
 
     private final String aggregateIdentifier;
-    public static CouponVo createGenerateCouponVo(
+    public static Coupon createGenerateCoupon(
             CouponId couponId,
             CouponCreateAdminId couponCreateAdminUserId,
             CouponSalePercent couponSalePercent,
             CouponName couponName,
             CouponCreateAt couponCreateAt,
-            List<CouponComponentVo> couponComponentVoList,
+            List<CouponComponent> couponComponentVoList,
             CouponAggregateIdentifier couponAggregateIdentifier
     ){
-        return new CouponVo(
+        return new Coupon(
                 couponId.getId(),
                 couponCreateAdminUserId.getCreateAdminId(),
                 couponSalePercent.getSalePercent(),

@@ -1,8 +1,6 @@
 package org.example.coupon.adapter.out.persistence.entity;
 
 import lombok.*;
-import org.example.coupon.domain.CouponComponentVo;
-import org.example.coupon.domain.CouponVo;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

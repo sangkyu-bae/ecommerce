@@ -1,7 +1,7 @@
 package org.example.coupon.adapter.out.persistence.entity;
 
 import lombok.*;
-import org.example.coupon.domain.CouponComponentVo;
+import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.infra.error.CouponErrorCode;
 import org.example.coupon.infra.error.ErrorException;
 
@@ -47,6 +47,10 @@ public class CouponEntity {
             throw new ErrorException(CouponErrorCode.COUPON_NOT_FOUND,"checkAndUpdateCoupon??");
         }
 
-        couponComponentEntity.setStatus(CouponComponentVo.CouponStatusCode.USE_SUCCESS.getStatus());
+        couponComponentEntity.setStatus(CouponComponent.CouponStatusCode.USE_SUCCESS.getStatus());
+    }
+
+    public void addCouponComponent(CouponComponentEntity couponComponentEntity){
+        this.couponComponents.add(couponComponentEntity);
     }
 }
