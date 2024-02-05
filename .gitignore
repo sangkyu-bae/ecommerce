@@ -68,4 +68,8 @@ gradlew.bat
 /basket/basketLog
 /basket/basketLog*
 
+/notification/build
+/notification/notificationLog
+/notification/notificationLog*
+
 

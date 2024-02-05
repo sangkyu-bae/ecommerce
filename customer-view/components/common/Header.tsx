@@ -2,6 +2,7 @@ import React from 'react';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {AppBar, Toolbar, Typography} from "@mui/material";
 import Link from "next/link";
+import LoginIcon from '@mui/icons-material/Login';
 
 const theme = createTheme({
     palette: {
@@ -19,11 +20,20 @@ function Header(props) {
                     <Link href='/' style={{
                         textDecoration: 'none',
                         color: 'inherit',
+                        flex:'0.9'
                     }}>
                         <Typography variant="h6" component="div">
                             My App
                         </Typography>
                     </Link>
+
+                    <Link href='/signIn'>
+                        <LoginIcon style={{
+                            textDecoration: 'none',
+                            color: 'white',
+                        }}></LoginIcon>
+                    </Link>
+
                 </Toolbar>
             </AppBar>
         </ThemeProvider>
