@@ -19,6 +19,6 @@ public class RegisterNotificationController {
     @GetMapping(value = "/notification", produces = "text/event-stream")
     public ResponseEntity<String> subscribe( @RequestHeader("X-User-Id") long userId ) {
 
-        return
+        return null;
     }
 }
