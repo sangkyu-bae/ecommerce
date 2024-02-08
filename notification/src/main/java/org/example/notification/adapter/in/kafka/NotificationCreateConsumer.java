@@ -30,5 +30,4 @@ public class NotificationCreateConsumer {
             throw new RuntimeException(e);
         }
     }
-
 }

@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import SideBar from "@/components/admin/sideBar";
 import GridComponent, {StyledContainer, StyledContent, StyledMenu, StyledSetion} from "@/api/common/GridComponent";
-import TextField from "@mui/material/TextField";
-import Input from "@/components/admin/Input";
-import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+
 import CardComponent from "@/components/common/CardComponent";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "../../api/product/ProductApi";
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-// import {getTotalPageNumber} from "@/utils/CommonUtil";
 import Link from "next/link";
 import Util from "@/utils/CommonUtil";
 

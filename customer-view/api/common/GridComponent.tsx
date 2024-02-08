@@ -34,13 +34,12 @@ const GridContainer = styled.div`
   }
 `;
 export const StyledContent = styled.div`
-        flex : 0.87;
+        flex : ${(props)=>props.isFull ? '1':'0.87'};
         background-color : #FFFAF0;
         display:flex;
     `
 export const StyledSetion = styled.div`
-    flex: ${(props) => props.$isproduct ? '1':'0.8'};
-    // flex:0.8;
+    flex: ${(props) => props.isFull ? '1':'0.8'};
     .main-section{
         width : 80%;
         margin : 0 auto;
