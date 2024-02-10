@@ -31,33 +31,28 @@ public class FindRankController {
 
     private final RedisTemplate redisTemplate;
     @GetMapping("/rank/click/{limit}")
-    public ResponseEntity<Set<String>> findRankByClick(@PathVariable("limit") int limit){
+    public ResponseEntity<List<RedisRanking>> findRankByClick(@PathVariable("limit") int limit){
 
+        FindRankingCommand command = FindRankingCommand.builder()
+                .limit(limit)
+                .build();
+
+        List<RedisRanking> redisRankingList = findRankingUseCase.findRankByClickAndLimit(command);
+
+        return ResponseEntity.ok().body(redisRankingList);
 //        long startTime = System.currentTimeMillis();
 //
-//        FindRankingCommand command = FindRankingCommand.builder()
-//                .limit(limit)
-//                .build();
+//        ZSetOperations zSetOps  = redisTemplate.opsForZSet();
+//        Set<String> rangeRakingSet = zSetOps.reverseRange("CLICK_RANK",0,limit-1);
 //
-//        List<RedisRanking> redisRankingList = findRankingUseCase.findRankByClickAndLimit(command);
 //
 //        long endTime = System.currentTimeMillis();
 //        long findTime = endTime - startTime;
 //        log.info("findTime : {}", findTime);
-//        return ResponseEntity.ok().body(redisRankingList);
-        long startTime = System.currentTimeMillis();
-
-        ZSetOperations zSetOps  = redisTemplate.opsForZSet();
-        Set<String> rangeRakingSet = zSetOps.reverseRange("CLICK_RANK",0,limit-1);
-
-
-        long endTime = System.currentTimeMillis();
-        long findTime = endTime - startTime;
-        log.info("findTime : {}", findTime);
-
-        List<String> d= new ArrayList<>(rangeRakingSet);
-
-        return ResponseEntity.ok().body(null);
+//
+//        List<String> d= new ArrayList<>(rangeRakingSet);
+//
+//        return ResponseEntity.ok().body(null);
     }
 
     @GetMapping("/rank/click/db/{limit}")

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
@@ -64,6 +66,13 @@ public class FindProductController {
         ProductSearchVo productSearchVo = findProductUseCase.findPagingProduct(command);
 
         return ResponseEntity.ok().body(productSearchVo);
+    }
+
+    @Operation(summary = "findAll Product",description = "모든상품조회")
+    @GetMapping("/admin")
+    public ResponseEntity<List<ProductVo>> findProductAll(){
+        List<ProductVo> getAllProduct = findProductUseCase.findProductAll();
+        return ResponseEntity.ok().body(getAllProduct);
     }
 
 

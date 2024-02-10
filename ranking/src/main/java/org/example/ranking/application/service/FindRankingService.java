@@ -7,12 +7,12 @@ import org.example.ranking.adapter.out.persistance.RankingMapper;
 import org.example.ranking.adapter.out.persistance.RedisRankingMapper;
 import org.example.ranking.adapter.out.persistance.entity.RankingEntity;
 import org.example.ranking.adapter.out.persistance.entity.RedisRankingEntity;
-import org.example.ranking.adapter.out.persistance.repository.RedisRankingRepository;
+import org.example.ranking.adapter.out.service.Product;
 import org.example.ranking.application.port.in.command.FindRankingCommand;
 import org.example.ranking.application.port.in.usecase.FindRankingUseCase;
-import org.example.ranking.application.port.out.FindRankingPort;
-import org.example.ranking.application.port.out.FindRankingRedisPort;
+import org.example.ranking.application.port.out.*;
 import org.example.ranking.domain.Ranking;
+import org.example.ranking.domain.RankingEvent;
 import org.example.ranking.domain.RedisRanking;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,14 +31,21 @@ public class FindRankingService implements FindRankingUseCase {
     private final RedisRankingMapper redisRankingMapper;
 
     private final FindRankingPort findRankingPort;
-
     private final RankingMapper rankingMapper;
+    private final GetProductPort getProductPort;
+    private final UpdateRankingRedisPort updateRankingRedisPort;
 
     @Value("${redis_key.product.rank}")
     private String PRODUCT_RANK_KEY;
     @Override
     public List<RedisRanking> findRankByClickAndLimit(FindRankingCommand command) {
         List<String> clickRank = findRankingRedisPort.findRankingByClickAndLimit(command.getLimit());
+
+        if(clickRank.isEmpty()){
+            registerRankInRedis();
+            clickRank = findRankingRedisPort.findRankingBySaleAndLimit(command.getLimit());
+        }
+
         List<RedisRanking> redisRankingList = getRedisRankings(clickRank);
 
         return redisRankingList;
@@ -62,6 +69,7 @@ public class FindRankingService implements FindRankingUseCase {
     }
 
     private List<RedisRanking> getRedisRankings(List<String> ranks) {
+
         List<String> redisRankIdKeys = ranks.stream()
                 .map(rank->PRODUCT_RANK_KEY + ":" + rank).collect(Collectors.toList());
 
@@ -73,4 +81,51 @@ public class FindRankingService implements FindRankingUseCase {
                 .map(rank -> redisRankingMapper.mapToRedisDomainEntityByClick(rank))
                 .collect(Collectors.toList());
     }
+
+    private void registerRankInRedis(){
+//        List<RankingEntity> rankingEntities = findRankingPort.findRankByClickAndLimit(limit);
+        List<RankingEntity> rankingEntities = new ArrayList<>();
+
+        if(rankingEntities.isEmpty()){
+            List<Product> products = getProductPort.getProductAll();
+
+            for(Product product: products){
+                RedisRanking ranking =RedisRanking.createGenerateRedisRanking(
+                        new RedisRanking.RedisRankingProductId(product.getId()),
+                        new RedisRanking.RedisRankingProductName(product.getName()),
+                        new RedisRanking.RedisRankingScore(null)
+                );
+
+                updateRedisRank(ranking);
+            }
+        }else{
+            for(RankingEntity rankingEntity : rankingEntities){
+                RedisRanking ranking =RedisRanking.createGenerateRedisRanking(
+                        new RedisRanking.RedisRankingProductId(rankingEntity.getProductId()),
+                        new RedisRanking.RedisRankingProductName(rankingEntity.getProductName()),
+                        new RedisRanking.RedisRankingScore(null)
+                );
+
+                updateRedisRank(ranking);
+            }
+        }
+    }
+
+    private void updateRedisRank(RedisRanking ranking) {
+
+        RankingEvent clickRankingEvent = RankingEvent.CLICK;
+        RankingEvent saleRankingEvent = RankingEvent.SALE;
+        clickRankingEvent.updateRanking(
+                updateRankingRedisPort,
+                new Ranking.RankingProductId(ranking.getProductId()),
+                ranking
+        );
+
+        saleRankingEvent.updateRanking(
+                updateRankingRedisPort,
+                new Ranking.RankingProductId(ranking.getProductId()),
+                ranking
+        );
+    }
+
 }

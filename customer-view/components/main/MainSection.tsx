@@ -7,7 +7,7 @@ function MainSection(props) {
 
     const {}=useQuery(
         ['clickRank'],
-        ()=>RankApi.readClickRank, {
+        ()=>RankApi.readClickRank(), {
             onSuccess: data =>{
                 console.log(data);
             }

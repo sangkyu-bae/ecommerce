@@ -17,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Slf4j
@@ -73,6 +75,11 @@ public class ProductPersistenceAdapter implements FindProductPort,
     @Override
     public boolean existProductBySize(long sizeId) {
         return sizeEntityRepository.existsById(sizeId);
+    }
+
+    @Override
+    public List<ProductEntity> findProductAll() {
+        return springDataProductRepository.findAll();
     }
 
     @Override

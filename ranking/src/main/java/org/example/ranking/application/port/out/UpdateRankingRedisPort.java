@@ -8,7 +8,6 @@ import java.util.List;
 public interface UpdateRankingRedisPort {
 
     void updateClickRankingBySortedSet(Ranking.RankingProductId rankingProductId);
-
     void updateSaleRakingBySortedSet(Ranking.RankingProductId rankingProductId);
     void updateClickRankingView(RedisRanking redisRanking);
 
