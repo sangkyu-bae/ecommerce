@@ -28,6 +28,11 @@ interface Product{
     // colorDataList : ColorData[]
 }
 
+interface RankProduct{
+    id:number,
+    productName: string
+}
+
 interface brandData extends Data{
     brandImage : string,
 }
