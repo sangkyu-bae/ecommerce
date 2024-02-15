@@ -22,13 +22,20 @@ function MainSection(props) {
         <StyledContent isFull={true}>
             <StyledSetion isFull={true}>
                 <GridComponent title={"💎베스트 상품"}/>
-                <Box  sx={{display:'flex'}} >
+                <Box  sx={{display:'flex', width:'100%'}} >
                 {
-
                     products.length > 0 && products.map(product=>
                         <ProductCardComponent key={product.id} product={product}/>
                     )
                 }
+                </Box>
+                <GridComponent title={"상품"}/>
+                <Box  sx={{display:'flex', width:'100%'}} >
+                    {
+                        products.length > 0 && products.map(product=>
+                            <ProductCardComponent key={product.id} product={product}/>
+                        )
+                    }
                 </Box>
             </StyledSetion>
 

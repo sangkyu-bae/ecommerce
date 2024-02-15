@@ -3,6 +3,7 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {AppBar, Toolbar, Typography} from "@mui/material";
 import Link from "next/link";
 import LoginIcon from '@mui/icons-material/Login';
+import Box from "@mui/material/Box";
 
 const theme = createTheme({
     palette: {
@@ -17,15 +18,17 @@ function Header(props) {
         <ThemeProvider theme={theme}>
             <AppBar position="static">
                 <Toolbar>
-                    <Link href='/' style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        flex:'0.9'
-                    }}>
-                        <Typography variant="h6" component="div">
-                            My App
-                        </Typography>
-                    </Link>
+                    <Box sx={{flex:'0.9', display:'flex'}} >
+                        <Link href='/' style={{
+                            textDecoration: 'none',
+                            color: 'inherit',
+                        }}>
+                            <Typography variant="h6" component="div">
+                                My App
+                            </Typography>
+                        </Link>
+                    </Box>
+
 
                     <Link href='/signIn'>
                         <LoginIcon style={{

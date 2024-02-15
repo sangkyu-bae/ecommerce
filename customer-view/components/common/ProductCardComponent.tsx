@@ -10,7 +10,7 @@ function ProductCardComponent({product}:RankProduct) {
         console.log(product);
     },[product])
     return (
-        <Card style={{flex:'0.3' ,minWidth :'250px'}}>
+        <Card style={{flex:'1' ,minWidth :'250px'}}>
             <CardActionArea>
                 <CardMedia
                     component="img"

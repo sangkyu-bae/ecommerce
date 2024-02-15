@@ -35,7 +35,8 @@ export const ProductApi = {
         return data
     },
     readDetailProduct : async (productId : number) => {
-        const url =`${productURL}/${productId}`;
+        console.log("?")
+        const url =`${productURL}/find/${productId}`;
         console.log(url)
         const {data} = await ApiCommon.loginJsonAPI.get(url);
         return data;
