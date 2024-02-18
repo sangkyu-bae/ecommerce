@@ -18,24 +18,35 @@ interface ProductPageData{
 
 interface Product{
     id : number
+    aggregateIdentifier: string,
     name : string,
     price : number,
     productImage : string,
     description : string
-    brand : brandData,
+    brand : Data,
     category : Data,
-    colorDataList : colorProductData[]
-    // colorDataList : ColorData[]
+    productComponents: ProductComponent[]
 }
 
 interface RankProduct{
-    id:number,
+    productId:number,
     productName: string
 }
 
-interface brandData extends Data{
-    brandImage : string,
+interface ProductComponent{
+    color:Data,
+    id:number,
+    sizes:Size[]
 }
+interface Size{
+    id:number,
+    quantity:number,
+    size:number
+}
+
+// interface brandData extends Data{
+//     brandImage : string,
+// }
 interface colorProductData{
     colorDto : Data,
     sizeQuantityDtoList : sizeQuantityData[]

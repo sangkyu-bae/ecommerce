@@ -5,10 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {useEffect} from "react";
-function SelectBox({colorProduct}:{colorProduct:colorProductData[]}) {
+function SelectBox({productComponents}:ProductComponent[]) {
     useEffect(()=>{
-        console.log(colorProduct)
-    },[colorProduct])
+        console.log(productComponents)
+    },[productComponents])
 
     const handleChange = (event: SelectChangeEvent) => {
         // setAge(event.target.value as string);
@@ -21,14 +21,13 @@ function SelectBox({colorProduct}:{colorProduct:colorProductData[]}) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    // value={age}
                     label="색상/사이즈 수량"
                     onChange={handleChange}
                 >
                     {
-                        colorProduct.map(colorProduct=>{
-                            return colorProduct.sizeQuantityDtoList.map(sizeQuantity=>{
-                                return   <MenuItem key ={sizeQuantity.sizeDto.id} >색상 {colorProduct.colorDto.name}/사이즈 {sizeQuantity.sizeDto.size} /수량 {sizeQuantity.quantity}</MenuItem>
+                        productComponents.map(productComponent=>{
+                            return productComponent.sizes.map(size=>{
+                                return   <MenuItem key ={size.id} >색상 {productComponent.color.name}/사이즈 {size.size} /수량 {size.quantity}</MenuItem>
                             })
 
                         })
@@ -40,3 +39,4 @@ function SelectBox({colorProduct}:{colorProduct:colorProductData[]}) {
 }
 
 export default SelectBox;
+

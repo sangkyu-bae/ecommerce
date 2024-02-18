@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import GridComponent, {StyledContent, StyledSetion} from "@/api/common/GridComponent";
+import GridComponent, {StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import {useQuery} from "@tanstack/react-query";
 import {RankApi} from "@/api/RankApi";
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
+import Link from "next/link";
 
 function MainSection(props) {
 
@@ -25,7 +26,13 @@ function MainSection(props) {
                 <Box  sx={{display:'flex', width:'100%'}} >
                 {
                     products.length > 0 && products.map(product=>
-                        <ProductCardComponent key={product.id} product={product}/>
+                        <Link   key={product.productId} href={`/product/${product.productId}`} style={{
+                            textDecoration: 'none',
+                            color: 'inherit',
+                        }}>
+                            <ProductCardComponent product={product}/>
+                        </Link>
+
                     )
                 }
                 </Box>
@@ -33,7 +40,7 @@ function MainSection(props) {
                 <Box  sx={{display:'flex', width:'100%'}} >
                     {
                         products.length > 0 && products.map(product=>
-                            <ProductCardComponent key={product.id} product={product}/>
+                            <ProductCardComponent key={product.productId} product={product}/>
                         )
                     }
                 </Box>

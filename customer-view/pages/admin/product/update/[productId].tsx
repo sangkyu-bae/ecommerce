@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/api/common/GridComponent";
+import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import SideBar from "@/components/admin/sideBar";
 import ProductInfo from "@/components/admin/ProductInfo";
 import {useRouter} from "next/router";

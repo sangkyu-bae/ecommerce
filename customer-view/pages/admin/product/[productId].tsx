@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router';
-import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/api/common/GridComponent";
+import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import SideBar from "@/components/admin/sideBar";
 import CardComponent from "@/components/common/CardComponent";
 import Pagination from "@mui/material/Pagination";

@@ -2,7 +2,7 @@ import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/api/product/ProductApi";
-import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/api/common/GridComponent";
+import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import ProductInfo from "@/components/admin/ProductInfo";
 
 function DetailUserProduct(){
@@ -15,6 +15,7 @@ function DetailUserProduct(){
         () => ProductApi.readDetailProduct(mainProductId), {
             enabled: !!mainProductId,
             onSuccess: data => {
+                console.log(data);
                 setProductData(data);
             },
             onError: e => {
@@ -29,18 +30,18 @@ function DetailUserProduct(){
 
     return (
         <StyledContainer>
-            {/*<StyledContent>*/}
-            {/*    <StyledSetion $isproduct={true}>*/}
-            {/*        <div className="first-section">*/}
-            {/*            <GridComponent title={`📰${productData?.name}`}></GridComponent>*/}
-            {/*            <div className="main-section">*/}
-            {/*                {*/}
-            {/*                    productData != undefined && <ProductInfo severProductData={productData}></ProductInfo>*/}
-            {/*                }*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </StyledSetion>*/}
-            {/*</StyledContent>*/}
+            <StyledContent isFull={true}>
+                <StyledSetion isFull={true}>
+                    <div className="first-section">
+                        <GridComponent title={`📰${productData?.name}`}></GridComponent>
+                        <div className="main-section">
+                            {
+                                productData != undefined && <ProductInfo severProductData={productData}></ProductInfo>
+                            }
+                        </div>
+                    </div>
+                </StyledSetion>
+            </StyledContent>
         </StyledContainer>
     )
 
