@@ -9,6 +9,8 @@ import Copyright from "@/components/common/Copyright";
 import {RecoilRoot} from "recoil";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools }from '@tanstack/react-query-devtools';
+import {Provider as MyProvider} from 'react-redux';
+import {configureStore} from "@reduxjs/toolkit";
 const theme = createTheme({
     palette: {
         primary: {
@@ -36,16 +38,20 @@ const queryClient = new QueryClient({
 //     },
 // })
 export default function App({Component, pageProps}: AppProps) {
+    const store = configureStore({reducer : myReducer} );
     return (
         <QueryClientProvider client={queryClient}>
-            <RecoilRoot>
-                <div>
-                    <CssBaseline/>
-                    <Header></Header>
-                    <Component {...pageProps} />
-                    <Copyright sx={{mt: 5}}/>
-                </div>
-            </RecoilRoot>
+            <MyProvider store={store}>
+                <RecoilRoot>
+                    <div>
+                        <CssBaseline/>
+                        <Header></Header>
+                        <Component {...pageProps} />
+                        <Copyright sx={{mt: 5}}/>
+                    </div>
+                </RecoilRoot>
+            </MyProvider>
+
         </QueryClientProvider>
     )
 }
