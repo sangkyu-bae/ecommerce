@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import GridComponent, {StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import {useQuery} from "@tanstack/react-query";
-import {RankApi} from "@/api/RankApi";
+import {RankApi} from "@/shared/api/RankApi";
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";

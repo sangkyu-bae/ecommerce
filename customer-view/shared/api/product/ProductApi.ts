@@ -1,5 +1,5 @@
-import ApiCommon from "@/api/common/ApiCommon";
-import {productRequest, productURL} from "@/constants/Url";
+import ApiCommon from "@/shared/api/common/ApiCommon";
+import {productRequest, productURL} from "@/shared/constants/Url";
 import {useRouter} from "next/router";
 
 export const ProductApi = {

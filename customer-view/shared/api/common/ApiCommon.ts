@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getAccessToken} from "@/api/cookie/Cookie";
+import {getAccessToken} from "@/shared/api/cookie/Cookie";
 const accessToken = getAccessToken()
 
 const ApiCommon={

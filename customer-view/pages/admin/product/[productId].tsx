@@ -5,9 +5,9 @@ import CardComponent from "@/components/common/CardComponent";
 import Pagination from "@mui/material/Pagination";
 import React, {useEffect, useState} from "react";
 import {useQuery} from "@tanstack/react-query";
-import {ProductApi} from "@/api/product/ProductApi";
+import {ProductApi} from "@/shared/api/product/ProductApi";
 import Util from "@/utils/CommonUtil";
-import ProductInfo from "@/components/admin/ProductInfo";
+import ProductInfo from "@/components/product/ProductInfo";
 
 
 const ProductDetail = () => {

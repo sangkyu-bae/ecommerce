@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import SideBar from "@/components/admin/sideBar";
-import ProductInfo from "@/components/admin/ProductInfo";
+import ProductInfo from "@/components/product/ProductInfo";
 import {useRouter} from "next/router";
 import {useQuery} from "@tanstack/react-query";
-import {ProductApi} from "@/api/product/ProductApi";
-import ProductAdmin from "@/components/admin/ProductAdmin";
+import {ProductApi} from "@/shared/api/product/ProductApi";
+import ProductAdmin from "@/viewer/ProductAdmin";
 
 const ProductUpdate =()=>{
     const router = useRouter();

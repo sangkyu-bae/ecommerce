@@ -1,5 +1,5 @@
-import ApiCommon from "@/api/common/ApiCommon";
-import {rankRequest} from "@/constants/Url";
+import ApiCommon from "@/shared/api/common/ApiCommon";
+import {rankRequest} from "@/shared/constants/Url";
 
 export const RankApi ={
     readClickRank : async ()=>{

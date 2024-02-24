@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useRef, useState} from 'react';
 import styled from "styled-components";
 import dynamic from "next/dynamic";
-import ProductAdmin from "@/components/admin/ProductAdmin";
+import ProductAdmin from "@/viewer/ProductAdmin";
 
 
 const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit'), {ssr: false});

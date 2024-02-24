@@ -8,7 +8,7 @@ export const setProduct = (productInfo:MyProduct) =>{
         product:productInfo
     }
 }
-productRedux
+
 const initialState : MyProduct ={
     id: 0,
     aggregateIdentifier: "",

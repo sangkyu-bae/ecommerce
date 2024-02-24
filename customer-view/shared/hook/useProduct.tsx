@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {ProductApi} from "@/api/product/ProductApi";
+import {ProductApi} from "@/shared/api/product/ProductApi";
 import {setProduct} from "@/store/product/productRedux";
 import {useDispatch} from "react-redux";
 

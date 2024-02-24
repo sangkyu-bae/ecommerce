@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import {FieldValues, SubmitHandler, useForm, Controller} from "react-hook-form";
-import MemberApi from "@/api/MemberApi";
+import MemberApi from "@/shared/api/MemberApi";
 import Validation from "@/utils/Validation";
 import {useMutation} from "@tanstack/react-query";
 function SignUpSection(props) {

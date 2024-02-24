@@ -10,7 +10,7 @@ import styled from "styled-components";
 import {string} from "prop-types";
 import {useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
-import {ProductApi} from "@/api/product/ProductApi";
+import {ProductApi} from "@/shared/api/product/ProductApi";
 import Validation from "@/utils/Validation";
 import SizeContainer from "@/components/admin/SizeContainer";
 import {useRouter} from "next/router";

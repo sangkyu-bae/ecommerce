@@ -4,7 +4,7 @@ import GridComponent, {StyledContainer, StyledContent, StyledMenu, StyledSetion}
 
 import CardComponent from "@/components/common/CardComponent";
 import {useQuery} from "@tanstack/react-query";
-import {ProductApi} from "../../api/product/ProductApi";
+import {ProductApi} from "../../shared/api/product/ProductApi";
 import Pagination from '@mui/material/Pagination';
 import Link from "next/link";
 import Util from "@/utils/CommonUtil";
