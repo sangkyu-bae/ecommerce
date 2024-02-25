@@ -1,10 +1,12 @@
 import React from 'react';
 import {Props} from "next/script";
+import {useMyContext} from "@/components/product/ProductInfo";
 
-function ProductDescription({children}: Props) {
+function ProductDescription(props) {
+    const product= useMyContext();
     return (
         <div>
-            <div dangerouslySetInnerHTML={{__html:'tt'}}></div>
+            <div dangerouslySetInnerHTML={{__html:`${product.description}`}}></div>
         </div>
     );
 }

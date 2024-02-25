@@ -1,12 +1,16 @@
 import React from 'react';
 import {Props} from "next/script";
+import {useMyContext} from "@/components/product/ProductInfo";
 
-function ProductPrice({children}:Props) {
+function ProductPrice(props) {
+    const product = useMyContext();
     return (
         <div>
             <span className="bold">
                 <span>가격</span>
-                <span className="gray">{children}</span>
+                <div>
+                     <span className="gray">{product.price}</span>
+                </div>
             </span>
         </div>
     );

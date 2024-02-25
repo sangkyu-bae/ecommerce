@@ -4,7 +4,7 @@ import {setProduct} from "@/store/product/productRedux";
 import {useDispatch} from "react-redux";
 
 function useProduct(productId:number){
-    const dispatch =useDispatch();
+    // const dispatch =useDispatch();
 
     const {data, isLoading, isError, error} = useQuery(
         ['productData'],
@@ -12,7 +12,7 @@ function useProduct(productId:number){
             enabled: !!productId,
             onSuccess: data => {
                 console.log(data);
-                dispatch(setProduct(data))
+                // dispatch(setProduct(data))
             },
             onError: e => {
                 console.log(e.message);
@@ -20,7 +20,7 @@ function useProduct(productId:number){
         }
     )
 
-    return {isLoading,isError,error};
+    return {isLoading,isError,error,data};
 }
 
 export default useProduct;

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Props} from "next/script";
 
-function ProductImage({children}: Props) {
+import { useMyContext} from "@/components/product/ProductInfo";
+function ProductImage(props) {
+    const product= useMyContext();
     return (
         <div className="image">
-            {children}
+            {product.productImage}
         </div>
     );
 }

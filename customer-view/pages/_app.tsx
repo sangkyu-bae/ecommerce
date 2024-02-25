@@ -38,10 +38,10 @@ const queryClient = new QueryClient({
 //     },
 // })
 export default function App({Component, pageProps}: AppProps) {
-    const store = configureStore({reducer : myReducer} );
+    // const store = configureStore({reducer : myReducer} );
     return (
         <QueryClientProvider client={queryClient}>
-            <MyProvider store={store}>
+            {/*<MyProvider store={store}>*/}
                 <RecoilRoot>
                     <div>
                         <CssBaseline/>
@@ -50,7 +50,7 @@ export default function App({Component, pageProps}: AppProps) {
                         <Copyright sx={{mt: 5}}/>
                     </div>
                 </RecoilRoot>
-            </MyProvider>
+            {/*</MyProvider>*/}
 
         </QueryClientProvider>
     )
