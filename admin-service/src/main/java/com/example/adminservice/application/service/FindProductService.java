@@ -36,7 +36,7 @@ public class FindProductService implements FindProductUseCase {
         ProductVo.ProductId productId = new ProductVo.ProductId(command.getProductId());
         ProductEntity findProduct =  findProductPort.findProduct(productId);
 
-        sendFindProductTaskPort.sendFindProductTask(productId.getId());
+        sendFindProductTaskPort.sendFindProductTask(productId.getId(),findProduct.getName());
         return productMapper.mapToDomainEntity(findProduct);
     }
 

@@ -38,9 +38,10 @@ public class RankingProducer implements SendCreateProductTaskPort, SendFindProdu
     }
 
     @Override
-    public void sendFindProductTask(long productId) {
+    public void sendFindProductTask(long productId,String productName) {
         try{
-            String inputProductIdJson = objectMapper.writeValueAsString(productId);
+            UpdateRankingTask task = new UpdateRankingTask(productName,productId);
+            String inputProductIdJson = objectMapper.writeValueAsString(task);
             kafkaTemplate.send(SEND_CLICK_UPDATE_RANKING_TOPIC,inputProductIdJson);
             log.info("ranking send");
         }catch (JsonProcessingException e){
