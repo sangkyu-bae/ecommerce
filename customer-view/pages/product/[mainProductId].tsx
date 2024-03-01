@@ -4,11 +4,20 @@ import ProductInfo from "@/components/product/ProductInfo";
 import useProduct from "@/shared/hook/useProduct";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
-
+import {useBasket} from "@/shared/hook/useBasket";
+import {useForm} from "react-hook-form";
+import QuantityInput from "@/components/common/number/NumberInput";
 function DetailUserProduct(){
     const router = useRouter()
     const {mainProductId}: number = router.query;
     const {data,isLoading,isError,error} = useProduct(mainProductId);
+    // const onSubmit = (createBasket : CreateBasket) => {
+    //     mutation.mutate(createBasket)
+    // };
+    // const {register, handleSubmit, setValue,formState: {errors} }=useForm<CreateBasket>();
+    //
+    // const {mutation} = useBasket();
+
 
     return (
         <>
@@ -23,14 +32,15 @@ function DetailUserProduct(){
                         </div>
                         <ProductInfo.ProductBrand/>
                         <ProductInfo.ProductPrice/>
+                        <ProductInfo.ProductSizeQuantity/>
                         <Box sx={{mt:3}}>
                             <Button variant="contained" sx={{mr:2}}>구매하기</Button>
-                            <Button variant="outlined">장바구니</Button>
+                            <Button variant="outlined" >장바구니</Button>
                         </Box>
+
                     </div>
                 </div>
                 <ProductInfo.ProductDescription/>
-
             </ProductInfo>
         }
         </>

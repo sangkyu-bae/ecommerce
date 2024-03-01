@@ -25,7 +25,6 @@ function SignInSection(props) {
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("onMutate", variable);
-
         },
         onError: (error, variable, context) => {
             // error

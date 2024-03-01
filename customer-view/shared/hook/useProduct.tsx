@@ -20,6 +20,7 @@ function useProduct(productId:number){
         }
     )
 
+
     return {isLoading,isError,error,data};
 }
 

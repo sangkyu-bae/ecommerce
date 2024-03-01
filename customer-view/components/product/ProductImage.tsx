@@ -3,10 +3,10 @@ import {Props} from "next/script";
 
 import { useMyContext} from "@/components/product/ProductInfo";
 function ProductImage(props) {
-    const product= useMyContext();
+    const {productData,change} = useMyContext();
     return (
         <div className="image">
-            {product.productImage}
+            {productData.productImage}
         </div>
     );
 }

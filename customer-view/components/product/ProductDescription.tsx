@@ -3,10 +3,10 @@ import {Props} from "next/script";
 import {useMyContext} from "@/components/product/ProductInfo";
 
 function ProductDescription(props) {
-    const product= useMyContext();
+    const {productData,change} = useMyContext();
     return (
         <div>
-            <div dangerouslySetInnerHTML={{__html:`${product.description}`}}></div>
+            <div dangerouslySetInnerHTML={{__html:`${productData.description}`}}></div>
         </div>
     );
 }
