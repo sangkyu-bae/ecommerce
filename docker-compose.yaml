@@ -10,15 +10,14 @@ services:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
     env_file: .env
     ports:
-      - "3306:3306"
+      - "3308:3308"
     environment:
       - TZ=Asia/Seoul
       - MYSQL_ROOT_PASSWORD=wnsvaf309
       - MYSQL_USER=tkdrb136
       - MYSQL_PASSWORD=wnsvaf309
-
-  product-admin-service:
-    image: admin-service:1.0.0
+  admin-service:
+    image: admin-service:0.0.1-SNAPSHOT
     networks:
       - ecommerce_network
     ports:
@@ -26,41 +25,120 @@ services:
     depends_on:
       - mysql
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=tkdrb136
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=wnsvaf309
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-
-  order:
-    image: order:0.0.1-SNAPSHOT
+      - SERVER_PORT=8085
+      - SPRING_APPLICATION_NAME=admin-service
+      - LOGGING_FILE_NAME=adminLog
+      - LOGGING_FILE_PATH=C:/logs/admin/admin.log
+      - LOGGING_MAX_HISTORY=30
+      - LOGGING_CONSOLE_CHARSET=UTF-8
+      - LOGGING_FILE_CHARSET=UTF-8
+      - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
+      - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
+      - LOGGING_LEVEL_ROOT=INFO
+      - LOGGING_LEVEL_ORG_HIBERNATE_SQL=debug
+      - TOKEN_SECRET=eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+      - EUREKA_INSTANCE_INSTANCE_ID=$${spring.cloud.client.ip-address}:8085
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://127.0.0.1:8761/eureka
+      - APP_BOOTSTRAP_SERVER=localhost:9092
+      - APP_ORDER_TOPIC=order
+      - APP_GROUP_ID=delivery.group.v1
+      - APP_CREATE_DELIVERY=create-delivery
+      - APP_PRODUCT_TASK_RESULT_TOPIC=task-product
+      - APP_ROLLBACK_REMOVE_ORDER_TOPIC=rollback-remove-order
+      - KAFKA_PRODUCT_TOPIC=product-check
+      - KAFKA_PRODUCT_TASK_GROUP=check.member.response.v1
+      - KAFKA_ORDER_REMOVE_TOPIC=remove-order-product
+      - KAFKA_ORDER_REMOVE_GROUP=remove-order-product.v1
+      - KAFKA_RANKING_CREATE_TOPIC=create-ranking
+      - KAFKA_RANKING_CLICK_UPDATE_TOPIC=update-click-ranking
+      - AXON_SERIALIZER_GENERAL=xstream
+      - AXON_SERIALIZER_EVENTS=jackson
+      - AXON_SERIALIZER_MESSAGES=jackson
+      - AXON_AXONSERVER_SERVERS=127.0.0.1:8124
+  api-gateway:
+    image: gateway:0.0.1
     networks:
       - ecommerce_network
     ports:
-      - "8083:8083"
-    depends_on:
-      - mysql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=tkdrb136
-      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-
-  delivery:
-    image: delivery:0.0.1-SNAPSHOT
-    networks:
-      - ecommerce_network
+      - "8000:8000"
+#    environment:
+#      - SPRING_CLOUD_GATEWAY_DEFAULT_FILTERS=GlobalFilter,DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      - SPRING_CLOUD_GATEWAY_GLOBALCORS_CORS_CONFIGURATIONS='[/**]:allowedOrigins=http://localhost:3000,allowCredentials=true,allowedHeaders=*,allowedMethods=PUT,GET,POST,DELETE,OPTIONS'
+#      - LOGGING_FILE_NAME=gateway
+#      - LOGGING_FILE_PATH=C:/logs/gateway/gateway.log
+#      - LOGGING_MAX_HISTORY=30
+#      - LOGGING_CONSOLE_CHARSET=UTF-8
+#      - LOGGING_FILE_CHARSET=UTF-8
+#      - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
+#      - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
+#      - LOGGING_LEVEL_ROOT=INFO
+#      - TOKEN_ACCESS_EXPIRED_TIME=3600000
+#      - TOKEN_REFRESH_EXPIRED_TIME=604800000
+#      - TOKEN_SECRET=eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+#      - TOKEN_REFRESH_TOKEN_NAME=refresh-token
+#      - TOKEN_ACCESS_TOKEN_NAME=access-token
+#      - EUREKA_INSTANCE_INSTANCE_ID=$${spring.cloud.client.ip-address}:8000
+#      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://127.0.0.1:8761/eureka
+  ecommerce-eureka:
+    image: eureka:0.0.1
     ports:
-      - "8084:8084"
-    depends_on:
-      - mysql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=tkdrb136
-      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - "8761:8761"
+#    environment:
+#      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
+#      - EUREKA_CLIENT_FETCH_REGISTRY=false
+#      - SPRING_APPLICATION_NAME=ecommerce-eureka
+#      - LOGGING_FILE_NAME=eureka
+#      - LOGGING_FILE_PATH=C:/logs/eureka/eureka.log
+#      - LOGGING_MAX_HISTORY=30
+#      - LOGGING_CONSOLE_CHARSET=UTF-8
+#      - LOGGING_FILE_CHARSET=UTF-8
+#      - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
+#      - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
+#      - LOGGING_LEVEL_ROOT=INFO
+
+
+
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=tkdrb136
+#      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+#  order:
+#    image: order:0.0.1-SNAPSHOT
+#    networks:
+#      - ecommerce_network
+#    ports:
+#      - "8083:8083"
+#    depends_on:
+#      - mysql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=tkdrb136
+#      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#
+#  delivery:
+#    image: delivery:0.0.1-SNAPSHOT
+#    networks:
+#      - ecommerce_network
+#    ports:
+#      - "8084:8084"
+#    depends_on:
+#      - mysql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/test?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=tkdrb136
+#      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
 #  user-service:
 #    image: demo:1.0.0

@@ -4,9 +4,7 @@ import ProductInfo from "@/components/product/ProductInfo";
 import useProduct from "@/shared/hook/useProduct";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
-import {useBasket} from "@/shared/hook/useBasket";
-import {useForm} from "react-hook-form";
-import QuantityInput from "@/components/common/number/NumberInput";
+
 function DetailUserProduct(){
     const router = useRouter()
     const {mainProductId}: number = router.query;
