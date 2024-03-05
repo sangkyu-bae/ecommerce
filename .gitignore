@@ -1,6 +1,10 @@
 /.idea
 /db/data/*
 
+/data/*
+
+/axon-server-se/*
+
 .env
 gradlew
 gradlew.bat
