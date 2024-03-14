@@ -85,8 +85,8 @@ kafka:
 ##########################
 # redis config #########
 ##########################
-redis_key:
-  product:
-    click: CLICK_RANK
-    sale : SALE_RANK
-    rank : RANK
+#redis_key:
+#  product:
+#    click: CLICK_RANK
+#    sale : SALE_RANK
+#    rank : RANK

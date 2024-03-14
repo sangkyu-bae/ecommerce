@@ -86,12 +86,12 @@ token:
   refresh-token-name: refresh-token
   access-token-name: access-token
 
-# 유레카 설정
+## 유레카 설정
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
+#    prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      defaultZone: http://123.0.0.1:8761/eureka
 #      defaultZone: http://0.0.0.0:8761/eureka

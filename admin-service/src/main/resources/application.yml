@@ -1,87 +1,88 @@
-#server:
-#  port: 8085
-#spring:
-#  application:
-#    name: admin-service
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/shoes_product
-#    username: root
-#    password: wnsvaf309
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        show-sql: true
-#        format_sql: true
-#        use_sql_comments: true
-#
-#logging:
-#  charset:
-#    console: UTF-8
-#    file: UTF-8
-#  file:
-#    name: adminLog # ?? ??? ??? ?????.
-#    path: C:\logs\admin\admin.log # ?? ??? ??? ?????.
-#    max-history: 30
-#
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
-#    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
-#
-#  level:
-#    org:
-#      hibernate:
-#        SQL: debug
-#        type:
-#          descriptor:
-#            sql: INFO
-#    root: INFO
-#
-#
-#token:
-#  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
-#
-#
-## 유레카 설정
-#eureka:
-#  instance:
-##    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-#  client:
-#    service-url:
-#      defaultZone: http://127.0.0.1:8761/eureka
-#app:
-#  bootstrapServer: localhost:9092
-#  orderTopic : order
-#  groupId : delivery.group.v1
-#  createDelivery : create-delivery
-#  productTaskResultTopic : task-product
-#  rollbackRemoveOrderTopic : rollback-remove-order
-#kafka:
-#  product:
-#    topic : product-check
-#    task:
-#      group : check.member.response.v1
-#  order:
-#    remove:
-#      topic: remove-order-product
-#      group: remove-order-product.v1
-#  ranking :
-#    create :
-#      topic : create-ranking
-#    click :
-#      update :
-#        topic : update-click-ranking
-#
-#
-####################
-## Axon config #####
-####################
-#axon:
-#  serializer:
-#    general : xstream
-#    events : jackson
-#    messages: jackson
-#  axonserver:
-#    servers: 127.0.0.1:8124
+server:
+  port: 8085
+spring:
+  application:
+    name: admin-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoes_product
+    username: root
+    password: wnsvaf309
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+        use_sql_comments: true
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    name: adminLog # ?? ??? ??? ?????.
+    path: C:\logs\admin\admin.log # ?? ??? ??? ?????.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: INFO
+    root: INFO
+
+
+token:
+  secret: eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+
+
+# 유레카 설정
+eureka:
+  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+#      defaultZone: http://120.0.0.1:8761/eureka
+      defaultZone: http://172.29.0.6/eureka
+app:
+  bootstrapServer: localhost:9092
+  orderTopic : order
+  groupId : delivery.group.v1
+  createDelivery : create-delivery
+  productTaskResultTopic : task-product
+  rollbackRemoveOrderTopic : rollback-remove-order
+kafka:
+  product:
+    topic : product-check
+    task:
+      group : check.member.response.v1
+  order:
+    remove:
+      topic: remove-order-product
+      group: remove-order-product.v1
+  ranking :
+    create :
+      topic : create-ranking
+    click :
+      update :
+        topic : update-click-ranking
+
+
+###################
+# Axon config #####
+###################
+axon:
+  serializer:
+    general : xstream
+    events : jackson
+    messages: jackson
+  axonserver:
+    servers: 127.0.0.1:8124

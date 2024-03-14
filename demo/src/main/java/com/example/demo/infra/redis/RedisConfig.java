@@ -1,6 +1,7 @@
 package com.example.demo.infra.redis;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +26,15 @@ public class RedisConfig {
 //        return new LettuceConnectionFactory(redisProperties.getHost(), redisProperties.getPort());
 //    }
 
+    @Value("${redis.host}")
+    private String hostName;
+
+    @Value("${redis.port}")
+    private int port;
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration("localhost", 5000);
+        System.out.println("hostName : " + hostName);
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(hostName, port);
         LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(config);
         connectionFactory.afterPropertiesSet();
         return connectionFactory;
