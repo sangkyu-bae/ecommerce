@@ -28,9 +28,9 @@ jobs:
 
     - name: Build and push Docker images for modules
       run: |
-        modules=("admin-service" "basket" "module3" "module4" "module5" "module6" "module7" "module8" "module9" "module10")
+        modules=("admin-service" "basket")
         for module in "${modules[@]}"; do
-          cd path/to/$module
+          cd $GITHUB_WORKSPACE/$module
           docker build -t $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG
         done
