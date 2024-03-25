@@ -31,6 +31,6 @@ jobs:
         modules=("admin-service" "basket")
         for module in "${modules[@]}"; do
           cd $GITHUB_WORKSPACE/$module
-          docker build -t $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG
+          docker build -t $REGISTRY/$REPOSITORY:$module-0.0.1 .
+          docker push $REGISTRY/$REPOSITORY:$module-0.0.1
         done
