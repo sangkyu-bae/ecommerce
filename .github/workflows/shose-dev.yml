@@ -33,5 +33,5 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         cd $GITHUB_WORKSPACE/admin-service
-        docker build -t $REGISTRY/$REPOSITORY:admin-service-0.0.1 .
+        docker build -t $REGISTRY/$REPOSITORY:admin-service-0.0.1 --build-arg JAR_FILE=target/admin-service.jar .
         docker push $REGISTRY/$REPOSITORY:admin-service-0.0.1
