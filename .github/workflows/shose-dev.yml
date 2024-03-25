@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: 스프링부트 애플리케이션 빌드 # (1)
+    - name: Make gradlew executable
       run: chmod +x ./gradlew
       
     - name: Configure AWS credentials
@@ -30,7 +30,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2
 
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew docker
       
     - name: Build and push Module1 Docker image to Amazon ECR
       env:
@@ -38,6 +38,5 @@ jobs:
         REPOSITORY: shoemarket-dev
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        cd $GITHUB_WORKSPACE/admin-service
-        docker build -t $REGISTRY/$REPOSITORY:admin-service-0.0.1 --build-arg JAR_FILE=admin-service.jar .
-        docker push $REGISTRY/$REPOSITORY:admin-service-0.0.1
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
