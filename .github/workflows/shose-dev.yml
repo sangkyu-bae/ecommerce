@@ -26,11 +26,11 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Build, tag, and push docker image to Amazon ECR
-      env:
-        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: shoemarket-dev
-        IMAGE_TAG: ${{ github.sha }}
+    - name: Build and push Docker images for modules
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        modules=("admin-service" "basket" "module3" "module4" "module5" "module6" "module7" "module8" "module9" "module10")
+        for module in "${modules[@]}"; do
+          cd path/to/$module
+          docker build -t $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$module-$IMAGE_TAG
+        done
