@@ -26,11 +26,12 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Build and push Docker images for modules
+    - name: Build and push Module1 Docker image to Amazon ECR
+      env:
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        REPOSITORY: shoemarket-dev
+        IMAGE_TAG: ${{ github.sha }}
       run: |
-        modules=("admin-service" "basket")
-        for module in "${modules[@]}"; do
-          cd $GITHUB_WORKSPACE/$module
-          docker build -t $REGISTRY/$REPOSITORY:$module-0.0.1 .
-          docker push $REGISTRY/$REPOSITORY:$module-0.0.1
-        done
+        cd $GITHUB_WORKSPACE/admin-service
+        docker build -t $REGISTRY/$REPOSITORY:admin-service-0.0.1 .
+        docker push $REGISTRY/$REPOSITORY:admin-service-0.0.1
