@@ -6,7 +6,6 @@
 /axon-server-se/*
 
 .env
-gradlew
 gradlew.bat
 
 /gradle/*
