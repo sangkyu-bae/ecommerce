@@ -27,7 +27,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2
 
     - name: Build with Gradle
-      run: chmod +x ./gradlew build
+      run: ./gradlew build -x test
       
     - name: Build and push Module1 Docker image to Amazon ECR
       env:
