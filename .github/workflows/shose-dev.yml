@@ -40,7 +40,8 @@ jobs:
         REPOSITORY: shoemarket-dev
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        for JAR_FILE in $JAR_FILES; do
-          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=order
+        for JAR_FILE in ranking order;
+        do
+          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=$JAR_FILE
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         done
