@@ -1,7 +1,7 @@
 name: Shose -Dev
 
 env:
-  JAR_FILE: ranking
+  JAR_FILES: "ranking order"
 on:
   push:
     branches: [ "master" ]
@@ -40,5 +40,7 @@ jobs:
         REPOSITORY: shoemarket-dev
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - .
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        for JAR_FILE in $JAR_FILES; do
+          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=$JAR_FILE
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        done
