@@ -1,7 +1,7 @@
 name: Shose -Dev
 
 env:
-  JAR_FILES: "ranking order"
+  JAR_FILES: ranking
 on:
   push:
     branches: [ "master" ]
@@ -42,6 +42,6 @@ jobs:
       run: |
         for JAR_FILE in ranking order;
         do
-          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=$JAR_FILE
+          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         done
