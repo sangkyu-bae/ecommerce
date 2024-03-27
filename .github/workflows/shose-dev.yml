@@ -41,6 +41,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         for JAR_FILE in $JAR_FILES; do
-          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=$JAR_FILE
+          envsubst < Dockerfile | docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f - . --build-arg JAR_FILE=order
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         done
