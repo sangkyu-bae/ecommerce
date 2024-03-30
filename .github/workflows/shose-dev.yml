@@ -40,5 +40,5 @@ jobs:
         REPOSITORY: shoemarket-dev
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg JAR_FILE=admin-service/build/libs/*.jar .
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg JAR_FILE=admin-service/build/libs/admin-service-0.0.2.jar .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
