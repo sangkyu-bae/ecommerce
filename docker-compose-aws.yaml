@@ -1,7 +1,7 @@
 version: '3'
 services:
     admin-service:
-      image: admin-590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:admin-service-0.0.1
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:admin-service-0.0.1
       networks:
         - ecommerce_network
       ports:
