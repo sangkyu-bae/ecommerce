@@ -1,0 +1,377 @@
+version: '3'
+services:
+    admin-service:
+      image: admin-service:0.0.2
+      networks:
+        - ecommerce_network
+      ports:
+        - "8085:8085"
+      depends_on:
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+        - api-gateway
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_APPLICATION_NAME=admin-service
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - APP_ORDER_TOPIC=order
+        - APP_GROUP_ID=delivery.group.v1
+        - APP_CREATE_DELIVERY=create-delivery
+        - APP_PRODUCT_TASK_RESULT_TOPIC=task-product
+        - APP_ROLLBACK_REMOVE_ORDER_TOPIC=rollback-remove-order
+        - KAFKA_PRODUCT_TOPIC=product-check
+        - KAFKA_PRODUCT_TASK_GROUP=check.member.response.v1
+        - KAFKA_ORDER_REMOVE_TOPIC=remove-order-product
+        - KAFKA_ORDER_REMOVE_GROUP=remove-order-product.v1
+        - KAFKA_RANKING_CREATE_TOPIC=create-ranking
+        - KAFKA_RANKING_CLICK_UPDATE_TOPIC=update-click-ranking
+        - KAFKA_MEMBER_TASK_GROUP=member.check.v1
+        - KAFKA_MEMBER_TASK_TOPIC=member-check
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    user-service:
+      image: demo:1.0.0
+      networks:
+        - ecommerce_network
+      ports:
+        - "8082:8082"
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+  #      - redis
+      environment:
+        - REDIS_PORT=5000
+        - REDIS_HOST=redis-containers
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - APP_ORDER_TOPIC=order
+        - APP_CONSUMER_PRODUCT=update-product
+        - APP_SEND_PRODUCT=request-product
+        - APP_CREATE_ORDER=create-order
+        - APP_MEMBER_TOPIC=task-member
+        - APP_REMOVE_ORDER_TOPIC=remove-order-product
+        - APP_REMOVE_ROLLBACK_TOPIC=rollback-remove-order
+        - KAFKA_ORDER_REMOVE_TOPIC=member.check.remove.order
+        - KAFKA_ORDER_REMOVE_GROUP=member.check.remove.order.v1
+        - KAFKA_MEMBER_TASK_GROUP=member.check.v1
+        - KAFKA_MEMBER_TASK_TOPIC=member-check
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - TOKEN_ACCESS_EXPIRED_TIME=3600000
+        - TOKEN_REFRESH_EXPIRED_TIME=604800000
+        - TOKEN_SECRET=eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+        - TOKEN_REFRESH_TOKEN_NAME=refresh-token
+        - TOKEN_ACCESS_TOKEN_NAME=access-token
+    order-service:
+      image: order:0.0.1-SNAPSHOT
+      networks:
+        - ecommerce_network
+      ports:
+        - "8084:8084"
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+        - api-gateway
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_APPLICATION_NAME=order-service
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - APP_ORDERTOPIC= order
+        - APP_CONSUMERPRODUCT= update-product
+        - APP_SENDPRODUCT= request-product
+        - APP_CREATEORDER= create-order
+        - APP_SENDTOREMOVEORDER= remove-order
+        - APP_CREATEDELIVER= delivery-bulk
+        - MEMBER_SERVICE_URL= http://member-service:8000/user
+        - KAFKA_ORDER_RESULT_TOPIC= order-topic
+        - KAFKA_ORDER_REMOVE_ROLLBACK_TOPIC= rollback-remove-order
+        - KAFKA_ORDER_REMOVE_ROLLBACK_GROUP= rollback-remove-order.v1
+        - KAFKA_TASK_GROUP= order-topic.v1
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    coupon:
+      image: coupon:0.0.1-SNAPSHOT
+      networks:
+        - ecommerce_network
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+        - api-gateway
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_REDIS_PORT=5000
+        - SPRING_REDIS_HOST=redis-containers
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    basket:
+      image: basket:0.0.1-SNAPSHOT
+      networks:
+        - ecommerce_network
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    delivery:
+      image: delivery:0.0.1-SNAPSHOT
+      networks:
+        - ecommerce_network
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    rank:
+      image: ranking:0.0.1-SNAPSHOT
+      networks:
+        - ecommerce_network
+      depends_on:
+        - mysql
+        - kafka1
+        - axon-servers
+        - ecommerce-eureka
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://shoes.cnw2wu088r6y.ap-northeast-2.rds.amazonaws.com:3306/shoes_product?useSSL=false&allowPublicKeyRetrieval=true
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=wnsvaf309!
+        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - APP_BOOTSTRAP_SERVER= kafka1:19091
+        - REDIS_PORT=5000
+        - REDIS_HOST=redis-containers
+        - AXON_SERIALIZER_GENERAL=xstream
+        - AXON_SERIALIZER_EVENTS=jackson
+        - AXON_SERIALIZER_MESSAGES=jackson
+        - AXON_AXONSERVER_SERVERS=axon-servers:8124
+        - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+        - EUREKA_CLIENT_FETCH_REGISTRY=true
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+
+    api-gateway:
+      image: gateway:0.0.1
+      networks:
+        - ecommerce_network
+      ports:
+        - "8000:8000"
+      environment:
+        - SPRING_CLOUD_GATEWAY_DEFAULT_FILTERS=GlobalFilter,DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - SPRING_CLOUD_GATEWAY_GLOBALCORS_CORS_CONFIGURATIONS='[/**]:allowedOrigins=http://localhost:3000,allowCredentials=true,allowedHeaders=*,allowedMethods=PUT,GET,POST,DELETE,OPTIONS'
+        - LOGGING_FILE_NAME=gateway
+        - LOGGING_FILE_PATH=C:/logs/gateway/gateway.log
+        - LOGGING_MAX_HISTORY=30
+        - LOGGING_CONSOLE_CHARSET=UTF-8
+        - LOGGING_FILE_CHARSET=UTF-8
+        - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
+        - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
+        - LOGGING_LEVEL_ROOT=INFO
+        - TOKEN_ACCESS_EXPIRED_TIME=3600000
+        - TOKEN_REFRESH_EXPIRED_TIME=604800000
+        - TOKEN_SECRET=eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
+        - TOKEN_REFRESH_TOKEN_NAME=refresh-token
+        - TOKEN_ACCESS_TOKEN_NAME=access-token
+        - EUREKA_INSTANCE_INSTANCE_ID=$${spring.cloud.client.ip-address}:8000
+        - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+    ecommerce-eureka:
+      image: eureka:0.0.1
+      networks:
+        - ecommerce_network
+      ports:
+        - "8761:8761"
+      environment:
+        - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
+        - EUREKA_CLIENT_FETCH_REGISTRY=false
+        - SPRING_APPLICATION_NAME=ecommerce-eureka
+        - LOGGING_FILE_NAME=eureka
+        - LOGGING_FILE_PATH=C:/logs/eureka/eureka.log
+        - LOGGING_MAX_HISTORY=30
+        - LOGGING_CONSOLE_CHARSET=UTF-8
+        - LOGGING_FILE_CHARSET=UTF-8
+        - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
+        - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
+        - LOGGING_LEVEL_ROOT=INFO
+  zookeeper:
+    image: zookeeper:3.7
+    networks:
+      - ecommerce_network
+    hostname: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_PORT: 2181
+    volumes:
+      - ./data/zookeeper/data:/data
+      - ./data/zookeeper/datalog:/datalog
+
+  kafka1:
+    image: confluentinc/cp-kafka:7.0.0
+    networks:
+      - ecommerce_network
+    hostname: kafka1
+    ports:
+      - "9091:9091"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka1:19091,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9091
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - ./data/kafka1/data:/tmp/kafka-logs
+    depends_on:
+      - zookeeper
+
+  kafka2:
+    image: confluentinc/cp-kafka:7.0.0
+    networks:
+      - ecommerce_network
+    hostname: kafka2
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka2:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - ./data/kafka2/data:/tmp/kafka-logs
+    depends_on:
+      - zookeeper
+
+  kafka3:
+    image: confluentinc/cp-kafka:7.0.0
+    networks:
+      - ecommerce_network
+    hostname: kafka3
+    ports:
+      - "9093:9093"
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka3:19093,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - ./data/kafka3/data:/tmp/kafka-logs
+    depends_on:
+      - zookeeper
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    networks:
+      - ecommerce_network
+    restart: "no"
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKER_CONNECT: "kafka1:19091"
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+  axon-servers:
+    image: axoniq/axonserver:4.6.3-jdk-11-dev
+    container_name: axon-servers
+    networks:
+      - ecommerce_network
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    volumes:
+      - ./axon-server-se/config:/axonserver/config:ro
+      - ./axon-server-se/data:/axonserver/data
+      - ./axon-server-se/event:/axonserver/events
+  redis:
+    image: redis:6.2.6-alpine
+    container_name: redis
+    ports:
+      - "5000:5000"
+    networks:
+      - ecommerce_network
+    volumes: # 마운트할 볼륨 설정
+      - ./redis/data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+networks:
+  ecommerce_network:
+    driver: bridge
+
