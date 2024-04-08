@@ -41,7 +41,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     user-service:
-      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:demo-1.0.0
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:demo-0.0.1
       networks:
         - ecommerce_network
       ports:
