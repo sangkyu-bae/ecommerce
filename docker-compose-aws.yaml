@@ -1,7 +1,7 @@
 version: '3'
 services:
     admin-service:
-      image: admin-service:0.0.2
+      image: admin-590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:admin-service-0.0.1
       networks:
         - ecommerce_network
       ports:
@@ -41,7 +41,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     user-service:
-      image: demo:1.0.0
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:demo-1.0.0
       networks:
         - ecommerce_network
       ports:
@@ -83,7 +83,7 @@ services:
         - TOKEN_REFRESH_TOKEN_NAME=refresh-token
         - TOKEN_ACCESS_TOKEN_NAME=access-token
     order-service:
-      image: order:0.0.1-SNAPSHOT
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:order-0.0.1
       networks:
         - ecommerce_network
       ports:
@@ -122,7 +122,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     coupon:
-      image: coupon:0.0.1-SNAPSHOT
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:coupon-0.0.1
       networks:
         - ecommerce_network
       depends_on:
@@ -149,7 +149,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     basket:
-      image: basket:0.0.1-SNAPSHOT
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:basket-0.0.1
       networks:
         - ecommerce_network
       depends_on:
@@ -173,7 +173,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     delivery:
-      image: delivery:0.0.1-SNAPSHOT
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:delivery-0.0.1
       networks:
         - ecommerce_network
       depends_on:
@@ -197,7 +197,7 @@ services:
         - EUREKA_CLIENT_FETCH_REGISTRY=true
         - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
     rank:
-      image: ranking:0.0.1-SNAPSHOT
+      image: 590183815332.dkr.ecr.ap-northeast-2.amazonaws.com/shoemarket-dev:ranking-0.0.1
       networks:
         - ecommerce_network
       depends_on:
@@ -265,112 +265,108 @@ services:
         - LOGGING_PATTERN_CONSOLE="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M) %marker %msg%n"
         - LOGGING_PATTERN_FILE="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M %marker %msg%n"
         - LOGGING_LEVEL_ROOT=INFO
-  zookeeper:
-    image: zookeeper:3.7
-    networks:
-      - ecommerce_network
-    hostname: zookeeper
-    ports:
-      - "2181:2181"
-    environment:
-      ZOO_MY_ID: 1
-      ZOO_PORT: 2181
-    volumes:
-      - ./data/zookeeper/data:/data
-      - ./data/zookeeper/datalog:/datalog
-
-  kafka1:
-    image: confluentinc/cp-kafka:7.0.0
-    networks:
-      - ecommerce_network
-    hostname: kafka1
-    ports:
-      - "9091:9091"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka1:19091,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9091
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    volumes:
-      - ./data/kafka1/data:/tmp/kafka-logs
-    depends_on:
-      - zookeeper
-
-  kafka2:
-    image: confluentinc/cp-kafka:7.0.0
-    networks:
-      - ecommerce_network
-    hostname: kafka2
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_BROKER_ID: 2
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka2:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    volumes:
-      - ./data/kafka2/data:/tmp/kafka-logs
-    depends_on:
-      - zookeeper
-
-  kafka3:
-    image: confluentinc/cp-kafka:7.0.0
-    networks:
-      - ecommerce_network
-    hostname: kafka3
-    ports:
-      - "9093:9093"
-    environment:
-      KAFKA_BROKER_ID: 3
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka3:19093,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9093
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    volumes:
-      - ./data/kafka3/data:/tmp/kafka-logs
-    depends_on:
-      - zookeeper
-
-  kafdrop:
-    image: obsidiandynamics/kafdrop
-    networks:
-      - ecommerce_network
-    restart: "no"
-    ports:
-      - "9000:9000"
-    environment:
-      KAFKA_BROKER_CONNECT: "kafka1:19091"
-    depends_on:
-      - kafka1
-      - kafka2
-      - kafka3
-  axon-servers:
-    image: axoniq/axonserver:4.6.3-jdk-11-dev
-    container_name: axon-servers
-    networks:
-      - ecommerce_network
-    ports:
-      - "8024:8024"
-      - "8124:8124"
-    volumes:
-      - ./axon-server-se/config:/axonserver/config:ro
-      - ./axon-server-se/data:/axonserver/data
-      - ./axon-server-se/event:/axonserver/events
-  redis:
-    image: redis:6.2.6-alpine
-    container_name: redis
-    ports:
-      - "5000:5000"
-    networks:
-      - ecommerce_network
-    volumes: # 마운트할 볼륨 설정
-      - ./redis/data:/data
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    zookeeper:
+      image: zookeeper:3.7
+      networks:
+        - ecommerce_network
+      hostname: zookeeper
+      ports:
+        - "2181:2181"
+      environment:
+        ZOO_MY_ID: 1
+        ZOO_PORT: 2181
+      volumes:
+        - ./data/zookeeper/data:/data
+        - ./data/zookeeper/datalog:/datalog
+    kafka1:
+      image: confluentinc/cp-kafka:7.0.0
+      networks:
+        - ecommerce_network
+      hostname: kafka1
+      ports:
+        - "9091:9091"
+      environment:
+        KAFKA_BROKER_ID: 1
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka1:19091,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9091
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      volumes:
+        - ./data/kafka1/data:/tmp/kafka-logs
+      depends_on:
+        - zookeeper
+    kafka2:
+      image: confluentinc/cp-kafka:7.0.0
+      networks:
+        - ecommerce_network
+      hostname: kafka2
+      ports:
+        - "9092:9092"
+      environment:
+        KAFKA_BROKER_ID: 2
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka2:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      volumes:
+        - ./data/kafka2/data:/tmp/kafka-logs
+      depends_on:
+        - zookeeper
+    kafka3:
+      image: confluentinc/cp-kafka:7.0.0
+      networks:
+        - ecommerce_network
+      hostname: kafka3
+      ports:
+        - "9093:9093"
+      environment:
+        KAFKA_BROKER_ID: 3
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka3:19093,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9093
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      volumes:
+        - ./data/kafka3/data:/tmp/kafka-logs
+      depends_on:
+        - zookeeper
+    kafdrop:
+      image: obsidiandynamics/kafdrop
+      networks:
+        - ecommerce_network
+      restart: "no"
+      ports:
+        - "9000:9000"
+      environment:
+        KAFKA_BROKER_CONNECT: "kafka1:19091"
+      depends_on:
+        - kafka1
+        - kafka2
+        - kafka3
+    axon-servers:
+      image: axoniq/axonserver:4.6.3-jdk-11-dev
+      container_name: axon-servers
+      networks:
+        - ecommerce_network
+      ports:
+        - "8024:8024"
+        - "8124:8124"
+      volumes:
+        - ./axon-server-se/config:/axonserver/config:ro
+        - ./axon-server-se/data:/axonserver/data
+        - ./axon-server-se/event:/axonserver/events
+    redis:
+      image: redis:6.2.6-alpine
+      container_name: redis
+      ports:
+        - "5000:5000"
+      networks:
+        - ecommerce_network
+      volumes: # 마운트할 볼륨 설정
+        - ./redis/data:/data
+        - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
 networks:
   ecommerce_network:
     driver: bridge
