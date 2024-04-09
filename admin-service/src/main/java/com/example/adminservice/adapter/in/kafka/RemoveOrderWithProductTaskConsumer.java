@@ -1,6 +1,6 @@
 package com.example.adminservice.adapter.in.kafka;
 
-import com.example.adminservice.application.port.in.usecase.UpdateProductUseCase;
+import com.example.adminservice.application.port.in.usecase.product.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.command.OrderToUpdateProductCommand;
 import com.example.adminservice.infra.error.ErrorException;
 import com.example.adminservice.infra.properties.AppProperties;

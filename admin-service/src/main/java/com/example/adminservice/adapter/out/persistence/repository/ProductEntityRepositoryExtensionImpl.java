@@ -1,5 +1,6 @@
 package com.example.adminservice.adapter.out.persistence.repository;
 
+import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.adapter.out.persistence.product.entity.*;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.JPQLQuery;

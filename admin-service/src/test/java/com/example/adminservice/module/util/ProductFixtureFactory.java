@@ -1,6 +1,6 @@
 package com.example.adminservice.module.util;
 
-import com.example.adminservice.adapter.out.persistence.product.entity.*;
+import com.example.adminservice.adapter.out.persistence.entity.*;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 

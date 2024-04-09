@@ -4,7 +4,7 @@ import com.example.adminservice.adapter.in.request.RegisterBrandRequest;
 import com.example.adminservice.adapter.in.request.RegisterCategoryRequest;
 import com.example.adminservice.adapter.in.request.RegisterColorRequest;
 import com.example.adminservice.adapter.in.request.RegisterProductComponentRequest;
-import com.example.adminservice.adapter.out.persistence.product.entity.*;
+import com.example.adminservice.adapter.out.persistence.entity.*;
 import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;

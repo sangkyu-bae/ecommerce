@@ -17,7 +17,7 @@ import {useRouter} from "next/router";
 import AdminFunc from "@/components/admin/AdminFunc";
 
 
-const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit'), {ssr: false});
+const NoSsrEditor = dynamic(() => import('@/components/common/' + 'ReactEdit'), {ssr: false});
 const StyledContainer = styled.div`
         display : flex;
         width : 100%;

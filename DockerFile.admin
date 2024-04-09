@@ -1,0 +1,8 @@
+FROM gradle:7.6-jdk11-alpine
+WORKDIR /workspace/app
+COPY ./admin-service /workspace/app/
+RUN ./gradlew build -p admin-service
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar",\
+            "admin-service/build/libs/admin-service-0.0.2.jar"]

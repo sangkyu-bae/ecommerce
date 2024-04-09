@@ -2,7 +2,7 @@ package com.example.adminservice.adapter.out.external;
 
 
 import com.example.adminservice.adapter.in.request.DeliveryInfoRequest;
-import com.example.adminservice.application.port.out.RequestDeliveryPort;
+import com.example.adminservice.application.port.out.brand.RequestDeliveryPort;
 import com.example.adminservice.infra.properties.AppProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

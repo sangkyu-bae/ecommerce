@@ -1,5 +1,8 @@
-FROM adoptopenjdk/openjdk11
-CMD ["./mvnw", "clean", "package"]
-ARG JAR_FILE_PATH=target/*.jar
-COPY ${JAR_FILE_PATH} app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+FROM gradle:latest as builder
+WORKDIR /workspace/app
+COPY . /workspace/app/
+RUN .././gradlew build -p admin-service
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar",\
+            "admin-service/build/libs/admin-service-0.0.2.jar"]

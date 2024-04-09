@@ -2,7 +2,7 @@ package com.example.adminservice.adapter.axon.aggregate;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.axon.event.ProductCreateEvent;
-import com.example.adminservice.application.port.out.UpdateProductSizePort;
+import com.example.adminservice.application.port.out.brand.UpdateProductSizePort;
 import com.example.adminservice.domain.SizeVo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +14,6 @@ import org.example.event.CheckRegisteredProductCommand;
 import org.example.event.CheckRegisteredProductEvent;
 import org.example.event.rollback.RollbackProductFinishedEvent;
 import org.example.event.rollback.RollbackRequestProductCommand;
-
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 

@@ -45,16 +45,6 @@ function SideBar({type}:string) {
     const common = new CommonUtil();
 
     const menuList = () => {
-        // const menuList: MenuData[] = [
-        //     {
-        //         menuName:'상품관리',
-        //         url :"/admin/product"
-        //     },
-        //     {
-        //         menuName:'상품등록',
-        //         url :"/admin/myPage"
-        //     }
-        // ];
         const menuList:MenuData[] = common.getMenuList(type);
         return menuList.map((menu, index) =>
             <Link key={index} href={menu.url} style={{textDecoration: "none"}}>

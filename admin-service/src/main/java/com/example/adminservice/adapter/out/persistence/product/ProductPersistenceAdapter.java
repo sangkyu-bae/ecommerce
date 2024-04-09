@@ -1,11 +1,11 @@
 package com.example.adminservice.adapter.out.persistence.product;
 
-import com.example.adminservice.adapter.out.persistence.product.entity.SizeEntity;
+import com.example.adminservice.adapter.out.persistence.entity.SizeEntity;
 import com.example.adminservice.adapter.out.persistence.repository.SizeEntityRepository;
 import com.example.adminservice.adapter.out.persistence.repository.SpringDataProductRepository;
-import com.example.adminservice.adapter.out.persistence.product.entity.ProductEntity;
-import com.example.adminservice.application.port.out.*;
+import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 
+import com.example.adminservice.application.port.out.brand.*;
 import com.example.adminservice.domain.ProductVo;
 import com.example.adminservice.domain.SizeVo;
 import com.example.adminservice.infra.error.ErrorException;

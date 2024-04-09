@@ -1,7 +1,7 @@
 package com.example.adminservice.adapter.out.kafka;
 
-import com.example.adminservice.application.port.out.SendCreateProductTaskPort;
-import com.example.adminservice.application.port.out.SendFindProductTaskPort;
+import com.example.adminservice.application.port.out.brand.SendCreateProductTaskPort;
+import com.example.adminservice.application.port.out.brand.SendFindProductTaskPort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
