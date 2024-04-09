@@ -353,7 +353,7 @@ services:
         - ./axon-server-se/event:/axonserver/events
     redis:
       image: redis:6.2.6-alpine
-      container_name: redis
+      container_name: redis-containers
       ports:
         - "6379:6379"
       networks:
