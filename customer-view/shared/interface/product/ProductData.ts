@@ -18,14 +18,14 @@ interface ProductPageData{
 
 interface Product{
     id : number
-    aggregateIdentifier: string,
+    // aggregateIdentifier: string,
     name : string,
     price : number,
     productImage : string,
     description : string
     brand : Data,
     category : Data,
-    productComponents: ProductComponent[]
+    // productComponents: ProductComponent[]
 }
 
 interface RankProduct{

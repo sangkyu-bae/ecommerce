@@ -31,12 +31,17 @@ type ProductAdmin ={
 }
 
 function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin) {
-    const router = useRouter();
+
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const cnt : number = isCreate ? 1 : severProductData.colorDataList.length;
     const [colorCnt, setColorCnt] = useState<number>(cnt);
     const [colorObject, setColorObject] = useState<ColorData[]>([]);
     const adminFunc = new AdminFunc();
+
+    const [files,setFiles] = useState<File[]>([]);
+    const handleFilesChange = (e) => {
+        setFiles(Array.from(e.target.files));
+    }
     useEffect(()=>{
         if(!isCreate){
             const data : string =severProductData.description;
@@ -73,6 +78,7 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
 
 
     const onSubmit = (productData: ProductData) => {
+        console.log(productData)
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
@@ -245,9 +251,20 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
                                        errors={errors}
                                        value = {!isCreate ? severProductData.brand.id : 0 }
                                 />
+
                                 {
                                     renderComponents()
                                 }
+                                <h3 className="fileuploder"> 
+                                    <label htmlFor="ex_file">대표사진 등록 : </label>
+                                    <input
+                                        type="file"
+                                        id="ex_file"
+                                        name="filename"
+                                        multiple
+                                        onChange={handleFilesChange}
+                                    />
+                                </h3>
                                 <div>
                                     <NoSsrEditor
                                         content={!isCreate ? severProductData.description :""}

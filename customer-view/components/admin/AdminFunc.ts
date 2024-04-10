@@ -49,8 +49,6 @@ class AdminFunc{
             }, // 예시로 0으로 초기화, 필요에 따라 수정해주세요
             colorDataList: [],
         };
-
-        console.log(productData)
         product.name = productData.name;
         product.price = productData.price;
         product.productImage = productData.image;

@@ -35,13 +35,21 @@ function SizeContainer({
                            colorProductData
                        }: ISizeData) {
     const adminFunc = new AdminFunc();
-    const [colorData, setColorData] = useState<ColorData>({
-        // colorName: '',
-        colorDto:{
+    // const [colorData, setColorData] = useState<ColorData>({
+    //     // colorName: '',
+    //     colorDto:{
+    //         id:0,
+    //         name:''
+    //     },
+    //     colorSize: []
+    // })
+    const [colorData, setColorData] = useState<ProductComponent>({
+        color:{
             id:0,
             name:''
         },
-        colorSize: []
+        id:0,
+        sizes: []
     })
 
     useEffect(()=>{
