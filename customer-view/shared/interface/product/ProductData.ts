@@ -25,7 +25,7 @@ interface Product{
     description : string
     brand : Data,
     category : Data,
-    // productComponents: ProductComponent[]
+    productComponents: ProductComponent[]
 }
 
 interface RankProduct{

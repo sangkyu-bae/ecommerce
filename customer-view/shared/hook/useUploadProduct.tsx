@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Validation from "@/utils/Validation";
 import {useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
@@ -13,6 +13,9 @@ function useUploadProduct({productData,ref} ) {
     const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<Product>({
         defaultValues: productData
     });
+
+    const[isLoading,setIsLoading] = useState(true)
+
     const productInfo = useQueries({
         queries: [
             {
@@ -33,6 +36,18 @@ function useUploadProduct({productData,ref} ) {
             }
         ],
     });
+
+    useEffect(()=>{
+        let isSuccess = true;
+
+        productInfo.forEach(product=>{
+            if(product.status != "success"){
+                isSuccess = false;
+            }
+        })
+
+        setIsLoading(!isSuccess);
+    },[productInfo])
 
     const onChangeDescription = () => {
         const data: string = ref.current.getInstance().getHTML();
@@ -68,7 +83,6 @@ function useUploadProduct({productData,ref} ) {
         }
     }
 
-
     const onSubmit = (productData: Product) => {
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
@@ -82,6 +96,9 @@ function useUploadProduct({productData,ref} ) {
         register,
         handleSubmit: handleSubmit(onSubmit),
         errors,
+        onChangeDescription,
+        productInfo,
+        isLoading
     };
 }
 
