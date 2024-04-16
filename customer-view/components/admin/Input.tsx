@@ -18,7 +18,15 @@ type ITest = {
 /** 
  * color 등록 수정 필요
  * */
-function Input({names, title, width, marginLeft, register, errors, onChangeColorName, value}: ITest) {
+function Input({
+                   names,
+                   title,
+                   width,
+                   marginLeft,
+                   register,
+                   errors,
+                   onChangeColorName,
+                   value}: ITest) {
     const validation = Validation;
     const [labelTitle, setLabelTitle] = useState<String>("");
     useEffect(() => {

@@ -7,28 +7,24 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
-import {string} from "prop-types";
-import {useForm} from "react-hook-form";
-import {useMutation, useQueries} from "@tanstack/react-query";
-import {ProductApi} from "@/shared/api/product/ProductApi";
 import Validation from "@/utils/Validation";
-import SizeContainer from "@/components/admin/SizeContainer";
-import {useRouter} from "next/router";
-import AdminFunc from "@/components/admin/AdminFunc";
 import useUploadProduct from "@/shared/hook/useUploadProduct";
+import SizeContainers from "@/components/admin/SizeContainers";
+
+
 const NoSsrEditor = dynamic(() => import('@/components/common/' + 'ReactEdit'), {ssr: false});
 const StyledContainer = styled.div`
         display : flex;
         width : 100%;
         height : 100vh;
     `
-type ProductAdmin ={
-    title : string,
-    buttonTitle:string,
-    initProductData : Product
+type ProductAdmin = {
+    title: string,
+    buttonTitle: string,
+    initProductData: Product
 }
 
-function ProductAdmin({title,buttonTitle,initProductData}:ProductAdmin) {
+function UploadProductComponents({title, buttonTitle, initProductData}: ProductAdmin) {
     const refs = useRef<any>(null);
     const {
         register,
@@ -36,37 +32,17 @@ function ProductAdmin({title,buttonTitle,initProductData}:ProductAdmin) {
         errors,
         onChangeDescription,
         productInfo,
-        isLoading
+        isLoading,
+        addProductComponent,
+        updateProductComponent,
+        removeProductComponent,
+        getValues
     } = useUploadProduct({
-        productData:initProductData,
-        ref:refs
+        productData: initProductData,
+        ref: refs
     });
 
     const validation = Validation;
-    // const setSizeColor = (element: String) => {
-    //     if (element == 'plus' && colorCnt < color.length) {
-    //         setColorCnt(colorCnt + 1);
-    //     } else if (element == 'remove' && colorCnt > 1) {
-    //         setColorCnt(colorCnt - 1);
-    //     }
-    // }
-
-    // const renderComponents = () => {
-    //     return Array.from({length: colorCnt}).map((_, index) => (
-    //         <SizeContainer
-    //             key={index}
-    //             sizes={size}
-    //             colors={color}
-    //             setSizeColor={setSizeColor}
-    //             colorCnt={colorCnt}
-    //             index={index}
-    //             handleChangeColorData={handleChangeColorData}
-    //             register={register}
-    //             errors={errors}
-    //             colorProductData = {!isCreate ? severProductData.colorDataList[index] : null}
-    //         />
-    //     ));
-    // };
 
     return (
         <StyledContainer>
@@ -92,7 +68,7 @@ function ProductAdmin({title,buttonTitle,initProductData}:ProductAdmin) {
                                     })}
                                     error={Boolean(errors.name)}
                                     helperText={errors.name?.message}
-                                    defaultValue={initProductData.name }
+                                    defaultValue={initProductData.name}
                                 />
                                 <TextField
                                     type="number"
@@ -111,27 +87,40 @@ function ProductAdmin({title,buttonTitle,initProductData}:ProductAdmin) {
                                     autoFocus
                                 />
 
-                                {/*<Input names={category}*/}
-                                {/*       title="category"*/}
-                                {/*       width={32}*/}
-                                {/*       marginLeft={2}*/}
-                                {/*       register={register}*/}
-                                {/*       errors={errors}*/}
-                                {/*       value = {initProductData.category.id }*/}
-                                {/*/>*/}
+                                <Input names={productInfo[1].data}
+                                       title="category"
+                                       width={32}
+                                       marginLeft={2}
+                                       register={register}
+                                       errors={errors}
+                                       value={initProductData.category.id}
+                                />
 
-                                {/*<Input names={productData.brand}*/}
-                                {/*       title="brand"*/}
-                                {/*       width={32}*/}
-                                {/*       marginLeft={2}*/}
-                                {/*       register={register}*/}
-                                {/*       errors={errors}*/}
-                                {/*       value = { initProductData.brand.id }*/}
-                                {/*/>*/}
+                                <Input names={productInfo[0].data}
+                                       title="brand"
+                                       width={32}
+                                       marginLeft={2}
+                                       register={register}
+                                       errors={errors}
+                                       value={initProductData.brand.id}
+                                />
 
-                                {/*{*/}
-                                {/*    renderComponents()*/}
-                                {/*}*/}
+                                {
+                                    getValues().productComponents.length > 0 &&
+                                    getValues().productComponents.map((component,index) =>
+                                            <SizeContainers
+                                                key={index}
+                                                // sizes={productPieceData.sizes}
+                                                colors={productInfo[2].data}
+                                                product={getValues()}
+                                                // // setSizeColor={setSizeColor}
+                                                // index={index}
+                                                register={register}
+                                                errors={errors}
+                                            />
+                                        // <div key={index}>ss</div>
+                                        )
+                                }
                                 {/*<h3 className="fileuploder">*/}
                                 {/*    <label htmlFor="ex_file">대표사진 등록 : </label>*/}
                                 {/*    <input*/}
@@ -170,4 +159,4 @@ function ProductAdmin({title,buttonTitle,initProductData}:ProductAdmin) {
     );
 }
 
-export default ProductAdmin;
+export default UploadProductComponents;

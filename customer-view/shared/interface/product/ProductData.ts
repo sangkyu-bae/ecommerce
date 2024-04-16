@@ -44,9 +44,6 @@ interface Size{
     size:number
 }
 
-// interface brandData extends Data{
-//     brandImage : string,
-// }
 interface colorProductData{
     colorDto : Data,
     sizeQuantityDtoList : sizeQuantityData[]

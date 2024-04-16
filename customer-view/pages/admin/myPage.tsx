@@ -24,12 +24,12 @@ function MyPage() {
         colorDataList: []
     };
     return (
-        // <ProductAdmin isCreate={true}
-        //               title="🛒상품 등록"
-        //               buttonTitle="상품등록"
-        //               severProductData={emptyProduct}
-        // />
-        <UploadProductComponent title="🛒상품 등록" buttonTitle="상품등록" initProductData={emptyProduct}/>
+        <ProductAdmin isCreate={true}
+                      title="🛒상품 등록"
+                      buttonTitle="상품등록"
+                      severProductData={emptyProduct}
+        />
+        // <UploadProductComponent title="🛒상품 등록" buttonTitle="상품등록" initProductData={emptyProduct}/>
     )
 
 }

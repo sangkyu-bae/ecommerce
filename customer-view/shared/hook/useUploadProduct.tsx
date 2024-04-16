@@ -1,38 +1,64 @@
 import React, {useEffect, useState} from 'react';
 import Validation from "@/utils/Validation";
-import {useForm} from "react-hook-form";
+import {useFieldArray, useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {string} from "prop-types";
 
-type IProduct ={
-    productData : string,
-    ref:any
-}
 function useUploadProduct({productData,ref} ) {
-    const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<Product>({
+    const[isLoading,setIsLoading] = useState(true)
+
+    const { register,control, handleSubmit, setValue, getValues, formState: { errors } } = useForm<Product>({
         defaultValues: productData
     });
+    const { fields, append, remove, update} = useFieldArray({
+        control,
+        name: "productComponents"
+    });
 
-    const[isLoading,setIsLoading] = useState(true)
+    const addProductComponent = (color) =>{
+        const productComponent = {
+            color:color,
+            sizes:[]
+        }
+
+        console.log(productComponent)
+        append(productComponent);
+    }
+
+    const updateProductComponent = (index,updateData) => {
+        update(index, updateData);
+    }
+
+    const removeProductComponent = (index) =>{
+        remove(index);
+    }
 
     const productInfo = useQueries({
         queries: [
             {
                 queryKey: ['brand'],
-                queryFn: () => ProductApi.readAllBrand()
+                queryFn: () => ProductApi.readAllBrand(),
+                staleTime: 5 * 60 * 1000, // 5분 동안 캐시된 데이터 사용
+                cacheTime: 30 * 60 * 1000 // 30분 동안 캐시 데이터 유지
             },
             {
                 queryKey: ['category'],
-                queryFn: () => ProductApi.readAllCategory()
+                queryFn: () => ProductApi.readAllCategory(),
+                staleTime: 5 * 60 * 1000, // 5분 동안 캐시된 데이터 사용
+                cacheTime: 30 * 60 * 1000 // 30분 동안 캐시 데이터 유지
             },
             {
                 queryKey: ['color'],
-                queryFn: () => ProductApi.readAllColor()
+                queryFn: () => ProductApi.readAllColor(),
+                staleTime: 5 * 60 * 1000, // 5분 동안 캐시된 데이터 사용
+                cacheTime: 30 * 60 * 1000 // 30분 동안 캐시 데이터 유지
             },
             {
                 queryKey: ['size'],
-                queryFn: () => ProductApi.readAllSize()
+                queryFn: () => ProductApi.readAllSize(),
+                staleTime: 5 * 60 * 1000, // 5분 동안 캐시된 데이터 사용
+                cacheTime: 30 * 60 * 1000 // 30분 동안 캐시 데이터 유지
             }
         ],
     });
@@ -47,9 +73,19 @@ function useUploadProduct({productData,ref} ) {
         })
 
         setIsLoading(!isSuccess);
+
     },[productInfo])
 
+    useEffect(()=>{
+        if(!isLoading){
+            addProductComponent(productInfo[2].data[0])
+        }
+    },[isLoading])
+
+
+
     const onChangeDescription = () => {
+        console.log(getValues())
         const data: string = ref.current.getInstance().getHTML();
         setValue("description", data, {shouldValidate: true});
     }
@@ -69,19 +105,7 @@ function useUploadProduct({productData,ref} ) {
         onSettled: () => {
             console.log("end");
         }
-    });
-    const validation = Validation;
-
-    const addColorData = (colorData: ColorData) => {
-        let color = colorObject.filter(obj => obj.colorDto.name == colorData.colorDto.name);
-        if (color) {
-            let colorDatas = colorObject.filter(obj => obj.colorDto.name != colorData.colorDto.name);
-            colorDatas.push(colorData);
-            setColorObject(colorDatas)
-        } else {
-            setColorObject([...colorObject, colorData]);
-        }
-    }
+    })
 
     const onSubmit = (productData: Product) => {
         if (productData.description.length < 15) {
@@ -98,7 +122,11 @@ function useUploadProduct({productData,ref} ) {
         errors,
         onChangeDescription,
         productInfo,
-        isLoading
+        isLoading,
+        addProductComponent,
+        updateProductComponent,
+        removeProductComponent,
+        getValues
     };
 }
 
