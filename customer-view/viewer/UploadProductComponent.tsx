@@ -110,13 +110,15 @@ function UploadProductComponents({title, buttonTitle, initProductData}: ProductA
                                     getValues().productComponents.map((component,index) =>
                                             <SizeContainers
                                                 key={index}
-                                                // sizes={productPieceData.sizes}
+                                                sizes={productInfo[3].data}
                                                 colors={productInfo[2].data}
                                                 product={getValues()}
-                                                // // setSizeColor={setSizeColor}
-                                                // index={index}
+                                                index={index}
                                                 register={register}
                                                 errors={errors}
+                                                addProductComponent={addProductComponent}
+                                                updateProductComponent={updateProductComponent}
+                                                removeProductComponent={removeProductComponent}
                                             />
                                         // <div key={index}>ss</div>
                                         )

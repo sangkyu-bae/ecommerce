@@ -10,7 +10,7 @@ function Create(props) {
         description: "",
         brand: {},
         category: {},
-        colorDataList: []
+        productComponents: []
     };
     return (
         <UploadProductComponent title="🛒상품 등록" buttonTitle="상품등록" initProductData={emptyProduct}/>

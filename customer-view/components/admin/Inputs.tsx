@@ -12,13 +12,11 @@ type ITest = {
     marginLeft: number,
     register: object,
     errors: object,
-    onChangeEvent: (event: any, fieId: string, type: string) => void,
+    onChangeEvent: (index: number, data:any,type: string) => void,
     value: number
+    index : number
 }
 
-/**
- * color 등록 수정 필요
- * */
 function Inputs({
                     names,
                     title,
@@ -27,7 +25,8 @@ function Inputs({
                     register,
                     errors,
                     onChangeEvent,
-                    value
+                    value,
+                    index
                 }: ITest) {
     const validation = Validation;
     const [labelTitle, setLabelTitle] = useState<String>("");
@@ -48,14 +47,14 @@ function Inputs({
                 style={{width: `${width}%`, marginLeft: `${marginLeft}%`}}
                 required
                 id={title}
-                label={labelTitle}
+                label={title}
                 {...register(title, {
                     ...validation[title]
                 })}
                 error={Boolean(errors[title])}
                 name={title}
                 onChange={(e) => {
-                    onChangeEvent(e, 'colorName', 'add');
+                    onChangeEvent(index,e.target,'color');
                     changeValue(e)
                 }}
                 autoFocus
@@ -67,6 +66,31 @@ function Inputs({
                     </MenuItem>
                 ))}
             </TextField>
+            {/*<TextField*/}
+            {/*    select*/}
+            {/*    margin="normal"*/}
+            {/*    style={{width: `${width}%`, marginLeft: `${marginLeft}%`}}*/}
+            {/*    required*/}
+            {/*    id={title}*/}
+            {/*    label={title}*/}
+            {/*    {...register(title, {*/}
+            {/*        ...validation[title]*/}
+            {/*    })}*/}
+            {/*    error={Boolean(errors[title])}*/}
+            {/*    name={title}*/}
+            {/*    onChange={(e) => {*/}
+            {/*        onChangeEvent(e, 'colorName', 'add');*/}
+            {/*        changeValue(e)*/}
+            {/*    }}*/}
+            {/*    autoFocus*/}
+            {/*    value={componentValue}*/}
+            {/*>*/}
+            {/*    {names && names.map((br, index) => (*/}
+            {/*        <MenuItem key={br.id} value={br.id}>*/}
+            {/*            {br.name}*/}
+            {/*        </MenuItem>*/}
+            {/*    ))}*/}
+            {/*</TextField>*/}
         </>
     );
 }

@@ -16,18 +16,28 @@ function useUploadProduct({productData,ref} ) {
         name: "productComponents"
     });
 
-    const addProductComponent = (color) =>{
+    const addProductComponent = () =>{
         const productComponent = {
-            color:color,
+            color: {},
             sizes:[]
         }
-
-        console.log(productComponent)
         append(productComponent);
     }
 
-    const updateProductComponent = (index,updateData) => {
-        update(index, updateData);
+    const updateProductComponent = (index,updateData,type) => {
+        let updateIndexProductComponent = getValues().productComponents[index];
+
+        if(type == 'color'){
+            const colorData = productInfo[2].data.find(data => data.id == updateData.value)
+            updateIndexProductComponent.color = colorData;
+        }else if(type == 'size'){
+
+        }
+
+        console.log(updateData)
+        console.log(type)
+        console.log(index)
+        update(index, updateIndexProductComponent);
     }
 
     const removeProductComponent = (index) =>{
@@ -78,7 +88,7 @@ function useUploadProduct({productData,ref} ) {
 
     useEffect(()=>{
         if(!isLoading){
-            addProductComponent(productInfo[2].data[0])
+            addProductComponent()
         }
     },[isLoading])
 
