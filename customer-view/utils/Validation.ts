@@ -45,6 +45,20 @@ const Validation = {
             message: '상품 가격은 100원 이상입니다.'
         }
     },
+    color :{
+        required:true,
+        message: "컬러 값을 등록하세요"
+    },
+    colorValueValidate : function (productComponents : ProductComponent[]){
+        for(var i in productComponents){
+            const component = productComponents[i];
+            if(component.sizes.length == 0){
+                return false;
+            }
+        }
+
+        return true;
+    },
     colorValidate: function (colorData: ColorData[]) {
         if(colorData.length == 0){
             return false;

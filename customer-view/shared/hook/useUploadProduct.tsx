@@ -4,6 +4,7 @@ import {useFieldArray, useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {string} from "prop-types";
+import validation from "@/utils/Validation";
 
 function useUploadProduct({productData,ref} ) {
     const[isLoading,setIsLoading] = useState(true)
@@ -28,15 +29,11 @@ function useUploadProduct({productData,ref} ) {
         let updateIndexProductComponent = getValues().productComponents[index];
 
         if(type == 'color'){
-            const colorData = productInfo[2].data.find(data => data.id == updateData.value)
-            updateIndexProductComponent.color = colorData;
+            updateIndexProductComponent.color = updateData;
         }else if(type == 'size'){
-
+            updateIndexProductComponent.sizes = updateData;
         }
 
-        console.log(updateData)
-        console.log(type)
-        console.log(index)
         update(index, updateIndexProductComponent);
     }
 
@@ -95,7 +92,6 @@ function useUploadProduct({productData,ref} ) {
 
 
     const onChangeDescription = () => {
-        console.log(getValues())
         const data: string = ref.current.getInstance().getHTML();
         setValue("description", data, {shouldValidate: true});
     }
@@ -118,11 +114,25 @@ function useUploadProduct({productData,ref} ) {
     })
 
     const onSubmit = (productData: Product) => {
+
+        if(!validation.colorValueValidate(productData.productComponents)){
+            alert("상품 사이즈를 확인하세요")
+        }
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;
         }
 
+
+        productData.category = {
+            id:productData.category
+        }
+
+        productData.brand = {
+            id : productData.brand
+        }
+
+        console.log(productData)
         productMutation.mutate(productData);
     };
 

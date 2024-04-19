@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Inputs from "@/components/admin/Inputs";
+import * as events from "events";
 
 type ISize = {
     colors: Data[],
@@ -29,6 +30,32 @@ function SizeContainers({
                             updateProductComponent,
                             removeProductComponent
                         }: ISize) {
+    const [isAllProduct,setIsAllProduct] = useState(false);
+
+    const updateSize = (index:number, value) =>{
+
+        let productSize = product.productComponents[index].sizes;
+
+        if(value == 'All'){
+            if(isAllProduct){
+                productSize =[];
+            }else{
+                productSize = sizes;
+            }
+            setIsAllProduct(!isAllProduct);
+        }else{
+            productSize = productSize.filter(size => size.id != value)
+            productSize.push(sizes[value - 1]);
+        }
+
+        updateProductComponent(index,productSize,'size');
+    }
+
+    const updateColor =(index : number,value : number) =>{
+        const colorData = colors.find(data => data.id == value)
+        updateProductComponent(index,colorData,"color");
+    }
+
     return (
         <>
 
@@ -38,9 +65,8 @@ function SizeContainers({
                     marginLeft={0}
                     register={register}
                     errors={errors}
-                    onChangeEvent={updateProductComponent}
+                    onChangeEvent={updateColor}
                     index={index}
-                //    value={colorProductData != null ? colorProductData.colorDto.id : 0}
             />
             {
                 product.productComponents.length < colors.length &&
@@ -82,12 +108,12 @@ function SizeContainers({
                     value={'All'}
                     onChange={
                         (e) =>{
-                            updateProductComponent(index,e.target.value,'size');
+                            updateSize(index,e.target.value);
                         }
                     }
                 />
                 {
-                    sizes.map((size, index: number) => (
+                    sizes.map((size, i: number) => (
                         <FormControlLabel
                             key={size.id}
                             control={
@@ -95,13 +121,15 @@ function SizeContainers({
                                     name={size.size}
                                     color="primary"
                                     value={size.id}
-                                    // checked={colorProductData?.sizeQuantityDtoList.some(
-                                    //     (sizeQuantityDto) => sizeQuantityDto.sizeDto.id === size.id
-                                    // )}
+                                    checked={
+                                        product.productComponents[index].sizes.some(
+                                            (productSize) => productSize.id === size.id
+                                        )
+                                    }
                                 />
                             }
                             label={size.size}
-                            // onChange={(e) => onChangeColorData(e, 'colorSize', 'add')}
+                            onChange={(e) => updateSize(index,e.target.value)}
                         />
                     ))
                 }

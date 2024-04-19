@@ -31,7 +31,7 @@ export const memberRequest : MemberRequest={
 }
 
 export const productRequest : ProductRequest={
-    createProduct : `${productURL}/product`,
+    createProduct : `${productURL}/register/product`,
     readAllBrand : `${productURL}/brands`,
     readAllCategory : `${productURL}/categorys`,
     readAllColor : `${productURL}/colors`,
