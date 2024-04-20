@@ -53,7 +53,7 @@ function Product(props) {
                             <div className="flex">
                                 {
                                     productData &&
-                                    productData.productList.map((product, index) => {
+                                    productData.productVoList.map((product, index) => {
                                         return (
                                             <>
                                                 <Link

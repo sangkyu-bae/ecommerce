@@ -131,9 +131,10 @@ function useUploadProduct({productData,ref} ) {
         productData.brand = {
             id : productData.brand
         }
+        delete productData.id
 
         console.log(productData)
-        productMutation.mutate(productData);
+        // productMutation.mutate(productData);
     };
 
     return {

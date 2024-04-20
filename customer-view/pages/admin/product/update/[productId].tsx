@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import ProductAdmin from "@/viewer/ProductAdmin";
+import UploadProductComponent from "@/viewer/UploadProductComponent";
 
 const ProductUpdate =()=>{
     const router = useRouter();
@@ -27,12 +28,10 @@ const ProductUpdate =()=>{
 
     return(
         productData &&
-        <ProductAdmin
-            isCreate={false}
-            title="🛒상품 수정"
-            buttonTitle="상품수정"
-            severProductData={productData}
-        />
+            <UploadProductComponent
+                title="🛒상품 수정"
+                buttonTitle="상품수정"
+                initProductData={productData}/>
     )
 }
 export default ProductUpdate;

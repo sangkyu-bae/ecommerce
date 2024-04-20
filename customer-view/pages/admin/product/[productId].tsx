@@ -8,6 +8,7 @@ import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import Util from "@/utils/CommonUtil";
 import ProductInfo from "@/components/product/ProductInfo";
+import ProductSizeQuantity from "@/components/product/ProductSizeQuantity";
 
 
 const ProductDetail = () => {
@@ -36,7 +37,15 @@ const ProductDetail = () => {
                         <GridComponent title={`📰${productData?.name}`}></GridComponent>
                         <div className="main-section">
                             {
-                                productData != undefined && <ProductInfo severProductData={productData}></ProductInfo>
+                                productData != undefined &&
+                                <ProductInfo productData={productData}>
+                                    <ProductInfo.ProductBrand />
+                                    <ProductInfo.ProductPrice />
+                                    <ProductInfo.ProductDescription />
+                                    <ProductInfo.ProductUpdateButton />
+                                    {/*<ProductInfo.ProductSizeQuantity />*/}
+
+                                </ProductInfo>
                             }
                         </div>
                     </div>

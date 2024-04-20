@@ -5,9 +5,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {useMyContext} from "@/components/product/ProductInfo";
+import {useProductActionContext, useProductValueContext} from "@/components/product/ProductInfo";
 function ProductSizeQuantity(props) {
-    const {productData,change,basket} = useMyContext();
+    const {productData} = useProductValueContext();
+    const actions = useProductActionContext();
     return (
         <Box sx={{ minWidth: 120 ,mt:2}}>
             <FormControl fullWidth>
@@ -15,9 +16,9 @@ function ProductSizeQuantity(props) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={basket.productSizeId}
+                    // value={basket.productSizeId}
                     label="Size"
-                    onChange={e=>change(e)}
+                    onChange={e=>actions.change(e)}
                     name = "productSizeId"
                 >
                     {

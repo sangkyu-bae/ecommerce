@@ -45,7 +45,9 @@ function SizeContainers({
             setIsAllProduct(!isAllProduct);
         }else{
             productSize = productSize.filter(size => size.id != value)
-            productSize.push(sizes[value - 1]);
+            let size = sizes[value - 1];
+            delete size.id;
+            productSize.push(size);
         }
 
         updateProductComponent(index,productSize,'size');

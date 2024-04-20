@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useMemo, useState} from 'react';
 import Util from "@/utils/CommonUtil";
 import {useRouter} from "next/router";
 import {MyProduct} from "@/store/product/myProduct";
@@ -14,19 +14,19 @@ interface InfoProps {
     productData: MyProduct,
     children: React.ReactNode
 }
-const MyContext = createContext({
-    basket: {
-        productSizeId : 0,
-        quantity:0
-    },
-    change:()=>{}
 
-});
-export function useMyContext() {
-    return useContext(MyContext);
+const ProductValueContext = createContext();
+const ProductActionContext = createContext();
+
+export function useProductValueContext() {
+    return useContext(ProductValueContext);
 }
+
+export function useProductActionContext(){
+    return useContext(ProductActionContext);
+}
+
 function ProductInfo({productData, children}: InfoProps) {
-    const util = new Util();
     const router = useRouter();
 
     const [basket,setBasket] : CreateBasket= useState({
@@ -34,34 +34,43 @@ function ProductInfo({productData, children}: InfoProps) {
         quantity:0
     })
 
-    const change = e =>{
-        const { name, value } = e.target;
-        setBasket(form => (
-            { ...form,
-            [name]: value })
-        );
-    }
-
-    const handleUpdateButtonClick = () => {
-        const {productId}: number = router.query;
-        router.push(`/admin/product/update/${productId}`)
-    }
+    const actions = useMemo(
+        () => ({
+            change(e) {
+                const { name, value } = e.target;
+                setBasket(form => (
+                    { ...form,
+                        [name]: value })
+                );
+            },
+            handleUpdateButtonClick() {
+                const {productId}: number = router.query;
+                router.push(`/admin/product/update/${productId}`)
+            },
+            getBasket(){
+                return basket
+            }
+        }),
+        []
+    );
 
     return (
-        <MyContext.Provider value ={{productData,change,basket }}>
-            <StyledContainer>
-                <StyledContent isFull={true}>
-                    <StyledSetion isFull={true}>
-                        <div className="first-section">
-                            <GridComponent title={`📰${productData?.name}`}></GridComponent>
-                            <div className="main-section">
-                                {children}
+        <ProductValueContext.Provider value ={{productData}}>
+            <ProductActionContext.Provider value={actions}>
+                <StyledContainer>
+                    <StyledContent isFull={true}>
+                        <StyledSetion isFull={true}>
+                            <div className="first-section">
+                                <GridComponent title={`📰${productData?.name}`}></GridComponent>
+                                <div className="main-section">
+                                    {children}
+                                </div>
                             </div>
-                        </div>
-                    </StyledSetion>
-                </StyledContent>
-            </StyledContainer>
-        </MyContext.Provider>
+                        </StyledSetion>
+                    </StyledContent>
+                </StyledContainer>
+            </ProductActionContext.Provider>
+        </ProductValueContext.Provider>
     );
 }
 

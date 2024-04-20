@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Props} from "next/script";
 
-import { useMyContext} from "@/components/product/ProductInfo";
+import { useProductValueContext} from "@/components/product/ProductInfo";
 function ProductImage(props) {
-    const {productData,change} = useMyContext();
+    const {productData} = useProductValueContext();
     return (
         <div className="image">
             {productData.productImage}
