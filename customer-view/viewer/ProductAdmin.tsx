@@ -64,7 +64,8 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
             colorDatas.push(colorData);
             setColorObject(colorDatas)
         } else {
-            setColorObject([...colorObject, colorData]);
+            setColorObject(
+                [...colorObject, colorData]);
         }
     }
 

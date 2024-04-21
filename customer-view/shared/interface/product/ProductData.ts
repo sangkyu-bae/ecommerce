@@ -13,7 +13,7 @@ interface ProductPageData{
     pageNumber : number,
     pageSize : number,
     totalElements : number,
-    productList : Product[],
+    productVoList : Product[],
 }
 
 interface Product{

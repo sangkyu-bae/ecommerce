@@ -41,6 +41,7 @@ function SizeContainers({
                 productSize =[];
             }else{
                 productSize = sizes;
+                productSize.forEach(obj => delete obj.id);
             }
             setIsAllProduct(!isAllProduct);
         }else{
@@ -69,6 +70,7 @@ function SizeContainers({
                     errors={errors}
                     onChangeEvent={updateColor}
                     index={index}
+                    value={product.productComponents[index].color.id}
             />
             {
                 product.productComponents.length < colors.length &&

@@ -5,9 +5,11 @@ import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {string} from "prop-types";
 import validation from "@/utils/Validation";
+import {useRouter} from "next/router";
 
-function useUploadProduct({productData,ref} ) {
+function useUploadProduct({productData,ref,submit,type} ) {
     const[isLoading,setIsLoading] = useState(true)
+    const router = useRouter();
 
     const { register,control, handleSubmit, setValue, getValues, formState: { errors } } = useForm<Product>({
         defaultValues: productData
@@ -96,9 +98,8 @@ function useUploadProduct({productData,ref} ) {
         setValue("description", data, {shouldValidate: true});
     }
 
-    const api = ProductApi.createProduct;
 
-    const productMutation = useMutation(api, {
+    const productMutation = useMutation(submit, {
         onMutate: variable => {
             console.log("onMutate", variable);
         },
@@ -107,6 +108,7 @@ function useUploadProduct({productData,ref} ) {
         },
         onSuccess: (data, variables, context) => {
             console.log(data)
+            router.push("/admin/product")
         },
         onSettled: () => {
             console.log("end");
@@ -131,10 +133,22 @@ function useUploadProduct({productData,ref} ) {
         productData.brand = {
             id : productData.brand
         }
-        delete productData.id
 
-        console.log(productData)
-        // productMutation.mutate(productData);
+        if(type == "update"){
+            const productId = productData.id
+            delete productData.id
+            delete productData.aggregateIdentifier
+
+            console.log(productData)
+            productMutation.mutate({
+                product: productData,
+                productId: productId
+            });
+        }else{
+            delete productData.id
+            productMutation.mutate(productData);
+        }
+
     };
 
     return {

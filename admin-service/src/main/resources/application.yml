@@ -1,10 +1,10 @@
 server:
-  port: 8085
+  port: 8089
 spring:
   application:
     name: admin-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_product
+    url: jdbc:mysql://localhost:3308/shoes_product
     username: root
     password: wnsvaf309
   jpa:
@@ -50,8 +50,8 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
-#      defaultZone: http://120.0.0.1:8761/eureka
-      defaultZone: http://172.29.0.6/eureka
+      defaultZone: http://localhost:8761/eureka
+#      defaultZone: http://172.29.0.6/eureka
 app:
   bootstrapServer: localhost:9092
   orderTopic : order

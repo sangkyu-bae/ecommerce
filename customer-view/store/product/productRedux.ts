@@ -1,6 +1,7 @@
 import {MyProduct} from "@/store/product/myProduct";
 
 const SET_PRODUCT ="SET_PRODUCT";
+const INIT_PRODUCT ="INIT_PRODUCT";
 
 export const setProduct = (productInfo:MyProduct) =>{
     return{
@@ -8,32 +9,21 @@ export const setProduct = (productInfo:MyProduct) =>{
         product:productInfo
     }
 }
+export const initProduct = () =>{
+    return {
+        type: INIT_PRODUCT
+    }
 
-const initialState : MyProduct ={
-    id: 0,
-    aggregateIdentifier: "",
-    name: "",
-    price: 0,
-    productImage: "",
-    description: "",
-    brand: {
-        id: 0,
-        name: ""
-    },
-    category: {
-        id: 0,
-        name: ""
-    },
-    productComponents: []
-};
+}
+const initialState : MyProduct[] = [];
 
 const productRedux = (state = initialState,action) =>{
     switch (action.type){
         case SET_PRODUCT:{
-            return {
-                ...state,
-                ...action.product,
-            }
+            return [...state, action.product];
+        }
+        case INIT_PRODUCT:{
+            return []
         }
         default:
             return state

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Builder @Data
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Getter
 public class RegisterProductCommand extends SelfValidating<RegisterProductCommand> {
 
     @NotBlank

@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools }from '@tanstack/react-query-devtools';
 import {Provider as MyProvider} from 'react-redux';
 import {configureStore} from "@reduxjs/toolkit";
+import rootReducer from "@/store/configStroe";
 const theme = createTheme({
     palette: {
         primary: {
@@ -37,11 +38,12 @@ const queryClient = new QueryClient({
 //         },
 //     },
 // })
+const store = configureStore({reducer : rootReducer} );
 export default function App({Component, pageProps}: AppProps) {
-    // const store = configureStore({reducer : myReducer} );
+
     return (
         <QueryClientProvider client={queryClient}>
-            {/*<MyProvider store={store}>*/}
+            <MyProvider store={store}>
                 <RecoilRoot>
                     <div>
                         <CssBaseline/>
@@ -50,7 +52,7 @@ export default function App({Component, pageProps}: AppProps) {
                         <Copyright sx={{mt: 5}}/>
                     </div>
                 </RecoilRoot>
-            {/*</MyProvider>*/}
+            </MyProvider>
 
         </QueryClientProvider>
     )

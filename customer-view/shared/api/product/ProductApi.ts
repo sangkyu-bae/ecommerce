@@ -8,7 +8,7 @@ export const ProductApi = {
         return data;
     },
     updateProduct: async ({product, productId}:{Product,number})=>{
-        const {data} = await ApiCommon.loginJsonAPI.put(`${productURL}/${productId}`,product);
+        const {data} = await ApiCommon.loginJsonAPI.put(`${productURL}/update/${productId}`,product);
         return data;
     },
     readAllBrand: async ():Promise<any>=>{

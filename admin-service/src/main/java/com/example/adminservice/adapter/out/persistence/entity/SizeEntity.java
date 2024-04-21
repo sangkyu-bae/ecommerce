@@ -5,15 +5,16 @@ import com.example.adminservice.infra.error.QuantityErrorCode;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Getter @Setter @EqualsAndHashCode(of="id")
+@Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
 @Table(name = "tb_size")
 public class SizeEntity {
 
     @Id @GeneratedValue
-    private long id;
+    private Long id;
 
     private int size;
 
@@ -28,5 +29,18 @@ public class SizeEntity {
         }else{
             this.quantity = this.quantity - amount;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SizeEntity sizeEntity = (SizeEntity) o;
+        return Objects.equals(id, sizeEntity.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : super.hashCode();
     }
 }

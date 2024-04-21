@@ -21,10 +21,18 @@ const StyledContainer = styled.div`
 type ProductAdmin = {
     title: string,
     buttonTitle: string,
-    initProductData: Product
+    initProductData: Product,
+    submit: void,
+    type: string
 }
 
-function UploadProductComponents({title, buttonTitle, initProductData}: ProductAdmin) {
+function UploadProductComponents({
+                                     title,
+                                     buttonTitle,
+                                     initProductData,
+                                     submit,
+                                     type
+                                 }: ProductAdmin) {
     const refs = useRef<any>(null);
     const {
         register,
@@ -39,10 +47,16 @@ function UploadProductComponents({title, buttonTitle, initProductData}: ProductA
         getValues
     } = useUploadProduct({
         productData: initProductData,
-        ref: refs
+        ref: refs,
+        submit:submit,
+        type:type
     });
 
     const validation = Validation;
+
+    useEffect(()=>{
+        console.log(initProductData)
+    },[])
 
     return (
         <StyledContainer>
@@ -107,7 +121,7 @@ function UploadProductComponents({title, buttonTitle, initProductData}: ProductA
 
                                 {
                                     getValues().productComponents.length > 0 &&
-                                    getValues().productComponents.map((component,index) =>
+                                    getValues().productComponents.map((component, index) =>
                                             <SizeContainers
                                                 key={index}
                                                 sizes={productInfo[3].data}
@@ -121,7 +135,7 @@ function UploadProductComponents({title, buttonTitle, initProductData}: ProductA
                                                 removeProductComponent={removeProductComponent}
                                             />
                                         // <div key={index}>ss</div>
-                                        )
+                                    )
                                 }
                                 {/*<h3 className="fileuploder">*/}
                                 {/*    <label htmlFor="ex_file">대표사진 등록 : </label>*/}

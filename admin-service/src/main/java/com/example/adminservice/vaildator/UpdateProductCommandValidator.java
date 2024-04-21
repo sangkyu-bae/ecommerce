@@ -50,6 +50,7 @@ public class UpdateProductCommandValidator implements Validator {
         SIZE_LIST = SizeCheck.getSize();
 
         for(RegisterProductComponentCommand updateProductComponentCommand : updateProductComponentCommandSet){
+            ACCUMULATE_SIZE_LIST.clear();
             if(!existByColor(updateProductComponentCommand)){
                 errors.rejectValue("color","Invalid.Color");
             }
@@ -85,6 +86,6 @@ public class UpdateProductCommandValidator implements Validator {
     }
 
     private boolean existByBrand(UpdateProductCommand updateProductCommand) {
-        return brandEntityRepository.existsById(updateProductCommand.getId());
+        return brandEntityRepository.existsById(updateProductCommand.getBrand().getId());
     }
 }

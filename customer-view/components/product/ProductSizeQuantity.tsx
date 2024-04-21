@@ -12,7 +12,7 @@ function ProductSizeQuantity(props) {
     return (
         <Box sx={{ minWidth: 120 ,mt:2}}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Size</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"

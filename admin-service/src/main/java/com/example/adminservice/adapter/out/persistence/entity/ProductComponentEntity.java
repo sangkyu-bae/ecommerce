@@ -5,6 +5,7 @@ import com.example.adminservice.infra.error.ProductErrorCode;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,6 +32,13 @@ public class ProductComponentEntity {
                 .orElseThrow(()->new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"updateQuantity"));
 
         sizeEntity.updateQuantity(amount);
+    }
+
+    public void addSize(SizeEntity size){
+        if(sizes == null){
+            sizes = new HashSet<>();
+        }
+        sizes.add(size);
     }
 
 }

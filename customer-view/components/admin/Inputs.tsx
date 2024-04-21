@@ -53,7 +53,7 @@ function Inputs({
                     changeValue(e)
                 }}
                 autoFocus
-                value={componentValue}
+                value={value}
             >
                 {names && names.map((br, index) => (
                     <MenuItem key={br.id} value={br.id}>

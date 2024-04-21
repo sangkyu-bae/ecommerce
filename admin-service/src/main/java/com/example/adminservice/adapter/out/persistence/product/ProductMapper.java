@@ -166,7 +166,13 @@ public class ProductMapper {
     }
 
     private ProductComponentEntity mapToProductComponent(ProductVo.ProductComponentEntityVo productComponentEntityVo) {
-        return modelMapper.map(productComponentEntityVo, ProductComponentEntity.class);
+        ProductComponentEntity component = modelMapper.map(productComponentEntityVo, ProductComponentEntity.class);
+
+        return component;
+    }
+
+    private SizeEntity mapToSizeEntity(ProductVo.ProductSizeVo productSizeVo){
+        return modelMapper.map(productSizeVo,SizeEntity.class);
     }
 
     public ProductVo.ProductBrandVo mapToBrand(RegisterBrandCommand registerBrandCommand) {

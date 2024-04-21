@@ -4,19 +4,26 @@ import ProductInfo from "@/components/product/ProductInfo";
 import useProduct from "@/shared/hook/useProduct";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
+import {useDispatch} from "react-redux";
+import {initProduct, setProduct} from "@/store/product/productRedux";
 
 function DetailUserProduct(){
     const router = useRouter()
     const {mainProductId}: number = router.query;
     const {data,isLoading,isError,error} = useProduct(mainProductId);
-    // const onSubmit = (createBasket : CreateBasket) => {
-    //     mutation.mutate(createBasket)
-    // };
-    // const {register, handleSubmit, setValue,formState: {errors} }=useForm<CreateBasket>();
-    //
-    // const {mutation} = useBasket();
+
+    const dispatch =useDispatch();
+    useEffect(()=>{
+        if(data){
+            dispatch(initProduct());
+            dispatch(setProduct(data))
+        }
+    },[data])
 
 
+    const orderProduct = () =>{
+        router.push("/order");
+    }
     return (
         <>
         {
@@ -31,11 +38,13 @@ function DetailUserProduct(){
                         <ProductInfo.ProductBrand/>
                         <ProductInfo.ProductPrice/>
                         <ProductInfo.ProductSizeQuantity/>
+                        <Box>
+
+                        </Box>
                         <Box sx={{mt:3}}>
-                            <Button variant="contained" sx={{mr:2}}>구매하기</Button>
+                            <Button variant="contained" sx={{mr:2}} onClick={orderProduct}>구매하기</Button>
                             <Button variant="outlined" >장바구니</Button>
                         </Box>
-
                     </div>
                 </div>
                 <ProductInfo.ProductDescription/>

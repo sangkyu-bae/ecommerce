@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
-import SideBar from "@/components/admin/sideBar";
-import ProductInfo from "@/components/product/ProductInfo";
 import {useRouter} from "next/router";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
-import ProductAdmin from "@/viewer/ProductAdmin";
 import UploadProductComponent from "@/viewer/UploadProductComponent";
 
 const ProductUpdate =()=>{
@@ -25,13 +21,16 @@ const ProductUpdate =()=>{
             }
         }
     )
-
+    const updateApi = ProductApi.updateProduct;
     return(
         productData &&
             <UploadProductComponent
                 title="🛒상품 수정"
                 buttonTitle="상품수정"
-                initProductData={productData}/>
+                initProductData={productData}
+                submit = {updateApi}
+                type='update'
+            />
     )
 }
 export default ProductUpdate;

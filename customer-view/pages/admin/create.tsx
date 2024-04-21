@@ -1,5 +1,6 @@
 import React from 'react';
 import UploadProductComponent from "@/viewer/UploadProductComponent";
+import {ProductApi} from "@/shared/api/product/ProductApi";
 
 function Create(props) {
     const emptyProduct: Product = {
@@ -12,8 +13,17 @@ function Create(props) {
         category: {},
         productComponents: []
     };
+
+
+    const createApi = ProductApi.createProduct;
     return (
-        <UploadProductComponent title="🛒상품 등록" buttonTitle="상품등록" initProductData={emptyProduct}/>
+        <UploadProductComponent
+            title="🛒상품 등록"
+            buttonTitle="상품등록"
+            initProductData={emptyProduct}
+            submit={createApi}
+            type='create'
+        />
     );
 }
 
