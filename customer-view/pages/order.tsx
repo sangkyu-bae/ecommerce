@@ -1,10 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
+import usePayment from "@/shared/hook/usePayment";
 
 function Order(props) {
     const dispatch = useDispatch();
     const orderProducts = useSelector(state => state.productRedux);
+    const {payment,applyCoupon} = usePayment(null);
 
     return (
         <StyledContainer>

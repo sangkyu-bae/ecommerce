@@ -9,16 +9,11 @@ export type MyProduct ={
     category : Data,
     productComponents: ProductComponent[]
 }
-export type orderProduct = {
-    id : number
-    aggregateIdentifier: string,
-    name : string,
-    price : number,
-    productImage : string,
-    description : string
-    brand : Data,
-    category : Data,
-    productComponents: ProductComponent[]
+export type OrderProduct = {
+    quantity : number
+    totalPayment : number,
+    discountPayment : number
+    product : MyProduct
 }
 
 interface ProductComponent{
