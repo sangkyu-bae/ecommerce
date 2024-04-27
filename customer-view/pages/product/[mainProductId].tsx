@@ -4,14 +4,15 @@ import ProductInfo from "@/components/product/ProductInfo";
 import useProduct from "@/shared/hook/useProduct";
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
-import {useDispatch} from "react-redux";
-import {initProduct, setProduct} from "@/store/product/productRedux";
+import {useDispatch, useSelector} from "react-redux";
+import productRedux, {initProduct, setProduct} from "@/store/product/productRedux";
 
 function DetailUserProduct(){
     const router = useRouter()
     const {mainProductId}: number = router.query;
     const {data,isLoading,isError,error} = useProduct(mainProductId);
-
+    const a =useSelector(state => state.productRedux)
+    console.log(a)
     const dispatch =useDispatch();
     useEffect(()=>{
         if(data){
@@ -38,6 +39,7 @@ function DetailUserProduct(){
                         <ProductInfo.ProductBrand/>
                         <ProductInfo.ProductPrice/>
                         <ProductInfo.ProductSizeQuantity/>
+                        <ProductInfo.ProductOrderManagement/>
                         <Box>
 
                         </Box>

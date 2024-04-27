@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -19,9 +19,13 @@ function ProductSizeQuantity(props) {
         }
         setColorValue(value);
     }
-    const sizeData = productData.productComponents
-        .find(data => data.color.id == colorValue)
-        ?.sizes || [];
+    const isSelectProduct = colorValue != 0 && sizeValue != 0;
+
+    const sizeData = useMemo(()=>{
+        productData.productComponents
+            .find(data => data.color.id == colorValue)
+            ?.sizes || [];
+    },[colorValue,productData])
 
 
     return (
@@ -64,6 +68,7 @@ function ProductSizeQuantity(props) {
                     }
 
                 </Select>
+
             </FormControl>
         </Box>
     );

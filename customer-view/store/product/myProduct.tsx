@@ -10,10 +10,16 @@ export type MyProduct ={
     productComponents: ProductComponent[]
 }
 export type OrderProduct = {
-    quantity : number
+    isOrderData : boolean
     totalPayment : number,
-    discountPayment : number
-    product : MyProduct
+    product : MyProduct | {}
+    selectProducts : selectProduct[] | []
+}
+
+export type selectProduct = {
+    colorId : number
+    sizeId : number
+    quantity : number
 }
 
 interface ProductComponent{
