@@ -20,6 +20,7 @@ export type selectProduct = {
     colorId : number
     sizeId : number
     quantity : number
+    selectPrice:number
 }
 
 interface ProductComponent{

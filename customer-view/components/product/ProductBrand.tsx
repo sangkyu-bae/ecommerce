@@ -4,7 +4,6 @@ import {useProductValueContext} from "@/components/product/ProductInfo";
 
 function ProductBrand(props) {
     const {productData} = useProductValueContext();
-    console.log(productData)
 
     return (
         <div >

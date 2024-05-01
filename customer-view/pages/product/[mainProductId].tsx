@@ -7,51 +7,59 @@ import Box from "@mui/material/Box";
 import {useDispatch, useSelector} from "react-redux";
 import productRedux, {initProduct, setProduct} from "@/store/product/productRedux";
 
-function DetailUserProduct(){
+function DetailUserProduct() {
     const router = useRouter()
     const {mainProductId}: number = router.query;
-    const {data,isLoading,isError,error} = useProduct(mainProductId);
-    const a =useSelector(state => state.productRedux)
-    console.log(a)
-    const dispatch =useDispatch();
-    useEffect(()=>{
-        if(data){
+    const {data, isLoading, isError, error} = useProduct(mainProductId);
+    const a = useSelector(state => state.productRedux)
+    const {isOrderData, selectProducts} = useSelector(state => state.productRedux);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (data) {
             dispatch(initProduct());
             dispatch(setProduct(data))
         }
-    },[data])
+    }, [data])
 
 
-    const orderProduct = () =>{
+    const orderProduct = () => {
         router.push("/order");
     }
     return (
         <>
-        {
-            !isLoading &&
-            <ProductInfo productData={data}>
-                <div className="flex">
-                    <ProductInfo.ProductImage/>
-                    <div className="section">
-                        <div>
-                            <span className="bold"><span>Product Info</span> <span className="gray">제품정보</span></span>
-                        </div>
-                        <ProductInfo.ProductBrand/>
-                        <ProductInfo.ProductPrice/>
-                        <ProductInfo.ProductSizeQuantity/>
-                        <ProductInfo.ProductOrderManagement/>
-                        <Box>
+            {
+                !isLoading &&
+                <ProductInfo productData={data}>
+                    <div className="flex">
+                        <ProductInfo.ProductImage/>
+                        <div className="section">
+                            <div>
+                                <span className="bold"><span>Product Info</span> <span
+                                    className="gray">제품정보</span></span>
+                            </div>
+                            <ProductInfo.ProductBrand/>
+                            <ProductInfo.ProductPrice/>
+                            <ProductInfo.ProductSizeQuantity/>
+                            {
+                                isOrderData &&
+                                selectProducts
+                                    .map(product => <ProductInfo.ProductOrderManagement
+                                        key={product.color.id}
+                                        selectProduct={product}
+                                    />)
+                            }
+                            <Box>
 
-                        </Box>
-                        <Box sx={{mt:3}}>
-                            <Button variant="contained" sx={{mr:2}} onClick={orderProduct}>구매하기</Button>
-                            <Button variant="outlined" >장바구니</Button>
-                        </Box>
+                            </Box>
+                            <Box sx={{mt: 3}}>
+                                <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
+                                <Button variant="outlined">장바구니</Button>
+                            </Box>
+                        </div>
                     </div>
-                </div>
-                <ProductInfo.ProductDescription/>
-            </ProductInfo>
-        }
+                    <ProductInfo.ProductDescription/>
+                </ProductInfo>
+            }
         </>
     )
 

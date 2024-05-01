@@ -139,7 +139,6 @@ function useUploadProduct({productData,ref,submit,type} ) {
             delete productData.id
             delete productData.aggregateIdentifier
 
-            console.log(productData)
             productMutation.mutate({
                 product: productData,
                 productId: productId

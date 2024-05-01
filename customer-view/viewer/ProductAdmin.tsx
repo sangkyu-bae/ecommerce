@@ -79,7 +79,6 @@ function ProductAdmin({isCreate,title,buttonTitle,severProductData}:ProductAdmin
 
 
     const onSubmit = (productData: ProductData) => {
-        console.log(productData)
         if (productData.description.length < 15) {
             alert("상품 설명을 등록하시오")
             return;

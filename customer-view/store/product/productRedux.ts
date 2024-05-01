@@ -13,12 +13,12 @@ export const setProduct = (orderProduct:OrderProduct) =>{
         product : orderProduct
     }
 }
-export const addBuyProduct = (colorId, sizeId) =>{
+export const addBuyProduct = (color:Data, size : Data) =>{
     return {
         type : ADD_BUY_PRODUCT,
         command : {
-            colorId : colorId,
-            sizeId : sizeId
+            color : color,
+            size : size
         }
     }
 }
@@ -27,29 +27,33 @@ export const initProduct = () =>{
         type: INIT_PRODUCT
     }
 }
-export const increaseQuantity = (productId : number, sizeId : number) => {
+export const increaseQuantity = (productId : number, colorId:number,sizeId : number) => {
     return {
         type : INCREASE_QUANTITY,
         command : {
             productId:productId,
+            colorId : colorId,
             sizeId : sizeId
         }
     }
 }
-export const decreaseQuantity = (productId : number, sizeId : number) => {
+export const decreaseQuantity = (productId : number, colorId:number,sizeId : number) => {
     return {
         type : DECREASE_QUANTITY,
         command : {
             productId:productId,
+            colorId : colorId,
             sizeId : sizeId
         }
     }
 }
-export const removeBuyProduct = (productId : number) => {
+export const removeBuyProduct = (productId : number,colorId:number,sizeId:number) => {
     return {
         type : REMOVE_BUY_PRODUCT,
         command : {
-            productId:productId
+            productId:productId,
+            colorId : colorId,
+            sizeId : sizeId
         }
     }
 }
@@ -61,6 +65,23 @@ const initialState : OrderProduct ={
 };
 
 const productRedux = (state = initialState,action) =>{
+    function selectData() {
+        let selectProducts = [...state.selectProducts];
+
+        let updateIndex = selectProducts
+            .findIndex(selectProduct => selectProduct.color.id == action.command.colorId
+                && selectProduct.size.id == action.command.sizeId);
+
+        let updateSelectProduct = {...selectProducts[updateIndex]};
+        const pay = state.product.price;
+        return {
+            selectProducts,
+            updateIndex,
+            updateSelectProduct,
+            pay
+        };
+    }
+
     switch (action.type){
         case SET_PRODUCT:{
             // return [...state, action.product];
@@ -70,29 +91,81 @@ const productRedux = (state = initialState,action) =>{
             };
         }
         case ADD_BUY_PRODUCT:{
+            action.command.colorId = action.command.color.id;
+            action.command.sizeId = action.command.size.id;
+
             const totalPay = state.totalPayment + state.product.price;
+            const {updateSelectProduct}=selectData()
+
+            if(Object.keys(updateSelectProduct).length != 0){
+                return {
+                    ...state
+                }
+            }
             const selectProduct = {
-                colorId : action.command.colorId,
-                sizeId : action.command.sizeId,
-                quantity : 1
+                color : action.command.color,
+                size : action.command.size,
+                quantity : 1,
+                selectPrice : state.product.price
             };
 
             return {
                 ...state,
                 totalPayment : totalPay,
-                selectProducts : [...state.selectProducts, selectProduct]
+                selectProducts : [...state.selectProducts, selectProduct],
+                isOrderData:true
             }
         }
         case INIT_PRODUCT:{
             return initialState
         }
         case INCREASE_QUANTITY:{
-            return
+            let {selectProducts, updateIndex, updateSelectProduct,pay} = selectData();
+
+            updateSelectProduct.quantity += 1;
+
+            updateSelectProduct.selectPrice = pay * updateSelectProduct.quantity;
+            const totalPayment = state.totalPayment + pay;
+
+            selectProducts[updateIndex] = updateSelectProduct
+            return {
+                ...state,
+                selectProducts: selectProducts,
+                totalPayment:totalPayment
+            }
         }
         case DECREASE_QUANTITY:{
-            return
+            let {selectProducts, updateIndex, updateSelectProduct,pay} = selectData();
+
+            if(updateSelectProduct.quantity == 1){
+                return {
+                    ...state
+                }
+            }
+
+            updateSelectProduct.quantity -= 1;
+
+            updateSelectProduct.selectPrice = pay * updateSelectProduct.quantity;
+            const totalPayment = state.totalPayment - pay;
+
+            selectProducts[updateIndex] = updateSelectProduct
+            return {
+                ...state,
+                selectProducts: selectProducts,
+                totalPayment:totalPayment
+            }
         }
         case REMOVE_BUY_PRODUCT:{
+            let {selectProducts, updateIndex, updateSelectProduct,pay} = selectData();
+
+            selectProducts = selectProducts.filter((product,index) => index != updateIndex);
+
+            const totalPayment =  state.totalPayment - (pay * updateSelectProduct.quantity);
+            return {
+                ...state,
+                selectProducts : selectProducts,
+                totalPayment : totalPayment
+            }
 
         }
         default:
