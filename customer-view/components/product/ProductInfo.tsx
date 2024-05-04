@@ -10,6 +10,7 @@ import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/com
 import ProductUpdateButton from "@/components/product/ProductUpdateButton";
 import ProductSizeQuantity from "@/components/product/ProductSizeQuantity";
 import ProductOrderManagement from "@/components/product/ProductOrderManagement";
+import ProductTotalPay from "@/components/product/ProductTotalPay";
 
 interface InfoProps {
     productData: MyProduct,
@@ -82,6 +83,7 @@ ProductInfo.ProductDescription = ProductDescription;
 ProductInfo.ProductUpdateButton = ProductUpdateButton;
 ProductInfo.ProductSizeQuantity = ProductSizeQuantity;
 ProductInfo.ProductOrderManagement =ProductOrderManagement;
+ProductInfo.ProductTotalPay = ProductTotalPay;
 
 
 export default ProductInfo;

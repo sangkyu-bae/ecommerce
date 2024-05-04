@@ -11,7 +11,6 @@ import {addBuyProduct} from "@/store/product/productRedux";
 
 function ProductSizeQuantity(props) {
     const {productData} = useProductValueContext();
-    const actions = useProductActionContext();
     const [colorValue, setColorValue] = useState<Data>({
         id: 0,
         name: ""
@@ -70,6 +69,14 @@ function ProductSizeQuantity(props) {
     useEffect(() => {
         if (colorValue.id != 0 && sizeValue.id != 0) {
             dispatch(addBuyProduct(colorValue,sizeValue));
+            setColorValue({
+                id:0,
+                name:''
+            });
+            setSizeValue({
+                id:0,
+                name:''
+            });
         }
     }, [colorValue, sizeValue])
 

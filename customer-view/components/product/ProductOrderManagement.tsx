@@ -1,13 +1,12 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import {selectProduct} from "@/store/product/myProduct";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {decreaseQuantity, increaseQuantity, removeBuyProduct} from "@/store/product/productRedux";
 import {useProductValueContext} from "@/components/product/ProductInfo";
 
 function ProductOrderManagement({selectProduct} : selectProduct) {
     const dispatch = useDispatch();
-
     const {color,size} = selectProduct;
     const {productData} = useProductValueContext();
     return (
@@ -31,7 +30,9 @@ function ProductOrderManagement({selectProduct} : selectProduct) {
                 X
             </Box>
         </Box>
+
     );
 }
 
 export default ProductOrderManagement;
+

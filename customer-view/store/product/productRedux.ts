@@ -84,7 +84,6 @@ const productRedux = (state = initialState,action) =>{
 
     switch (action.type){
         case SET_PRODUCT:{
-            // return [...state, action.product];
             return {
                 ...state,
                 product : action.product

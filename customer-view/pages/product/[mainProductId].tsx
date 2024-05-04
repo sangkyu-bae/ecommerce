@@ -11,7 +11,6 @@ function DetailUserProduct() {
     const router = useRouter()
     const {mainProductId}: number = router.query;
     const {data, isLoading, isError, error} = useProduct(mainProductId);
-    const a = useSelector(state => state.productRedux)
     const {isOrderData, selectProducts} = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -48,9 +47,7 @@ function DetailUserProduct() {
                                         selectProduct={product}
                                     />)
                             }
-                            <Box>
-
-                            </Box>
+                            <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>
                             <Box sx={{mt: 3}}>
                                 <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
                                 <Button variant="outlined">장바구니</Button>

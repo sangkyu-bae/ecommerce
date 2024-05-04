@@ -5,8 +5,11 @@ import usePayment from "@/shared/hook/usePayment";
 
 function Order(props) {
     const dispatch = useDispatch();
-    const orderProducts = useSelector(state => state.productRedux);
-    const {payment,applyCoupon} = usePayment(null);
+    const {product,selectProducts} = useSelector(state => state.productRedux);
+    // const {payment,applyCoupon} = usePayment(null);
+
+    console.log(product)
+    console.log(selectProducts)
 
     return (
         <StyledContainer>
@@ -17,7 +20,7 @@ function Order(props) {
                     </div>
                 </StyledSetion>
                 {
-                    orderProducts.map(product => <div key={product.id}> {product.name}</div>)
+                    product.map(obj => <div key={obj.id}> {obj.name}</div>)
                 }
             </StyledContent>
         </StyledContainer>
