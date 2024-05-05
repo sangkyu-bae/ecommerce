@@ -71,6 +71,66 @@ export const StyledSetion = styled.div`
         color : gray;
     }
 `
+
+export const StyledOrderBox = styled.div`
+    .main-box{
+        text-align: center;
+        height: 3em;
+        display:flex;
+        border :1px solid gray;
+    }
+    .img-box {
+        flex:0.2;
+    }
+    .second-flex{
+        flex:0.7;
+    }
+    .title-box{
+        padding-top:1%;
+        height:25%;
+    }
+    .sub-box{
+        text-align: center;
+        height: 8em;
+        display:flex;
+        border-bottom :1px solid gray;
+    }
+    .main-box-first .center{
+        margin-top:1%;
+        font-weight: bold;
+    }
+    .center{
+        margin-top:3%;
+    }
+    .main-box-element-right{
+        border-right:1px solid gray;
+    }
+    .main-box-first{
+        flex:0.7;
+        display:flex;
+    }
+   
+    .main-box-remain{
+        flex:0.2;
+    }
+    .sub-container-box{
+        display:flex
+        border-bottom : 1px solid gray;
+        height:5em;
+    }
+    .sub-info-option-box{
+        background-color:#ddd;
+        color:black;
+        height:65%;
+        text-align: left;
+        padding:2%;
+    }
+    .quantity-box{
+        font-weight: bold;
+    }
+    
+    
+`
 export const StyledMenu = styled.div`
     flex:0.2;
 `
@@ -78,6 +138,6 @@ export const StyledContainer = styled.div`
         display : flex;
         width : 100%;
         height : 100vh;
-         background-color : #FFFAF0;
+        background-color : #FFFAF0;
   `
 export default GridComponent;

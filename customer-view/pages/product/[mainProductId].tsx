@@ -16,7 +16,7 @@ function DetailUserProduct() {
     useEffect(() => {
         if (data) {
             dispatch(initProduct());
-            dispatch(setProduct(data))
+            dispatch(setProduct(data,false))
         }
     }, [data])
 

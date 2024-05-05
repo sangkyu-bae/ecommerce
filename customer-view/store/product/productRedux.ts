@@ -7,18 +7,20 @@ const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 const REMOVE_BUY_PRODUCT = "REMOVE_BUY_PRODUCT";
 const ADD_BUY_PRODUCT = "ADD_BUY_PRODUCT";
 
-export const setProduct = (orderProduct:OrderProduct) =>{
+export const setProduct = (orderProduct:OrderProduct,isOrderData:boolean) =>{
     return{
         type : SET_PRODUCT,
-        product : orderProduct
+        product : orderProduct,
+        isOrderData : isOrderData
     }
 }
-export const addBuyProduct = (color:Data, size : Data) =>{
+export const addBuyProduct = (color:Data, size : Data,productId:number) =>{
     return {
         type : ADD_BUY_PRODUCT,
         command : {
             color : color,
-            size : size
+            size : size,
+            productId : productId
         }
     }
 }
@@ -60,7 +62,7 @@ export const removeBuyProduct = (productId : number,colorId:number,sizeId:number
 const initialState : OrderProduct ={
     isOrderData : false,
     totalPayment : 0,
-    product: {},
+    product: [],
     selectProducts:[]
 };
 
@@ -73,7 +75,7 @@ const productRedux = (state = initialState,action) =>{
                 && selectProduct.size.id == action.command.sizeId);
 
         let updateSelectProduct = {...selectProducts[updateIndex]};
-        const pay = state.product.price;
+        const pay = state.product[0].price;
         return {
             selectProducts,
             updateIndex,
@@ -86,14 +88,17 @@ const productRedux = (state = initialState,action) =>{
         case SET_PRODUCT:{
             return {
                 ...state,
-                product : action.product
+                product : [
+                    action.product
+                ],
+                isOrderData:action.isOrderData
             };
         }
         case ADD_BUY_PRODUCT:{
             action.command.colorId = action.command.color.id;
             action.command.sizeId = action.command.size.id;
 
-            const totalPay = state.totalPayment + state.product.price;
+            const totalPay = state.totalPayment + state.product[0].price;
             const {updateSelectProduct}=selectData()
 
             if(Object.keys(updateSelectProduct).length != 0){
@@ -102,10 +107,11 @@ const productRedux = (state = initialState,action) =>{
                 }
             }
             const selectProduct = {
+                productId : action.command.productId,
                 color : action.command.color,
                 size : action.command.size,
                 quantity : 1,
-                selectPrice : state.product.price
+                selectPrice : state.product[0].price
             };
 
             return {

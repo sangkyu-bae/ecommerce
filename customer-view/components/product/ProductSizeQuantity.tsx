@@ -6,11 +6,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {useProductActionContext, useProductValueContext} from "@/components/product/ProductInfo";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addBuyProduct} from "@/store/product/productRedux";
 
 function ProductSizeQuantity(props) {
     const {productData} = useProductValueContext();
+
     const [colorValue, setColorValue] = useState<Data>({
         id: 0,
         name: ""
@@ -68,7 +69,7 @@ function ProductSizeQuantity(props) {
 
     useEffect(() => {
         if (colorValue.id != 0 && sizeValue.id != 0) {
-            dispatch(addBuyProduct(colorValue,sizeValue));
+            dispatch(addBuyProduct(colorValue,sizeValue,productData.id));
             setColorValue({
                 id:0,
                 name:''
