@@ -9,14 +9,18 @@ import GridComponent, {
 
 import OrderInfoBox from "@/components/order/OrderInfoBox";
 import Button from "@mui/material/Button";
+import OrderInfoContainer from "@/components/order/OrderInfoContainer";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 function Order(props) {
     const dispatch = useDispatch();
-    const {product,selectProducts,isOrderData,totalPayment} = useSelector(state => state.productRedux);
-    const productMap = new Map(product.map(item => [item.id, item]));
-    const buyProduct = () =>{
+
+    const buyProduct = () => {
 
     }
+    const {totalPayment} = useSelector(state => state.productRedux);
 
     return (
         <StyledContainer>
@@ -25,26 +29,44 @@ function Order(props) {
                     <div className="first-section">
                         <GridComponent title={`주문하기`}>
                             <StyledOrderBox>
-                                <div className="main-box">
-                                    <div className="main-box-first main-box-element-right">
-                                        <div className="center">상품정보</div>
+                                <div>
+                                    배송정보
+                                    <div className="flex-box">
+                                        <div>이름 / 연락처</div>
+                                        <div>홍길동</div>
+                                        <TextField margin="normal"
+                                                   required
+                                                   id="phone"
+                                                   label="연락처"
+                                                   name="phone"
+                                                   autoFocus/>
                                     </div>
-                                    <div className="main-box-element-right main-box-remain">
-                                        <div className="center">수량</div>
+                                    <div className="flex-box">
+                                        <div>주소</div>
+                                        <TextField margin="normal"
+                                                   required
+                                                   id="address"
+                                                   label="배송지"
+                                                   name="address"
+                                                   autoFocus/>
                                     </div>
-                                    <div className="main-box-remain">
-                                        <div className="center">주문금액</div>
+                                    <div className="flex-box">
+                                        <div> 배송 요청사항</div>
+                                        <Select
+                                            sx={{mt: 5}}
+                                            labelId="size-select"
+                                            id="size-select"
+                                            label="Size"
+                                            name="size"
+                                        >
+                                            <MenuItem value={0}>옵션 선택</MenuItem>
+                                        </Select>
                                     </div>
                                 </div>
-                                {
-                                    selectProducts.map((obj,index) => <OrderInfoBox
-                                        key={index}
-                                        title={productMap.get(obj.productId).name}
-                                        selectProduct={obj}
-                                    />)
-                                }
+                                <OrderInfoContainer/>
+                                <Button variant="contained" sx={{mt: 2}}>{totalPayment.toLocaleString('en-US')} 원
+                                    결제하기</Button>
                             </StyledOrderBox>
-                            <Button variant="contained" sx={{mt:2}}>{ totalPayment.toLocaleString('en-US')} 원 결제하기</Button>
                         </GridComponent>
                     </div>
                 </StyledSetion>
