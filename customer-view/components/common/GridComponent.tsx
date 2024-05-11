@@ -79,6 +79,9 @@ export const StyledOrderBox = styled.div`
         display:flex;
         border :1px solid gray;
     }
+    .flex-box{
+        display:flex;
+    }
     .img-box {
         flex:0.2;
     }

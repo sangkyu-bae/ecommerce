@@ -5,6 +5,7 @@ import com.example.order.adapter.out.external.delivery.DeliveryEvent;
 import com.example.order.adapter.out.external.product.ProductInfoRequest;
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
+import com.example.order.application.port.in.command.RegisterOrderCd;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.application.port.out.*;
@@ -127,6 +128,11 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         });
 
 //        getOrderRequest(command);
+        return null;
+    }
+
+    @Override
+    public OrderVo registerOrderByEvent(List<RegisterOrderCd> command) throws JsonProcessingException {
         return null;
     }
 
