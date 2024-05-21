@@ -13,10 +13,19 @@ import OrderInfoContainer from "@/components/order/OrderInfoContainer";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import useFormHook from "@/shared/hook/useFormHook";
+import {orderValidation} from "@/utils/validation/orderValidation";
+
+const initOrderData = {}
+
+const submit = () => {
+
+}
+
 
 function Order(props) {
     const dispatch = useDispatch();
-
+    const {register, handleSubmit, error} = useFormHook({initData:"te",onSubmit:"te",validation:"te"});
     const buyProduct = () => {
 
     }
@@ -65,7 +74,8 @@ function Order(props) {
                                 </div>
                                 <OrderInfoContainer/>
                                 <Button variant="contained" sx={{mt: 2}}>{totalPayment.toLocaleString('en-US')} 원
-                                    결제하기</Button>
+                                    결제하기
+                                </Button>
                             </StyledOrderBox>
                         </GridComponent>
                     </div>

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Validation from "@/utils/Validation";
+import Validation from "@/utils/validation/Validation";
 import {useFieldArray, useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {string} from "prop-types";
-import validation from "@/utils/Validation";
+import validation from "@/utils/validation/Validation";
 import {useRouter} from "next/router";
 
 function useUploadProduct({productData,ref,submit,type} ) {
@@ -147,7 +147,6 @@ function useUploadProduct({productData,ref,submit,type} ) {
             delete productData.id
             productMutation.mutate(productData);
         }
-
     };
 
     return {

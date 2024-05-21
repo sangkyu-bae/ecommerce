@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
-import Validation from "@/utils/Validation";
+import Validation from "@/utils/validation/Validation";
 import useUploadProduct from "@/shared/hook/useUploadProduct";
 import SizeContainers from "@/components/admin/SizeContainers";
 

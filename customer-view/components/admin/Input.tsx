@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import TextField from "@mui/material/TextField";
 import {MenuItem} from "@mui/material";
 import {string} from "prop-types";
-import Validation from "@/utils/Validation";
+import Validation from "@/utils/validation/Validation";
 import {includes} from "superjson/dist/util";
 
 type ITest = {
