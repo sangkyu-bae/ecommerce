@@ -3,7 +3,7 @@ const userURL : string = `${basicUrl}/user`
 export const productURL : string = `${basicUrl}/admin`
 const rankURL : string =`${basicUrl}/rank`;
 const basketURL : string = `${basicUrl}/basket`;
-
+const orderURL : string = `${basketURL}/order`
 type MemberRequest={
     signUp:string;
     signIn:string;
@@ -25,6 +25,10 @@ type RankRequest ={
 type BasketRequest ={
     createBasket : string
 }
+
+type OrderRequest = {
+    register : string
+}
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
     signIn:`${userURL}/login`
@@ -43,6 +47,10 @@ export const rankRequest : RankRequest={
     readProductRank : `${rankURL}/click/6`
 }
 
+
 export const basketRequest : BasketRequest ={
     createBasket : `${basketURL}`
+}
+export const orderRequest : OrderRequest = {
+    register : `${orderURL}/register`
 }

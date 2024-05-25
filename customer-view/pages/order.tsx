@@ -15,6 +15,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import useFormHook from "@/shared/hook/useFormHook";
 import {orderValidation} from "@/utils/validation/orderValidation";
+import {OrderApi} from "@/shared/api/order/orderApi";
 
 const initOrderData = {}
 
@@ -25,12 +26,14 @@ const submit = () => {
 
 function Order(props) {
     const dispatch = useDispatch();
-    const {register, handleSubmit, error} = useFormHook({initData:"te",onSubmit:"te",validation:"te"});
-    const buyProduct = () => {
+    const {register, handleSubmit, errors} = useFormHook({
+        initOrderData:initOrderData,
+        onSubmit:OrderApi.register,
+        validation:orderValidation
+    });
 
-    }
     const {totalPayment} = useSelector(state => state.productRedux);
-
+    const validation = orderValidation;
     return (
         <StyledContainer>
             <StyledContent isFull={true}>
@@ -38,7 +41,7 @@ function Order(props) {
                     <div className="first-section">
                         <GridComponent title={`주문하기`}>
                             <StyledOrderBox>
-                                <div>
+                                <form onSubmit={handleSubmit}>
                                     배송정보
                                     <div className="flex-box">
                                         <div>이름 / 연락처</div>
@@ -48,6 +51,11 @@ function Order(props) {
                                                    id="phone"
                                                    label="연락처"
                                                    name="phone"
+                                                   {...register("phone",{
+                                                       ...validation.phone
+                                                   })}
+                                                   error = {Boolean(errors.phone)}
+                                                   helperText={errors.phone?.message}
                                                    autoFocus/>
                                     </div>
                                     <div className="flex-box">
@@ -57,6 +65,11 @@ function Order(props) {
                                                    id="address"
                                                    label="배송지"
                                                    name="address"
+                                                   {...register("address",{
+                                                        ...validation.address
+                                                   })}
+                                                   error = {Boolean(errors.address)}
+                                                   helperText={errors.address?.message}
                                                    autoFocus/>
                                     </div>
                                     <div className="flex-box">
@@ -71,11 +84,16 @@ function Order(props) {
                                             <MenuItem value={0}>옵션 선택</MenuItem>
                                         </Select>
                                     </div>
-                                </div>
-                                <OrderInfoContainer/>
-                                <Button variant="contained" sx={{mt: 2}}>{totalPayment.toLocaleString('en-US')} 원
-                                    결제하기
-                                </Button>
+                                    <OrderInfoContainer/>
+                                    <Button
+                                        variant="contained"
+                                        sx={{mt: 2}}
+                                        type="submit"
+                                    >{totalPayment.toLocaleString('en-US')} 원
+                                        결제하기
+                                    </Button>
+                                </form>
+
                             </StyledOrderBox>
                         </GridComponent>
                     </div>
