@@ -2,14 +2,14 @@ server:
   port: 0
 #  port: 8080
 redis:
-  port: 5000
+  port: 6379
   host: localhost
 
 spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_member
+    url: jdbc:mysql://localhost:3308/shoes_member
     username: root
     password: wnsvaf309
   jpa:

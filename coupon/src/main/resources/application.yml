@@ -4,7 +4,7 @@ spring:
   application:
     name: coupon-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_coupon
+    url: jdbc:mysql://localhost:3308/shoes_coupon
     username: root
     password: wnsvaf309
   jpa:
@@ -16,7 +16,7 @@ spring:
         format_sql: true
         use_sql_comments: true
   redis:
-    port: 5000
+    port: 6379
     host: localhost
 logging:
 

@@ -2,15 +2,17 @@ import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import useCustomQuery from "@/shared/hook/useCustomQuery";
 
-type Form = {
-    initData: any,
-    onSubmit: any,
-    validation: object
+type FormProps = {
+    initData: Record<string, any>,
+    onSubmit: (data: any) => void,
+    validation?: object,
+    dataParsingEvent?: (data: any) => any
 }
 
-function UseFormHook({initData, onSubmit, validation}) {
-
-    const {submitMutation} = useCustomQuery(onSubmit);
+function UseFormHook({initData, onSubmit, validation,dataParsingEvent}) {
+    const {submitMutation} = useCustomQuery({
+        submit:onSubmit
+    });
 
     const {register,
         control,
@@ -22,19 +24,25 @@ function UseFormHook({initData, onSubmit, validation}) {
         defaultValues: initData
     });
 
-    useEffect(()=>{
-        console.log(getValues())
-    },[getValues])
-    const submit = ( submitData : object) =>{
+    const submit = (submitData : object) =>{
         /** validation 공통화 작업필요*/
         if(!validation){
             return;
         }
-        console.log(getValues())
 
-        // submitMutation.mutate(submitData);
+        if(dataParsingEvent != null){
+            submitData = dataParsingEvent(submitData);
+        }
+
+        console.log(submitData)
+        submitMutation.mutate(submitData);
     }
 
+    useEffect(() => {
+        if (initData) {
+            setValue('initData', initData);
+        }
+    }, [initData, setValue]);
     return {
         register,
         handleSubmit: handleSubmit(submit),

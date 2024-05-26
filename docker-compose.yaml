@@ -165,54 +165,54 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
-  basket:
-    image: basket:0.0.1-SNAPSHOT
-    networks:
-      - ecommerce_network
-    depends_on:
-      - mysql
-      - kafka1
-      - axon-servers
-      - ecommerce-eureka
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_basket?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - APP_BOOTSTRAP_SERVER= kafka1:19091
-      - AXON_SERIALIZER_GENERAL=xstream
-      - AXON_SERIALIZER_EVENTS=jackson
-      - AXON_SERIALIZER_MESSAGES=jackson
-      - AXON_AXONSERVER_SERVERS=axon-servers:8124
-      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
-      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
-      - EUREKA_CLIENT_FETCH_REGISTRY=true
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
-  delivery:
-    image: delivery:0.0.1-SNAPSHOT
-    networks:
-      - ecommerce_network
-    depends_on:
-      - mysql
-      - kafka1
-      - axon-servers
-      - ecommerce-eureka
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/delivery?useSSL=false&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - APP_BOOTSTRAP_SERVER= kafka1:19091
-      - AXON_SERIALIZER_GENERAL=xstream
-      - AXON_SERIALIZER_EVENTS=jackson
-      - AXON_SERIALIZER_MESSAGES=jackson
-      - AXON_AXONSERVER_SERVERS=axon-servers:8124
-      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
-      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
-      - EUREKA_CLIENT_FETCH_REGISTRY=true
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+#  basket:
+#    image: basket:0.0.1-SNAPSHOT
+#    networks:
+#      - ecommerce_network
+#    depends_on:
+#      - mysql
+#      - kafka1
+#      - axon-servers
+#      - ecommerce-eureka
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_basket?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#      - APP_BOOTSTRAP_SERVER= kafka1:19091
+#      - AXON_SERIALIZER_GENERAL=xstream
+#      - AXON_SERIALIZER_EVENTS=jackson
+#      - AXON_SERIALIZER_MESSAGES=jackson
+#      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+#      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+#      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+#      - EUREKA_CLIENT_FETCH_REGISTRY=true
+#      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+#  delivery:
+#    image: delivery:0.0.1-SNAPSHOT
+#    networks:
+#      - ecommerce_network
+#    depends_on:
+#      - mysql
+#      - kafka1
+#      - axon-servers
+#      - ecommerce-eureka
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/delivery?useSSL=false&allowPublicKeyRetrieval=true
+#      - SPRING_DATASOURCE_USERNAME=root
+#      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#      - APP_BOOTSTRAP_SERVER= kafka1:19091
+#      - AXON_SERIALIZER_GENERAL=xstream
+#      - AXON_SERIALIZER_EVENTS=jackson
+#      - AXON_SERIALIZER_MESSAGES=jackson
+#      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+#      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+#      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+#      - EUREKA_CLIENT_FETCH_REGISTRY=true
+#      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
   rank:
     image: ranking:0.0.1-SNAPSHOT
     networks:
@@ -382,8 +382,6 @@ services:
   redis:
     image: redis:6.2.6-alpine
     container_name: redis-container
-#    image: redis
-#    container_name: redis
     ports:
       - "6379:6379"
     networks:

@@ -3,7 +3,7 @@ const userURL : string = `${basicUrl}/user`
 export const productURL : string = `${basicUrl}/admin`
 const rankURL : string =`${basicUrl}/rank`;
 const basketURL : string = `${basicUrl}/basket`;
-const orderURL : string = `${basketURL}/order`
+const orderURL : string = `${basicUrl}/order`
 type MemberRequest={
     signUp:string;
     signIn:string;

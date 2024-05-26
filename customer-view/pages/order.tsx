@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import GridComponent, {
     StyledContainer,
@@ -17,22 +17,39 @@ import useFormHook from "@/shared/hook/useFormHook";
 import {orderValidation} from "@/utils/validation/orderValidation";
 import {OrderApi} from "@/shared/api/order/orderApi";
 
-const initOrderData = {}
-
-const submit = () => {
-
-}
-
 
 function Order(props) {
     const dispatch = useDispatch();
+    const {product, selectProducts, isOrderData,totalPayment} = useSelector(state => state.productRedux);
+
+    const dataParsingEvent = (submitData) =>{
+        const orderData = submitData.initData;
+
+        let submitOrderData:Order[] = [];
+
+        for(var data of orderData){
+            var submitObj:Order = {
+                productId : data.productId,
+                colorId:data.color.id,
+                sizeId:data.size.id,
+                amount:data.quantity,
+                address:submitData.address,
+                couponId:null,
+                payment:1
+            };
+            submitOrderData.push(submitObj);
+        }
+
+        return submitOrderData;
+    }
+
     const {register, handleSubmit, errors} = useFormHook({
-        initOrderData:initOrderData,
+        initData:selectProducts,
         onSubmit:OrderApi.register,
-        validation:orderValidation
+        validation:orderValidation,
+        dataParsingEvent:dataParsingEvent
     });
 
-    const {totalPayment} = useSelector(state => state.productRedux);
     const validation = orderValidation;
     return (
         <StyledContainer>

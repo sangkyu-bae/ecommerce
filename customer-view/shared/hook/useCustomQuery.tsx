@@ -4,7 +4,6 @@ type Query ={
     submit:any
 }
 function UseCustomQuery({submit}:Query) {
-
     const submitMutation = useMutation(submit,{
         onMutate: variable => {
             console.log("onMutate", variable);
