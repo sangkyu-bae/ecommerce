@@ -87,6 +87,7 @@ public class OrderCreateSaga {
 
         Product findProduct = getProductPort.getProduct(event.getProductId());
 
+        log.info("find product : " + findProduct.toString());
         String checkRegisteredProductIdAndAmount = UUID.randomUUID().toString();
         SagaLifecycle.associateWith("checkRegisteredProductIdAndAmount", checkRegisteredProductIdAndAmount);
 

@@ -80,6 +80,7 @@ public class RegisterOrderController {
                     .amount(rq.getAmount())
                     .payment(rq.getPayment())
                     .userId(userId)
+                    .address(rq.getAddress())
                     .couponId(rq.getCouponId())
                     .build();
             OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
