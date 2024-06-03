@@ -1,9 +1,11 @@
 import React from 'react';
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 type Query ={
-    submit:any
+    submit:any | null,
+    queryKey: string | null,
+    select: any | null
 }
-function UseCustomQuery({submit}:Query) {
+function UseCustomQuery({submit,queryKey,select}:Query) {
     const submitMutation = useMutation(submit,{
         onMutate: variable => {
             console.log("onMutate", variable);
@@ -18,6 +20,11 @@ function UseCustomQuery({submit}:Query) {
             console.log("end");
         }
     })
+
+    const {data, isLoading, isError, error} = useQuery(
+        [queryKey],
+        () => select
+    )
 
     return{
         submitMutation

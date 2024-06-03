@@ -16,6 +16,9 @@ import org.example.basket.infra.error.ErrorException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @UseCase
 @Transactional
@@ -51,5 +54,37 @@ public class RegisterBasketService implements RegisterBasketUseCase {
         BasketEntity registerEntity = registerBasketPort.registerBasket(registerBasket);
 
         return basketMapper.mapToDomainEntity(registerEntity);
+    }
+
+    @Override
+    public List<Basket> RegisterBaskets(List<RegisterBasketCommand> commands) {
+
+        List<Basket> registerBaskets = new ArrayList<>();
+        for(RegisterBasketCommand command : commands){
+            boolean existProduct = getProductPort.getProduct(command.getProductSizeId());
+
+            if(!existProduct){
+                throw new ErrorException(BasketErrorCode.PRODUCT_NOT_FOUND,"RegisterBasket");
+            }
+
+            Basket registerBasket = Basket.createGenerateBasket(
+                    new Basket.BasketId(null),
+                    new Basket.BasketMemberId(command.getMemberId()),
+                    new Basket.BasketProductSizeId(command.getProductSizeId()),
+                    new Basket.BasketProductQuantity(command.getQuantity()),
+                    Basket.BasketStatus.CREATE,
+                    new Basket.BasketCreateAt(LocalDateTime.now()),
+                    new Basket.BasketUpdateAt(LocalDateTime.now())
+            );
+
+            registerBaskets.add(registerBasket);
+        }
+
+        List<BasketEntity> registerEntityList = registerBasketPort.registerBaskets(registerBaskets);
+
+
+        return registerEntityList.stream()
+                .map(basketEntity -> basketMapper.mapToDomainEntity(basketEntity))
+                .collect(Collectors.toList());
     }
 }

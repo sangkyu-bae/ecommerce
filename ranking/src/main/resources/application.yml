@@ -1,5 +1,6 @@
 server:
-  port: 8081
+#  port: 8081
+  port: 0
 redis:
   port: 6379
   host: localhost
@@ -7,7 +8,7 @@ spring:
   application:
     name: ranking-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_ranking?rewriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3308/shoes_ranking?rewriteBatchedStatements=true
     username: root
     password: wnsvaf309
   jpa:
@@ -44,8 +45,8 @@ logging:
 # ??? ??
 eureka:
   instance:
-#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-   instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+#   instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka

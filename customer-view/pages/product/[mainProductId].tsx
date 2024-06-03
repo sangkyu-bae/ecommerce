@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
 import {useDispatch, useSelector} from "react-redux";
 import productRedux, {initProduct, setProduct} from "@/store/product/productRedux";
+import useCustomQuery from "@/shared/hook/useCustomQuery";
+import {BasketAPi} from "@/shared/api/basket/BasketAPi";
 
 function DetailUserProduct() {
     const router = useRouter()
@@ -23,6 +25,20 @@ function DetailUserProduct() {
 
     const orderProduct = () => {
         router.push("/order");
+    }
+
+    const {submitMutation} = useCustomQuery({
+        submit:BasketAPi.create
+    });
+
+
+    const onClickBasket =()=>{
+        selectProducts.map(product => {
+            return {
+                productSizeId : product.size.id,
+                quantity : product.quantity
+            }
+        }).forEach(basket => submitMutation.mutate(basket));
     }
     return (
         <>
@@ -50,7 +66,7 @@ function DetailUserProduct() {
                             <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>
                             <Box sx={{mt: 3}}>
                                 <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
-                                <Button variant="outlined">장바구니</Button>
+                                <Button variant="outlined" onClick ={onClickBasket}>장바구니</Button>
                             </Box>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shoes_order
+    url: jdbc:mysql://localhost:3308/shoes_order
     username: root
     password: wnsvaf309
   jpa:

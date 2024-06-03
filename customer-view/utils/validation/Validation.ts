@@ -60,6 +60,7 @@ const Validation = {
         return true;
     },
     colorValidate: function (colorData: ColorData[]) {
+        console.log(colorData)
         if(colorData.length == 0){
             return false;
         }

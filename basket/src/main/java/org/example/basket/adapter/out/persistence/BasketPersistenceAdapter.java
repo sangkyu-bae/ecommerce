@@ -8,6 +8,9 @@ import org.example.basket.application.port.out.RegisterBasketPort;
 import org.example.basket.application.port.out.RemoveBasketPort;
 import org.example.basket.domain.Basket;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @PersistenceAdapter
 @RequiredArgsConstructor
 public class BasketPersistenceAdapter implements RegisterBasketPort, RemoveBasketPort {
@@ -27,6 +30,21 @@ public class BasketPersistenceAdapter implements RegisterBasketPort, RemoveBaske
                 .build();
 
         return basketRepository.save(registerEntity);
+    }
+
+    @Override
+    public List<BasketEntity> registerBaskets(List<Basket> baskets) {
+        List<BasketEntity> registerBasketEntityList = baskets.stream().map(basket-> BasketEntity.builder()
+                .productQuantity(basket.getProductQuantity())
+                .memberId(basket.getMemberId())
+                .productSizeId(basket.getProductSizeId())
+                .status(basket.getStatus())
+                .createAt(basket.getCreatAt())
+                .updateAt(basket.getUpdateAt())
+                .build())
+                .collect(Collectors.toList());
+
+        return basketRepository.saveAll(registerBasketEntityList);
     }
 
     @Override

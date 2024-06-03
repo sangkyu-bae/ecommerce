@@ -54,6 +54,12 @@ spring:
           uri: lb://ranking-service
           predicates:
             - Path=/rank/**
+        - id: basket-service
+          uri: lb://basket-service
+          predicates:
+            - Path=/basket/**
+          filters:
+            - AuthorizationHeaderFilter
 
 
 

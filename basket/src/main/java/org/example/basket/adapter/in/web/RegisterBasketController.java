@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
@@ -35,5 +38,28 @@ public class RegisterBasketController {
         Basket registerBasket = registerBasketUseCase.RegisterBasket(command);
 
         return ResponseEntity.ok().body(registerBasket);
+    }
+
+    @Operation(summary = "register basket", description = "다중 장바구니 등록")
+    @PostMapping("/mulity-basket")
+    public ResponseEntity<List<Basket>> registerBaskets(
+            @RequestBody List<RegisterBasketRequest> requests,
+            @RequestHeader("X-User-Id") Long userId
+    ){
+
+        List<RegisterBasketCommand> registerBasketCommands = new ArrayList<>();
+        for(RegisterBasketRequest request : requests){
+            RegisterBasketCommand command = RegisterBasketCommand.builder()
+                    .memberId(userId)
+                    .productSizeId(request.getProductSizeId())
+                    .quantity(request.getQuantity())
+                    .build();
+
+            registerBasketCommands.add(command);
+        }
+
+        List<Basket> registerBasketList = registerBasketUseCase.RegisterBaskets(registerBasketCommands);
+
+        return ResponseEntity.ok().body(registerBasketList);
     }
 }

@@ -35,14 +35,6 @@ function SizeContainer({
                            colorProductData
                        }: ISizeData) {
     const adminFunc = new AdminFunc();
-    // const [colorData, setColorData] = useState<ColorData>({
-    //     // colorName: '',
-    //     colorDto:{
-    //         id:0,
-    //         name:''
-    //     },
-    //     colorSize: []
-    // })
     const [colorData, setColorData] = useState<ProductComponent>({
         color:{
             id:0,
@@ -63,10 +55,6 @@ function SizeContainer({
         const checked = event.target.checked
         if (type == 'add') {
             if (fieId == 'colorName') {
-                // setColorData({
-                //     ...colorData,
-                //     colorName: event.target.value
-                // })
                 setColorData({
                     ...colorData,
                     colorDto:{
@@ -82,6 +70,7 @@ function SizeContainer({
                     size: parseInt(size),
                     id: parseInt(id),
                 };
+                console.log(sizeValue)
                 settingColorSize(sizeValue, checked);
             }
             setType("add")
@@ -93,6 +82,7 @@ function SizeContainer({
 
     const settingColorSize = (value: Size, checked: boolean) => {
         let {colorSize} = colorData;
+        console.log(colorData)
         if (checked) {
             colorSize.push({
                 size: value,
