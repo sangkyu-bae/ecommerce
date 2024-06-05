@@ -1,8 +1,6 @@
 # 개인 프로젝트
 # 신발을 사랑하는 사람들을 위한 신발쇼핑몰 Shoes Market 👵👴
 
-#### Project execution period : 2023.05 ~ 
-
 ## Description
 Shoes Market은 신발을 사랑하는 사람들을 위한 쇼핑몰 홈페이지이다.<br><br><br>
 
