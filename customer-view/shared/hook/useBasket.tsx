@@ -2,24 +2,12 @@ import {useMutation} from "@tanstack/react-query";
 import MemberApi from "@/shared/api/MemberApi";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
 import {setToken} from "@/shared/api/cookie/Cookie";
+import useCustomQuery from "@/shared/hook/useCustomQuery";
 
 export const useBasket =() =>{
-     const mutation = useMutation(BasketAPi.create, {
-         onMutate: variable => {
-             console.log("onMutate", variable);
-         },
-         onError: (error, variable, context) => {
-             // error
-             console.log(error)
-         },
-         onSuccess: (data, variables, context) => {
-            console.log(data)
-
-         },
-         onSettled: () => {
-             console.log("end");
-         }
+    const {submitMutation} = useCustomQuery({
+        submit:BasketAPi.create,
+        queryKey:"basket",
+        select:BasketAPi.read
     });
-
-     return {mutation}
 }

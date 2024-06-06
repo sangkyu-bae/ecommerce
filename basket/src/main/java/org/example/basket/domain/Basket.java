@@ -39,8 +39,8 @@ public class Basket {
 
         return new Basket(
                 basketId.getId(),
-                basketMemberId.getMemberId(),
                 productSizeId.getProductSizeId(),
+                basketMemberId.getMemberId(),
                 basketProductQuantity.getQuantity(),
                 basketStatus.getStatus(),
                 basketCreateAt.getCreateAt(),

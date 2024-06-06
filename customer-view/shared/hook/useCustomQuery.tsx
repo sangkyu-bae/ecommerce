@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useMutation, useQuery} from "@tanstack/react-query";
 type Query ={
     submit:any | null,
@@ -6,6 +6,7 @@ type Query ={
     select: any | null
 }
 function UseCustomQuery({submit,queryKey,select}:Query) {
+
     const submitMutation = useMutation(submit,{
         onMutate: variable => {
             console.log("onMutate", variable);

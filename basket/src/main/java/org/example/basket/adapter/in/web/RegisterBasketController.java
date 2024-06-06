@@ -41,7 +41,7 @@ public class RegisterBasketController {
     }
 
     @Operation(summary = "register basket", description = "다중 장바구니 등록")
-    @PostMapping("/mulity-basket")
+    @PostMapping("/basket/mulity")
     public ResponseEntity<List<Basket>> registerBaskets(
             @RequestBody List<RegisterBasketRequest> requests,
             @RequestHeader("X-User-Id") Long userId

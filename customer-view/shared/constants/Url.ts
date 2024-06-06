@@ -23,7 +23,8 @@ type RankRequest ={
 }
 
 type BasketRequest ={
-    createBasket : string
+    createBasket : string,
+    readBasket: string
 }
 
 type OrderRequest = {
@@ -49,7 +50,8 @@ export const rankRequest : RankRequest={
 
 
 export const basketRequest : BasketRequest ={
-    createBasket : `${basketURL}`
+    createBasket : `${basketURL}`,
+    readBasket:`${basketURL}`
 }
 export const orderRequest : OrderRequest = {
     register : `${orderURL}/register`

@@ -12,7 +12,7 @@ function Basket(props) {
                 <StyledSetion isFull={true}>
                     <div className="first-section">
                         <GridComponent title={`장바구니`}>
-               
+
                         </GridComponent>
                     </div>
                 </StyledSetion>
