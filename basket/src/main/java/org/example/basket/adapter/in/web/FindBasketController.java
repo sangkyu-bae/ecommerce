@@ -7,6 +7,7 @@ import org.example.WebAdapter;
 import org.example.basket.application.port.in.command.FindBasketCommand;
 import org.example.basket.application.port.in.usecase.FindBasketUseCase;
 import org.example.basket.domain.Basket;
+import org.example.basket.domain.BasketAggregationVo;
 import org.example.basket.infra.error.BasketErrorCode;
 import org.example.basket.infra.error.ErrorException;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,14 @@ public class FindBasketController {
         }
 
         return ResponseEntity.ok().body(findBasketList);
+    }
+
+    @Operation(summary = "find basket Api Aggregation", description = "유저 장바구니 조회하기 상품 이름 포함 한 api 조합")
+    @GetMapping("/basket/aggregation")
+    public ResponseEntity<List<BasketAggregationVo>> findBasketAggregation(@RequestHeader("X-User-Id") Long userId){
+
+        FindBasketCommand command = FindBasketCommand.builder()
+                .memberId(userId)
+                .build();
     }
 }

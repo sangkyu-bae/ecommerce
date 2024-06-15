@@ -1,13 +1,20 @@
-import {useMutation} from "@tanstack/react-query";
-import MemberApi from "@/shared/api/MemberApi";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
-import {setToken} from "@/shared/api/cookie/Cookie";
 import useCustomQuery from "@/shared/hook/useCustomQuery";
 
-export const useBasket =() =>{
-    const {submitMutation} = useCustomQuery({
-        submit:BasketAPi.create,
+export const useBasket =(isRead : boolean, isSubmit : boolean) =>{
+    const createSubmitBasket = isSubmit ? BasketAPi.create : null;
+    const readBasket = isRead ? BasketAPi.read() : null;
+
+    const {submitMutation,data,isLoading,error} = useCustomQuery({
+        submit:createSubmitBasket,
         queryKey:"basket",
-        select:BasketAPi.read
+        select:readBasket
     });
+
+    return {
+        submitMutation,
+        data,
+        isLoading,
+        error
+    }
 }

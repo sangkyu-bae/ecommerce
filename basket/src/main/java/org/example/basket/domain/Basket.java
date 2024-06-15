@@ -22,6 +22,10 @@ public class Basket {
 
     private final int status;
 
+    private long productId;
+
+    private int size;
+
     private final LocalDateTime creatAt;
 
     private final LocalDateTime updateAt;
@@ -33,6 +37,8 @@ public class Basket {
             BasketProductSizeId productSizeId,
             BasketProductQuantity basketProductQuantity,
             BasketStatus basketStatus,
+            BasketProductId basketProductId,
+            BasketSize basketSize,
             BasketCreateAt basketCreateAt,
             BasketUpdateAt basketUpdateAt
     ){
@@ -43,6 +49,8 @@ public class Basket {
                 basketMemberId.getMemberId(),
                 basketProductQuantity.getQuantity(),
                 basketStatus.getStatus(),
+                basketProductId.getProductId(),
+                basketSize.getSize(),
                 basketCreateAt.getCreateAt(),
                 basketUpdateAt.getUpdateAt()
         );
@@ -113,6 +121,24 @@ public class Basket {
                     .filter(statusCode -> statusCode.getStatus()== status)
                     .findFirst()
                     .orElseThrow();
+        }
+    }
+
+    @Value
+    public static class BasketProductId{
+        private long productId;
+
+        public BasketProductId(long value){
+            this.productId = value;
+        }
+    }
+
+    @Value
+    public static class BasketSize{
+        private int size;
+
+        public BasketSize(int value){
+            this.size = value;
         }
     }
 

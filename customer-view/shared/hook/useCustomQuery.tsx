@@ -24,11 +24,22 @@ function UseCustomQuery({submit,queryKey,select}:Query) {
 
     const {data, isLoading, isError, error} = useQuery(
         [queryKey],
-        () => select
+        () => select,{
+            enabled:queryKey != null,
+            onSuccess : data =>{
+                console.log(data)
+            },
+            onError:e =>{
+                console.log(e.message)
+            }
+        }
     )
-
     return{
-        submitMutation
+        submitMutation,
+        data,
+        isLoading,
+        isError,
+        error
     }
 }
 

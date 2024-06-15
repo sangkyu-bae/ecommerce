@@ -29,6 +29,10 @@ public class BasketEntity {
 
     private int status;
 
+    private long productId;
+
+    private int size;
+
     private LocalDateTime createAt;
 
     private LocalDateTime updateAt;

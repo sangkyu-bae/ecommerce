@@ -17,4 +17,6 @@ public interface FindProductPort {
     boolean existProductBySize(long sizeId );
 
     List<ProductEntity> findProductAll();
+
+    List<ProductEntity> findProductByProductIds(List<Long> productIds);
 }

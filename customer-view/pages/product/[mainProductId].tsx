@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import productRedux, {initProduct, setProduct} from "@/store/product/productRedux";
 import useCustomQuery from "@/shared/hook/useCustomQuery";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
+import {useBasket} from "@/shared/hook/useBasket";
 
 function DetailUserProduct() {
     const router = useRouter()
@@ -27,18 +28,16 @@ function DetailUserProduct() {
         router.push("/order");
     }
 
-    const {submitMutation} = useCustomQuery({
-        submit:BasketAPi.create
-    });
-
+    const {submitMutation} = useBasket(false,true);
 
     const onClickBasket =()=>{
-        selectProducts.map(product => {
+        const basketProducts = selectProducts.map(product => {
             return {
                 productSizeId : product.size.id,
                 quantity : product.quantity
             }
-        }).forEach(basket => submitMutation.mutate(basket));
+        });
+        submitMutation.mutate(basketProducts)
     }
     return (
         <>

@@ -60,6 +60,11 @@ spring:
             - Path=/basket/**
           filters:
             - AuthorizationHeaderFilter
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway, routes
 
 
 

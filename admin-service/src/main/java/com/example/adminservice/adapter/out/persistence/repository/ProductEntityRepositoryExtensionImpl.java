@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import java.util.List;
+
 public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupport implements ProductEntityRepositoryExtension  {
 
     public ProductEntityRepositoryExtensionImpl() {
@@ -38,4 +40,5 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
 
         return new PageImpl<>(fetchResults.getResults(),pageable, fetchResults.getTotal());
     }
+
 }

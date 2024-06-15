@@ -3,6 +3,7 @@ package com.example.adminservice.application.service.brand;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.application.port.in.command.ExistProductCommand;
+import com.example.adminservice.application.port.in.command.FindProductByProductIdsCommand;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
 import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
 import com.example.adminservice.application.port.in.command.FindProductCommand;
@@ -64,6 +65,16 @@ public class FindProductService implements FindProductUseCase {
 
         return findProductAll.stream()
                 .map(product-> productMapper.mapToDomainEntity(product))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductVo> findProductByProductIds(FindProductByProductIdsCommand command) {
+
+        List<ProductEntity> findProductList = findProductPort.findProductByProductIds(command.getProductIds());
+
+        return findProductList.stream()
+                .map(product -> productMapper.mapToDomainEntityByBasic(product))
                 .collect(Collectors.toList());
     }
 }

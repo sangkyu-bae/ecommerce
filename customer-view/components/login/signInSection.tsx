@@ -34,11 +34,11 @@ function SignInSection(props) {
             // const loginData=data.data;
             const {accessToken,expiredTime}=data.data;
             setToken('ACCESS_TOKEN',accessToken,expiredTime);
-            setLogin({
-                token:accessToken,
-                expiredTime:expiredTime,
-                isLogin:true
-            })
+            // setLogin({
+            //     token:accessToken,
+            //     expiredTime:expiredTime,
+            //     isLogin:true
+            // })
         },
         onSettled: () => {
             console.log("end");

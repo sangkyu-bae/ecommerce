@@ -1,6 +1,7 @@
 package com.example.adminservice.adapter.in.web.product;
 
 import com.example.adminservice.application.port.in.command.ExistProductCommand;
+import com.example.adminservice.application.port.in.command.FindProductByProductIdsCommand;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
 import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
 import com.example.adminservice.application.port.in.command.FindProductCommand;
@@ -15,6 +16,7 @@ import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -73,6 +75,21 @@ public class FindProductController {
     public ResponseEntity<List<ProductVo>> findProductAll(){
         List<ProductVo> getAllProduct = findProductUseCase.findProductAll();
         return ResponseEntity.ok().body(getAllProduct);
+    }
+
+    @Operation(summary = "find Product By ProductIds", description = "ProductIds로 List 조회하기")
+    @GetMapping("/admin/product-list")
+    public ResponseEntity<List<ProductVo>> findProductBySizeId(@RequestBody List<Long> productIds){
+
+        FindProductByProductIdsCommand command = FindProductByProductIdsCommand
+                .builder()
+                .productIds(productIds)
+                .build();
+
+        List<ProductVo> findProductList = findProductUseCase.findProductByProductIds(command);
+
+        return ResponseEntity.ok().body(findProductList);
+
     }
 
 

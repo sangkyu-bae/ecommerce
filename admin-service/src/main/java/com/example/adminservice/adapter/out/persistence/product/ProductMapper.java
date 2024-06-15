@@ -38,6 +38,18 @@ public class ProductMapper {
         );
     }
 
+    public ProductVo mapToDomainEntityByBasic(ProductEntity productEntity){
+
+        return ProductVo.createGenerateProductVo(
+                new ProductVo.ProductId(productEntity.getId()),
+                new ProductVo.ProductName(productEntity.getName()),
+                new ProductVo.ProductPrice(productEntity.getPrice()),
+                new ProductVo.ProductDescription(productEntity.getDescription()),
+                new ProductVo.ProductImage(productEntity.getProductImage()),
+                new ProductVo.ProductAggregateIdentifier(productEntity.getAggregateIdentifier()),
+                null, null, null
+        );
+    }
     public ProductSearchVo mapToDomainEntity(Page<ProductEntity> pagingProduct) {
         List<ProductVo> productVoList = pagingProduct.stream()
                 .map(product -> mapToDomainEntity(product)).collect(Collectors.toList());

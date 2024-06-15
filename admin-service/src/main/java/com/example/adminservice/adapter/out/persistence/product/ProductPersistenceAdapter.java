@@ -83,6 +83,11 @@ public class ProductPersistenceAdapter implements FindProductPort,
     }
 
     @Override
+    public List<ProductEntity> findProductByProductIds(List<Long> productIds) {
+        return springDataProductRepository.findByIdIn(productIds);
+    }
+
+    @Override
     public ProductEntity updateProduct(ProductVo productVo) {
         ProductEntity updateProductEntity = ProductEntity.builder()
                 .id(productVo.getId())
