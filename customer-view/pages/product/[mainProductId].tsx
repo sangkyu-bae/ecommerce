@@ -32,9 +32,12 @@ function DetailUserProduct() {
 
     const onClickBasket =()=>{
         const basketProducts = selectProducts.map(product => {
+            console.log(product)
             return {
                 productSizeId : product.size.id,
-                quantity : product.quantity
+                quantity : product.quantity,
+                productId : product.productId,
+                size: product.size.name
             }
         });
         submitMutation.mutate(basketProducts)

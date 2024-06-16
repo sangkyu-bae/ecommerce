@@ -14,9 +14,7 @@ import org.example.basket.domain.Basket;
 import org.example.basket.domain.BasketAggregationVo;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @UseCase
@@ -45,7 +43,7 @@ public class FindBasketService implements FindBasketUseCase {
         Basket.BasketMemberId basketMemberId = new Basket.BasketMemberId(command.getMemberId());
         List<BasketEntity> basketEntityList = findBasketPort.findBasketList(basketMemberId);
         Set<Long> productIdsSet = basketEntityList.stream()
-                .map(BasketEntity::getProductId) // 메서드 참조 사용
+                .map(BasketEntity::getProductId)
                 .collect(Collectors.toSet());
 
         List<Long> productIds = new ArrayList<>(productIdsSet);
@@ -53,13 +51,33 @@ public class FindBasketService implements FindBasketUseCase {
 
         List<BasketAggregationVo> basketAggregationVos = new ArrayList<>();
 
-        /**
-         * ToDo 구현 필요
-         * */
+        Map<Long,Product> productMap = new HashMap<>();
+
+        for(Product product: productList){
+            productMap.put(product.getId(),product);
+        }
+        log.info("productMap Size: " + productMap.size());
+        log.info(productMap.toString());
+
         for(BasketEntity basketEntity : basketEntityList){
-//            Basket.BasketSize
+            Product product = productMap.get(basketEntity.getProductId());
+            basketAggregationVos.add(
+                    BasketAggregationVo.createGenerate(
+                            basketEntity.getId(),
+                            basketEntity.getProductSizeId(),
+                            basketEntity.getProductId(),
+                            basketEntity.getSize(),
+                            product.getPrice(),
+                            basketEntity.getMemberId(),
+                            basketEntity.getProductQuantity(),
+                            basketEntity.getStatus(),
+                            basketEntity.getCreateAt(),
+                            basketEntity.getUpdateAt(),
+                            product.getName()
+                    )
+            );
         }
 
-        return null;
+        return basketAggregationVos;
     }
 }

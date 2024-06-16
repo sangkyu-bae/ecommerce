@@ -14,10 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -78,7 +75,7 @@ public class FindProductController {
     }
 
     @Operation(summary = "find Product By ProductIds", description = "ProductIds로 List 조회하기")
-    @GetMapping("/admin/product-list")
+    @PostMapping("/admin/product-list")
     public ResponseEntity<List<ProductVo>> findProductBySizeId(@RequestBody List<Long> productIds){
 
         FindProductByProductIdsCommand command = FindProductByProductIdsCommand

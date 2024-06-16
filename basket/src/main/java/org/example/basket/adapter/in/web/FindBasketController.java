@@ -51,5 +51,9 @@ public class FindBasketController {
         FindBasketCommand command = FindBasketCommand.builder()
                 .memberId(userId)
                 .build();
+
+        List<BasketAggregationVo> basketAggregationVos = findBasketUseCase.findBasketAggregationList(command);
+
+        return ResponseEntity.ok().body(basketAggregationVos);
     }
 }

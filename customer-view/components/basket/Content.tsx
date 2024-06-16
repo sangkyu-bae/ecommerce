@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useBasket} from "@/shared/hook/useBasket";
 const initialProducts = [
     { id: 1, name: 'Product Name 1', price: 10, image: 'https://via.placeholder.com/50', quantity: 1 },
     { id: 2, name: 'Product Name 2', price: 15, image: 'https://via.placeholder.com/50', quantity: 1 },
@@ -6,6 +7,7 @@ const initialProducts = [
 ];
 
 function Content(props) {
+    const {data,isLoading,error} = useBasket(true, false);
     const [products, setProducts] = useState(initialProducts);
 
     const handleQuantityChange = (id: number, quantity: number) => {
@@ -30,22 +32,22 @@ function Content(props) {
                 </tr>
                 </thead>
                 <tbody>
-                {products.map(product => (
+                {basketProducts.map(product => (
                     <tr key={product.id}>
                         <td>
-                            <img src={product.image} alt="Product" />
-                            {product.name}
+                            <img src='https://via.placeholder.com/50' alt="Product" />
+                            {product.productName}
                         </td>
                         <td>${product.price.toFixed(2)}</td>
                         <td className="quantity">
                             <input
                                 type="number"
-                                value={product.quantity}
+                                value={product.productQuantity}
                                 min="1"
                                 onChange={(e) => handleQuantityChange(product.id, Number(e.target.value))}
                             />
                         </td>
-                        <td>${(product.price * product.quantity).toFixed(2)}</td>
+                        <td>${(product.price * product.productQuantity).toFixed(2)}</td>
                     </tr>
                 ))}
                 </tbody>

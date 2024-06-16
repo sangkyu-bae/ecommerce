@@ -51,7 +51,7 @@ export const rankRequest : RankRequest={
 
 export const basketRequest : BasketRequest ={
     createBasket : `${basketURL}/mulity`,
-    readBasket:`${basketURL}`
+    readBasket:`${basketURL}/aggregation`
 }
 export const orderRequest : OrderRequest = {
     register : `${orderURL}/register`

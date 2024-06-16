@@ -15,6 +15,8 @@ public class BasketMapper {
                 new Basket.BasketProductSizeId(basketEntity.getProductSizeId()),
                 new Basket.BasketProductQuantity(basketEntity.getProductQuantity()),
                 Basket.BasketStatus.findStatus(basketEntity.getStatus()),
+                new Basket.BasketProductId(basketEntity.getProductId()),
+                new Basket.BasketSize(basketEntity.getSize()),
                 new Basket.BasketCreateAt(basketEntity.getCreateAt()),
                 new Basket.BasketUpdateAt(basketEntity.getUpdateAt())
         );

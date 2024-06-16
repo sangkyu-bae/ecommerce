@@ -13,4 +13,8 @@ public class RegisterBasketRequest {
 
     private int quantity;
 
+    private int size;
+
+    private long productId;
+
 }

@@ -53,6 +53,8 @@ public class RegisterBasketController {
                     .memberId(userId)
                     .productSizeId(request.getProductSizeId())
                     .quantity(request.getQuantity())
+                    .size(request.getSize())
+                    .productId(request.getProductId())
                     .build();
 
             registerBasketCommands.add(command);
