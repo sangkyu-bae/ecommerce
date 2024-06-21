@@ -17,4 +17,6 @@ public class RegisterBasketRequest {
 
     private long productId;
 
+    private String colorName;
+
 }

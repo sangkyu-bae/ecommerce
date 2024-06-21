@@ -24,7 +24,8 @@ type RankRequest ={
 
 type BasketRequest ={
     createBasket : string,
-    readBasket: string
+    readBasket: string,
+    update:string
 }
 
 type OrderRequest = {
@@ -51,7 +52,8 @@ export const rankRequest : RankRequest={
 
 export const basketRequest : BasketRequest ={
     createBasket : `${basketURL}/mulity`,
-    readBasket:`${basketURL}/aggregation`
+    readBasket:`${basketURL}/aggregation`,
+    update:`${basketURL}`
 }
 export const orderRequest : OrderRequest = {
     register : `${orderURL}/register`

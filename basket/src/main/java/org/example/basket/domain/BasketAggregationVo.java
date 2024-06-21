@@ -3,6 +3,7 @@ package org.example.basket.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.example.basket.adapter.out.persistence.entity.BasketEntity;
+import org.example.basket.adapter.out.service.Product;
 
 import java.time.LocalDateTime;
 
@@ -34,6 +35,10 @@ public class BasketAggregationVo {
 
     private String productName;
 
+    private String colorName;
+
+    private Product.Brand brand;
+
     public static BasketAggregationVo createGenerate(
             long id,
             long productSizeId,
@@ -45,7 +50,9 @@ public class BasketAggregationVo {
             int status,
             LocalDateTime createAt,
             LocalDateTime updateAt,
-            String productName
+            String productName,
+            String colorName,
+            Product.Brand brand
     ) {
         return new BasketAggregationVo(
                 id,
@@ -58,7 +65,9 @@ public class BasketAggregationVo {
                 status,
                 createAt,
                 updateAt,
-                productName
+                productName,
+                colorName,
+                brand
         );
     }
 

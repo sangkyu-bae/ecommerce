@@ -73,7 +73,9 @@ public class FindBasketService implements FindBasketUseCase {
                             basketEntity.getStatus(),
                             basketEntity.getCreateAt(),
                             basketEntity.getUpdateAt(),
-                            product.getName()
+                            product.getName(),
+                            basketEntity.getColorName(),
+                            product.getBrand()
                     )
             );
         }

@@ -1,24 +1,52 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useBasket} from "@/shared/hook/useBasket";
-const initialProducts = [
-    { id: 1, name: 'Product Name 1', price: 10, image: 'https://via.placeholder.com/50', quantity: 1 },
-    { id: 2, name: 'Product Name 2', price: 15, image: 'https://via.placeholder.com/50', quantity: 1 },
-    { id: 3, name: 'Product Name 3', price: 20, image: 'https://via.placeholder.com/50', quantity: 1 },
-];
+import {useDispatch, useSelector} from "react-redux";
+import {addBuyProduct, initProduct, setProduct} from "@/store/product/productRedux";
 
 function Content(props) {
-    const {data,isLoading,error} = useBasket(true, false);
-    const [products, setProducts] = useState(initialProducts);
+    const {
+        isLoading,
+        error,
+        baskets,
+        handleQuantityChange,
+        calculateTotal
+    } = useBasket(true, true, true);
 
-    const handleQuantityChange = (id: number, quantity: number) => {
-        setProducts(products.map(product =>
-            product.id === id ? { ...product, quantity } : product
-        ));
-    };
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (baskets) {
+            dispatch(initProduct());
 
-    const calculateTotal = () => {
-        return products.reduce((total, product) => total + product.price * product.quantity, 0);
-    };
+            baskets.forEach(basket => {
+                const order = {
+                    productId: basket.productId,
+                    color: {
+                        name: basket.colorName
+                    },
+                    size: {
+                        name: basket.size
+                    }
+                };
+
+                // dispatch the setProduct action
+                dispatch(setProduct(basket, false));
+
+                // dispatch the addBuyProduct action
+                dispatch(addBuyProduct(order.color, order.size, order.productId));
+            });
+
+            // dispatch(setProduct(baskets[0], false))
+        }
+    }, [baskets])
+
+    const {isOrderData, product, selectProducts} = useSelector(state => state.productRedux);
+
+    useEffect(() => {
+        console.log(product)
+    }, [product])
+    useEffect(()=>{
+        console.log(selectProducts)
+    },[selectProducts])
     return (
         <div className="container">
             <h1>Shopping Cart</h1>
@@ -32,11 +60,11 @@ function Content(props) {
                 </tr>
                 </thead>
                 <tbody>
-                {basketProducts.map(product => (
+                {baskets.map(product => (
                     <tr key={product.id}>
                         <td>
-                            <img src='https://via.placeholder.com/50' alt="Product" />
-                            {product.productName}
+                            <img src='https://via.placeholder.com/50' alt="Product"/>
+                            {product.productName} / {product.size} /{product.colorName}
                         </td>
                         <td>${product.price.toFixed(2)}</td>
                         <td className="quantity">
@@ -53,7 +81,7 @@ function Content(props) {
                 </tbody>
             </table>
             <div className="total">
-                <strong>Total: ${calculateTotal().toFixed(2)}</strong>
+                <strong>Total: ${calculateTotal()}</strong>
             </div>
             <div className="actions">
                 <button>Proceed to Checkout</button>

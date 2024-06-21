@@ -53,7 +53,7 @@ export default function App({Component, pageProps}: AppProps) {
                     </div>
                 </RecoilRoot>
             </MyProvider>
-
+            <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
         </QueryClientProvider>
     )
 }

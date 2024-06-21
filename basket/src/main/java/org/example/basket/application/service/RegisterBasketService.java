@@ -49,6 +49,7 @@ public class RegisterBasketService implements RegisterBasketUseCase {
                 Basket.BasketStatus.CREATE,
                 new Basket.BasketProductId(command.getProductId()),
                 new Basket.BasketSize(command.getSize()),
+                new Basket.BasketColorName(command.getColorName()),
                 new Basket.BasketCreateAt(LocalDateTime.now()),
                 new Basket.BasketUpdateAt(LocalDateTime.now())
         );
@@ -77,6 +78,7 @@ public class RegisterBasketService implements RegisterBasketUseCase {
                     Basket.BasketStatus.CREATE,
                     new Basket.BasketProductId(command.getProductId()),
                     new Basket.BasketSize(command.getSize()),
+                    new Basket.BasketColorName(command.getColorName()),
                     new Basket.BasketCreateAt(LocalDateTime.now()),
                     new Basket.BasketUpdateAt(LocalDateTime.now())
             );

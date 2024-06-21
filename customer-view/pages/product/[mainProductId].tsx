@@ -28,7 +28,7 @@ function DetailUserProduct() {
         router.push("/order");
     }
 
-    const {submitMutation} = useBasket(false,true);
+    const {submitMutation} = useBasket(false,true,false);
 
     const onClickBasket =()=>{
         const basketProducts = selectProducts.map(product => {

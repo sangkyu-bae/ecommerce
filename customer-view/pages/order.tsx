@@ -22,6 +22,9 @@ function Order(props) {
     const dispatch = useDispatch();
     const {product, selectProducts, isOrderData,totalPayment} = useSelector(state => state.productRedux);
 
+    useEffect(()=>{
+        console.log(selectProducts)
+    },[selectProducts])
     const dataParsingEvent = (submitData) =>{
         const orderData = submitData.initData;
 

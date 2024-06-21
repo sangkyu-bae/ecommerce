@@ -33,6 +33,7 @@ public class RegisterBasketController {
                 .memberId(userId)
                 .productSizeId(request.getProductSizeId())
                 .quantity(request.getQuantity())
+                .colorName(request.getColorName())
                 .build();
 
         Basket registerBasket = registerBasketUseCase.RegisterBasket(command);
@@ -55,6 +56,7 @@ public class RegisterBasketController {
                     .quantity(request.getQuantity())
                     .size(request.getSize())
                     .productId(request.getProductId())
+                    .colorName(request.getColorName())
                     .build();
 
             registerBasketCommands.add(command);

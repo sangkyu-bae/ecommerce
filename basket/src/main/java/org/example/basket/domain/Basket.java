@@ -1,15 +1,12 @@
 package org.example.basket.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
+@Getter @ToString
 public class Basket {
 
     private final Long id;
@@ -26,6 +23,8 @@ public class Basket {
 
     private int size;
 
+    private String colorName;
+
     private final LocalDateTime creatAt;
 
     private final LocalDateTime updateAt;
@@ -39,6 +38,7 @@ public class Basket {
             BasketStatus basketStatus,
             BasketProductId basketProductId,
             BasketSize basketSize,
+            BasketColorName basketColorName,
             BasketCreateAt basketCreateAt,
             BasketUpdateAt basketUpdateAt
     ){
@@ -51,6 +51,7 @@ public class Basket {
                 basketStatus.getStatus(),
                 basketProductId.getProductId(),
                 basketSize.getSize(),
+                basketColorName.getColorName(),
                 basketCreateAt.getCreateAt(),
                 basketUpdateAt.getUpdateAt()
         );
@@ -142,6 +143,14 @@ public class Basket {
         }
     }
 
+    @Value
+    public static class BasketColorName{
+        private String colorName;
+
+        public BasketColorName(String val){
+            this.colorName = val;
+        }
+    }
     @Value
     public static class BasketCreateAt{
 

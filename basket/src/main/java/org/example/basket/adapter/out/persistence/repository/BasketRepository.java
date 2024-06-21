@@ -10,4 +10,5 @@ import java.util.List;
 public interface BasketRepository extends JpaRepository<BasketEntity,Long> {
 
     List<BasketEntity> findByMemberIdOrderByCreateAtDesc(long memberId);
+
 }

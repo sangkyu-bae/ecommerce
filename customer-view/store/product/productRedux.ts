@@ -89,6 +89,7 @@ const productRedux = (state = initialState,action) =>{
             return {
                 ...state,
                 product : [
+                    ...state.product,
                     action.product
                 ],
                 isOrderData:action.isOrderData

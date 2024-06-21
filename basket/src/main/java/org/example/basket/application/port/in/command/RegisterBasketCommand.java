@@ -29,12 +29,16 @@ public class RegisterBasketCommand extends SelfValidating<RegisterBasketCommand>
     @NotNull
     private int quantity;
 
-    public RegisterBasketCommand(long memberId,long productSizeId,long productId, int size ,int quantity){
+    @NotNull
+    private String colorName;
+
+    public RegisterBasketCommand(long memberId,long productSizeId,long productId, int size ,int quantity,String colorName){
         this.memberId = memberId;
         this.productSizeId = productSizeId;
         this.productId = productId;
         this.size = size;
         this.quantity = quantity;
+        this.colorName = colorName;
         this.validateSelf();
     }
 }

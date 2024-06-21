@@ -2,6 +2,8 @@ package org.example.basket.adapter.out.persistence.entity;
 
 
 import lombok.*;
+import org.example.basket.infra.error.BasketErrorCode;
+import org.example.basket.infra.error.ErrorException;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,5 +39,14 @@ public class BasketEntity {
 
     private LocalDateTime updateAt;
 
+    private String colorName;
+
+    public void updateQuantity(int productQuantity, long memberId){
+        if(this.memberId != memberId){
+            throw new ErrorException(BasketErrorCode.BASKET_NO_VALIDATE,"updateQuantity");
+        }
+
+        this.productQuantity = productQuantity;
+    }
 
 }
