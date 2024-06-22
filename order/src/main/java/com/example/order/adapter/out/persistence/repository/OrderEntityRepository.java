@@ -14,4 +14,6 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity,Long> {
 
     @Query("SELECT e FROM OrderEntity e WHERE e.userId in :memberIds")
     List<OrderEntity> findMemberOrderListByMemberIds(@Param("memberIds") List<Long> memberIds);
+
+    List<OrderEntity> findByUserIdOrderByIdDesc(long userId);
 }

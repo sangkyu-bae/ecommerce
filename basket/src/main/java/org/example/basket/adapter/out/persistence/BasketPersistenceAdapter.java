@@ -13,6 +13,7 @@ import org.example.basket.infra.error.BasketErrorCode;
 import org.example.basket.infra.error.ErrorException;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @PersistenceAdapter
@@ -47,6 +48,7 @@ public class BasketPersistenceAdapter implements RegisterBasketPort, RemoveBaske
                         .updateAt(basket.getUpdateAt())
                         .productId(basket.getProductId())
                         .size(basket.getSize())
+                        .colorName(basket.getColorName())
                         .build())
                 .collect(Collectors.toList());
 
@@ -61,6 +63,11 @@ public class BasketPersistenceAdapter implements RegisterBasketPort, RemoveBaske
     @Override
     public List<BasketEntity> findBasketList(Basket.BasketMemberId basketMemberId) {
         return basketRepository.findByMemberIdOrderByCreateAtDesc(basketMemberId.getMemberId());
+    }
+
+    @Override
+    public List<BasketEntity> findBasketListByMemberIdAndProductSizeIds(long memberId, Set<Long> productSizeIds) {
+        return basketRepository.findByMemberIdAndProductSizeIdIn(memberId,productSizeIds);
     }
 
     @Override

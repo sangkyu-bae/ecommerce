@@ -48,6 +48,11 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
     }
 
     @Override
+    public List<OrderEntity> findOrderByMemberId(OrderVo.OrderProductUserId userId) {
+        return orderEntityRepository.findByUserIdOrderByIdDesc(userId.getUserId());
+    }
+
+    @Override
     public List<OrderEntity> getMemberOrderPort(List<Long> memberIds) {
         return orderEntityRepository.findMemberOrderListByMemberIds(memberIds);
     }

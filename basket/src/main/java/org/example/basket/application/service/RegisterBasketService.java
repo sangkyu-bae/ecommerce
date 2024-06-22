@@ -8,6 +8,7 @@ import org.example.basket.adapter.out.persistence.entity.BasketEntity;
 import org.example.basket.adapter.out.service.Product;
 import org.example.basket.application.port.in.command.RegisterBasketCommand;
 import org.example.basket.application.port.in.usecase.RegisterBasketUseCase;
+import org.example.basket.application.port.out.FindBasketPort;
 import org.example.basket.application.port.out.GetProductPort;
 import org.example.basket.application.port.out.RegisterBasketPort;
 import org.example.basket.domain.Basket;
@@ -16,8 +17,7 @@ import org.example.basket.infra.error.ErrorException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @UseCase
@@ -27,6 +27,8 @@ import java.util.stream.Collectors;
 public class RegisterBasketService implements RegisterBasketUseCase {
 
     private final RegisterBasketPort registerBasketPort;
+
+    private final FindBasketPort findBasketPort;
 
     private final BasketMapper basketMapper;
 
@@ -63,6 +65,9 @@ public class RegisterBasketService implements RegisterBasketUseCase {
     public List<Basket> RegisterBaskets(List<RegisterBasketCommand> commands) {
 
         List<Basket> registerBaskets = new ArrayList<>();
+        Set<Long> productSizeIds = new HashSet<>();
+        Map<Long, RegisterBasketCommand> commandMap = new HashMap<>();
+
         for(RegisterBasketCommand command : commands){
             boolean existProduct = getProductPort.getProduct(command.getProductSizeId());
 
@@ -83,14 +88,39 @@ public class RegisterBasketService implements RegisterBasketUseCase {
                     new Basket.BasketUpdateAt(LocalDateTime.now())
             );
 
+            commandMap.put(command.getProductSizeId(),command);
+            productSizeIds.add(command.getProductSizeId());
             registerBaskets.add(registerBasket);
         }
 
-        List<BasketEntity> registerEntityList = registerBasketPort.registerBaskets(registerBaskets);
 
+        List<BasketEntity> memberBaskets = findBasketPort.findBasketListByMemberIdAndProductSizeIds(commands.get(0).getMemberId(), productSizeIds);
+        if(memberBaskets != null){
+            List<Long> productSizeIdList = new ArrayList<>();
+
+            for(BasketEntity basketEntity : memberBaskets){
+                RegisterBasketCommand command = commandMap.get(basketEntity.getProductSizeId());
+                basketEntity.updateQuantity(basketEntity.getProductQuantity() + command.getQuantity() ,command.getMemberId());
+                productSizeIdList.add(command.getProductSizeId());
+            }
+
+            List<Basket> removeBasketList = new ArrayList<>();
+            for(Basket basket : registerBaskets){
+                if(productSizeIdList.contains(basket.getProductSizeId())){
+                    removeBasketList.add(basket);
+                }
+            }
+
+            registerBaskets.removeAll(removeBasketList);
+        }
+        List<BasketEntity> registerEntityList = new ArrayList<>();
+        if(!registerBaskets.isEmpty()){
+            registerEntityList  = registerBasketPort.registerBaskets(registerBaskets);
+        }
 
         return registerEntityList.stream()
                 .map(basketEntity -> basketMapper.mapToDomainEntity(basketEntity))
                 .collect(Collectors.toList());
     }
+
 }

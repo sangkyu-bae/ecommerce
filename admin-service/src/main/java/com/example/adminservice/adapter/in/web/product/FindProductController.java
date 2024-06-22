@@ -9,13 +9,19 @@ import com.example.adminservice.application.port.in.command.FindProductCommand;
 
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @WebAdapter
@@ -24,6 +30,7 @@ import java.util.List;
 @Slf4j
 public class FindProductController {
     private final FindProductUseCase findProductUseCase;
+
 
     @Operation(summary = "find product", description = "상품 조회하기")
     @GetMapping("/admin/find/{productId}")
@@ -88,6 +95,4 @@ public class FindProductController {
         return ResponseEntity.ok().body(findProductList);
 
     }
-
-
 }

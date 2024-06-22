@@ -2,6 +2,7 @@ package com.example.order.adapter.in.web;
 
 import com.example.order.adapter.in.request.FindMemberOrderListByMemberIdsRequest;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
+import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.domain.OrderVo;
@@ -9,10 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,6 +31,17 @@ public class FindOrderController {
         OrderVo orderVo = findOrderUseCase.findOrder(command);
 
         return ResponseEntity.ok().body(orderVo);
+    }
+
+    @GetMapping("/order/member")
+    public ResponseEntity<List<OrderVo>> findOrderByMemberId(@RequestHeader("X-User-Id") Long userId){
+        FindOrderByMemberIdCommand command = FindOrderByMemberIdCommand.builder()
+                .userId(userId)
+                .build();
+
+        List<OrderVo> orderList = findOrderUseCase.findOrderListByMemberId(command);
+
+        return ResponseEntity.ok().body(orderList);
     }
 
     @GetMapping("/order/member-order")

@@ -3,6 +3,7 @@ package com.example.order.application.service;
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
+import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.application.port.out.FindOrderPort;
@@ -45,5 +46,14 @@ public class FindOrderService implements FindOrderUseCase {
 
 
         return orderVoList;
+    }
+
+    @Override
+    public List<OrderVo> findOrderListByMemberId(FindOrderByMemberIdCommand command) {
+        List<OrderEntity> orderEntityList = findOrderPort.findOrderByMemberId(new OrderVo.OrderProductUserId(command.getUserId()));
+
+        return orderEntityList.stream()
+                .map(order -> orderMapper.mapToDomainEntity(order))
+                .collect(Collectors.toList());
     }
 }

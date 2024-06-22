@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of="id")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_basket") @Builder
+@Table(name = "tb_basket") @Builder @ToString
 public class BasketEntity {
 
     @Id @GeneratedValue

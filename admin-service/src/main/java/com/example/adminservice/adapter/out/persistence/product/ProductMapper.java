@@ -39,6 +39,8 @@ public class ProductMapper {
     }
 
     public ProductVo mapToDomainEntityByBasic(ProductEntity productEntity){
+        ProductVo.ProductBrandVo brand = mapToBrandVo(productEntity.getBrand());
+        ProductVo.ProductCategoryVo category = mapToCategoryVo(productEntity.getCategory());
 
         return ProductVo.createGenerateProductVo(
                 new ProductVo.ProductId(productEntity.getId()),
@@ -47,7 +49,7 @@ public class ProductMapper {
                 new ProductVo.ProductDescription(productEntity.getDescription()),
                 new ProductVo.ProductImage(productEntity.getProductImage()),
                 new ProductVo.ProductAggregateIdentifier(productEntity.getAggregateIdentifier()),
-                null, null, null
+                brand, category, null
         );
     }
     public ProductSearchVo mapToDomainEntity(Page<ProductEntity> pagingProduct) {
