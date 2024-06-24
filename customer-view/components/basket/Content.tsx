@@ -1,7 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useBasket} from "@/shared/hook/useBasket";
 import {useDispatch, useSelector} from "react-redux";
-import {addBuyProduct, initProduct, setProduct} from "@/store/product/productRedux";
+import {
+    addBuyProduct,
+    basketAddBuyProduct,
+    basketQuantitySetting,
+    initProduct,
+    setProduct
+} from "@/store/product/productRedux";
+import {useRouter} from "next/router";
 
 function Content(props) {
     const {
@@ -13,6 +20,10 @@ function Content(props) {
     } = useBasket(true, true, true);
 
     const dispatch = useDispatch();
+    const router = useRouter()
+    const orderProduct = () => {
+        router.push("/order");
+    }
     useEffect(() => {
         if (baskets) {
             dispatch(initProduct());
@@ -27,15 +38,10 @@ function Content(props) {
                         name: basket.size
                     }
                 };
-
-                // dispatch the setProduct action
                 dispatch(setProduct(basket, false));
-
-                // dispatch the addBuyProduct action
-                dispatch(addBuyProduct(order.color, order.size, order.productId));
+                dispatch(basketAddBuyProduct(order.color, order.size, order.productId));
+                dispatch(basketQuantitySetting(basket.productId, basket.colorName,basket.size,basket.productQuantity))
             });
-
-            // dispatch(setProduct(baskets[0], false))
         }
     }, [baskets])
 
@@ -84,7 +90,7 @@ function Content(props) {
                 <strong>Total: ${calculateTotal()}</strong>
             </div>
             <div className="actions">
-                <button>Proceed to Checkout</button>
+                <button onClick={orderProduct}>Proceed to Checkout</button>
             </div>
         </div>
     );

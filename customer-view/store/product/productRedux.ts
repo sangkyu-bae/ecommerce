@@ -6,7 +6,8 @@ const INCREASE_QUANTITY = "INCREASE_QUANTITY";
 const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 const REMOVE_BUY_PRODUCT = "REMOVE_BUY_PRODUCT";
 const ADD_BUY_PRODUCT = "ADD_BUY_PRODUCT";
-
+const BASKET_QUANTITY_SETTING = "BASKET_QUANTITY_SETTING";
+const BASKET_ADD_BUY_PRODUCT ="BASKET_ADD_BUY_PRODUCT";
 export const setProduct = (orderProduct:OrderProduct,isOrderData:boolean) =>{
     return{
         type : SET_PRODUCT,
@@ -21,6 +22,17 @@ export const addBuyProduct = (color:Data, size : Data,productId:number) =>{
             color : color,
             size : size,
             productId : productId
+        }
+    }
+}
+
+export const basketAddBuyProduct = (color:Data, size :Data ,productId : number) =>{
+    return {
+        type: BASKET_ADD_BUY_PRODUCT,
+        command : {
+            color:color,
+            size: size,
+            productId :productId
         }
     }
 }
@@ -39,6 +51,19 @@ export const increaseQuantity = (productId : number, colorId:number,sizeId : num
         }
     }
 }
+
+export const basketQuantitySetting = (productId : number, colorName:string, size: number, quantity :number)=>{
+    return {
+        type : BASKET_QUANTITY_SETTING,
+        command :{
+            productId : productId,
+            colorName : colorName,
+            size : size,
+            quantity : quantity
+        }
+    }
+}
+
 export const decreaseQuantity = (productId : number, colorId:number,sizeId : number) => {
     return {
         type : DECREASE_QUANTITY,
@@ -84,6 +109,32 @@ const productRedux = (state = initialState,action) =>{
         };
     }
 
+    function selectBasketData(){
+        let selectProduct = [...state.selectProducts];
+
+        let updateIndex = selectProduct
+            .findIndex(selectProduct => selectProduct.color.name == action.command.colorName
+            && selectProduct.size.name == action.command.size);
+
+        let updateSelectProduct = {...selectProduct[updateIndex]};
+
+        let products = [...state.product];
+        let getProductIndex = products.
+            findIndex(product => product.productId == action.command.productId);
+
+        let product = {...products[getProductIndex]}
+        const pay = product.price
+
+        return {
+            selectProduct,
+            updateIndex,
+            updateSelectProduct,
+            getProductIndex,
+            product,
+            pay
+        }
+    }
+
     switch (action.type){
         case SET_PRODUCT:{
             return {
@@ -94,6 +145,24 @@ const productRedux = (state = initialState,action) =>{
                 ],
                 isOrderData:action.isOrderData
             };
+        }
+        case BASKET_ADD_BUY_PRODUCT :{
+            const  {product} = selectBasketData();
+
+            const selectProduct = {
+                productId : action.command.productId,
+                color : action.command.color,
+                size : action.command.size,
+                quantity : 1,
+                selectPrice : product.price
+            };
+
+            return {
+                ...state,
+                totalPayment : 0,
+                selectProducts : [...state.selectProducts, selectProduct],
+                isOrderData:true
+            }
         }
         case ADD_BUY_PRODUCT:{
             action.command.colorId = action.command.color.id;
@@ -125,6 +194,24 @@ const productRedux = (state = initialState,action) =>{
         case INIT_PRODUCT:{
             return initialState
         }
+
+        case BASKET_QUANTITY_SETTING:{
+            const {pay,updateSelectProduct, selectProduct, updateIndex} = selectBasketData()
+            updateSelectProduct.quantity = action.command.quantity
+
+            console.log(pay)
+            updateSelectProduct.selectPrice = pay * updateSelectProduct.quantity
+
+            console.log(updateSelectProduct.selectPrice)
+            selectProduct[updateIndex] = updateSelectProduct;
+            const totalPayment = state.totalPayment + (pay * action.command.quantity);
+            return {
+                ...state,
+                selectProducts : selectProduct,
+                totalPayment : totalPayment
+            }
+        }
+
         case INCREASE_QUANTITY:{
             let {selectProducts, updateIndex, updateSelectProduct,pay} = selectData();
 

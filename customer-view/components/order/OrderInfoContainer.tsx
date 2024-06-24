@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import OrderInfoBox from "@/components/order/OrderInfoBox";
 import {StyledOrderBox} from "@/components/common/GridComponent";
 import {useSelector} from "react-redux";
 
 function OrderInfoContainer(props) {
     const {product, selectProducts, isOrderData, totalPayment} = useSelector(state => state.productRedux);
-    const productMap = new Map(product.map(item => [item.id, item]));
+    let id = product[0].productId ? 'productId' : 'id';
+    let name = product[0].productId ? 'productName' : 'name';
+
+    let productMap = new Map(product.map(item => [item[id], item]));
+
     return (
         <>
             <div className="main-box">
@@ -22,7 +26,7 @@ function OrderInfoContainer(props) {
             {
                 selectProducts.map((obj, index) => <OrderInfoBox
                     key={index}
-                    title={productMap.get(obj.productId).name}
+                    title={productMap.get(obj.productId)[name]}
                     selectProduct={obj}
                 />)
             }

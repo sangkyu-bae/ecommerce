@@ -56,8 +56,6 @@ public class FindBasketService implements FindBasketUseCase {
         for(Product product: productList){
             productMap.put(product.getId(),product);
         }
-        log.info("productMap Size: " + productMap.size());
-        log.info(productMap.toString());
 
         for(BasketEntity basketEntity : basketEntityList){
             Product product = productMap.get(basketEntity.getProductId());
