@@ -59,6 +59,7 @@ public class FindBasketService implements FindBasketUseCase {
 
         for(BasketEntity basketEntity : basketEntityList){
             Product product = productMap.get(basketEntity.getProductId());
+            product.settingComponent(basketEntity.getColorName(),basketEntity.getSize());
             basketAggregationVos.add(
                     BasketAggregationVo.createGenerate(
                             basketEntity.getId(),
@@ -73,7 +74,8 @@ public class FindBasketService implements FindBasketUseCase {
                             basketEntity.getUpdateAt(),
                             product.getName(),
                             basketEntity.getColorName(),
-                            product.getBrand()
+                            product.getBrand(),
+                            product.getProductComponents()
                     )
             );
         }

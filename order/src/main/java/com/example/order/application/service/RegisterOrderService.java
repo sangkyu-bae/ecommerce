@@ -23,6 +23,7 @@ import org.example.task.OrderTask;
 import org.example.task.ProductTask;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -148,9 +149,10 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 new OrderVo.OrderAmount(command.getAmount()),
                 new OrderVo.OrderPayment(command.getPayment()),
                 new OrderVo.OrderAddress(command.getAddress()),
-                new OrderVo.OrderCreateAt(LocalDate.now()),
-                new OrderVo.OrderUpdateAt(LocalDate.now()),
+                new OrderVo.OrderCreateAt(LocalDateTime.now()),
+                new OrderVo.OrderUpdateAt(LocalDateTime.now()),
                 new OrderVo.OrderStatus(status),
+                OrderVo.StatusCode.ORDER,
                 new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier())
         );
 

@@ -5,5 +5,9 @@ export const OrderApi ={
     register: async (registerOrder: Order[])=>{
         const {data} = await ApiCommon.loginJsonAPI.post(orderRequest.register,registerOrder)
         return data;
+    },
+    read : async ()=>{
+        const {data} = await ApiCommon.loginJsonAPI.get(orderRequest.read)
+        return data
     }
 }

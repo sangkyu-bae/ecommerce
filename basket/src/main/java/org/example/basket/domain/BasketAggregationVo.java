@@ -6,6 +6,8 @@ import org.example.basket.adapter.out.persistence.entity.BasketEntity;
 import org.example.basket.adapter.out.service.Product;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -39,6 +41,8 @@ public class BasketAggregationVo {
 
     private Product.Brand brand;
 
+    private List<Product.ProductComponentEntityVo> productComponentEntityVoList;
+
     public static BasketAggregationVo createGenerate(
             long id,
             long productSizeId,
@@ -52,7 +56,8 @@ public class BasketAggregationVo {
             LocalDateTime updateAt,
             String productName,
             String colorName,
-            Product.Brand brand
+            Product.Brand brand,
+            List<Product.ProductComponentEntityVo> productComponentEntityVos
     ) {
         return new BasketAggregationVo(
                 id,
@@ -67,7 +72,8 @@ public class BasketAggregationVo {
                 updateAt,
                 productName,
                 colorName,
-                brand
+                brand,
+                productComponentEntityVos
         );
     }
 

@@ -4,6 +4,7 @@ import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class OrderMapper {
     private final ModelMapper modelMapper;
 
     public OrderVo mapToDomainEntity(OrderEntity orderEntity){
+        OrderVo.StatusCode statusCode = OrderVo.StatusCode.findStatusCode(orderEntity.getStatus());
         OrderVo orderVo = OrderVo.createGenerateOrderVo(
                 new OrderVo.OrderId(orderEntity.getId()),
                 new OrderVo.OrderProductUserId(orderEntity.getUserId()),
@@ -25,6 +27,7 @@ public class OrderMapper {
                 new OrderVo.OrderCreateAt(orderEntity.getCreateAt()),
                 new OrderVo.OrderUpdateAt(orderEntity.getUpdateAt()),
                 new OrderVo.OrderStatus(orderEntity.getStatus()),
+                statusCode,
                 new OrderVo.OrderAggregateIdentifier(orderEntity.getAggregateIdentifier())
         );
 

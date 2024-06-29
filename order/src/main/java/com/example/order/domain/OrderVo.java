@@ -1,12 +1,14 @@
 package com.example.order.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @AllArgsConstructor(access =  AccessLevel.PRIVATE)
@@ -28,14 +30,17 @@ public class OrderVo {
     private final int payment;
 
     private final String address;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private final LocalDateTime createAt;
 
-    private final LocalDate createAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private final LocalDateTime updateAt;
 
-    private final LocalDate updateAt;
+    private final int status;
 
-    private int status;
+    private final TypeEnumMapper statusCode;
 
-    private String aggregateIdentifier;
+    private final String aggregateIdentifier;
 
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
@@ -49,6 +54,7 @@ public class OrderVo {
             OrderCreateAt orderCreateAt,
             OrderUpdateAt orderUpdateAt,
             OrderStatus orderStatus,
+            StatusCode statusCode,
             OrderAggregateIdentifier orderAggregateIdentifier
     ){
         return new OrderVo(
@@ -63,6 +69,7 @@ public class OrderVo {
                 orderCreateAt.getCreateAt(),
                 orderUpdateAt.getUpdateAt(),
                 orderStatus.getStatus(),
+                new TypeEnumMapper(statusCode),
                 orderAggregateIdentifier.getAggregateIdentifier()
         );
     }
@@ -127,19 +134,19 @@ public class OrderVo {
 
     @Value
     public static class OrderCreateAt{
-        public OrderCreateAt(LocalDate value){
+        public OrderCreateAt(LocalDateTime value){
             this.createAt = value;
         }
-        private LocalDate createAt;
+        private LocalDateTime createAt;
     }
 
     @Value
     public static class OrderUpdateAt{
 
-        public OrderUpdateAt(LocalDate value){
+        public OrderUpdateAt(LocalDateTime value){
             this.updateAt = value;
         }
-        private LocalDate updateAt;
+        private LocalDateTime updateAt;
     }
 
     @Value
@@ -167,7 +174,7 @@ public class OrderVo {
         String aggregateIdentifier;
     }
 
-    public static enum StatusCode{
+    public static enum StatusCode implements EnumMapperType{
         ORDER(1,"주문완료"),
 
         PAYMENT(2,"결제완료"),
@@ -193,8 +200,14 @@ public class OrderVo {
             this.name = name;
         }
 
+        @Override
         public int getStatus(){
             return status;
+        }
+
+        @Override
+        public String getName() {
+            return name;
         }
 
         public static StatusCode findStatusCode(int status){

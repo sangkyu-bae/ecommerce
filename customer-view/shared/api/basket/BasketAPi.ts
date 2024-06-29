@@ -12,8 +12,6 @@ export const BasketAPi = {
         return data
     },
     update: async ({ id, quantity }: { id: number, quantity: number })=>{
-        console.log(id)
-        console.log(quantity)
         const {data} = await ApiCommon.loginJsonAPI.patch(`${basketRequest.update}/${id}/${quantity}`)
         return data;
     }

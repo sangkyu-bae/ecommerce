@@ -29,7 +29,8 @@ type BasketRequest ={
 }
 
 type OrderRequest = {
-    register : string
+    register : string,
+    read : string
 }
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
@@ -56,5 +57,6 @@ export const basketRequest : BasketRequest ={
     update:`${basketURL}`
 }
 export const orderRequest : OrderRequest = {
-    register : `${orderURL}/register`
+    register : `${orderURL}/register`,
+    read : `${orderURL}/member`
 }

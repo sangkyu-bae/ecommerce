@@ -74,7 +74,7 @@ public class FindProductService implements FindProductUseCase {
         List<ProductEntity> findProductList = findProductPort.findProductByProductIds(command.getProductIds());
 
         return findProductList.stream()
-                .map(product -> productMapper.mapToDomainEntityByBasic(product))
+                .map(product -> productMapper.mapToDomainEntity(product))
                 .collect(Collectors.toList());
     }
 }

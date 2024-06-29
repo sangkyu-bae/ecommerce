@@ -32,10 +32,12 @@ function Content(props) {
                 const order = {
                     productId: basket.productId,
                     color: {
-                        name: basket.colorName
+                        id:basket.productComponentEntityVoList[0].color.id,
+                        name: basket.productComponentEntityVoList[0].color.name
                     },
                     size: {
-                        name: basket.size
+                        id:basket.productComponentEntityVoList[0].sizes.id,
+                        name: basket.productComponentEntityVoList[0].sizes.name
                     }
                 };
                 dispatch(setProduct(basket, false));
