@@ -5,6 +5,7 @@ import com.example.order.application.port.in.command.FindMemberOrderListByMember
 import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
+import com.example.order.domain.OrderAggregationVo;
 import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,12 +35,12 @@ public class FindOrderController {
     }
 
     @GetMapping("/order/member")
-    public ResponseEntity<List<OrderVo>> findOrderByMemberId(@RequestHeader("X-User-Id") Long userId){
+    public ResponseEntity<List<OrderAggregationVo>> findOrderByMemberId(@RequestHeader("X-User-Id") Long userId){
         FindOrderByMemberIdCommand command = FindOrderByMemberIdCommand.builder()
                 .userId(userId)
                 .build();
 
-        List<OrderVo> orderList = findOrderUseCase.findOrderListByMemberId(command);
+        List<OrderAggregationVo> orderList = findOrderUseCase.findOrderListByMemberId(command);
 
         return ResponseEntity.ok().body(orderList);
     }

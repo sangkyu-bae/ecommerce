@@ -108,6 +108,10 @@ export const StyledOrderBox = styled.div`
     .main-box-element-right{
         border-right:1px solid gray;
     }
+    #order{
+        flex:0.5;
+        display:flex;
+    }
     .main-box-first{
         flex:0.7;
         display:flex;

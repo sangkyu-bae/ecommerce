@@ -71,7 +71,6 @@ public class Product {
     public void settingComponent(String colorName, int size){
         List<ProductComponentEntityVo> productComponentEntityVoList = new ArrayList<>();
 
-
         for(ProductComponentEntityVo productComponentEntityVo : this.productComponents){
             ProductComponentEntityVo productComponentEntity = new ProductComponentEntityVo();
 

@@ -3,6 +3,7 @@ package com.example.order.application.port.in.usecase;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
+import com.example.order.domain.OrderAggregationVo;
 import com.example.order.domain.OrderVo;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface FindOrderUseCase {
 
     List<OrderVo> findMemberOrderListByMemberIds(FindMemberOrderListByMemberIdsCommand command);
 
-    List<OrderVo> findOrderListByMemberId(FindOrderByMemberIdCommand command);
+    List<OrderAggregationVo> findOrderListByMemberId(FindOrderByMemberIdCommand command);
 }

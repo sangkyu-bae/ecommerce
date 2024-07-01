@@ -48,6 +48,7 @@ function UseCustomQuery({
     })
 
 
+
     const {data, isLoading, isError, error} = useQuery(
         [queryKey],
         () => select, {
@@ -62,6 +63,10 @@ function UseCustomQuery({
             }
         }
     )
+
+    useEffect(()=>{
+        console.log(data)
+    },[data])
     return {
         submitMutation,
         updateMutation,

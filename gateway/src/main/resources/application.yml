@@ -16,6 +16,7 @@ spring:
             allow-credentials: true
             allowedHeaders: '*'
             allowedMethods:
+              - PATCH
               - PUT
               - GET
               - POST
