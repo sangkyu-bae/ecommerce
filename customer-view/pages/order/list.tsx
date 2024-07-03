@@ -46,14 +46,22 @@ function List(props) {
                                     </div>
                                 </div>
 
-                                {/*{*/}
-                                {/*    data &&*/}
-                                {/*    data.map((obj, index) => <OrderInfoBox*/}
-                                {/*        key={index}*/}
-                                {/*        title={productMap.get(obj.productId)[name]}*/}
-                                {/*        selectProduct={obj}*/}
-                                {/*    />)*/}
-                                {/*}*/}
+                                {
+                                    data &&
+                                    data.map((obj) => <OrderInfoBox
+                                        key={obj.id}
+                                        title={obj.productName}
+                                        colorName={obj.colorName}
+                                        sizeName = {obj.size}
+                                        quantity= {obj.amount}
+                                        price = {obj.payment}
+                                        >
+                                            <div className="main-box-remain">
+                                                <div className="center">{obj.statusCode.name}</div>
+                                            </div>
+                                        </OrderInfoBox>
+                                    )
+                                }
 
                             </StyledOrderBox>
                         </GridComponent>

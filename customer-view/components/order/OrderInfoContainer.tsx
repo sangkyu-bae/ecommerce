@@ -27,7 +27,11 @@ function OrderInfoContainer(props) {
                 selectProducts.map((obj, index) => <OrderInfoBox
                     key={index}
                     title={productMap.get(obj.productId)[name]}
-                    selectProduct={obj}
+                    // selectProduct={obj}
+                    colorName={obj.color.name}
+                    sizeName={obj.size.name}
+                    quantity={obj.quantity}
+                    price={obj.selectPrice}
                 />)
             }
         </>

@@ -64,7 +64,7 @@ public class Product {
         private int quantity;
     }
 
-    public void settingComponent(int colorId, int sizeId){
+    public void settingComponent(long colorId, long sizeId){
         List<ProductComponentEntityVo> productComponentEntityVoList = new ArrayList<>();
 
 

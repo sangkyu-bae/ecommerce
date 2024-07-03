@@ -77,13 +77,14 @@ public class FindOrderService implements FindOrderUseCase {
 
             Product product = productMap.get(orderEntity.getProductId());
             Product cleanProduct = Product.cleanProduct(product);
+            cleanProduct.settingComponent(orderEntity.getColorId(),orderEntity.getSizeId());
             OrderVo.StatusCode statusCode = OrderVo.StatusCode.findStatusCode(orderEntity.getStatus());
 
             OrderAggregationVo orderAggregationVo = OrderAggregationVo.createGenerate(
                     orderEntity.getId(),
                     orderEntity.getAmount(),
                     orderEntity.getPayment(),
-                    cleanProduct.getProductComponents().get(0).getSizes().size(),
+                    cleanProduct.getProductComponents().get(0).getSizes().get(0).getSize(),
                     cleanProduct.getProductImage(),
                     cleanProduct.getDescription(),
                     cleanProduct.getName(),
