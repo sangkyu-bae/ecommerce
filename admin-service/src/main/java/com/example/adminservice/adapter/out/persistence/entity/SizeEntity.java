@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Getter @Setter
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Builder
 @Table(name = "tb_size")
 public class SizeEntity {
 

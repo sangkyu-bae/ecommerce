@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Builder
 @Table(name = "tb_product_component")
 public class ProductComponentEntity {
 

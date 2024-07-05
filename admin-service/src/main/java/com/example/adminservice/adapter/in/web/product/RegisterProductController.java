@@ -1,15 +1,20 @@
 package com.example.adminservice.adapter.in.web.product;
 
+import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.in.request.RegisterProductRequest;
+import com.example.adminservice.adapter.out.persistence.entity.*;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
+import com.example.adminservice.adapter.out.persistence.repository.*;
 import com.example.adminservice.application.port.in.command.RegisterBrandCommand;
 import com.example.adminservice.application.port.in.command.RegisterCategoryCommand;
 import com.example.adminservice.application.port.in.command.RegisterProductCommand;
 import com.example.adminservice.application.port.in.usecase.product.RegisterProductUseCase;
 import com.example.adminservice.application.port.in.command.RegisterProductComponentCommand;
+import com.example.adminservice.domain.Category;
 import com.example.adminservice.domain.ProductVo;
 
 
+import com.example.adminservice.domain.SizeCheck;
 import com.example.adminservice.infra.error.ErrorException;
 import com.example.adminservice.infra.error.ProductErrorCode;
 import com.example.adminservice.vaildator.RegisterProductCommandValidator;
@@ -24,7 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
+import java.util.*;
 
 @WebAdapter
 @RestController
@@ -35,6 +40,15 @@ public class RegisterProductController {
     private final RegisterProductUseCase registerProductUseCase;
     private final ProductMapper productMapper;
     private final RegisterProductCommandValidator validator;
+    private final SpringDataProductRepository productRepository;
+    private final ColorEntityRepository colorEntityRepository;
+
+    private final BrandEntityRepository brandEntityRepository;
+    private final CategoryEntityRepository categoryEntityRepository;
+
+    private final SizeEntityRepository sizeEntityRepository;
+
+    private final ProductComponetEntity
     @Operation(summary = "register product", description = "상품 등록하기")
     @PostMapping("/admin/register/product")
     public ResponseEntity<ProductVo> registerProduct(@RequestBody RegisterProductRequest registerProductRequest) {
@@ -66,5 +80,84 @@ public class RegisterProductController {
         ProductVo productVo = registerProductUseCase.registerProduct(command);
 
         return ResponseEntity.ok().body(productVo);
+    }
+
+    @Operation(summary = "register product", description = "상품 등록하기")
+    @PostMapping("/admin/register-test-bulk")
+    public void registerProductBulkTest(){
+
+        List<ProductEntity> productEntities = new ArrayList<>();
+
+        List<ColorEntity> colorEntityList = colorEntityRepository.findAll();
+        int colorSize = colorEntityList.size();
+        Random colorRandom = new Random();
+
+        List<BrandEntity> brandEntityList = brandEntityRepository.findAll();
+        int brandSize = brandEntityList.size();
+        Random brandRandom = new Random();
+
+        List<CategoryEntity> categoryList = categoryEntityRepository.findAll();
+        int categorySize = categoryList.size();
+        Random categoryRandom = new Random();
+
+        Random quantityRandom = new Random();
+
+
+        for(int i = 1 ; i <= 2; i++){
+            String name = "testProduct : " + i;
+            int price = i * 1000;
+            String description = "testProduct Description : " + i;
+            String aggregateIdentifier = UUID.randomUUID().toString();
+            int brandRandomIndex = brandRandom.nextInt(brandSize);
+            int categoryRandomIndex = categoryRandom.nextInt(categorySize);
+
+            ProductEntity productEntity = ProductEntity.builder()
+                    .name(name)
+                    .price(price)
+                    .description(description)
+                    .aggregateIdentifier(aggregateIdentifier)
+                    .brand(brandEntityList.get(brandRandomIndex))
+                    .category(categoryList.get(categoryRandomIndex))
+                    .build();
+            List<ProductComponentEntity> productComponentEntities = new ArrayList<>();
+
+            for(int j = 0 ;  j < colorSize ; j++){
+                ProductComponentEntity productComponent = ProductComponentEntity.builder()
+                        .color(colorEntityList.get(j))
+                        .product(productEntity)
+                        .build();
+
+                List<SizeEntity> sizeEntities = new ArrayList<>();
+                List<Integer> sizeList = SizeCheck.getSize();
+
+                for(int z = 0 ; z < sizeList.size(); z++){
+                    SizeEntity sizeEntity = SizeEntity.builder()
+                            .size(sizeList.get(z))
+                            .quantity(quantityRandom.nextInt(10000))
+                            .productComponent(productComponent)
+                            .build();
+
+                    sizeEntities.add(sizeEntity);
+                }
+
+                sizeEntityRepository.saveAll(sizeEntities);
+                productComponent.setSizes((Set<SizeEntity>) sizeEntities);
+                productComponentEntities.add(productComponent);
+            }
+
+            productEntity.setProductComponents((Set<ProductComponentEntity>) productComponentEntities);
+
+
+//            ProductCreateCommand axonCommand = ProductCreateCommand.builder()
+//                    .productImage(command.getProductImage())
+//                    .price(command.getPrice())
+//                    .description(command.getDescription())
+//                    .name(command.getName())
+//                    .aggregateIdentifier(aggregate)
+//                    .build();
+            productEntities.add(productEntity);
+        }
+
+        productRepository.saveAll(productEntities);
     }
 }

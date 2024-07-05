@@ -15,6 +15,8 @@ import org.example.event.CheckRegisteredProductEvent;
 import org.example.event.rollback.RollbackProductFinishedEvent;
 import org.example.event.rollback.RollbackRequestProductCommand;
 
+import java.util.List;
+
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
 @Aggregate()
@@ -113,6 +115,9 @@ public class ProductAggregate {
         description = event.getDescription();
         productImage = event.getProductImage();
     }
+
+
+
 
     public ProductAggregate() {
 
