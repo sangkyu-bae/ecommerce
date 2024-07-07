@@ -21,6 +21,7 @@ import com.example.adminservice.vaildator.RegisterProductCommandValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -45,10 +46,8 @@ public class RegisterProductController {
 
     private final BrandEntityRepository brandEntityRepository;
     private final CategoryEntityRepository categoryEntityRepository;
+    private final CommandGateway commandGateway;
 
-    private final SizeEntityRepository sizeEntityRepository;
-
-    private final ProductComponetEntity
     @Operation(summary = "register product", description = "상품 등록하기")
     @PostMapping("/admin/register/product")
     public ResponseEntity<ProductVo> registerProduct(@RequestBody RegisterProductRequest registerProductRequest) {
@@ -82,7 +81,10 @@ public class RegisterProductController {
         return ResponseEntity.ok().body(productVo);
     }
 
-    @Operation(summary = "register product", description = "상품 등록하기")
+    /**
+     * todo : bulk insert로 성능 개선 기본키 전략에 의해 쓰기 지연 안됨 (mysql시)
+     * */
+    @Operation(summary = "register product", description = "test 상품 등록하기")
     @PostMapping("/admin/register-test-bulk")
     public void registerProductBulkTest(){
 
@@ -103,7 +105,7 @@ public class RegisterProductController {
         Random quantityRandom = new Random();
 
 
-        for(int i = 1 ; i <= 2; i++){
+        for(int i = 1 ; i <= 10000; i++){
             String name = "testProduct : " + i;
             int price = i * 1000;
             String description = "testProduct Description : " + i;
@@ -140,24 +142,34 @@ public class RegisterProductController {
                     sizeEntities.add(sizeEntity);
                 }
 
-                sizeEntityRepository.saveAll(sizeEntities);
-                productComponent.setSizes((Set<SizeEntity>) sizeEntities);
+                Set<SizeEntity> sizeEntitySet = new HashSet<>(sizeEntities);
+                productComponent.setSizes(sizeEntitySet);
                 productComponentEntities.add(productComponent);
+
             }
 
-            productEntity.setProductComponents((Set<ProductComponentEntity>) productComponentEntities);
+            Set<ProductComponentEntity> productComponentEntitySet = new HashSet<>(productComponentEntities);
+            productEntity.setProductComponents(productComponentEntitySet);
 
-
-//            ProductCreateCommand axonCommand = ProductCreateCommand.builder()
-//                    .productImage(command.getProductImage())
-//                    .price(command.getPrice())
-//                    .description(command.getDescription())
-//                    .name(command.getName())
-//                    .aggregateIdentifier(aggregate)
-//                    .build();
+            ProductCreateCommand axonCommand = ProductCreateCommand.builder()
+                    .productImage(productEntity.getProductImage())
+                    .price(productEntity.getPrice())
+                    .description(productEntity.getDescription())
+                    .name(productEntity.getName())
+                    .aggregateIdentifier(productEntity.getAggregateIdentifier())
+                    .build();
+            commandGateway.send(axonCommand).whenComplete((result, throwable)->{
+                if(throwable != null){
+                    log.error("throwable = " + throwable);
+                    throw new RuntimeException(throwable);
+                }else{
+                    log.info("result = " + result);
+                }
+            });
             productEntities.add(productEntity);
         }
 
         productRepository.saveAll(productEntities);
+
     }
 }

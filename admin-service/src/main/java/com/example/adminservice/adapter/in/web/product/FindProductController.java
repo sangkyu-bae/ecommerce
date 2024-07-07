@@ -64,12 +64,17 @@ public class FindProductController {
     @Operation(summary = "find paging product", description = "상품 페이징")
     @GetMapping("/admin/page/product/{pageNum}")
     public ResponseEntity<ProductSearchVo> findPagingProduct(@PathVariable("pageNum") int pageNum){
+        long startTime = System.currentTimeMillis();
 
         FindPagingProductCommand command = FindPagingProductCommand.builder()
                 .pageNum(pageNum)
                 .build();
 
         ProductSearchVo productSearchVo = findProductUseCase.findPagingProduct(command);
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        log.info("Execution time for findPagingProduct: {} ms", duration);
 
         return ResponseEntity.ok().body(productSearchVo);
     }

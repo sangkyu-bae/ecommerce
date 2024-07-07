@@ -6,16 +6,17 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Getter @Setter @EqualsAndHashCode(of="id")
-@AllArgsConstructor @NoArgsConstructor @Builder
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor @Builder @ToString
 @Table(name = "tb_product_component")
 public class ProductComponentEntity {
 
     @Id @GeneratedValue
-    private long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private ColorEntity color;
@@ -39,6 +40,18 @@ public class ProductComponentEntity {
             sizes = new HashSet<>();
         }
         sizes.add(size);
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductComponentEntity productComponent = (ProductComponentEntity) o;
+        return Objects.equals(id, productComponent.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : super.hashCode();
     }
 
 }
