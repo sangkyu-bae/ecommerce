@@ -41,4 +41,33 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
         return new PageImpl<>(fetchResults.getResults(),pageable, fetchResults.getTotal());
     }
 
+    @Override
+    public Page<ProductEntity> findTest(Pageable pageable) {
+
+        QProductEntity qProductEntity  = QProductEntity.productEntity;
+        QColorEntity qColorEntity = QColorEntity.colorEntity;
+        QCategoryEntity qCategoryEntity = QCategoryEntity.categoryEntity;
+        QSizeEntity qSizeEntity = QSizeEntity.sizeEntity;
+        QProductComponentEntity qProductComponentEntity = QProductComponentEntity.productComponentEntity;
+        QBrandEntity qBrand = QBrandEntity.brandEntity;
+
+//        JPQLQuery<ProductEntity> query = from(qProductEntity)
+//                .leftJoin(qProductEntity.brand, qBrand).fetchJoin()
+//                .leftJoin(qProductEntity.category, qCategoryEntity).fetchJoin()
+//                .leftJoin(qProductEntity.productComponents, qProductComponentEntity).fetchJoin()
+//                .leftJoin(qProductComponentEntity.color,qColorEntity).fetchJoin()
+//                .leftJoin(qProductComponentEntity.sizes,qSizeEntity).fetchJoin()
+//                .limit(10)
+//                .distinct();
+        JPQLQuery<ProductEntity> query = from(qProductEntity)
+                .leftJoin(qProductEntity.brand, qBrand).fetchJoin()
+                .leftJoin(qProductEntity.category, qCategoryEntity).fetchJoin()
+                .leftJoin(qProductEntity.productComponents, qProductComponentEntity).fetchJoin()
+                .limit(10)
+                .distinct();
+
+        List<ProductEntity> productEntities =  query.fetch();
+        return new PageImpl<>(productEntities);
+    }
+
 }

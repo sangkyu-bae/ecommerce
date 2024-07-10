@@ -12,4 +12,6 @@ public interface ProductEntityRepositoryExtension {
 
     Page<ProductEntity> findWithPageByAll(Pageable pageable);
 
+    Page<ProductEntity> findTest(Pageable pageable);
+
 }
