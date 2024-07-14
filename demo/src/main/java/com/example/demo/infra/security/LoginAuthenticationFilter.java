@@ -108,7 +108,8 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
         // body 설정
         Map<String, Object> tokens = Map.of(
                 "accessToken", accessToken,
-                "accessExpiredTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(expiredTime)
+                "accessExpiredTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(expiredTime),
+                "userName", member.getName()
         );
 
         new ObjectMapper().writeValue(response.getOutputStream(), Result.createSuccessResult(tokens));

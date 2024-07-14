@@ -23,26 +23,39 @@ function MainSection(props) {
         <StyledContent isFull={true}>
             <StyledSetion isFull={true}>
                 <GridComponent title={"💎베스트 상품"}/>
-                <Box  sx={{display:'flex', width:'100%'}} >
-                {
-                    products.length > 0 && products.map(product=>
-                        <Link   key={product.productId} href={`/product/${product.productId}`} style={{
-                            textDecoration: 'none',
-                            color: 'inherit',
-                        }}>
-                            <ProductCardComponent product={product}/>
-                        </Link>
+                <Box  sx={{width:'100%'}} >
+                    <Box sx={{display:'flex', margin:'0 auto', width:'70%'}}>
+                        {
+                            products.length > 0 && products.map(product=>
+                                <Link   key={product.productId} href={`/product/${product.productId}`} style={{
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                    marginRight:'3em'
+                                }}>
+                                    <ProductCardComponent product={product}/>
+                                </Link>
 
-                    )
-                }
+                            )
+                        }
+                    </Box>
+
                 </Box>
                 <GridComponent title={"상품"}/>
-                <Box  sx={{display:'flex', width:'100%'}} >
-                    {
-                        products.length > 0 && products.map(product=>
-                            <ProductCardComponent key={product.productId} product={product}/>
-                        )
-                    }
+                <Box  sx={{ width:'100%'}} >
+                    <Box sx={{display:'flex', margin:'0 auto', width:'70%'}}>
+                        {
+                            products.length > 0 && products.map (product=>
+                            <Link   key={product.productId} href={`/product/${product.productId}`} style={{
+                                textDecoration: 'none',
+                                color: 'inherit',
+                                marginRight:'3em'
+                            }}>
+                                    <ProductCardComponent key={product.productId} product={product}/>
+                            </Link>
+                            )
+                        }
+                    </Box>
+
                 </Box>
             </StyledSetion>
 
