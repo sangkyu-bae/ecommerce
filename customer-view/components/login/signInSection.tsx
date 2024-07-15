@@ -14,6 +14,7 @@ import {setToken} from "@/shared/api/cookie/Cookie";
 import {useRecoilState} from "recoil";
 import {loginState} from "@/contexts/Recoil";
 import {useMutation} from "@tanstack/react-query";
+import {useAuth} from "@/shared/hook/useAuth";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
@@ -21,24 +22,23 @@ function SignInSection(props) {
         signInMutation.mutate(loginData)
     };
 
+    const {onLogin,userName} = useAuth();
+    useEffect(()=>{
+        console.log(userName);
+    },[userName])
     const [login,setLogin]=useRecoilState<LoginState>(loginState);
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
-            console.log("onMutate", variable);
+            console.log("ponMutate", variable);
         },
         onError: (error, variable, context) => {
             // error
             console.log(error)
         },
         onSuccess: (data, variables, context) => {
-            // const loginData=data.data;
-            const {accessToken,expiredTime}=data.data;
-            setToken('ACCESS_TOKEN',accessToken,expiredTime);
-            // setLogin({
-            //     token:accessToken,
-            //     expiredTime:expiredTime,
-            //     isLogin:true
-            // })
+            const {accessToken,accessExpiredTime,userName}=data.data;
+            setToken('ACCESS_TOKEN',accessToken,accessExpiredTime);
+            onLogin(accessExpiredTime, accessToken, userName);
         },
         onSettled: () => {
             console.log("end");

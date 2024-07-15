@@ -11,7 +11,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools }from '@tanstack/react-query-devtools';
 import {Provider as MyProvider} from 'react-redux';
 import {configureStore} from "@reduxjs/toolkit";
-import rootReducer from "@/store/configStroe";
+import rootReducer, {persistor} from "@/store/configStroe";
+import {PersistGate} from "redux-persist/integration/react";
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -28,30 +30,22 @@ const queryClient = new QueryClient({
     },
 });
 
-// const queryClient = new QueryClient({
-//     defaultOptions: {
-//         queries: {
-//             networkMode: 'offlineFirst',
-//         },
-//         mutations: {
-//             networkMode: 'offlineFirst',
-//         },
-//     },
-// })
 const store = configureStore({reducer : rootReducer} );
 export default function App({Component, pageProps}: AppProps) {
 
     return (
         <QueryClientProvider client={queryClient}>
             <MyProvider store={store}>
-                <RecoilRoot>
-                    <div>
-                        <CssBaseline/>
-                        <Header></Header>
-                        <Component {...pageProps} />
-                        <Copyright sx={{mt: 5}}/>
-                    </div>
-                </RecoilRoot>
+                <PersistGate loading={null} persistor={persistor}>
+                    <RecoilRoot>
+                        <div>
+                            <CssBaseline/>
+                            <Header></Header>
+                            <Component {...pageProps} />
+                            <Copyright sx={{mt: 5}}/>
+                        </div>
+                    </RecoilRoot>
+                </PersistGate>
             </MyProvider>
             <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
         </QueryClientProvider>
