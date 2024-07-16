@@ -1,14 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import {login, logout} from "@/store/auth/authRedux";
-
 export const useAuth = () =>{
     const dispatch = useDispatch();
     const {accessExpiredTime,accessToken,userName,isLogin} : Auth = useSelector(state => state.authRedux);
 
-    useEffect(()=>{
-        console.log(userName)
-    },[userName])
 
     const onLogin = ( accessExpiredTime : string,
                     accessToken : string,
@@ -28,6 +23,9 @@ export const useAuth = () =>{
     ]
 
     const getAccessToken = () =>{
+        if (accessExpiredTime && new Date(accessExpiredTime) < new Date()) {
+            // router.push('/signIn');
+        }
         return accessToken
     }
 

@@ -1,4 +1,4 @@
-import {combineReducers, createStore} from "redux";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import productRedux from "@/store/product/productRedux";
 import authRedux from "@/store/auth/authRedux";
 import storage from 'redux-persist/lib/storage';
@@ -9,17 +9,21 @@ const persistConfig = {
     storage,
     blacklist: ['productRedux']
 };
-const rootReducer =combineReducers({
-    productRedux:productRedux,
+
+const rootReducer = combineReducers({
+    productRedux: productRedux,
     authRedux: authRedux
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store =createStore(persistedReducer);
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
+
+    devTools: true,
+});
 
 const persistor = persistStore(store);
 
-export default rootReducer;
-
-export {store,persistor}
+export { store, persistor };
