@@ -1,4 +1,4 @@
-package com.example.adminservice.application.service.brand;
+package com.example.adminservice.application.service.product;
 
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
@@ -46,9 +46,10 @@ public class FindProductService implements FindProductUseCase {
     @Override
     public ProductSearchVo findPagingProduct(FindPagingProductCommand command) {
         ProductSearchVo.PageNumber pageNumber = new ProductSearchVo.PageNumber(command.getPageNum());
-//        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6, Sort.Direction.ASC,"id" );
-        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6);
+        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6, Sort.Direction.ASC,"id" );
         Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
+//        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6);
+//        Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
 
         return productMapper.mapToDomainEntity(findPagingProduct);
     }

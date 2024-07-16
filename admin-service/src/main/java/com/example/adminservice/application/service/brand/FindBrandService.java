@@ -1,4 +1,4 @@
-package com.example.adminservice.application.service.product;
+package com.example.adminservice.application.service.brand;
 
 import com.example.adminservice.adapter.out.persistence.entity.BrandEntity;
 import com.example.adminservice.adapter.out.persistence.brand.BrandMapper;

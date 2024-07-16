@@ -1,4 +1,4 @@
-package com.example.adminservice.application.service.brand;
+package com.example.adminservice.application.service.product;
 
 import com.example.adminservice.application.port.in.usecase.product.RemoveProductUseCase;
 import com.example.adminservice.application.port.in.command.DeleteProductCommand;

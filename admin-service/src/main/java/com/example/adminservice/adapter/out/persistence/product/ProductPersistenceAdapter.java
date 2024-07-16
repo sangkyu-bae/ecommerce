@@ -68,8 +68,9 @@ public class ProductPersistenceAdapter implements FindProductPort,
     @Override
     @Transactional(readOnly = true)
     public Page<ProductEntity> findPagingProduct(Pageable pageable) {
-//        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
+
         long startTime = System.currentTimeMillis();
+//        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
 //        Page<ProductEntity> productPage = springDataProductRepository.findTest(pageable);
         Page<ProductEntity> productPage = springDataProductRepository.findAll(pageable);
         System.out.println(productPage.getTotalElements());

@@ -1,4 +1,4 @@
-package com.example.adminservice.application.service.brand;
+package com.example.adminservice.application.service.product;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.out.persistence.product.*;
