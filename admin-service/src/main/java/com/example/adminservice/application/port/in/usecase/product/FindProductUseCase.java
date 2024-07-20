@@ -1,9 +1,6 @@
 package com.example.adminservice.application.port.in.usecase.product;
 
-import com.example.adminservice.application.port.in.command.ExistProductCommand;
-import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
-import com.example.adminservice.application.port.in.command.FindProductByProductIdsCommand;
-import com.example.adminservice.application.port.in.command.FindProductCommand;
+import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
 
@@ -15,6 +12,7 @@ public interface FindProductUseCase {
 
     ProductSearchVo findPagingProduct(FindPagingProductCommand command);
 
+    ProductSearchVo findPagingProductByCategory(FindPagingProductByCategoryCommand command);
     boolean existProductBySizeId(ExistProductCommand command);
 
     List<ProductVo> findProductAll();

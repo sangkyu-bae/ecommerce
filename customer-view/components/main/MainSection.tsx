@@ -55,7 +55,6 @@ function MainSection(props) {
                             )
                         }
                     </Box>
-
                 </Box>
             </StyledSetion>
 

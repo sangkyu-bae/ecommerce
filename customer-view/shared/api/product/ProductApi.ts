@@ -35,5 +35,14 @@ export const ProductApi = {
         const url =`${productURL}/find/${productId}`;
         const {data} = await ApiCommon.loginJsonAPI.get(url);
         return data;
+    },
+    readPagingByCategory : async (categoryId:number | null, pageNum : number)=>{
+        let url = `${productURL}/page/product/${pageNum}`
+        if (categoryId != null) {
+            url += `/${categoryId}`;
+        }
+
+        const {data} = await ApiCommon.basicAPI.get(url);
+        return data;
     }
 }

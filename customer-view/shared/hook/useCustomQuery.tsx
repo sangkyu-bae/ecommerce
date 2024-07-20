@@ -52,8 +52,8 @@ function UseCustomQuery({
     const {data, isLoading, isError, error} = useQuery(
         [queryKey],
         () => select, {
-            staleTime: 60000,
-            enabled: queryKey != null && refetch,
+            // staleTime: 60000,
+            // enabled: queryKey != null && refetch,
             onSuccess: data => {
                 console.log("요청원료")
                 console.log(data)
@@ -63,10 +63,10 @@ function UseCustomQuery({
             }
         }
     )
-
     useEffect(()=>{
-        console.log(data)
+        console.log(data);
     },[data])
+
     return {
         submitMutation,
         updateMutation,

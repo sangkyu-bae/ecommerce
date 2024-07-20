@@ -1,14 +1,14 @@
 package com.example.adminservice.adapter.in.web.product;
 
-import com.example.adminservice.application.port.in.command.ExistProductCommand;
-import com.example.adminservice.application.port.in.command.FindProductByProductIdsCommand;
+import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
-import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
-import com.example.adminservice.application.port.in.command.FindProductCommand;
 
 
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
+import com.example.adminservice.infra.error.CategoryErrorCode;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.vaildator.FindPagingProductByCategoryCommandValidator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -18,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -30,6 +32,8 @@ import java.util.List;
 @Slf4j
 public class FindProductController {
     private final FindProductUseCase findProductUseCase;
+
+    private final FindPagingProductByCategoryCommandValidator validator;
 
 
     @Operation(summary = "find product", description = "상품 조회하기")
@@ -72,6 +76,31 @@ public class FindProductController {
 
         ProductSearchVo productSearchVo = findProductUseCase.findPagingProduct(command);
 
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        log.info("Execution time for findPagingProduct: {} ms", duration);
+
+        return ResponseEntity.ok().body(productSearchVo);
+    }
+
+    @Operation(summary = "find paging product", description = "상품 카테고리별 페이징")
+    @GetMapping("/admin/page/product/{pageNum}/{categoryId}")
+    public ResponseEntity<ProductSearchVo> findPagingProductByCategory(@PathVariable("pageNum") int pageNum,
+                                                                       @PathVariable("categoryId") long categoryId){
+        long startTime = System.currentTimeMillis();
+
+        FindPagingProductByCategoryCommand command = FindPagingProductByCategoryCommand.builder()
+                .categoryId(categoryId)
+                .pageNum(pageNum)
+                .build();
+
+        Errors errors = new BeanPropertyBindingResult(command,"command");
+        validator.validate(command,errors);
+
+        if(errors.hasErrors()){
+            throw new ErrorException(CategoryErrorCode.CATEGORY_NOT_FOUND,"findPagingProductByCategory");
+        }
+        ProductSearchVo productSearchVo = findProductUseCase.findPagingProductByCategory(command);
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
         log.info("Execution time for findPagingProduct: {} ms", duration);
