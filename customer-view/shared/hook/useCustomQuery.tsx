@@ -52,8 +52,9 @@ function UseCustomQuery({
     const {data, isLoading, isError, error} = useQuery(
         [queryKey],
         () => select, {
-            // staleTime: 60000,
+            staleTime: 20000,
             // enabled: queryKey != null && refetch,
+            enabled:true,
             onSuccess: data => {
                 console.log("요청원료")
                 console.log(data)

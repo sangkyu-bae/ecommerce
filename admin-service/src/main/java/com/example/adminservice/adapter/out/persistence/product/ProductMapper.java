@@ -60,7 +60,8 @@ public class ProductMapper {
                 new ProductSearchVo.ProductList(productVoList),
                 new ProductSearchVo.PageNumber(pagingProduct.getNumber()),
                 new ProductSearchVo.PageSize(pagingProduct.getSize()),
-                new ProductSearchVo.TotalElement(pagingProduct.getTotalElements())
+                new ProductSearchVo.TotalElement(pagingProduct.getTotalElements()),
+                new ProductSearchVo.PageTotalPage(pagingProduct.getTotalPages())
         );
     }
 

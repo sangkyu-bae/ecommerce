@@ -19,17 +19,21 @@ public class ProductSearchVo {
 
     private final long totalElement;
 
+    private final int totalPage;
+
     public static ProductSearchVo createGenerateProductSearchVo(
             ProductList productList,
             PageNumber pageNumber,
             PageSize pageSize,
-            TotalElement pageTotalElement
+            TotalElement pageTotalElement,
+            PageTotalPage pageTotalPage
     ){
         return new ProductSearchVo(
                 productList.getProductList(),
                 pageNumber.getPageNumber(),
                 pageSize.getPageSize(),
-                pageTotalElement.getTotalElement()
+                pageTotalElement.getTotalElement(),
+                pageTotalPage.getTotalPage()
         );
     }
 
@@ -64,5 +68,14 @@ public class ProductSearchVo {
             this.productList = value;
         }
         List<ProductVo> productList;
+    }
+
+    @Value
+    public static class PageTotalPage{
+        private int totalPage;
+
+        public PageTotalPage(int value){
+            this.totalPage = value;
+        }
     }
 }

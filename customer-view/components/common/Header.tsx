@@ -29,7 +29,16 @@ function Header(props) {
                         </Link>
                     </Box>
 
-
+                    <Box sx={{flex:'0.9', display:'flex'}} >
+                        <Link href='/product/list' style={{
+                            textDecoration: 'none',
+                            color: 'inherit',
+                        }}>
+                            <Typography variant="h6" component="div">
+                                상품목록
+                            </Typography>
+                        </Link>
+                    </Box>
                     <Link href='/signIn'>
                         <LoginIcon style={{
                             textDecoration: 'none',
