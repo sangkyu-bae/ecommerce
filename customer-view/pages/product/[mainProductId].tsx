@@ -13,7 +13,8 @@ import {useBasket} from "@/shared/hook/useBasket";
 function DetailUserProduct() {
     const router = useRouter()
     const {mainProductId}: number = router.query;
-    const {data, isLoading, isError, error} = useProduct(mainProductId);
+    const searchPage : string | null= router.query.searchPage;
+    const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
     const {isOrderData, selectProducts} = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -22,6 +23,11 @@ function DetailUserProduct() {
             dispatch(setProduct(data,false))
         }
     }, [data])
+
+    useEffect(()=>{
+
+        console.log(data)
+    },[isLoading])
 
 
     const orderProduct = () => {
@@ -45,7 +51,7 @@ function DetailUserProduct() {
     return (
         <>
             {
-                !isLoading &&
+                !isLoading && data &&
                 <ProductInfo productData={data}>
                     <div className="flex">
                         <ProductInfo.ProductImage/>

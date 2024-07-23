@@ -82,6 +82,7 @@ function ProductSizeQuantity(props) {
     }, [colorValue, sizeValue])
 
     const sizeData = useMemo(() => {
+        // debugger
         return productData.productComponents
             .find(data => data.color.id == colorValue.id)
             ?.sizes || [];

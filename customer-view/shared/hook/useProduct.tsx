@@ -3,7 +3,7 @@ import {ProductApi} from "@/shared/api/product/ProductApi";
 import productRedux, {initProduct, setProduct} from "@/store/product/productRedux";
 import {useDispatch, useSelector} from "react-redux";
 
-function useProduct(productId:number){
+function useProduct(productId:number,searchPage:string|null){
 
     // const {data, isLoading, isError, error} = useQuery(
     //     ['productData'],
@@ -27,7 +27,7 @@ function useProduct(productId:number){
             initialData: () => {
 
                 const productList = queryClient
-                    .getQueryData(['searchProduct1'])?.productVoList;
+                    .getQueryData(['searchProduct',`${searchPage}`])?.productVoList;
 
                 if(!productList){
                     return undefined
@@ -36,9 +36,7 @@ function useProduct(productId:number){
 
                 console.log(product)
                 if (product) {
-                    return {
-                        data: product,
-                    };
+                    return product
                 } else {
                     return undefined;
                 }

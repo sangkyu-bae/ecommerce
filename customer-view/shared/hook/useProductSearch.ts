@@ -3,22 +3,26 @@ import useCustomQuery from "@/shared/hook/useCustomQuery";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {useQuery} from "@tanstack/react-query";
 
-export const useProductSearch= (categoryId:number | null, pageNum: number)=>{
+export const useProductSearch= (categoryId:number | null,
+                                pageNum: number
+                                )=>{
 
     const [pageInfo,setPageInfo] = useState({
         categoryId : categoryId,
-        pageNum : pageNum
+        pageNum : pageNum,
+        totalPage :0
     });
 
     const {data, isLoading, isError, error,isFetching} = useQuery(
-        [`searchProduct${pageInfo.pageNum}`],
+        [`searchProduct`,`${pageInfo.pageNum}`],
         () => ProductApi.readPagingByCategory(pageInfo.categoryId,pageInfo.pageNum), {
             staleTime: 20000,
-            // enabled: queryKey != null && refetch,
             enabled:true,
             onSuccess: data => {
-                console.log(data)
-                console.log("요청원료")
+                setPageInfo(prev =>({
+                    ...prev,
+                    totalPage:data.totalPage
+                }))
             },
             onError: e => {
                 console.log(e.message)
@@ -26,33 +30,35 @@ export const useProductSearch= (categoryId:number | null, pageNum: number)=>{
         }
     )
 
-    const nextPage = () =>{
-        const {pageNum} = pageInfo
-
+    const movePage = (value) =>{
         setPageInfo(prev => ({
             ...prev,
-            pageNum:pageNum+1
-        }));
+            pageNum: value
+        }))
     }
 
-    const pervPage = () =>{
-        const {pageNum} = pageInfo
+    const getTotalPage = () =>{
+        const {totalPage} = pageInfo;
 
-        if(pageNum < 1){
-            return;
+        if(totalPage < 0){
+            return 0;
         }
 
-        setPageInfo(prev=>({
-            ...prev,
-            pageNum: pageNum-1
-        }))
+        return totalPage;
+    }
+
+    const getPage = () =>{
+        const {pageNum} = pageInfo;
+
+        return pageNum;
     }
 
     return {
         data:data,
         isLoading:isLoading,
         error:error,
-        nextPage:nextPage,
-        pervPage:pervPage
+        movePage:movePage,
+        getTotalPage:getTotalPage,
+        getPage:getPage
     }
 }

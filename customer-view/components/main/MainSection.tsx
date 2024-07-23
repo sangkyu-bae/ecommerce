@@ -32,7 +32,10 @@ function MainSection(props) {
                                     color: 'inherit',
                                     marginRight:'3em'
                                 }}>
-                                    <ProductCardComponent product={product}/>
+                                    <ProductCardComponent
+                                        image={product.productImage}
+                                        productName={product.productName}
+                                    />
                                 </Link>
 
                             )
@@ -42,7 +45,10 @@ function MainSection(props) {
                 </Box>
                 <GridComponent title={"상품"}/>
                 <Box  sx={{ width:'100%'}} >
-                    <Box sx={{display:'flex', margin:'0 auto', width:'70%'}}>
+                    <Box sx={{
+                        display:'flex',
+                        margin:'0 auto',
+                        width:'70%'}}>
                         {
                             products.length > 0 && products.map (product=>
                             <Link   key={product.productId} href={`/product/${product.productId}`} style={{
@@ -50,7 +56,10 @@ function MainSection(props) {
                                 color: 'inherit',
                                 marginRight:'3em'
                             }}>
-                                    <ProductCardComponent key={product.productId} product={product}/>
+                                    <ProductCardComponent
+                                        image={product.productImage}
+                                        productName={product.productName}
+                                    />
                             </Link>
                             )
                         }
