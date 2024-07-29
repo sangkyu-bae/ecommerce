@@ -43,7 +43,7 @@ public class FindProductService implements FindProductUseCase {
     @Override
     public ProductSearchVo findPagingProduct(FindPagingProductCommand command) {
         ProductSearchVo.PageNumber pageNumber = new ProductSearchVo.PageNumber(command.getPageNum());
-        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6, Sort.Direction.ASC,"id" );
+        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,8, Sort.Direction.ASC,"id" );
         Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
 //        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6);
 //        Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
@@ -54,7 +54,7 @@ public class FindProductService implements FindProductUseCase {
     @Override
     public ProductSearchVo findPagingProductByCategory(FindPagingProductByCategoryCommand command) {
         ProductSearchVo.PageNumber pageNumber = new ProductSearchVo.PageNumber(command.getPageNum());
-        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6, Sort.Direction.ASC,"id" );
+        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,8, Sort.Direction.ASC,"id" );
         Page<ProductEntity> findPagingProductByCategory = findProductPort.findPagingProductByCategory(pageable,command.getCategoryId());
         return productMapper.mapToDomainEntity(findPagingProductByCategory);
     }

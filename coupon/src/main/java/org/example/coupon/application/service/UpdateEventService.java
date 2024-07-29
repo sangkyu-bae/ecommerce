@@ -30,12 +30,10 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     private final RegisterCouponPort registerCouponPort;
 
     @Override
-    @DistributedLock(key = "#lockName")
-    public boolean decreaseEventCoupon(String lockName, CouponIssuanceCommand command) {
+    @DistributedLock(key = "#couponName")
+    public boolean decreaseEventCoupon(String couponName, CouponIssuanceCommand command) {
 
-        EventEntity decreaseEventCoupon = updateEventPort.decreaseEventCoupon(
-                new Event.EventId(command.getEventCouponId())
-        );
+        updateEventPort.decreaseEventCoupon(new Event.EventId(command.getEventCouponId()));
 
         CouponComponent couponComponent = CouponComponent.createGenerateCouponComponentVo(
                 new CouponComponent.CouponComponentId(null),
