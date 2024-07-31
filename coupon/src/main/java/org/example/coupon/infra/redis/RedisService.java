@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RedisService {
+
     private final RedissonClient redissonClient;
 
-
+    @DistributedLock(key ="#lockName")
     public void lock(String key){
 
     }

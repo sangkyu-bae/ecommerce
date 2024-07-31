@@ -68,7 +68,8 @@ axon:
 ##########################
 app:
   bootstrapServer: localhost:9092
-
+event:
+  coupon:event-coupon
 
 ##########################
 # Redis config #########

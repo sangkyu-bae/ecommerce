@@ -4,11 +4,9 @@ import lombok.*;
 import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.error.EventErrorCode;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,12 +23,14 @@ public class EventEntity {
     private String couponName;
 
     private int salePercent;
-
     private int quantity;
 
     private LocalDateTime startAt;
 
     private LocalDateTime endAt;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "event")
+    private List<CouponComponentEntity> couponComponents;
 
     public void decreaseQuantity(){
         if(quantity > 0){

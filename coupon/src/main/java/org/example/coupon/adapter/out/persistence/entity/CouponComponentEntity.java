@@ -25,4 +25,8 @@ public class CouponComponentEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CouponEntity coupon;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private EventEntity event;
+
 }

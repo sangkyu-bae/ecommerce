@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.example.WebAdapter;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
+import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.in.usecase.UpdateEventCouponUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,14 @@ public class UpdateCouponEventController {
 
     @Operation(summary = "issuance event Coupon", description = "이벤트 쿠폰 발급 받기  (대기열)")
     @PatchMapping("/coupon/event/queue/{eventId}")
-    public ResponseEntity<String> processCouponIssuanceQueue(@PathVariable("eventId") long eventId){
+    public ResponseEntity<String> processCouponIssuanceQueue(@PathVariable("eventId") long eventId,
+                                                             @RequestHeader("X-User-Id") long userId){
+        UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
+                .eventId(eventId)
+                .userId(userId)
+                .build();
+
+
         return null;
     }
 }
