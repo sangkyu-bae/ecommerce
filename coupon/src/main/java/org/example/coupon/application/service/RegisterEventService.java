@@ -9,6 +9,7 @@ import org.example.coupon.application.port.in.command.RegisterCouponCommand;
 import org.example.coupon.application.port.in.command.RegisterEventCouponCommand;
 import org.example.coupon.application.port.in.usecase.RegisterCouponUseCase;
 import org.example.coupon.application.port.in.usecase.RegisterEventCouponUseCase;
+import org.example.coupon.application.port.out.RegisterCouponPort;
 import org.example.coupon.application.port.out.RegisterEventPort;
 import org.example.coupon.domain.Coupon;
 import org.example.coupon.domain.Event;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @UseCase
 @Transactional(readOnly = false)
@@ -28,6 +30,8 @@ public class RegisterEventService implements RegisterEventCouponUseCase {
     private final RegisterCouponUseCase registerCouponUseCase;
 
     private final EventMapper eventMapper;
+
+    private final RegisterCouponPort registerCouponPort;
 
     @Override
     public Event registerEventCoupon(RegisterEventCouponCommand command) {
@@ -53,6 +57,18 @@ public class RegisterEventService implements RegisterEventCouponUseCase {
         );
 
         EventEntity registerEventEntity = registerEventPort.registerEvent(registerEvent);
+
+        Coupon coupon = Coupon.createGenerateCoupon(
+                new Coupon.CouponId(null),
+                new Coupon.CouponCreateAdminId(command.getAdminUser()),
+                new Coupon.CouponSalePercent(command.getSalePercent()),
+                new Coupon.CouponName(command.getCouponName()),
+                new Coupon.CouponCreateAt(LocalDateTime.now()),
+                null,
+                new Coupon.CouponAggregateIdentifier(UUID.randomUUID().toString())// axon등록필요
+        );
+
+        registerCouponPort.registerCoupon(coupon);
 
         return eventMapper.mapToDomain(registerEventEntity);
     }

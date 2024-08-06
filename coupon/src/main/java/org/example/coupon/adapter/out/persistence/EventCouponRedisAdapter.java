@@ -60,6 +60,7 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
         return queue;
     }
 
+    @Override
     public void removeQueue(long eventId, long userId){
         ZSetOperations<String, String> zSetOps = redisTemplate.opsForZSet();
 
@@ -74,7 +75,7 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
         if (removedCount != null && removedCount > 0) {
             log.info("쿠폰 발급완료 : {} sotredSet에서 {} : 유저 삭제합니다 ", rankKey, eventId);
         } else {
-            
+
         }
     }
 

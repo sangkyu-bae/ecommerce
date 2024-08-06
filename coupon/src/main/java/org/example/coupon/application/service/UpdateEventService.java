@@ -3,17 +3,17 @@ package org.example.coupon.application.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
+import org.example.coupon.adapter.out.persistence.entity.CouponComponentEntity;
+import org.example.coupon.adapter.out.persistence.entity.CouponEntity;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
 import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.in.usecase.UpdateEventCouponUseCase;
-import org.example.coupon.application.port.out.FindEventPort;
-import org.example.coupon.application.port.out.RegisterCouponPort;
-import org.example.coupon.application.port.out.UpdateEventCouponPort;
-import org.example.coupon.application.port.out.UpdateEventPort;
+import org.example.coupon.application.port.out.*;
 import org.example.coupon.domain.Coupon;
 import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
+import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.redis.DistributedLock;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,14 +30,14 @@ import java.util.Queue;
 public class UpdateEventService implements UpdateEventCouponUseCase {
 
     private final UpdateEventPort updateEventPort;
-
     private final RegisterCouponPort registerCouponPort;
 
     private final UpdateEventCouponPort updateEventCoupon;
-
     private final UpdateEventCouponPort updateEventCouponPort;
-
     private final FindEventPort findEventPort;
+    private final FindCouponPort findCouponPort;
+
+    private final UpdateCouponPort updateCouponPort;
 
     @Override
     @DistributedLock(key = "#couponName")
@@ -82,10 +82,64 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             queueList.add(queue);
         }
 
-        for(Queue<Long> queue : queueList){
-            while (!queue.isEmpty()){
-                long userId = queue.poll();
+        /**
+         * 10명씩 대기열에서 처리한다고 가정 추후 테스트후 변경
+         * */
+        for(int i = 0;i < queueList.size() ;i++){
+            int count = 0;
+            Queue<Long> queue = queueList.get(i);
+            EventEntity event = eventList.get(i);
+            CouponEntity couponEntity;
 
+            try{
+                couponEntity = findCouponPort.findByCouponName(new Coupon.CouponName(event.getCouponName()));
+            }catch (ErrorException e){
+                log.error(">>>>>>> 존재하지 않은쿠폰 이벤트 {} 쿠폰 process 종료",event.getCouponName());
+                continue;
+            }
+
+            queueProcess(queue,event,couponEntity);
+        }
+    }
+
+    private void queueProcess(Queue<Long> queue, EventEntity event,CouponEntity couponEntity){
+        int count = 0;
+        List<CouponComponent> couponComponents = new ArrayList<>();
+        while (!queue.isEmpty()){
+            long userId = queue.poll();
+            count++;
+
+            if(count > 10){
+                /**
+                 * sse 전송 모듈 필요 몇번째 남았는지
+                 * */
+                continue;
+            }
+
+            try{
+                /**
+                 * 이때 분산락 필요한지 확인필요
+                 * */
+                event.decreaseQuantity();
+                updateEventCouponPort.removeQueue(event.getId(), userId);
+
+                CouponComponent couponComponent = CouponComponent.createGenerateCouponComponentVo(
+                        new CouponComponent.CouponComponentId(null),
+                        new CouponComponent.CouponComponentUserId(userId),
+                        CouponComponent.CouponStatusCode.PUBLISH,
+                        new CouponComponent.CouponComponentEndAt(event.getEndAt()),
+                        null
+                );
+
+                couponComponents.add(couponComponent);
+            }catch (ErrorException e){
+                log.error(">>>>>>> 이벤트 쿠폰 :{}, 수량 종료", event.getId());
+                break;
+            }
+
+
+            if(count == 10){
+                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
             }
         }
     }

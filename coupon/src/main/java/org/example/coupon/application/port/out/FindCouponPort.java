@@ -5,4 +5,6 @@ import org.example.coupon.domain.Coupon;
 
 public interface FindCouponPort {
     CouponEntity findCouponByCouponId(Coupon.CouponId couponId);
+
+    CouponEntity findByCouponName(Coupon.CouponName couponName);
 }

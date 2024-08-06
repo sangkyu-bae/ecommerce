@@ -10,4 +10,6 @@ public interface UpdateEventCouponPort {
     void updateQueueEventCoupon(Event.EventId eventId, CouponComponent.CouponComponentUserId userId);
 
     Queue<Long> findEventQueue(long eventId);
+
+    void removeQueue(long eventId, long userId);
 }
