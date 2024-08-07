@@ -41,7 +41,8 @@ public class UpdateCouponEventController {
                 .userId(userId)
                 .build();
 
+        updateEventCouponUseCase.addEventQueue(command);
 
-        return null;
+        return ResponseEntity.ok().body("success");
     }
 }

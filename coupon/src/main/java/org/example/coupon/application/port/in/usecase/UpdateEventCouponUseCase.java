@@ -9,4 +9,6 @@ public interface UpdateEventCouponUseCase {
     boolean isQueueEventCoupon(UpdateEventCouponCommand command);
 
     void process();
+
+    void addEventQueue(UpdateEventCouponCommand command);
 }

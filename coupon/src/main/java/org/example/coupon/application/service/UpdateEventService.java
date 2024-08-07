@@ -36,7 +36,6 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     private final UpdateEventCouponPort updateEventCouponPort;
     private final FindEventPort findEventPort;
     private final FindCouponPort findCouponPort;
-
     private final UpdateCouponPort updateCouponPort;
 
     @Override
@@ -102,6 +101,11 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
         }
     }
 
+    @Override
+    public void addEventQueue(UpdateEventCouponCommand command) {
+        updateEventCouponPort.addEventQueue(new Event.EventId(command.getEventId()),command.getUserId());
+    }
+
     private void queueProcess(Queue<Long> queue, EventEntity event,CouponEntity couponEntity){
         int count = 0;
         List<CouponComponent> couponComponents = new ArrayList<>();
@@ -113,6 +117,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
+                log.info("{} 번째 순서입니다", count - 10);
                 continue;
             }
 

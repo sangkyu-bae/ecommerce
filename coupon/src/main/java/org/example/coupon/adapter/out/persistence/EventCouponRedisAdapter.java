@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
+import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.out.UpdateEventCouponPort;
 import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
@@ -60,6 +62,8 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
         return queue;
     }
 
+
+
     @Override
     public void removeQueue(long eventId, long userId){
         ZSetOperations<String, String> zSetOps = redisTemplate.opsForZSet();
@@ -78,6 +82,24 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
 
         }
     }
+
+    @Override
+    public void addEventQueue(Event.EventId eventId, long userId) {
+        ZSetOperations zSetOps =redisTemplate.opsForZSet();
+
+        String key = EVENT_COUPON_KEY + "-" +String.valueOf(eventId);
+        String rankKey = String.valueOf(userId);
+
+        if(hasKey(key,rankKey)){
+            log.info("Key already exists: {}", rankKey);
+            return;
+        }
+        double score = System.currentTimeMillis() / 1000.0;
+
+        zSetOps.add(key,rankKey,score);
+        log.info("Key added: {}, time: {}", rankKey, score);
+    }
+
 
     private boolean hasKey(String key,String rankKey){
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
