@@ -26,7 +26,7 @@ public class QueueScheduled {
         LocalDateTime now = LocalDateTime.now();
         Event.EventStartAt eventStartAt = new Event.EventStartAt(now);
         Event.EventEndAt eventEndAt = new Event.EventEndAt(now);
-        List<EventEntity> eventList = findEventPort.findByStartAtAfterAndEndAtBefore(eventStartAt,eventEndAt);
+        List<EventEntity> eventList = findEventPort.findByStartAtAfter(eventStartAt);
 
         if(eventList.size() < 1){
             log.debug("현재 이벤트가 없습니다.");

@@ -8,9 +8,7 @@ import org.example.coupon.adapter.out.persistence.repository.EventRepository;
 import org.example.coupon.application.port.out.FindEventPort;
 import org.example.coupon.domain.Event;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
@@ -21,8 +19,8 @@ public class EventCouponAdapter implements FindEventPort {
 
     private final EventMapper eventMapper;
     @Override
-    public List<EventEntity> findByStartAtAfterAndEndAtBefore(Event.EventStartAt startAt, Event.EventEndAt endAt) {
-        List<EventEntity> eventEntityList = eventRepository.findByStartAtAfterAndEndAtBefore(startAt.getStartAt(),endAt.getEndAt());
+    public List<EventEntity> findByStartAtAfter(Event.EventStartAt startAt) {
+        List<EventEntity> eventEntityList = eventRepository.findByStartAtBefore(startAt.getStartAt());
 
         return eventEntityList;
     }

@@ -1,6 +1,7 @@
 package org.example.coupon.adapter.in.web;
 
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.example.WebAdapter;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
@@ -42,6 +43,22 @@ public class UpdateCouponEventController {
                 .build();
 
         updateEventCouponUseCase.addEventQueue(command);
+
+        return ResponseEntity.ok().body("success");
+    }
+
+    @GetMapping("/coupon/evnet/test")
+    public ResponseEntity<String> test(){
+        for(int i = 0; i < 100 ;i++){
+            UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
+                    .eventId(3)
+                    .userId(i+1)
+                    .build();
+
+            updateEventCouponUseCase.addEventQueue(command);
+        }
+
+        updateEventCouponUseCase.process();
 
         return ResponseEntity.ok().body("success");
     }

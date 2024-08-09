@@ -87,11 +87,12 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
     public void addEventQueue(Event.EventId eventId, long userId) {
         ZSetOperations zSetOps =redisTemplate.opsForZSet();
 
-        String key = EVENT_COUPON_KEY + "-" +String.valueOf(eventId);
+        String key = EVENT_COUPON_KEY + "-" +String.valueOf(eventId.getId());
         String rankKey = String.valueOf(userId);
 
         if(hasKey(key,rankKey)){
-            log.info("Key already exists: {}", rankKey);
+//            log.info("Key already exists: {}", rankKey);
+            log.info("{} Key already exists: {}", key, rankKey);
             return;
         }
         double score = System.currentTimeMillis() / 1000.0;

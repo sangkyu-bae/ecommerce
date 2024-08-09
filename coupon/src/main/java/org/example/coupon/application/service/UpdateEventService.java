@@ -3,7 +3,6 @@ package org.example.coupon.application.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
-import org.example.coupon.adapter.out.persistence.entity.CouponComponentEntity;
 import org.example.coupon.adapter.out.persistence.entity.CouponEntity;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
@@ -67,10 +66,10 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
         LocalDateTime now = LocalDateTime.now();
         Event.EventStartAt eventStartAt = new Event.EventStartAt(now);
         Event.EventEndAt eventEndAt = new Event.EventEndAt(now);
-        List<EventEntity> eventList = findEventPort.findByStartAtAfterAndEndAtBefore(eventStartAt,eventEndAt);
-
+        List<EventEntity> eventList = findEventPort.findByStartAtAfter(eventStartAt);
+        log.info("start >>>>>>>>>>>>>>");
         if(eventList.size() < 1){
-            log.debug("현재 이벤트가 없습니다.");
+            log.info("현재 이벤트가 없습니다.");
             return;
         }
 
@@ -81,21 +80,22 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             queueList.add(queue);
         }
 
+        log.info(">>>>>>>>>>>>>>>>>>>>>> queue");
         /**
          * 10명씩 대기열에서 처리한다고 가정 추후 테스트후 변경
          * */
         for(int i = 0;i < queueList.size() ;i++){
-            int count = 0;
             Queue<Long> queue = queueList.get(i);
             EventEntity event = eventList.get(i);
             CouponEntity couponEntity;
-
             try{
                 couponEntity = findCouponPort.findByCouponName(new Coupon.CouponName(event.getCouponName()));
             }catch (ErrorException e){
                 log.error(">>>>>>> 존재하지 않은쿠폰 이벤트 {} 쿠폰 process 종료",event.getCouponName());
                 continue;
             }
+
+            log.info("{} 이벤트 쿠폰 ", couponEntity.getName());
 
             queueProcess(queue,event,couponEntity);
         }
@@ -117,7 +117,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
-                log.info("{} 번째 순서입니다", count - 10);
+                log.info("{} 이벤트 쿠폰 {}님은 ,{} 번째 순서입니다",couponEntity.getName() , userId, count - 10);
                 continue;
             }
 
