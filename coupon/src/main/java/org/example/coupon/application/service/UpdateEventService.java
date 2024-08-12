@@ -63,6 +63,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
     @Override
     public void process() {
+
         LocalDateTime now = LocalDateTime.now();
         Event.EventStartAt eventStartAt = new Event.EventStartAt(now);
         Event.EventEndAt eventEndAt = new Event.EventEndAt(now);
@@ -113,7 +114,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             long userId = queue.poll();
             count++;
 
-            if(count > 10){
+            if(count > 300){
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
@@ -143,8 +144,10 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             }
 
 
-            if(count == 10){
-                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
+            if(count == 300){
+//                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
+
+                updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
             }
         }
     }

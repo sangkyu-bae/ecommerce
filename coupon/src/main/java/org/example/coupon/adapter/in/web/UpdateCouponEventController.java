@@ -3,6 +3,7 @@ package org.example.coupon.adapter.in.web;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
 import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @WebAdapter
 @RequiredArgsConstructor
+@Slf4j
 public class UpdateCouponEventController {
 
     private final UpdateEventCouponUseCase updateEventCouponUseCase;
@@ -49,17 +51,22 @@ public class UpdateCouponEventController {
 
     @GetMapping("/coupon/evnet/test")
     public ResponseEntity<String> test(){
-        for(int i = 0; i < 100 ;i++){
-            UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
-                    .eventId(3)
-                    .userId(i+1)
-                    .build();
-
-            updateEventCouponUseCase.addEventQueue(command);
-        }
-
+//        for(int i = 0; i < 10000 ;i++){
+//            UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
+//                    .eventId(3)
+//                    .userId(i+1)
+//                    .build();
+//
+//            updateEventCouponUseCase.addEventQueue(command);
+//        }
+        long startTime = System.nanoTime();
         updateEventCouponUseCase.process();
 
+
+        // 실행 시간 계산 (밀리초 단위로 변환)
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1_000_000;
+        log.info("Process completed in {} ms", duration);
         return ResponseEntity.ok().body("success");
     }
 }

@@ -9,4 +9,6 @@ public interface UpdateCouponPort {
     CouponEntity updateCoupon(long couponId, long userId);
 
     CouponEntity updateCouponComponent(List<CouponComponent> couponComponentList, CouponEntity fetchCoupon);
+
+    void bulkInsertCouponComponent(List<CouponComponent> couponComponentList, CouponEntity fetchCoupon);
 }

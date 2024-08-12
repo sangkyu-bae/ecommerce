@@ -15,8 +15,14 @@ import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
 import org.example.coupon.infra.error.CouponErrorCode;
 import org.example.coupon.infra.error.ErrorException;
+
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +34,8 @@ public class CouponPersistenceAdapter implements RegisterCouponPort, FindCouponP
     private final CouponComponentEntityRepository couponComponentEntityRepository;
 
     private final CouponEntityRepository couponEntityRepository;
+
+    private final JdbcTemplate jdbcTemplate;
     @Override
     public CouponEntity registerCouponByAllUser(Coupon couponVo) {
         CouponEntity coupon = CouponEntity.builder()
@@ -162,5 +170,26 @@ public class CouponPersistenceAdapter implements RegisterCouponPort, FindCouponP
         return couponEntityRepository.save(fetchCoupon);
     }
 
+    @Override
+    public void bulkInsertCouponComponent(List<CouponComponent> couponComponentList, CouponEntity fetchCoupon){
+        jdbcTemplate.batchUpdate(
+                    "INSERT INTO tb_coupon_component (user_id, status, end_at,coupon_id) VALUES (?, ?, ?,?)",
+                    new BatchPreparedStatementSetter() {
 
+                        @Override
+                        public void setValues(PreparedStatement ps, int i) throws SQLException {
+                            CouponComponent couponComponent = couponComponentList.get(i);
+                            ps.setLong(1, couponComponent.getUserId());
+                            ps.setInt(2,couponComponent.getStatus()); // Assuming status is an enum, convert to string
+                            ps.setTimestamp(3, Timestamp.valueOf(couponComponent.getEndAt())); // Convert LocalDateTime to Timestamp
+                            ps.setLong(4, fetchCoupon.getId()); // Assuming fetchCoupon has an ID field
+                        }
+
+                        @Override
+                        public int getBatchSize() {
+                            return couponComponentList.size();
+                        }
+                    }
+                );
+    }
 }
