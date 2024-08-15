@@ -23,9 +23,17 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor('org.projectlombok:lombok')
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.aspectj:aspectjrt:1.9.8' // AspectJ Runtime
+    implementation 'org.aspectj:aspectjweaver:1.9.8' // AspectJ Weaver
     //axon
     implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
     implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
+
+    //kafka
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.kafka:spring-kafka-test'
 }
 
 test {

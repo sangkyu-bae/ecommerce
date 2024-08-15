@@ -83,7 +83,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
         log.info(">>>>>>>>>>>>>>>>>>>>>> queue");
         /**
-         * 10명씩 대기열에서 처리한다고 가정 추후 테스트후 변경
+         * 300명씩 대기열에서 처리한다고 가정 추후 테스트후 변경
          * */
         for(int i = 0;i < queueList.size() ;i++){
             Queue<Long> queue = queueList.get(i);

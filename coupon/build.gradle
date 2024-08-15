@@ -58,8 +58,9 @@ dependencies {
     implementation project(path: ':common')
 
     //redis
-    implementation 'org.redisson:redisson-spring-boot-starter:3.16.7'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.redisson:redisson-spring-boot-starter:3.18.0'
+
     //axon
     implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
     implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
