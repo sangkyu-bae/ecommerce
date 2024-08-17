@@ -84,7 +84,7 @@ public class NotificationClient {
 
         public static NotificationType findNotificationType(int type){
             return Arrays.stream(NotificationType.values())
-                    .filter(couponStatus -> couponStatus.getType()== type)
+                    .filter(notificationType -> notificationType.getType()== type)
                     .findFirst()
                     .orElseThrow();
         }

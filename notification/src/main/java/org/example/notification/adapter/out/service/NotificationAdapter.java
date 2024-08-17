@@ -2,11 +2,15 @@ package org.example.notification.adapter.out.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.PersistenceAdapter;
+import org.example.event.notification.RegisterSSECommand;
+import org.example.event.notification.RequestNotification;
+import org.example.event.notification.SSEStatusType;
 import org.example.notification.adapter.out.persistence.OrderNotificationType;
 import org.example.notification.application.port.out.RegisterNotificationPort;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @PersistenceAdapter
@@ -33,6 +37,22 @@ public class NotificationAdapter implements RegisterNotificationPort {
     }
 
     @Override
+    public SseEmitter subscribe(RegisterSSECommand command) {
+        String emitterId = command.getNotificationType().getName() + ":" +String.valueOf(command.getUserId()) ;
+        SseEmitter emitter = emitterRepository.save(emitterId, new SseEmitter(DEFAULT_TIMEOUT));
+        emitter.onCompletion(() -> emitterRepository.deleteById(emitterId));
+        emitter.onTimeout(() -> emitterRepository.deleteById(emitterId));
+
+        sendNotification(
+                emitter,
+                emitterId,
+                "Event Created."
+        );
+
+        return emitter;
+    }
+
+    @Override
     public void sendMessage(long memberEventId, OrderNotificationType type) {
         String eventId = String.valueOf(memberEventId);
         SseEmitter emitter = emitterRepository.findEmitterMemberId(eventId);
@@ -43,6 +63,23 @@ public class NotificationAdapter implements RegisterNotificationPort {
                 type.getTypeStatus()
         );
         emitterRepository.deleteById(eventId);
+    }
+
+    @Override
+    public void sendMessage(RequestNotification request) {
+        String eventId = request.getType().getName() + ":" +String.valueOf(request.getFromMember()) ;
+        SseEmitter emitter = emitterRepository.findEmitterMemberId(eventId);
+
+        sendNotification(
+                emitter,
+                eventId,
+                request.getNotification()
+        );
+
+        if(request.getStatusType() == SSEStatusType.DELETE){
+            emitterRepository.deleteById(eventId);
+        }
+
     }
 
 
