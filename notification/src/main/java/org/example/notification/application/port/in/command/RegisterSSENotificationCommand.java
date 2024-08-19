@@ -15,8 +15,12 @@ public class RegisterSSENotificationCommand extends SelfValidating<RegisterSSENo
     @NotNull
     private long userId;
 
-    public RegisterSSENotificationCommand(long userId){
+    @NotNull
+    private String eventName;
+
+    public RegisterSSENotificationCommand(long userId,String eventName){
         this.userId = userId;
+        this.eventName = eventName;
         this.validateSelf();
     }
 }

@@ -3,12 +3,12 @@ package org.example.event.notification;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.aop.NotificationClient;
+import org.example.EnumMapperValue;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RequestNotification {
+public class SendNotification {
 
     private long fromMember;
 
@@ -16,7 +16,7 @@ public class RequestNotification {
 
     private String notification;
 
-    private SSENotificationType type;
+    private EnumMapperValue eventType;
 
-    private SSEStatusType statusType;
+    private EnumMapperValue statusType;
 }

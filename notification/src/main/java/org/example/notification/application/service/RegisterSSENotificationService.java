@@ -17,7 +17,7 @@ public class RegisterSSENotificationService implements RegisterSSENotificationUs
 
     @Override
     public void subscribe(RegisterSSENotificationCommand command) {
-        registerNotificationPort.subscribe(command.getUserId());
+        registerNotificationPort.subscribe(command.getUserId(),command.getEventName());
     }
 
     @Override

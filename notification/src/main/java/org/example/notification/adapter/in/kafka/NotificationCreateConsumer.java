@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
-import org.example.event.notification.RequestNotification;
+import org.example.event.notification.SendNotification;
 import org.example.notification.application.port.out.RegisterNotificationPort;
 import org.springframework.kafka.annotation.KafkaListener;
 
@@ -29,10 +29,10 @@ public class NotificationCreateConsumer {
 //            throw new RuntimeException(e);
 //        }
 
-        RequestNotification request = null;
+        SendNotification request = null;
 
         try{
-            request = objectMapper.readValue(requestJson, RequestNotification.class);
+            request = objectMapper.readValue(requestJson, SendNotification.class);
 
         }catch (Exception e){
             log.error("error request {}", request);

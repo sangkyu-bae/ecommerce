@@ -18,8 +18,8 @@ import java.util.Map;
 @EnableKafka
 @RequiredArgsConstructor
 public class KafkaConsumerConfig {
-    @Value("${}")
-    private final String bootstrapServer;
+    @Value("${app.bootstrapServer}")
+    private String bootstrapServer;
 
     @Bean
     public ConsumerFactory<String,String> consumerFactory(){
