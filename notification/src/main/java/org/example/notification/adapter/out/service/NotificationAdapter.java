@@ -107,6 +107,11 @@ public class NotificationAdapter implements RegisterNotificationPort {
 
     }
 
+    @Override
+    public void sendAllMessage() {
+        emitterRepository.findAll();
+    }
+
 
     private void sendNotification(SseEmitter emitter,String emitterId, Object data) {
         try {

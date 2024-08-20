@@ -13,4 +13,6 @@ public interface RegisterNotificationPort {
     void sendMessage(long memberEventId, OrderNotificationType type);
 
     void sendMessage(SendNotification request);
+
+    void sendAllMessage();
 }

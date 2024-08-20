@@ -1,15 +1,19 @@
 package org.example.notification.adapter.out.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.yaml.snakeyaml.emitter.Emitter;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class EmitterRepositoryImpl implements EmitterRepository{
     private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
     private final Map<String, Object> eventCache = new ConcurrentHashMap<>();
@@ -71,5 +75,23 @@ public class EmitterRepositoryImpl implements EmitterRepository{
     @Override
     public SseEmitter findEmitterMemberId(String userId) {
         return findAllEmitterStartWithByMemberId(userId).get(userId);
+    }
+
+    @Override
+    public List<SseEmitter> findAll() {
+        emitters.forEach((key, emitter) -> {
+            try {
+                log.info("Message to client");
+                emitter.send("Message to client");
+                emitter.send(SseEmitter.event()
+                        .name(key)
+                        .data("mssageSend"));
+            } catch (Exception e) {
+                // 예외 처리
+                e.printStackTrace();
+            }
+        });
+
+        return null;
     }
 }

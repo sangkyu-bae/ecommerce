@@ -2,6 +2,7 @@ package org.example.notification.adapter.out.service;
 
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.util.List;
 import java.util.Map;
 
 public interface EmitterRepository {
@@ -15,4 +16,6 @@ public interface EmitterRepository {
     void deleteAllEventCacheStartWithId(String userId);
 
     SseEmitter findEmitterMemberId(String id);
+
+    List<SseEmitter> findAll();
 }
