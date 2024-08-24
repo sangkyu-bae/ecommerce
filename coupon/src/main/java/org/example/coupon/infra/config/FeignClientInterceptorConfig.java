@@ -4,10 +4,12 @@ import feign.Logger;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class FeignClientInterceptorConfig {
 
     @Bean

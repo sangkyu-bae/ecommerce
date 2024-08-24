@@ -1,8 +1,6 @@
 package org.example.notification.application.port.in.command;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.example.SelfValidating;
 
 import javax.validation.constraints.NotNull;

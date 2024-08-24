@@ -24,6 +24,7 @@ public class NotificationProducer {
     public void sendCreateNotification(NotificationClient notificationClient){
         try{
             String inputJsonString = objectMapper.writeValueAsString(notificationClient);
+            log.info(inputJsonString);
             kafkaTemplate.send(SEND_NOTIFICATION_TOPIC,inputJsonString);
         }catch (JsonProcessingException e){
             log.error("fail send notification service : {}" , e);

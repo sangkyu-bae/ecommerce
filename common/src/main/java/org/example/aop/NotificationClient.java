@@ -1,6 +1,7 @@
 package org.example.aop;
 
 import lombok.*;
+import org.example.EnumMapper;
 
 import java.util.Arrays;
 
@@ -60,7 +61,7 @@ public class NotificationClient {
         }
     }
 
-    public static enum NotificationType{
+    public static enum NotificationType implements EnumMapper {
 
         QUEUE_EVENT(0,"대기열 이벤트");
 

@@ -16,4 +16,6 @@ public interface UpdateEventCouponPort {
     void removeQueue(long eventId, long userId);
 
     void addEventQueue(Event.EventId eventId,  long userId);
+
+    void refreshQueue(long eventId);
 }

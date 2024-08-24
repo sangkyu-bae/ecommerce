@@ -33,7 +33,7 @@ public class NotificationCreateConsumer {
 
         try{
             request = objectMapper.readValue(requestJson, SendNotification.class);
-
+            log.info(request.toString());
         }catch (Exception e){
             log.error("error request {}", request);
             e.printStackTrace();

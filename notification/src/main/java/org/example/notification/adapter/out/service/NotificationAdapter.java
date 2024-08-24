@@ -22,20 +22,30 @@ public class NotificationAdapter implements RegisterNotificationPort {
 
     private final EmitterRepository emitterRepository;
     private static final Long DEFAULT_TIMEOUT = 60L * 1000 * 60;
+//    private static final Long DEFAULT_TIMEOUT =10L * 1000;
 
     @Override
     public SseEmitter subscribe(Long memberId,String eventName) {
-//        String emitterId = String.valueOf(memberId);
-
         String emitterId = eventName+ ":" +String.valueOf(memberId) ;
         SseEmitter emitter = emitterRepository.save(emitterId, new SseEmitter(DEFAULT_TIMEOUT));
-        emitter.onCompletion(() -> emitterRepository.deleteById(emitterId));
-        emitter.onTimeout(() -> emitterRepository.deleteById(emitterId));
+        emitter.onCompletion(() -> {
+            log.error("Emitter completed: {}", emitterId);
+            emitterRepository.deleteById(emitterId);
+        });
+        emitter.onTimeout(() -> {
+            log.error("Emitter timeout: {}", emitterId);
+            emitterRepository.deleteById(emitterId);
+        });
 
+        NotificationResponse response = NotificationResponse.builder()
+                .statusType(new EnumMapperValue(SSEStatusType.CONNECT))
+                .eventType(new EnumMapperValue(NotificationClient.NotificationType.QUEUE_EVENT))
+                .sendMessage("연결에 성공하였습니다")
+                .build();
         // 503 에러를 방지하기 위한 더미 이벤트 전송
         sendNotification(emitter,
                 emitterId,
-                "EventStream Created. [userId=" + memberId + "]"
+                response
         );
 
         log.info("connect emitterId : {}", emitterId);

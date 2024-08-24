@@ -1,14 +1,13 @@
 package org.example.event.notification;
 
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
+import org.example.EnumMapper;
 import java.util.Arrays;
-import java.util.function.Function;
 
-public enum SSEStatusType {
+public enum SSEStatusType implements EnumMapper {
 
-    DELETE(0,"삭제"),
-    KEEP(1,"유지");
+    CONNECT(0,"연결성공"),
+    DELETE(1,"삭제"),
+    KEEP(2,"유지");
 
     private final int type;
 

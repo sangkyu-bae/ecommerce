@@ -22,7 +22,7 @@ import java.util.Set;
 @Slf4j
 public class EventCouponRedisAdapter implements UpdateEventCouponPort {
 
-    @Value("event.coupon")
+    @Value("${event.coupon}")
     private String EVENT_COUPON_KEY;
 
     private final StringRedisTemplate redisTemplate;
@@ -99,6 +99,22 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
 
         zSetOps.add(key,rankKey,score);
         log.info("Key added: {}, time: {}", rankKey, score);
+    }
+
+    @Override
+    public void refreshQueue(long eventId) {
+        ZSetOperations<String, String> zSetOps = redisTemplate.opsForZSet();
+        String key = EVENT_COUPON_KEY + "-" + String.valueOf(eventId);
+
+        Set<ZSetOperations.TypedTuple<String>> rangeWithScores = zSetOps.rangeWithScores(key, 0, -1);
+        Queue <Long> queue = new LinkedList<>();
+        if (rangeWithScores != null) {
+            for (ZSetOperations.TypedTuple<String> tuple : rangeWithScores) {
+                String userId = tuple.getValue();
+                log.info("쿠폰 발급완료 : {} sotredSet에서 {} : 유저 삭제합니다 ", userId, eventId);
+                zSetOps.remove(key, tuple.getValue());
+            }
+        }
     }
 
 

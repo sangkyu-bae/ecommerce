@@ -7,6 +7,7 @@ import org.example.event.notification.RegisterSSECommand;
 import org.example.notification.application.port.in.command.RegisterSSENotificationCommand;
 import org.example.notification.application.port.in.usecase.RegisterSSENotificationUseCase;
 import org.example.notification.application.port.out.RegisterNotificationPort;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @UseCase
 @Slf4j
@@ -16,8 +17,8 @@ public class RegisterSSENotificationService implements RegisterSSENotificationUs
     private final RegisterNotificationPort registerNotificationPort;
 
     @Override
-    public void subscribe(RegisterSSENotificationCommand command) {
-        registerNotificationPort.subscribe(command.getUserId(),command.getEventName());
+    public SseEmitter subscribe(RegisterSSENotificationCommand command) {
+        return registerNotificationPort.subscribe(command.getUserId(),command.getEventName());
     }
 
     @Override

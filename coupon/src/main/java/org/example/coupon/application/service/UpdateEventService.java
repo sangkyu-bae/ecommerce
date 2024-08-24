@@ -3,6 +3,8 @@ package org.example.coupon.application.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
+import org.example.aop.Notification;
+import org.example.aop.NotificationClient;
 import org.example.coupon.adapter.out.persistence.entity.CouponEntity;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
@@ -14,6 +16,7 @@ import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
 import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.redis.DistributedLock;
+import org.example.kafka.NotificationProducer;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -36,6 +39,8 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     private final FindEventPort findEventPort;
     private final FindCouponPort findCouponPort;
     private final UpdateCouponPort updateCouponPort;
+
+    private final NotificationProducer notificationProducer;
 
     @Override
     @DistributedLock(key = "#couponName")
@@ -66,9 +71,10 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
         LocalDateTime now = LocalDateTime.now();
         Event.EventStartAt eventStartAt = new Event.EventStartAt(now);
-        Event.EventEndAt eventEndAt = new Event.EventEndAt(now);
+
         List<EventEntity> eventList = findEventPort.findByStartAtAfter(eventStartAt);
         log.info("start >>>>>>>>>>>>>>");
+
         if(eventList.size() < 1){
             log.info("현재 이벤트가 없습니다.");
             return;
@@ -100,24 +106,36 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
             queueProcess(queue,event,couponEntity);
         }
+        aopTest();
     }
 
     @Override
     public void addEventQueue(UpdateEventCouponCommand command) {
         updateEventCouponPort.addEventQueue(new Event.EventId(command.getEventId()),command.getUserId());
     }
-
-    private void queueProcess(Queue<Long> queue, EventEntity event,CouponEntity couponEntity){
+    @Notification(memberId = "1", eventName = "test", notification = "test 순서", type = "0")
+    public void aopTest(){
+        log.info(">>>>>>>>>><<<<");
+    }
+    @Override
+    public void queueProcess(Queue<Long> queue, EventEntity event,CouponEntity couponEntity){
         int count = 0;
         List<CouponComponent> couponComponents = new ArrayList<>();
         while (!queue.isEmpty()){
             long userId = queue.poll();
             count++;
 
-            if(count > 300){
+            if(count > 0){
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
+//                NotificationClient notificationClient = NotificationClient.createGenerateNotificationClient(
+//                        new NotificationClient.NotificationClientFromMember(1),
+//                        new NotificationClient.NotificationClientEventName(couponEntity.getName()),
+//                        new NotificationClient.NotificationNotification("test"),
+//                        NotificationClient.NotificationType.QUEUE_EVENT
+//                );
+//                notificationProducer.sendCreateNotification(notificationClient);
                 log.info("{} 이벤트 쿠폰 {}님은 ,{} 번째 순서입니다",couponEntity.getName() , userId, count - 10);
                 continue;
             }
