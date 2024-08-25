@@ -15,4 +15,6 @@ public @interface Notification {
     String notification();
     String type();
 
+    String sseType();
+
 }

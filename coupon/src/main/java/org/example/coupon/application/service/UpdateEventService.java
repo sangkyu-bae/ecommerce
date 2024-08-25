@@ -16,6 +16,7 @@ import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
 import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.redis.DistributedLock;
+import org.example.event.notification.SSEStatusType;
 import org.example.kafka.NotificationProducer;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -106,16 +107,11 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
             queueProcess(queue,event,couponEntity);
         }
-        aopTest();
     }
 
     @Override
     public void addEventQueue(UpdateEventCouponCommand command) {
         updateEventCouponPort.addEventQueue(new Event.EventId(command.getEventId()),command.getUserId());
-    }
-    @Notification(memberId = "1", eventName = "test", notification = "test 순서", type = "0")
-    public void aopTest(){
-        log.info(">>>>>>>>>><<<<");
     }
     @Override
     public void queueProcess(Queue<Long> queue, EventEntity event,CouponEntity couponEntity){
@@ -129,14 +125,11 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
-//                NotificationClient notificationClient = NotificationClient.createGenerateNotificationClient(
-//                        new NotificationClient.NotificationClientFromMember(1),
-//                        new NotificationClient.NotificationClientEventName(couponEntity.getName()),
-//                        new NotificationClient.NotificationNotification("test"),
-//                        NotificationClient.NotificationType.QUEUE_EVENT
-//                );
-//                notificationProducer.sendCreateNotification(notificationClient);
-                log.info("{} 이벤트 쿠폰 {}님은 ,{} 번째 순서입니다",couponEntity.getName() , userId, count - 10);
+                updateEventPort.sendNotification(userId,
+                        couponEntity.getName(),
+                        "앞에"+ count + "명이 대기하고 있어요",
+                        NotificationClient.NotificationType.QUEUE_EVENT.getType(),
+                        SSEStatusType.KEEP.getType());
                 continue;
             }
 
@@ -164,7 +157,6 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
             if(count == 300){
 //                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
-
                 updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
             }
         }

@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.example.event.notification.SSEStatusType;
 import org.example.kafka.NotificationProducer;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
@@ -33,23 +34,21 @@ public class NotificationAspect {
         StandardEvaluationContext context = CustomSpringELParser.setContext(signature.getParameterNames(), joinPoint.getArgs());
 
         long memberId = parser.parseExpression(notification.memberId()).getValue(context, Long.class);
-        String eventName = "";
-        String noti = notification.notification();
-        int type = 0;
-
+        String eventName = parser.parseExpression(notification.eventName()).getValue(context, String.class);
+        String noti = parser.parseExpression(notification.notification()).getValue(context, String.class);
+        int type = parser.parseExpression(notification.type()).getValue(context, Integer.class);
+        int sseStatusType = parser.parseExpression(notification.sseType()).getValue(context, Integer.class);
         log.info("member Id : {}",memberId);
         log.info("eventName : {}",eventName);
         log.info("noti : {}",noti);
         log.info("type : {}",memberId);
-//        String eventName = parser.parseExpression(notification.eventName()).getValue(context, String.class);
-//        String noti = parser.parseExpression(notification.notification()).getValue(context, String.class);
-//        int type = parser.parseExpression(notification.type()).getValue(context, Integer.class);
 
         NotificationClient notificationClient = NotificationClient.createGenerateNotificationClient(
                 new NotificationClient.NotificationClientFromMember(memberId),
                 new NotificationClient.NotificationClientEventName(eventName),
                 new NotificationClient.NotificationNotification(noti),
-                NotificationClient.NotificationType.findNotificationType(type)
+                NotificationClient.NotificationType.findNotificationType(type),
+                SSEStatusType.findSSEStatusType(sseStatusType)
         );
 
         // 실제 메소드 실행

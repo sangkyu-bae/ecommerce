@@ -1,7 +1,10 @@
 package org.example.coupon.adapter.out.persistence;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
+import org.example.aop.Notification;
+import org.example.aop.NotificationClient;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
 import org.example.coupon.adapter.out.persistence.repository.EventRepository;
 import org.example.coupon.application.port.out.RegisterEventPort;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
+@Slf4j
 public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPort {
 
     private final EventRepository eventRepository;
@@ -38,5 +42,12 @@ public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPo
 
         eventEntity.decreaseQuantity();
         return eventRepository.save(eventEntity);
+    }
+
+    @Override
+    @Notification(memberId = "#memberId", eventName = "#eventName", notification = "#notification", type = "#type", sseType = "#sseType")
+    public void sendNotification(long memberId, String eventName, String notification, int type,int sseType) {
+        log.info("{} 이벤트 쿠폰에 {}님은 {}",eventName , memberId, notification);
+
     }
 }
