@@ -10,9 +10,5 @@ public interface RegisterNotificationPort {
 
     SseEmitter subscribe(RegisterSSECommand command);
 
-    void sendMessage(long memberEventId, OrderNotificationType type);
-
-    void sendMessage(SendNotification request);
-
     void sendAllMessage();
 }

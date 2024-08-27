@@ -1,2 +1,6 @@
-package org.example;public interface EnumMapper {
+package org.example;
+
+public interface EnumMapper {
+    int getType();
+    String getName();
 }

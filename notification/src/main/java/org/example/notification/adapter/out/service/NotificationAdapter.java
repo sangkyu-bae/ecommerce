@@ -11,6 +11,7 @@ import org.example.event.notification.SSEStatusType;
 import org.example.notification.adapter.out.persistence.NotificationResponse;
 import org.example.notification.adapter.out.persistence.OrderNotificationType;
 import org.example.notification.application.port.out.RegisterNotificationPort;
+import org.example.notification.application.port.out.SendNotificationPort;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
@@ -18,7 +19,8 @@ import java.io.IOException;
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Slf4j
-public class NotificationAdapter implements RegisterNotificationPort {
+public class NotificationAdapter implements RegisterNotificationPort,
+                                            SendNotificationPort {
 
     private final EmitterRepository emitterRepository;
     private static final Long DEFAULT_TIMEOUT = 60L * 1000 * 60;
@@ -90,7 +92,6 @@ public class NotificationAdapter implements RegisterNotificationPort {
         );
         emitterRepository.deleteById(eventId);
     }
-
     @Override
     public void sendMessage(SendNotification send) {
         String eventId = send.getEventType().getName() + ":" +String.valueOf(send.getFromMember()) ;
@@ -107,14 +108,6 @@ public class NotificationAdapter implements RegisterNotificationPort {
                 eventId,
                responseMessage
         );
-
-        /**
-         * Todo : 프론트에서 제거 하는것으로 변경
-         * */
-        if(SSEStatusType.findSSEStatusType(send.getStatusType().getType()) == SSEStatusType.DELETE){
-            emitterRepository.deleteById(eventId);
-        }
-
     }
 
     @Override

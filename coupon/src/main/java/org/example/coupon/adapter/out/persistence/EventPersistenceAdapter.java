@@ -48,6 +48,5 @@ public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPo
     @Notification(memberId = "#memberId", eventName = "#eventName", notification = "#notification", type = "#type", sseType = "#sseType")
     public void sendNotification(long memberId, String eventName, String notification, int type,int sseType) {
         log.info("{} 이벤트 쿠폰에 {}님은 {}",eventName , memberId, notification);
-
     }
 }
