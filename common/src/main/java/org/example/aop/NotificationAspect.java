@@ -61,30 +61,4 @@ public class NotificationAspect {
         return result;
     }
 
-//    private final ExpressionParser parser = new SpelExpressionParser();
-//
-//    private final NotificationProducer notificationProducer;
-//
-//    @AfterReturning("@annotation(org.example.aop.Notification)")
-//    public void sendNotification(final ProceedingJoinPoint joinPoint) {
-//        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-//        Method method = signature.getMethod();
-//        Notification notification = method.getAnnotation(Notification.class);
-//
-//        StandardEvaluationContext context = CustomSpringELParser.setContext(signature.getParameterNames(),joinPoint.getArgs());
-//
-//        long memberId = parser.parseExpression(notification.memberId()).getValue(context, Long.class);
-//        String eventName = parser.parseExpression(notification.eventName()).getValue(context, String.class);
-//        String noti = parser.parseExpression(notification.notification()).getValue(context, String.class);
-//        int type = parser.parseExpression(notification.type()).getValue(context, Integer.class);
-//
-//        NotificationClient notificationClient = NotificationClient.createGenerateNotificationClient(
-//                new NotificationClient.NotificationClientFromMember(memberId),
-//                new NotificationClient.NotificationClientEventName(eventName),
-//                new NotificationClient.NotificationNotification(noti),
-//                NotificationClient.NotificationType.findNotificationType(type)
-//        );
-//
-//        notificationProducer.sendCreateNotification(notificationClient);
-//    }
 }

@@ -18,7 +18,7 @@ import java.util.Map;
 @EnableKafka
 @RequiredArgsConstructor
 public class KafkaConsumerConfig {
-    @Value("${app.bootstrapServer}")
+    @Value("${app.common.bootstrap.server}")
     private String bootstrapServer;
 
     @Bean
