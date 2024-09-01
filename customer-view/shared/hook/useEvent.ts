@@ -1,38 +1,43 @@
-import {useState} from "react";
-
+import {useEffect, useState} from "react";
+import { EventSourcePolyfill } from "event-source-polyfill";
 export const useEvent = (url: string, accessToken: string) => {
     const [messageData,setMessageData] = useState({});
 
-    const eventSource = new EventSource(url,
-        {
-            headers: {
-                Authorization: accessToken
-            },
-            withCredentials: true
+    useEffect(()=>{
+        const eventSource = new EventSourcePolyfill(url,
+            {
+                headers: {
+                    Authorization: accessToken,
+                    Connetction: 'keep-alive',
+                    Accept: 'text/event-stream',
+                },
+                withCredentials: true
+            }
+        );
+
+        eventSource.onmessage=async (e) =>{
+            const res = await e.data;
+            const parseData : MessageData = JSON.parse(res);
+
+            // setMessageData(parseData);
+
+            console.log(parseData)
+            if(parseData.eventType.type == 1){
+                eventSource.close()
+            }
+
         }
-    );
 
-    eventSource.onmessage=async (e) =>{
-        const res = await e.data;
-        const parseData : MessageData = JSON.parse(res);
+        eventSource.onerror=(e)=>{
+            eventSource.close();
 
-        setMessageData(parseData);
-
-        if(parseData.eventType.type == 1){
-            eventSource.close()
+            setMessageData({
+                messageType : "error",
+                message : "error 발생"
+            });
         }
+    },[])
 
-    }
-
-    eventSource.onerror=(e)=>{
-        eventSource.close();
-
-        setMessageData({
-            messageType : "error",
-            message : "error 발생"
-        });
-
-    }
 
     return{
         messageData

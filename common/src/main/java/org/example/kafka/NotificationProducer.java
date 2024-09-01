@@ -26,7 +26,7 @@ public class NotificationProducer {
     @Value("${app.common.bootstrap.server}")
     String commonBootstrapServer;
 
-    private final KafkaTemplate<Long,String> kafkaTemplate;
+    private final KafkaTemplate<String,String> kafkaTemplate;
 
 
 
@@ -34,17 +34,9 @@ public class NotificationProducer {
         try{
             String inputJsonString = objectMapper.writeValueAsString(notificationClient);
             log.info(inputJsonString);
-            log.error("============info============");
-//            log.error("log topic : {}" ,SEND_NOTIFICATION_TOPIC);
-//            log.error("log bootstrap : {}" ,commonBootstrapServer);
-            log.error("============info============");
-            kafkaTemplate.send(SEND_NOTIFICATION_TOPIC,notificationClient.getFormMember(),inputJsonString);
-//            kafkaProducerConfig.sendMessage(SEND_NOTIFICATION_TOPIC,inputJsonString)
-
+            kafkaTemplate.send(SEND_NOTIFICATION_TOPIC, String.valueOf(notificationClient.getFormMember()),inputJsonString);
         }catch (JsonProcessingException e){
             log.error("fail send notification service : {}" , e);
         }
     }
-
-
 }

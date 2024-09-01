@@ -25,9 +25,7 @@ const authRedux = (state = initState, action) => {
     switch (action.type) {
         case LOGIN : {
             const { accessExpiredTime, accessToken, userName } = action.command;
-            if(state.isLogin){
-                return state
-            }
+
             return {
                 accessExpiredTime: accessExpiredTime,
                 accessToken: accessToken,
