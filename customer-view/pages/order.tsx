@@ -14,7 +14,7 @@ import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import useFormHook from "@/shared/hook/useFormHook";
-import {orderValidation} from "@/utils/validation/orderValidation";
+import {orderValidation} from "@/shared/utils/validation/orderValidation";
 import {OrderApi} from "@/shared/api/order/orderApi";
 
 

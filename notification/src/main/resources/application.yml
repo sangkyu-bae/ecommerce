@@ -1,6 +1,6 @@
 server:
-  port: 0
-#  port: 8091
+#  port: 0
+  port: 8091
 spring:
   application:
     name: notification-service
@@ -10,8 +10,8 @@ logging:
     file: UTF-8
 
   file:
-    name: couponLog # ?? ??? ??? ?????.
-    path: C:/logs/coupon # ?? ??? ??? ?????.
+    name: notificationLog # ?? ??? ??? ?????.
+    path: C:/logs/notification # ?? ??? ??? ?????.
     max-history: 30
 
   pattern:
@@ -28,14 +28,16 @@ logging:
     root: INFO
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
 
 app:
-  bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
 kafka:
   notification:
     topic: notification

@@ -6,7 +6,7 @@ import Pagination from "@mui/material/Pagination";
 import React, {useEffect, useState} from "react";
 import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
-import Util from "@/utils/CommonUtil";
+import Util from "@/shared/utils/CommonUtil";
 import ProductInfo from "@/components/product/ProductInfo";
 import ProductSizeQuantity from "@/components/product/ProductSizeQuantity";
 

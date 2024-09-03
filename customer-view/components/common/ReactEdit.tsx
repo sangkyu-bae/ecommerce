@@ -1,7 +1,7 @@
 import React from 'react';
 import {Editor} from "@toast-ui/react-editor";
 import '@toast-ui/editor/dist/toastui-editor.css';
-import Validation from "@/utils/validation/Validation";
+import Validation from "@/shared/utils/validation/Validation";
 
 interface InfoProps {
     content: string;

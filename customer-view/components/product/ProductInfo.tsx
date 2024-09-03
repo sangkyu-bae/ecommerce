@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useMemo, useState} from 'react';
-import Util from "@/utils/CommonUtil";
+import Util from "@/shared/utils/CommonUtil";
 import {useRouter} from "next/router";
 import {MyProduct} from "@/store/product/myProduct";
 import ProductImage from "@/components/product/ProductImage";

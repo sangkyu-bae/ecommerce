@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import {useForm} from "react-hook-form";
-import Validation from "@/utils/validation/Validation";
+import Validation from "@/shared/utils/validation/Validation";
 import MemberApi from "@/shared/api/MemberApi";
 import {parse} from "postcss";
 import {setToken} from "@/shared/api/cookie/Cookie";

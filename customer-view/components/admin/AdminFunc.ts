@@ -1,4 +1,4 @@
-import Util from "@/utils/CommonUtil";
+import Util from "@/shared/utils/CommonUtil";
 
 class AdminFunc{
     constructor() {

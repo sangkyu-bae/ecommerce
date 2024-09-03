@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Validation from "@/utils/validation/Validation";
+import Validation from "@/shared/utils/validation/Validation";
 import {useFieldArray, useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
 import {string} from "prop-types";
-import validation from "@/utils/validation/Validation";
+import validation from "@/shared/utils/validation/Validation";
 import {useRouter} from "next/router";
 
 function useUploadProduct({productData,ref,submit,type} ) {

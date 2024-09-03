@@ -11,7 +11,7 @@ import {string} from "prop-types";
 import {useForm} from "react-hook-form";
 import {useMutation, useQueries} from "@tanstack/react-query";
 import {ProductApi} from "@/shared/api/product/ProductApi";
-import Validation from "@/utils/validation/Validation";
+import Validation from "@/shared/utils/validation/Validation";
 import SizeContainer from "@/components/admin/SizeContainer";
 import {useRouter} from "next/router";
 import AdminFunc from "@/components/admin/AdminFunc";

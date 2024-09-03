@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import StoreIcon from '@mui/icons-material/Store';
 import Link from "next/link";
-import CommonUtil from "@/utils/CommonUtil";
+import CommonUtil from "@/shared/utils/CommonUtil";
 
 interface MenuData {
     menuName: string;

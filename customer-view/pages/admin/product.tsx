@@ -7,7 +7,7 @@ import {useQuery} from "@tanstack/react-query";
 import {ProductApi} from "../../shared/api/product/ProductApi";
 import Pagination from '@mui/material/Pagination';
 import Link from "next/link";
-import Util from "@/utils/CommonUtil";
+import Util from "@/shared/utils/CommonUtil";
 
 function Product(props) {
     const [productData, setProductData] = useState<ProductPageData | undefined>(undefined);
