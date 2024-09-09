@@ -3,7 +3,8 @@ const userURL : string = `${basicUrl}/user`
 export const productURL : string = `${basicUrl}/admin`
 const rankURL : string =`${basicUrl}/rank`;
 const basketURL : string = `${basicUrl}/basket`;
-const orderURL : string = `${basicUrl}/order`
+const orderURL : string = `${basicUrl}/order`;
+const couponBasicURL : string = `${basicUrl}/coupon/basic`;
 type MemberRequest={
     signUp:string;
     signIn:string;
@@ -28,6 +29,9 @@ type BasketRequest ={
     update:string
 }
 
+type CouponRequest ={
+    readAll : string
+}
 type OrderRequest = {
     register : string,
     read : string
@@ -59,4 +63,8 @@ export const basketRequest : BasketRequest ={
 export const orderRequest : OrderRequest = {
     register : `${orderURL}/register`,
     read : `${orderURL}/member`
+}
+
+export const couponRequest : CouponRequest = {
+    readAll : `${couponBasicURL}/event`
 }

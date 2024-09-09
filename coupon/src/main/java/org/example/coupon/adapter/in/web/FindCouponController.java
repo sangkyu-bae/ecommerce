@@ -6,8 +6,11 @@ import org.example.WebAdapter;
 import org.example.coupon.application.port.in.command.FindCouponCommand;
 import org.example.coupon.application.port.in.usecase.FindCouponUseCase;
 import org.example.coupon.domain.Coupon;
+import org.example.coupon.domain.Event;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,4 +29,6 @@ public class FindCouponController {
         Coupon coupon = findCouponUseCase.findCouponByCouponId(command);
         return ResponseEntity.ok().body(coupon);
     }
+
+
 }
