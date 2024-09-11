@@ -57,10 +57,10 @@ public class NotificationAdapter implements RegisterNotificationPort,
 
     @Override
     public SseEmitter subscribe(RegisterSSECommand command) {
-        String emitterId = command.getNotificationType().getName() + ":" +String.valueOf(command.getUserId()) ;
-        SseEmitter emitter = emitterRepository.save(emitterId, new SseEmitter(DEFAULT_TIMEOUT));
-        emitter.onCompletion(() -> emitterRepository.deleteById(emitterId));
-        emitter.onTimeout(() -> emitterRepository.deleteById(emitterId));
+        String emitterId = command.getNotificationType().getName();
+        SseEmitter emitter = emitterRepository.save(emitterId,command.getUserId(), new SseEmitter(DEFAULT_TIMEOUT));
+        emitter.onCompletion(() -> emitterRepository.deleteByKeyAndId(emitterId,command.getUserId()));
+        emitter.onTimeout(() -> emitterRepository.deleteByKeyAndId(emitterId,command.getUserId()));
 
         NotificationResponse response = NotificationResponse.builder()
                 .statusType(new EnumMapperValue(SSEStatusType.CONNECT))
@@ -75,8 +75,6 @@ public class NotificationAdapter implements RegisterNotificationPort,
         );
 
         log.info("connect emitterId : {}", emitterId);
-
-
         return emitter;
     }
 

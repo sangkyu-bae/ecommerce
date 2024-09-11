@@ -18,10 +18,19 @@ public class EmitterRepositoryImpl implements EmitterRepository{
     private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
     private final Map<String, Object> eventCache = new ConcurrentHashMap<>();
 
+    private final Map<String, Map<Long, SseEmitter>> sseEmitters = new ConcurrentHashMap<>();
+
     @Override
     public SseEmitter save(String emitterId, SseEmitter sseEmitter) {
         emitters.put(emitterId, sseEmitter);
         return sseEmitter;
+    }
+
+    @Override
+    public SseEmitter save(String emitterId, Long userId, SseEmitter emitter) {
+        Map<Long,SseEmitter> emitterMap = Map.of(userId,emitter);
+        sseEmitters.put(emitterId,emitterMap);
+        return emitter;
     }
 
     @Override
@@ -36,6 +45,12 @@ public class EmitterRepositoryImpl implements EmitterRepository{
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    @Override
+    public SseEmitter findEmitterMemberId(String key, Long id) {
+        SseEmitter emitter = sseEmitters.get(key).get(id);
+        return emitter;
+    }
+
 
 
     @Override
@@ -48,6 +63,11 @@ public class EmitterRepositoryImpl implements EmitterRepository{
     @Override
     public void deleteById(String id) {
         emitters.remove(id);
+    }
+
+    @Override
+    public void deleteByKeyAndId(String key, long userId) {
+        sseEmitters.get(key).remove(userId);
     }
 
     @Override
@@ -76,6 +96,7 @@ public class EmitterRepositoryImpl implements EmitterRepository{
     public SseEmitter findEmitterMemberId(String userId) {
         return findAllEmitterStartWithByMemberId(userId).get(userId);
     }
+
 
     @Override
     public List<SseEmitter> findAll() {

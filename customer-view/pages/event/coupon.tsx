@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import {CouponApi} from "@/shared/api/coupon/CouponApi";
 import CardCouponComponent from "@/shared/ui/CardCouponComponent";
+import {useEvent} from "@/shared/hook/useEvent";
+import {useAuth} from "@/shared/hook/useAuth";
 
 
 function Coupon(props) {
@@ -25,10 +27,21 @@ function Coupon(props) {
             }
         }
     )
+    const {getAccessToken} = useAuth();
+    const {messageData,changeContact} = useEvent({
+        url :"http://localhost:8000/notification/queue-coupon",
+        accessToken : getAccessToken(),
+        hasContact : false
+    })
 
     useEffect(()=>{
-        console.log(data)
-    },[data])
+        console.log(messageData);
+    },[messageData])
+    const onClick = (key) =>{
+        changeContact(true,`http://localhost:8000/notification/${key}`);
+    }
+
+
 
     return (
         <StyledContainer>
@@ -39,6 +52,7 @@ function Coupon(props) {
                                              title={`${coupon.couponName} , 할인율 : ${coupon.salePercent}`}
                                              subTitle={`남은 수량 : ${coupon.quantity}`}
                                              btnTitle={'쿠폰 발급 하기'}
+                                             clickEvent={()=>onClick(coupon.id)}
                         />
                     )
                 }

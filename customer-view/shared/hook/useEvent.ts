@@ -1,10 +1,19 @@
 import {useEffect, useState} from "react";
 import { EventSourcePolyfill } from "event-source-polyfill";
-export const useEvent = (url: string, accessToken: string) => {
+type event = {
+    url : string,
+    accessToken : string,
+    hasContact : boolean
+}
+export const useEvent = ({url,accessToken,hasContact} : event) => {
     const [messageData,setMessageData] = useState({});
-
+    const [isContact,setIsContact] = useState<boolean>(hasContact);
+    const [sendUrl, setSendUrl] = useState<string>(url);
     useEffect(()=>{
-        const eventSource = new EventSourcePolyfill(url,
+        if(!isContact){
+            return;
+        }
+        const eventSource = new EventSourcePolyfill(sendUrl,
             {
                 headers: {
                     Authorization: accessToken,
@@ -36,10 +45,17 @@ export const useEvent = (url: string, accessToken: string) => {
                 message : "error 발생"
             });
         }
-    },[])
+    },[isContact])
+
+    const changeContact = (isContact : boolean,url:string) =>{
+        setSendUrl(url);
+        setIsContact(isContact);
+    }
+
 
 
     return{
-        messageData
+        messageData,
+        changeContact
     }
 }

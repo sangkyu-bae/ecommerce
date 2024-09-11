@@ -26,7 +26,10 @@ function CardCouponComponent({title,btnTitle,subTitle,clickEvent} : componentPro
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button sx={{margin:"0 auto"}} variant="contained">{btnTitle}</Button>
+                                <Button sx={{margin:"0 auto"}}
+                                        variant="contained"
+                                        onClick={clickEvent}
+                                >{btnTitle}</Button>
                             </CardActions>
                         </React.Fragment>
                     </Card>

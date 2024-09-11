@@ -19,15 +19,13 @@ public class RegisterNotificationController {
     private final RegisterSSENotificationUseCase registerSSENotificationUseCase;
 
     private final RegisterNotificationPort registerNotificationPort;
+    //    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "register notification ", description = "알림 구독 하기")
     @GetMapping(value = "/notification/{eventName}", produces = "text/event-stream")
-//    public ResponseEntity<String> subscribe(@RequestHeader("X-User-Id") long userId ,
-//    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<SseEmitter> subscribe(
-            @PathVariable("eventName") String eventName) {
-
+    public ResponseEntity<SseEmitter> subscribe(@RequestHeader("X-User-Id") long userId ,
+                                            @PathVariable("eventName") String eventName){
         RegisterSSENotificationCommand command = RegisterSSENotificationCommand.builder()
-                .userId(1)
+                .userId(userId)
                 .eventName(eventName)
                 .build();
         SseEmitter emitter = registerSSENotificationUseCase.subscribe(command);
