@@ -19,7 +19,7 @@ public class NotificationCreateConsumer {
     private final RegisterNotificationPort port;
 
     @KafkaListener(topics = "${kafka.notification.topic}", groupId = "${kafka.notification.group}")
-    public void orderStatusListener(String requestJson) {
+    public void sendMessageListener(String requestJson) {
 //        RequestOrderStatus request = null;
 //        try {
 //            request = objectMapper.readValue(orderStatusJson, RequestOrderStatus.class);
