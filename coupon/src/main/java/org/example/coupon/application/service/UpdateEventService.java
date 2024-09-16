@@ -121,14 +121,15 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             long userId = queue.poll();
             count++;
 
-            if(count > 0){
+            if(count > -1){
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
                 updateEventPort.sendNotification(userId,
-                        couponEntity.getName(),
+//                        couponEntity.getName(),
+                        "event-coupon-" + event.getId(),
                         "앞에"+ count + "명이 대기하고 있어요",
-                        NotificationClient.NotificationType.QUEUE_EVENT.getType(),
+                        NotificationClient.NotificationType.EVENT_COUPON.getType(),
                         SSEStatusType.KEEP.getType());
                 continue;
             }
@@ -149,6 +150,12 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
                 );
 
                 couponComponents.add(couponComponent);
+                updateEventPort.sendNotification(userId,
+//                        couponEntity.getName(),
+                        "event-coupon-" + event.getId(),
+                        event.getCouponName()+"쿠폰 발급 완료",
+                        NotificationClient.NotificationType.EVENT_COUPON.getType(),
+                        SSEStatusType.DELETE.getType());
             }catch (ErrorException e){
                 log.error(">>>>>>> 이벤트 쿠폰 :{}, 수량 종료", event.getId());
                 break;
@@ -158,7 +165,13 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             if(count == 300){
 //                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
                 updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
+                couponComponents.clear();
             }
+        }
+
+        if(!couponComponents.isEmpty()){
+            updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
+            couponComponents.clear();
         }
     }
 }

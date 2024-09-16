@@ -8,6 +8,7 @@ import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.out.UpdateEventCouponPort;
 import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
@@ -111,7 +112,7 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
         if (rangeWithScores != null) {
             for (ZSetOperations.TypedTuple<String> tuple : rangeWithScores) {
                 String userId = tuple.getValue();
-                log.info("쿠폰 발급완료 : {} sotredSet에서 {} : 유저 삭제합니다 ", userId, eventId);
+                log.info("sotredSet에서 {} : 유저 삭제합니다 ", userId, eventId);
                 zSetOps.remove(key, tuple.getValue());
             }
         }
@@ -128,5 +129,6 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
 
         return false;
     }
-
 }
+
+

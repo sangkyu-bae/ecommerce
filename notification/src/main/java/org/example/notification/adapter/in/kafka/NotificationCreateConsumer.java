@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.example.aop.NotificationClient;
 import org.example.event.notification.SendNotification;
+import org.example.notification.application.factory.NotificationFactory;
+import org.example.notification.application.port.in.command.NotificationType;
+import org.example.notification.application.port.in.usecase.Notification;
 import org.example.notification.application.port.out.RegisterNotificationPort;
 import org.springframework.kafka.annotation.KafkaListener;
 
@@ -18,24 +21,20 @@ public class NotificationCreateConsumer {
 
     private final RegisterNotificationPort port;
 
+    private final NotificationFactory notificationFactory;
+
     @KafkaListener(topics = "${kafka.notification.topic}", groupId = "${kafka.notification.group}")
     public void sendMessageListener(String requestJson) {
-//        RequestOrderStatus request = null;
-//        try {
-//            request = objectMapper.readValue(orderStatusJson, RequestOrderStatus.class);
-//            OrderNotificationType type = OrderNotificationType.findStatusCode(request.getOrderStatus());
-//            port.sendMessage(request.getMemberId(),type);
-//        } catch (Exception e) {
-//            log.error("error request {}", request);
-//            throw new RuntimeException(e);
-//        }
 
         SendNotification request = null;
         NotificationClient rq = null;
         try{
             rq = objectMapper.readValue(requestJson, NotificationClient.class);
-//            request = objectMapper.readValue(requestJson, SendNotification.class);
             log.info(rq.toString());
+//            request = objectMapper.readValue(requestJson, SendNotification.class);
+            Notification notification = notificationFactory.createNotification(NotificationType.EVENT_COUPON);
+            notification.sendMessage(rq);
+
         }catch (Exception e){
             log.error("error request {}", request);
             e.printStackTrace();

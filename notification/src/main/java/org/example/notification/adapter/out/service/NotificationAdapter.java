@@ -28,8 +28,9 @@ public class NotificationAdapter implements RegisterNotificationPort,
 
     @Override
     public SseEmitter subscribe(Long memberId,String eventName) {
-        String emitterId = eventName+ ":" +String.valueOf(memberId) ;
-        SseEmitter emitter = emitterRepository.save(emitterId, new SseEmitter(DEFAULT_TIMEOUT));
+//        String emitterId = eventName+ ":" +String.valueOf(memberId) ;
+        String emitterId = eventName ;
+        SseEmitter emitter = emitterRepository.save(emitterId,memberId, new SseEmitter(DEFAULT_TIMEOUT));
         emitter.onCompletion(() -> {
             log.error("Emitter completed: {}", emitterId);
             emitterRepository.deleteById(emitterId);
@@ -92,8 +93,11 @@ public class NotificationAdapter implements RegisterNotificationPort,
     }
     @Override
     public void sendMessage(SendNotification send) {
-        String eventId = send.getEventType().getName() + ":" +String.valueOf(send.getFromMember()) ;
-        SseEmitter emitter = emitterRepository.findEmitterMemberId(eventId);
+//        String eventId = send.getEventType().getName() + ":" +String.valueOf(send.getFromMember()) ;
+        String eventId = send.getEventName();
+        log.info("eventID : {}", eventId);
+        log.info("member ID : {}", send.getFromMember());
+        SseEmitter emitter = emitterRepository.findEmitterMemberId(eventId,send.getFromMember());
 
         NotificationResponse responseMessage = NotificationResponse.builder()
                 .statusType(send.getStatusType())

@@ -9,6 +9,7 @@ public enum SSEStatusType implements EnumMapper {
     DELETE(1,"삭제"),
     KEEP(2,"유지");
 
+
     private final int type;
 
     private final String name;

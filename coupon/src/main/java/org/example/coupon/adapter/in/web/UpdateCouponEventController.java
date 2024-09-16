@@ -23,7 +23,7 @@ public class UpdateCouponEventController {
     private final UpdateEventCouponPort updateEventCouponPort;
 
     @Operation(summary = "register event", description = "이벤트 쿠폰 발급 받기 (분산락)")
-    @PatchMapping("/coupon/event/lock/{eventId}/{couponName}")
+    @PatchMapping("/coupon/auth/event/lock/{eventId}/{couponName}")
 
     public ResponseEntity<String> processCouponIssuanceLock(@PathVariable("eventId") long eventId,
                                                  @PathVariable("couponName") String couponName,
@@ -39,7 +39,7 @@ public class UpdateCouponEventController {
     }
 
     @Operation(summary = "issuance event Coupon", description = "이벤트 쿠폰 발급 받기  (대기열)")
-    @PatchMapping("/coupon/event/queue/{eventId}")
+    @PatchMapping("/coupon/auth/event/queue/{eventId}")
     public ResponseEntity<String> processCouponIssuanceQueue(@PathVariable("eventId") long eventId,
                                                              @RequestHeader("X-User-Id") long userId){
         UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
@@ -52,6 +52,12 @@ public class UpdateCouponEventController {
         return ResponseEntity.ok().body("success");
     }
 
+//    private final UpdateEventCouponPort updateEventCouponPort;
+    @GetMapping("/coupon/refresh")
+    public ResponseEntity<String> tt(){
+        updateEventCouponPort.refreshQueue(3);
+        return ResponseEntity.ok().body("tt");
+    }
     @GetMapping("/coupon/evnet/test")
     public ResponseEntity<String> test(){
         for(int i = 0; i < 1 ;i++){

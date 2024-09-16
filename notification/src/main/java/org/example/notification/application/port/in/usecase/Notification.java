@@ -1,5 +1,6 @@
 package org.example.notification.application.port.in.usecase;
 
+import org.example.aop.NotificationClient;
 import org.example.event.notification.RegisterSSECommand;
 import org.example.event.notification.SendNotification;
 import org.example.notification.application.port.in.command.RegisterSSENotificationCommand;
@@ -12,5 +13,5 @@ public interface Notification {
 
     SseEmitter subscribe(RegisterSSENotificationCommand command);
 
-    void sendMessage(SendNotification send);
+    void sendMessage(NotificationClient send);
 }

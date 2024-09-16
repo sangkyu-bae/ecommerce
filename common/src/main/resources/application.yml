@@ -7,9 +7,9 @@ axon:
   axonserver:
     servers: 127.0.0.1:8124
 
-app:
-  bootstrapServer: localhost:9092
+#app:
+#  bootstrapServer: localhost:9092
 
-kafka:
-  notification:
-    topic: notification
+#kafka:
+#  notification:
+#    topic: notification

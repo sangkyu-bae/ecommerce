@@ -5,6 +5,7 @@ const rankURL : string =`${basicUrl}/rank`;
 const basketURL : string = `${basicUrl}/basket`;
 const orderURL : string = `${basicUrl}/order`;
 const couponBasicURL : string = `${basicUrl}/coupon/basic`;
+const couponAuthURL : string =`${basicUrl}/coupon/auth`
 type MemberRequest={
     signUp:string;
     signIn:string;
@@ -31,6 +32,7 @@ type BasketRequest ={
 
 type CouponRequest ={
     readAll : string
+    registerEventCoupon: string
 }
 type OrderRequest = {
     register : string,
@@ -66,5 +68,6 @@ export const orderRequest : OrderRequest = {
 }
 
 export const couponRequest : CouponRequest = {
-    readAll : `${couponBasicURL}/event`
+    readAll : `${couponBasicURL}/event`,
+    registerEventCoupon :`${couponAuthURL}/event/queue`
 }

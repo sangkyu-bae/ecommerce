@@ -21,7 +21,7 @@ public interface EmitterRepository {
 
     SseEmitter findEmitterMemberId(String id);
 
-    SseEmitter findEmitterMemberId(String key,Long id);
+    SseEmitter findEmitterMemberId(String eventId,Long id);
 
     List<SseEmitter> findAll();
 }

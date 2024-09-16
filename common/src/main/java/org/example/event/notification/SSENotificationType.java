@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public enum SSENotificationType {
-
+    EVENT_COUPON(1,"event-coupon-"),
     QUEUE_EVENT(0,"대기열 이벤트");
 
     private final int type;

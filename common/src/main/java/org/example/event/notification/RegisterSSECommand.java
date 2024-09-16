@@ -15,6 +15,7 @@ public class RegisterSSECommand extends SelfValidating<RegisterSSECommand> {
     @NotNull
     private long userId;
 
+
     @NotNull
     private SSENotificationType notificationType;
 

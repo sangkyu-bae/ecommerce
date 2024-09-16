@@ -1,6 +1,6 @@
 import axios from "axios";
 import {getAccessToken} from "@/shared/api/cookie/Cookie";
-const accessToken = getAccessToken()
+let accessToken = getAccessToken()
 
 const ApiCommon={
     basicAPI:axios.create({
@@ -22,7 +22,7 @@ const ApiCommon={
             'Content-Type': 'application/json',
             Authorization:`${accessToken}`
         }
-    })
+    }),
 }
 
 export default ApiCommon;

@@ -70,7 +70,7 @@ public class NotificationClient {
     }
 
     public static enum NotificationType implements EnumMapper {
-
+        EVENT_COUPON(1,"이벤트 쿠폰"),
         QUEUE_EVENT(0, "대기열 이벤트");
 
         private final int type;

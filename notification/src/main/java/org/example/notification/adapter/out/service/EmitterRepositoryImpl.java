@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.yaml.snakeyaml.emitter.Emitter;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,8 +29,18 @@ public class EmitterRepositoryImpl implements EmitterRepository{
 
     @Override
     public SseEmitter save(String emitterId, Long userId, SseEmitter emitter) {
-        Map<Long,SseEmitter> emitterMap = Map.of(userId,emitter);
-        sseEmitters.put(emitterId,emitterMap);
+
+        Map<Long, SseEmitter> emitterMap = null;
+        log.info("emitterId : {}",emitterId);
+        log.info("userId : {}", userId);
+        if(sseEmitters.containsKey(emitterId)){
+            emitterMap = sseEmitters.get(emitterId);
+            emitterMap.put(userId,emitter);
+        }else{
+            emitterMap = new HashMap<>();
+            sseEmitters.put(emitterId, emitterMap);
+        }
+
         return emitter;
     }
 
@@ -46,11 +57,20 @@ public class EmitterRepositoryImpl implements EmitterRepository{
     }
 
     @Override
-    public SseEmitter findEmitterMemberId(String key, Long id) {
-        SseEmitter emitter = sseEmitters.get(key).get(id);
+    public SseEmitter findEmitterMemberId(String id) {
+        SseEmitter emitter = sseEmitters.get(id).get(id);
         return emitter;
     }
 
+    @Override
+    public SseEmitter findEmitterMemberId(String eventId, Long id) {
+        log.info("event Id : {}", eventId);
+        log.info("meberId : {}", id);
+        for(String key : sseEmitters.keySet()){
+            log.info( "key : {}", key);
+        }
+        return sseEmitters.get(eventId).get(id);
+    }
 
 
     @Override
@@ -92,10 +112,6 @@ public class EmitterRepositoryImpl implements EmitterRepository{
         );
     }
 
-    @Override
-    public SseEmitter findEmitterMemberId(String userId) {
-        return findAllEmitterStartWithByMemberId(userId).get(userId);
-    }
 
 
     @Override

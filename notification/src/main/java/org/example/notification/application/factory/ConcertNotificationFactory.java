@@ -16,7 +16,7 @@ public class ConcertNotificationFactory implements NotificationFactory{
     @Override
     public Notification createNotification(NotificationType type) {
 
-        Notification notification = notificationMap.get(type.getName());
+        Notification notification = notificationMap.get(type.getType());
 
         if(notification == null){
             throw new IllegalArgumentException("Unknown notification type: " + type);//에러 공통화 필요

@@ -5,6 +5,7 @@ const cookies=new Cookies();
 export const setToken = (key: 'ACCESS_TOKEN' | 'REFRESH_TOKEN' , token:string, expiredTime:string) =>{
     const expires =new Date(expiredTime);
     console.log(expires);
+    expires.setHours(expires.getHours() + 9);
     cookies.set(key, token, {
         path:'/',
         expires :expires

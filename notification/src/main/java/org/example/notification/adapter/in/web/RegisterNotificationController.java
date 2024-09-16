@@ -3,6 +3,7 @@ package org.example.notification.adapter.in.web;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.example.WebAdapter;
+import org.example.notification.application.factory.ConcertNotificationFactory;
 import org.example.notification.application.factory.NotificationFactory;
 import org.example.notification.application.port.in.command.NotificationType;
 import org.example.notification.application.port.in.command.RegisterSSENotificationCommand;
@@ -50,6 +51,7 @@ public class RegisterNotificationController {
         SseEmitter emitter = notification.subscribe(command);
         return ResponseEntity.ok().body(emitter);
     }
+
 
 
     @GetMapping("/notification/sendAll")
