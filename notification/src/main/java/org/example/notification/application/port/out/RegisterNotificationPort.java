@@ -6,7 +6,7 @@ import org.example.notification.adapter.out.persistence.OrderNotificationType;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 public interface RegisterNotificationPort {
-    SseEmitter subscribe(Long memberId,String eventName);
+    SseEmitter subscribe(Long memberId,String eventName,String sendMsg);
 
     SseEmitter subscribe(RegisterSSECommand command);
 

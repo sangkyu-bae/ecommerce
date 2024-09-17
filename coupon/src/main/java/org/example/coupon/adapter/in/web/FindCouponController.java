@@ -29,6 +29,4 @@ public class FindCouponController {
         Coupon coupon = findCouponUseCase.findCouponByCouponId(command);
         return ResponseEntity.ok().body(coupon);
     }
-
-
 }

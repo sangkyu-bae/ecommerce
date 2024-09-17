@@ -33,6 +33,7 @@ type BasketRequest ={
 type CouponRequest ={
     readAll : string
     registerEventCoupon: string
+    readAllAuth : string
 }
 type OrderRequest = {
     register : string,
@@ -69,5 +70,6 @@ export const orderRequest : OrderRequest = {
 
 export const couponRequest : CouponRequest = {
     readAll : `${couponBasicURL}/event`,
-    registerEventCoupon :`${couponAuthURL}/event/queue`
+    registerEventCoupon :`${couponAuthURL}/event/queue`,
+    readAllAuth :`${couponAuthURL}/event`
 }

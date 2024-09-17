@@ -9,8 +9,9 @@ type componentProps = {
     subTitle : string
     btnTitle : string
     clickEvent : void
+    isEvent : boolean
 }
-function CardCouponComponent({title,btnTitle,subTitle,clickEvent} : componentProps) {
+function CardCouponComponent({title,btnTitle,subTitle,clickEvent,isEvent} : componentProps) {
     return (
         <Box sx = {{width:"100%"}}>
             <Box sx = {{width:"100%"}}>
@@ -26,10 +27,18 @@ function CardCouponComponent({title,btnTitle,subTitle,clickEvent} : componentPro
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button sx={{margin:"0 auto"}}
-                                        variant="contained"
-                                        onClick={clickEvent}
-                                >{btnTitle}</Button>
+                                {
+                                    isEvent ?
+                                    <Button sx={{margin:"0 auto"}}
+                                            variant="contained"
+                                            onClick={clickEvent}
+                                    >{btnTitle}</Button>
+                                        :
+                                      <Box>
+                                          이미 발급이 완료 되었습니다.
+                                      </Box>
+                                }
+
                             </CardActions>
                         </React.Fragment>
                     </Card>

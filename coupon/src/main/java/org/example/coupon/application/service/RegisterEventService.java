@@ -53,7 +53,8 @@ public class RegisterEventService implements RegisterEventCouponUseCase {
                 new Event.EventSalePercent(command.getSalePercent()),
                 new Event.EventQuantity(command.getQuantity()),
                 new Event.EventStartAt(command.getStartAt()),
-                new Event.EventEndAt(command.getEndAt())
+                new Event.EventEndAt(command.getEndAt()),
+                new Event.EventIssued(false)
         );
 
         EventEntity registerEventEntity = registerEventPort.registerEvent(registerEvent);
@@ -70,6 +71,6 @@ public class RegisterEventService implements RegisterEventCouponUseCase {
 
         registerCouponPort.registerCoupon(coupon);
 
-        return eventMapper.mapToDomain(registerEventEntity);
+        return eventMapper.mapToDomain(registerEventEntity,false);
     }
 }

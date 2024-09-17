@@ -7,14 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventMapper {
 
-    public Event mapToDomain(EventEntity eventEntity){
+    public Event mapToDomain(EventEntity eventEntity,boolean isIssued){
         return Event.createGenerateEvent(
                 new Event.EventId(eventEntity.getId()),
                 new Event.EventCouponName(eventEntity.getCouponName()),
                 new Event.EventSalePercent(eventEntity.getSalePercent()),
                 new Event.EventQuantity(eventEntity.getQuantity()),
                 new Event.EventStartAt(eventEntity.getStartAt()),
-                new Event.EventEndAt(eventEntity.getEndAt())
+                new Event.EventEndAt(eventEntity.getEndAt()),
+                new Event.EventIssued(isIssued)
         );
     }
 }

@@ -12,4 +12,5 @@ public interface FindEventPort {
 
     List<EventEntity> findByStartAtBeforeAndEndAtGreaterThanEqual(LocalDateTime startAt, LocalDateTime endAt);
 
+    EventEntity findByEventId(Event.EventId eventId);
 }

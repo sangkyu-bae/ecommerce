@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {EventSourcePolyfill} from "event-source-polyfill";
 
 type event = {
@@ -10,11 +10,17 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
     const [messageData, setMessageData] = useState<MessageData>({});
     const [isContact, setIsContact] = useState<boolean>(hasContact);
     const [sendUrl, setSendUrl] = useState<string>(url);
+    let eventSource = useRef(null);
     useEffect(() => {
-        if (!isContact) {
+        if (!isContact && eventSource.current) {
+            eventSource.current.close();
+            console.log("?")
             return;
         }
-        const eventSource = new EventSourcePolyfill(sendUrl,
+        if(!isContact){
+            return;
+        }
+       eventSource.current  = new EventSourcePolyfill(sendUrl,
             {
                 headers: {
                     Authorization: accessToken,
@@ -26,7 +32,7 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
             }
         );
 
-        eventSource.onmessage = async (e) => {
+        eventSource.current.onmessage = async (e) => {
             const res = await e.data;
             const parseData: MessageData = JSON.parse(res);
 
@@ -34,7 +40,7 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
 
             console.log(parseData)
             if (parseData.statusType.type == 1) {
-                eventSource.close();
+                eventSource.current.close();
                 return;
             }
 
@@ -42,8 +48,8 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
 
         }
 
-        eventSource.onerror = (e) => {
-            eventSource.close();
+        eventSource.current.onerror = (e) => {
+            eventSource.current.close();
 
             setMessageData({
                 eventType: {
@@ -57,6 +63,11 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
                 }
             });
         }
+        return () => {
+            if (eventSource.current) {
+                eventSource.current.close();
+            }
+        };
     }, [isContact])
 
     const changeContact = (isContact: boolean, url: string) => {
@@ -66,6 +77,7 @@ export const useEvent = ({url, accessToken, hasContact}: event) => {
 
     return {
         messageData,
-        changeContact
+        changeContact,
+        setIsContact
     }
 }

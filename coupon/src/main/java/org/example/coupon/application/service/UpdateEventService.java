@@ -14,6 +14,7 @@ import org.example.coupon.application.port.out.*;
 import org.example.coupon.domain.Coupon;
 import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.domain.Event;
+import org.example.coupon.infra.error.CouponErrorCode;
 import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.redis.DistributedLock;
 import org.example.event.notification.SSEStatusType;
@@ -111,6 +112,14 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
     @Override
     public void addEventQueue(UpdateEventCouponCommand command) {
+        EventEntity eventEntity = findEventPort.findByEventId(new Event.EventId(command.getEventId()));
+        CouponEntity coupon = findCouponPort.findByCouponName(new Coupon.CouponName(eventEntity.getCouponName()));
+        boolean existCoupon = coupon.existCouponByUserId(command.getUserId());
+
+        if(existCoupon){
+            throw new ErrorException(CouponErrorCode.COUPON_EXIST,"addEventQueue");
+        }
+
         updateEventCouponPort.addEventQueue(new Event.EventId(command.getEventId()),command.getUserId());
     }
     @Override
@@ -121,12 +130,11 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             long userId = queue.poll();
             count++;
 
-            if(count > -1){
+            if(count > 300){
                 /**
                  * sse 전송 모듈 필요 몇번째 남았는지
                  * */
                 updateEventPort.sendNotification(userId,
-//                        couponEntity.getName(),
                         "event-coupon-" + event.getId(),
                         "앞에"+ count + "명이 대기하고 있어요",
                         NotificationClient.NotificationType.EVENT_COUPON.getType(),
@@ -151,7 +159,6 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
                 couponComponents.add(couponComponent);
                 updateEventPort.sendNotification(userId,
-//                        couponEntity.getName(),
                         "event-coupon-" + event.getId(),
                         event.getCouponName()+"쿠폰 발급 완료",
                         NotificationClient.NotificationType.EVENT_COUPON.getType(),
@@ -160,10 +167,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
                 log.error(">>>>>>> 이벤트 쿠폰 :{}, 수량 종료", event.getId());
                 break;
             }
-
-
             if(count == 300){
-//                updateCouponPort.updateCouponComponent(couponComponents,couponEntity);
                 updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
                 couponComponents.clear();
             }

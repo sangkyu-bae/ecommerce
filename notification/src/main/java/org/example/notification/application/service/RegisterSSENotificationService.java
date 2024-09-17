@@ -18,7 +18,7 @@ public class RegisterSSENotificationService implements RegisterSSENotificationUs
 
     @Override
     public SseEmitter subscribe(RegisterSSENotificationCommand command) {
-        return registerNotificationPort.subscribe(command.getUserId(),command.getEventName());
+        return registerNotificationPort.subscribe(command.getUserId(),command.getEventName(),"연결중입니다.");
     }
 
     @Override

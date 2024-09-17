@@ -23,13 +23,16 @@ public class Event {
 
     private final LocalDateTime endAt;
 
+    private final boolean isIssued;
+
     public static Event createGenerateEvent(
             EventId eventId,
             EventCouponName eventCouponName,
             EventSalePercent eventSalePercent,
             EventQuantity eventQuantity,
             EventStartAt eventStartAt,
-            EventEndAt eventEndAt
+            EventEndAt eventEndAt,
+            EventIssued eventIssued
     ){
         return new Event(
                 eventId.getId(),
@@ -37,7 +40,8 @@ public class Event {
                 eventSalePercent.getSalePercent(),
                 eventQuantity.getQuantity(),
                 eventStartAt.getStartAt(),
-                eventEndAt.getEndAt()
+                eventEndAt.getEndAt(),
+                eventIssued.isIssued()
         );
     }
 
@@ -98,5 +102,14 @@ public class Event {
         }
 
         private LocalDateTime endAt;
+    }
+
+    @Value
+    public static class EventIssued{
+        public EventIssued(boolean value){
+            this.issued = value;
+        }
+
+        private boolean issued;
     }
 }

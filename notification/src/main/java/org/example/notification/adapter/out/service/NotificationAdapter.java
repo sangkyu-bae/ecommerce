@@ -27,7 +27,7 @@ public class NotificationAdapter implements RegisterNotificationPort,
 //    private static final Long DEFAULT_TIMEOUT =10L * 1000;
 
     @Override
-    public SseEmitter subscribe(Long memberId,String eventName) {
+    public SseEmitter subscribe(Long memberId,String eventName,String sendMsg) {
 //        String emitterId = eventName+ ":" +String.valueOf(memberId) ;
         String emitterId = eventName ;
         SseEmitter emitter = emitterRepository.save(emitterId,memberId, new SseEmitter(DEFAULT_TIMEOUT));
@@ -43,7 +43,7 @@ public class NotificationAdapter implements RegisterNotificationPort,
         NotificationResponse response = NotificationResponse.builder()
                 .statusType(new EnumMapperValue(SSEStatusType.CONNECT))
                 .eventType(new EnumMapperValue(NotificationClient.NotificationType.QUEUE_EVENT))
-                .sendMessage("연결에 성공하였습니다")
+                .sendMessage(sendMsg)
                 .build();
         // 503 에러를 방지하기 위한 더미 이벤트 전송
         sendNotification(emitter,

@@ -50,6 +50,10 @@ public class CouponEntity {
         couponComponentEntity.setStatus(CouponComponent.CouponStatusCode.USE_SUCCESS.getStatus());
     }
 
+    public boolean existCouponByUserId(long userId){
+        return couponComponents.stream()
+                .anyMatch(component -> component.getUserId() == userId);
+    }
     public void addCouponComponent(CouponComponentEntity couponComponentEntity){
         this.couponComponents.add(couponComponentEntity);
     }

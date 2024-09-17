@@ -23,7 +23,7 @@ public class EventCouponNotification implements Notification {
     private final SendNotificationPort sendNotificationPort;
     @Override
     public SseEmitter subscribe(RegisterSSENotificationCommand command) {
-        return registerNotificationPort.subscribe(command.getUserId(),"event-coupon-" + command.getEventName());
+        return registerNotificationPort.subscribe(command.getUserId(),"event-coupon-" + command.getEventName(),"쿠폰 발급을 기다려주세요.");
     }
 
     @Override
