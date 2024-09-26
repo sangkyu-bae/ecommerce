@@ -12,7 +12,7 @@ export const setToken = (key: 'ACCESS_TOKEN' | 'REFRESH_TOKEN' , token:string, e
     })
 }
 
-const removeToken = (key: 'ACCESS_TOKEN' | 'REFRESH_TOKEN')=>{
+export const removeToken = (key: 'ACCESS_TOKEN' | 'REFRESH_TOKEN')=>{
     cookies.remove(key,{path:'/'});
 }
 export const getAccessToken=()=>{

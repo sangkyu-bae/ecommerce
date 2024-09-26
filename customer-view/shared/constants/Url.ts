@@ -7,8 +7,9 @@ const orderURL : string = `${basicUrl}/order`;
 const couponBasicURL : string = `${basicUrl}/coupon/basic`;
 const couponAuthURL : string =`${basicUrl}/coupon/auth`
 type MemberRequest={
-    signUp:string;
-    signIn:string;
+    signUp:string,
+    signIn:string,
+    logOut:string
 }
 
 type ProductRequest={
@@ -41,7 +42,8 @@ type OrderRequest = {
 }
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
-    signIn:`${userURL}/login`
+    signIn:`${userURL}/login`,
+    logOut:`${userURL}/logout`
 }
 
 export const productRequest : ProductRequest={

@@ -15,6 +15,7 @@ import {useRecoilState} from "recoil";
 import {loginState} from "@/contexts/Recoil";
 import {useMutation} from "@tanstack/react-query";
 import {useAuth} from "@/shared/hook/useAuth";
+import {useRouter} from "next/router";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
@@ -26,6 +27,7 @@ function SignInSection(props) {
     useEffect(()=>{
         console.log(userName);
     },[userName])
+    const router = useRouter();
     const [login,setLogin]=useRecoilState<LoginState>(loginState);
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
@@ -39,6 +41,7 @@ function SignInSection(props) {
             const {accessToken,accessExpiredTime,userName}=data.data;
             setToken('ACCESS_TOKEN',accessToken,accessExpiredTime);
             onLogin(accessExpiredTime, accessToken, userName);
+            router.push("/");
         },
         onSettled: () => {
             console.log("end");

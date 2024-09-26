@@ -4,4 +4,7 @@ import com.example.demo.infra.security.dto.Result;
 
 public interface AuthUserUseCase {
     Result refreshJwtTokenByRefreshToken(RefreshTokenCommand command);
+
+    String removeJwtTokenByAccessToken(String jwtToken);
+
 }

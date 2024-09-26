@@ -25,7 +25,6 @@ public class FindCouponController {
         FindCouponCommand command = FindCouponCommand.builder()
                 .couponId(couponId)
                 .build();
-
         Coupon coupon = findCouponUseCase.findCouponByCouponId(command);
         return ResponseEntity.ok().body(coupon);
     }

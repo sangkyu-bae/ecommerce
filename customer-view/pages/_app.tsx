@@ -10,6 +10,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from "redux-persist/integration/react";
 import {persistor, store} from "@/store/configStroe";
+import {CookiesProvider} from "react-cookie";
 
 
 const queryClient = new QueryClient({
@@ -23,6 +24,7 @@ const queryClient = new QueryClient({
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <QueryClientProvider client={queryClient}>
+            <CookiesProvider>
             <ReduxProvider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <RecoilRoot>
@@ -33,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     </RecoilRoot>
                 </PersistGate>
             </ReduxProvider>
+            </CookiesProvider>
             <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
         </QueryClientProvider>
     );

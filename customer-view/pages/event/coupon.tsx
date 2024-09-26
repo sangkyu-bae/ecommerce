@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {StyledContainer} from "@/components/common/GridComponent";
 import {useMutation, useQuery} from "@tanstack/react-query";
-import CardContent from "@mui/material/CardContent";
-import {Backdrop, CardActions, Typography} from "@mui/material";
+import {Backdrop} from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import {CouponApi} from "@/shared/api/coupon/CouponApi";
 import CardCouponComponent from "@/shared/ui/CardCouponComponent";
 import {useEvent} from "@/shared/hook/useEvent";
-// import {useAuth} from "@/shared/hook/useAuth";
 import {getAccessToken} from "@/shared/api/cookie/Cookie";
 
 
 function Coupon(props) {
     const [key,setKey] = useState<number>();
+    const [open, setOpen] = React.useState(false);
+
     const {data, isLoading, isError, error} = useQuery(
         ['event'],
         () => CouponApi.readAll(), {
@@ -29,8 +28,7 @@ function Coupon(props) {
             }
         }
     )
-    // const {getAccessToken} = useAuth();
-    const {messageData,changeContact} = useEvent({
+    const {messageData,changeContact,setIsContact} = useEvent({
         url :"http://localhost:8000/notification/queue-coupon",
         accessToken : getAccessToken(),
         hasContact : false
@@ -51,8 +49,12 @@ function Coupon(props) {
     //캐싱필요없음
     const registerEventCoupon = async () =>{
         const res = await CouponApi.registerEventCoupon(key);
+
+        console.log(res)
         //에러처리 필요
-        if(res != "success"){
+        if(res?.error){
+            alert(res.message)
+            setIsContact(false)
             return;
         }
 
@@ -63,7 +65,6 @@ function Coupon(props) {
         changeContact(true,`http://localhost:8000/notification/coupon/${key}`);
         setKey(key);
     }
-    const [open, setOpen] = React.useState(false);
 
     return (
         <StyledContainer>
@@ -82,9 +83,19 @@ function Coupon(props) {
                         <CardCouponComponent key={coupon.id}
                                              title={`${coupon.couponName} , 할인율 : ${coupon.salePercent}`}
                                              subTitle={`남은 수량 : ${coupon.quantity}`}
-                                             btnTitle={'쿠폰 발급 하기'}
-                                             clickEvent={()=>onClick(coupon.id)}
-                        />
+                        >
+                            {
+                                coupon.issued ?
+                                <Box>
+                                    이미 발급이 완료 되었습니다.
+                                </Box>
+                                :
+                                <Button sx={{margin: "0 auto"}}
+                                        variant="contained"
+                                        onClick={() => onClick(coupon.id)}
+                                >쿠폰 발급 하기</Button>
+                            }
+                        </CardCouponComponent>
                     )
                 }
             </Box>

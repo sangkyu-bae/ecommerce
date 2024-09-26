@@ -7,11 +7,9 @@ import Button from "@mui/material/Button";
 type componentProps = {
     title : string,
     subTitle : string
-    btnTitle : string
-    clickEvent : void
-    isEvent : boolean
+    children : React.ReactNode
 }
-function CardCouponComponent({title,btnTitle,subTitle,clickEvent,isEvent} : componentProps) {
+function CardCouponComponent({title,subTitle,children} : componentProps) {
     return (
         <Box sx = {{width:"100%"}}>
             <Box sx = {{width:"100%"}}>
@@ -27,18 +25,7 @@ function CardCouponComponent({title,btnTitle,subTitle,clickEvent,isEvent} : comp
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                {
-                                    isEvent ?
-                                    <Button sx={{margin:"0 auto"}}
-                                            variant="contained"
-                                            onClick={clickEvent}
-                                    >{btnTitle}</Button>
-                                        :
-                                      <Box>
-                                          이미 발급이 완료 되었습니다.
-                                      </Box>
-                                }
-
+                                {children}
                             </CardActions>
                         </React.Fragment>
                     </Card>

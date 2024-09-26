@@ -3,6 +3,7 @@ package com.example.demo.application.service;
 import com.example.demo.application.port.in.command.RefreshTokenCommand;
 import com.example.demo.application.port.out.AuthUserUseCase;
 import com.example.demo.application.port.out.FindMemberPort;
+import com.example.demo.infra.redis.RedisService;
 import com.example.demo.infra.security.dto.Result;
 import com.example.demo.infra.security.provider.JwtTokenProvider;
 import com.example.demo.infra.security.refreshToken.RefreshTokenService;
@@ -27,6 +28,8 @@ public class AuthUserService implements AuthUserUseCase {
     private final JwtTokenProvider jwtTokenProvider;
 
     private final FindMemberPort findMemberPort;
+
+    private final RedisService redisService;
 
     private final RefreshTokenService refreshTokenService;
     @Override
@@ -60,5 +63,17 @@ public class AuthUserService implements AuthUserUseCase {
         );
 
         return Result.createSuccessResult(tokens);
+    }
+
+    @Override
+    public String removeJwtTokenByAccessToken(String jwtToken) {
+        try{
+            String userId = jwtTokenProvider.getUserId(jwtToken);
+            redisService.deleteValues(userId);
+        }catch (Exception e){
+            return "fail";
+        }
+
+        return "success";
     }
 }

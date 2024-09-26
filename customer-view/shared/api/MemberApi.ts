@@ -11,6 +11,10 @@ const MemberApi={
             "password":loginRequest.password
         });
         return data;
+    },
+    logOut :async () =>{
+        const {data} = await ApiCommon.loginAPI.post(memberRequest.logOut);
+        return data;
     }
 }
 

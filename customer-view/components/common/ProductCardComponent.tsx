@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 function ProductCardComponent({image,productName}) {
 
     return (
-        <Card style={{flex:'1' ,minWidth :'300px'}}>
+        <Card style={{flex:'1' ,minWidth :'339px'}}>
             <CardActionArea>
                 <CardMedia
                     component="img"

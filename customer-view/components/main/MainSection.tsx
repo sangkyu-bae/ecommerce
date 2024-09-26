@@ -24,13 +24,14 @@ function MainSection(props) {
             <StyledSetion isFull={true}>
                 <GridComponent title={"💎베스트 상품"}/>
                 <Box  sx={{width:'100%'}} >
-                    <Box sx={{display:'flex', margin:'0 auto', width:'70%'}}>
+                    <Box sx={{display:'flex', margin:'0 auto', width:'65%', flexWrap: 'wrap'}}>
                         {
                             products.length > 0 && products.map(product=>
                                 <Link   key={product.productId} href={`/product/${product.productId}`} style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
-                                    marginRight:'3em'
+                                    marginLeft:'4em',
+                                    marginTop:'2em'
                                 }}>
                                     <ProductCardComponent
                                         image={product.productImage}
@@ -43,28 +44,7 @@ function MainSection(props) {
                     </Box>
 
                 </Box>
-                <GridComponent title={"상품"}/>
-                <Box  sx={{ width:'100%'}} >
-                    <Box sx={{
-                        display:'flex',
-                        margin:'0 auto',
-                        width:'70%'}}>
-                        {
-                            products.length > 0 && products.map (product=>
-                            <Link   key={product.productId} href={`/product/${product.productId}`} style={{
-                                textDecoration: 'none',
-                                color: 'inherit',
-                                marginRight:'3em'
-                            }}>
-                                    <ProductCardComponent
-                                        image={product.productImage}
-                                        productName={product.productName}
-                                    />
-                            </Link>
-                            )
-                        }
-                    </Box>
-                </Box>
+
             </StyledSetion>
 
         </StyledContent>

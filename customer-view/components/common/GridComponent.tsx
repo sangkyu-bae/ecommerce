@@ -146,5 +146,11 @@ export const StyledContainer = styled.div`
         width : 100%;
         height : 100vh;
         background-color : #FFFAF0;
-  `
+  `;
+
+export const Container = styled.div`
+        display : flex;
+        width : 100%;
+        background-color : #FFFAF0;
+  `;
 export default GridComponent;

@@ -96,9 +96,12 @@ public class LoginAuthenticationFilter extends UsernamePasswordAuthenticationFil
         // redis에 새로 발행된 refresh token 값 갱신
         refreshTokenServiceImpl.updateRefreshToken(userId, jwtTokenProvider.getRefreshTokenId(refreshToken));
 
+        // 만료 시간을 현재 시간으로부터 얼마나 남았는지 계산
+        long currentTime = System.currentTimeMillis();
+        long expirationDuration = expiredTime.getTime() - currentTime;
         // 쿠키 설정
         ResponseCookie refreshTokenCookie = cookieProvider.createRefreshTokenCookie(refreshToken);
-
+        redisService.saveTokenToRedis(userKey,accessToken, expirationDuration);
         Cookie cookie = cookieProvider.of(refreshTokenCookie);
 
         response.setHeader("Access-Control-Allow-Origin","http://localhost:3000");

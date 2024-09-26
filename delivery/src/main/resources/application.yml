@@ -84,3 +84,5 @@ kafka:
       delivery:
         topic: delivery-bulk
         group: delivery-bulk.v1
+  notification:
+    topic:notification

@@ -18,9 +18,9 @@ export const useAuth = () =>{
         dispatch(login(loginData));
     }
 
-    const onLogout = () =>[
-        dispatch(logout())
-    ]
+    const onLogout = () =>{
+        dispatch(logout());
+    }
 
     const getAccessToken = () =>{
         if (accessExpiredTime && new Date(accessExpiredTime) < new Date()) {
@@ -38,6 +38,7 @@ export const useAuth = () =>{
         onLogout,
         getAccessToken,
         getUserName,
-        userName
+        userName,
+        isLogin
     }
 }

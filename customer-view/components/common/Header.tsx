@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {AppBar, Toolbar, Typography} from "@mui/material";
 import Link from "next/link";
 import LoginIcon from '@mui/icons-material/Login';
 import Box from "@mui/material/Box";
-
+import {getAccessToken, removeToken} from "@/shared/api/cookie/Cookie";
+import LogoutIcon from '@mui/icons-material/Logout';
+import MemberApi from "@/shared/api/MemberApi";
+import {useAuth} from "@/shared/hook/useAuth";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import {useRouter} from "next/router";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 const theme = createTheme({
     palette: {
         primary: {
@@ -13,7 +19,22 @@ const theme = createTheme({
     },
 });
 
+
+let accessToken = getAccessToken();
 function Header(props) {
+    const {isLogin,onLogout} = useAuth();
+    const router = useRouter();
+    const handleLogout=  () =>{
+        try{
+            const logOutRes = MemberApi.logOut();
+            removeToken('ACCESS_TOKEN');
+            onLogout();
+            router.push("/")
+        }catch (e){
+            alert("logout 에러 발생했습니다");
+            console.log(e)
+        }
+    }
     return (
         <ThemeProvider theme={theme}>
             <AppBar position="static">
@@ -39,13 +60,37 @@ function Header(props) {
                         </Link>
                     </Box>
 
+                    {
+                        !isLogin ?
+                            <Link href='/signIn'>
+                                <LoginIcon style={{
+                                    textDecoration: 'none',
+                                    color: 'white',
+                                }}></LoginIcon>
+                            </Link> :
+                            <>
+                                <div onClick={handleLogout} style={{ cursor: 'pointer' ,marginRight:'1em'}}>
+                                    <LogoutIcon style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }} />
+                                </div>
+                                <Link href='/basket'>
+                                    <ShoppingBasketIcon style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }}></ShoppingBasketIcon>
+                                </Link>
+                                <Link href='/basket'>
+                                    <ShoppingBasketIcon style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }}></ShoppingBasketIcon>
+                                </Link>
+                            </>
+                    }
 
-                    <Link href='/signIn'>
-                        <LoginIcon style={{
-                            textDecoration: 'none',
-                            color: 'white',
-                        }}></LoginIcon>
-                    </Link>
+
 
                 </Toolbar>
             </AppBar>
