@@ -9,6 +9,7 @@ import productRedux, {initProduct, setProduct} from "@/store/product/productRedu
 import useCustomQuery from "@/shared/hook/useCustomQuery";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
 import {useBasket} from "@/shared/hook/useBasket";
+import {useAuth} from "@/shared/hook/useAuth";
 
 function DetailUserProduct() {
     const router = useRouter()
@@ -17,6 +18,7 @@ function DetailUserProduct() {
     const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
     const {isOrderData, selectProducts} = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
+    const {isLogin} = useAuth();
     useEffect(() => {
         if (data) {
             dispatch(initProduct());
@@ -72,10 +74,14 @@ function DetailUserProduct() {
                                     />)
                             }
                             <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>
-                            <Box sx={{mt: 3}}>
-                                <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
-                                <Button variant="outlined" onClick ={onClickBasket}>장바구니</Button>
-                            </Box>
+                            {
+                                isLogin &&
+                                <Box sx={{mt: 3}}>
+                                    <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
+                                    <Button variant="outlined" onClick ={onClickBasket}>장바구니</Button>
+                                </Box>
+                            }
+
                         </div>
                     </div>
                     <ProductInfo.ProductDescription/>

@@ -5,10 +5,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-function ProductCardComponent({image,productName}) {
+function ProductCardComponent({image,productName, minWidth}) {
 
     return (
-        <Card style={{flex:'1' ,minWidth :'339px'}}>
+        <Card style={{flex:'1' ,minWidth : minWidth}}>
             <CardActionArea>
                 <CardMedia
                     component="img"

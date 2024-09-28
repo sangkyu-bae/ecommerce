@@ -52,12 +52,14 @@ function List(props) {
                                   style={{
                                       textDecoration: 'none',
                                       color: 'inherit',
+                                      width:"33%"
                                   }}
                                   passHref>
                                 <ProductLink>
                                     <ProductCardComponent
                                         image={product.productImage}
                                         productName={product.name}
+                                        minWidth={'450px'}
                                     />
                                 </ProductLink>
                             </Link>

@@ -36,6 +36,7 @@ function MainSection(props) {
                                     <ProductCardComponent
                                         image={product.productImage}
                                         productName={product.productName}
+                                        minWidth={'330px'}
                                     />
                                 </Link>
 
