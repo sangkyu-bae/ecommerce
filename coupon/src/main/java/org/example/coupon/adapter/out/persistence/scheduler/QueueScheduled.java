@@ -29,7 +29,7 @@ public class QueueScheduled {
     @Scheduled(fixedRate = 60000)
     public void eventScheduler() {
         log.info("?>>>>>>>>>>> 실행? ");
-        updateEventCouponUseCase.process();
+//        updateEventCouponUseCase.process();
 //        LocalDateTime now = LocalDateTime.now();
 //        Event.EventStartAt eventStartAt = new Event.EventStartAt(now);
 //        Event.EventEndAt eventEndAt = new Event.EventEndAt(now);

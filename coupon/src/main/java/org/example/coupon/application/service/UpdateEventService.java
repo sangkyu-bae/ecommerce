@@ -47,9 +47,16 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     @Override
     @DistributedLock(key = "#couponName")
     public boolean decreaseEventCoupon(String couponName, CouponIssuanceCommand command) {
+        long startTime = System.currentTimeMillis(); // 시작 시간 기록
 
         updateEventPort.decreaseEventCoupon(new Event.EventId(command.getEventCouponId()));
 
+        long endTime = System.currentTimeMillis(); // 종료 시간 기록
+        long duration = endTime - startTime; // 실행 시간 계산
+
+        log.info("Execution time1 : " + duration + " ms"); // 실행 시간 출력
+
+        startTime = System.currentTimeMillis();
         CouponComponent couponComponent = CouponComponent.createGenerateCouponComponentVo(
                 new CouponComponent.CouponComponentId(null),
                 new CouponComponent.CouponComponentUserId(command.getUserId()),
@@ -60,6 +67,10 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
 
         registerCouponPort.issuanceCoupon(couponComponent,new Coupon.CouponId(command.getEventCouponId()));
 
+        endTime = System.currentTimeMillis(); // 종료 시간 기록
+        duration = endTime - startTime; // 실행 시간 계산
+
+        log.info("Execution time2: " + duration + " ms"); // 실행 시간 출력
         return true;
     }
 

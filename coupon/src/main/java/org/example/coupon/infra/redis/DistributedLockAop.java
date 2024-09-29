@@ -34,9 +34,11 @@ public class DistributedLockAop {
 
         String key = REDISSON_LOCK_PREFIX + CustomSpringELParser.getDynamicValue(signature.getParameterNames(), joinPoint.getArgs(), distributedLock.key());
         RLock rLock = redissonClient.getLock(key);  // (1)
-
+        log.info("key : {}",key);
         try {
             boolean available = rLock.tryLock(distributedLock.waitTime(), distributedLock.leaseTime(), distributedLock.timeUnit());  // (2)
+
+            log.info("avilable : {}",available);
             if (!available) {
                 return false;
             }
@@ -48,7 +50,7 @@ public class DistributedLockAop {
             try {
                 rLock.unlock();   // (4)
             } catch (IllegalMonitorStateException e) {
-                log.info("Redisson Lock Already UnLock {} {}", method.getName(), key);
+                log.error("Redisson Lock Already UnLock {} {}", method.getName(), key);
             }
         }
     }

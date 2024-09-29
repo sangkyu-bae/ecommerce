@@ -24,7 +24,6 @@ public class UpdateCouponEventController {
 
     @Operation(summary = "register event", description = "이벤트 쿠폰 발급 받기 (분산락)")
     @PatchMapping("/coupon/auth/event/lock/{eventId}/{couponName}")
-
     public ResponseEntity<String> processCouponIssuanceLock(@PathVariable("eventId") long eventId,
                                                  @PathVariable("couponName") String couponName,
                                                  @RequestHeader("X-User-Id") long userId){
