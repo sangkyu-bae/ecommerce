@@ -45,10 +45,14 @@ public class DistributedLockAop {
 
             return aopForTransaction.proceed(joinPoint);  // (3)
         } catch (InterruptedException e) {
+            log.error("Lock interrupted for key: {}", key, e);
             throw new InterruptedException();
         } finally {
             try {
-                rLock.unlock();   // (4)
+                if (rLock.isHeldByCurrentThread()) {  // 추가된 체크
+                    rLock.unlock();   // (4)
+                    log.info("Lock released for key: {}", key);
+                }
             } catch (IllegalMonitorStateException e) {
                 log.error("Redisson Lock Already UnLock {} {}", method.getName(), key);
             }

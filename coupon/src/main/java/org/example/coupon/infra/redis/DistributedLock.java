@@ -28,11 +28,11 @@ public @interface DistributedLock {
      * 락 획득을 위해 waitTime 만큼 대기한다
      */
 //    long waitTime() default 5L;
-    long waitTime() default 10L;
+    long waitTime() default 10000L;
 
     /**
      * 락 임대 시간 (default - 3s)
      * 락을 획득한 이후 leaseTime 이 지나면 락을 해제한다
      */
-    long leaseTime() default 1L;
+    long leaseTime() default 2000L;
 }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-@EnableRedisRepositories
+//@EnableRedisRepositories
 public interface EventRepository extends JpaRepository<EventEntity,Long> {
 
     List<EventEntity> findByStartAtBefore(LocalDateTime startAt);
