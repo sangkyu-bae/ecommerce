@@ -14,11 +14,20 @@ import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.error.EventErrorCode;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 @PersistenceAdapter
 @RequiredArgsConstructor
 @Slf4j
 public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPort {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+    private Map<Long,EventEntity> eventCache = new ConcurrentHashMap<>();
     private final EventRepository eventRepository;
     @Override
     public EventEntity registerEvent(Event event) {
@@ -49,4 +58,29 @@ public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPo
     public void sendNotification(long memberId, String eventName, String notification, int type,int sseType) {
         log.info("{} 이벤트 쿠폰에 {}님은 {}",eventName , memberId, notification);
     }
+
+    @Override
+    @Transactional
+    public boolean redeemEvent(Event.EventId eventId) {
+        EventEntity cachedEvent = eventCache.get(eventId.getId());
+
+        if(cachedEvent != null){
+            cachedEvent.decreaseQuantity();
+            entityManager.merge(cachedEvent);
+            eventCache.put(eventId.getId(),cachedEvent);
+            return true;
+        }
+
+        EventEntity eventEntity = entityManager.find(EventEntity.class,eventId.getId());
+
+        if(eventEntity != null){
+            eventEntity.decreaseQuantity();
+            eventCache.put(eventId.getId(),eventEntity);
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

@@ -55,6 +55,12 @@ public class FindRankController {
 //        return ResponseEntity.ok().body(null);
     }
 
+
+    @GetMapping("/rank/test")
+    public ResponseEntity<String> test(){
+        return ResponseEntity.ok().body("test");
+    }
+
     @GetMapping("/rank/click/db/{limit}")
     public ResponseEntity<List<Ranking>> findRankDbByClick(@PathVariable("limit") int limit){
         long startTime = System.currentTimeMillis();

@@ -3,7 +3,9 @@ package org.example.coupon.adapter.in.web;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
+import org.example.coupon.adapter.out.kafka.CouponProducer;
 import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
+import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.in.usecase.UpdateEventCouponUseCase;
 import org.example.coupon.application.port.out.RegisterCouponPort;
 import org.example.coupon.application.port.out.UpdateCouponPort;
@@ -30,6 +32,8 @@ public class EventTestController {
 
     private final RegisterCouponPort registerCouponPort;
     private final UpdateEventCouponUseCase updateEventCouponUseCase;
+
+    private final CouponProducer couponProducer;
     @PostMapping("/coupon/event/issuance-lock/{userId}")
     public ResponseEntity<String> processCouponIssuanceLock(@PathVariable("userId") Long userId){
         CouponIssuanceCommand command =CouponIssuanceCommand.builder()
@@ -56,5 +60,26 @@ public class EventTestController {
         registerCouponPort.issuanceCoupon(couponComponent,new Coupon.CouponId(3L));
 
         return ResponseEntity.ok().body("ok");
+    }
+
+    public long id=0;
+    @PostMapping("/coupon/queue/event")
+    public ResponseEntity<String> queueBasic(){
+        log.info("id : {}",id);
+        UpdateEventCouponCommand command = UpdateEventCouponCommand.builder()
+                .eventId(3L)
+                .userId(id++)
+                .build();
+
+        updateEventCouponUseCase.addEventQueue(command);
+
+        return ResponseEntity.ok().body("dd");
+    }
+
+    @PostMapping("/coupon/queue/kafka")
+    public ResponseEntity<String> sendMessage(){
+        couponProducer.sendCreateCoupon(id,3L);
+
+        return ResponseEntity.ok().body("success");
     }
 }

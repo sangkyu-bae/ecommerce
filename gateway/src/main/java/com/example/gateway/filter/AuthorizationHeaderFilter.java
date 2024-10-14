@@ -26,7 +26,6 @@ import java.util.Map;
 
 @Component
 @Slf4j
-
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config>{
     @Autowired
     JwtTokenProvider jwtTokenProvider;

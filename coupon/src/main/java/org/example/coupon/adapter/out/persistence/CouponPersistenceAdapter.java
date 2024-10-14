@@ -61,7 +61,7 @@ public class CouponPersistenceAdapter implements RegisterCouponPort, FindCouponP
     }
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional
     public CouponComponentEntity issuanceCoupon(CouponComponent couponComponent,  Coupon.CouponId couponId) {
 
         CouponEntity coupon = findCouponByCouponId(couponId);

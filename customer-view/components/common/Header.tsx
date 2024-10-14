@@ -52,7 +52,7 @@ function Header(props) {
                         <Link href='/product/list' style={{
                             textDecoration: 'none',
                             color: 'inherit',
-                            flex:'0.05'
+                            flex:'0.1'
                         }}>
                             <Typography variant="h6" component="div">
                                 상품목록
@@ -75,17 +75,17 @@ function Header(props) {
                                         color: 'white',
                                     }} />
                                 </div>
-                                <Link href='/basket'>
+                                <Link href='/basket' style={{marginRight:'1em'}}>
                                     <ShoppingBasketIcon style={{
                                         textDecoration: 'none',
                                         color: 'white',
                                     }}></ShoppingBasketIcon>
                                 </Link>
-                                <Link href='/basket'>
-                                    <ShoppingBasketIcon style={{
+                                <Link href='/order/list'>
+                                    <ManageAccountsIcon style={{
                                         textDecoration: 'none',
                                         color: 'white',
-                                    }}></ShoppingBasketIcon>
+                                    }}></ManageAccountsIcon>
                                 </Link>
                             </>
                     }

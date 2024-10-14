@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -29,12 +29,15 @@ function SignInSection(props) {
     },[userName])
     const router = useRouter();
     const [login,setLogin]=useRecoilState<LoginState>(loginState);
+    const [isError,setIsError] = useState<boolean>(false);
+    
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("ponMutate", variable);
         },
         onError: (error, variable, context) => {
             // error
+            setIsError(true);
             console.log(error)
         },
         onSuccess: (data, variables, context) => {
@@ -84,6 +87,12 @@ function SignInSection(props) {
                 error={Boolean(errors.password)}
                 helperText={errors.password?.message}
             />
+            {
+                isError && 
+                <Box>
+                    로그인에 <span>실패</span> 했습니다, 확인후 다시 시도하세요
+                </Box>
+            }
             <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
