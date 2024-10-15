@@ -23,6 +23,10 @@ export const useBasket =(isRead : boolean, isSubmit : boolean, isUpdate) =>{
 
     useEffect(()=>{
         if(data){
+            if(shouldRefetch){
+                data.forEach(obj => obj.check = false);
+            }
+
            setBaskets(data);
            setShouldRefetch(false);
         }
@@ -45,6 +49,7 @@ export const useBasket =(isRead : boolean, isSubmit : boolean, isUpdate) =>{
     };
     return {
         baskets,
+        setBaskets,
         submitMutation,
         data,
         isLoading,

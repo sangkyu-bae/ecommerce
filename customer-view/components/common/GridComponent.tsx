@@ -6,7 +6,7 @@ interface InfoProps {
     children: React.ReactNode;
 }
 
-function GridComponent({title,children}: InfoProps) {
+function GridComponent({title, children}: InfoProps) {
     return (
         <GridContainer>
             <h4>{title}</h4>
@@ -34,12 +34,12 @@ const GridContainer = styled.div`
   }
 `;
 export const StyledContent = styled.div`
-        flex : ${(props)=>props.isFull ? '1':'0.87'};
+        flex : ${(props) => props.isFull ? '1' : '0.87'};
         background-color : #FFFAF0;
         display:flex;
     `
 export const StyledSetion = styled.div`
-    flex: ${(props) => props.isFull ? '1':'0.8'};
+    flex: ${(props) => props.isFull ? '1' : '0.8'};
     .main-section{
         width : 80%;
         margin : 0 auto;
@@ -152,5 +152,63 @@ export const Container = styled.div`
         display : flex;
         width : 100%;
         background-color : #FFFAF0;
+  
   `;
+
+export const BoxContainer = styled.div`
+    width : 90%;
+    margin: 0 auto;
+    .full{
+        width :100%;   
+    }
+    .block {
+        display:block;
+    }
+    .normal-th{
+        width: 20%;
+    }
+    .normal-td{
+       text-align: center;  
+       font-size : 16px;
+       font-weight: 550;
+    }
+    
+    .normal-td img {
+        width : 15%;
+        height : 10%;
+    }
+    
+    .t-head{
+        background-color: #dee2e6;
+        height: 3em;
+    }
+    
+    .flex {
+        display:flex
+    }
+    .border-b {
+        border-bottom : 1px solid gray;
+        margin-bottom : 2em;
+    }
+    
+    .position-r {
+        position: relative;
+    }
+    .position-a{
+        position: absolute;
+    }
+    
+    .normal-b{
+        width : 40%;
+    }
+    
+    th{
+         font-size: 1.2em;
+    }
+    
+    .bold {
+        font-weight: bold;
+        font-size : 1.1em;
+    }
+`
 export default GridComponent;

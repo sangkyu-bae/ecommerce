@@ -90,7 +90,7 @@ function SignInSection(props) {
             {
                 isError && 
                 <Box>
-                    로그인에 <span>실패</span> 했습니다, 확인후 다시 시도하세요
+                    로그인에 <span style={{color:'red'}}>실패</span> 했습니다, 확인후 다시 시도하세요
                 </Box>
             }
             <FormControlLabel
