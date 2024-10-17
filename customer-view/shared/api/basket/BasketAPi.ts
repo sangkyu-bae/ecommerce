@@ -8,6 +8,7 @@ export const BasketAPi = {
         return data;
     },
     read: async ()=>{
+        console.log(accessToken)
         const {data} = await ApiCommon.loginJsonAPI.get(basketRequest.readBasket);
         return data
     },

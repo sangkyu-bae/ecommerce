@@ -259,7 +259,6 @@ const productRedux = (state = initialState,action) =>{
                 selectProducts : selectProducts,
                 totalPayment : totalPayment
             }
-
         }
         default:
             return state

@@ -77,5 +77,4 @@ function UseCustomQuery({
         error
     }
 }
-
 export default UseCustomQuery;
