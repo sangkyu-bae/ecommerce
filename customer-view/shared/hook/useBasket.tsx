@@ -93,20 +93,44 @@
 //     }
 // }
 
-import {useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
 
-export const useBasket= () =>{
-
+export const useBasket= (isRead) =>{
+    const updateMutation = useMutation(BasketAPi.update, {
+        onMutate: variable => {
+            console.log("onMutate", variable);
+        },
+        onError: (error, variable, context) => {
+            console.log(error)
+        },
+        onSuccess: (data, variables, context) => {
+            console.log(data)
+        },
+        onSettled: () => {
+            console.log("end");
+        }
+    })
     const queryData =useQuery({
         context:undefined,
         queryKey : ['basket'],
         queryFn : BasketAPi.read,
-        enabled : true,
-        select:(res) =>res.map(obj =>({ ...obj, check:false}))
+        enabled : isRead,
+        // select:(res) =>res.map(obj =>({ ...obj, check:false}))
+        select:(res) =>res.map(basket =>({
+            colorName: basket.colorName,
+            id : basket.id,
+            size : basket.size,
+            productQuantity : basket.productQuantity,
+            price : basket.price,
+            productName : basket.productName,
+            check:false,
+            productId : basket.productId
+        }))
     });
 
     return {
-        queryData
+        queryData,
+        updateMutation
     }
 }

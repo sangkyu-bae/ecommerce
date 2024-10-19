@@ -21,7 +21,8 @@ export type OrderProduct = {
     color : string
     size : number
     quantity : number
-    selectPrice : number
+    selectPrice : number,
+    productName : string
 }
 export type selectProduct = {
     productId: number

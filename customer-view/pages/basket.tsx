@@ -4,12 +4,10 @@ import GridComponent, {
     StyledContent,
     StyledSetion
 } from "@/components/common/GridComponent";
-import {useBasket} from "@/shared/hook/useBasket";
 import Content from "@/components/basket/Content";
+import Button from "@mui/material/Button";
 
 function Basket(props) {
-
-
 
     return (
         <StyledContainer>

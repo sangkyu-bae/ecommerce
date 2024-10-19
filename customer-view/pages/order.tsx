@@ -16,41 +16,20 @@ import MenuItem from "@mui/material/MenuItem";
 import useFormHook from "@/shared/hook/useFormHook";
 import {orderValidation} from "@/shared/utils/validation/orderValidation";
 import {OrderApi} from "@/shared/api/order/orderApi";
+import {OrderProduct} from "@/store/product/myProduct";
 
 
 function Order(props) {
     const dispatch = useDispatch();
-    const {product, selectProducts, isOrderData,totalPayment} = useSelector(state => state.productRedux);
+    const products : OrderProduct[]= useSelector(state => state.productRedux);
 
-    useEffect(()=>{
-        console.log(selectProducts)
-    },[selectProducts])
-    const dataParsingEvent = (submitData) =>{
-        const orderData = submitData.initData;
-
-        let submitOrderData:Order[] = [];
-
-        for(var data of orderData){
-            var submitObj:Order = {
-                productId : data.productId,
-                colorId:data.color.id,
-                sizeId:data.size.id,
-                amount:data.quantity,
-                address:submitData.address,
-                couponId:null,
-                payment:1
-            };
-            submitOrderData.push(submitObj);
-        }
-
-        return submitOrderData;
-    }
+    const totalPrice = products.reduce((total,product)=>total + (product.selectPrice * product.quantity),0);
 
     const {register, handleSubmit, errors} = useFormHook({
-        initData:selectProducts,
+        initData:null,
         onSubmit:OrderApi.register,
         validation:orderValidation,
-        dataParsingEvent:dataParsingEvent
+        // dataParsingEvent:dataParsingEvent
     });
 
     const validation = orderValidation;
@@ -109,7 +88,7 @@ function Order(props) {
                                         variant="contained"
                                         sx={{mt: 2}}
                                         type="submit"
-                                    >{totalPayment.toLocaleString('en-US')} 원
+                                    >{totalPrice.toLocaleString('en-US')} 원
                                         결제하기
                                     </Button>
                                 </form>

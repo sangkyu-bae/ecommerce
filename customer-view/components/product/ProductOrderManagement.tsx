@@ -9,24 +9,25 @@ function ProductOrderManagement({selectProduct} : selectProduct) {
     const dispatch = useDispatch();
     const {color,size} = selectProduct;
     const {productData} = useProductValueContext();
+    console.log(selectProduct);
     return (
         <Box sx={{display:"flex"}}>
             <Box sx={{flex:'0.2'}}>
-                {selectProduct.color.name}, {selectProduct.size.name}
+                {selectProduct.color}, {selectProduct.size}
             </Box>
             <Box sx={{flex:'0.2', display:"flex"}}>
-                <Box onClick={()=>dispatch(increaseQuantity(productData.id,color.id,size.id))}>+</Box>
+                <Box onClick={()=>dispatch(increaseQuantity(productData.id,color,size))}>+</Box>
                 <Box>
                     {selectProduct.quantity}
                 </Box>
-                <Box onClick={()=>dispatch(decreaseQuantity(productData.id,color.id,size.id))}>-</Box>
+                <Box onClick={()=>dispatch(decreaseQuantity(productData.id,color,size))}>-</Box>
             </Box>
 
             <Box>
-                {selectProduct.selectPrice} 원
+                {selectProduct.selectPrice * selectProduct.quantity} 원
             </Box>
 
-            <Box onClick={()=>dispatch(removeBuyProduct(productData.id,color.id,size.id))}>
+            <Box onClick={()=>dispatch(removeBuyProduct(productData.id,color,size))}>
                 X
             </Box>
         </Box>

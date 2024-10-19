@@ -14,15 +14,16 @@ import {useAuth} from "@/shared/hook/useAuth";
 function DetailUserProduct() {
     const router = useRouter()
     const {mainProductId}: number = router.query;
-    const searchPage : string | null= router.query.searchPage;
-    const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
-    const {isOrderData, selectProducts} = useSelector(state => state.productRedux);
+    // const searchPage : string | null= router.query.searchPage;
+    // const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
+    const {data,isLoading} = useProduct(mainProductId,"0");
+    const products = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
     const {isLogin} = useAuth();
     useEffect(() => {
         if (data) {
-            dispatch(initProduct());
-            dispatch(setProduct(data,false))
+            dispatch(initProduct())
+            console.log(data)
         }
     }, [data])
 
@@ -36,7 +37,7 @@ function DetailUserProduct() {
         router.push("/order");
     }
 
-    const {submitMutation} = useBasket(false,true,false);
+    const {updateMutation} = useBasket(false);
 
     const onClickBasket =()=>{
         const basketProducts = selectProducts.map(product => {
@@ -48,7 +49,7 @@ function DetailUserProduct() {
                 size: product.size.name
             }
         });
-        submitMutation.mutate(basketProducts)
+        updateMutation.mutate(basketProducts)
     }
     return (
         <>
@@ -66,9 +67,8 @@ function DetailUserProduct() {
                             <ProductInfo.ProductPrice/>
                             <ProductInfo.ProductSizeQuantity/>
                             {
-                                isOrderData &&
-                                selectProducts
-                                    .map(product => <ProductInfo.ProductOrderManagement
+                                products.length > 0 &&
+                                products.map(product => <ProductInfo.ProductOrderManagement
                                         key={product.color.id}
                                         selectProduct={product}
                                     />)

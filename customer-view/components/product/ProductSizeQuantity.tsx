@@ -9,9 +9,14 @@ import {useProductActionContext, useProductValueContext} from "@/components/prod
 import {useDispatch, useSelector} from "react-redux";
 import {addBuyProduct} from "@/store/product/productRedux";
 
+interface OptionProduct{
+    color :Data | null,
+    size : Data | null
+}
+
 function ProductSizeQuantity(props) {
     const {productData} = useProductValueContext();
-
+    console.log(productData);
     const [colorValue, setColorValue] = useState<Data>({
         id: 0,
         name: ""
@@ -20,9 +25,12 @@ function ProductSizeQuantity(props) {
         id: 0,
         name: ""
     });
+
     const dispatch = useDispatch();
 
     const onChangeColorValue = (value) => {
+
+        console.log(value);
         if (value == 0) {
             setSizeValue({
                 name:'',
@@ -39,13 +47,18 @@ function ProductSizeQuantity(props) {
 
         const name: string = productData.productComponents
             .find(component => component.color.id == value).color.name;
+
         setColorValue({
             id: value,
             name: name
         });
+
     }
 
+
     const onChangeSizeValue = (value) => {
+
+        console.log(value);
 
         if(value == 0){
             setSizeValue({
@@ -69,7 +82,16 @@ function ProductSizeQuantity(props) {
 
     useEffect(() => {
         if (colorValue.id != 0 && sizeValue.id != 0) {
-            dispatch(addBuyProduct(colorValue,sizeValue,productData.id));
+            // dispatch(addBuyProduct(colorValue,sizeValue,productData.id));
+
+            dispatch(addBuyProduct({
+                productId: productData.id,
+                color:colorValue.name,
+                size:sizeValue.name,
+                quantity:1,
+                selectPrice:productData.price,
+                productName:productData.name
+            }))
             setColorValue({
                 id:0,
                 name:''
