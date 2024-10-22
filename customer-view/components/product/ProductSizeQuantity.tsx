@@ -73,6 +73,7 @@ function ProductSizeQuantity(props) {
             .find(data => data.color.id == colorValue.id)
             .sizes.find(size => size.id == value).size;
 
+
         setSizeValue({
             id: value,
             name: name
@@ -83,14 +84,14 @@ function ProductSizeQuantity(props) {
     useEffect(() => {
         if (colorValue.id != 0 && sizeValue.id != 0) {
             // dispatch(addBuyProduct(colorValue,sizeValue,productData.id));
-
             dispatch(addBuyProduct({
                 productId: productData.id,
                 color:colorValue.name,
                 size:sizeValue.name,
                 quantity:1,
                 selectPrice:productData.price,
-                productName:productData.name
+                productName:productData.name,
+                productSizeId : sizeValue.id
             }))
             setColorValue({
                 id:0,

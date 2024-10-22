@@ -95,10 +95,13 @@
 
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
+import {useRouter} from "next/router";
 
 export const useBasket= (isRead) =>{
-    const updateMutation = useMutation(BasketAPi.update, {
+    const router = useRouter()
+    const submitMutation = useMutation(BasketAPi.create, {
         onMutate: variable => {
+            router.push("/basket");
             console.log("onMutate", variable);
         },
         onError: (error, variable, context) => {
@@ -131,6 +134,6 @@ export const useBasket= (isRead) =>{
 
     return {
         queryData,
-        updateMutation
+        submitMutation
     }
 }

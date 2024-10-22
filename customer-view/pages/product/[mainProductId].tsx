@@ -10,46 +10,44 @@ import useCustomQuery from "@/shared/hook/useCustomQuery";
 import {BasketAPi} from "@/shared/api/basket/BasketAPi";
 import {useBasket} from "@/shared/hook/useBasket";
 import {useAuth} from "@/shared/hook/useAuth";
+import {OrderProduct} from "@/store/product/myProduct";
+import {useMutation, UseMutationOptions} from "@tanstack/react-query";
 
-function DetailUserProduct() {
+function DetailUserProduct(options: UseMutationOptions<TData, TError, TVariables, TContext>) {
     const router = useRouter()
     const {mainProductId}: number = router.query;
     // const searchPage : string | null= router.query.searchPage;
     // const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
-    const {data,isLoading} = useProduct(mainProductId,"0");
+    const {data, isLoading} = useProduct(mainProductId, "0");
     const products = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
     const {isLogin} = useAuth();
     useEffect(() => {
         if (data) {
             dispatch(initProduct())
-            console.log(data)
         }
     }, [data])
-
-    useEffect(()=>{
-
-        console.log(data)
-    },[isLoading])
-
 
     const orderProduct = () => {
         router.push("/order");
     }
 
-    const {updateMutation} = useBasket(false);
-
-    const onClickBasket =()=>{
-        const basketProducts = selectProducts.map(product => {
-            console.log(product)
+    const {submitMutation} = useBasket(false);
+    const onClickBasket = () => {
+        const basketProducts :OrderProduct[] = products.map(product => {
             return {
-                productSizeId : product.size.id,
-                quantity : product.quantity,
-                productId : product.productId,
-                size: product.size.name
+                productSizeId: product.productSizeId,
+                quantity: product.quantity,
+                productId: product.productId,
+                size: product.size,
+                colorName : product.color
             }
         });
-        updateMutation.mutate(basketProducts)
+        // updateMutation.mutate(basketProducts)
+        if(basketProducts.length < 1){
+            return;
+        }
+        submitMutation.mutate(basketProducts)
     }
     return (
         <>
@@ -69,16 +67,16 @@ function DetailUserProduct() {
                             {
                                 products.length > 0 &&
                                 products.map(product => <ProductInfo.ProductOrderManagement
-                                        key={product.color.id}
-                                        selectProduct={product}
-                                    />)
+                                    key={product.color.id}
+                                    selectProduct={product}
+                                />)
                             }
                             <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>
                             {
                                 isLogin &&
                                 <Box sx={{mt: 3}}>
                                     <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
-                                    <Button variant="outlined" onClick ={onClickBasket}>장바구니</Button>
+                                    <Button variant="outlined" onClick={onClickBasket}>장바구니</Button>
                                 </Box>
                             }
 

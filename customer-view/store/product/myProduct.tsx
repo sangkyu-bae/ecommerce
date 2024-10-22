@@ -9,17 +9,11 @@ export type MyProduct ={
     category : Data,
     productComponents: ProductComponent[]
 }
-// export type OrderProduct = {
-//     isOrderData : boolean
-//     totalPayment : number,
-//     product : MyProduct | {}
-//     selectProducts : selectProduct[] | []
-// }
-
 export type OrderProduct = {
     productId: number
     color : string
     size : number
+    productSizeId : number | null
     quantity : number
     selectPrice : number,
     productName : string

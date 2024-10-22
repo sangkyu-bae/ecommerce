@@ -41,49 +41,52 @@ function Order(props) {
                         <GridComponent title={`주문하기`}>
                             <StyledOrderBox>
                                 <form onSubmit={handleSubmit}>
-                                    배송정보
-                                    <div className="flex-box">
-                                        <div>이름 / 연락처</div>
-                                        <div>홍길동</div>
-                                        <TextField margin="normal"
-                                                   required
-                                                   id="phone"
-                                                   label="연락처"
-                                                   name="phone"
-                                                   {...register("phone",{
-                                                       ...validation.phone
-                                                   })}
-                                                   error = {Boolean(errors.phone)}
-                                                   helperText={errors.phone?.message}
-                                                   autoFocus/>
-                                    </div>
-                                    <div className="flex-box">
-                                        <div>주소</div>
-                                        <TextField margin="normal"
-                                                   required
-                                                   id="address"
-                                                   label="배송지"
-                                                   name="address"
-                                                   {...register("address",{
-                                                        ...validation.address
-                                                   })}
-                                                   error = {Boolean(errors.address)}
-                                                   helperText={errors.address?.message}
-                                                   autoFocus/>
-                                    </div>
-                                    <div className="flex-box">
-                                        <div> 배송 요청사항</div>
-                                        <Select
-                                            sx={{mt: 5}}
-                                            labelId="size-select"
-                                            id="size-select"
-                                            label="Size"
-                                            name="size"
-                                        >
-                                            <MenuItem value={0}>옵션 선택</MenuItem>
-                                        </Select>
-                                    </div>
+                                    <div style={{width:'85%', margin:'0 auto'}}>
+                                        <div className="flex-box">
+                                            <div>이름 / 연락처</div>
+                                            <div>홍길동</div>
+                                            <TextField margin="normal"
+                                                       required
+                                                       id="phone"
+                                                       label="연락처"
+                                                       name="phone"
+                                                       {...register("phone",{
+                                                           ...validation.phone
+                                                       })}
+                                                       error = {Boolean(errors.phone)}
+                                                       helperText={errors.phone?.message}
+                                                       autoFocus/>
+                                        </div>
+                                        <div className="flex-box">
+                                            <div>주소</div>
+                                            <TextField margin="normal"
+                                                       required
+                                                       id="address"
+                                                       label="배송지"
+                                                       name="address"
+                                                       {...register("address",{
+                                                           ...validation.address
+                                                       })}
+                                                       error = {Boolean(errors.address)}
+                                                       helperText={errors.address?.message}
+                                                       autoFocus/>
+                                        </div>
+                                        <div className="flex-box">
+                                            <div> 배송 요청사항</div>
+                                            <Select
+                                                sx={{mt: 5}}
+                                                labelId="size-select"
+                                                id="size-select"
+                                                label="Size"
+                                                name="size"
+                                            >
+                                                <MenuItem value={0}>옵션 선택</MenuItem>
+                                            </Select>
+                                        </div>
+
+
                                     <OrderInfoContainer/>
+                                    </div>
                                     <Button
                                         variant="contained"
                                         sx={{mt: 2}}

@@ -11,47 +11,48 @@ import {
 import {useRouter} from "next/router";
 import {BoxContainer} from "@/components/common/GridComponent";
 import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+import ProductTableComponent from "@/components/common/ProductTableComponent";
+import {OrderProduct} from "@/store/product/myProduct";
 
 function Content(props) {
-    const {
-        isLoading,
-        error,
-        baskets,
-        setBaskets,
-        handleQuantityChange,
-        calculateTotal
-    } = useBasket(true, true, true);
-
+    const {queryData} = useBasket();
+    const {data} = queryData;
+    const [baskets,setBaskets] = useState<Basket[]>([]);
+    const [allChecked,setAllChecked] = useState<boolean>(false);
     const dispatch = useDispatch();
     const router = useRouter()
+
+    const totalAmount = baskets.filter(basket=>basket.check)
+        .reduce((total, basket) => total + basket.price * basket.productQuantity, 0).toLocaleString('ko-KR');
+
     const orderProduct = () => {
+
+        const filterBaskets : OrderProduct[]= baskets
+            .filter(basket => basket.check)
+            .map(filterBasket => ({
+                productId: filterBasket.productId,
+                color: filterBasket.colorName,
+                size: filterBasket.size,
+                quantity: filterBasket.productQuantity,
+                selectPrice: filterBasket.price,
+                productName : filterBasket.productName
+            }));
+        if(filterBaskets.length < 1){
+            alert("구매할 상품을 선택해주세요.")
+            return;
+        }
+        dispatch((initProduct()))
+        dispatch(setProduct(filterBaskets));
         router.push("/order");
     }
-    useEffect(() => {
-        if (baskets) {
-            console.log(baskets)
-            // dispatch(initProduct());
-            // baskets.forEach(basket => {
-            //     const order = {
-            //         productId: basket.productId,
-            //         color: {
-            //             id:basket.productComponentEntityVoList[0].color.id,
-            //             name: basket.productComponentEntityVoList[0].color.name
-            //         },
-            //         size: {
-            //             id:basket.productComponentEntityVoList[0].sizes.id,
-            //             name: basket.productComponentEntityVoList[0].sizes.name
-            //         }
-            //     };
-            //     dispatch(setProduct(basket, false));
-            //     dispatch(basketAddBuyProduct(order.color, order.size, order.productId));
-            //     dispatch(basketQuantitySetting(basket.productId, basket.colorName,basket.size,basket.productQuantity))
-            // });
-        }
-    }, [baskets])
 
-    const {isOrderData, product, selectProducts} = useSelector(state => state.productRedux);
-    const [allChecked,setAllChecked] = useState<boolean>(false);
+    useEffect(() => {
+        if (data) {
+         setBaskets(data);
+        }
+    }, [data])
+
 
     useEffect(()=>{
         setBaskets(prevBaskets =>
@@ -61,6 +62,7 @@ function Content(props) {
             }))
         );
     },[allChecked])
+
     const onChangeCheck =(value : 'all'|number)=>{
         if(value == 'all'){
             setAllChecked(!allChecked);
@@ -102,34 +104,22 @@ function Content(props) {
                     </div>
                     <tbody>
                     {baskets.map(basket => (
-                        <tr key={basket.id}>
-                            <td className="normal-td flex">
-                                <Checkbox
-                                    defaultChecked={false}
-                                    checked={basket.check}
-                                    onClick={()=> onChangeCheck(basket.id)}
-                                />
-                                <img src='https://via.placeholder.com/50' alt="Product"/>
-                                <div>
-                                    <span className="bold">{basket.productName}</span><br/>
-                                    <span>{basket.size} /{basket.colorName}</span>
-                                </div>
+                        <ProductTableComponent
+                            key={basket.id}
+                            id={basket.id}
+                            size ={basket.size}
+                            colorName={basket.colorName}
+                            quantity={basket.productQuantity}
+                            productName={basket.productName}
+                            price = {basket.price}
 
-                            </td>
-                            <td className="normal-td">{basket.productName} / {basket.size}/ {basket.colorName}/ {basket.productQuantity
-                            }</td>
-                            <td className="normal-td">{basket.price.toLocaleString()} 원</td>
-                            <td className="normal-td">무료</td>
-                            {/*<td className="quantity normal-td">*/}
-                            {/*    <input*/}
-                            {/*        type="number"*/}
-                            {/*        value={product.productQuantity}*/}
-                            {/*        min="1"*/}
-                            {/*        onChange={(e) => handleQuantityChange(product.id, Number(e.target.value))}*/}
-                            {/*    />*/}
-                            {/*</td>*/}
-                            {/*<td className="normal-td">${(product.price * product.productQuantity).toFixed(2)}</td>*/}
-                        </tr>
+                        >
+                            <Checkbox
+                                defaultChecked={false}
+                                checked={basket.check}
+                                onClick={()=> onChangeCheck(basket.id)}
+                            />
+                        </ProductTableComponent>
                     ))}
                     </tbody>
                     <div>
@@ -139,13 +129,15 @@ function Content(props) {
 
                 </table>
             </BoxContainer>
+            <div style={{marginTop:'50px'}}>
+                <div className="total" style={{marginBottom:'15px'}}>
+                    <strong>Total: {totalAmount}원</strong>
+                </div>
+                <div className="actions">
+                    <Button onClick={orderProduct} variant="outlined">구매하기</Button>
+                </div>
+            </div>
 
-            <div className="total">
-                <strong>Total: ${calculateTotal()}</strong>
-            </div>
-            <div className="actions">
-                <button onClick={orderProduct}>Proceed to Checkout</button>
-            </div>
         </div>
     );
 }
