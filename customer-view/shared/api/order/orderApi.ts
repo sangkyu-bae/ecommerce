@@ -1,5 +1,5 @@
 import ApiCommon from "@/shared/api/common/ApiCommon";
-import {orderRequest} from "@/shared/constants/Url";
+import {basketRequest, orderRequest} from "@/shared/constants/Url";
 
 export const OrderApi ={
     register: async (registerOrder: Order[])=>{
@@ -9,5 +9,10 @@ export const OrderApi ={
     read : async ()=>{
         const {data} = await ApiCommon.loginJsonAPI.get(orderRequest.read)
         return data
-    }
+    },
+    readPaging: async (pagingNm : number)=>{
+        const {data} = await ApiCommon.loginJsonAPI.get(`${orderRequest.readPaging}/${pagingNm}`);
+        console.log(data)
+        return data
+    },
 }

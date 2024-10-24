@@ -12,6 +12,7 @@ export const BasketAPi = {
         const {data} = await ApiCommon.loginJsonAPI.get(basketRequest.readBasket);
         return data
     },
+
     // update: async ({ id, quantity }: { id: number, quantity: number })=>{
     update: async ({ id, quantity }: { id: number, quantity: number })=>{
         const {data} = await ApiCommon.loginJsonAPI.patch(`${basketRequest.update}/${id}/${quantity}`)

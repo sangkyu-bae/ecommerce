@@ -3,10 +3,12 @@ package com.example.order.adapter.in.web;
 import com.example.order.adapter.in.request.FindMemberOrderListByMemberIdsRequest;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
+import com.example.order.application.port.in.command.FindOrderByMemberPagingCommand;
 import com.example.order.application.port.in.command.FindOrderCommand;
 import com.example.order.application.port.in.usecase.FindOrderUseCase;
 import com.example.order.domain.OrderAggregationVo;
 import com.example.order.domain.OrderVo;
+import com.example.order.domain.SearchOrder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
@@ -44,6 +46,20 @@ public class FindOrderController {
 
         return ResponseEntity.ok().body(orderList);
     }
+
+    @GetMapping("/order/member/{pageNum}")
+    public ResponseEntity<SearchOrder> findOrderByMemberIdPaiging(@RequestHeader("X-User-Id") Long userId,
+                                                                  @PathVariable("pageNum") int pageNum){
+        FindOrderByMemberPagingCommand command = FindOrderByMemberPagingCommand.builder()
+                .userId(userId)
+                .pageNum(pageNum)
+                .build();
+
+        SearchOrder searchOrder = findOrderUseCase.findOrderByMemberIdPaging(command);
+
+        return ResponseEntity.ok().body(searchOrder);
+    }
+
 
     @GetMapping("/order/member-order")
     void findMemberOrderListByMemberIds(@RequestBody FindMemberOrderListByMemberIdsRequest request){

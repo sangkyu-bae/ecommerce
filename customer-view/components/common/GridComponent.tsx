@@ -136,6 +136,19 @@ export const StyledOrderBox = styled.div`
         font-weight: bold;
     }
     
+    .text-left{
+        text-align:left;
+    }
+    
+    .full-div{
+        width:100%;
+    }
+
+    
+    .herf-div{
+        width:80%;
+        margin:0 auto;
+    }
     
 `
 export const StyledMenu = styled.div`

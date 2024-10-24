@@ -1,11 +1,16 @@
 package com.example.order.adapter.out.persistence;
 
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
+import com.example.order.domain.OrderAggregationVo;
 import com.example.order.domain.OrderVo;
+import com.example.order.domain.SearchOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -32,5 +37,21 @@ public class OrderMapper {
         );
 
         return orderVo;
+    }
+
+    public SearchOrder mapToSearch(
+                                            List<OrderAggregationVo> orderAggregationVos,
+                                            Page<OrderEntity> orderPage
+                                   ){
+
+        SearchOrder searchOrder = SearchOrder.createGenerate(
+                orderAggregationVos,
+                orderPage.getNumber(),
+                orderPage.getSize(),
+                orderPage.getTotalElements(),
+                orderPage.getTotalPages()
+        );
+
+        return searchOrder;
     }
 }

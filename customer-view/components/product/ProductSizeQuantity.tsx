@@ -29,8 +29,6 @@ function ProductSizeQuantity(props) {
     const dispatch = useDispatch();
 
     const onChangeColorValue = (value) => {
-
-        console.log(value);
         if (value == 0) {
             setSizeValue({
                 name:'',
@@ -56,11 +54,14 @@ function ProductSizeQuantity(props) {
     }
 
 
-    const onChangeSizeValue = (value) => {
+    const onChangeSizeValue = ({size,quantity}) => {
 
-        console.log(value);
+        if(quantity < 1){
+            alert("수량이 존재하지 않아요");
+            return;
+        }
 
-        if(value == 0){
+        if(size == 0){
             setSizeValue({
                 id:0,
                 name:''
@@ -71,11 +72,11 @@ function ProductSizeQuantity(props) {
 
         const name: string = productData.productComponents
             .find(data => data.color.id == colorValue.id)
-            .sizes.find(size => size.id == value).size;
+            .sizes.find(size => size.id == size).size;
 
 
         setSizeValue({
-            id: value,
+            id: size,
             name: name
         });
     }
@@ -115,18 +116,18 @@ function ProductSizeQuantity(props) {
     return (
         <Box sx={{minWidth: 120, mt: 2}}>
             <FormControl fullWidth>
-                <InputLabel id="color">Color</InputLabel>
+                {/*<InputLabel id="color">Color</InputLabel>*/}
                 <Select
                     labelId="color-select"
                     id="color-select"
                     value={colorValue.id}
-                    label="color"
+                    // label="color"
                     onChange={e => {
                         onChangeColorValue(e.target.value)
                     }}
-                    name="color"
+                    // name="color"
                 >
-                    <MenuItem value={0}>옵션 선택</MenuItem>
+                    <MenuItem value={0}>컬러 옵션 선택</MenuItem>
                     {
                         productData.productComponents
                             .map(component => <MenuItem key={component.color.id}
@@ -134,22 +135,27 @@ function ProductSizeQuantity(props) {
                     }
                 </Select>
 
-                <InputLabel id="size-select">Size</InputLabel>
+                {/*<InputLabel id="size-select">Size</InputLabel>*/}
                 <Select
                     sx={{mt: 5}}
                     labelId="size-select"
                     id="size-select"
                     value={sizeValue.id}
-                    label="Size"
+                    // label="Size"
                     onChange={e => {
                         onChangeSizeValue(e.target.value)
                     }}
-                    name="size"
+                    // name="size"
                 >
-                    <MenuItem value={0}>옵션 선택</MenuItem>
+                    <MenuItem value={0}>사이즈옵션 선택</MenuItem>
                     {
                         sizeData
-                            .map(sizeComponent => <MenuItem key={sizeComponent.id} value={sizeComponent.id}>size
+                            .map(sizeComponent => <MenuItem key={sizeComponent.id} value={
+                                {
+                                        size: sizeComponent.id,
+                                        quantity : sizeComponent.quantity
+                                }
+                            }>size
                                 : {sizeComponent.size} / quantity : {sizeComponent.quantity}</MenuItem>)
                     }
 

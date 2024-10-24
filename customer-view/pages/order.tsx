@@ -17,6 +17,7 @@ import useFormHook from "@/shared/hook/useFormHook";
 import {orderValidation} from "@/shared/utils/validation/orderValidation";
 import {OrderApi} from "@/shared/api/order/orderApi";
 import {OrderProduct} from "@/store/product/myProduct";
+import InputLabel from "@mui/material/InputLabel";
 
 
 function Order(props) {
@@ -42,9 +43,9 @@ function Order(props) {
                             <StyledOrderBox>
                                 <form onSubmit={handleSubmit}>
                                     <div style={{width:'85%', margin:'0 auto'}}>
-                                        <div className="flex-box">
-                                            <div>이름 / 연락처</div>
-                                            <div>홍길동</div>
+                                        <div className='full-div'>
+                                            <div className='text-left'>이름</div>
+                                            <div className='text-left' >홍길동</div>
                                             <TextField margin="normal"
                                                        required
                                                        id="phone"
@@ -55,10 +56,10 @@ function Order(props) {
                                                        })}
                                                        error = {Boolean(errors.phone)}
                                                        helperText={errors.phone?.message}
+                                                       className='full-div'
                                                        autoFocus/>
                                         </div>
-                                        <div className="flex-box">
-                                            <div>주소</div>
+                                        <div className='full-div'>
                                             <TextField margin="normal"
                                                        required
                                                        id="address"
@@ -69,16 +70,19 @@ function Order(props) {
                                                        })}
                                                        error = {Boolean(errors.address)}
                                                        helperText={errors.address?.message}
+                                                       className='full-div'
                                                        autoFocus/>
                                         </div>
-                                        <div className="flex-box">
-                                            <div> 배송 요청사항</div>
+                                        <div className='full-div'>
+                                            <InputLabel id="ask">Size</InputLabel>
                                             <Select
-                                                sx={{mt: 5}}
-                                                labelId="size-select"
-                                                id="size-select"
-                                                label="Size"
+                                                sx={{mb: 5}}
+                                                labelId="ask"
+                                                id="ask"
+                                                label="요청사항"
                                                 name="size"
+                                                className = 'full-div'
+                                                
                                             >
                                                 <MenuItem value={0}>옵션 선택</MenuItem>
                                             </Select>

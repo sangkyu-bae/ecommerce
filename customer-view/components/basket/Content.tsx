@@ -16,7 +16,7 @@ import ProductTableComponent from "@/components/common/ProductTableComponent";
 import {OrderProduct} from "@/store/product/myProduct";
 
 function Content(props) {
-    const {queryData} = useBasket();
+    const {queryData} = useBasket(true);
     const {data} = queryData;
     const [baskets,setBaskets] = useState<Basket[]>([]);
     const [allChecked,setAllChecked] = useState<boolean>(false);

@@ -94,6 +94,8 @@ member:
     url : http://localhost:8000/user
 
 kafka:
+  notification:
+    topic:notification
   order:
     result:
       topic : order-topic

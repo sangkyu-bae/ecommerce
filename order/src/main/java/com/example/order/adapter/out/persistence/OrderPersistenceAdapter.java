@@ -12,6 +12,8 @@ import com.example.order.domain.OrderVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -51,6 +53,12 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
     public List<OrderEntity> findOrderByMemberId(OrderVo.OrderProductUserId userId) {
         return orderEntityRepository.findByUserIdOrderByIdDesc(userId.getUserId());
     }
+
+    @Override
+    public Page<OrderEntity> findOrderByMemberIdPaging(OrderVo.OrderProductUserId userId, Pageable pageable) {
+        return orderEntityRepository.findWithPagingByUserId(pageable,userId.getUserId());
+    }
+
 
     @Override
     public List<OrderEntity> getMemberOrderPort(List<Long> memberIds) {

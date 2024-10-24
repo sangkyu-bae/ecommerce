@@ -38,7 +38,8 @@ type CouponRequest ={
 }
 type OrderRequest = {
     register : string,
-    read : string
+    read : string,
+    readPaging: string
 }
 export const memberRequest : MemberRequest={
     signUp:`${userURL}/sign-up`,
@@ -67,7 +68,8 @@ export const basketRequest : BasketRequest ={
 }
 export const orderRequest : OrderRequest = {
     register : `${orderURL}/register`,
-    read : `${orderURL}/member`
+    read : `${orderURL}/member`,
+    readPaging : `${orderURL}/member/`
 }
 
 export const couponRequest : CouponRequest = {
