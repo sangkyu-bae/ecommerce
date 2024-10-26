@@ -84,6 +84,7 @@ export const StyledOrderBox = styled.div`
     }
     .img-box {
         flex:0.2;
+        border-left: 1px solid black;
     }
     .second-flex{
         flex:0.7;

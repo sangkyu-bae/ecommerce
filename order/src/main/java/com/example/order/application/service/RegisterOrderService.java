@@ -153,7 +153,8 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 new OrderVo.OrderUpdateAt(LocalDateTime.now()),
                 new OrderVo.OrderStatus(status),
                 OrderVo.StatusCode.ORDER,
-                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier())
+                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier()),
+                new OrderVo.OrderSequence(command.getSequence())
         );
 
         OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);

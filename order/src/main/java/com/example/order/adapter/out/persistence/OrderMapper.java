@@ -33,7 +33,8 @@ public class OrderMapper {
                 new OrderVo.OrderUpdateAt(orderEntity.getUpdateAt()),
                 new OrderVo.OrderStatus(orderEntity.getStatus()),
                 statusCode,
-                new OrderVo.OrderAggregateIdentifier(orderEntity.getAggregateIdentifier())
+                new OrderVo.OrderAggregateIdentifier(orderEntity.getAggregateIdentifier()),
+                new OrderVo.OrderSequence(orderEntity.getSequence())
         );
 
         return orderVo;

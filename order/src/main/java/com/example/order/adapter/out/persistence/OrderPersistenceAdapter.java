@@ -39,6 +39,7 @@ public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort
                 .status(orderVo.getStatus())
                 .createAt(orderVo.getCreateAt())
                 .updateAt(orderVo.getUpdateAt())
+                .sequence(orderVo.getSequence())
                 .build();
         return orderEntityRepository.save(createOrderEntity);
     }

@@ -32,11 +32,15 @@ public class OrderEntity {
 
     private String address;
 
+    private String phoneNumber;
+
     private LocalDateTime createAt;
 
     private LocalDateTime updateAt;
 
     private int status;
+
+    private String sequence;
 
     private String aggregateIdentifier;
 

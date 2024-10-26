@@ -9,9 +9,9 @@ import {useProductActionContext, useProductValueContext} from "@/components/prod
 import {useDispatch, useSelector} from "react-redux";
 import {addBuyProduct} from "@/store/product/productRedux";
 
-interface OptionProduct{
-    color :Data | null,
-    size : Data | null
+interface OptionProduct {
+    color: Data | null,
+    size: Data | null
 }
 
 function ProductSizeQuantity(props) {
@@ -31,13 +31,13 @@ function ProductSizeQuantity(props) {
     const onChangeColorValue = (value) => {
         if (value == 0) {
             setSizeValue({
-                name:'',
+                name: '',
                 id: 0
             });
 
             setColorValue({
-                name:'',
-                id:0
+                name: '',
+                id: 0
             })
 
             return;
@@ -54,17 +54,17 @@ function ProductSizeQuantity(props) {
     }
 
 
-    const onChangeSizeValue = ({size,quantity}) => {
+    const onChangeSizeValue = (clickSize, quantity) => {
 
-        if(quantity < 1){
+        if (quantity < 1) {
             alert("수량이 존재하지 않아요");
             return;
         }
 
-        if(size == 0){
+        if (clickSize == 0) {
             setSizeValue({
-                id:0,
-                name:''
+                id: 0,
+                name: ''
             })
 
             return;
@@ -72,11 +72,11 @@ function ProductSizeQuantity(props) {
 
         const name: string = productData.productComponents
             .find(data => data.color.id == colorValue.id)
-            .sizes.find(size => size.id == size).size;
+            .sizes.find(size => size.id == clickSize).size;
 
 
         setSizeValue({
-            id: size,
+            id: clickSize,
             name: name
         });
     }
@@ -87,20 +87,20 @@ function ProductSizeQuantity(props) {
             // dispatch(addBuyProduct(colorValue,sizeValue,productData.id));
             dispatch(addBuyProduct({
                 productId: productData.id,
-                color:colorValue.name,
-                size:sizeValue.name,
-                quantity:1,
-                selectPrice:productData.price,
-                productName:productData.name,
-                productSizeId : sizeValue.id
+                color: colorValue.name,
+                size: sizeValue.name,
+                quantity: 1,
+                selectPrice: productData.price,
+                productName: productData.name,
+                productSizeId: sizeValue.id
             }))
             setColorValue({
-                id:0,
-                name:''
+                id: 0,
+                name: ''
             });
             setSizeValue({
-                id:0,
-                name:''
+                id: 0,
+                name: ''
             });
         }
     }, [colorValue, sizeValue])
@@ -142,21 +142,21 @@ function ProductSizeQuantity(props) {
                     id="size-select"
                     value={sizeValue.id}
                     // label="Size"
-                    onChange={e => {
-                        onChangeSizeValue(e.target.value)
-                    }}
+                    // onChange={e => {
+                    //     onChangeSizeValue(e.target.value)
+                    // }}
                     // name="size"
                 >
                     <MenuItem value={0}>사이즈옵션 선택</MenuItem>
                     {
                         sizeData
-                            .map(sizeComponent => <MenuItem key={sizeComponent.id} value={
-                                {
-                                        size: sizeComponent.id,
-                                        quantity : sizeComponent.quantity
-                                }
-                            }>size
-                                : {sizeComponent.size} / quantity : {sizeComponent.quantity}</MenuItem>)
+                            .map(sizeComponent =>
+                                <MenuItem
+                                    key={sizeComponent.id}
+                                    onClick={() => onChangeSizeValue(sizeComponent.id, sizeComponent.quantity)}
+                                >
+                                    size : {sizeComponent.size} / quantity : {sizeComponent.quantity}
+                                </MenuItem>)
                     }
 
                 </Select>

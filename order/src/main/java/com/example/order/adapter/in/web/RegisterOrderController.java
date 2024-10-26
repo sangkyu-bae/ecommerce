@@ -1,6 +1,7 @@
 package com.example.order.adapter.in.web;
 
 
+import com.example.order.adapter.in.request.RegisterOrderProductRequest;
 import com.example.order.adapter.in.request.RegisterOrderRequest;
 import com.example.order.adapter.in.request.RegisterOrderRq;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
@@ -33,12 +34,16 @@ public class RegisterOrderController {
     public ResponseEntity<OrderVo> registerOrderByKafka(@RequestBody RegisterOrderRequest request ,
                                                  @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
 
+
+
+        RegisterOrderProductRequest req = request.getProducts().get(0);
+
         RegisterOrderCommand command = RegisterOrderCommand.builder()
-                .productId(request.getProductId())
-                .colorId(request.getColorId())
-                .sizeId(request.getSizeId())
-                .amount(request.getAmount())
-                .payment(request.getPayment())
+                .productId(req.getProductId())
+                .colorId(req.getColorId())
+                .sizeId(req.getSizeId())
+                .amount(req.getAmount())
+                .payment(req.getPayment())
 //                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
                 .userId(userId)
                 .build();
@@ -53,29 +58,35 @@ public class RegisterOrderController {
     public ResponseEntity<OrderVo> registerOrderByAxon(@RequestBody RegisterOrderRequest request ,
                                                  @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
 
+
+        RegisterOrderProductRequest req = request.getProducts().get(0);
+
         RegisterOrderCommand command = RegisterOrderCommand.builder()
-                .productId(request.getProductId())
-                .colorId(request.getColorId())
-                .sizeId(request.getSizeId())
-                .amount(request.getAmount())
-                .payment(request.getPayment())
+                .productId(req.getProductId())
+                .colorId(req.getColorId())
+                .sizeId(req.getSizeId())
+                .amount(req.getAmount())
+                .payment(req.getPayment())
                 .userId(userId)
-                .couponId(request.getCouponId())
+                .couponId(req.getCouponId())
                 .build();
 
         OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
 
         return ResponseEntity.ok().body(orderVo);
     }
-    /*
-    * todo 주문 saga로 다시만들기 다중으로 주문하는게 안되어있음
-    * */
+
+
     @Operation(summary = "register order", description = "axon 주문 등록하기 (saga구현 eda)")
     @PostMapping("/order/register")
-    public ResponseEntity<List<OrderVo>> registerOrder(@RequestBody List<RegisterOrderRequest> request,
+//    public ResponseEntity<List<OrderVo>> registerOrder(@RequestBody List<RegisterOrderRequest> request,
+    public ResponseEntity<List<OrderVo>> registerOrder(@RequestBody RegisterOrderRequest request,
                                                        @RequestHeader("X-User-Id") Long userId ) throws JsonProcessingException {
         List<OrderVo> orderVos = new ArrayList<>();
-        for(RegisterOrderRequest rq : request){
+        List<RegisterOrderProductRequest> productRequests = request.getProducts();
+
+        String sequence = UUID.randomUUID().toString();
+        for(RegisterOrderProductRequest rq : productRequests){
             RegisterOrderCommand command = RegisterOrderCommand.builder()
                     .productId(rq.getProductId())
                     .colorId(rq.getColorId())
@@ -83,8 +94,10 @@ public class RegisterOrderController {
                     .amount(rq.getAmount())
                     .payment(rq.getPayment())
                     .userId(userId)
-                    .address(rq.getAddress())
+                    .address(request.getAddress())
                     .couponId(rq.getCouponId())
+                    .sequence(sequence)
+                    .phone(request.getPhone())
                     .build();
             OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
             orderVos.add(orderVo);

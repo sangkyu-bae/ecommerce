@@ -42,6 +42,8 @@ public class OrderVo {
 
     private final String aggregateIdentifier;
 
+    private final String sequence;
+
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
             OrderProductUserId orderProductUserId,
@@ -55,7 +57,8 @@ public class OrderVo {
             OrderUpdateAt orderUpdateAt,
             OrderStatus orderStatus,
             StatusCode statusCode,
-            OrderAggregateIdentifier orderAggregateIdentifier
+            OrderAggregateIdentifier orderAggregateIdentifier,
+            OrderSequence orderSequence
     ){
         return new OrderVo(
                 orderId.getId(),
@@ -70,7 +73,8 @@ public class OrderVo {
                 orderUpdateAt.getUpdateAt(),
                 orderStatus.getStatus(),
                 new TypeEnumMapper(statusCode),
-                orderAggregateIdentifier.getAggregateIdentifier()
+                orderAggregateIdentifier.getAggregateIdentifier(),
+                orderSequence.getSequence()
         );
     }
 
@@ -172,6 +176,14 @@ public class OrderVo {
         }
 
         String aggregateIdentifier;
+    }
+
+    @Value
+    public static class OrderSequence{
+        public OrderSequence(String value){
+            this.sequence = value;
+        }
+        String sequence;
     }
 
     public static enum StatusCode implements EnumMapperType{
