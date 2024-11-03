@@ -1,15 +1,21 @@
 import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import useCustomQuery from "@/shared/hook/useCustomQuery";
+import {OrderProduct} from "@/store/product/myProduct";
+import {OrderService} from "@/shared/service/orderService";
+import {useRouter} from "next/router";
 
 type FormProps = {
     initData: Record<string, any>,
     onSubmit: (data: any) => void,
     validation?: object,
-    dataParsingEvent?: (data: any) => any
+    products : OrderProduct[]
 }
 
-function UseFormHook({initData, onSubmit, validation,dataParsingEvent}) {
+
+function UseFormHook({initData, onSubmit, validation,products}) {
+    const orderService = new OrderService();
+    const router = useRouter();
     const {submitMutation} = useCustomQuery({
         submit:onSubmit
     });
@@ -25,17 +31,20 @@ function UseFormHook({initData, onSubmit, validation,dataParsingEvent}) {
     });
 
     const submit = (submitData : object) =>{
-        /** validation 공통화 작업필요*/
-        if(!validation){
-            return;
-        }
 
-        if(dataParsingEvent != null){
-            submitData = dataParsingEvent(submitData);
-        }
 
-        console.log(submitData)
-        submitMutation.mutate(submitData);
+        const registerOrderProducts : RegisterOrder[]=
+            products.map(product => orderService.mapToOrder(product));
+
+        const registerOrder : Order = {
+            products : registerOrderProducts,
+            address:submitData.address,
+            phone: submitData.phone
+        } ;
+
+        submitMutation.mutate(registerOrder);
+        router.push('/order/list')
+
     }
 
     useEffect(() => {

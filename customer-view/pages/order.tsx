@@ -30,7 +30,7 @@ function Order(props) {
         initData:null,
         onSubmit:OrderApi.register,
         validation:orderValidation,
-        // dataParsingEvent:dataParsingEvent
+        products : products
     });
 
     const validation = orderValidation;
@@ -73,20 +73,20 @@ function Order(props) {
                                                        className='full-div'
                                                        autoFocus/>
                                         </div>
-                                        <div className='full-div'>
-                                            <InputLabel id="ask">Size</InputLabel>
-                                            <Select
-                                                sx={{mb: 5}}
-                                                labelId="ask"
-                                                id="ask"
-                                                label="요청사항"
-                                                name="size"
-                                                className = 'full-div'
-                                                
-                                            >
-                                                <MenuItem value={0}>옵션 선택</MenuItem>
-                                            </Select>
-                                        </div>
+                                        {/*<div className='full-div'>*/}
+                                        {/*    <InputLabel id="ask">Size</InputLabel>*/}
+                                        {/*    <Select*/}
+                                        {/*        sx={{mb: 5}}*/}
+                                        {/*        labelId="ask"*/}
+                                        {/*        id="ask"*/}
+                                        {/*        label="요청사항"*/}
+                                        {/*        name="size"*/}
+                                        {/*        className = 'full-div'*/}
+                                        {/*        */}
+                                        {/*    >*/}
+                                        {/*        <MenuItem value={0}>옵션 선택</MenuItem>*/}
+                                        {/*    </Select>*/}
+                                        {/*</div>*/}
 
 
                                     <OrderInfoContainer/>

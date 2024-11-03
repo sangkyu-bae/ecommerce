@@ -137,7 +137,7 @@ public class RedisRankingAdapter implements UpdateRankingRedisPort, FindRankingR
     private void incrementCountBySortedSet(String keyName, long productId, int clickCnt) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
         String productKey =String.valueOf(productId);
-        zSetOps.add(keyName, productKey, clickCnt );
+        zSetOps.add(keyName, productKey, clickCnt);
     }
     private int getProductCountBySortedSet(String keyName, long productId) {
         log.info("keyName : {}",keyName);

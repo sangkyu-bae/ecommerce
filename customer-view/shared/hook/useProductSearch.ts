@@ -12,11 +12,11 @@ export const useProductSearch= (categoryId:number | null,
         pageNum : pageNum,
         totalPage :0
     });
-
+    const startTime = performance.now();
     const {data, isLoading, isError, error,isFetching} = useQuery(
         [`searchProduct`,`${pageInfo.pageNum}`],
         () => ProductApi.readPagingByCategory(pageInfo.categoryId,pageInfo.pageNum), {
-            staleTime: 20000,
+            staleTime: 0,
             enabled:true,
             onSuccess: data => {
                 setPageInfo(prev =>({
@@ -30,6 +30,22 @@ export const useProductSearch= (categoryId:number | null,
         }
     )
 
+    // useEffect(() => {
+    //     if (data && !isLoading && !isFetching) {
+    //         const startTime = performance.now();
+    //
+    //         // 이 시점에서 렌더링이 진행됩니다.
+    //         console.log("캐시된 데이터:", data);
+    //
+    //         const endTime = performance.now();
+    //         console.log("캐시된 데이터 렌더링 시간:", endTime - startTime, "ms");
+    //     }
+    // }, [data, isLoading, isFetching]);
+
+    const endTime = performance.now();
+    const renderTime = endTime - startTime;
+
+    console.log(`렌더링 시간: ${renderTime} ms`);
     const movePage = (value) =>{
         setPageInfo(prev => ({
             ...prev,

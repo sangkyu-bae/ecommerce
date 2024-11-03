@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import GridComponent, {StyledContent, StyledSetion} from "@/components/common/GridComponent";
 import {useQuery} from "@tanstack/react-query";
 import {RankApi} from "@/shared/api/RankApi";
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";
+import {ProductApi} from "@/shared/api/product/ProductApi";
+import {useProductTest} from "@/shared/hook/useProductTest";
 
 function MainSection(props) {
 
@@ -19,6 +21,19 @@ function MainSection(props) {
             }
         }
     )
+
+    // const tet =  useQuery(
+    //     {
+    //         context:undefined,
+    //         queryKey : ['basicProduct'],
+    //         queryFn : ProductApi.readProduct(1),
+    //         enabled:true
+    //     }
+    // );
+    // useEffect(()=>{
+    //     console.log(tet.data)
+    // },[tet])
+
     return (
         <StyledContent isFull={true}>
             <StyledSetion isFull={true}>
