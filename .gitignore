@@ -68,3 +68,12 @@
 /notification/notificationLog*
 
 
+/coupon-proxy/build
+/coupon-batch/build
+
+/coupon/.idea/*
+
+/.gradle/*
+/customer-view/package-lock.json
+
+/redis/*
