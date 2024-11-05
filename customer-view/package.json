@@ -27,6 +27,7 @@
     "axios": "^1.4.0",
     "eslint": "8.22.0",
     "eslint-config-next": "13.3.1",
+    "event-source-polyfill": "^1.0.31",
     "js-cookie": "^3.0.5",
     "next": "13.3.1",
     "next-cookies": "^2.0.3",
@@ -38,6 +39,7 @@
     "react-redux": "^9.1.0",
     "recoil": "^0.7.7",
     "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "styled-components": "^6.0.0-rc.3",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"

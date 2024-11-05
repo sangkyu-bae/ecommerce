@@ -77,6 +77,8 @@ app:
   removeOrderTopic: remove-order-product
   removeRollbackTopic: rollback-remove-order
 kafka:
+  notification:
+    topic:notification
   order :
     remove :
       topic : member.check.remove.order

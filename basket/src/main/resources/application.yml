@@ -74,6 +74,8 @@ app:
 # kafka config #########
 ##########################
 kafka:
+  notification:
+    topic:notification
   raking:
     create:
       topic: create-ranking

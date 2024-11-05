@@ -86,6 +86,9 @@ app:
   createOrder: create-order
   sendToRemoveOrder : remove-order
   createDelivery : delivery-bulk
+  common :
+    bootstrap :
+      server : localhost:9092
 #  createDelivery : delivery-topic
 
 
@@ -95,7 +98,7 @@ member:
 
 kafka:
   notification:
-    topic:notification
+    topic: notification
   order:
     result:
       topic : order-topic

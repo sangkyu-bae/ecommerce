@@ -11,4 +11,6 @@ include 'coupon'
 include 'ranking'
 include 'basket'
 include 'notification'
+include 'coupon-proxy'
+include 'coupon-batch'
 

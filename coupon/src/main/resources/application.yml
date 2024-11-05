@@ -1,5 +1,6 @@
 server:
-  port: 0
+#  port: 0
+  port: 8092
 spring:
   application:
     name: coupon-service
@@ -7,6 +8,12 @@ spring:
     url: jdbc:mysql://localhost:3308/shoes_coupon
     username: root
     password: wnsvaf309
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,7 +26,6 @@ spring:
     port: 6379
     host: localhost
 logging:
-
   charset:
     console: UTF-8
     file: UTF-8
@@ -34,6 +40,8 @@ logging:
     file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
 
   level:
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
     org:
       hibernate:
         SQL: debug
@@ -44,8 +52,8 @@ logging:
 # ??? ??
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-#   instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+   instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
@@ -68,9 +76,23 @@ axon:
 ##########################
 app:
   bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
 event:
-  coupon:event-coupon
+  coupon: event-coupon
 
+kafka:
+  notification:
+    topic: notification
+  coupon:
+    create:
+      topic: create-coupon
+      group: create-coupon.v1
+    proxy:
+      create:
+        group: create-proxy-coupon.v1
+        topic: create-proxy-coupon
 ##########################
 # Redis config #########
 ##########################

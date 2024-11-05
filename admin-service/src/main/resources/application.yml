@@ -57,12 +57,17 @@ eureka:
 #      defaultZone: http://172.29.0.6/eureka
 app:
   bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
   orderTopic : order
   groupId : delivery.group.v1
   createDelivery : create-delivery
   productTaskResultTopic : task-product
   rollbackRemoveOrderTopic : rollback-remove-order
 kafka:
+  notification:
+    topic: notification
   product:
     topic : product-check
     task:

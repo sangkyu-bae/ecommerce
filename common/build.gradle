@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'org.example'
-
+sourceCompatibility = '11'
 repositories {
     mavenCentral()
 }

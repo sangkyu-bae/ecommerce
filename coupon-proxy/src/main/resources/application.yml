@@ -1,0 +1,63 @@
+server:
+  #  port: 0
+  port: 8099
+spring:
+  application:
+    name: coupon-proxy-service
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+
+  file:
+    name: coupon-proxy-Log # ?? ??? ??? ?????.
+    path: C:/logs/coupon # ?? ??? ??? ?????.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
+  level:
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: INFO
+    root: INFO
+# ??? ??
+eureka:
+  instance:
+    #    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+
+
+##########################
+# System config #########
+##########################
+app:
+  bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
+event:
+  coupon: event-coupon
+
+kafka:
+  notification:
+    topic: notification
+  coupon:
+    proxy:
+      create:
+        topic: create-proxy-coupon
+        group: create-proxy-coupon.v1
+##########################
+# Redis config #########
+##########################

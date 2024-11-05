@@ -1,6 +1,6 @@
 server:
-#  port: 8081
-  port: 0
+  port: 8081
+#  port: 0
 redis:
   port: 6379
   host: localhost
@@ -45,8 +45,8 @@ logging:
 # ??? ??
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.ip-address}:${random.value}
-#   instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+   instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
@@ -69,12 +69,17 @@ axon:
 ##########################
 app:
   bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
 
 
 ##########################
 # kafka config #########
 ##########################
 kafka:
+  notification:
+    topic: notification
   raking:
     create:
       topic: create-ranking

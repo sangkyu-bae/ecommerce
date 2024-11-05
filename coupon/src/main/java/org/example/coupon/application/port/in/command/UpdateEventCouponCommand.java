@@ -1,9 +1,6 @@
 package org.example.coupon.application.port.in.command;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.SelfValidating;
 import org.example.coupon.application.port.out.UpdateEventCouponPort;
 

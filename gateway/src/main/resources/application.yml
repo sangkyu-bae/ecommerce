@@ -45,12 +45,16 @@ spring:
             - Path=/delivery/**
           filters:
             - AuthorizationHeaderFilter
-        - id: coupon-service
+        - id: coupon-service-login
           uri: lb://coupon-service
           predicates:
-            - Path=/coupon/**
+            - Path=/coupon/auth/**
           filters:
             - AuthorizationHeaderFilter
+        - id: coupon-service-basic
+          uri: lb://coupon-service
+          predicates:
+            - Path=/coupon/basic/**
         - id: ranking-service
           uri: lb://ranking-service
           predicates:
@@ -61,6 +65,22 @@ spring:
             - Path=/basket/**
           filters:
             - AuthorizationHeaderFilter
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification/**
+          filters:
+            - AuthorizationHeaderFilter
+        - id: coupon-proxy-service
+          uri: lb://coupon-proxy-service
+          predicates:
+            - Path=/coupon-proxy/v2/**
+          filters:
+            - AuthorizationHeaderFilter
+        - id: coupon-proxy-basic-service
+          uri: lb://coupon-proxy-service
+          predicates:
+            - Path=/coupon-proxy/v1/**
 management:
   endpoints:
     web:

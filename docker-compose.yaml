@@ -41,6 +41,7 @@ services:
       - APP_CREATE_DELIVERY=create-delivery
       - APP_PRODUCT_TASK_RESULT_TOPIC=task-product
       - APP_ROLLBACK_REMOVE_ORDER_TOPIC=rollback-remove-order
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
       - KAFKA_PRODUCT_TOPIC=product-check
       - KAFKA_PRODUCT_TASK_GROUP=check.member.response.v1
       - KAFKA_ORDER_REMOVE_TOPIC=remove-order-product
@@ -57,6 +58,7 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
   user-service:
     image: demo:1.0.0
     networks:
@@ -86,6 +88,7 @@ services:
       - KAFKA_ORDER_REMOVE_GROUP=member.check.remove.order.v1
       - KAFKA_MEMBER_TASK_GROUP=member.check.v1
       - KAFKA_MEMBER_TASK_TOPIC=member-check
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
       - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
@@ -99,6 +102,7 @@ services:
       - TOKEN_SECRET=eyJhbGciOiJIUzI1NiJ9.aGVsbG8gd29ybGQ.-aGmFI1PnL6hrGpVCapG31O5FZKeo6K-w09wY-GIh8o
       - TOKEN_REFRESH_TOKEN_NAME=refresh-token
       - TOKEN_ACCESS_TOKEN_NAME=access-token
+      - KAFKA_NOTIFICATION_TOPIC = notification
   order-service:
     image: order:0.0.1-SNAPSHOT
     networks:
@@ -126,9 +130,10 @@ services:
       - APP_SENDTOREMOVEORDER= remove-order
       - APP_CREATEDELIVER= delivery-bulk
       - MEMBER_SERVICE_URL= http://member-service:8000/user
-      - KAFKA_ORDER_RESULT_TOPIC= order-topic
-      - KAFKA_ORDER_REMOVE_ROLLBACK_TOPIC= rollback-remove-order
-      - KAFKA_ORDER_REMOVE_ROLLBACK_GROUP= rollback-remove-order.v1
+#      - KAFKA_ORDER_RESULT_TOPIC= order-topic
+#      - KAFKA_ORDER_REMOVE_ROLLBACK_TOPIC= rollback-remove-order
+#      - KAFKA_ORDER_REMOVE_ROLLBACK_GROUP= rollback-remove-order.v1
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
       - KAFKA_TASK_GROUP= order-topic.v1
       - AXON_SERIALIZER_GENERAL=xstream
       - AXON_SERIALIZER_EVENTS=jackson
@@ -138,6 +143,7 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
   coupon:
     image: coupon:0.0.1-SNAPSHOT
     networks:
@@ -165,8 +171,65 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
-#  basket:
-#    image: basket:0.0.1-SNAPSHOT
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+      - KAFKA_NOTIFICATION_TOPIC =notification
+  basket-service:
+    image: basket:0.0.1-SNAPSHOT
+#    ports:
+#      - "8081:8081"
+    networks:
+      - ecommerce_network
+    depends_on:
+      - mysql
+      - kafka1
+      - axon-servers
+      - ecommerce-eureka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_basket?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_APPLICATION_NAME=basket-service
+      - APP_BOOTSTRAP_SERVER= kafka1:19091
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+      - AXON_SERIALIZER_GENERAL=xstream
+      - AXON_SERIALIZER_EVENTS=jackson
+      - AXON_SERIALIZER_MESSAGES=jackson
+      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+      - EUREKA_CLIENT_FETCH_REGISTRY=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
+  notification-service:
+    image: notification:0.0.1-SNAPSHOT
+    networks:
+      - ecommerce_network
+    depends_on:
+      - mysql
+      - kafka1
+      - axon-servers
+      - ecommerce-eureka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_basket?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - APP_BOOTSTRAPSERVER= kafka1:19091
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+      - AXON_SERIALIZER_GENERAL=xstream
+      - AXON_SERIALIZER_EVENTS=jackson
+      - AXON_SERIALIZER_MESSAGES=jackson
+      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+      - EUREKA_CLIENT_FETCH_REGISTRY=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+#  notification-service-2:
+#    image: notification:0.0.1-SNAPSHOT
 #    networks:
 #      - ecommerce_network
 #    depends_on:
@@ -180,7 +243,8 @@ services:
 #      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
 #      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
 #      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-#      - APP_BOOTSTRAP_SERVER= kafka1:19091
+#      - APP_BOOTSTRAPSERVER= kafka1:19091
+#      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
 #      - AXON_SERIALIZER_GENERAL=xstream
 #      - AXON_SERIALIZER_EVENTS=jackson
 #      - AXON_SERIALIZER_MESSAGES=jackson
@@ -189,6 +253,7 @@ services:
 #      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
 #      - EUREKA_CLIENT_FETCH_REGISTRY=true
 #      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+#      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
 #  delivery:
 #    image: delivery:0.0.1-SNAPSHOT
 #    networks:
@@ -229,6 +294,7 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - APP_BOOTSTRAP_SERVER= kafka1:19091
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
       - REDIS_PORT=6379
       - REDIS_HOST=redis-container
       - AXON_SERIALIZER_GENERAL=xstream
@@ -239,6 +305,64 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
       - EUREKA_CLIENT_FETCH_REGISTRY=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
+  rank-1:
+    image: ranking:0.0.1-SNAPSHOT
+    networks:
+      - ecommerce_network
+    depends_on:
+      - mysql
+      - kafka1
+      - axon-servers
+      - ecommerce-eureka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_ranking?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - APP_BOOTSTRAP_SERVER= kafka1:19091
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis-container
+      - AXON_SERIALIZER_GENERAL=xstream
+      - AXON_SERIALIZER_EVENTS=jackson
+      - AXON_SERIALIZER_MESSAGES=jackson
+      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+      - EUREKA_CLIENT_FETCH_REGISTRY=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
+  rank-2:
+    image: ranking:0.0.1-SNAPSHOT
+    networks:
+      - ecommerce_network
+    depends_on:
+      - mysql
+      - kafka1
+      - axon-servers
+      - ecommerce-eureka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/shoes_ranking?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=wnsvaf309
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - APP_BOOTSTRAP_SERVER= kafka1:19091
+      - APP_COMMON_BOOTSTRAP_SERVER= kafka1:19091
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis-container
+      - AXON_SERIALIZER_GENERAL=xstream
+      - AXON_SERIALIZER_EVENTS=jackson
+      - AXON_SERIALIZER_MESSAGES=jackson
+      - AXON_AXONSERVER_SERVERS=axon-servers:8124
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+      - EUREKA_CLIENT_FETCH_REGISTRY=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://ecommerce-eureka:8761/eureka
+      - KAFKA_NOTIFICATION_TOPIC =notification
+
 
   api-gateway:
     image: gateway:0.0.1

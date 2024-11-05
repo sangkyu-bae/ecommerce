@@ -55,7 +55,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.springframework.kafka:spring-kafka-test'
-
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
     compileOnly 'org.projectlombok:lombok'
