@@ -1,0 +1,45 @@
+server:
+  #  port: 0
+  port: 8096
+spring:
+  application:
+    name: coupon-service
+  datasource:
+    url: jdbc:mysql://localhost:3308/shoes_coupon
+    username: root
+    password: wnsvaf309
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  redis:
+    port: 6379
+    host: localhost
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+
+  file:
+    name: coupon-batchLog # ?? ??? ??? ?????.
+    path: C:/logs/coupon-batch # ?? ??? ??? ?????.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
+  level:
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: INFO
+    root: INFO
+
+event:
+  coupon: event-coupon

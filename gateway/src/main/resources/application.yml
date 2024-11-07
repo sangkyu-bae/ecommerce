@@ -107,7 +107,6 @@ logging:
     root: INFO
 
 
-
   #jwt:
   #  secret: securtytest
 
