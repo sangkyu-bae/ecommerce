@@ -33,7 +33,7 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
                                        CouponComponent.CouponComponentUserId userId) {
         ZSetOperations zSetOps =redisTemplate.opsForZSet();
 
-        String key = EVENT_COUPON_KEY + "-" +String.valueOf(eventId);
+        String key = EVENT_COUPON_KEY + "-" +String.valueOf(eventId.getId());
         String rankKey = String.valueOf(userId);
 
         if(hasKey(key,rankKey)){
