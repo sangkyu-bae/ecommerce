@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class RegisterCouponCommand extends SelfValidating<RegisterCouponCommand> {
+//public class RegisterCouponCommand extends SelfValidating<RegisterCouponCommand> {
+public class RegisterCouponCommand  {
 
     @NotNull
     private long eventId;
@@ -23,6 +24,6 @@ public class RegisterCouponCommand extends SelfValidating<RegisterCouponCommand>
     public RegisterCouponCommand(long eventId, long userId){
         this.eventId = eventId;
         this.userId = userId;
-        this.validateSelf();
+//        this.validateSelf();
     }
 }

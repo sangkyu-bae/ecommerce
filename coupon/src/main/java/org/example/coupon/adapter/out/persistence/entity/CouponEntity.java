@@ -4,6 +4,7 @@ import lombok.*;
 import org.example.coupon.domain.CouponComponent;
 import org.example.coupon.infra.error.CouponErrorCode;
 import org.example.coupon.infra.error.ErrorException;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -50,6 +51,7 @@ public class CouponEntity {
         couponComponentEntity.setStatus(CouponComponent.CouponStatusCode.USE_SUCCESS.getStatus());
     }
 
+    @Transactional
     public boolean existCouponByUserId(long userId){
         return couponComponents.stream()
                 .anyMatch(component -> component.getUserId() == userId);

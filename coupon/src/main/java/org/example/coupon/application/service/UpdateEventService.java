@@ -110,6 +110,7 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     }
 
     @Override
+    @Transactional
     public void addEventQueue(UpdateEventCouponCommand command) {
         EventEntity eventEntity = findEventPort.findByEventId(new Event.EventId(command.getEventId()));
         CouponEntity coupon = findCouponPort.findByCouponName(new Coupon.CouponName(eventEntity.getCouponName()));

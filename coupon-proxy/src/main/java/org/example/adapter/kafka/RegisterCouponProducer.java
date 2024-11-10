@@ -19,7 +19,7 @@ public class RegisterCouponProducer {
 
     private final ObjectMapper objectMapper;
 
-    @Value("${kafka.proxy.create.topic}")
+    @Value("${kafka.coupon.proxy.create.topic}")
     private String SEND_CREATE_COUPON_TOPIC;
 
 

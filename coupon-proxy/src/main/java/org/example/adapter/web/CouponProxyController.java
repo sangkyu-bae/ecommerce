@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.WebAdapter;
 import org.example.application.CouponProxyService;
 import org.example.application.RegisterCouponCommand;
+import org.example.dto.RegisterEventCoupon;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,5 +36,20 @@ public class CouponProxyController {
         }
 
         return  ResponseEntity.ok().body(res);
+    }
+
+    @PostMapping("/coupon-proxy/test/{eventId}")
+    public ResponseEntity<String> test(@PathVariable("eventId") long eventId){
+
+        for(int i = 1; i <= 500; i++){
+            RegisterCouponCommand command = RegisterCouponCommand.builder()
+                    .eventId(eventId)
+                    .userId(i)
+                    .build();
+
+            couponProxyService.execute(command);
+        }
+
+        return ResponseEntity.ok().body("ok");
     }
 }

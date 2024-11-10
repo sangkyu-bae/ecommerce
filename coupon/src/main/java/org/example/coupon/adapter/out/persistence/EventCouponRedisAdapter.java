@@ -99,7 +99,7 @@ public class EventCouponRedisAdapter implements UpdateEventCouponPort {
         double score = System.currentTimeMillis() / 1000.0;
 
         zSetOps.add(key,rankKey,score);
-        log.info("Key added: {}, time: {}", rankKey, score);
+        log.info("key : {} ,Key added: {}, time: {}",key, rankKey, score);
     }
 
     @Override
