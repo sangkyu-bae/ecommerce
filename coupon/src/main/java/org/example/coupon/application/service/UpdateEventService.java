@@ -48,8 +48,15 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
     @Override
     @DistributedLock(key = "#couponName")
     public boolean decreaseEventCoupon(String couponName, CouponIssuanceCommand command) {
-        updateEventPort.redeemEvent(new Event.EventId(command.getEventCouponId()));
+//        updateEventPort.redeemEvent(new Event.EventId(command.getEventCouponId()));
 
+        EventEntity eventEntity = updateEventPort.decreaseEventCoupon(new Event.EventId(command.getEventCouponId()));
+
+        log.info("basic !! ");
+        if(eventEntity.getQuantity() < 1){
+            log.error("ERRROR : !!");
+            return false;
+        }
         CouponComponent couponComponent = CouponComponent.createGenerateCouponComponentVo(
                 new CouponComponent.CouponComponentId(null),
                 new CouponComponent.CouponComponentUserId(command.getUserId()),
@@ -177,5 +184,28 @@ public class UpdateEventService implements UpdateEventCouponUseCase {
             updateCouponPort.bulkInsertCouponComponent(couponComponents,couponEntity);
             couponComponents.clear();
         }
+    }
+
+    @Override
+    @Transactional
+    public boolean basicEventCoupon(long eventId, long userId) {
+         EventEntity eventEntity = updateEventPort.decreaseEventCoupon(new Event.EventId(eventId));
+
+        log.info("basic !! ");
+        if(eventEntity.getQuantity() < 1){
+            log.error("ERRROR : !!");
+            return false;
+        }
+
+        CouponComponent couponComponent = CouponComponent.createGenerateCouponComponentVo(
+                new CouponComponent.CouponComponentId(null),
+                new CouponComponent.CouponComponentUserId(userId),
+                CouponComponent.CouponStatusCode.PUBLISH,
+                new CouponComponent.CouponComponentEndAt(LocalDateTime.now()),
+                null
+        );
+        registerCouponPort.issuanceCoupon(couponComponent,new Coupon.CouponId(eventId));
+
+        return true;
     }
 }

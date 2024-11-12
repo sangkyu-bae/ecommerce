@@ -35,19 +35,29 @@ public class EventCouponScheduled {
             return;
         }
 
-
-
         for(Map<String,Object> req :eventMapList){
             log.info("eventId : {} " , req.get("eventId"));
             log.info("quantity : {}", req.get("quantity"));
+            int quantity = (int) req.get("quantity");
+
+
             String eventId = String.valueOf(req.get("eventId"));
             String key = eventKey + "-" + eventId;
 
             Long size = zSetOperations.size(key);
-            long end = 400;
 
-            if(size < 400){
+            if(quantity < 1){
+                service.removeEventCouponByRedis(key,size);
+                log.error("발급 가능한 쿠폰이 없어요!");
+                return;
+            }
+            long end = 250;
+
+            if(size < 250){
                 end = size;
+            }
+            if(quantity < end){
+                end = quantity;
             }
 
             Set<String> rangeData = zSetOperations.range(key, 0, end);

@@ -17,4 +17,6 @@ public interface UpdateEventCouponUseCase {
     void addEventQueue(UpdateEventCouponCommand command);
 
     void queueProcess(Queue<Long> queue, EventEntity event, CouponEntity couponEntity);
+
+    boolean basicEventCoupon(long eventId, long userId);
 }

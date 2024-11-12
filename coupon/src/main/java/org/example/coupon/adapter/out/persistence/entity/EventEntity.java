@@ -1,6 +1,7 @@
 package org.example.coupon.adapter.out.persistence.entity;
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.example.coupon.infra.error.ErrorException;
 import org.example.coupon.infra.error.EventErrorCode;
 
@@ -15,6 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_event") @Builder
+
+@Slf4j
 public class EventEntity {
 
     @Id @GeneratedValue
@@ -32,11 +35,19 @@ public class EventEntity {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "event")
     private List<CouponComponentEntity> couponComponents;
 
-    public void decreaseQuantity(){
-        if(quantity > 0){
+    public boolean decreaseQuantity(){
+        log.info("quantity : {}",this.quantity);
+        if(this.quantity > 0){
             this.quantity -= 1;
+            return true;
         }else{
-            throw new ErrorException(EventErrorCode.EVENT_NOT_ALLOWED,"decreaseQuantity");
+            log.error("quantity : {}",this.quantity);
+            log.error("errror");
+//            throw new ErrorException(EventErrorCode.EVENT_NOT_ALLOWED,"decreaseQuantity");
+
+            return false;
         }
+
+//        return true;
     }
 }

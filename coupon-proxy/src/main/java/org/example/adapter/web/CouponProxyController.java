@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
@@ -41,15 +43,28 @@ public class CouponProxyController {
     @PostMapping("/coupon-proxy/test/{eventId}")
     public ResponseEntity<String> test(@PathVariable("eventId") long eventId){
 
-        for(int i = 1; i <= 500; i++){
-            RegisterCouponCommand command = RegisterCouponCommand.builder()
+//        for(int i = 1; i <= 500; i++){
+//            RegisterCouponCommand command = RegisterCouponCommand.builder()
+//                    .eventId(eventId)
+//                    .userId(i)
+//                    .build();
+//
+//            couponProxyService.execute(command);
+//        }
+
+        Random random = new Random();
+        long randomUserId = 1 + (long)(random.nextDouble() * (100000)); // 1부터 100000까지
+        log.info("user Id : {}" ,randomUserId);
+
+        RegisterCouponCommand command = RegisterCouponCommand.builder()
                     .eventId(eventId)
-                    .userId(i)
+                    .userId(randomUserId)
                     .build();
 
-            couponProxyService.execute(command);
-        }
+        couponProxyService.execute(command);
 
         return ResponseEntity.ok().body("ok");
     }
+
+
 }

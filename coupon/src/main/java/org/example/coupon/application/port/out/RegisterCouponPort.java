@@ -15,4 +15,5 @@ public interface RegisterCouponPort {
     List<CouponEntity> bulkRegisterCoupon(List<Coupon> couponList);
 
     CouponEntity registerCoupon(Coupon coupon);
+
 }

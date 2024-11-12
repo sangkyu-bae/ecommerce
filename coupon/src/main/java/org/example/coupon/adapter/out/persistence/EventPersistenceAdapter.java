@@ -4,8 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
 import org.example.aop.Notification;
-import org.example.aop.NotificationClient;
+import org.example.coupon.adapter.out.persistence.entity.CouponComponentEntity;
 import org.example.coupon.adapter.out.persistence.entity.EventEntity;
+import org.example.coupon.adapter.out.persistence.repository.CouponComponentEntityRepository;
 import org.example.coupon.adapter.out.persistence.repository.EventRepository;
 import org.example.coupon.application.port.out.RegisterEventPort;
 import org.example.coupon.application.port.out.UpdateEventPort;
@@ -18,7 +19,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
@@ -29,6 +29,8 @@ public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPo
     private EntityManager entityManager;
     private Map<Long,EventEntity> eventCache = new ConcurrentHashMap<>();
     private final EventRepository eventRepository;
+
+    private final CouponComponentEntityRepository couponComponentEntityRepository;
     @Override
     public EventEntity registerEvent(Event event) {
 
@@ -65,22 +67,31 @@ public class EventPersistenceAdapter implements RegisterEventPort, UpdateEventPo
         EventEntity cachedEvent = eventCache.get(eventId.getId());
 
         if(cachedEvent != null){
-            cachedEvent.decreaseQuantity();
+            boolean isQuantity = cachedEvent.decreaseQuantity();
             entityManager.merge(cachedEvent);
             eventCache.put(eventId.getId(),cachedEvent);
+            if(!isQuantity){
+                return false;
+            }
             return true;
         }
 
         EventEntity eventEntity = entityManager.find(EventEntity.class,eventId.getId());
 
         if(eventEntity != null){
-            eventEntity.decreaseQuantity();
+            boolean isQuantity = eventEntity.decreaseQuantity();
+            if(!isQuantity){
+                log.error("?!?!?1!??");
+                return false;
+            }
+
             eventCache.put(eventId.getId(),eventEntity);
             return true;
         }
 
         return false;
     }
+
 
 
 }

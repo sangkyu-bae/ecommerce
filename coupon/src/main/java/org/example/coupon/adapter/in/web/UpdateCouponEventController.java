@@ -9,8 +9,13 @@ import org.example.coupon.application.port.in.command.CouponIssuanceCommand;
 import org.example.coupon.application.port.in.command.UpdateEventCouponCommand;
 import org.example.coupon.application.port.in.usecase.UpdateEventCouponUseCase;
 import org.example.coupon.application.port.out.UpdateEventCouponPort;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @RestController
 @WebAdapter
@@ -21,6 +26,11 @@ public class UpdateCouponEventController {
     private final UpdateEventCouponUseCase updateEventCouponUseCase;
 
     private final UpdateEventCouponPort updateEventCouponPort;
+
+    private final StringRedisTemplate redisTemplate;
+
+    @Value("${event.coupon}")
+    private String couponKey;
 
     @Operation(summary = "register event", description = "이벤트 쿠폰 발급 받기 (분산락)")
     @PatchMapping("/coupon/auth/event/lock/{eventId}/{couponName}")
@@ -37,6 +47,54 @@ public class UpdateCouponEventController {
         return ResponseEntity.ok().body(isIssuanceCoupon ? "success" : "fail");
     }
 
+
+    @GetMapping("/coupon/reset/{eventId}")
+    public ResponseEntity<String> resetCouponSortedSet(@PathVariable("eventId") String eventId){
+
+        ZSetOperations<String, String> zSetOperations = redisTemplate.opsForZSet();
+
+        log.info("event ID : {}", eventId);
+        String key = couponKey + "-" +eventId;
+        Long size = zSetOperations.size(key);
+
+        log.info("size : {}", size);
+
+
+        zSetOperations.removeRange(key,0,size -1);
+
+        return ResponseEntity.ok().body("ok");
+    }
+
+
+    @Operation(summary = "register evensst", description = "이벤트 쿠폰 발급 받기 (분산락)")
+    @PostMapping("/coupon/test/{eventId}")
+    public ResponseEntity<String> processCouponIssuanceLockWithTPSTest(@PathVariable("eventId") long eventId){
+
+        Random random = new Random();
+        long randomUserId = 1 + (long)(random.nextDouble() * (100000)); // 1부터 100000까지
+        log.info("user Id : {}" ,randomUserId);
+        CouponIssuanceCommand command =CouponIssuanceCommand.builder()
+                .eventCouponId(eventId)
+                .userId(randomUserId)
+                .build();
+
+        boolean isIssuanceCoupon =  updateEventCouponUseCase.decreaseEventCoupon("test",command);
+
+        return ResponseEntity.ok().body(isIssuanceCoupon ? "success" : "fail");
+    }
+
+    @Operation(summary = "register evensst", description = "이벤트 쿠폰 발급 받기 (일반 락 X)")
+    @PostMapping("/coupon/test/basic/{eventId}")
+    public ResponseEntity<String> processBasicTPSTest(@PathVariable("eventId") long eventId){
+        Random random = new Random();
+        long randomUserId = 1 + (long)(random.nextDouble() * (100000)); // 1부터 100000까지
+        log.info("user Id : {}" ,randomUserId);
+
+        boolean isSuccess = updateEventCouponUseCase.basicEventCoupon(eventId,randomUserId);
+
+        return ResponseEntity.ok().body("ok");
+    }
+
     @Operation(summary = "issuance event Coupon", description = "이벤트 쿠폰 발급 받기  (대기열)")
     @PatchMapping("/coupon/auth/event/queue/{eventId}")
     public ResponseEntity<String> processCouponIssuanceQueue(@PathVariable("eventId") long eventId,
@@ -50,6 +108,8 @@ public class UpdateCouponEventController {
 
         return ResponseEntity.ok().body("success");
     }
+
+
 
 //    private final UpdateEventCouponPort updateEventCouponPort;
     @GetMapping("/coupon/refresh")
