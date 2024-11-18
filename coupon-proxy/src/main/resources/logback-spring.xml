@@ -1,0 +1,32 @@
+<configuration>
+
+    <!-- Kafka Appender 설정 -->
+    <appender name="kafka" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+        <encoder>
+            <pattern>%-5p %d{HH:mm:ss} [%t] %c{3}, %M at line %L; %m%n</pattern>
+        </encoder>
+        <!-- Kafka에 보낼 로그의 토픽을 설정 -->
+        <topic>kafka-elk-test-log</topic>
+        <KeyingStartegy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"></KeyingStartegy>
+        <deliveryStartegy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"></deliveryStartegy>
+
+        <!-- Kafka Producer 설정 -->
+        <producerConfig> bootstrap.servers=localhost:9092</producerConfig>
+
+        <!-- 로그의 JSON 포맷을 지정 -->
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+
+        <appender-ref ref="console"/>
+    </appender>
+    <appender name="kafka-async" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="kafka"></appender-ref>
+    </appender>
+
+    <!-- 로그 레벨과 출력 설정 -->
+    <root level="INFO">
+<!--        <appender-ref ref="KAFKA"/>-->
+        <appender-ref ref="kafka-async"/>
+        <appender-ref ref="console"/>
+    </root>
+
+</configuration>
