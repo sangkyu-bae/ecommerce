@@ -12,16 +12,20 @@ import {useBasket} from "@/shared/hook/useBasket";
 import {useAuth} from "@/shared/hook/useAuth";
 import {OrderProduct} from "@/store/product/myProduct";
 import {useMutation, UseMutationOptions} from "@tanstack/react-query";
+import Loading from "@/components/common/Loading";
 
 function DetailUserProduct(options: UseMutationOptions<TData, TError, TVariables, TContext>) {
     const router = useRouter()
     const {mainProductId}: number = router.query;
-    // const searchPage : string | null= router.query.searchPage;
-    // const {data, isLoading, isError, error} = useProduct(mainProductId,searchPage);
-    const {data, isLoading} = useProduct(mainProductId, "0");
+
+    const {data, isLoading,error} = useProduct(mainProductId);
     const products = useSelector(state => state.productRedux);
     const dispatch = useDispatch();
     const {isLogin} = useAuth();
+
+    if(error){
+        throw new Error("eeror")
+    }
     useEffect(() => {
         if (data) {
             dispatch(initProduct())
@@ -51,40 +55,44 @@ function DetailUserProduct(options: UseMutationOptions<TData, TError, TVariables
     }
     return (
         <>
+            <div>dd</div>
             {
-                !isLoading && data &&
-                <ProductInfo productData={data}>
-                    <div className="flex">
-                        <ProductInfo.ProductImage/>
-                        <div className="section">
-                            <div>
-                                <span className="bold"><span>Product Info</span> <span
-                                    className="gray">제품정보</span></span>
-                            </div>
-                            <ProductInfo.ProductBrand/>
-                            <ProductInfo.ProductPrice/>
-                            <ProductInfo.ProductSizeQuantity/>
-                            {
-                                products.length > 0 &&
-                                products.map(product => <ProductInfo.ProductOrderManagement
-                                    key={product.color.id}
-                                    selectProduct={product}
-                                />)
-                            }
-                            <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>
-                            {
-                                isLogin &&
-                                <Box sx={{mt: 3}}>
-                                    <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>
-                                    <Button variant="outlined" onClick={onClickBasket}>장바구니</Button>
-                                </Box>
-                            }
-
-                        </div>
-                    </div>
-                    <ProductInfo.ProductDescription/>
-                </ProductInfo>
+                isLoading && <Loading></Loading>
             }
+            {/*{*/}
+            {/*    !isLoading && data &&*/}
+            {/*    <ProductInfo productData={data}>*/}
+            {/*        <div className="flex">*/}
+            {/*            <ProductInfo.ProductImage/>*/}
+            {/*            <div className="section">*/}
+            {/*                <div>*/}
+            {/*                    <span className="bold"><span>Product Info</span> <span*/}
+            {/*                        className="gray">제품정보</span></span>*/}
+            {/*                </div>*/}
+            {/*                <ProductInfo.ProductBrand/>*/}
+            {/*                <ProductInfo.ProductPrice/>*/}
+            {/*                <ProductInfo.ProductSizeQuantity/>*/}
+            {/*                {*/}
+            {/*                    products.length > 0 &&*/}
+            {/*                    products.map(product => <ProductInfo.ProductOrderManagement*/}
+            {/*                        key={product.color.id}*/}
+            {/*                        selectProduct={product}*/}
+            {/*                    />)*/}
+            {/*                }*/}
+            {/*                <ProductInfo.ProductTotalPay></ProductInfo.ProductTotalPay>*/}
+            {/*                {*/}
+            {/*                    isLogin &&*/}
+            {/*                    <Box sx={{mt: 3}}>*/}
+            {/*                        <Button variant="contained" sx={{mr: 2}} onClick={orderProduct}>구매하기</Button>*/}
+            {/*                        <Button variant="outlined" onClick={onClickBasket}>장바구니</Button>*/}
+            {/*                    </Box>*/}
+            {/*                }*/}
+            
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <ProductInfo.ProductDescription/>*/}
+            {/*    </ProductInfo>*/}
+            {/*}*/}
         </>
     )
 

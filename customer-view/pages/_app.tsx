@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import React from 'react';
+import React, {  Suspense } from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Header from "@/components/common/Header";
@@ -11,11 +11,13 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from "redux-persist/integration/react";
 import {persistor, store} from "@/store/configStroe";
 import {CookiesProvider} from "react-cookie";
+import Loading from "@/components/common/Loading";
 
 
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
+            suspense: true,
             refetchOnWindowFocus: false,
         },
     },
@@ -23,14 +25,17 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <QueryClientProvider client={queryClient}>
+
+            <QueryClientProvider client={queryClient}>
             <CookiesProvider>
             <ReduxProvider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <RecoilRoot>
                         <CssBaseline />
                         <Header />
-                        <Component {...pageProps} />
+                        <Suspense fallback={<Loading/>}>
+                            <Component {...pageProps} />
+                        </Suspense>
                         <Copyright sx={{ mt: 5 }} />
                     </RecoilRoot>
                 </PersistGate>
