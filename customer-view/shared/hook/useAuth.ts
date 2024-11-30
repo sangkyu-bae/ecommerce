@@ -18,6 +18,22 @@ export const useAuth = () =>{
         dispatch(login(loginData));
     }
 
+    const hasLogin = ()=>{
+        if(!isLogin){
+            return false;
+        }
+
+        let accessTime = new Date(accessExpiredTime);
+        accessTime.setHours(accessTime.getHours() + 9);
+
+        if (accessExpiredTime && accessTime < new Date()) {
+            onLogout();
+            return false;
+        }
+
+        return true;
+    }
+
     const onLogout = () =>{
         dispatch(logout());
     }
@@ -39,6 +55,7 @@ export const useAuth = () =>{
         getAccessToken,
         getUserName,
         userName,
-        isLogin
+        isLogin,
+        hasLogin
     }
 }

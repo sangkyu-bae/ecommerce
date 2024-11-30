@@ -22,7 +22,7 @@ const theme = createTheme({
 
 let accessToken = getAccessToken();
 function Header(props) {
-    const {isLogin,onLogout} = useAuth();
+    const {isLogin,onLogout, hasLogin} = useAuth();
     const router = useRouter();
     const handleLogout=  () =>{
         try{
@@ -35,6 +35,10 @@ function Header(props) {
             console.log(e)
         }
     }
+
+    useEffect(()=>{
+        console.log(hasLogin());
+    },[isLogin])
     return (
         <ThemeProvider theme={theme}>
             <AppBar position="static">

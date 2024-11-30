@@ -24,9 +24,7 @@ function SignInSection(props) {
     };
 
     const {onLogin,userName} = useAuth();
-    useEffect(()=>{
-        console.log(userName);
-    },[userName])
+
     const router = useRouter();
     const [login,setLogin]=useRecoilState<LoginState>(loginState);
     const [isError,setIsError] = useState<boolean>(false);

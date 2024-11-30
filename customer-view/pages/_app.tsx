@@ -12,6 +12,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import {persistor, store} from "@/store/configStroe";
 import {CookiesProvider} from "react-cookie";
 import Loading from "@/components/common/Loading";
+import {ErrorBoundary} from "@/components/error/ErrorBoundary";
 
 
 const queryClient = new QueryClient({
@@ -33,9 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     <RecoilRoot>
                         <CssBaseline />
                         <Header />
-                        <Suspense fallback={<Loading/>}>
-                            <Component {...pageProps} />
-                        </Suspense>
+                            <Suspense fallback={<Loading/>}>
+                                <Component {...pageProps} />
+                            </Suspense>
                         <Copyright sx={{ mt: 5 }} />
                     </RecoilRoot>
                 </PersistGate>
