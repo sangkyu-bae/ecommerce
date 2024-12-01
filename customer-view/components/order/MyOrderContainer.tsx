@@ -12,7 +12,7 @@ import Pagination from "@mui/material/Pagination";
 
 
 interface MyOrderContainerProps {
-    data: any;         // data 타입을 실제 데이터 구조에 맞게 정의하세요
+    data: any;
     isLoading: boolean;
     totalPage: number;
     setPagingNm:void;

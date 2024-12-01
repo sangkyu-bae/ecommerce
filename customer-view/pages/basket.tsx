@@ -1,26 +1,16 @@
-import React, {useEffect} from 'react';
-import GridComponent, {
-    StyledContainer,
-    StyledContent,
-    StyledSetion
-} from "@/components/common/GridComponent";
-import Content from "@/components/basket/Content";
-import Button from "@mui/material/Button";
+import React from 'react';
+import {ErrorBoundary} from "@/components/error/ErrorBoundary";
+import BasketFetcher from "@/shared/api/basket/BasketFetcher";
+import BasketContainer from "@/components/basket/BasketContainer";
 
 function Basket(props) {
 
     return (
-        <StyledContainer>
-            <StyledContent isFull={true}>
-                <StyledSetion isFull={true}>
-                    <div className="first-section">
-                        <GridComponent title={`장바구니`}>
-                            <Content/>
-                        </GridComponent>
-                    </div>
-                </StyledSetion>
-            </StyledContent>
-        </StyledContainer>
+        <ErrorBoundary>
+            <BasketFetcher>
+                <BasketContainer/>
+            </BasketFetcher>
+        </ErrorBoundary>
     );
 }
 
