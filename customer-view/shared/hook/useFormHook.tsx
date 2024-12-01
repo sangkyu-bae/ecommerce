@@ -4,6 +4,7 @@ import useCustomQuery from "@/shared/hook/useCustomQuery";
 import {OrderProduct} from "@/store/product/myProduct";
 import {OrderService} from "@/shared/service/orderService";
 import {useRouter} from "next/router";
+import {useMutation} from "@tanstack/react-query";
 
 type FormProps = {
     initData: Record<string, any>,
@@ -16,9 +17,25 @@ type FormProps = {
 function UseFormHook({initData, onSubmit, validation,products}) {
     const orderService = new OrderService();
     const router = useRouter();
-    const {submitMutation} = useCustomQuery({
-        submit:onSubmit
-    });
+    // const {submitMutation} = useCustomQuery({
+    //     submit:onSubmit
+    // });
+
+
+    const submitMutation = useMutation(onSubmit, {
+        onMutate: variable => {
+            console.log("onMutate", variable);
+        },
+        onError: (error, variable, context) => {
+            console.log(error)
+        },
+        onSuccess: (data, variables, context) => {
+            console.log(data)
+        },
+        onSettled: () => {
+            console.log("end");
+        }
+    })
 
     const {register,
         control,

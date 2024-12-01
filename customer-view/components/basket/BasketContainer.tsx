@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {OrderProduct} from "@/store/product/myProduct";
 import {initProduct, setProduct} from "@/store/product/productRedux";
@@ -20,6 +20,8 @@ function BasketContainer({data}) {
     const dispatch = useDispatch();
     const router = useRouter()
 
+    const products : OrderProduct[]= useSelector(state => state.productRedux);
+
     const totalAmount = baskets.filter(basket=>basket.check)
         .reduce((total, basket) => total + basket.price * basket.productQuantity, 0).toLocaleString('ko-KR');
 
@@ -39,10 +41,12 @@ function BasketContainer({data}) {
             alert("구매할 상품을 선택해주세요.")
             return;
         }
+
         dispatch((initProduct()))
         dispatch(setProduct(filterBaskets));
         router.push("/order");
     }
+
 
     useEffect(() => {
         if (data) {
