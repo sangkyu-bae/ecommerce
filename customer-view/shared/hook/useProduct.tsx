@@ -14,7 +14,6 @@ function useProduct(productId:number){
         suspense:false,
         onError: (error: any) => {
             console.error("Product fetch failed:", error);
-            // 여기에서 에러를 더 잘 처리할 수 있음 (예: Toast 메시지, 알림 등)
         }
     })
 }

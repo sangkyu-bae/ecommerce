@@ -16,6 +16,7 @@ import {loginState} from "@/contexts/Recoil";
 import {useMutation} from "@tanstack/react-query";
 import {useAuth} from "@/shared/hook/useAuth";
 import {useRouter} from "next/router";
+import Loading from "@/components/common/Loading";
 
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
@@ -24,9 +25,8 @@ function SignInSection(props) {
     };
 
     const {onLogin,userName} = useAuth();
-
     const router = useRouter();
-    const [login,setLogin]=useRecoilState<LoginState>(loginState);
+
     const [isError,setIsError] = useState<boolean>(false);
     
     const signInMutation = useMutation(MemberApi.signIn, {
@@ -50,10 +50,11 @@ function SignInSection(props) {
     });
     const validation= Validation;
 
-    useEffect(()=>{
-        console.log(login)
-    },[login])
     return (
+        <>
+        {
+            signInMutation.isLoading && <Loading/>
+        }
         <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
             <TextField
                 margin="normal"
@@ -86,7 +87,7 @@ function SignInSection(props) {
                 helperText={errors.password?.message}
             />
             {
-                isError && 
+                isError &&
                 <Box>
                     로그인에 <span style={{color:'red'}}>실패</span> 했습니다, 확인후 다시 시도하세요
                 </Box>
@@ -116,6 +117,7 @@ function SignInSection(props) {
                 </Grid>
             </Grid>
         </Box>
+        </>
     );
 }
 

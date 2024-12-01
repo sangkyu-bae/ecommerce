@@ -144,6 +144,10 @@ export const StyledOrderBox = styled.div`
     .full-div{
         width:100%;
     }
+    
+    .border-r{
+        border-right: 1px solid gray;
+    }
 
     
     .herf-div{
@@ -158,7 +162,7 @@ export const StyledMenu = styled.div`
 export const StyledContainer = styled.div`
         display : flex;
         width : 100%;
-        height : 100vh;
+        min-height: 100vh;
         background-color : #FFFAF0;
   `;
 

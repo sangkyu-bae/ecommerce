@@ -9,6 +9,9 @@ export const useOrder = (pageNum : number)=>{
             staleTime: 20000,
             queryFn : ()=>OrderApi.readPaging(pageNum),
             enabled : true,
-            select:undefined
+            select:undefined,
+            onError: (error: any) => {
+                console.error("order fetch failed:", error);
+            }
         });
 }

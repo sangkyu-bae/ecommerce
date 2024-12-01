@@ -9,7 +9,7 @@ const NoSsrEditor = dynamic(() => import('../../components/common/' + 'ReactEdit
 const StyledContainer = styled.div`
         display : flex;
         width : 100%;
-        height : 100vh;
+             min-height: 100vh;
     `
 
 function MyPage() {
