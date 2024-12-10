@@ -7,7 +7,7 @@ import com.example.adminservice.application.port.in.command.RegisterProductComma
 import com.example.adminservice.application.port.in.usecase.product.RegisterProductUseCase;
 import com.example.adminservice.application.port.out.brand.RegisterProductPort;
 
-import com.example.adminservice.application.port.out.brand.SendCreateProductTaskPort;
+import com.example.adminservice.application.port.out.product.SendCreateProductTaskPort;
 import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -6,6 +6,7 @@ import com.example.adminservice.adapter.out.persistence.repository.SpringDataPro
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 
 import com.example.adminservice.application.port.out.brand.*;
+import com.example.adminservice.application.port.out.product.FindProductPort;
 import com.example.adminservice.domain.ProductVo;
 import com.example.adminservice.domain.SizeVo;
 import com.example.adminservice.infra.error.ErrorException;

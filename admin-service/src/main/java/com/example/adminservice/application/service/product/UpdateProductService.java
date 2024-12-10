@@ -6,7 +6,7 @@ import com.example.adminservice.application.port.in.usecase.product.UpdateProduc
 import com.example.adminservice.application.port.in.command.OrderToUpdateProductCommand;
 import com.example.adminservice.application.port.in.command.UpdateProductCommand;
 import com.example.adminservice.application.port.in.command.UpdateProductQuantityCommand;
-import com.example.adminservice.application.port.out.brand.FindProductPort;
+import com.example.adminservice.application.port.out.product.FindProductPort;
 import com.example.adminservice.application.port.out.brand.RequestDeliveryPort;
 import com.example.adminservice.application.port.out.brand.UpdateProductPort;
 import com.example.adminservice.application.port.out.brand.UpdateProductSizePort;

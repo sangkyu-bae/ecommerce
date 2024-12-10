@@ -4,9 +4,9 @@ import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
-import com.example.adminservice.application.port.out.brand.FindProductPort;
+import com.example.adminservice.application.port.out.product.FindProductPort;
 
-import com.example.adminservice.application.port.out.brand.SendFindProductTaskPort;
+import com.example.adminservice.application.port.out.product.SendFindProductTaskPort;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,11 @@ public class FindProductService implements FindProductUseCase {
         ProductEntity findProduct =  findProductPort.findProduct(productId);
 
         sendFindProductTaskPort.sendFindProductTask(productId.getId(),findProduct.getName());
-        return productMapper.mapToDomainEntity(findProduct);
+        ProductVo product = productMapper.mapToDomainEntity(findProduct);
+
+        sendFindProductTaskPort.sendFindProductTaskToELK(product);
+
+        return product;
     }
 
 
