@@ -34,6 +34,10 @@ function Order(props) {
     });
 
     const validation = orderValidation;
+
+    useEffect(()=>{
+        console.log(products);
+    },[products])
     return (
         <StyledContainer>
             <StyledContent isFull={true}>

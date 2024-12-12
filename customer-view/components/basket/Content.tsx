@@ -3,8 +3,6 @@ import {useBasket} from "@/shared/hook/useBasket";
 import {useDispatch, useSelector} from "react-redux";
 import {
     addBuyProduct,
-    basketAddBuyProduct,
-    basketQuantitySetting,
     initProduct,
     setProduct
 } from "@/store/product/productRedux";

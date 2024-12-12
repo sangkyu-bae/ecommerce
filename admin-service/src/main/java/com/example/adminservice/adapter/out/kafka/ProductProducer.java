@@ -29,7 +29,7 @@ public class ProductProducer implements SendCreateProductTaskPort, SendFindProdu
     @Value("${kafka.ranking.click.update.topic}")
     private String SEND_CLICK_UPDATE_RANKING_TOPIC;
 
-    @Value("${kafka.ranking.click.update.topic}")
+    @Value("${kafka.elk.click.topic}")
     private String SEND_CLICK_PRODUCT_TOPIC;
 
     private static final Logger logger = LoggerFactory.getLogger("elk");
