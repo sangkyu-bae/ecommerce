@@ -68,6 +68,11 @@
 /notification/notificationLog*
 
 
+/search-service/build
+/search-service/searchLog
+/search-service/searchLog*
+
+
 /coupon-proxy/build
 /coupon-batch/build
 
@@ -77,3 +82,4 @@
 /customer-view/package-lock.json
 
 /redis/*
+
