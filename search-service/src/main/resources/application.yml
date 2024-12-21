@@ -1,0 +1,54 @@
+server:
+  port: 8090
+spring:
+  data:
+    elasticsearch:
+      client:
+        rest:
+          uris: http://localhost:9200
+  application:
+    name: search-service
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    name: adminLog # ?? ??? ??? ?????.
+    path: C:\logs\admin\admin.log # ?? ??? ??? ?????.
+    max-history: 30
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) ---- [%-10.10thread] %cyan([%logger{0}:%line] %M)  %marker %msg%n"
+    file:  "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---- [%-10.10thread] [%logger{0}:%line] %M  %marker %msg%n"
+
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: INFO
+    root: INFO
+# 유레카 설정
+eureka:
+  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${random.value}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+app:
+  bootstrapServer: localhost:9092
+  common:
+    bootstrap:
+      server: localhost:9092
+  orderTopic : order
+  groupId : delivery.group.v1
+  createDelivery : create-delivery
+  productTaskResultTopic : task-product
+  rollbackRemoveOrderTopic : rollback-remove-order
+kafka:
+  notification:
+    topic: notification
+

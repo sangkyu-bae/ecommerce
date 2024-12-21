@@ -1,2 +1,9 @@
-package org.example.application.port.in.usecase;public interface SuggestProduct {
+package org.example.application.port.in.usecase;
+
+import org.example.application.port.in.command.SuggestCommand;
+
+import java.util.Map;
+
+public interface SuggestProductUseCase {
+    Map<String, Object> findSuggestProduct(SuggestCommand command);
 }
