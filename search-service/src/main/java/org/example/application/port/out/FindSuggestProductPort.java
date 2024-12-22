@@ -6,5 +6,5 @@ import java.util.Objects;
 
 public interface FindSuggestProductPort {
 
-    Map<String, Objects> findSuggestProduct(List<String> productNameList);
+    List<String> findSuggestProduct(List<String> productNameList);
 }

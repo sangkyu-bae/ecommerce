@@ -13,9 +13,9 @@ public class ProductServiceAdapter implements GetProductPort {
 
     private final ProductFeignClient productFeignClient;
     @Override
-    public List<String> getProductName(List<Long> productIds) {
+    public List<String> getProductBrandName(List<Long> productIds) {
         return productFeignClient.findByProductIds(productIds)
-                .stream().map(Product::getName)
+                .stream().map(product->product.getBrand().getName())
                 .collect(Collectors.toList());
     }
 }
