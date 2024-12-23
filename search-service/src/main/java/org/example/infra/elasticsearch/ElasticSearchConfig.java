@@ -12,6 +12,7 @@ import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfig
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
+import javax.net.ssl.SSLContext;
 @Configuration
 @EnableElasticsearchRepositories
 public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
@@ -19,11 +20,18 @@ public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
 
     @Value("${spring.data.elasticsearch.uris}")
     private String url;
+    @Value("${spring.data.elasticsearch.username}")
+    private String userName;
 
+    @Value("${spring.data.elasticsearch.pw}")
+    private String pw;
     @Override
     public RestHighLevelClient elasticsearchClient() {
 
-        ClientConfiguration configuration = ClientConfiguration.builder().connectedTo(url).build();
+        ClientConfiguration configuration = ClientConfiguration.builder()
+                .connectedTo(url)
+                .withBasicAuth(userName,pw)
+                .build();
         return RestClients.create(configuration).rest();
     }
 
@@ -31,4 +39,5 @@ public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
     public ElasticsearchRestTemplate elasticsearchRestTemplate() {
         return new ElasticsearchRestTemplate(elasticsearchClient());
     }
+
 }
