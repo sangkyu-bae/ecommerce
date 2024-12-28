@@ -12,6 +12,7 @@ import org.example.application.port.in.command.SuggestCommand;
 import org.example.application.port.out.GetBasketPort;
 import org.example.application.port.out.GetProductPort;
 import org.example.domain.TopProduct;
+import org.example.infra.error.ErrorException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
@@ -51,17 +53,13 @@ class FindSuggestServiceTest {
     @Autowired
     private RestHighLevelClient client;
 
-    @BeforeEach
-    void insert(){
-
-    }
     @AfterEach
     void tearDown() {
         searchProductRepository.deleteAll();
     }
 
 
-    @DisplayName("유저의 장바구니 목록을 조회하여, 브랜드명 기반으로 상품을 추천한다.")
+    @DisplayName("유저의 장바구니 목록을 조회하여 장바구니 목록이 있을 시, 브랜드명 기반으로 상품을 추천한다.")
     @Test
     void findSuggestProduct() {
        //given
@@ -101,6 +99,47 @@ class FindSuggestServiceTest {
                         tuple("adidas", "adidas2")
                 );
     }
+
+    @DisplayName("유저의 장바구니 목록을 조회하여 장바구니 목록이 없을 시, 빈 리스트를 리턴한다.")
+    @Test
+    void findSuggestProductWithNoBasketList() {
+        //given
+        List<Basket> basketList = new ArrayList<>();
+
+        when(getBasketPort.getBasket()).thenReturn(basketList);
+        SuggestCommand suggestCommand = new SuggestCommand(1L);
+
+
+        // when: findSuggestProduct 메서드 호출
+        List<TopProduct> res = findSuggestService.findSuggestProduct(suggestCommand);
+
+        //then
+        assertThat(res).hasSize(0);
+    }
+
+
+    @DisplayName("유저의 장바구니 목록을 조회하여 장바구니 목록이 존재하나 상풍 목록이 없을 시, NO_EXIST_PRODUCT 에러를 리턴한다.")
+    @Test
+    void findSuggestProductWithNoProductList() {
+        //given
+        List<Basket> basketList = new ArrayList<>();
+
+        for(int i = 1; i <= 3 ;i++){
+            basketList.add(createBasket(i));
+        }
+        when(getBasketPort.getBasket()).thenReturn(basketList);
+        when(getProductPort.getProductBrandName(anyList())).thenReturn(new ArrayList<>());
+
+        SuggestCommand suggestCommand = new SuggestCommand(1L);
+
+        //then
+        assertThatThrownBy(() ->findSuggestService.findSuggestProduct(suggestCommand))
+                .isInstanceOf(ErrorException.class)
+                .hasMessage("해당 상품을 찾을 수 없습니다.");
+
+
+    }
+
 
 
     private Basket createBasket(long productSizeId){

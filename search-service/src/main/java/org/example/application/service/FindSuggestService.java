@@ -10,6 +10,8 @@ import org.example.application.port.out.FindSuggestProductPort;
 import org.example.application.port.out.GetBasketPort;
 import org.example.application.port.out.GetProductPort;
 import org.example.domain.TopProduct;
+import org.example.infra.error.ErrorException;
+import org.example.infra.error.SearchError;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,10 +37,18 @@ public class FindSuggestService implements SuggestProductUseCase {
 
         List<Basket> basketList = getBasketPort.getBasket();
 
+        if(basketList == null || basketList.size() == 0){
+            return new ArrayList<>();
+        }
+
         Set<Long> productIds = basketList.stream().map(Basket :: getProductId)
                 .collect(Collectors.toSet());
 
         List<String> productBrandNames = getProductPort.getProductBrandName(new ArrayList<>(productIds));
+
+        if(productBrandNames == null || productBrandNames.size() == 0){
+            throw new ErrorException(SearchError.NO_EXIST_PRODUCT,"findSuggestProduct");
+        }
 
         return findSuggestProductPort.findSuggestProduct(productBrandNames);
     }
