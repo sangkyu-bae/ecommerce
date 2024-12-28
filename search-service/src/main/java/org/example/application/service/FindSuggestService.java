@@ -9,6 +9,7 @@ import org.example.application.port.in.usecase.SuggestProductUseCase;
 import org.example.application.port.out.FindSuggestProductPort;
 import org.example.application.port.out.GetBasketPort;
 import org.example.application.port.out.GetProductPort;
+import org.example.domain.TopProduct;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,7 @@ public class FindSuggestService implements SuggestProductUseCase {
 
     private final FindSuggestProductPort findSuggestProductPort;
     @Override
-    public Map<String, Object> findSuggestProduct(SuggestCommand command) {
+    public List<TopProduct> findSuggestProduct(SuggestCommand command) {
 
         List<Basket> basketList = getBasketPort.getBasket();
 
@@ -39,7 +40,6 @@ public class FindSuggestService implements SuggestProductUseCase {
 
         List<String> productBrandNames = getProductPort.getProductBrandName(new ArrayList<>(productIds));
 
-        findSuggestProductPort.findSuggestProduct(productBrandNames);
-        return null;
+        return findSuggestProductPort.findSuggestProduct(productBrandNames);
     }
 }

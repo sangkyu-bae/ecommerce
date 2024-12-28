@@ -1,18 +1,21 @@
 package org.example.application.service;
 
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.xcontent.XContentType;
 import org.example.adapter.out.persist.SearchProduct;
 import org.example.adapter.out.persist.SearchProductRepository;
 import org.example.adapter.out.service.basket.Basket;
-import org.example.adapter.out.service.basket.BasketServiceAdapter;
-import org.example.adapter.out.service.product.ProductServiceAdapter;
 import org.example.application.port.in.command.SuggestCommand;
 import org.example.application.port.out.GetBasketPort;
 import org.example.application.port.out.GetProductPort;
+import org.example.domain.TopProduct;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -20,14 +23,14 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
 @ActiveProfiles("test")
 class FindSuggestServiceTest {
@@ -44,6 +47,9 @@ class FindSuggestServiceTest {
 
     @Autowired
     private ElasticsearchRestTemplate elasticsearchTemplate;
+
+    @Autowired
+    private RestHighLevelClient client;
 
     @BeforeEach
     void insert(){
@@ -70,24 +76,30 @@ class FindSuggestServiceTest {
 
         SuggestCommand suggestCommand = new SuggestCommand(1L);
 
-        List<SearchProduct> searchProducts = new ArrayList<>();
-        searchProducts.add(create(1,"adidas"));
-        searchProducts.add(create(3,"adidas"));
-        searchProducts.add(create(3,"adidas"));
-        searchProducts.add(create(2,"adidas"));
-        searchProducts.add(create(7,"nike"));
+        List<HashMap<String,Object>> searchProducts = new ArrayList<>();
+        searchProducts.add(createMap(1,"adidas"));
+        searchProducts.add(createMap(3,"adidas"));
+        searchProducts.add(createMap(3,"adidas"));
+        searchProducts.add(createMap(2,"adidas"));
+        searchProducts.add(createMap(7,"nike"));
+        searchProducts.add(createMap(7,"nike"));
 
-//        searchProductRepository.saveAll(searchProducts);
-        for(SearchProduct searchProduct : searchProducts){
-            elasticsearchTemplate.save(searchProduct);
+        for(HashMap<String,Object> stringObjectHashMap : searchProducts){
+            insertData(stringObjectHashMap);
         }
 
-        searchProductRepository.deleteAll();
+
         // when: findSuggestProduct 메서드 호출
-        Map<String, Object> result = findSuggestService.findSuggestProduct(suggestCommand);
+        List<TopProduct> res = findSuggestService.findSuggestProduct(suggestCommand);
 
         //then
-
+        assertThat(res).hasSize(3)
+                .extracting("brandName","productName")
+                .containsExactlyInAnyOrder(
+                        tuple("adidas", "adidas1"),
+                        tuple("adidas", "adidas3"),
+                        tuple("adidas", "adidas2")
+                );
     }
 
 
@@ -108,5 +120,31 @@ class FindSuggestServiceTest {
                 .brandName(brandName)
                 .type("운동화")
                 .build();
+    }
+
+    private HashMap<String,Object> createMap(int productId, String brandName){
+
+        HashMap<String, Object> product = new HashMap<>();
+
+        product.put("productId", productId);
+        product.put("brandName", brandName);
+        product.put("type","운동화");
+        product.put("productName",  brandName + productId);
+
+        return product;
+    }
+
+    public String insertData(Map<String, Object> data) {
+        String productIndex = "product-search";
+        try {
+            IndexRequest request = new IndexRequest(productIndex)
+                    .id(null)
+                    .source(data, XContentType.JSON);
+            IndexResponse response = client.index(request, RequestOptions.DEFAULT);
+            return response.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

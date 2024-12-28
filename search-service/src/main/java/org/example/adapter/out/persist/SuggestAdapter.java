@@ -1,15 +1,15 @@
 package org.example.adapter.out.persist;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
+
 import org.elasticsearch.index.query.QueryBuilders;
 
-import org.elasticsearch.search.aggregations.AggregationBuilders;
 
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.example.domain.TopProduct;
+import org.springframework.data.elasticsearch.core.SearchHits;
 import org.example.PersistenceAdapter;
 import org.example.application.port.out.FindSuggestProductPort;
 
@@ -20,7 +20,6 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 
 import java.util.List;
 
-import java.util.stream.Collectors;
 
 @PersistenceAdapter
 @Slf4j
@@ -30,9 +29,8 @@ public class SuggestAdapter implements FindSuggestProductPort {
 
     private final ElasticsearchRestTemplate elasticsearchTemplate;
 
-
     @Override
-    public List<String> findSuggestProduct(List<String> productNameList)  {
+    public List<TopProduct> findSuggestProduct(List<String> productNameList)  {
         NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withQuery(QueryBuilders.termsQuery("brandName.keyword", productNameList)) // 필터: 여러 브랜드
                 .addAggregation(
@@ -44,12 +42,19 @@ public class SuggestAdapter implements FindSuggestProductPort {
                                                 .size(1) // 각 그룹에 대해 하나의 상품만 반환
                                 )
                 )
+                .withMaxResults(0) // 검색 결과 제외, 집계만 반환
                 .build();
         SearchHits<SearchProduct> searchHits = elasticsearchTemplate.search(searchQuery, SearchProduct.class);
-       List<SearchProduct> searchProducts =  searchHits.getSearchHits().stream()
-                .map(hit->hit.getContent())
-                .collect(Collectors.toList());
 
-        return List.of("123");
+        AggregationMapper<SearchProduct, TopProduct> mapper = new AggregationMapper<>(new ObjectMapper());
+
+        List<TopProduct> topProducts = mapper.map(
+                searchHits,
+                "popular_products",
+                "top_product",
+                TopProduct.class
+        );
+
+        return topProducts;
     }
 }

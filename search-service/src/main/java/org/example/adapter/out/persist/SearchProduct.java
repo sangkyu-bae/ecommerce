@@ -8,11 +8,11 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 
 @Getter
-@Document(indexName = "product-log")
+@Document(indexName = "product-search")
 public class SearchProduct {
 
     @Id
-    private Long id;
+    private String id;
     @Field
     private final String version;
     @Field

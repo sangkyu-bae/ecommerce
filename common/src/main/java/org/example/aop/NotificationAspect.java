@@ -25,12 +25,10 @@ public class NotificationAspect {
 
     @Around("@annotation(org.example.aop.Notification)")
     public Object sendNotification(final ProceedingJoinPoint joinPoint) throws Throwable {
-        log.error(">>>>>>>>>>>>>>>>> sendNoti");
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         Notification notification = method.getAnnotation(Notification.class);
 
-        log.error(">>>>>>>>>>>>>>>>> {}",notification.toString());
         StandardEvaluationContext context = CustomSpringELParser.setContext(signature.getParameterNames(), joinPoint.getArgs());
 
         long memberId = parser.parseExpression(notification.memberId()).getValue(context, Long.class);
@@ -38,11 +36,6 @@ public class NotificationAspect {
         String noti = parser.parseExpression(notification.notification()).getValue(context, String.class);
         int type = parser.parseExpression(notification.type()).getValue(context, Integer.class);
         int sseStatusType = parser.parseExpression(notification.sseType()).getValue(context, Integer.class);
-        log.info("member Id : {}",memberId);
-        log.info("eventName : {}",eventName);
-        log.info("noti : {}",noti);
-        log.info("type : {}",memberId);
-
         NotificationClient notificationClient = NotificationClient.createGenerateNotificationClient(
                 new NotificationClient.NotificationClientFromMember(memberId),
                 new NotificationClient.NotificationClientEventName(eventName),
