@@ -26,13 +26,17 @@ public class SearchProduct {
     @Field
     private final String type;
 
+    @Field
+    private final String productImage;
+
     @Builder
-    public SearchProduct(String version, String message, String productName, int productId, String brandName, String type) {
+    public SearchProduct(String version, String message, String productName, int productId, String brandName, String type, String productImage) {
         this.version = version;
         this.message = message;
         this.productName = productName;
         this.productId = productId;
         this.brandName = brandName;
+        this.productImage = productImage;
         this.type = type;
     }
 }

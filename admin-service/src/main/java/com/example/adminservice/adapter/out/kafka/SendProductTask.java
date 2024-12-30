@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data @Builder
 public class SendProductTask {
 
@@ -18,4 +16,14 @@ public class SendProductTask {
 
     private String type;
 
+    private String productImage;
+
+    @Builder
+    public SendProductTask(String productName, String brandName, long productId, String type, String productImage) {
+        this.productName = productName;
+        this.brandName = brandName;
+        this.productId = productId;
+        this.type = type;
+        this.productImage = productImage;
+    }
 }

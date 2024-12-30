@@ -10,5 +10,5 @@ public class TopProduct {
     private int productId;
     private String type;
     private String productName;
-
+    private String productImage;
 }

@@ -24,9 +24,22 @@ public class ProductMapper {
     private final ModelMapper modelMapper;
 
     public ProductVo mapToDomainEntity(ProductEntity productEntity) {
-        ProductVo.ProductBrandVo brand = mapToBrandVo(productEntity.getBrand());
-        ProductVo.ProductCategoryVo category = mapToCategoryVo(productEntity.getCategory());
-        Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = mapToProductComponentEntityVo(productEntity);
+        ProductVo.ProductBrandVo brand = null;
+        ProductVo.ProductCategoryVo category = null;
+        Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = new HashSet<>();
+        if (productEntity.getBrand() != null) {
+            brand = mapToBrandVo(productEntity.getBrand());
+        }
+
+        if (productEntity.getCategory() != null) {
+            category = mapToCategoryVo(productEntity.getCategory());
+        }
+
+        if (productEntity.getProductComponents() != null && productEntity.getProductComponents().size() > 0) {
+            productComponentEntityVos = mapToProductComponentEntityVo(productEntity);
+        }
+
+
         return ProductVo.createGenerateProductVo(
                 new ProductVo.ProductId(productEntity.getId()),
                 new ProductVo.ProductName(productEntity.getName()),
@@ -38,7 +51,7 @@ public class ProductMapper {
         );
     }
 
-    public ProductVo mapToDomainEntityByBasic(ProductEntity productEntity){
+    public ProductVo mapToDomainEntityByBasic(ProductEntity productEntity) {
         ProductVo.ProductBrandVo brand = mapToBrandVo(productEntity.getBrand());
         ProductVo.ProductCategoryVo category = mapToCategoryVo(productEntity.getCategory());
 
@@ -52,6 +65,7 @@ public class ProductMapper {
                 brand, category, null
         );
     }
+
     public ProductSearchVo mapToDomainEntity(Page<ProductEntity> pagingProduct) {
         List<ProductVo> productVoList = pagingProduct.stream()
                 .map(product -> mapToDomainEntity(product)).collect(Collectors.toList());
@@ -186,8 +200,8 @@ public class ProductMapper {
         return component;
     }
 
-    private SizeEntity mapToSizeEntity(ProductVo.ProductSizeVo productSizeVo){
-        return modelMapper.map(productSizeVo,SizeEntity.class);
+    private SizeEntity mapToSizeEntity(ProductVo.ProductSizeVo productSizeVo) {
+        return modelMapper.map(productSizeVo, SizeEntity.class);
     }
 
     public ProductVo.ProductBrandVo mapToBrand(RegisterBrandCommand registerBrandCommand) {

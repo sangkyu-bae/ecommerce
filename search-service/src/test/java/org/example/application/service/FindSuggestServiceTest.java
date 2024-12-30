@@ -92,11 +92,11 @@ class FindSuggestServiceTest {
 
         //then
         assertThat(res).hasSize(3)
-                .extracting("brandName","productName")
+                .extracting("brandName","productName","productImage")
                 .containsExactlyInAnyOrder(
-                        tuple("adidas", "adidas1"),
-                        tuple("adidas", "adidas3"),
-                        tuple("adidas", "adidas2")
+                        tuple("adidas", "adidas1","image1"),
+                        tuple("adidas", "adidas3","image3"),
+                        tuple("adidas", "adidas2","image2")
                 );
     }
 
@@ -152,8 +152,8 @@ class FindSuggestServiceTest {
 
     private SearchProduct create(int productId,String brandName){
         return SearchProduct.builder()
-                .version("1.0")  // version 필드 초기화
-                .message("Product message")  // message 필드 초기화
+                .version("1.0")
+                .message("Product message")
                 .productId(productId)
                 .productName(brandName + productId)
                 .brandName(brandName)
@@ -169,6 +169,7 @@ class FindSuggestServiceTest {
         product.put("brandName", brandName);
         product.put("type","운동화");
         product.put("productName",  brandName + productId);
+        product.put("productImage", "iamge" + productId);
 
         return product;
     }

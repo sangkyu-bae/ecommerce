@@ -66,6 +66,7 @@ public class ProductProducer implements SendCreateProductTaskPort, SendFindProdu
                 .productName(product.getName())
                 .productId(product.getId())
                 .type(product.getCategory().getName())
+                .productImage(product.getProductImage())
                 .build();
         try{
             String sendProductJson = objectMapper.writeValueAsString(sendProductTask);

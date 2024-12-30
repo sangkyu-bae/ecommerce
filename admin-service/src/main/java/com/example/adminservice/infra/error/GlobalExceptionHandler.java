@@ -26,6 +26,7 @@ public class GlobalExceptionHandler {
     protected ResponseEntity<ErrorResponse> handleErrorException(ErrorException e) {
         log.error("handleCustomException throw CustomException : {}", e.getErrorCode());
         log.error("error method : {}", e.getMethod()+"()");
+        e.printStackTrace();
         return ErrorResponse.toResponseEntity(e.getErrorCode(),e.getMethod()+"()");
     }
 }
