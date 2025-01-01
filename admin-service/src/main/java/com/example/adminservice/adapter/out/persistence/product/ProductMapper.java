@@ -35,7 +35,7 @@ public class ProductMapper {
             category = mapToCategoryVo(productEntity.getCategory());
         }
 
-        if (productEntity.getProductComponents() != null && productEntity.getProductComponents().size() > 0) {
+        if (productEntity.getProductComponents() != null) {
             productComponentEntityVos = mapToProductComponentEntityVo(productEntity);
         }
 

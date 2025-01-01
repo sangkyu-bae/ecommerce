@@ -8,4 +8,9 @@ import lombok.Getter;
 public class ErrorException extends RuntimeException{
     private final ErrorCode errorCode;
     private final String method;
+
+    @Override
+    public String getMessage() {
+        return String.format("%s", errorCode.getDetail());
+    }
 }

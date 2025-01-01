@@ -1,5 +1,6 @@
 package com.example.adminservice.application.service.product;
 
+import com.example.adminservice.adapter.out.persistence.entity.CategoryEntity;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.application.port.in.command.*;
@@ -9,6 +10,8 @@ import com.example.adminservice.application.port.out.product.FindProductPort;
 import com.example.adminservice.application.port.out.product.SendFindProductTaskPort;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
+import com.example.adminservice.infra.error.ErrorException;
+import com.example.adminservice.infra.error.ProductErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
@@ -16,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +27,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @UseCase
 @Slf4j
+@Transactional(readOnly = true)
 public class FindProductService implements FindProductUseCase {
     private final FindProductPort findProductPort;
     private final ProductMapper productMapper;
@@ -52,6 +57,10 @@ public class FindProductService implements FindProductUseCase {
 //        Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,6);
 //        Page<ProductEntity> findPagingProduct = findProductPort.findPagingProduct(pageable);
 
+        if(findPagingProduct.getContent().isEmpty()){
+            throw new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT,"findPagingProduct");
+        }
+
         return productMapper.mapToDomainEntity(findPagingProduct);
     }
 
@@ -60,6 +69,11 @@ public class FindProductService implements FindProductUseCase {
         ProductSearchVo.PageNumber pageNumber = new ProductSearchVo.PageNumber(command.getPageNum());
         Pageable pageable = PageRequest.of(pageNumber.getPageNumber() - 1,8, Sort.Direction.ASC,"id" );
         Page<ProductEntity> findPagingProductByCategory = findProductPort.findPagingProductByCategory(pageable,command.getCategoryId());
+
+        if(findPagingProductByCategory.getContent().isEmpty()){
+            throw new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT,"findPagingProductByCategory");
+        }
+
         return productMapper.mapToDomainEntity(findPagingProductByCategory);
     }
 

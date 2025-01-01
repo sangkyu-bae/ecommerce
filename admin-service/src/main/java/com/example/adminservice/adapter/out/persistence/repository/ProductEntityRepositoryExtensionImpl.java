@@ -3,6 +3,7 @@ package com.example.adminservice.adapter.out.persistence.repository;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 
 import com.example.adminservice.adapter.out.persistence.entity.*;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPQLQuery;
@@ -75,7 +76,6 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
             return new PageImpl<>(Collections.emptyList(), pageable, 0);
         }
 
-        // Step 2: Fetch the full product details for the fetched product IDs
         List<ProductEntity> products = getProduct(productComponentIds,sizeIds,productIds);
 
         // Total count of products (without pagination)
@@ -121,19 +121,28 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
     }
 
     private List<ProductEntity> getProduct(List<Long> productComponentIds, List<Long> sizeIds, List<Long> productIds){
+
+        BooleanBuilder builder = new BooleanBuilder();
+
+        builder.and(qProductEntity.id.in(productIds));
+
+        if(!productComponentIds.isEmpty()) {
+            builder.and(qProductComponentEntity.id.in(productComponentIds));
+        }
+        if (!sizeIds.isEmpty()) {
+            builder.and(qSizeEntity.id.in(sizeIds));
+        }
+
         List<ProductEntity> products = from(qProductEntity)
                 .leftJoin(qProductEntity.brand, qBrand).fetchJoin()
                 .leftJoin(qProductEntity.category, qCategoryEntity).fetchJoin()
                 .leftJoin(qProductEntity.productComponents, qProductComponentEntity).fetchJoin()
                 .leftJoin(qProductComponentEntity.color, qColorEntity).fetchJoin()
                 .leftJoin(qProductComponentEntity.sizes, qSizeEntity).fetchJoin()
-                .where(
-                        qProductEntity.id.in(productIds)
-                                .and(qProductComponentEntity.id.in(productComponentIds))
-                                .and(qSizeEntity.id.in(sizeIds))
-                )
+                .where(builder)
                 .distinct()
                 .fetch();
+
         return products;
     }
 

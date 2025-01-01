@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-@Table(name = "tb_color") @ToString
+@Table(name = "tb_color") @ToString @Builder
 public class ColorEntity {
 
     @Id @GeneratedValue

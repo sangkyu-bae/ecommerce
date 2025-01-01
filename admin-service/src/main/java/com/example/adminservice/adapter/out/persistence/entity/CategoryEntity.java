@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-@Table(name = "tb_category")
+@Table(name = "tb_category") @Builder
 public class CategoryEntity {
     @Id
     @GeneratedValue
