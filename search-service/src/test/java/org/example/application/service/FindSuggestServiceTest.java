@@ -48,9 +48,6 @@ class FindSuggestServiceTest {
     private SearchProductRepository searchProductRepository;
 
     @Autowired
-    private ElasticsearchRestTemplate elasticsearchTemplate;
-
-    @Autowired
     private RestHighLevelClient client;
 
     @AfterEach

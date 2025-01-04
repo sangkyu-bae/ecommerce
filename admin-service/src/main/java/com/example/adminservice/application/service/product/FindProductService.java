@@ -31,7 +31,6 @@ import java.util.stream.Collectors;
 public class FindProductService implements FindProductUseCase {
     private final FindProductPort findProductPort;
     private final ProductMapper productMapper;
-
     private final SendFindProductTaskPort sendFindProductTaskPort;
 
     @Override

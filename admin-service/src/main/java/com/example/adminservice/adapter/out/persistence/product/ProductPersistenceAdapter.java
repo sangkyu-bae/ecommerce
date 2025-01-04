@@ -63,7 +63,7 @@ public class ProductPersistenceAdapter implements FindProductPort,
     @Transactional(readOnly = true)
     public ProductEntity findProduct(ProductVo.ProductId productId) {
         return springDataProductRepository.findById(productId.getId())
-                .orElseThrow(() -> new ErrorException(ProductErrorCode.PRODUCT_FORM_NO_VALIDATE, "findProduct"));
+                .orElseThrow(() -> new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT, "findProduct"));
     }
 
     @Override

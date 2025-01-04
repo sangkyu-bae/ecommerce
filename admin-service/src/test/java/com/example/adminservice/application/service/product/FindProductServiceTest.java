@@ -1,12 +1,11 @@
 package com.example.adminservice.application.service.product;
 
+import com.example.adminservice.adapter.out.kafka.ProductProducer;
 import com.example.adminservice.adapter.out.persistence.entity.*;
 import com.example.adminservice.adapter.out.persistence.repository.*;
-import com.example.adminservice.application.port.in.command.ExistProductCommand;
-import com.example.adminservice.application.port.in.command.FindPagingProductByCategoryCommand;
-import com.example.adminservice.application.port.in.command.FindPagingProductCommand;
-import com.example.adminservice.application.port.in.command.FindProductByProductIdsCommand;
+import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
+import com.example.adminservice.application.port.out.product.SendFindProductTaskPort;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
 import com.example.adminservice.infra.error.ErrorException;
@@ -14,18 +13,24 @@ import com.example.adminservice.infra.error.ProductErrorCode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
+import scala.Product;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
+import static org.mockito.Mockito.*;
 
+import org.mockito.Mock;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -49,6 +54,9 @@ class FindProductServiceTest {
     @Autowired
     private ProductComponentEntityRepository productComponentEntityRepository;
 
+    @MockBean
+    private ProductProducer productProducer;
+
     @Value("${spring.datasource.url}")
     private String url;
     @AfterEach
@@ -58,9 +66,62 @@ class FindProductServiceTest {
         sizeEntityRepository.deleteAll();
         colorEntityRepository.deleteAll();
     }
+
     @Test
+    @DisplayName("상품 ID 기반으로 상품을 조회시 상품이 존재하지 않을 시 PRODUCT_NO_CONTENT 에러를 반환하다.")
+    void findProductWithNoExistProduct() {
+
+        //given
+        ProductEntity productEntity = ProductEntity.builder()
+                .name("product")
+                .price(1000)
+                .productImage("image" )
+                .description("content")
+                .build();
+
+        ProductEntity saveProduct = springDataProductRepository.save(productEntity);
+
+        FindProductCommand command = FindProductCommand.builder()
+                .productId(0L)
+                .build();
+
+        //when / then
+        assertThatThrownBy(()->findProductUseCase.findProduct(command))
+                .isInstanceOf(ErrorException.class)
+                .hasMessage(ProductErrorCode.PRODUCT_NO_CONTENT.getDetail());
+    }
+    @Test
+    @DisplayName("상품 ID 기반으로 상품을 조회한다.")
     void findProduct() {
 
+        //given
+        ProductEntity productEntity = ProductEntity.builder()
+                .name("product")
+                .price(1000)
+                .productImage("image" )
+                .description("content")
+                .build();
+
+        ProductEntity saveProduct = springDataProductRepository.save(productEntity);
+
+        long productId = saveProduct.getId();
+        String productName = saveProduct.getName();
+        int productPrice = saveProduct.getPrice();
+        String productImage = saveProduct.getProductImage();
+        String productDescription = saveProduct.getDescription();
+
+        doNothing().when(productProducer).sendFindProductTaskToELK(any(ProductVo.class));
+
+        long saveProductId = saveProduct.getId();
+        FindProductCommand command = FindProductCommand.builder()
+                .productId(saveProductId)
+                .build();
+        //when
+        ProductVo productVo = findProductUseCase.findProduct(command);
+
+        //then
+        assertThat(productVo).extracting("id", "name", "price", "description","productImage")
+                .contains(productId,productName,productPrice,productDescription,productImage);
     }
 
     @Test
@@ -119,12 +180,12 @@ class FindProductServiceTest {
             springDataProductRepository.save(productEntity);
         }
 
-        //when
+
         FindPagingProductCommand command = FindPagingProductCommand.builder()
                 .pageNum(3)
                 .build();
 
-        //then
+        //when / then
         assertThatThrownBy(()->findProductUseCase.findPagingProduct(command))
                 .isInstanceOf(ErrorException.class)
                 .hasMessage(ProductErrorCode.PRODUCT_NO_CONTENT.getDetail());
