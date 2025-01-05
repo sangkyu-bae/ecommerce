@@ -5,7 +5,6 @@ import com.example.adminservice.adapter.out.persistence.entity.*;
 import com.example.adminservice.adapter.out.persistence.repository.*;
 import com.example.adminservice.application.port.in.command.*;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
-import com.example.adminservice.application.port.out.product.SendFindProductTaskPort;
 import com.example.adminservice.domain.ProductSearchVo;
 import com.example.adminservice.domain.ProductVo;
 import com.example.adminservice.infra.error.ErrorException;
@@ -13,16 +12,13 @@ import com.example.adminservice.infra.error.ProductErrorCode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-import scala.Product;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -79,7 +75,7 @@ class FindProductServiceTest {
                 .description("content")
                 .build();
 
-        ProductEntity saveProduct = springDataProductRepository.save(productEntity);
+        springDataProductRepository.save(productEntity);
 
         FindProductCommand command = FindProductCommand.builder()
                 .productId(0L)
@@ -274,9 +270,7 @@ class FindProductServiceTest {
     @Test
     @DisplayName("상품사이즈 id 기준 상품정보가 존재하는지 확인한다. - 상품 존재하는 경우")
     void existProductBySizeId() {
-
         //given
-
         SizeEntity saveEntity = createProduct();
 
         //when
@@ -285,7 +279,6 @@ class FindProductServiceTest {
                 .build();
 
         //then
-
         boolean hasProductBySizeId = findProductUseCase.existProductBySizeId(existProductCommand);
 
         assertThat(hasProductBySizeId).isTrue();

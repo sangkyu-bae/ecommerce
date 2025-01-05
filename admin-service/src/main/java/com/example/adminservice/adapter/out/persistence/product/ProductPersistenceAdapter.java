@@ -37,7 +37,6 @@ public class ProductPersistenceAdapter implements FindProductPort,
 
     @Override
     public ProductEntity createProduct(ProductVo productVo) {
-
         ProductEntity createProductEntity = ProductEntity.builder()
                 .name(productVo.getName())
                 .price(productVo.getPrice())
@@ -55,8 +54,8 @@ public class ProductPersistenceAdapter implements FindProductPort,
                             component.getSizes().forEach(size -> size.setProductComponent(component));
                         }
                 );
-
-        return springDataProductRepository.save(createProductEntity);
+        ProductEntity saveEntity = springDataProductRepository.save(createProductEntity);
+        return saveEntity;
     }
 
     @Override
@@ -104,6 +103,14 @@ public class ProductPersistenceAdapter implements FindProductPort,
 
     @Override
     public ProductEntity updateProduct(ProductVo productVo) {
+        if(productVo.getId() == null){
+            throw new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT,"updateProduct");
+        }
+
+        if(!springDataProductRepository.existsById(productVo.getId())){
+            throw new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT,"updateProduct");
+        }
+
         ProductEntity updateProductEntity = ProductEntity.builder()
                 .id(productVo.getId())
                 .name(productVo.getName())
@@ -130,7 +137,7 @@ public class ProductPersistenceAdapter implements FindProductPort,
         try {
             springDataProductRepository.deleteById(productId.getId());
         } catch (Exception e) {
-            throw new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND, "removeProduct");
+            throw new ErrorException(ProductErrorCode.PRODUCT_NO_CONTENT, "removeProduct");
         }
 
         return true;
