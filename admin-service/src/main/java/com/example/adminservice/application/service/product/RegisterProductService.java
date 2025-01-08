@@ -1,6 +1,7 @@
 package com.example.adminservice.application.service.product;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
+import com.example.adminservice.adapter.out.axon.AxonProductProducer;
 import com.example.adminservice.adapter.out.persistence.product.*;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.application.port.in.command.RegisterProductCommand;
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.UseCase;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 import java.util.UUID;
@@ -24,11 +26,10 @@ public class RegisterProductService implements RegisterProductUseCase {
 
     private final RegisterProductPort registerProductPort;
     private final ProductMapper productMapper;
-
-    private final CommandGateway commandGateway;
-
     private final SendCreateProductTaskPort sendCreateProductTaskPort;
+    private final AxonProductProducer axonProductProducer;
     @Override
+    @Transactional
     public ProductVo registerProduct(RegisterProductCommand command) {
 
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = productMapper.mapToProductComponentEntityVo(command);
@@ -58,17 +59,9 @@ public class RegisterProductService implements RegisterProductUseCase {
                 .aggregateIdentifier(aggregate)
                 .build();
 
-
-        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
-            if (throwable != null) {
-               log.error("throwable = " + throwable);
-                throw new RuntimeException(throwable);
-            } else{
-                System.out.println("result = " + result);
-            }
-        });
-
+        axonProductProducer.sendProductToAxon(axonCommand);
         sendCreateProductTaskPort.sendCreateProductTask(productEntity.getId());
+
        return productMapper.mapToDomainEntity(productEntity);
     }
 
