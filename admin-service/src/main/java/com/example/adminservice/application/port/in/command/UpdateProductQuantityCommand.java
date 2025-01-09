@@ -11,15 +11,7 @@ import javax.validation.constraints.NotNull;
 public class UpdateProductQuantityCommand extends SelfValidating<UpdateProductQuantityCommand> {
     @NotBlank
     @NotNull
-    private long productId;
-
-    @NotBlank
-    @NotNull
-    private long colorId;
-
-    @NotBlank
-    @NotNull
-    private int size;
+    private long sizeId;
 
     @NotBlank
     @NotNull

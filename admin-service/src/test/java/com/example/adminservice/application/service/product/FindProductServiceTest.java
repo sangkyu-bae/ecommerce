@@ -26,7 +26,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static org.mockito.Mockito.*;
 
-import org.mockito.Mock;
 
 @SpringBootTest
 @ActiveProfiles("test")

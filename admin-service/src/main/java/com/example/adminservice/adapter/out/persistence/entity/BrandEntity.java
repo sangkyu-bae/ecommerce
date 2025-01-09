@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
-@Table(name = "tb_brand")
+@Table(name = "tb_brand") @Builder
 public class BrandEntity {
     @Id
     @GeneratedValue
@@ -24,6 +24,6 @@ public class BrandEntity {
     @Lob
     private String brandImage;
 
-    @OneToMany(mappedBy = "brand")
+    @OneToMany(mappedBy = "brand",fetch = FetchType.LAZY)
     private List<ProductEntity> productList;
 }

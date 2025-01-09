@@ -1,5 +1,6 @@
 package com.example.adminservice.adapter.in.web.product;
 
+import com.example.adminservice.adapter.in.request.UpdateProductQuantityRequest;
 import com.example.adminservice.adapter.in.request.UpdateProductRequest;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.application.port.in.usecase.product.FindProductUseCase;
@@ -67,16 +68,12 @@ public class UpdateProductController {
     }
 
     @Operation(summary = "update product quantity",description = "상품 컬러별 수량 변경(상품 주문)")
-    @PutMapping("/admin/{productId}/{colorId}/{amount}")
-    public ResponseEntity<Boolean> updateProductQuantity(
-            @RequestParam("productId") long productId,
-            @RequestParam("colorId") long colorId,
-            @RequestParam("amount") int amount
-    ){
+    @PutMapping("/admin/{sizeId}/{colorId}/{amount}")
+    public ResponseEntity<Boolean> updateProductQuantity(@RequestParam("sizeId") long sizeId,
+                                                         @RequestBody UpdateProductQuantityRequest updateProductQuantityRequest){
         UpdateProductQuantityCommand command = UpdateProductQuantityCommand.builder()
-                .productId(productId)
-                .colorId(colorId)
-                .amount(amount)
+                .sizeId(sizeId)
+                .amount(updateProductQuantityRequest.getQuantity())
                 .build();
         command.validateSelf();
 

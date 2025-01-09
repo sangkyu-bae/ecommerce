@@ -1,6 +1,7 @@
 package com.example.adminservice.adapter.out.axon;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
+import com.example.adminservice.application.port.out.product.SendProductTaskPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class AxonProductProducer {
+public class AxonProductProducer implements SendProductTaskPort {
 
     private final CommandGateway commandGateway;
 
