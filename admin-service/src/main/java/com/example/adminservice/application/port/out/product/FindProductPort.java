@@ -1,6 +1,7 @@
 package com.example.adminservice.application.port.out.product;
 
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
+import com.example.adminservice.adapter.out.persistence.entity.SizeEntity;
 import com.example.adminservice.domain.ProductVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

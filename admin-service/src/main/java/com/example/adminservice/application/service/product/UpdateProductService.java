@@ -1,7 +1,9 @@
 package com.example.adminservice.application.service.product;
 
+import com.example.adminservice.adapter.out.persistence.entity.SizeEntity;
 import com.example.adminservice.adapter.out.persistence.product.ProductMapper;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
+import com.example.adminservice.adapter.out.persistence.product.SizePersistenceAdapter;
 import com.example.adminservice.application.port.in.usecase.product.UpdateProductUseCase;
 import com.example.adminservice.application.port.in.command.OrderToUpdateProductCommand;
 import com.example.adminservice.application.port.in.command.UpdateProductCommand;
@@ -16,6 +18,7 @@ import com.example.adminservice.infra.error.ErrorException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.UseCase;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -26,10 +29,8 @@ public class UpdateProductService implements UpdateProductUseCase {
 
     private final UpdateProductPort updateProductPort;
     private final ProductMapper productMapper;
-    private final FindProductPort findProductPort;
     private final UpdateProductSizePort updateProductSizePort;
-
-    private final RequestDeliveryPort requestDeliveryPort;
+    private final SizePersistenceAdapter sizePersistenceAdapter;
     @Override
     public ProductVo updateProduct(UpdateProductCommand command) {
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = productMapper.mapToProductComponentEntityVo(command);
@@ -50,22 +51,13 @@ public class UpdateProductService implements UpdateProductUseCase {
     }
 
     @Override
+    @Transactional
     public boolean updateProductQuantity(UpdateProductQuantityCommand command) {
-        try{
-            ProductVo.ProductId productId = new ProductVo.ProductId(command.getProductId());
-            ProductEntity productEntity = findProductPort.findProduct(productId);
 
-            productEntity.updateProductQuantity(
-                    command.getColorId(),
-                    command.getAmount(),
-                    command.getSize()
-            );
-
-            ProductVo updateProductVO = productMapper.mapToDomainEntity(productEntity);
-            updateProductPort.updateProduct(updateProductVO);
-        }catch (ErrorException e){
-            return false;
-        }
+         sizePersistenceAdapter.updateQuantity(
+                new SizeVo.SizeId(command.getSizeId()),
+                command.getAmount()
+         );
 
         return true;
     }

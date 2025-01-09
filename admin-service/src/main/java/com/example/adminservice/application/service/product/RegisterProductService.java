@@ -1,7 +1,6 @@
 package com.example.adminservice.application.service.product;
 
 import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
-import com.example.adminservice.adapter.out.axon.AxonProductProducer;
 import com.example.adminservice.adapter.out.persistence.product.*;
 import com.example.adminservice.adapter.out.persistence.entity.ProductEntity;
 import com.example.adminservice.application.port.in.command.RegisterProductCommand;
@@ -9,10 +8,10 @@ import com.example.adminservice.application.port.in.usecase.product.RegisterProd
 import com.example.adminservice.application.port.out.brand.RegisterProductPort;
 
 import com.example.adminservice.application.port.out.product.SendCreateProductTaskPort;
+import com.example.adminservice.application.port.out.product.SendProductTaskPort;
 import com.example.adminservice.domain.ProductVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.UseCase;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +26,7 @@ public class RegisterProductService implements RegisterProductUseCase {
     private final RegisterProductPort registerProductPort;
     private final ProductMapper productMapper;
     private final SendCreateProductTaskPort sendCreateProductTaskPort;
-    private final AxonProductProducer axonProductProducer;
+    private final SendProductTaskPort sendProductTaskPort;
     @Override
     @Transactional
     public ProductVo registerProduct(RegisterProductCommand command) {
@@ -59,7 +58,7 @@ public class RegisterProductService implements RegisterProductUseCase {
                 .aggregateIdentifier(aggregate)
                 .build();
 
-        axonProductProducer.sendProductToAxon(axonCommand);
+        sendProductTaskPort.sendProductToAxon(axonCommand);
         sendCreateProductTaskPort.sendCreateProductTask(productEntity.getId());
 
        return productMapper.mapToDomainEntity(productEntity);
