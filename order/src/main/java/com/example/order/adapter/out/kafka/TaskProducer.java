@@ -52,6 +52,7 @@ public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTas
             kafkaTemplate.send(appProperties.getCreateDelivery(),inputTask);
         } catch (JsonProcessingException e) {
             log.error("createDeliveryEvent Error message = {} , {}", event, e);
+            throw new IllegalArgumentException("발송 에러 발생");
         }
     }
 }

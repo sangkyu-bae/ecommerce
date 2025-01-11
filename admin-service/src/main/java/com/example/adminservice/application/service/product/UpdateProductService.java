@@ -32,6 +32,7 @@ public class UpdateProductService implements UpdateProductUseCase {
     private final UpdateProductSizePort updateProductSizePort;
     private final SizePersistenceAdapter sizePersistenceAdapter;
     @Override
+    @Transactional
     public ProductVo updateProduct(UpdateProductCommand command) {
         Set<ProductVo.ProductComponentEntityVo> productComponentEntityVos = productMapper.mapToProductComponentEntityVo(command);
         ProductVo.ProductBrandVo brand = productMapper.mapToBrand(command.getBrand());

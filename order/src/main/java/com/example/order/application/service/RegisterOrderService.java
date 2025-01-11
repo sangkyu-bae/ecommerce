@@ -21,6 +21,7 @@ import org.example.task.OrderSubTask;
 import org.example.UseCase;
 import org.example.task.OrderTask;
 import org.example.task.ProductTask;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -96,6 +97,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     }
 
     @Override
+    @Transactional
     public OrderVo registerOrderByEvent(RegisterOrderCommand command) throws JsonProcessingException {
 
         String orderAggregateIdentifier = UUID.randomUUID().toString();

@@ -12,7 +12,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex) {
-        System.err.println(ex.getClass());
         return new ResponseEntity<>("An error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @ExceptionHandler(value = { CustomException.class })
