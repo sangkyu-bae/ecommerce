@@ -1,9 +1,10 @@
 package com.example.order.application.service;
 
-import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
-import com.example.order.adapter.out.external.delivery.DeliveryEvent;
+import com.example.order.adapter.out.external.delivery.DeliverySendCommand;
 import com.example.order.adapter.out.external.product.ProductInfoRequest;
 import com.example.order.adapter.out.persistence.OrderMapper;
+import com.example.order.adapter.out.persistence.entity.EventStatus;
+import com.example.order.adapter.out.persistence.entity.EventType;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.application.port.in.command.RegisterOrderCd;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
@@ -11,6 +12,8 @@ import com.example.order.application.port.in.usecase.RegisterOrderUseCase;
 import com.example.order.application.port.out.*;
 
 import com.example.order.domain.OrderVo;
+import com.example.order.event.CreateOrderEventCommand;
+import com.example.order.event.EventCommand;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,9 +24,9 @@ import org.example.task.OrderSubTask;
 import org.example.UseCase;
 import org.example.task.OrderTask;
 import org.example.task.ProductTask;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,8 @@ public class RegisterOrderService implements RegisterOrderUseCase {
     private final CommandGateway commandGateway;
 
     private final SendCreateDeliveryEventPort sendCreateDeliveryEventPort;
+
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
@@ -94,43 +99,70 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+
+
+        //        String orderAggregateIdentifier = UUID.randomUUID().toString();
+//        OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
+//                orderAggregateIdentifier,
+//                command.getProductId(),
+//                command.getColorId(),
+//                command.getSizeId(),
+//                command.getAmount(),
+//                command.getPayment(),
+//                command.getAddress(),
+//                OrderVo.StatusCode.ORDER.getStatus(),
+//                command.getUserId(),
+//                command.getCouponId()
+//        );
+//
+//        command.setAggregateIdentifier(orderAggregateIdentifier);
+//
+//        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
+//            if (throwable != null) {
+//                log.error("throwable = " + throwable);
+//                throw new RuntimeException(throwable);
+//            } else{
+//                System.out.println("result = " + result);
+//                try {
+//                    getOrderRequest(command);
+//                } catch (JsonProcessingException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        });
+
+//        getOrderRequest(command);
     }
 
     @Override
     @Transactional
     public OrderVo registerOrderByEvent(RegisterOrderCommand command) throws JsonProcessingException {
-
         String orderAggregateIdentifier = UUID.randomUUID().toString();
-        OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
-                orderAggregateIdentifier,
-                command.getProductId(),
-                command.getColorId(),
+
+        DeliverySendCommand deliverySendCommand = new DeliverySendCommand(
                 command.getSizeId(),
-                command.getAmount(),
-                command.getPayment(),
-                command.getAddress(),
-                OrderVo.StatusCode.ORDER.getStatus(),
                 command.getUserId(),
-                command.getCouponId()
+                command.getAddress(),
+                orderAggregateIdentifier,
+                orderAggregateIdentifier
         );
 
-        command.setAggregateIdentifier(orderAggregateIdentifier);
+        EventCommand<DeliverySendCommand> eventCommand =  EventCommand.<DeliverySendCommand>builder()
+                .eventStatus(EventStatus.INIT)
+                .eventType(EventType.DELIVERY)
+                .eventData(deliverySendCommand)
+                .build();
 
-        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
-            if (throwable != null) {
-                log.error("throwable = " + throwable);
-                throw new RuntimeException(throwable);
-            } else{
-                System.out.println("result = " + result);
-                try {
-                    getOrderRequest(command);
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        CreateOrderEventCommand publishEventCommand = CreateOrderEventCommand.builder()
+                .eventCommand(eventCommand)
+                .registerOrderCommand(command)
+                .build();
 
-//        getOrderRequest(command);
+        eventPublisher.publishEvent(publishEventCommand);
+
+        eventPublisher.publishEvent(deliverySendCommand);
+
         return null;
     }
 
@@ -171,11 +203,12 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                         mapOrderVo.getId()
                 ));
 
-        DeliveryEvent event = new DeliveryEvent(
+        DeliverySendCommand event = new DeliverySendCommand(
                 mapOrderVo.getSizeId(),
                 mapOrderVo.getUserId(),
                 mapOrderVo.getAddress(),
-                mapOrderVo.getId()
+//                mapOrderVo.getId()
+                "t"
         );
         sendCreateDeliveryEventPort.createDeliveryEvent(event);
 

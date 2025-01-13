@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor
-public class DeliveryEvent {
+public class DeliverySendCommand {
 
     private Long sizeId;
 
@@ -14,6 +14,7 @@ public class DeliveryEvent {
 
     private String address;
 
-    private Long orderId;
+    private String orderAggregateIdentifier;
 
+    private String eventId;
 }

@@ -4,5 +4,5 @@ import com.example.order.adapter.out.persistence.entity.EventEntity;
 import com.example.order.adapter.out.persistence.entity.EventStatus;
 
 public interface UpdateEventPort {
-    EventEntity updateEvent(EventStatus eventStatus);
+    EventEntity updateEvent(String eventId,EventStatus eventStatus);
 }
