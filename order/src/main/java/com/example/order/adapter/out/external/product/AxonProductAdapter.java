@@ -1,6 +1,9 @@
 package com.example.order.adapter.out.external.product;
 
 import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
+import com.example.order.adapter.out.persistence.entity.EventEntity;
+import com.example.order.adapter.out.persistence.entity.EventStatus;
+import com.example.order.adapter.out.persistence.repository.EventEntityRepository;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.out.SendAxonOrderPort;
 import com.example.order.domain.OrderVo;
@@ -9,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.PersistenceAdapter;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -17,8 +21,11 @@ import java.util.UUID;
 @Slf4j
 public class AxonProductAdapter implements SendAxonOrderPort {
     private final CommandGateway commandGateway;
+
+    private final EventEntityRepository eventEntityRepository;
     @Override
-    public void sendOrderWithSaga(RegisterOrderCommand command) {
+    @Transactional
+    public void sendOrderWithSaga(RegisterOrderCommand command,OrderVo.OrderId orderId,String eventId) {
         /**
          * TODO
          * event 소싱후 result값에서 주문관련 오류가 생겼거나
@@ -44,6 +51,8 @@ public class AxonProductAdapter implements SendAxonOrderPort {
         commandGateway.send(command).whenComplete((result, throwable) -> {
             if (throwable != null) {
                 log.error("throwable = " + throwable);
+                EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException(""));
+                eventEntity.updateStatus(EventStatus.FAIL_WORK);
                 throw new RuntimeException(throwable);
             } else{
                 System.out.println("result = " + result);

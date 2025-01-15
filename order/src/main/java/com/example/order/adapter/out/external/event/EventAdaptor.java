@@ -31,7 +31,13 @@ public class EventAdaptor implements RegisterEventPort, UpdateEventPort {
 
     @Override
     public EventEntity updateEvent(String eventId, EventStatus eventStatus) {
-        EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException("존재하지 않은 이벤트 입니다."));
+//        EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException("존재하지 않은 이벤트 입니다."));
+        EventEntity eventEntity = eventEntityRepository.findByIdAndEventStatus(eventId,EventStatus.INIT);
+
+        if(eventEntity == null){
+            throw new IllegalArgumentException("");
+        }
+
         eventEntity.updateStatus(eventStatus);
 
         return eventEntity;

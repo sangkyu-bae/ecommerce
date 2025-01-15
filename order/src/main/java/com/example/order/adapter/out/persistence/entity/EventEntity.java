@@ -34,4 +34,5 @@ public class EventEntity {
         this.eventStatus = eventStatus;
     }
 
+
 }

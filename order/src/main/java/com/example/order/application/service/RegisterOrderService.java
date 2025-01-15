@@ -99,46 +99,12 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
-
-        //        String orderAggregateIdentifier = UUID.randomUUID().toString();
-//        OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
-//                orderAggregateIdentifier,
-//                command.getProductId(),
-//                command.getColorId(),
-//                command.getSizeId(),
-//                command.getAmount(),
-//                command.getPayment(),
-//                command.getAddress(),
-//                OrderVo.StatusCode.ORDER.getStatus(),
-//                command.getUserId(),
-//                command.getCouponId()
-//        );
-//
-//        command.setAggregateIdentifier(orderAggregateIdentifier);
-//
-//        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
-//            if (throwable != null) {
-//                log.error("throwable = " + throwable);
-//                throw new RuntimeException(throwable);
-//            } else{
-//                System.out.println("result = " + result);
-//                try {
-//                    getOrderRequest(command);
-//                } catch (JsonProcessingException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        });
-
-//        getOrderRequest(command);
     }
 
     @Override
     @Transactional
     public OrderVo registerOrderByEvent(RegisterOrderCommand command) throws JsonProcessingException {
-        String orderAggregateIdentifier = UUID.randomUUID().toString();
+        String orderAggregateIdentifier = command.getAggregateIdentifier();
 
         DeliverySendCommand deliverySendCommand = new DeliverySendCommand(
                 command.getSizeId(),
@@ -160,7 +126,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 .build();
 
         eventPublisher.publishEvent(publishEventCommand);
-
         eventPublisher.publishEvent(deliverySendCommand);
 
         return null;
@@ -208,6 +173,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 mapOrderVo.getUserId(),
                 mapOrderVo.getAddress(),
 //                mapOrderVo.getId()
+                "t",
                 "t"
         );
         sendCreateDeliveryEventPort.createDeliveryEvent(event);

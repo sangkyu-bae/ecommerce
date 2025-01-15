@@ -2,13 +2,12 @@ package com.example.order.adapter.out.persistence.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+//주문원장
 @Entity
 @Getter @Setter @EqualsAndHashCode(of="id")
 @AllArgsConstructor @NoArgsConstructor
@@ -17,14 +16,6 @@ public class OrderEntity {
 
     @Id @GeneratedValue
     private Long id;
-
-    private long productId;
-
-    private long userId;
-
-    private long colorId;
-
-    private long sizeId;
 
     private int amount;
 
@@ -40,8 +31,9 @@ public class OrderEntity {
 
     private int status;
 
-    private String sequence;
-
     private String aggregateIdentifier;
+
+    @OneToMany
+    private List<ProductEntity> productList;
 
 }

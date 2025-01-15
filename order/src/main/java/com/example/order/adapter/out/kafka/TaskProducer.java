@@ -1,7 +1,6 @@
 package com.example.order.adapter.out.kafka;
 
-import com.example.order.adapter.out.external.delivery.DeliveryEvent;
-import com.example.order.adapter.out.external.delivery.OrderInfoRequest;
+import com.example.order.adapter.out.external.delivery.DeliverySendCommand;
 import com.example.order.application.port.out.SendCreateDeliveryEventPort;
 import com.example.order.application.port.out.SendCreateOrderTaskPort;
 import com.example.order.application.port.out.SendRemoveOrderTaskPort;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.task.OrderTask;
 import org.example.task.order.RemoveOrderTask;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -46,7 +44,7 @@ public class TaskProducer implements SendCreateOrderTaskPort, SendRemoveOrderTas
     }
 
     @Override
-    public void createDeliveryEvent(DeliveryEvent event) {
+    public void createDeliveryEvent(DeliverySendCommand event) {
         try {
             String inputTask = objectMapper.writeValueAsString(event);
             kafkaTemplate.send(appProperties.getCreateDelivery(),inputTask);

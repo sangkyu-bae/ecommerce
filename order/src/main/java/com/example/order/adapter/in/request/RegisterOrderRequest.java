@@ -25,7 +25,7 @@ public class RegisterOrderRequest {
 //
 //    private int amount;
 //
-//    private int payment;
+    private int payment;
 //
 //    private String address;
 //

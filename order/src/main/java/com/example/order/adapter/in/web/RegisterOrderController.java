@@ -61,14 +61,29 @@ public class RegisterOrderController {
 
         RegisterOrderProductRequest req = request.getProducts().get(0);
 
+        List<RegisterOrderCommand.ProductCommand> productCommands =new ArrayList<>();
+
+        for(RegisterOrderProductRequest requestProduct : request.getProducts()){
+
+            RegisterOrderCommand.ProductCommand productCommand = RegisterOrderCommand.ProductCommand.builder()
+                    .productId(requestProduct.getProductId())
+                    .colorId(requestProduct.getColorId())
+                    .sizeId(requestProduct.getSizeId())
+                    .amount(requestProduct.getAmount())
+                    .couponId(requestProduct.getCouponId())
+                    .build();
+
+            productCommands.add(productCommand);
+        }
+
+
         RegisterOrderCommand command = RegisterOrderCommand.builder()
-                .productId(req.getProductId())
-                .colorId(req.getColorId())
-                .sizeId(req.getSizeId())
-                .amount(req.getAmount())
-                .payment(req.getPayment())
+                .payment(request.getPayment())
+                .address(request.getAddress())
                 .userId(userId)
-                .couponId(req.getCouponId())
+                .aggregateIdentifier(String.valueOf(UUID.randomUUID()))
+                .phone(request.getPhone())
+                .productCommands(productCommands)
                 .build();
 
         OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
@@ -98,6 +113,7 @@ public class RegisterOrderController {
                     .couponId(rq.getCouponId())
                     .sequence(sequence)
                     .phone(request.getPhone())
+                    .aggregateIdentifier(UUID.randomUUID().toString())
                     .build();
             OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
             orderVos.add(orderVo);

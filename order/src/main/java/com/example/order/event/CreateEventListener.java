@@ -36,12 +36,17 @@ public class CreateEventListener {
 
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void createEvent(CreateOrderEventCommand command){
-        //사가 이벤트를 소싱한다.
-        sendAxonOrderPort.sendOrderWithSaga(command.getRegisterOrderCommand());
 
         //상품을 등록한다.
         int status = OrderVo.StatusCode.ORDER.getStatus();
         OrderVo registerOrder = createOrder(command.getRegisterOrderCommand(),status);
+        String eventId = registerOrder.getAggregateIdentifier();
+        //사가 이벤트를 소싱한다.
+        sendAxonOrderPort.sendOrderWithSaga(
+                command.getRegisterOrderCommand()
+                ,new OrderVo.OrderId(registerOrder.getId())
+                ,eventId
+        );
 
         //이벤트를 발생하여 트랜잭션 아웃박스를 시작한다.
         Event registerEvent = createEvent(command.getEventCommand());

@@ -3,18 +3,13 @@ package com.example.order.application.port.in.command;
 import lombok.*;
 import org.example.SelfValidating;
 
+import java.util.List;
+
 
 @Builder @Data
 @AllArgsConstructor @NoArgsConstructor @EqualsAndHashCode(callSuper = true)
 public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
-    private long productId;
-
-    private long colorId;
-
-    private long sizeId;
-
-    private int amount;
 
     private int payment;
 
@@ -22,10 +17,25 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
 
     private long userId;
 
-    private Long couponId;
-
     private String aggregateIdentifier;
 
-    private String sequence;
+
     private String phone;
+
+    List<ProductCommand> productCommands;
+
+    @Value
+    @Builder
+    public class ProductCommand {
+
+        private long productId;
+
+        private long colorId;
+
+        private long sizeId;
+
+        private int amount;
+
+        private Long couponId;
+    }
 }
