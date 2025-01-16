@@ -56,10 +56,8 @@ public class RegisterOrderController {
     @Operation(summary = "register order with axon", description = "axon 주문 등록하기 (saga구현 eda)")
     @PostMapping("/order/register/axon")
     public ResponseEntity<OrderVo> registerOrderByAxon(@RequestBody RegisterOrderRequest request ,
-                                                 @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
+                                                 @RequestHeader("X-User-Id") Long userId)  {
 
-
-        RegisterOrderProductRequest req = request.getProducts().get(0);
 
         List<RegisterOrderCommand.ProductCommand> productCommands =new ArrayList<>();
 

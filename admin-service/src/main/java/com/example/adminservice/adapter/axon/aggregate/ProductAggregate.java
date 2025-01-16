@@ -4,6 +4,7 @@ import com.example.adminservice.adapter.axon.command.ProductCreateCommand;
 import com.example.adminservice.adapter.axon.event.ProductCreateEvent;
 import com.example.adminservice.application.port.out.brand.UpdateProductSizePort;
 import com.example.adminservice.domain.SizeVo;
+import com.example.adminservice.infra.error.ErrorException;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
@@ -16,6 +17,7 @@ import org.example.event.rollback.RollbackProductFinishedEvent;
 import org.example.event.rollback.RollbackRequestProductCommand;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
@@ -55,24 +57,33 @@ public class ProductAggregate {
 
         id = command.getAggregateIdentifier();
 
-        SizeVo sizeVo = SizeVo.createGenerateSizeVo(
-                new SizeVo.SizeId(command.getSizeId()),
-                new SizeVo.Size(0),
-                new SizeVo.Quantity(command.getAmount())
-        );
+        boolean isSuccess = true;
 
-        port.updateProductSize(sizeVo);
+        try{
+            for(CheckRegisteredProductCommand.ProductRequestCreateCommand productReq :command.getProductRequestCreateEvents()){
+                SizeVo sizeVo = SizeVo.createGenerateSizeVo(
+                        new SizeVo.SizeId(productReq.getSizeId()),
+                        new SizeVo.Size(0),
+                        new SizeVo.Quantity(productReq.getAmount())
+                );
+
+                port.updateProductSize(sizeVo);
+            }
+        }catch (ErrorException e){
+            isSuccess = false;
+        }
+
+        List<CheckRegisteredProductEvent.ProductRequestCreateCommand> productRequestCreateEvents = command.getProductRequestCreateEvents().stream()
+                        .map(product->new CheckRegisteredProductEvent.ProductRequestCreateCommand(product.getSizeId(), product.getAmount(), product.getCouponId()))
+                        .collect(Collectors.toList());
 
         apply(new CheckRegisteredProductEvent(
                 command.getCreateOrderId(),
-                command.getProductId(),
-                command.getSizeId(),
-                command.getAmount(),
-                true,
+                isSuccess,
                 command.getCheckRegisteredProductIdAndAmount(),
-                command.getCouponId(),
                 command.getUserId(),
-                command.getAggregateIdentifier()
+                command.getAggregateIdentifier(),
+                productRequestCreateEvents
         ));
     }
 

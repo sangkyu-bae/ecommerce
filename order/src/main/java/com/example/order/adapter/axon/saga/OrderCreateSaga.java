@@ -22,7 +22,9 @@ import org.example.event.rollback.RollbackProductFinishedEvent;
 import org.example.event.rollback.RollbackRequestProductCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Saga
 @NoArgsConstructor
@@ -47,6 +49,10 @@ public class OrderCreateSaga {
         String checkRegisteredMemberId = UUID.randomUUID().toString();
         SagaLifecycle.associateWith("checkRegisteredMemberId", checkRegisteredMemberId);
 
+        List<CheckRegisteredMemberCommand.ProductRequestCreateCommand> productRequestCreateCommands = event.getProductRequestCreateEvents().stream()
+                .map(product->new CheckRegisteredMemberCommand.ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
+                .collect(Collectors.toList());
+
         //"주문 생성" 시작
         // 멤버의 실제 멤버 여부 확인하기.
         // -> axon server -> member Service
@@ -54,14 +60,11 @@ public class OrderCreateSaga {
                 member.getAggregateIdentifier(),
                 event.getCreateOrderId(),
                 checkRegisteredMemberId,
-                event.getProductId(),
-                event.getSizeId(),
-                event.getAmount(),
                 event.getPayment(),
                 event.getAddress(),
                 event.getStatus(),
                 event.getUserId(),
-                event.getCouponId()
+                productRequestCreateCommands
         );
         commandGateway.send(command).whenComplete(
                 (result, throwable) -> {
@@ -85,21 +88,18 @@ public class OrderCreateSaga {
             log.error("CheckedRegisteredMember event Failed");
         }
 
-        Product findProduct = getProductPort.getProduct(event.getProductId());
-
-        log.info("find product : " + findProduct.toString());
         String checkRegisteredProductIdAndAmount = UUID.randomUUID().toString();
         SagaLifecycle.associateWith("checkRegisteredProductIdAndAmount", checkRegisteredProductIdAndAmount);
 
+        List<CheckRegisteredProductCommand.ProductRequestCreateCommand> productRequestCreateCommands = event.getProductRequestCreateEvents().stream()
+                .map(product -> new CheckRegisteredProductCommand.ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
+                .collect(Collectors.toList());
         CheckRegisteredProductCommand command = new CheckRegisteredProductCommand(
-                findProduct.getAggregateIdentifier(),
+                UUID.randomUUID().toString(),
                 event.getCreateOrderId(),
                 checkRegisteredProductIdAndAmount,
-                event.getProductId(),
-                event.getSizeId(),
-                event.getAmount(),
-                event.getCouponId(),
-                event.getMemberId()
+                event.getMemberId(),
+                productRequestCreateCommands
         );
 
         commandGateway.send(command).whenComplete(
@@ -117,6 +117,8 @@ public class OrderCreateSaga {
     @SagaEventHandler(associationProperty = "checkRegisteredProductIdAndAmount")
     public void handle(CheckRegisteredProductEvent event, GetCouponPort getCouponPort) {
        if(event.isSuccess()){
+
+           
            if(event.getCouponId() == null){
                SagaLifecycle.end();
            }else{

@@ -7,14 +7,15 @@ import com.example.order.adapter.out.persistence.repository.EventEntityRepositor
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.out.SendAxonOrderPort;
 import com.example.order.domain.OrderVo;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.example.PersistenceAdapter;
+import org.modelmapper.ModelMapper;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
@@ -23,6 +24,8 @@ public class AxonProductAdapter implements SendAxonOrderPort {
     private final CommandGateway commandGateway;
 
     private final EventEntityRepository eventEntityRepository;
+
+    private final ModelMapper modelMapper;
     @Override
     @Transactional
     public void sendOrderWithSaga(RegisterOrderCommand command,OrderVo.OrderId orderId,String eventId) {
@@ -32,23 +35,22 @@ public class AxonProductAdapter implements SendAxonOrderPort {
          * 에러 발생시 상품 저장된 이후 롤백 정책 추가 필요
          * */
 
-        String orderAggregateIdentifier = UUID.randomUUID().toString();
+        String orderAggregateIdentifier = command.getAggregateIdentifier();
+
+        List<OrderRequestCreateCommand.ProductRequestCommand> productRequestCommands = command.getProductCommands().stream()
+                .map(product->modelMapper.map(product, OrderRequestCreateCommand.ProductRequestCommand.class))
+                .collect(Collectors.toList());
+
         OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
                 orderAggregateIdentifier,
-                command.getProductId(),
-                command.getColorId(),
-                command.getSizeId(),
-                command.getAmount(),
                 command.getPayment(),
                 command.getAddress(),
                 OrderVo.StatusCode.ORDER.getStatus(),
                 command.getUserId(),
-                command.getCouponId()
+                productRequestCommands
         );
 
-        command.setAggregateIdentifier(orderAggregateIdentifier);
-
-        commandGateway.send(command).whenComplete((result, throwable) -> {
+        commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
             if (throwable != null) {
                 log.error("throwable = " + throwable);
                 EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException(""));

@@ -17,6 +17,8 @@ public class OrderEntity {
     @Id @GeneratedValue
     private Long id;
 
+    private long userId;
+
     private int amount;
 
     private int payment;

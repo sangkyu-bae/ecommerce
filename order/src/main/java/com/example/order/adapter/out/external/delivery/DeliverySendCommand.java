@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor
 public class DeliverySendCommand {
 
-    private Long sizeId;
 
     private Long userId;
 

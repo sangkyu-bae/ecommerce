@@ -19,14 +19,6 @@ public class OrderVo {
 
     private final long userId;
 
-    private final long productId;
-
-    private final long colorId;
-
-    private final long sizeId;
-
-    private final int amount;
-
     private final int payment;
 
     private final String address;
@@ -42,39 +34,28 @@ public class OrderVo {
 
     private final String aggregateIdentifier;
 
-    private final String sequence;
 
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
             OrderProductUserId orderProductUserId,
-            OrderProductId orderProductId,
-            OrderColorId orderColorId,
-            OrderSizeId orderSizeId,
-            OrderAmount orderAmount,
             OrderPayment orderPayment,
             OrderAddress orderAddress,
             OrderCreateAt orderCreateAt,
             OrderUpdateAt orderUpdateAt,
             OrderStatus orderStatus,
             StatusCode statusCode,
-            OrderAggregateIdentifier orderAggregateIdentifier,
-            OrderSequence orderSequence
+            OrderAggregateIdentifier orderAggregateIdentifier
     ){
         return new OrderVo(
                 orderId.getId(),
                 orderProductUserId.getUserId(),
-                orderProductId.getProductId(),
-                orderColorId.getColorId(),
-                orderSizeId.getSizeId(),
-                orderAmount.getAmount(),
                 orderPayment.getPayment(),
                 orderAddress.getAddress(),
                 orderCreateAt.getCreateAt(),
                 orderUpdateAt.getUpdateAt(),
                 orderStatus.getStatus(),
                 new TypeEnumMapper(statusCode),
-                orderAggregateIdentifier.getAggregateIdentifier(),
-                orderSequence.getSequence()
+                orderAggregateIdentifier.getAggregateIdentifier()
         );
     }
 
@@ -89,35 +70,11 @@ public class OrderVo {
 
     @Value
     public static class OrderProductUserId{
-        private long userId;
 
-        public OrderProductUserId(long value) {
+        public OrderProductUserId(long value){
             this.userId = value;
         }
-    }
-    @Value
-    public static class OrderProductId{
-        public OrderProductId(long value){
-            this.productId = value;
-        }
-        private long productId;
-    }
-
-    @Value
-    public static class OrderColorId{
-
-        public OrderColorId(long value){
-            this.colorId = value;
-        }
-        private long colorId;
-    }
-
-    @Value
-    public static class OrderSizeId{
-        public OrderSizeId(long value){
-            this.sizeId = value;
-        }
-        private long sizeId;
+        private long userId;
     }
 
     @Value
@@ -153,13 +110,6 @@ public class OrderVo {
         private LocalDateTime updateAt;
     }
 
-    @Value
-    public static class OrderAmount{
-        public OrderAmount(int value){
-            this.amount = value;
-        }
-        int amount;
-    }
 
     @Value
     public static class OrderStatus{
@@ -178,13 +128,6 @@ public class OrderVo {
         String aggregateIdentifier;
     }
 
-    @Value
-    public static class OrderSequence{
-        public OrderSequence(String value){
-            this.sequence = value;
-        }
-        String sequence;
-    }
 
     public static enum StatusCode implements EnumMapperType{
         ORDER(1,"주문완료"),

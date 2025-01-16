@@ -74,18 +74,13 @@ public class CreateEventListener {
         OrderVo createOrder = OrderVo.createGenerateOrderVo(
                 new OrderVo.OrderId(0),
                 new OrderVo.OrderProductUserId(command.getUserId()),
-                new OrderVo.OrderProductId(command.getProductId()),
-                new OrderVo.OrderColorId(command.getColorId()),
-                new OrderVo.OrderSizeId(command.getSizeId()),
-                new OrderVo.OrderAmount(command.getAmount()),
                 new OrderVo.OrderPayment(command.getPayment()),
                 new OrderVo.OrderAddress(command.getAddress()),
                 new OrderVo.OrderCreateAt(LocalDateTime.now()),
                 new OrderVo.OrderUpdateAt(LocalDateTime.now()),
                 new OrderVo.OrderStatus(status),
                 OrderVo.StatusCode.ORDER,
-                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier()),
-                new OrderVo.OrderSequence(command.getSequence())
+                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier())
         );
 
         OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);

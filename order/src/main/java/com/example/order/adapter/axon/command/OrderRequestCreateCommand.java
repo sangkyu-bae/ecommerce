@@ -3,6 +3,9 @@ package com.example.order.adapter.axon.command;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Value;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -10,14 +13,6 @@ import lombok.NoArgsConstructor;
 public class OrderRequestCreateCommand {
 
     private String createOrderId;
-
-    private long productId;
-
-    private long colorId;
-
-    private long sizeId;
-
-    private int amount;
 
     private int payment;
 
@@ -27,5 +22,18 @@ public class OrderRequestCreateCommand {
 
     private long userId;
 
-    private Long couponId;
+    private List<ProductRequestCommand> productRequestCommands;
+
+    @Value
+    public class ProductRequestCommand{
+        private long productId;
+
+        private long colorId;
+
+        private long sizeId;
+
+        private int amount;
+
+        private Long couponId;
+    }
 }

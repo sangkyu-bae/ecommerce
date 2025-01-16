@@ -14,7 +14,9 @@ import org.example.event.CheckRegisteredMemberCommand;
 import org.example.event.CheckRegisteredMemberEvent;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Aggregate()
@@ -71,17 +73,17 @@ public class MemberAggregate {
         boolean existMember = findMemberPort.existMember(command.getUserId());
         id = command.getAggregateIdentifier();
 
+        List<CheckRegisteredMemberEvent.ProductRequestCreateCommand> commandList = command.getProductRequestCreateEvents().stream()
+                        .map(product->new CheckRegisteredMemberEvent.ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
+                        .collect(Collectors.toList());
         apply(new CheckRegisteredMemberEvent(
                 command.getUserId(),
                 command.getCreateOrderId(),
                 command.getCheckRegisteredMemberId(),
-                command.getProductId(),
-                command.getSizeId(),
-                command.getAmount(),
                 command.getPayment(),
                 command.getAddress(),
                 existMember,
-                command.getCouponId()
+                commandList
         ));
     }
 

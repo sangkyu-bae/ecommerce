@@ -11,6 +11,9 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
 @Aggregate()
@@ -33,18 +36,20 @@ public class OrderAggregate {
                 command.getUserId()
         ));
 
+        List<RegisterOrderCreatedEvent.ProductRequestCreateEvent> proReq = command.getProductRequestCommands()
+                .stream()
+                .map(RegisterOrderCreatedEvent.ProductRequestCreateEvent::new)
+                .collect(Collectors.toList());
+
+
         // Saga Start
         apply(new RegisterOrderCreatedEvent(
                 command.getCreateOrderId(),
-                command.getProductId(),
-                command.getColorId(),
-                command.getSizeId(),
-                command.getAmount(),
                 command.getPayment(),
                 command.getAddress(),
                 command.getStatus(),
                 command.getUserId(),
-                command.getCouponId()
+                proReq
         ));
     }
 

@@ -3,6 +3,9 @@ package org.example.event;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Value;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,10 +17,6 @@ public class CheckRegisteredMemberEvent {
     private String createOrderId;
 
     private String checkRegisteredMemberId;
-    private long productId;
-    private long sizeId;
-
-    private int amount;
 
     private int payment;
 
@@ -25,5 +24,21 @@ public class CheckRegisteredMemberEvent {
 
     private boolean status;
 
-    private Long couponId;
+    private List<CheckRegisteredMemberEvent.ProductRequestCreateCommand> productRequestCreateEvents;
+
+    @Value
+    public static class ProductRequestCreateCommand {
+
+        private long sizeId;
+
+        private int amount;
+
+        private Long couponId;
+
+        public ProductRequestCreateCommand(long sizeId, int amount, long couponId){
+            this.sizeId = sizeId;
+            this.amount =amount;
+            this.couponId = couponId;
+        }
+    }
 }

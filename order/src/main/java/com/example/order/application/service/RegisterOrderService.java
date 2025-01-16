@@ -103,11 +103,10 @@ public class RegisterOrderService implements RegisterOrderUseCase {
 
     @Override
     @Transactional
-    public OrderVo registerOrderByEvent(RegisterOrderCommand command) throws JsonProcessingException {
+    public OrderVo registerOrderByEvent(RegisterOrderCommand command) {
         String orderAggregateIdentifier = command.getAggregateIdentifier();
 
         DeliverySendCommand deliverySendCommand = new DeliverySendCommand(
-                command.getSizeId(),
                 command.getUserId(),
                 command.getAddress(),
                 orderAggregateIdentifier,
