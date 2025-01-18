@@ -117,38 +117,50 @@ public class OrderCreateSaga {
     @SagaEventHandler(associationProperty = "checkRegisteredProductIdAndAmount")
     public void handle(CheckRegisteredProductEvent event, GetCouponPort getCouponPort) {
        if(event.isSuccess()){
+           boolean hasCoupon = false;
 
-           
-           if(event.getCouponId() == null){
+           for(CheckRegisteredProductEvent.ProductRequestCreateCommand command :event.getProductRequestCreateEvents()){
+               if(command.getCouponId() != null){
+                   hasCoupon = true;
+                   break;
+               }
+           }
+
+           if(!hasCoupon){
                SagaLifecycle.end();
-           }else{
+               return;
+           }
 
-               Coupon coupon = getCouponPort.getCoupon(event.getCouponId());
+           for(CheckRegisteredProductEvent.ProductRequestCreateCommand couponCommand :event.getProductRequestCreateEvents()){
+               if(couponCommand.getCouponId() != null){
+                   Coupon coupon = getCouponPort.getCoupon(couponCommand.getCouponId());
 
-               String checkRegisteredCoupon = UUID.randomUUID().toString();
-               SagaLifecycle.associateWith("checkRegisteredCoupon", checkRegisteredCoupon);
+                   String checkRegisteredCoupon = UUID.randomUUID().toString();
+                   SagaLifecycle.associateWith("checkRegisteredCoupon", checkRegisteredCoupon);
 
-               CheckRegisteredCouponCommand command = new CheckRegisteredCouponCommand(
-                       coupon.getAggregateIdentifier(),
-                       event.getCreateOrderId(),
-                       checkRegisteredCoupon,
-                       event.getCouponId(),
-                       event.getSizeId(),
-                       event.getAmount(),
-                       128,
-                       event.getProductAggregate()
-               );
+                   CheckRegisteredCouponCommand command = new CheckRegisteredCouponCommand(
+                           coupon.getAggregateIdentifier(),
+                           event.getCreateOrderId(),
+                           checkRegisteredCoupon,
+                           couponCommand.getCouponId(),
+                           couponCommand.getSizeId(),
+                           couponCommand.getAmount(),
+                           event.getUserId(),
+                           event.getProductAggregate()
+                   );
 
-               commandGateway.send(command).whenComplete(
-                       (result, throwable) -> {
-                           if (throwable != null) {
-                               throwable.printStackTrace();
-                               log.error("CheckRegisteredCouponCommand Command failed");
-                           } else {
-                               log.info("CheckRegisteredCouponCommand Command success");
+                   commandGateway.send(command).whenComplete(
+                           (result, throwable) -> {
+                               if (throwable != null) {
+                                   throwable.printStackTrace();
+                                   log.error("CheckRegisteredCouponCommand Command failed");
+                               } else {
+                                   log.info("CheckRegisteredCouponCommand Command success");
+                               }
                            }
-                       }
-               );
+                   );
+
+               }
            }
        }else{
            //에러 처리
@@ -157,7 +169,6 @@ public class OrderCreateSaga {
 
     @SagaEventHandler(associationProperty = "checkRegisteredCoupon")
     public void handel(CheckRegisteredCouponEvent event){
-        log.info("?? {}",event);
         if(event.isSuccess()){
             System.out.println("end saga");
             SagaLifecycle.end();
