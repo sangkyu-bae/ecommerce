@@ -50,55 +50,57 @@ public class RegisterOrderService implements RegisterOrderUseCase {
 
     @Override
     public OrderVo registerOrder(RegisterOrderCommand command) throws JsonProcessingException {
-        //동기처리
-//        Member member = getMemberPort.getMemberId(command.getUseremail());
-        // 에외 처리 필요 ex member email이 없는 것이라면
-        // 비동기 처리 kafka
-
-        String MemberSubTaskName ="validMemberTask : 멤버십 유효성 검사";
-        MemberTask validMemberTask =new MemberTask(
-                command.getUserId(),
-                UUID.randomUUID().toString(),
-                MemberSubTaskName,
-                OrderSubTask.Status.READY
-                );
-        String productSubTaskName = "validProductTask : 상품 유효성 검사";
-        ProductTask validProductTask = new ProductTask(UUID.randomUUID().toString(),
-                productSubTaskName,
-                OrderSubTask.Status.READY,
-                command.getProductId(),
-                command.getColorId(),
-                command.getAmount(),
-                command.getSizeId()
-                );
-
-
-        List<OrderSubTask> orderSubTaskList = new ArrayList<>();
-        orderSubTaskList.add(validMemberTask);
-        orderSubTaskList.add(validProductTask);
-
-        OrderTask orderTask = new OrderTask(UUID.randomUUID().toString(),
-                "orderTask",
-                orderSubTaskList);
-
-        try {
-            sendCreateOrderTaskPort.sendCreateOrderTask(orderTask);
-
-            countDownLatchManager.addCountDownLatch(orderTask.getTaskId());
-            countDownLatchManager.getCountDownLatch(orderTask.getTaskId()).await();
-            String result = countDownLatchManager.getDataForKey(orderTask.getTaskId());
-            if(result.equals("success")){
-                OrderVo mapOrderVo = getOrderRequest(command);
-                return mapOrderVo;
-            }else{
-                //오류 공통화작업 필요
-                throw new Exception();
-            }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        //동기처리
+////        Member member = getMemberPort.getMemberId(command.getUseremail());
+//        // 에외 처리 필요 ex member email이 없는 것이라면
+//        // 비동기 처리 kafka
+//
+//        String MemberSubTaskName ="validMemberTask : 멤버십 유효성 검사";
+//        MemberTask validMemberTask =new MemberTask(
+//                command.getUserId(),
+//                UUID.randomUUID().toString(),
+//                MemberSubTaskName,
+//                OrderSubTask.Status.READY
+//                );
+//        String productSubTaskName = "validProductTask : 상품 유효성 검사";
+//        ProductTask validProductTask = new ProductTask(UUID.randomUUID().toString(),
+//                productSubTaskName,
+//                OrderSubTask.Status.READY,
+//                command.getProductId(),
+//                command.getColorId(),
+//                command.getAmount(),
+//                command.getSizeId()
+//                );
+//
+//
+//        List<OrderSubTask> orderSubTaskList = new ArrayList<>();
+//        orderSubTaskList.add(validMemberTask);
+//        orderSubTaskList.add(validProductTask);
+//
+//        OrderTask orderTask = new OrderTask(UUID.randomUUID().toString(),
+//                "orderTask",
+//                orderSubTaskList);
+//
+//        try {
+//            sendCreateOrderTaskPort.sendCreateOrderTask(orderTask);
+//
+//            countDownLatchManager.addCountDownLatch(orderTask.getTaskId());
+//            countDownLatchManager.getCountDownLatch(orderTask.getTaskId()).await();
+//            String result = countDownLatchManager.getDataForKey(orderTask.getTaskId());
+//            if(result.equals("success")){
+//                OrderVo mapOrderVo = getOrderRequest(command);
+//                return mapOrderVo;
+//            }else{
+//                //오류 공통화작업 필요
+//                throw new Exception();
+//            }
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//
+        return null;
     }
 
     @Override
@@ -125,7 +127,7 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 .build();
 
         eventPublisher.publishEvent(publishEventCommand);
-        eventPublisher.publishEvent(deliverySendCommand);
+//        eventPublisher.publishEvent(deliverySendCommand);
 
         return null;
     }
@@ -135,49 +137,49 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         return null;
     }
 
-    private OrderVo getOrderRequest(RegisterOrderCommand command) throws JsonProcessingException {
-        int status = OrderVo.StatusCode.ORDER.getStatus();
-
-        OrderVo createOrder = OrderVo.createGenerateOrderVo(
-                new OrderVo.OrderId(0),
-                new OrderVo.OrderProductUserId(command.getUserId()),
-                new OrderVo.OrderProductId(command.getProductId()),
-                new OrderVo.OrderColorId(command.getColorId()),
-                new OrderVo.OrderSizeId(command.getSizeId()),
-                new OrderVo.OrderAmount(command.getAmount()),
-                new OrderVo.OrderPayment(command.getPayment()),
-                new OrderVo.OrderAddress(command.getAddress()),
-                new OrderVo.OrderCreateAt(LocalDateTime.now()),
-                new OrderVo.OrderUpdateAt(LocalDateTime.now()),
-                new OrderVo.OrderStatus(status),
-                OrderVo.StatusCode.ORDER,
-                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier()),
-                new OrderVo.OrderSequence(command.getSequence())
-        );
-
-        OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);
-        OrderVo mapOrderVo = orderMapper.mapToDomainEntity(createOrderEntity);
-
-        requestProductInfoPort.createOrderEvent(ProductInfoRequest
-                .createGenerateProductRequest(
-                        mapOrderVo.getProductId(),
-                        mapOrderVo.getColorId(),
-                        mapOrderVo.getAmount(),
-                        mapOrderVo.getSizeId(),
-                        mapOrderVo.getId()
-                ));
-
-        DeliverySendCommand event = new DeliverySendCommand(
-                mapOrderVo.getSizeId(),
-                mapOrderVo.getUserId(),
-                mapOrderVo.getAddress(),
-//                mapOrderVo.getId()
-                "t",
-                "t"
-        );
-        sendCreateDeliveryEventPort.createDeliveryEvent(event);
-
-//        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
-        return mapOrderVo;
-    }
+//    private OrderVo getOrderRequest(RegisterOrderCommand command) throws JsonProcessingException {
+//        int status = OrderVo.StatusCode.ORDER.getStatus();
+//
+//        OrderVo createOrder = OrderVo.createGenerateOrderVo(
+//                new OrderVo.OrderId(0),
+//                new OrderVo.OrderProductUserId(command.getUserId()),
+//                new OrderVo.OrderProductId(command.getProductId()),
+//                new OrderVo.OrderColorId(command.getColorId()),
+//                new OrderVo.OrderSizeId(command.getSizeId()),
+//                new OrderVo.OrderAmount(command.getAmount()),
+//                new OrderVo.OrderPayment(command.getPayment()),
+//                new OrderVo.OrderAddress(command.getAddress()),
+//                new OrderVo.OrderCreateAt(LocalDateTime.now()),
+//                new OrderVo.OrderUpdateAt(LocalDateTime.now()),
+//                new OrderVo.OrderStatus(status),
+//                OrderVo.StatusCode.ORDER,
+//                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier()),
+//                new OrderVo.OrderSequence(command.getSequence())
+//        );
+//
+//        OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);
+//        OrderVo mapOrderVo = orderMapper.mapToDomainEntity(createOrderEntity);
+//
+//        requestProductInfoPort.createOrderEvent(ProductInfoRequest
+//                .createGenerateProductRequest(
+//                        mapOrderVo.getProductId(),
+//                        mapOrderVo.getColorId(),
+//                        mapOrderVo.getAmount(),
+//                        mapOrderVo.getSizeId(),
+//                        mapOrderVo.getId()
+//                ));
+//
+//        DeliverySendCommand event = new DeliverySendCommand(
+//                mapOrderVo.getSizeId(),
+//                mapOrderVo.getUserId(),
+//                mapOrderVo.getAddress(),
+////                mapOrderVo.getId()
+//                "t",
+//                "t"
+//        );
+//        sendCreateDeliveryEventPort.createDeliveryEvent(event);
+//
+////        responseDeliveryInfoPort.orderInformationToDelivery(OrderInfoRequest.createGenerateOrderRequest(command));
+//        return mapOrderVo;
+//    }
 }
