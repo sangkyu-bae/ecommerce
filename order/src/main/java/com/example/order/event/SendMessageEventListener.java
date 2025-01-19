@@ -22,7 +22,9 @@ public class SendMessageEventListener {
     private final UpdateEventPort updateEventPort;
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void sendDeliveryEvent(DeliverySendCommand sendCommand){
+    public void sendDeliveryEvent(CreateOrderEventCommand command){
+
+        DeliverySendCommand sendCommand = (DeliverySendCommand) command.getEventCommand().getEventData();
         try{
             sendCreateDeliveryEventPort.createDeliveryEvent(sendCommand);
             updateEventPort.updateEvent(sendCommand.getEventId(),EventStatus.SUCCESS);
