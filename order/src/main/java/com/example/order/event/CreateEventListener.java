@@ -1,7 +1,9 @@
 package com.example.order.event;
 
+import com.example.order.adapter.out.external.delivery.DeliverySendCommand;
 import com.example.order.adapter.out.persistence.EventMapper;
 import com.example.order.adapter.out.persistence.OrderMapper;
+import com.example.order.adapter.out.persistence.entity.EventEntity;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
 import com.example.order.application.port.in.command.RegisterOrderCommand;
 import com.example.order.application.port.out.RegisterEventPort;
@@ -9,6 +11,7 @@ import com.example.order.application.port.out.RegisterOrderPort;
 import com.example.order.application.port.out.SendAxonOrderPort;
 import com.example.order.domain.Event;
 import com.example.order.domain.OrderVo;
+import com.example.order.domain.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,8 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -40,7 +45,10 @@ public class CreateEventListener {
         //상품을 등록한다.
         int status = OrderVo.StatusCode.ORDER.getStatus();
         OrderVo registerOrder = createOrder(command.getRegisterOrderCommand(),status);
-        String eventId = registerOrder.getAggregateIdentifier();
+
+        DeliverySendCommand sendCommand = (DeliverySendCommand) command.getEventCommand().getEventData();
+        String eventId = sendCommand.getEventId();
+
         //사가 이벤트를 소싱한다.
         sendAxonOrderPort.sendOrderWithSaga(
                 command.getRegisterOrderCommand()
@@ -49,10 +57,10 @@ public class CreateEventListener {
         );
 
         //이벤트를 발생하여 트랜잭션 아웃박스를 시작한다.
-        Event registerEvent = createEvent(command.getEventCommand());
+        Event registerEvent = createEvent(command.getEventCommand(),eventId);
     }
 
-    private Event createEvent(EventCommand eventCommand) {
+    private Event createEvent(EventCommand eventCommand, String orderAggregateIdentifier) {
         String jsonEventData = "";
 
         try {
@@ -67,20 +75,43 @@ public class CreateEventListener {
                 ,eventCommand.getEventType()
                 ,jsonConverter.convertToEntityAttribute(jsonEventData)
         );
-       return  eventMapper.mapToDomainEntity(registerEventPort.registerEvent(event));
+
+        EventEntity registerEvent = registerEventPort.registerEvent(event,orderAggregateIdentifier);
+       return  eventMapper.mapToDomainEntity(registerEvent);
     }
 
     private OrderVo createOrder(RegisterOrderCommand command,int status){
+        List<Product> createProductList = new ArrayList<>();
+
+        for(RegisterOrderCommand.ProductCommand productCommand :command.getProductCommands()){
+            Product createProduct = Product.createGenerateProduct(
+                    null,
+                    productCommand.getProductId(),
+                    productCommand.getProductName(),
+                    productCommand.getSizeId(),
+                    productCommand.getAmount(),
+                    productCommand.getOrderAmount(),
+                     productCommand.getCouponId(),
+                    0,
+                    LocalDateTime.now(),
+                    LocalDateTime.now()
+            );
+
+            createProductList.add(createProduct);
+        }
+
         OrderVo createOrder = OrderVo.createGenerateOrderVo(
-                new OrderVo.OrderId(0),
+                new OrderVo.OrderId(null),
                 new OrderVo.OrderProductUserId(command.getUserId()),
                 new OrderVo.OrderPayment(command.getPayment()),
                 new OrderVo.OrderAddress(command.getAddress()),
+                new OrderVo.OrderPhoneNumber(command.getPhone()),
                 new OrderVo.OrderCreateAt(LocalDateTime.now()),
                 new OrderVo.OrderUpdateAt(LocalDateTime.now()),
                 new OrderVo.OrderStatus(status),
                 OrderVo.StatusCode.ORDER,
-                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier())
+                new OrderVo.OrderAggregateIdentifier(command.getAggregateIdentifier()),
+                createProductList
         );
 
         OrderEntity createOrderEntity = registerOrderPort.createOrder(createOrder);

@@ -10,18 +10,22 @@ import lombok.Value;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @AllArgsConstructor(access =  AccessLevel.PRIVATE)
 @Getter
 public class OrderVo {
 
-    private final long id;
+    private final Long id;
 
     private final long userId;
 
     private final int payment;
 
     private final String address;
+
+    private final String phoneNumber;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime createAt;
 
@@ -34,38 +38,45 @@ public class OrderVo {
 
     private final String aggregateIdentifier;
 
+    private final List<Product> productList;
+
 
     public static OrderVo createGenerateOrderVo(
             OrderId orderId,
             OrderProductUserId orderProductUserId,
             OrderPayment orderPayment,
             OrderAddress orderAddress,
+            OrderPhoneNumber orderPhoneNumber,
+
             OrderCreateAt orderCreateAt,
             OrderUpdateAt orderUpdateAt,
             OrderStatus orderStatus,
             StatusCode statusCode,
-            OrderAggregateIdentifier orderAggregateIdentifier
+            OrderAggregateIdentifier orderAggregateIdentifier,
+            List<Product> productList
     ){
         return new OrderVo(
                 orderId.getId(),
                 orderProductUserId.getUserId(),
                 orderPayment.getPayment(),
                 orderAddress.getAddress(),
+                orderPhoneNumber.getPhoneNumber(),
                 orderCreateAt.getCreateAt(),
                 orderUpdateAt.getUpdateAt(),
                 orderStatus.getStatus(),
                 new TypeEnumMapper(statusCode),
-                orderAggregateIdentifier.getAggregateIdentifier()
+                orderAggregateIdentifier.getAggregateIdentifier(),
+                productList
         );
     }
 
     @Value
     public static class OrderId{
 
-        public OrderId(long value){
+        public OrderId(Long value){
             this.id = value;
         }
-        private long id;
+        private Long id;
     }
 
     @Value
@@ -93,6 +104,14 @@ public class OrderVo {
         private String address;
     }
 
+    @Value
+    public static class OrderPhoneNumber{
+        public OrderPhoneNumber(String value){
+            this.phoneNumber = value;
+        }
+
+        private String phoneNumber;
+    }
     @Value
     public static class OrderCreateAt{
         public OrderCreateAt(LocalDateTime value){

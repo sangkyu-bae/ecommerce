@@ -36,7 +36,7 @@ public class Product {
                                                 long sizeId,
                                                 int amount,
                                                 int orderAmount,
-                                                int couponId,
+                                                Long couponId,
                                                 int salePrice,
                                                 LocalDateTime createAt,
                                                 LocalDateTime updateAt

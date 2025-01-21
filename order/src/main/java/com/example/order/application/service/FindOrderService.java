@@ -2,6 +2,7 @@ package com.example.order.application.service;
 
 import com.example.order.adapter.out.persistence.OrderMapper;
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
+import com.example.order.adapter.out.persistence.entity.ProductEntity;
 import com.example.order.adapter.out.service.Product;
 import com.example.order.application.port.in.command.FindMemberOrderListByMemberIdsCommand;
 import com.example.order.application.port.in.command.FindOrderByMemberIdCommand;
@@ -87,9 +88,13 @@ public class FindOrderService implements FindOrderUseCase {
 
 
     private List<OrderAggregationVo> getOrderAggregationVos(List<OrderEntity> orderEntityList) {
-        Set<Long> productIdsSet = orderEntityList.stream()
-                .map(OrderEntity::getProductId)
-                .collect(Collectors.toSet());
+
+        Set<Long> productIdsSet = new HashSet<>();
+
+        for(OrderEntity orderEntity : orderEntityList){
+            Set<Long> productIds = orderEntity.getProductIds();
+            productIdsSet.addAll(productIds);
+        }
 
         List<Long> productIds = new ArrayList<>(productIdsSet);
         List<Product> productList = getProductPort.getProductListByProductIds(productIds);
@@ -102,16 +107,28 @@ public class FindOrderService implements FindOrderUseCase {
         }
 
         for(OrderEntity orderEntity : orderEntityList){
+            orderAggregationVos.addAll(mapToAggregation(orderEntity,productMap));
+        }
 
-            Product product = productMap.get(orderEntity.getProductId());
+        return orderAggregationVos;
+    }
+
+
+    private List<OrderAggregationVo> mapToAggregation(OrderEntity orderEntity,Map<Long,Product> productMap){
+        List<OrderAggregationVo> orderAggregationVos = new ArrayList<>();
+
+        for (ProductEntity productEntity : orderEntity.getProductList()){
+            Long productId = productEntity.getProductId();
+            Product product = productMap.get(productId);
+
             Product cleanProduct = Product.cleanProduct(product);
-            cleanProduct.settingComponent(orderEntity.getColorId(),orderEntity.getSizeId());
+            cleanProduct.settingComponent(productEntity.getSizeId());
             OrderVo.StatusCode statusCode = OrderVo.StatusCode.findStatusCode(orderEntity.getStatus());
 
             OrderAggregationVo orderAggregationVo = OrderAggregationVo.createGenerate(
                     orderEntity.getId(),
-                    orderEntity.getAmount(),
-                    orderEntity.getPayment(),
+                    productEntity.getAmount(),
+                    productEntity.getSalePrice(),
                     cleanProduct.getProductComponents().get(0).getSizes().get(0).getSize(),
                     cleanProduct.getProductImage(),
                     cleanProduct.getDescription(),
@@ -122,7 +139,7 @@ public class FindOrderService implements FindOrderUseCase {
             );
             orderAggregationVos.add(orderAggregationVo);
         }
+
         return orderAggregationVos;
     }
-
 }

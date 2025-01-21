@@ -25,8 +25,8 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
     List<ProductCommand> productCommands;
 
     @Value
-    @Builder
-    public class ProductCommand {
+    @Builder @AllArgsConstructor
+    public static class ProductCommand {
 
         private long productId;
 
@@ -37,5 +37,9 @@ public class RegisterOrderCommand extends SelfValidating<RegisterOrderCommand> {
         private int amount;
 
         private Long couponId;
+
+        private String productName;
+
+        private int orderAmount;
     }
 }

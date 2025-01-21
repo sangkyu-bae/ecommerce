@@ -111,7 +111,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
         DeliverySendCommand deliverySendCommand = new DeliverySendCommand(
                 command.getUserId(),
                 command.getAddress(),
-                orderAggregateIdentifier,
                 orderAggregateIdentifier
         );
 

@@ -1,10 +1,7 @@
 package com.example.order.adapter.out.persistence.entity;
 
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -13,7 +10,7 @@ import java.util.Map;
 @Entity
 @Getter @EqualsAndHashCode(of = "id")
 @Table(name = "tb_event") @Builder
-@RequiredArgsConstructor
+@RequiredArgsConstructor @AllArgsConstructor
 public class EventEntity {
 
     @Id

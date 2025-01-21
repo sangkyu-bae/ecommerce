@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -64,33 +65,27 @@ public class Product {
         private int quantity;
     }
 
-    public void settingComponent(long colorId, long sizeId){
+    public void settingComponent( long sizeId){
         List<ProductComponentEntityVo> productComponentEntityVoList = new ArrayList<>();
-
 
         for(ProductComponentEntityVo productComponentEntityVo : this.productComponents){
             ProductComponentEntityVo productComponentEntity = new ProductComponentEntityVo();
+            List<ProductSizeVo> productSizes = new ArrayList<>();
 
-            if(productComponentEntityVo.getColor().getId() == colorId){
-                List<ProductSizeVo> productSizes = new ArrayList<>();
+            for(ProductSizeVo productSizeVo : productComponentEntityVo.getSizes()){
+                if(productSizeVo.getId() == sizeId){
+                    productSizes.add(productSizeVo);
+                    productComponentEntity.setColor(productComponentEntityVo.getColor());
+                    productComponentEntity.setSizes(productSizes);
+                    productComponentEntity.setId(productComponentEntity.getId());;
 
-                for(ProductSizeVo productSizeVo : productComponentEntityVo.getSizes()){
-                    if(productSizeVo.getId() == sizeId){
-                        productSizes.add(productSizeVo);
-                        break;
-                    }
+                    productComponentEntityVoList.add(productComponentEntity);
+                    break;
                 }
-
-                productComponentEntity.setColor(productComponentEntityVo.getColor());
-                productComponentEntity.setSizes(productSizes);
-                productComponentEntity.setId(productComponentEntity.getId());;
-
-                productComponentEntityVoList.add(productComponentEntity);
             }
         }
 
         this.productComponents = productComponentEntityVoList;
-
     }
 
     public static Product cleanProduct(Product product){
@@ -104,6 +99,12 @@ public class Product {
                 product.brand,
                 product.productComponents
         );
+    }
+
+    public static List<Product> cleanProducts(List<Product> cleanProducts){
+        return cleanProducts.stream()
+                .map(Product::cleanProduct)
+                .collect(Collectors.toList());
     }
 
 }

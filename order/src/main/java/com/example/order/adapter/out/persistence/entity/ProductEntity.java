@@ -29,7 +29,7 @@ public class ProductEntity {
 
     private long couponId;
 
-    private int salePrice; //할인 금액
+    private int salePrice; //할인합쳐진 금액
 
     private LocalDateTime createAt;
 

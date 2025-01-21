@@ -1,8 +1,11 @@
 package com.example.order.domain;
 
+import com.example.order.adapter.out.service.Product;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -53,4 +56,5 @@ public class OrderAggregationVo {
                 statusCode
         );
     }
+
 }

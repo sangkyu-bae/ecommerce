@@ -21,14 +21,6 @@ public class Event {
 
     private final Map<String,Object> eventData;
 
-
-
-//    private final T eventData;
-//
-//    public static <T> Event<T> createGenerate(Long id, EventStatus eventStatus, T eventData) {
-//        return new Event<>(id, eventStatus, eventData);
-//    }
-
     public static  Event createGenerate(String id, EventStatus eventStatus, EventType eventType,Map<String,Object> eventData) {
         return new Event(id, eventStatus, eventType,eventData);
     }

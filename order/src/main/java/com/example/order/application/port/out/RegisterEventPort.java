@@ -4,5 +4,5 @@ import com.example.order.adapter.out.persistence.entity.EventEntity;
 import com.example.order.domain.Event;
 
 public interface RegisterEventPort {
-    EventEntity registerEvent(Event event);
+    EventEntity registerEvent(Event event,String orderAggregateIdentifier);
 }

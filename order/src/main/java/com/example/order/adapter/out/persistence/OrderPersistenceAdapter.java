@@ -1,11 +1,14 @@
 package com.example.order.adapter.out.persistence;
 
 import com.example.order.adapter.out.persistence.entity.OrderEntity;
+import com.example.order.adapter.out.persistence.entity.ProductEntity;
 import com.example.order.adapter.out.persistence.repository.OrderEntityRepository;
+import com.example.order.adapter.out.persistence.repository.ProductEntityRepository;
 import com.example.order.application.port.out.FindOrderPort;
 import com.example.order.application.port.out.GetMemberOrderPort;
 import com.example.order.application.port.out.RegisterOrderPort;
 import com.example.order.application.port.out.RemoveOrderPort;
+import com.example.order.domain.Product;
 import com.example.order.infra.error.ErrorException;
 import com.example.order.infra.error.OrderErrorCode;
 import com.example.order.domain.OrderVo;
@@ -16,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @PersistenceAdapter
@@ -25,23 +29,44 @@ import java.util.List;
 public class OrderPersistenceAdapter implements RegisterOrderPort, FindOrderPort, GetMemberOrderPort, RemoveOrderPort {
 
     private final OrderEntityRepository orderEntityRepository;
+
+    private final ProductEntityRepository productEntityRepository;
     @Override
     public OrderEntity createOrder(OrderVo orderVo) {
-
-        OrderEntity createOrderEntity = OrderEntity.builder()
-                .productId(orderVo.getProductId())
+        OrderEntity registerOrderEntity = OrderEntity.builder()
                 .userId(orderVo.getUserId())
-                .colorId(orderVo.getColorId())
-                .sizeId(orderVo.getSizeId())
-                .amount(orderVo.getAmount())
                 .payment(orderVo.getPayment())
                 .address(orderVo.getAddress())
-                .status(orderVo.getStatus())
+                .phoneNumber(orderVo.getPhoneNumber())
                 .createAt(orderVo.getCreateAt())
                 .updateAt(orderVo.getUpdateAt())
-                .sequence(orderVo.getSequence())
+                .status(orderVo.getStatus())
+                .aggregateIdentifier(orderVo.getAggregateIdentifier())
                 .build();
-        return orderEntityRepository.save(createOrderEntity);
+
+        OrderEntity createOrder = orderEntityRepository.save(registerOrderEntity);
+
+        List<ProductEntity> registerProductList = new ArrayList<>();
+
+        for(Product product : orderVo.getProductList()){
+            ProductEntity registerProduct = ProductEntity.builder()
+                    .productId(product.getProductId())
+                    .productName(product.getProductName())
+                    .sizeId(product.getSizeId())
+                    .orderAmount(product.getOrderAmount())
+                    .couponId(product.getCouponId())
+                    .createAt(product.getCreateAt())
+                    .updateAt(product.getUpdateAt())
+                    .order(createOrder)
+                    .build();
+
+            createOrder.addProduct(registerProduct);
+            registerProductList.add(registerProduct);
+        }
+
+       productEntityRepository.saveAll(registerProductList);
+
+        return createOrder;
     }
 
     @Override

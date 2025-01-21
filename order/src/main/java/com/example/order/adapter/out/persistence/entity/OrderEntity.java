@@ -5,7 +5,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 //주문원장
 @Entity
@@ -18,8 +21,6 @@ public class OrderEntity {
     private Long id;
 
     private long userId;
-
-    private int amount;
 
     private int payment;
 
@@ -37,5 +38,25 @@ public class OrderEntity {
 
     @OneToMany
     private List<ProductEntity> productList;
+
+    public void addProduct(ProductEntity productEntity){
+        if(productList == null){
+            productList = new ArrayList<>();
+        }
+
+        productList.add(productEntity);
+    }
+
+    public Set<Long> getProductIds(){
+        if(productList == null){
+            productList = new ArrayList<>();
+        }
+
+        Set<Long> ids = this.productList.stream()
+                .map(ProductEntity::getProductId)
+                .collect(Collectors.toSet());
+
+        return ids;
+    }
 
 }
