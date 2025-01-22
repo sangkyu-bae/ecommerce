@@ -12,7 +12,8 @@ export class OrderService{
             sizeId : orderProduct.productSizeId,
             amount : orderProduct.quantity,
             payment : orderProduct.selectPrice,
-            couponId : null
+            couponId : null,
+            productName : orderProduct.productName
         };
     }
 }

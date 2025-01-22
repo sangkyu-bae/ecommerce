@@ -1,22 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import GridComponent, {StyledContent, StyledSetion} from "@/components/common/GridComponent";
-import {useQuery} from "@tanstack/react-query";
-import {RankApi} from "@/shared/api/RankApi";
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";
-import {ProductApi} from "@/shared/api/product/ProductApi";
-import {useProductTest} from "@/shared/hook/useProductTest";
-import {CircularProgress} from "@mui/material";
 
-function MainSection(props) {
-    const {data,isLoading}=useQuery({
-        context : undefined,
-        queryKey : ['clickRank'],
-        queryFn : () => RankApi.readClickRank(),
-        select:undefined,
-        enabled:true
-    })
+function MainSection({data}) {
 
     return (
         <StyledContent isFull={true}>
@@ -25,9 +13,8 @@ function MainSection(props) {
                 <Box  sx={{width:'100%'}} >
                     <Box sx={{display:'flex', margin:'0 auto', width:'65%', flexWrap: 'wrap'}}>
                         {
-                            // products.length > 0 && products.map(product=>
-                             !isLoading && data.map(product=>
-                                <Link   key={product.productId} href={`/product/${product.productId}`} style={{
+                                data.map(product=>
+                                <Link  key={product.productId} href={`/product/${product.productId}`} style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
                                     marginLeft:'4em',
@@ -43,7 +30,6 @@ function MainSection(props) {
                             )
                         }
                     </Box>
-
                 </Box>
 
             </StyledSetion>

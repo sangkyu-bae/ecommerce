@@ -27,7 +27,7 @@ public class ProductEntity {
 
     private int orderAmount; //주문시 수량
 
-    private long couponId;
+    private Long couponId;
 
     private int salePrice; //할인합쳐진 금액
 

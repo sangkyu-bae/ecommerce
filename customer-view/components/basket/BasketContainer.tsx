@@ -30,12 +30,13 @@ function BasketContainer({data}) {
         const filterBaskets : OrderProduct[]= baskets
             .filter(basket => basket.check)
             .map(filterBasket => ({
-                productId: filterBasket.productId,
-                color: filterBasket.colorName,
-                size: filterBasket.size,
-                quantity: filterBasket.productQuantity,
-                selectPrice: filterBasket.price,
-                productName : filterBasket.productName
+                productId: Number(filterBasket.productId),
+                color: String(filterBasket.colorName),
+                size: Number(filterBasket.size),
+                quantity: Number(filterBasket.productQuantity),
+                selectPrice: Number(filterBasket.price),
+                productName : String(filterBasket.productName),
+                productSizeId : 1
             }));
         if(filterBaskets.length < 1){
             alert("구매할 상품을 선택해주세요.")
@@ -144,7 +145,6 @@ function BasketContainer({data}) {
                                         <Button onClick={orderProduct} variant="outlined">구매하기</Button>
                                     </div>
                                 </div>
-
                             </div>
                         </GridComponent>
                     </div>

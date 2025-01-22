@@ -20,5 +20,6 @@ interface RegisterOrder{
     sizeId : number | null,
     amount : number,
     payment : number,
-    couponId : number | null
+    couponId : number | null,
+    productName: string
 }

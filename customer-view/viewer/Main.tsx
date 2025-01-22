@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, StyledContainer} from "@/components/common/GridComponent";
 import MainSection from "@/components/main/MainSection";
 
-function Main(props) {
+function Main({data}) {
+
     return (
         <StyledContainer>
-            <MainSection/>
+            <MainSection data={data}/>
         </StyledContainer>
     );
 }

@@ -29,29 +29,29 @@ public class RegisterOrderController {
     private final RegisterOrderUseCase registerOrderUseCase;
 
     private final OrderEntityRepository entityRepository;
-    @Operation(summary = "register order with kafka", description = "kafka로 주문 등록하기 (쓰레드 락)")
-    @PostMapping("/order/register/kafka")
-    public ResponseEntity<OrderVo> registerOrderByKafka(@RequestBody RegisterOrderRequest request ,
-                                                 @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
-
-
-
-        RegisterOrderProductRequest req = request.getProducts().get(0);
-
-        RegisterOrderCommand command = RegisterOrderCommand.builder()
-                .productId(req.getProductId())
-                .colorId(req.getColorId())
-                .sizeId(req.getSizeId())
-                .amount(req.getAmount())
-                .payment(req.getPayment())
-//                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
-                .userId(userId)
-                .build();
-
-        OrderVo orderVo = registerOrderUseCase.registerOrder(command);
-
-        return ResponseEntity.ok().body(orderVo);
-    }
+//    @Operation(summary = "register order with kafka", description = "kafka로 주문 등록하기 (쓰레드 락)")
+//    @PostMapping("/order/register/kafka")
+//    public ResponseEntity<OrderVo> registerOrderByKafka(@RequestBody RegisterOrderRequest request ,
+//                                                 @RequestHeader("X-User-Id") Long userId) throws JsonProcessingException {
+//
+//
+//
+//        RegisterOrderProductRequest req = request.getProducts().get(0);
+//
+//        RegisterOrderCommand command = RegisterOrderCommand.builder()
+//                .productId(req.getProductId())
+//                .colorId(req.getColorId())
+//                .sizeId(req.getSizeId())
+//                .amount(req.getAmount())
+//                .payment(req.getPayment())
+////                .status(RegisterOrderCommand.StatusCode.ORDER.getStatus())
+//                .userId(userId)
+//                .build();
+//
+//        OrderVo orderVo = registerOrderUseCase.registerOrder(command);
+//
+//        return ResponseEntity.ok().body(orderVo);
+//    }
 
     @Operation(summary = "register order with axon", description = "axon 주문 등록하기 (saga구현 eda)")
     @PostMapping("/order/register/axon")
@@ -92,32 +92,37 @@ public class RegisterOrderController {
 
     @Operation(summary = "register order", description = "axon 주문 등록하기 (saga구현 eda)")
     @PostMapping("/order/register")
-//    public ResponseEntity<List<OrderVo>> registerOrder(@RequestBody List<RegisterOrderRequest> request,
-    public ResponseEntity<List<OrderVo>> registerOrder(@RequestBody RegisterOrderRequest request,
+    public ResponseEntity<OrderVo> registerOrder(@RequestBody RegisterOrderRequest request,
                                                        @RequestHeader("X-User-Id") Long userId ) throws JsonProcessingException {
-        List<OrderVo> orderVos = new ArrayList<>();
         List<RegisterOrderProductRequest> productRequests = request.getProducts();
+        List<RegisterOrderCommand.ProductCommand> productCommands = new ArrayList<>();
 
-        String sequence = UUID.randomUUID().toString();
         for(RegisterOrderProductRequest rq : productRequests){
-            RegisterOrderCommand command = RegisterOrderCommand.builder()
+            RegisterOrderCommand.ProductCommand productCommand = RegisterOrderCommand.ProductCommand.builder()
                     .productId(rq.getProductId())
-                    .colorId(rq.getColorId())
-                    .sizeId(rq.getSizeId())
-                    .amount(rq.getAmount())
-                    .payment(rq.getPayment())
-                    .userId(userId)
-                    .address(request.getAddress())
+                    .productName(rq.getProductName())
                     .couponId(rq.getCouponId())
-                    .sequence(sequence)
-                    .phone(request.getPhone())
-                    .aggregateIdentifier(UUID.randomUUID().toString())
+                    .sizeId(rq.getSizeId())
+                    .colorId(rq.getColorId())
+                    .amount(rq.getAmount())
                     .build();
-            OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
-            orderVos.add(orderVo);
+            productCommands.add(productCommand);
         }
 
-        return ResponseEntity.ok().body(orderVos);
+
+        String aggregateIdentifier = UUID.randomUUID().toString();
+        RegisterOrderCommand command = RegisterOrderCommand.builder()
+                .payment(request.getPayment())
+                .address(request.getAddress())
+                .userId(userId)
+                .phone(request.getPhone())
+                .productCommands(productCommands)
+                .aggregateIdentifier(aggregateIdentifier)
+                .build();
+
+        OrderVo orderVo = registerOrderUseCase.registerOrderByEvent(command);
+
+        return ResponseEntity.ok().body(orderVo);
 
     }
 

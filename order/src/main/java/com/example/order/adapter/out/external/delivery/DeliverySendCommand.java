@@ -13,7 +13,5 @@ public class DeliverySendCommand {
 
     private String address;
 
-    private String orderAggregateIdentifier;
-
     private String eventId;
 }

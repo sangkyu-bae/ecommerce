@@ -22,14 +22,14 @@ public class OrderInfoRequest {
 
     private long userId;
 
-    public static OrderInfoRequest createGenerateOrderRequest(RegisterOrderCommand command){
-        return OrderInfoRequest.builder()
-                .orderId(command.getColorId())
-                .productId(command.getProductId())
-                .colorId(command.getColorId())
-                .amount(command.getAmount())
-                .address(command.getAddress())
-                .userId(command.getUserId())
-                .build();
-    }
+//    public static OrderInfoRequest createGenerateOrderRequest(RegisterOrderCommand command){
+//        return OrderInfoRequest.builder()
+//                .orderId(command.getColorId())
+//                .productId(command.getProductId())
+//                .colorId(command.getColorId())
+//                .amount(command.getAmount())
+//                .address(command.getAddress())
+//                .userId(command.getUserId())
+//                .build();
+//    }
 }

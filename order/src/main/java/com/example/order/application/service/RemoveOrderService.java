@@ -56,9 +56,6 @@ public class RemoveOrderService implements RemoveOrderUseCase {
          * */
 
         RemoveOrderTask task = RemoveOrderTask.builder()
-//                .sizeId(orderEntity.getSizeId())
-//                .userId(command.getUserId())
-//                .productId(orderEntity.getProductId())
                 .amount(orderEntity.getProductList().get(0).getAmount())
                 .orderId(orderEntity.getId())
                 .build();

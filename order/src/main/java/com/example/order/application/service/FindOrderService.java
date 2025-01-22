@@ -67,9 +67,6 @@ public class FindOrderService implements FindOrderUseCase {
 
         List<OrderAggregationVo> orderAggregationVos = getOrderAggregationVos(orderEntityList);
 
-//        return orderEntityList.stream()
-//                .map(order -> orderMapper.mapToDomainEntity(order))
-//                .collect(Collectors.toList());
         return orderAggregationVos;
     }
 

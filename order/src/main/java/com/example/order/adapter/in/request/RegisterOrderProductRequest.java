@@ -22,4 +22,6 @@ public class RegisterOrderProductRequest {
     private String address;
 
     private Long couponId;
+
+    private String productName;
 }

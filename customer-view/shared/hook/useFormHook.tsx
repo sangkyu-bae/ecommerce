@@ -48,8 +48,6 @@ function UseFormHook({initData, onSubmit, validation,products}) {
     });
 
     const submit = (submitData : object) =>{
-
-
         const registerOrderProducts : RegisterOrder[]=
             products.map(product => orderService.mapToOrder(product));
 

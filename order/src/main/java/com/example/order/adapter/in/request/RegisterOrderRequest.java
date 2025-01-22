@@ -17,18 +17,7 @@ public class RegisterOrderRequest {
     private String address;
 
     private String phone;
-//    private long productId;
-//
-//    private long colorId;
-//
-//    private long sizeId;
-//
-//    private int amount;
-//
+
     private int payment;
-//
-//    private String address;
-//
-//    private Long couponId;
 
 }

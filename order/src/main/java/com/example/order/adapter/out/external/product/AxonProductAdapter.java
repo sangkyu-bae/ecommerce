@@ -27,7 +27,6 @@ public class AxonProductAdapter implements SendAxonOrderPort {
 
     private final ModelMapper modelMapper;
     @Override
-    @Transactional
     public void sendOrderWithSaga(RegisterOrderCommand command,OrderVo.OrderId orderId,String eventId) {
         /**
          * TODO
@@ -37,8 +36,9 @@ public class AxonProductAdapter implements SendAxonOrderPort {
 
         String orderAggregateIdentifier = command.getAggregateIdentifier();
 
-        List<OrderRequestCreateCommand.ProductRequestCommand> productRequestCommands = command.getProductCommands().stream()
-                .map(product->modelMapper.map(product, OrderRequestCreateCommand.ProductRequestCommand.class))
+        List<OrderRequestCreateCommand.ProductRequestCommand> productRequestCommands = command.getProductCommands()
+                .stream()
+                .map(OrderRequestCreateCommand.ProductRequestCommand::new)
                 .collect(Collectors.toList());
 
         OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(

@@ -71,7 +71,8 @@ public class ProductPersistenceAdapter implements FindProductPort,
 
         long startTime = System.currentTimeMillis();
 //        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
-        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
+//        Page<ProductEntity> productPage = springDataProductRepository.findWithPageByAll(pageable);
+        Page<ProductEntity> productPage = springDataProductRepository.findTest(pageable);
 //        Page<ProductEntity> productPage = springDataProductRepository.findAll(pageable);
         System.out.println(productPage.getTotalElements());
         long endTime = System.currentTimeMillis();

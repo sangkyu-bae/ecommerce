@@ -21,7 +21,6 @@ import InputLabel from "@mui/material/InputLabel";
 
 
 function Order(props) {
-    const dispatch = useDispatch();
     const products : OrderProduct[]= useSelector(state => state.productRedux);
 
     const totalPrice = products.reduce((total,product)=>total + (product.selectPrice * product.quantity),0);
@@ -35,9 +34,6 @@ function Order(props) {
 
     const validation = orderValidation;
 
-    useEffect(()=>{
-        console.log(products);
-    },[products])
     return (
         <StyledContainer>
             <StyledContent isFull={true}>
