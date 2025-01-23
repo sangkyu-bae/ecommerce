@@ -1,9 +1,6 @@
 package org.example.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 
 import java.util.List;
 
@@ -26,7 +23,8 @@ public class CheckRegisteredMemberEvent {
 
     private List<CheckRegisteredMemberEvent.ProductRequestCreateCommand> productRequestCreateEvents;
 
-    @Value
+    @Getter
+    @AllArgsConstructor @NoArgsConstructor
     public static class ProductRequestCreateCommand {
 
         private long sizeId;

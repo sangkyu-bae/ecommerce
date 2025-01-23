@@ -1,6 +1,7 @@
 package com.example.order.adapter.out.external.product;
 
 import com.example.order.adapter.axon.command.OrderRequestCreateCommand;
+import com.example.order.adapter.axon.command.ProductRequestCommand;
 import com.example.order.adapter.out.persistence.entity.EventEntity;
 import com.example.order.adapter.out.persistence.entity.EventStatus;
 import com.example.order.adapter.out.persistence.repository.EventEntityRepository;
@@ -36,9 +37,9 @@ public class AxonProductAdapter implements SendAxonOrderPort {
 
         String orderAggregateIdentifier = command.getAggregateIdentifier();
 
-        List<OrderRequestCreateCommand.ProductRequestCommand> productRequestCommands = command.getProductCommands()
+        List<ProductRequestCommand> productRequestCommands = command.getProductCommands()
                 .stream()
-                .map(OrderRequestCreateCommand.ProductRequestCommand::new)
+                .map(ProductRequestCommand::new)
                 .collect(Collectors.toList());
 
         OrderRequestCreateCommand axonCommand = new OrderRequestCreateCommand(
@@ -53,8 +54,8 @@ public class AxonProductAdapter implements SendAxonOrderPort {
         commandGateway.send(axonCommand).whenComplete((result, throwable) -> {
             if (throwable != null) {
                 log.error("throwable = " + throwable);
-                EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException(""));
-                eventEntity.updateStatus(EventStatus.FAIL_WORK);
+//                EventEntity eventEntity = eventEntityRepository.findById(eventId).orElseThrow(()->new IllegalArgumentException(""));
+//                eventEntity.updateStatus(EventStatus.FAIL_WORK);
                 throw new RuntimeException(throwable);
             } else{
                 System.out.println("result = " + result);

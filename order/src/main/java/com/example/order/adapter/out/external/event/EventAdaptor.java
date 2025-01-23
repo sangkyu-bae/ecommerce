@@ -9,6 +9,7 @@ import com.example.order.domain.Event;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
+import org.springframework.transaction.annotation.Transactional;
 
 @PersistenceAdapter
 @Slf4j
@@ -31,13 +32,14 @@ public class EventAdaptor implements RegisterEventPort, UpdateEventPort {
     }
 
     @Override
+    @Transactional
     public EventEntity updateEvent(String eventId, EventStatus eventStatus) {
+
         EventEntity eventEntity = eventEntityRepository.findByIdAndEventStatus(eventId,EventStatus.INIT);
 
         if(eventEntity == null){
             throw new IllegalArgumentException("");
         }
-
         eventEntity.updateStatus(eventStatus);
 
         return eventEntity;

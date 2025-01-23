@@ -13,9 +13,11 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.example.event.CheckRegisteredProductCommand;
 import org.example.event.CheckRegisteredProductEvent;
+import org.example.event.ProductRequestCreateCommand;
 import org.example.event.rollback.RollbackProductFinishedEvent;
 import org.example.event.rollback.RollbackRequestProductCommand;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,7 +62,8 @@ public class ProductAggregate {
         boolean isSuccess = true;
 
         try{
-            for(CheckRegisteredProductCommand.ProductRequestCreateCommand productReq :command.getProductRequestCreateEvents()){
+            for(ProductRequestCreateCommand productReq :command.getProductRequestCreateEvents()){
+                log.info("size Id : {}", productReq.getSizeId());
                 SizeVo sizeVo = SizeVo.createGenerateSizeVo(
                         new SizeVo.SizeId(productReq.getSizeId()),
                         new SizeVo.Size(0),
@@ -70,13 +73,21 @@ public class ProductAggregate {
                 port.updateProductSize(sizeVo);
             }
         }catch (ErrorException e){
+            log.error("error !");
             isSuccess = false;
         }
 
-        List<CheckRegisteredProductEvent.ProductRequestCreateCommand> productRequestCreateEvents = command.getProductRequestCreateEvents().stream()
-                        .map(product->new CheckRegisteredProductEvent.ProductRequestCreateCommand(product.getSizeId(), product.getAmount(), product.getCouponId()))
-                        .collect(Collectors.toList());
+        List<ProductRequestCreateCommand> productRequestCreateEvents = new ArrayList<>();
+        try{
+            productRequestCreateEvents  = command.getProductRequestCreateEvents().stream()
+                    .map(product->new ProductRequestCreateCommand(product.getSizeId(), product.getAmount(), product.getCouponId()))
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            log.error("erroror");
+        }
 
+
+        log.info("event sourcing");
         apply(new CheckRegisteredProductEvent(
                 command.getCreateOrderId(),
                 isSuccess,

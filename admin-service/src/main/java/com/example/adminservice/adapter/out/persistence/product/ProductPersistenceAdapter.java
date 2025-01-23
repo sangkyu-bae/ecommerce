@@ -150,5 +150,8 @@ public class ProductPersistenceAdapter implements FindProductPort,
                 .orElseThrow(()->new ErrorException(ProductErrorCode.PRODUCT_NOT_FOUND,"updateProductSize"));
 
         sizeEntity.updateQuantity(sizeVo.getQuantity());
+
+        sizeEntityRepository.save(sizeEntity);
+
     }
 }

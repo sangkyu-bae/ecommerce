@@ -1,14 +1,12 @@
 package org.example.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.List;
 
 @Data @NoArgsConstructor @AllArgsConstructor
+@ToString
 public class CheckRegisteredMemberCommand {
 
     @TargetAggregateIdentifier
@@ -28,7 +26,10 @@ public class CheckRegisteredMemberCommand {
 
     private List<ProductRequestCreateCommand> productRequestCreateEvents;
 
-    @Value
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @ToString
     public static class ProductRequestCreateCommand {
 
         private long sizeId;

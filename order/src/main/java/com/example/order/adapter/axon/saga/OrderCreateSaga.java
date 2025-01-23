@@ -53,6 +53,9 @@ public class OrderCreateSaga {
                 .map(product->new CheckRegisteredMemberCommand.ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
                 .collect(Collectors.toList());
 
+        log.info(">>>>>> com");
+        log.info(productRequestCreateCommands.toString());
+
         //"주문 생성" 시작
         // 멤버의 실제 멤버 여부 확인하기.
         // -> axon server -> member Service
@@ -66,6 +69,8 @@ public class OrderCreateSaga {
                 event.getUserId(),
                 productRequestCreateCommands
         );
+
+        log.info(command.toString());
         commandGateway.send(command).whenComplete(
                 (result, throwable) -> {
                     if (throwable != null) {
@@ -91,17 +96,20 @@ public class OrderCreateSaga {
         String checkRegisteredProductIdAndAmount = UUID.randomUUID().toString();
         SagaLifecycle.associateWith("checkRegisteredProductIdAndAmount", checkRegisteredProductIdAndAmount);
 
-        List<CheckRegisteredProductCommand.ProductRequestCreateCommand> productRequestCreateCommands = event.getProductRequestCreateEvents().stream()
-                .map(product -> new CheckRegisteredProductCommand.ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
+        List<ProductRequestCreateCommand> productRequestCreateCommands = event.getProductRequestCreateEvents().stream()
+                .map(product -> new ProductRequestCreateCommand(product.getSizeId(),product.getAmount(),product.getCouponId()))
                 .collect(Collectors.toList());
         CheckRegisteredProductCommand command = new CheckRegisteredProductCommand(
-                UUID.randomUUID().toString(),
+              "f7a70e24-fa62-4db6-ab27-d5b29f55aeb5",
                 event.getCreateOrderId(),
                 checkRegisteredProductIdAndAmount,
                 event.getMemberId(),
                 productRequestCreateCommands
         );
 
+        log.info(">>>>>>");
+        log.info(productRequestCreateCommands.toString());
+        log.info(command.toString());
         commandGateway.send(command).whenComplete(
                 (result, throwable) -> {
                     if (throwable != null) {
@@ -119,7 +127,7 @@ public class OrderCreateSaga {
        if(event.isSuccess()){
            boolean hasCoupon = false;
 
-           for(CheckRegisteredProductEvent.ProductRequestCreateCommand command :event.getProductRequestCreateEvents()){
+           for(ProductRequestCreateCommand command :event.getProductRequestCreateEvents()){
                if(command.getCouponId() != null){
                    hasCoupon = true;
                    break;
@@ -127,11 +135,12 @@ public class OrderCreateSaga {
            }
 
            if(!hasCoupon){
+               log.info("end saga");
                SagaLifecycle.end();
                return;
            }
 
-           for(CheckRegisteredProductEvent.ProductRequestCreateCommand couponCommand :event.getProductRequestCreateEvents()){
+           for(ProductRequestCreateCommand couponCommand :event.getProductRequestCreateEvents()){
                if(couponCommand.getCouponId() != null){
                    Coupon coupon = getCouponPort.getCoupon(couponCommand.getCouponId());
 
