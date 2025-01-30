@@ -56,11 +56,8 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
             return new PageImpl<>(Collections.emptyList(), pageable, 0);
         }
 
-
-        // Step 2: Fetch the full product details for the fetched product IDs
         List<ProductEntity> products = getProduct(productComponentIds,sizeIds,productIds);
 
-        // Total count of products (without pagination)
         long total = getTotalCnt(null);
 
         return new PageImpl<>(products, pageable, total);
@@ -78,7 +75,6 @@ public class ProductEntityRepositoryExtensionImpl extends QuerydslRepositorySupp
 
         List<ProductEntity> products = getProduct(productComponentIds,sizeIds,productIds);
 
-        // Total count of products (without pagination)
         long total = getTotalCnt(categoryId);
 
         return new PageImpl<>(products, pageable, total);

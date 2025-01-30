@@ -126,7 +126,6 @@ public class RegisterOrderService implements RegisterOrderUseCase {
                 .build();
 
         eventPublisher.publishEvent(publishEventCommand);
-//        eventPublisher.publishEvent(deliverySendCommand);
 
         return null;
     }
