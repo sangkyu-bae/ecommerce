@@ -81,6 +81,9 @@
 /transaction-batch-service/transaction.*
 /gradle/
 
+/batch/coupon-batchLog
+/batch/build
+
 
 /coupon/.idea/*
 
