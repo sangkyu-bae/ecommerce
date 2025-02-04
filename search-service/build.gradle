@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.13'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+
+    id "com.palantir.docker" version '0.36.0'
+}
+
+group = 'com.example'
+version = '0.0.2'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+ext {
+    set('springCloudVersion', "2021.0.7")
+    axonVersion = "4.8.0"
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
+
+    //feign
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation group: 'io.github.openfeign', name: 'feign-gson', version: '11.0'
+
+    testImplementation 'org.jeasy:easy-random-core:5.0.0'
+
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+    // EasyRandom 라이브러리 추가
+    implementation 'org.jeasy:easy-random-core:4.0.0'
+    implementation project(path: ':common')
+
+    // Spring Data Elasticsearch
+    implementation 'org.springframework.data:spring-data-elasticsearch:4.4.0'
+
+    // Elasticsearch Rest Client (통신을 위해 필요)
+    implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.14'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+docker {
+    println(tasks.bootJar.outputs.files)
+    name project.name+":"+version
+    dockerfile file('../Dockerfile')
+
+    files tasks.bootJar.outputs.files
+
+    buildArgs(['JAR_FILE':tasks.bootJar.outputs.files.singleFile.name])
+}
+
