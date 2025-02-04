@@ -20,6 +20,7 @@ repositories {
     mavenCentral()
     maven { url 'https://repo.spring.io/milestone' }
     maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://jitpack.io' }
 }
 ext {
     set('springCloudVersion', "2021.0.8")
@@ -44,7 +45,11 @@ dependencies {
     testAnnotationProcessor('org.projectlombok:lombok')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.3'
+//    implementation 'com.github.danielwegener:logback-kafka-appender:0.2.0-RC2'
 
+    // Kafka에 로그를 전송하기 위해 Logback에 Kafka Appender를 추가
+    implementation 'com.github.danielwegener:logback-kafka-appender:0.1.0'
     implementation project(path: ':common')
 }
 dependencyManagement {

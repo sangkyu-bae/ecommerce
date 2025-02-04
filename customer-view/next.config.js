@@ -14,3 +14,4 @@ const nextConfig = {
 module.exports = nextConfig
 
 
+NEXTJS_DISABLE_OVERLAY=true

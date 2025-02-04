@@ -82,6 +82,12 @@ kafka:
     click :
       update :
         topic : update-click-ranking
+  elk :
+    click :
+      topic : product-click-log
+    sale :
+      topic : product-sale-log
+
 
 
 ###################

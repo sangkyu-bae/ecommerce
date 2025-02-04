@@ -1,12 +1,9 @@
 package com.example.order.infra.config;
 
-//import com.example.order.infra.properties.AppProperties;
 import com.example.order.infra.properties.AppProperties;
-import kafka.tools.ConsoleProducer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -32,8 +29,6 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG,"true");
         configProps.put(ProducerConfig.ACKS_CONFIG,"all");
         configProps.put(ProducerConfig.RETRIES_CONFIG,"5");
-
-
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }

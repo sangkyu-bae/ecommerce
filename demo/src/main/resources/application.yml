@@ -76,9 +76,12 @@ app:
   memberTopic : task-member
   removeOrderTopic: remove-order-product
   removeRollbackTopic: rollback-remove-order
+  common:
+    bootstrap:
+      server: localhost:9092
 kafka:
   notification:
-    topic:notification
+    topic: notification
   order :
     remove :
       topic : member.check.remove.order

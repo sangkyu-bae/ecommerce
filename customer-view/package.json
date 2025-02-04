@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rmdir /s /q node_modules && del /f /q package-lock.json && npm install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

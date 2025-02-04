@@ -1,0 +1,10 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: admin-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoes_product
+    username: root
+    password: wnsvaf309
+

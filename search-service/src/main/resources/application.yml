@@ -4,12 +4,16 @@ spring:
   data:
     elasticsearch:
       client:
-        rest:
-          uris: http://localhost:9200
+      rest:
+      uris: localhost:9200
+      username : elastic
+      pw : changeme
+
   application:
     name: search-service
 
 logging:
+
   charset:
     console: UTF-8
     file: UTF-8
@@ -30,6 +34,8 @@ logging:
           descriptor:
             sql: INFO
     root: INFO
+    org.springframework.data.elasticsearch: DEBUG
+    org.springframework.web.client: DEBUG
 # 유레카 설정
 eureka:
   instance:
