@@ -76,6 +76,12 @@
 /coupon-proxy/build
 /coupon-batch/build
 
+/transaction-batch-service/build
+/transaction-batch-service/transactionLog
+/transaction-batch-service/transaction.*
+/gradle/
+
+
 /coupon/.idea/*
 
 /.gradle/*
