@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Entity
@@ -32,6 +34,10 @@ public class EventEntity {
     @Column(columnDefinition = "JSON")
     @Type(type = "json")
     Map<String,Object> eventData;
+
+    private LocalDateTime createAt;
+
+    private LocalDateTime updateAt;
 
     public void updateStatus(EventStatus eventStatus){
         this.eventStatus = eventStatus;
