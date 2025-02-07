@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.PersistenceAdapter;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @PersistenceAdapter
 @Slf4j
 @RequiredArgsConstructor
@@ -25,6 +27,8 @@ public class EventAdaptor implements RegisterEventPort, UpdateEventPort {
                 .eventStatus(event.getEventStatus())
                 .eventType(event.getEventType())
                 .eventData(event.getEventData())
+                .createAt(LocalDateTime.now())
+                .updateAt(LocalDateTime.now())
                 .build();
 
 
@@ -41,6 +45,7 @@ public class EventAdaptor implements RegisterEventPort, UpdateEventPort {
             throw new IllegalArgumentException("");
         }
         eventEntity.updateStatus(eventStatus);
+        eventEntity.updateAt(LocalDateTime.now());
 
         return eventEntity;
     }

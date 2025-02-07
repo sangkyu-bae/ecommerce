@@ -43,5 +43,8 @@ public class EventEntity {
         this.eventStatus = eventStatus;
     }
 
+    public void updateAt(LocalDateTime updateAt){
+        this.updateAt = updateAt;
+    }
 
 }

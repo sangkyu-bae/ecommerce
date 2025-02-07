@@ -44,8 +44,10 @@ public class KafkaProduce {
         try{
             log.info("send msg : [{}] ",message);
             log.info("send Topic : [{}] ",topic);
+
             kafkaTemplate.send(topic,message).get();
         }catch (Exception e){
+            e.printStackTrace();
             log.error("sendMessage Error Topic: [{}]",topic);
             log.error("sendMessage Error message: [{}]",message);
         }
