@@ -16,8 +16,6 @@ import {loginState} from "@/contexts/Recoil";
 import {useMutation} from "@tanstack/react-query";
 import {useAuth} from "@/shared/hook/useAuth";
 import {useRouter} from "next/router";
-import Loading from "@/components/common/Loading";
-
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
     const onSubmit = (loginData : SignInFormData) => {
@@ -28,7 +26,7 @@ function SignInSection(props) {
     const router = useRouter();
 
     const [isError,setIsError] = useState<boolean>(false);
-    
+
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("ponMutate", variable);
@@ -50,75 +48,78 @@ function SignInSection(props) {
     });
     const validation= Validation;
 
+    if(signInMutation.isLoading){
+        return <Loading/>
+    }
+
     return (
         <>
-        {
-            signInMutation.isLoading && <Loading/>
-        }
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="이메일"
-                name="email"
-                autoComplete="email"
-                {...register("email", {
-                    ...validation.email
-                })}
-                error={Boolean(errors.email)}
-                helperText={errors.email?.message}
-                autoFocus
-            />
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                {...register("password", {
-                    ...validation.password
-                })}
-                error={Boolean(errors.password)}
-                helperText={errors.password?.message}
-            />
-            {
-                isError &&
-                <Box>
-                    로그인에 <span style={{color:'red'}}>실패</span> 했습니다, 확인후 다시 시도하세요
-                </Box>
-            }
-            <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-            />
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-            >
-                Sign In
-            </Button>
-            <Grid container>
-                <Grid item xs>
-                    <Link href="@/pages/signIn#" variant="body2">
-                        Forgot password?
-                    </Link>
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="이메일"
+                    name="email"
+                    autoComplete="email"
+                    {...register("email", {
+                        ...validation.email
+                    })}
+                    error={Boolean(errors.email)}
+                    helperText={errors.email?.message}
+                    autoFocus
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    {...register("password", {
+                        ...validation.password
+                    })}
+                    error={Boolean(errors.password)}
+                    helperText={errors.password?.message}
+                />
+                {
+                    isError &&
+                    <Box>
+                        로그인에 <span style={{color:'red'}}>실패</span> 했습니다, 확인후 다시 시도하세요
+                    </Box>
+                }
+                <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Remember me"
+                />
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                >
+                    Sign In
+                </Button>
+                <Grid container>
+                    <Grid item xs>
+                        <Link href="@/pages/signIn#" variant="body2">
+                            Forgot password?
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link href="/signup" variant="body2">
+                            {"Don't have an account? Sign Up"}
+                        </Link>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <Link href="/signup" variant="body2">
-                        {"Don't have an account? Sign Up"}
-                    </Link>
-                </Grid>
-            </Grid>
-        </Box>
+            </Box>
         </>
     );
 }
+
+import Loading from "@/components/common/Loading";
 
 export default SignInSection;

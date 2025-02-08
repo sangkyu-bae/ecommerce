@@ -50,7 +50,6 @@ public class TransactionOutJobConfig extends Base {
 
     @Bean
     public Job TransactionOutJob() throws Exception {
-        log.info("TRansction start");
 
         Job transactionOutJob = jobBuilderFactory.get("transactionOutJob")
                 .start(Step())
@@ -62,7 +61,6 @@ public class TransactionOutJobConfig extends Base {
     @Bean
     @JobScope
     public Step Step() throws Exception {
-        log.info("TRansction Step");
         return stepBuilderFactory.get("Step")
                 .<Event,Event>chunk(10)
                 .reader(reader(null))
@@ -77,7 +75,7 @@ public class TransactionOutJobConfig extends Base {
     public JdbcPagingItemReader<Event> reader(@Value("#{jobParameters[date]}")  String date) throws Exception {
 
         Map<String,Object> parameterValues = new HashMap<>();
-//        parameterValues.put("date", date);
+        parameterValues.put("date", date);
 
         log.info("date : [{}]",date);
 
@@ -88,9 +86,8 @@ public class TransactionOutJobConfig extends Base {
         from.append("FROM TB_EVENT");
 
         StringBuilder where = new StringBuilder();
-//        where.append(" WHERE create_at >= :date ");
-        where.append(" WHERE EVENT_STATUS IN ('FAIL','INIT') ");
-//        where.append("  AND EVENT_STATUS IN ('FAIL','INIT') ");
+        where.append(" WHERE create_at <= :date ");
+        where.append("  AND EVENT_STATUS IN ('FAIL','INIT') ");
 
 
         return new JdbcPagingItemReaderBuilder<Event>()
