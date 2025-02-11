@@ -1,103 +1,130 @@
-import React, {useEffect} from 'react';
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {AppBar, Toolbar, Typography} from "@mui/material";
+import React from 'react';
+import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
+import { AppBar, Toolbar, Typography, Button, IconButton, Badge } from "@mui/material";
 import Link from "next/link";
 import LoginIcon from '@mui/icons-material/Login';
-import Box from "@mui/material/Box";
-import {getAccessToken, removeToken} from "@/shared/api/cookie/Cookie";
 import LogoutIcon from '@mui/icons-material/Logout';
-import MemberApi from "@/shared/api/MemberApi";
-import {useAuth} from "@/shared/hook/useAuth";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import {useRouter} from "next/router";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import Box from "@mui/material/Box";
+import { useAuth } from "@/shared/hook/useAuth";
+import { useRouter } from "next/router";
+import MemberApi from "@/shared/api/MemberApi";
+import { removeToken } from "@/shared/api/cookie/Cookie";
+
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#000000', // 검정색
+            main: '#2c3e50', // 더 세련된 다크블루 색상
         },
     },
 });
 
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+    boxShadow: 'none',
+    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+}));
 
-let accessToken = getAccessToken();
-function Header(props) {
-    const {isLogin,onLogout, hasLogin} = useAuth();
+const StyledToolbar = styled(Toolbar)({
+    minHeight: '64px',
+    display: 'flex',
+    justifyContent: 'space-between',
+});
+
+const LogoText = styled(Typography)({
+    fontWeight: 700,
+    letterSpacing: '0.5px',
+});
+
+const NavLink = styled(Link)({
+    textDecoration: 'none',
+    color: 'inherit',
+    marginLeft: '32px',
+    transition: 'opacity 0.2s',
+    '&:hover': {
+        opacity: 0.8,
+    },
+});
+
+const NavText = styled(Typography)({
+    fontSize: '0.95rem',
+    fontWeight: 500,
+});
+
+const IconsContainer = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '20px',
+});
+
+const StyledIconButton = styled(IconButton)({
+    color: 'white',
+    '&:hover': {
+        background: 'rgba(255, 255, 255, 0.1)',
+    },
+});
+
+function Header() {
+    const {isLogin, onLogout} = useAuth();
     const router = useRouter();
-    const handleLogout=  () =>{
-        try{
-            const logOutRes = MemberApi.logOut();
+
+    const handleLogout = async () => {
+        try {
+            await MemberApi.logOut();
             removeToken('ACCESS_TOKEN');
             onLogout();
-            router.push("/")
-        }catch (e){
-            alert("logout 에러 발생했습니다");
-            console.log(e)
+            router.push("/");
+        } catch (e) {
+            console.error("로그아웃 중 오류가 발생했습니다:", e);
         }
-    }
+    };
 
-    useEffect(()=>{
-        console.log(hasLogin());
-    },[isLogin])
     return (
         <ThemeProvider theme={theme}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Box sx={{flex:'0.9', display:'flex'}} >
-                        <Link href='/' style={{
-                            textDecoration: 'none',
-                            color: 'inherit',
-                            flex:'0.1'
-                        }}>
-                            <Typography variant="h6" component="div">
-                                My App
-                            </Typography>
-                        </Link>
-                        <Link href='/product/list' style={{
-                            textDecoration: 'none',
-                            color: 'inherit',
-                            flex:'0.1'
-                        }}>
-                            <Typography variant="h6" component="div">
-                                상품목록
-                            </Typography>
-                        </Link>
+            <StyledAppBar position="sticky">
+                <StyledToolbar>
+                    <Box display="flex" alignItems="center">
+                        <NavLink href='/'>
+                            <LogoText variant="h6">
+                                SHOP
+                            </LogoText>
+                        </NavLink>
+                        <NavLink href='/product/list'>
+                            <NavText>상품목록</NavText>
+                        </NavLink>
                     </Box>
 
-                    {
-                        !isLogin ?
-                            <Link href='/signIn'>
-                                <LoginIcon style={{
-                                    textDecoration: 'none',
-                                    color: 'white',
-                                }}></LoginIcon>
-                            </Link> :
+                    <IconsContainer>
+                        {!isLogin ? (
+                            <NavLink href='/signIn'>
+                                <StyledIconButton>
+                                    <LoginIcon />
+                                </StyledIconButton>
+                            </NavLink>
+                        ) : (
                             <>
-                                <div onClick={handleLogout} style={{ cursor: 'pointer' ,marginRight:'1em'}}>
-                                    <LogoutIcon style={{
-                                        textDecoration: 'none',
-                                        color: 'white',
-                                    }} />
-                                </div>
-                                <Link href='/basket' style={{marginRight:'1em'}}>
-                                    <ShoppingBasketIcon style={{
-                                        textDecoration: 'none',
-                                        color: 'white',
-                                    }}></ShoppingBasketIcon>
-                                </Link>
-                                <Link href='/order/list'>
-                                    <ManageAccountsIcon style={{
-                                        textDecoration: 'none',
-                                        color: 'white',
-                                    }}></ManageAccountsIcon>
-                                </Link>
+                                <StyledIconButton onClick={handleLogout}>
+                                    <LogoutIcon />
+                                </StyledIconButton>
+                                
+                                <NavLink href='/basket'>
+                                    <StyledIconButton>
+                                        <Badge badgeContent={0} color="error">
+                                            <ShoppingBasketIcon />
+                                        </Badge>
+                                    </StyledIconButton>
+                                </NavLink>
+                                
+                                <NavLink href='/order/list'>
+                                    <StyledIconButton>
+                                        <ManageAccountsIcon />
+                                    </StyledIconButton>
+                                </NavLink>
                             </>
-                    }
-
-
-
-                </Toolbar>
-            </AppBar>
+                        )}
+                    </IconsContainer>
+                </StyledToolbar>
+            </StyledAppBar>
         </ThemeProvider>
     );
 }

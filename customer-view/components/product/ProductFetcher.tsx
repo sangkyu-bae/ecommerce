@@ -5,7 +5,7 @@ import Loading from "@/components/common/Loading";
 interface productInfo {
     children: React.ReactNode
 }
-function ProductFetcher({ children }) {
+function ProductFetcher({ children }: productInfo) {
     const router = useRouter()
     const {mainProductId}: number = router.query;
 

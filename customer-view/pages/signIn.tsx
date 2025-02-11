@@ -7,11 +7,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignInSection from "@/components/login/signInSection";
-import ApiCommon from "@/shared/api/common/ApiCommon";
-import {memberRequest} from "@/shared/constants/Url";
-import {useEffect} from "react";
-
-
 const theme = createTheme();
 function SignIn(props) {
     return (
