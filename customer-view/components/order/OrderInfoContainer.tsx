@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import OrderInfoBox from "@/components/order/OrderInfoBox";
-import {StyledOrderBox} from "@/components/common/GridComponent";
+import {StyledOrderBox} from "@/components/common/styles/GridComponent";
 import {useSelector} from "react-redux";
 import {OrderProduct} from "@/store/product/myProduct";
 

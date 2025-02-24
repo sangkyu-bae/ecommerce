@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
 import {OrderProduct} from "@/store/product/myProduct";
 import {initProduct, setProduct} from "@/store/product/productRedux";
-import {BoxContainer} from "@/components/common/GridComponent";
+import {BoxContainer} from "@/components/common/styles/GridComponent";
 import Checkbox from "@mui/material/Checkbox";
 import ProductTableComponent from "@/components/common/ProductTableComponent";
 import Button from "@mui/material/Button";
@@ -12,7 +12,7 @@ import GridComponent, {
     StyledContent,
     StyledOrderBox,
     StyledSetion
-} from "@/components/common/GridComponent";
+} from "@/components/common/styles/GridComponent";
 
 function BasketContainer({data}) {
     const [baskets,setBaskets] = useState<Basket[]>([]);

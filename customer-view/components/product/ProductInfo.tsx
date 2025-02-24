@@ -6,7 +6,7 @@ import ProductImage from "@/components/product/ProductImage";
 import ProductBrand from "@/components/product/ProductBrand";
 import ProductPrice from "@/components/product/ProductPrice";
 import ProductDescription from "@/components/product/ProductDescription";
-import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/GridComponent";
+import GridComponent, {StyledContainer, StyledContent, StyledSetion} from "@/components/common/styles/GridComponent";
 import ProductUpdateButton from "@/components/product/ProductUpdateButton";
 import ProductSizeQuantity from "@/components/product/ProductSizeQuantity";
 import ProductOrderManagement from "@/components/product/ProductOrderManagement";

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import GridComponent, {StyledContent, StyledSetion} from "@/components/common/GridComponent";
+import GridComponent, {StyledContent, StyledSetion} from "@/components/common/styles/GridComponent";
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";

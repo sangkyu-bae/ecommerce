@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import SideBar from "@/components/admin/sideBar";
-import GridComponent, {StyledContent, StyledMenu, StyledSetion} from "@/components/common/GridComponent";
+import GridComponent, {StyledContent, StyledMenu, StyledSetion} from "@/components/common/styles/GridComponent";
 import TextField from "@mui/material/TextField";
 import Input from "@/components/admin/Input";
 import Button from "@mui/material/Button";

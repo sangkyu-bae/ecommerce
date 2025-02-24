@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import SideBar from "@/components/admin/sideBar";
-import GridComponent, {StyledContainer, StyledContent, StyledMenu, StyledSetion} from "@/components/common/GridComponent";
+import GridComponent, {StyledContainer, StyledContent, StyledMenu, StyledSetion} from "@/components/common/styles/GridComponent";
 
 import CardComponent from "@/components/common/CardComponent";
 import {useQuery} from "@tanstack/react-query";

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Box from "@mui/material/Box";
-import GridComponent, {StyledContainer, StyledSetion} from "@/components/common/GridComponent";
+import GridComponent, {StyledContainer, StyledSetion} from "@/components/common/styles/GridComponent";
 import {useProductSearch} from "@/shared/hook/useProductSearch";
 
 import ProductCardComponent from "@/components/common/ProductCardComponent";

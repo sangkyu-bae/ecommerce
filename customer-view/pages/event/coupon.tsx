@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyledContainer} from "@/components/common/GridComponent";
+import {StyledContainer} from "@/components/common/styles/GridComponent";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {Backdrop} from "@mui/material";
 import Button from "@mui/material/Button";

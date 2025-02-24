@@ -7,7 +7,7 @@ import {
     setProduct
 } from "@/store/product/productRedux";
 import {useRouter} from "next/router";
-import {BoxContainer} from "@/components/common/GridComponent";
+import {BoxContainer} from "@/components/common/styles/GridComponent";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import ProductTableComponent from "@/components/common/ProductTableComponent";

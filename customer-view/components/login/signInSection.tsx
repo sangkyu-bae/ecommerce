@@ -16,6 +16,8 @@ import {loginState} from "@/contexts/Recoil";
 import {useMutation} from "@tanstack/react-query";
 import {useAuth} from "@/shared/hook/useAuth";
 import {useRouter} from "next/router";
+import ErrorMsg from '@/components/common/ErrorMsg';
+
 function SignInSection(props) {
     const {register, handleSubmit, formState: {errors} }=useForm<SignInFormData>();
     const onSubmit = (loginData : SignInFormData) => {
@@ -25,16 +27,23 @@ function SignInSection(props) {
     const {onLogin,userName} = useAuth();
     const router = useRouter();
 
-    const [isError,setIsError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<ErrorMessageProps >( 
+        {
+            message: null,
+            highlightWord: null
+        }   
+    );
 
     const signInMutation = useMutation(MemberApi.signIn, {
         onMutate: variable => {
             console.log("ponMutate", variable);
         },
         onError: (error, variable, context) => {
-            // error
-            setIsError(true);
-            console.log(error)
+            setErrorMessage({
+                message:"로그인에 실패 했습니다, 확인후 다시 시도하세요",
+                highlightWord:"실패"
+            }); 
+        
         },
         onSuccess: (data, variables, context) => {
             const {accessToken,accessExpiredTime,userName}=data.data;
@@ -85,12 +94,7 @@ function SignInSection(props) {
                     error={Boolean(errors.password)}
                     helperText={errors.password?.message}
                 />
-                {
-                    isError &&
-                    <Box>
-                        로그인에 <span style={{color:'red'}}>실패</span> 했습니다, 확인후 다시 시도하세요
-                    </Box>
-                }
+                <ErrorMsg message={errorMessage.message} highlightWord={errorMessage.highlightWord} />
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"

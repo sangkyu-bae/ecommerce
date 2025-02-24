@@ -5,7 +5,7 @@ import GridComponent, {
     StyledContent,
     StyledOrderBox,
     StyledSetion
-} from "@/components/common/GridComponent";
+} from "@/components/common/styles/GridComponent";
 
 import OrderInfoBox from "@/components/order/OrderInfoBox";
 import Button from "@mui/material/Button";

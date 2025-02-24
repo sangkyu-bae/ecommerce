@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery, useQueryClient } from '@tanstack/react-query';
 import { OrderApi } from '@/shared/api/order/orderApi';
-import { QUERY_KEYS } from '@/constants/queryKeys';
+import { QUERY_KEYS } from '@/shared/constants/queryKeys';
 import { OrderResponse } from '@/types/order';
 import { toast } from 'react-toastify';
 
