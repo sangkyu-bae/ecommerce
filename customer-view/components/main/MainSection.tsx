@@ -3,8 +3,10 @@ import GridComponent, {StyledContent, StyledSetion} from "@/components/common/st
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";
-
+import Modal from "../../components/common/modal/modal";
+import {useEventCouponService} from "@/shared/hook/useEventCouponService";
 function MainSection({data}) {
+    const {couponData} = useEventCouponService();
 
     return (
         <StyledContent isFull={true}>
@@ -33,6 +35,7 @@ function MainSection({data}) {
                 </Box>
 
             </StyledSetion>
+            <Modal title = "t"content = "eteste"/>
 
         </StyledContent>
 

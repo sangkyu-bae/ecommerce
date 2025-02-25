@@ -1,10 +1,5 @@
 import React from 'react';
 import { ThemeProvider } from "@mui/material/styles";
-import { Badge } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Box from "@mui/material/Box";
 import { useAuth } from "@/shared/hook/useAuth";
 import { useRouter } from "next/router";

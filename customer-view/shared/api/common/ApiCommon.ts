@@ -23,7 +23,6 @@ const ApiCommon = {
     })
 };
 
-// 인증이 필요한 API에 인터셉터 추가
 [ApiCommon.loginAPI, ApiCommon.loginJsonAPI].forEach(instance => {
     instance.interceptors.request.use(config => {
         const token = getAccessToken();
