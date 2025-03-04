@@ -3,10 +3,16 @@ import GridComponent, {StyledContent, StyledSetion} from "@/components/common/st
 import Box from "@mui/material/Box";
 import ProductCardComponent from "@/components/common/ProductCardComponent";
 import Link from "next/link";
-import Modal from "../../components/common/modal/modal";
-import {useEventCouponService} from "@/shared/hook/useEventCouponService";
-function MainSection({data}) {
-    const {couponData} = useEventCouponService();
+import {useQueryClient} from "@tanstack/react-query";
+import {QUERY_KEYS} from "@/shared/constants/queryKeys";
+import ModalFilter from "@/components/common/modal/ModalFilter";
+function MainSection() {
+
+    const queryClient = useQueryClient();
+
+    const couponData = queryClient.getQueryData(QUERY_KEYS.COUPON.key);
+    const rankData = queryClient.getQueryData(["clickRank"]);
+
 
     return (
         <StyledContent isFull={true}>
@@ -15,7 +21,7 @@ function MainSection({data}) {
                 <Box  sx={{width:'100%'}} >
                     <Box sx={{display:'flex', margin:'0 auto', width:'65%', flexWrap: 'wrap'}}>
                         {
-                                data.map(product=>
+                            rankData.map(product=>
                                 <Link  key={product.productId} href={`/product/${product.productId}`} style={{
                                     textDecoration: 'none',
                                     color: 'inherit',
@@ -35,7 +41,7 @@ function MainSection({data}) {
                 </Box>
 
             </StyledSetion>
-            <Modal title = "t"content = "eteste"/>
+            <ModalFilter type = {"tt"} data= {couponData} />
 
         </StyledContent>
 
