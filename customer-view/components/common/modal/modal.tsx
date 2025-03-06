@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {ReactNode, useState} from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 import styled from "styled-components";
 
@@ -57,5 +57,16 @@ function Modal({title,content} : Modal) {
         </StyledDialog>
       </>
     );
-}   
+}
+
+
+function ModalBody({ children }: { children: ReactNode }) {
+    return <div className="modal-body">{children}</div>;
+}
+
+// Modal 내부의 Footer
+function ModalFooter({ children }: { children: ReactNode }) {
+    return <div className="modal-footer">{children}</div>;
+}
+
 export default Modal;
