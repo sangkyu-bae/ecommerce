@@ -2,6 +2,7 @@ import React, {createContext, useContext, useMemo} from 'react';
 import Modal from "@/components/common/modal/modal";
 import {useProductActionContext, useProductValueContext} from "@/components/product/ProductInfo";
 import {DialogActions} from "@mui/material";
+import TestModal from "@/components/common/modal/TestModal";
 
 interface modalType {
     type: string,
@@ -14,27 +15,17 @@ interface modalType {
 }
 const MODAL_COMPONENTS: Record<string, () => JSX.Element> = {
     confirm: () => {
-        const data = useModalDataContext();
-        const actions = useModalActionContext();
-
         return (
-            <Modal title={data[0]?.title} onClose={actions.close}>
-                <Modal.Body>
-                    <p>{data[0]?.content}</p>
-                    <p>dddd</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <DialogActions>
-                        <StyledButton fullWidth onClick={actions.close}>close</StyledButton>
-                    </DialogActions>
-                </Modal.Footer>
-            </Modal>
+            <TestModal>
+                <TestModal.ModalBody/>
+                <TestModal.ModalFooter/>
+            </TestModal>
         );
     },
     alert: () => {
         const data = useModalDataContext();
         const actions = useModalActionContext();
-
+        alert("tetet2")
         return (
             <Modal title={data[0]?.title} onClose={actions.close}>
                 <Modal.Body>
@@ -76,11 +67,21 @@ function ModalFilter({type, data,confirmEvent,closeEvent}: modalType) {
 
     switch (type) {
         case 'tt':
-            return <Modal title="t" content="eteste"></Modal>;
+            // return <Modal title="t" content="eteste"></Modal>;
+            return(
+                <ModalDataContext.Provider value={data}>
+                    <ModalActionContext.Provider value={action}>
+                        <TestModal>
+                            <TestModal.ModalBody/>
+                            <TestModal.ModalFooter/>
+                        </TestModal>
+                    </ModalActionContext.Provider>
+                </ModalDataContext.Provider>
+            )
+
     }
 
     const ModalComponent = MODAL_COMPONENTS[type]
-
     return (
         <ModalDataContext.Provider value={data}>
             <ModalActionContext.Provider value={action}>

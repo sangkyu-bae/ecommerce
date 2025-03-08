@@ -6,6 +6,7 @@ import Link from "next/link";
 import {useQueryClient} from "@tanstack/react-query";
 import {QUERY_KEYS} from "@/shared/constants/queryKeys";
 import ModalFilter from "@/components/common/modal/ModalFilter";
+import {useEventCouponService} from "@/shared/hook/useEventCouponService";
 function MainSection() {
 
     const queryClient = useQueryClient();
@@ -13,6 +14,14 @@ function MainSection() {
     const couponData = queryClient.getQueryData(QUERY_KEYS.COUPON.key);
     const rankData = queryClient.getQueryData(["clickRank"]);
 
+    const modalData = couponData.map(coupon =>{
+        return {
+            title : coupon.couponName,
+            content : `이벤트 쿠폰 할인율 ${ coupon.salePercent}% 쿠폰 남은 수량 ${coupon.quantity}`
+        }
+    })
+
+    const {goPage,close} = useEventCouponService();
 
     return (
         <StyledContent isFull={true}>
@@ -41,7 +50,7 @@ function MainSection() {
                 </Box>
 
             </StyledSetion>
-            <ModalFilter type = {"tt"} data= {couponData} />
+            <ModalFilter type = {"tt"} data= {modalData} confirmEvent={goPage} closeEvent={close} />
 
         </StyledContent>
 
