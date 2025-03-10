@@ -1,8 +1,10 @@
-import { UseQueryOptions, useQuery, useQueryClient } from '@tanstack/react-query';
-import { QUERY_KEYS } from '@/shared/constants/queryKeys';
+import {useQuery} from '@tanstack/react-query';
+import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {CouponApi} from "@/shared/api/coupon/CouponApi";
-export const useEventCouponService =()=>{
-    const queryClient = useQueryClient();
+
+import { useRouter } from "next/router";
+export const useEventCouponService = () => {
+    const router = useRouter();
 
     const {data, isLoading, isError, error} = useQuery(
         QUERY_KEYS.COUPON.key,
@@ -19,14 +21,21 @@ export const useEventCouponService =()=>{
         }
     )
 
+    const goPage = () => {
+        router.push("/event/coupon");
+        alert("gogogo");
+    }
 
-    return {
-        couponData : data,
-        isLoading,
-        error
+    const closePage = () => {
+
     }
 
 
+    return {
+        goPage: goPage,
+        close: closePage,
+        data : data
+    }
 
 
 }

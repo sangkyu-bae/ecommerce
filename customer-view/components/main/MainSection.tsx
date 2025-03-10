@@ -14,13 +14,19 @@ function MainSection() {
     const couponData = queryClient.getQueryData(QUERY_KEYS.COUPON.key);
     const rankData = queryClient.getQueryData(["clickRank"]);
 
-    const modalData = couponData.map(coupon =>{
+    const data = couponData.map(coupon =>{
         return {
             title : coupon.couponName,
             content : `이벤트 쿠폰 할인율 ${ coupon.salePercent}% 쿠폰 남은 수량 ${coupon.quantity}`
         }
     })
 
+    const modalData = {
+        title : "이벤트 쿠폰",
+        buttonTitle : "발급 받으러 가기",
+        info : data,
+        isOpen: true
+    }
     const {goPage,close} = useEventCouponService();
 
     return (
@@ -50,7 +56,7 @@ function MainSection() {
                 </Box>
 
             </StyledSetion>
-            <ModalFilter type = {"tt"} data= {modalData} confirmEvent={goPage} closeEvent={close} />
+            <ModalFilter type = {"confirm"} data= {modalData} confirmEvent={goPage} closeEvent={close} />
 
         </StyledContent>
 

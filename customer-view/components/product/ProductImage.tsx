@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import {Props} from "next/script";
 
 import { useProductValueContext} from "@/components/product/ProductInfo";
 function ProductImage(props) {

@@ -12,7 +12,6 @@ import ProductSizeQuantity from "@/components/product/ProductSizeQuantity";
 import ProductOrderManagement from "@/components/product/ProductOrderManagement";
 import ProductTotalPay from "@/components/product/ProductTotalPay";
 import {ErrorBoundary} from "@/components/error/ErrorBoundary";
-import ErrorBox from "@/components/error/ErrorBox";
 
 interface InfoProps {
     productData: MyProduct,

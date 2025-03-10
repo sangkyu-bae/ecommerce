@@ -1,15 +1,19 @@
 import React, {createContext, useContext, useMemo} from 'react';
-import Modal from "@/components/common/modal/modal";
-import {useProductActionContext, useProductValueContext} from "@/components/product/ProductInfo";
-import {DialogActions} from "@mui/material";
 import TestModal from "@/components/common/modal/TestModal";
+import {useModal} from "@/shared/hook/useModal";
 
 interface modalType {
     type: string,
-    data:[{
-        title: string,
-        content :string
-    }],
+    data:{
+                title  : string,
+                buttonTitle : string,
+                info : [{
+                    title: string,
+                    content :string
+                }],
+                isOpen : boolean
+        }
+    ,
     confirmEvent :() => void,
     closeEvent : () => void
 }
@@ -23,18 +27,11 @@ const MODAL_COMPONENTS: Record<string, () => JSX.Element> = {
         );
     },
     alert: () => {
-        const data = useModalDataContext();
-        const actions = useModalActionContext();
-        alert("tetet2")
         return (
-            <Modal title={data[0]?.title} onClose={actions.close}>
-                <Modal.Body>
-                    <p>{data[0]?.content}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <button onClick={actions.close}>OK</button>
-                </Modal.Footer>
-            </Modal>
+            <TestModal>
+                <TestModal.ModalBody/>
+                <TestModal.ModalFooter/>
+            </TestModal>
         );
     },
 };
@@ -51,39 +48,36 @@ export function useModalActionContext(){
 }
 function ModalFilter({type, data,confirmEvent,closeEvent}: modalType) {
 
-    if (data.length < 1) {
+    if (data.info.length < 1) {
         return <></>
     }
+
+    const { modalData,openClickEvent,closeClickEvent } = useModal({
+        data  : data,
+        openEvent: confirmEvent,
+        closeEvent: closeEvent
+    });
+
+
+
+
     const action = useMemo(
         ()=>({
                 confirm() {
-                    confirmEvent()
+                    openClickEvent()
                 },
                 close(){
-                    closeEvent();
+                    closeClickEvent();
                 }
-        }),[]
+        }),[confirmEvent,closeEvent]
     );
 
-    switch (type) {
-        case 'tt':
-            // return <Modal title="t" content="eteste"></Modal>;
-            return(
-                <ModalDataContext.Provider value={data}>
-                    <ModalActionContext.Provider value={action}>
-                        <TestModal>
-                            <TestModal.ModalBody/>
-                            <TestModal.ModalFooter/>
-                        </TestModal>
-                    </ModalActionContext.Provider>
-                </ModalDataContext.Provider>
-            )
 
-    }
+
 
     const ModalComponent = MODAL_COMPONENTS[type]
     return (
-        <ModalDataContext.Provider value={data}>
+        <ModalDataContext.Provider value={modalData}>
             <ModalActionContext.Provider value={action}>
                 <ModalComponent />;
             </ModalActionContext.Provider>
