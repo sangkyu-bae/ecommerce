@@ -46,3 +46,11 @@ jobs:
           docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:$module-0.0.1
           docker push $REGISTRY/$REPOSITORY:$module-0.0.1
         done
+    - name : Checkout Helm Repository
+      uses : actions/checkout@v3
+      with :
+        repository : attachnplay/shoes-helm-charts
+        path : helm-chart
+        ref : main
+        ssh-key : ${{secrets.HELM_CHARTS_REPO_KEY}}
+
