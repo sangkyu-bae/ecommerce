@@ -61,12 +61,15 @@ jobs:
 #          eval "$(ssh-agent -s)"
 #          ssh-add ~/.ssh/id_rsa
 
-    - name: Debug SSH Key
+    - name: Setup SSH Key
       run: |
-        ls -lah ~/.ssh
-        cat ~/.ssh/id_rsa
-        ssh-keygen -lf ~/.ssh/id_rsa
-        
+        mkdir -p ~/.ssh  # SSH 디렉토리 생성
+        echo "${{ secrets.HELM_CHARTS_REPO_KEY }}" | base64 --decode > ~/.ssh/id_rsa  # SSH 키 복원
+        chmod 600 ~/.ssh/id_rsa  # 권한 설정
+        ssh-keyscan github.com >> ~/.ssh/known_hosts  # GitHub 호스트 등록
+        eval "$(ssh-agent -s)"  # ssh-agent 실행
+        ssh-add ~/.ssh/id_rsa  # SSH 키 추가
+
     - name : Checkout Helm Repository
       uses : actions/checkout@v3
       with :
