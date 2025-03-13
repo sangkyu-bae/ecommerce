@@ -58,17 +58,17 @@ jobs:
         path : helm-chart
         ref : main
         ssh-key : ${{secrets.HELM_CHARTS_REPO_KEY}}
-    - name : Change Image Tag of the Helm value
-      uses : mikefarah/yq@v4.34.1
-      with :
-        cmd : yq -i '.image.tag = "${{env.BUILD_ID}}"' helm-chart/${{env.HELM_VALUE}}
-    - name : Commit and Push HELM change
-      run : |
-        cd helm-chart
-        git config --local user.email "tkdrb136@gmail.com"
-        git config --local user.name "GitHubAction"
-        git add
-        git commit -m "Commit HELM change : ${{ env.ECR_REPOSITORY }} : ${{env.BUILD_ID}}"
-        current_branch = $(git branch --show-current)
-        git checkout -b ${{env.HELM_BRANCH}} && git merge ${current_branch}
-        git push --force origin ${{env.HELM_BRANCH}}
+#    - name : Change Image Tag of the Helm value
+#      uses : mikefarah/yq@v4.34.1
+#      with :
+#        cmd : yq -i '.image.tag = "${{env.BUILD_ID}}"' helm-chart/${{env.HELM_VALUE}}
+#    - name : Commit and Push HELM change
+#      run : |
+#        cd helm-chart
+#        git config --local user.email "tkdrb136@gmail.com"
+#        git config --local user.name "GitHubAction"
+#        git add
+#        git commit -m "Commit HELM change : ${{ env.ECR_REPOSITORY }} : ${{env.BUILD_ID}}"
+#        current_branch = $(git branch --show-current)
+#        git checkout -b ${{env.HELM_BRANCH}} && git merge ${current_branch}
+#        git push --force origin ${{env.HELM_BRANCH}}
