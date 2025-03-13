@@ -43,8 +43,7 @@ jobs:
         REPOSITORY: shoemarket-dev
         IMAGE_TAG: ${{ env.BUILD_ID }}
       run: |
-#        modules=("admin-service" "basket" "coupon" "delivery" "demo" "notification" "order" "ranking" "task-consumer")
-        modules=("admin-service")
+        modules=("admin-service" "basket" "coupon" "delivery" "demo" "notification" "order" "ranking" "task-consumer")
         for module in "${modules[@]}"; do
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg JAR_FILE=$module/build/libs/*.jar .
           docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:$module-0.0.1
