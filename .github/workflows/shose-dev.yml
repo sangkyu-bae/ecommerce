@@ -2,6 +2,9 @@ name: Shose -Dev
 
 env:
   JAR_FILES: ranking
+  BUILD_ID : ${{ github.sha }}
+  HELM_VALUE : admin-service-chart/values-dev.yaml
+  HELM_BRANCH : dev
 on:
   push:
     branches: [ "master" ]
@@ -38,9 +41,10 @@ jobs:
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REPOSITORY: shoemarket-dev
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ env.BUILD_ID }}
       run: |
-        modules=("admin-service" "basket" "coupon" "delivery" "demo" "notification" "order" "ranking" "task-consumer")
+#        modules=("admin-service" "basket" "coupon" "delivery" "demo" "notification" "order" "ranking" "task-consumer")
+        modules=("admin-service")
         for module in "${modules[@]}"; do
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg JAR_FILE=$module/build/libs/*.jar .
           docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:$module-0.0.1
@@ -53,4 +57,17 @@ jobs:
         path : helm-chart
         ref : main
         ssh-key : ${{secrets.HELM_CHARTS_REPO_KEY}}
-
+    - name : Change Image Tag of the Helm value
+      use : mikefarah/yq@v.34.1
+      with :
+        cmd : yq -i '.image.tag = "${{env.BUILD_ID}}"' helm-chart/${{env.HELM_VALUE}}
+    - name : Commit and Push HELM change
+      run : |
+        cd helm-chart
+        git config --local user.email "tkdrb136@gmail.com"
+        git config --local user.name "GitHubAction"
+        git add
+        git commit -m "Commit HELM change : ${{ env.ECR_REPOSITORY }} : ${{env.BUILD_ID}}"
+        current_branch = $(git branch --show-current)
+        git checkout -b ${{env.HELM_BRANCH}} && git merge ${current_branch}
+        git push --force origin ${{env.HELM_BRANCH}}
