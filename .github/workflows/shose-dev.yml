@@ -57,7 +57,7 @@ jobs:
         repository : attachnplay/shoes-helm-charts
         path : helm-chart
         ref : main
-        ssh-key : ${{secrets.HELM_CHARTS_REPO_KEY}}
+#        ssh-key : ${{ secrets.HELM_CHARTS_REPO_KEY }}
 #    - name : Change Image Tag of the Helm value
 #      uses : mikefarah/yq@v4.34.1
 #      with :
