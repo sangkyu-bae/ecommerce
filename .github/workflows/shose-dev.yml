@@ -51,6 +51,16 @@ jobs:
 #          docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:$module-0.0.1
 #          docker push $REGISTRY/$REPOSITORY:$module-0.0.1
 #        done
+
+    - name: Setup SSH Key
+      run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HELM_CHARTS_REPO_KEY }}" | base64 --decode > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+
     - name : Checkout Helm Repository
       uses : actions/checkout@v3
       with :
