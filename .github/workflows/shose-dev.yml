@@ -58,7 +58,7 @@ jobs:
         ref : main
         ssh-key : ${{secrets.HELM_CHARTS_REPO_KEY}}
     - name : Change Image Tag of the Helm value
-      use : mikefarah/yq@v.34.1
+      uses : mikefarah/yq@v.34.1
       with :
         cmd : yq -i '.image.tag = "${{env.BUILD_ID}}"' helm-chart/${{env.HELM_VALUE}}
     - name : Commit and Push HELM change
