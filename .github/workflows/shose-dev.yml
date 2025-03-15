@@ -68,7 +68,7 @@ jobs:
         cd helm-chart
         git config --local user.email "tkdrb136@gmail.com"
         git config --local user.name "GitHubAction"
-        git add
+        git add .
         git commit -m "Commit HELM change : ${{ env.ECR_REPOSITORY }} : ${{env.BUILD_ID}}"
         current_branch = $(git branch --show-current)
         git checkout -b ${{env.HELM_BRANCH}} && git merge ${current_branch}
