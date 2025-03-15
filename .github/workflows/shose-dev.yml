@@ -34,10 +34,10 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-#    - name: Build with Gradle
-#      run: ./gradlew docker
-#    - name: Build with Gradle (Only admin-service)
-#      run: ./gradlew :admin-service:docker
+    - name: Build with Gradle
+      run: ./gradlew docker
+    - name: Build with Gradle (Only admin-service)
+      run: ./gradlew :admin-service:docker
 
     - name: Build and push Module1 Docker image to Amazon ECR
       env:
