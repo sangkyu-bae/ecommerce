@@ -29,6 +29,7 @@ public class LogInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         Map<String,String []> parameterMap = request.getParameterMap();
 
+
         if(method.equals("GET")){
             log.info("{}가 {} 로 조회 요청하였습니다",userId,handler.toString());
         }else if(method.equals("POST")){
