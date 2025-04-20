@@ -14,4 +14,6 @@ public interface Notification {
     SseEmitter subscribe(RegisterSSENotificationCommand command);
 
     void sendMessage(NotificationClient send);
+
+
 }
